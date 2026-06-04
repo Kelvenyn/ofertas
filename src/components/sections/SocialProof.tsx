@@ -1,34 +1,30 @@
+"use client"
+
 const testimonials = [
-  {
-    stars: "★★★★★",
-    text: "Finalmente encontrei um material completo e organizado. Uso praticamente todos os dias nos meus atendimentos e as crianças adoram as atividades.",
-  },
-  {
-    stars: "★★★★★",
-    text: "Economizo muito tempo preparando sessões. O material é intuitivo e as fichas de aplicação são muito úteis para o dia a dia.",
-  },
-  {
-    stars: "★★★★★",
-    text: "As atividades são lúdicas e realmente prendem a atenção das crianças. Recomendo para todo psicopedagogo que trabalha com infantil.",
-  },
+  { src: "/images/CR-NINJA-15.webp", alt: "Depoimento 1" },
+  { src: "/images/CR-NINJA-16.webp", alt: "Depoimento 2" },
+  { src: "/images/CR-NINJA-17.webp", alt: "Depoimento 3" },
+  { src: "/images/CR-NINJA-18.webp", alt: "Depoimento 4" },
+  { src: "/images/CR-NINJA-15.webp", alt: "Depoimento 5" },
+  { src: "/images/CR-NINJA-16.webp", alt: "Depoimento 6" },
 ]
 
 export function SocialProof() {
   return (
-    <div className="qs-social-wrap">
-      <div className="qs-social-inner">
-        <div className="qs-social-pill">RESULTADOS DE QUEM JÁ USA</div>
-        <h2 className="qs-social-title">O que estão dizendo</h2>
+    <section className="sp-section">
+      <div className="sp-inner">
+        <h2 className="sp-title">O que estão dizendo</h2>
+      </div>
 
-        <div className="qs-social-grid">
-          {testimonials.map((t, i) => (
-            <div className="qs-social-card" key={i}>
-              <div className="qs-social-stars">{t.stars}</div>
-              <p>{t.text}</p>
+      <div className="sp-carousel-wrap">
+        <div className="sp-carousel-track">
+          {[...testimonials, ...testimonials].map((t, i) => (
+            <div className="sp-carousel-item" key={i}>
+              <img src={t.src} alt={t.alt} width={280} height={400} />
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }

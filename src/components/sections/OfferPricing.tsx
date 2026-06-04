@@ -11,20 +11,20 @@ export function OfferPricing() {
             <span>NeuroAtividades Kids</span>
           </h2>
 
+          <div className="offer-product-preview">
+            <img
+              src="/images/4943e9df-5a44-4443-b18d-b7084546bdad.webp"
+              alt="NeuroAtividades Kids"
+              width={320}
+              height={400}
+            />
+          </div>
+
           <p>
-            Escolha o <strong>Kit Essencial</strong> para acessar as atividades principais ou aproveite o
-            <strong> Kit Completo</strong> para liberar uma versão mais robusta, com bônus extras,
+            Escolha o <strong>Plano Básico</strong> para acessar as atividades principais ou aproveite o
+            <strong> Plano Completo</strong> para liberar uma versão mais robusta, com bônus extras,
             fichas de apoio e recursos para organizar melhor seus atendimentos.
           </p>
-        </div>
-
-        <div className="offer-product-preview">
-          <img
-            src="/images/4943e9df-5a44-4443-b18d-b7084546bdad.webp"
-            alt="NeuroAtividades Kids"
-            width={320}
-            height={400}
-          />
         </div>
 
         <div className="offer-pei-grid">
@@ -32,7 +32,7 @@ export function OfferPricing() {
           <div className="offer-card basic-plan">
             <div className="offer-card-top">
               <div className="plan-label basic-label">PARA COMEÇAR HOJE</div>
-              <h3>Kit Essencial</h3>
+              <h3>Plano Básico</h3>
               <p>
                 Para quem quer acessar as atividades principais e começar a aplicar recursos psicopedagógicos com mais praticidade.
               </p>
@@ -56,7 +56,7 @@ export function OfferPricing() {
               <li className="muted">Não inclui registro de evolução psicopedagógica</li>
             </ul>
 
-            <a href="https://pay.hotmart.com/I105936984X?off=u2fg19a2&checkoutMode=10" className="offer-btn basic-btn" target="_blank" rel="noopener noreferrer">QUERO O KIT ESSENCIAL</a>
+            <a href="https://pay.hotmart.com/I105936984X?off=u2fg19a2&checkoutMode=10" className="offer-btn basic-btn" target="_blank" rel="noopener noreferrer">QUERO O PLANO BÁSICO</a>
           </div>
 
           <div className="offer-card premium-plan">
@@ -64,7 +64,7 @@ export function OfferPricing() {
 
             <div className="offer-card-top">
               <div className="plan-label premium-label">TUDO DESBLOQUEADO</div>
-              <h3>Kit Completo</h3>
+              <h3>Plano Completo</h3>
               <p>
                 Para quem quer o acesso mais completo, com atividades, fichas, bônus e recursos extras para conduzir atendimentos com mais organização.
               </p>
@@ -94,7 +94,7 @@ export function OfferPricing() {
               <li>Acesso imediato após a compra</li>
             </ul>
 
-            <a href="https://pay.hotmart.com/I105936984X?off=fvch2t63&checkoutMode=10" className="offer-btn premium-btn" target="_blank" rel="noopener noreferrer">QUERO O KIT COMPLETO</a>
+            <a href="https://pay.hotmart.com/I105936984X?off=fvch2t63&checkoutMode=10" className="offer-btn premium-btn" target="_blank" rel="noopener noreferrer">QUERO O PLANO COMPLETO</a>
           </div>
 
         </div>

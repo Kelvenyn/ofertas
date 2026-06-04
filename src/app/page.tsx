@@ -1,20 +1,16 @@
-import { TopTimer } from "@/components/sections/TopTimer"
-import Hero from "@/components/sections/Hero"
-import { HeroImage } from "@/components/sections/HeroImage"
+import { VendaImediata } from "@/components/sections/VendaImediata"
+import { SocialProof } from "@/components/sections/SocialProof"
 import { CounterPainPoints } from "@/components/sections/CounterPainPoints"
-import { PriceDisplay } from "@/components/sections/PriceDisplay"
-import { CTAButton } from "@/components/sections/CTAButton"
-import { Skills } from "@/components/sections/Skills"
-import { ProcessSteps } from "@/components/sections/ProcessSteps"
-import { IdealParaVoce } from "@/components/sections/IdealParaVoce"
-import { KitTitle } from "@/components/sections/KitTitle"
 import { KitCards } from "@/components/sections/KitCards"
-import { AccessInfo } from "@/components/sections/AccessInfo"
+import { Benefits } from "@/components/sections/Benefits"
+import { CTAButton } from "@/components/sections/CTAButton"
+import { Urgencia } from "@/components/sections/Urgencia"
+import { IdealParaVoce } from "@/components/sections/IdealParaVoce"
+import { TudoQueVoceRecebe } from "@/components/sections/TudoQueVoceRecebe"
 import { Bonuses } from "@/components/sections/Bonuses"
 import { OfferPricing } from "@/components/sections/OfferPricing"
 import { Guarantee } from "@/components/sections/Guarantee"
-import { SocialProof } from "@/components/sections/SocialProof"
-import { Creator } from "@/components/sections/Creator"
+import { ComoEAcesso } from "@/components/sections/ComoEAcesso"
 import { FAQ } from "@/components/sections/FAQ"
 import { Footer } from "@/components/sections/Footer"
 
@@ -22,49 +18,43 @@ export default function Home() {
   return (
     <main>
       {/* 1. Venda Imediata */}
-      <TopTimer />
-      <Hero />
-      <HeroImage />
-      <PriceDisplay />
-      <CTAButton />
+      <VendaImediata />
 
-      {/* 2. Intensificação da Dor */}
+      {/* 2. Prova Social */}
+      <SocialProof />
+
+      {/* 3. Demonstrativo */}
       <CounterPainPoints />
+      <KitCards />
 
-      {/* 3. Benefícios do Produto */}
-      <Skills />
-      <ProcessSteps />
-      <CTAButton />
+      {/* 4. Benefícios */}
+      <Benefits />
 
-      {/* 4. Ideal para você que deseja */}
+      {/* 5. Urgência */}
+      <Urgencia />
+
+      {/* 6. Ideal para você que deseja */}
       <IdealParaVoce />
 
-      {/* 5. Tudo o que você vai receber */}
-      <KitTitle />
-      <KitCards />
-      <AccessInfo />
-      <CTAButton />
+      {/* 7. Tudo o que você vai receber */}
+      <TudoQueVoceRecebe />
 
-      {/* 6. Bônus */}
+      {/* 8. Bônus */}
       <Bonuses />
-      <CTAButton />
 
-      {/* 7. Oferta e Valores */}
+      {/* 9. Oferta */}
       <OfferPricing />
 
-      {/* 8. Garantia */}
+      {/* 10. Garantia */}
       <Guarantee />
-      <CTAButton />
 
-      {/* 9. Prova Social / Autoridade */}
-      <SocialProof />
-      <Creator />
+      {/* 11. Como é o Acesso */}
+      <ComoEAcesso />
 
-      {/* 10. FAQ */}
+      {/* 12. FAQ */}
       <FAQ />
-      <CTAButton />
 
-      {/* 11. Rodapé */}
+      {/* 13. Rodapé */}
       <Footer />
     </main>
   )
