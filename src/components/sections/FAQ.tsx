@@ -2,50 +2,61 @@
 
 import { useState } from "react"
 
-const faqs = [
-  { q: "Como recebo o material?", a: "Após a confirmação do pagamento, você receberá o acesso por e-mail e WhatsApp com instruções para baixar todo o material." },
-  { q: "As atividades são indicadas para qual idade?", a: "De 3 a 12 anos, organizadas por faixa etária (3-5, 5-7, 7-10, 10-12 anos) para facilitar a escolha." },
-  { q: "Posso usar no consultório e também enviar para casa?", a: "Sim! As atividades são licenciadas para uso profissional. Você pode aplicar nas sessões e enviar atividades complementares para casa." },
-  { q: "Quanto tempo tenho de acesso?", a: "O acesso ao Kit Completo é vitalício com atualizações gratuitas. O Kit Essencial tem acesso por 1 ano." },
-  { q: "E se eu não gostar?", a: "Você tem 7 dias de garantia incondicional. Se não ficar satisfeito, devolvemos 100% do seu dinheiro." },
-  { q: "O material vem em PDF?", a: "Sim, todo o material está em formato PDF de alta qualidade, pronto para baixar, imprimir e aplicar." },
+const faqItems = [
+  {
+    q: "Como recebo o material após a compra?",
+    a: "Após a confirmação do pagamento, você recebe o link de acesso no e-mail cadastrado e também no WhatsApp. Basta clicar e fazer o download.",
+  },
+  {
+    q: "O material é indicado para qual faixa etária?",
+    a: "As atividades são voltadas para crianças em fase de alfabetização e desenvolvimento infantil, aproximadamente dos 4 aos 12 anos, podendo ser adaptadas conforme a necessidade.",
+  },
+  {
+    q: "Posso imprimir as atividades quantas vezes quiser?",
+    a: "Sim! Ao adquirir o material, você tem acesso vitalício e pode imprimir quantas vezes precisar para usar com seus pacientes.",
+  },
+  {
+    q: "O material atende diferentes habilidades?",
+    a: "Sim. As atividades são organizadas por habilidade (atenção, memória, leitura, escrita, raciocínio lógico, etc.), facilitando a escolha do recurso ideal para cada momento.",
+  },
+  {
+    q: "E se eu não gostar do material?",
+    a: "Você tem 7 dias de garantia incondicional. Se por qualquer motivo não ficar satisfeito, devolvemos 100% do seu dinheiro.",
+  },
 ]
 
 export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
-    <section className="bg-[#F8FBFF] py-16">
-      <div className="max-w-3xl mx-auto px-4">
-        <h2 className="font-nunito text-3xl md:text-4xl font-extrabold text-[#123A6D] text-center mb-12">
-          Perguntas Frequentes
-        </h2>
-        <div className="space-y-3">
-          {faqs.map((faq, i) => (
+    <div className="faq-acc-wrap">
+      <div className="faq-acc-inner">
+        <h2 className="faq-acc-title">Perguntas Frequentes</h2>
+
+        <div className="faq-acc-list">
+          {faqItems.map((item, i) => (
             <div
+              className={`faq-acc-item${openIndex === i ? " open" : ""}`}
               key={i}
-              className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden"
             >
               <button
+                className="faq-acc-btn"
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="w-full text-left p-4 flex items-center justify-between gap-4"
               >
-                <span className="font-semibold text-[#0B7FE8] text-sm md:text-base">
-                  {faq.q}
-                </span>
-                <span className={`text-[#0B7FE8] transition-transform ${openIndex === i ? "rotate-180" : ""}`}>
-                  ▼
+                <span>{item.q}</span>
+                <span className="faq-acc-icon">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M4 5.5L7 8.5L10 5.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </span>
               </button>
-              {openIndex === i && (
-                <div className="px-4 pb-4 text-[#425466] text-sm">
-                  {faq.a}
-                </div>
-              )}
+              <div className="faq-acc-panel">
+                <p>{item.a}</p>
+              </div>
             </div>
           ))}
         </div>
       </div>
-    </section>
+    </div>
   )
 }

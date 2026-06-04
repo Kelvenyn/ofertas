@@ -1,54 +1,59 @@
-import Image from "next/image"
-
 const bonuses = [
-  { title: "Cartões de Reforço Positivo", image: "/images/asset-9.webp", value: "R$27" },
-  { title: "Roteiro de Sondagem Inicial", image: "/images/asset-10.webp", value: "R$37" },
-  { title: "Atividades para Enviar para Casa", image: "/images/asset-11.webp", value: "R$27" },
-  { title: "Registro de Evolução Psicopedagógica", image: "/images/asset-12.webp", value: "R$27" },
+  {
+    src: "/images/CR-NINJA-15.webp",
+    alt: "Cartões de Reforço Positivo",
+    title: "Cartões de Reforço Positivo",
+    desc: "Quadro de incentivo lúdico para motivar a criança durante as sessões e reforçar comportamentos positivos.",
+  },
+  {
+    src: "/images/CR-NINJA-16.webp",
+    alt: "Roteiro de Sondagem Inicial",
+    title: "Roteiro de Sondagem Inicial",
+    desc: "Um guia prático para avaliar o nível da criança e planejar as intervenções mais adequadas.",
+  },
+  {
+    src: "/images/CR-NINJA-17.webp",
+    alt: "Atividades para Enviar para Casa",
+    title: "Atividades para Enviar para Casa",
+    desc: "Exercícios simples que os pais podem aplicar em casa para reforçar o trabalho realizado no consultório.",
+  },
+  {
+    src: "/images/CR-NINJA-18.webp",
+    alt: "Registro de Evolução Psicopedagógica",
+    title: "Registro de Evolução Psicopedagógica",
+    desc: "Fichas para documentar a evolução da criança com mais clareza e agilidade.",
+  },
 ]
 
 export function Bonuses() {
   return (
-    <section className="bg-[#F8FBFF] py-16">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="font-nunito text-3xl md:text-4xl font-extrabold text-[#123A6D] mb-2">
-            Bônus Exclusivos
-          </h2>
-          <span className="inline-block bg-[#FF8A5B] text-white text-sm font-bold px-4 py-1 rounded-full">
-            apenas hoje
-          </span>
-        </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          {bonuses.map((bonus) => (
-            <div
-              key={bonus.title}
-              className="bg-white rounded-2xl border-2 border-[#FFD166] shadow-lg overflow-hidden flex md:flex-row flex-col"
-            >
-              <div className="md:w-48 h-48 bg-[#F3F8FF] flex-shrink-0">
-                <Image
-                  src={bonus.image}
-                  alt={bonus.title}
-                  width={200}
-                  height={200}
-                  unoptimized
-                  className="w-full h-full object-cover"
-                />
+    <div className="bonos-wrap">
+      <div className="bonos-inner">
+        <div className="bonos-pill">EXTRA INCLUÍDO</div>
+
+        <h2 className="bonos-title">4 BÔNUS EXCLUSIVOS</h2>
+
+        <p className="bonos-sub">
+          Ao garantir o NeuroAtividades Kids hoje, você leva também estes materiais extras
+          para enriquecer ainda mais seus atendimentos.
+        </p>
+
+        <div className="bonos-divider"></div>
+
+        <div className="bonos-cards">
+          {bonuses.map((bonus, i) => (
+            <div className="bonus-card" key={i}>
+              <div className="bonus-card-img">
+                <img src={bonus.src} alt={bonus.alt} width={100} height={100} />
               </div>
-              <div className="p-6 flex flex-col justify-center">
-                <span className="text-xs font-bold text-white bg-[#FF8A5B] px-2 py-0.5 rounded-full inline-block w-fit mb-2">
-                  BÔNUS
-                </span>
-                <h3 className="font-nunito font-bold text-lg text-[#123A6D]">{bonus.title}</h3>
-                <p className="text-[#425466] text-sm mt-1">Valor: {bonus.value}</p>
+              <div className="bonus-card-conteudo">
+                <h3>{bonus.title}</h3>
+                <p>{bonus.desc}</p>
               </div>
             </div>
           ))}
         </div>
-        <p className="text-center mt-8 font-bold text-[#0BB869] text-lg">
-          Valor total dos bônus: R$ 117,60 — Hoje: GRÁTIS
-        </p>
       </div>
-    </section>
+    </div>
   )
 }
