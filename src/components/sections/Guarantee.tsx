@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState, useCallback } from "react"
+import { ScrollMarquee } from "@/components/ui/ScrollMarquee"
 
 export function Guarantee() {
   const [scale, setScale] = useState(0.5)
@@ -32,13 +33,7 @@ export function Guarantee() {
 
   return (
     <section className="gar-section">
-      <div className="gar-marquee">
-        <div className="gar-marquee-track">
-          {Array.from({ length: 14 }).map((_, i) => (
-            <span key={i}>GARANTIA 30 DIAS &bull; </span>
-          ))}
-        </div>
-      </div>
+      <ScrollMarquee text="GARANTIA 30 DIAS" />
 
       <div className="gar-inner">
         <div className="gar-icon" ref={iconRef} style={{ transform: `scale(${scale})` }}>
@@ -59,13 +54,7 @@ export function Guarantee() {
         </div>
       </div>
 
-      <div className="gar-marquee">
-        <div className="gar-marquee-track reverse">
-          {Array.from({ length: 14 }).map((_, i) => (
-            <span key={i}>GARANTIA 30 DIAS &bull; </span>
-          ))}
-        </div>
-      </div>
+      <ScrollMarquee text="GARANTIA 30 DIAS" reverse />
     </section>
   )
 }

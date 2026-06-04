@@ -1,10 +1,13 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, useCallback } from "react"
 import { ShinyButton } from "@/components/ui/ShinyButton"
+import { ScrollMarquee } from "@/components/ui/ScrollMarquee"
 
 export function VendaImediata() {
   const [time, setTime] = useState("")
+  const [flipping, setFlipping] = useState<boolean[]>([false, false, false])
+  const prevPartsRef = useRef<string[]>(["", "", ""])
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isFixed, setIsFixed] = useState(false)
   const heroRef = useRef<HTMLDivElement>(null)
@@ -21,7 +24,22 @@ export function VendaImediata() {
       const m = Math.floor(diff / 60000)
       diff -= m * 60000
       const s = Math.floor(diff / 1000)
-      setTime(`${String(h).padStart(2,"0")}h ${String(m).padStart(2,"0")}min ${String(s).padStart(2,"0")}s`)
+      const newParts = [
+        `${String(h).padStart(2,"0")}h`,
+        `${String(m).padStart(2,"0")}min`,
+        `${String(s).padStart(2,"0")}s`
+      ]
+
+      const prevParts = prevPartsRef.current
+      const newFlipping = newParts.map((p, i) => p !== prevParts[i])
+      setFlipping(newFlipping)
+      prevPartsRef.current = newParts
+
+      if (newFlipping.some(Boolean)) {
+        setTimeout(() => setFlipping([false, false, false]), 150)
+      }
+
+      setTime(newParts.join(" "))
     }
     update()
     const iv = setInterval(update, 1000)
@@ -57,7 +75,7 @@ export function VendaImediata() {
           </div>
           <div className="vi-top-bar-timer">
             {timerParts.map((part, i) => (
-              <span key={i} className="vi-timer-segment">
+              <span key={i} className={`vi-timer-segment${flipping[i] ? " flip" : ""}`}>
                 {part}
                 {i < 2 && <span className="vi-timer-sep">:</span>}
               </span>
@@ -95,13 +113,7 @@ export function VendaImediata() {
             QUERO ACESSAR O KIT AGORA
           </ShinyButton>
 
-          <div className="vi-marquee">
-            <div className="vi-marquee-track">
-              {Array.from({ length: 12 }).map((_, i) => (
-                <span key={i}>MATERIAL EM ALTA QUALIDADE &bull; ACESSO IMEDIATO &bull; </span>
-              ))}
-            </div>
-          </div>
+          <ScrollMarquee text="MATERIAL EM ALTA QUALIDADE • ACESSO IMEDIATO" className="vi-marquee" />
         </div>
       </section>
     </>

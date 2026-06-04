@@ -504,7 +504,13 @@
   transition: font-size .6s cubic-bezier(.25,.1,.25,1),
               padding .6s cubic-bezier(.25,.1,.25,1),
               border-radius .6s cubic-bezier(.25,.1,.25,1),
-              background .6s cubic-bezier(.25,.1,.25,1);
+              background .6s cubic-bezier(.25,.1,.25,1),
+              transform .15s ease-in-out;
+  font-variant-numeric: tabular-nums;
+}
+
+.vi-timer-segment.flip {
+  transform: scaleY(0);
 }
 
 .vi-top-bar.fixed .vi-timer-segment {
@@ -519,8 +525,14 @@
   font-weight: 700;
   margin: 0 2px;
   font-size: 13px;
+  animation: viColonBlink 0.8s step-end infinite;
   transition: font-size .6s cubic-bezier(.25,.1,.25,1),
               margin .6s cubic-bezier(.25,.1,.25,1);
+}
+
+@keyframes viColonBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
 
 .vi-top-bar.fixed .vi-timer-sep {
@@ -692,6 +704,55 @@
 @keyframes viMarqueeScroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+/* ===== SCROLL MARQUEE ===== */
+.scroll-marquee {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.scroll-marquee-fade {
+  position: absolute;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.scroll-marquee-fade-l {
+  left: 0;
+  mask-image: linear-gradient(to right, transparent, white);
+  -webkit-mask-image: linear-gradient(to right, transparent, white);
+}
+
+.scroll-marquee-fade-r {
+  right: 0;
+  mask-image: linear-gradient(to left, transparent, white);
+  -webkit-mask-image: linear-gradient(to left, transparent, white);
+}
+
+.scroll-marquee-track {
+  display: flex;
+  will-change: transform;
+}
+
+.scroll-marquee-block {
+  display: flex;
+  white-space: nowrap;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-shadow: 0 1px 3px rgba(0,0,0,.15);
+  flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
@@ -2077,7 +2138,7 @@
 
 /* ===== SOCIAL PROOF CAROUSEL ===== */
 .sp-section {
-  padding: 36px 0 16px;
+  padding: 36px 0 40px;
   overflow: hidden;
   background: transparent;
 }
@@ -2099,37 +2160,108 @@
   color: #082F63;
 }
 
-.sp-carousel-wrap {
+.sp-stories-container {
+  position: relative;
   width: 100%;
-  overflow: hidden;
-  padding: 8px 0;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 60px;
 }
 
-.sp-carousel-track {
+.sp-stories-track {
+  position: relative;
   display: flex;
-  gap: 16px;
-  animation: scrollLeft 22s linear infinite;
-  width: max-content;
+  align-items: center;
+  justify-content: center;
+  height: clamp(340px, 50vw, 520px);
+  perspective: 1100px;
 }
 
-.sp-carousel-item {
-  flex-shrink: 0;
-  width: 200px;
+.sp-stories-card {
+  position: absolute;
+  height: 100%;
+  aspect-ratio: 9/16;
+  border-radius: 22px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.1s ease-out, opacity 0.1s ease-out;
 }
 
-.sp-carousel-item img {
+.sp-stories-card-top {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;
-  aspect-ratio: 3/4;
-  object-fit: cover;
-  border-radius: 14px;
-  display: block;
-  box-shadow: 0 8px 20px rgba(0,0,0,.1);
+  height: 6px;
+  border-radius: 22px 22px 0 0;
+  z-index: 10;
 }
 
-@keyframes scrollLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.sp-stories-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.sp-stories-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  width: clamp(38px, 6vw, 48px);
+  height: clamp(38px, 6vw, 48px);
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,.15);
+  transition: transform .2s ease;
+}
+
+.sp-stories-arrow:hover {
+  transform: translateY(-50%) scale(1.08);
+}
+
+.sp-stories-arrow-l {
+  left: 0;
+}
+
+.sp-stories-arrow-r {
+  right: 0;
+}
+
+.sp-stories-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.sp-stories-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(11,127,232,.25);
+  cursor: pointer;
+  transition: width .3s ease, background .3s ease;
+  padding: 0;
+}
+
+.sp-stories-dot.active {
+  width: 24px;
+  background: linear-gradient(90deg, #0B7FE8, #49A6FF);
+}
+
+@media (max-width: 640px) {
+  .sp-stories-container { padding: 0 40px; }
+  .sp-stories-arrow { display: none; }
 }
 
 /* ===== BENEFITS ===== */
