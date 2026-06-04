@@ -2039,24 +2039,6 @@
   font-size: 15.5px;
 }
 
-.basic-btn.shiny-cta {
-  background: linear-gradient(135deg, #FFFFFF, #F8FBFF) padding-box,
-    conic-gradient(
-      from var(--gradient-angle),
-      transparent 0%,
-      #0B7FE8 5%,
-      #082F63 15%,
-      #49A6FF 30%,
-      transparent 40%,
-      transparent 100%
-    ) border-box;
-  color: #082F63;
-}
-
-.basic-btn.shiny-cta span {
-  color: #082F63;
-}
-
 .premium-btn.shiny-cta {
   background: linear-gradient(135deg, #22C978, #1AAF64) padding-box,
     conic-gradient(

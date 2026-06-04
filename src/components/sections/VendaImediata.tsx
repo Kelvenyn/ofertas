@@ -113,7 +113,11 @@ export function VendaImediata() {
             QUERO ACESSAR O KIT AGORA
           </ShinyButton>
 
-          <ScrollMarquee text="MATERIAL EM ALTA QUALIDADE • ACESSO IMEDIATO" className="vi-marquee" />
+          <ScrollMarquee
+            text="MATERIAL EM ALTA QUALIDADE • ACESSO IMEDIATO • BÔNUS INCLUÍDOS • "
+            gradient="linear-gradient(135deg, #fd5b00 0%, #ff8c1a 35%, #ffc107 65%, #ffd41e 100%)"
+            className="vi-marquee"
+          />
         </div>
       </section>
     </>
