@@ -5,13 +5,13 @@ export function Urgencia() {
         <div className="urg-pill">OFERTA POR TEMPO LIMITADO</div>
 
         <h2 className="urg-title">
-          Garanta seu acesso antes que o preço suba
+          Garanta seu acesso<br />antes que o preço suba
         </h2>
 
         <p className="urg-text">
           Esta é a sua chance de levar um material completo com mais de 250 atividades
-          psicopedagógicas por um preço que faz sentido. Não espere — o valor promocional
-          pode sair do ar a qualquer momento.
+          psicopedagógicas por um preço que faz sentido. Não espere — o valor
+          promocional pode sair do ar a qualquer momento.
         </p>
 
         <div className="urg-price-block">

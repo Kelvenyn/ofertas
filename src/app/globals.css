@@ -295,77 +295,89 @@
 
 /* ===== VENDA IMEDIATA ===== */
 .vi-top-bar {
-  width: 100%;
-  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 58%, #1749B3 100%);
+  width: fit-content;
+  margin: 0 auto;
+  background: rgba(255,255,255,.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,.6);
   font-family: 'Inter', system-ui, sans-serif;
   text-align: center;
-  padding: 10px 14px;
+  padding: 10px 24px;
+  border-radius: 999px;
   z-index: 100;
-  transition: all .3s ease;
   position: relative;
+  transition: all .4s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
 }
 
 .vi-top-bar.fixed {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  box-shadow: 0 4px 20px rgba(37,99,235,.3);
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 8px 32px rgba(0,0,0,.12);
+  animation: barAppear .4s cubic-bezier(.4,0,.2,1);
+}
+
+@keyframes barAppear {
+  0% { opacity: 0; transform: translateX(-50%) translateY(-20px) scale(.95); }
+  100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
 }
 
 .vi-top-bar-inner {
-  max-width: 520px;
-  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .vi-top-bar-label {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 4px;
-  padding: 5px 14px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.14);
-  border: 1px solid rgba(255,255,255,.20);
-  color: #FFFFFF;
-  font-size: 11px;
-  font-weight: 700;
+  color: #082F63;
+  font-size: 12px;
+  font-weight: 800;
   letter-spacing: .04em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .vi-top-bar-icon {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .vi-top-bar-timer {
   display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 8px;
-  color: #FFFFFF;
+  align-items: center;
+  gap: 2px;
 }
 
-.vi-top-bar-timer span {
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.vi-top-bar-timer strong {
-  font-size: clamp(20px, 5vw, 26px);
+.vi-timer-segment {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
   font-weight: 900;
-  letter-spacing: -0.03em;
+  color: #DC2626;
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: center;
+}
+
+.vi-timer-sep {
+  color: #DC2626;
+  font-weight: 700;
+  margin: 0 3px;
 }
 
 .vi-hero {
-  padding: 40px 16px 44px;
+  padding: 24px 16px 20px;
   text-align: center;
   background: transparent;
   font-family: 'Inter', system-ui, sans-serif;
 }
 
 .vi-hero-inner {
-  max-width: 600px;
+  max-width: 520px;
   margin: 0 auto;
 }
 
@@ -373,14 +385,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 18px;
-  padding: 8px 18px;
+  margin-bottom: 14px;
+  padding: 6px 16px;
   border-radius: 999px;
   background: #EAF5FF;
   border: 1px solid rgba(11,127,232,.18);
   color: #0B7FE8;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 11.5px;
+  font-size: 10.5px;
   line-height: 1;
   font-weight: 900;
   letter-spacing: .06em;
@@ -388,8 +400,8 @@
 }
 
 .vi-title {
-  margin: 0 auto 28px;
-  max-width: 500px;
+  margin: 0 auto 18px;
+  max-width: 440px;
 }
 
 .vi-title span {
@@ -398,7 +410,7 @@
 
 .vi-title-line1 {
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(30px, 7.5vw, 42px);
+  font-size: clamp(26px, 6.5vw, 36px);
   line-height: 1.06;
   font-weight: 900;
   letter-spacing: -.05em;
@@ -407,7 +419,7 @@
 
 .vi-title-line2 {
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(26px, 6.5vw, 36px);
+  font-size: clamp(22px, 5.5vw, 30px);
   line-height: 1.1;
   font-weight: 900;
   letter-spacing: -.045em;
@@ -416,7 +428,7 @@
 
 .vi-title-line3 {
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(26px, 6.5vw, 36px);
+  font-size: clamp(22px, 5.5vw, 30px);
   line-height: 1.1;
   font-weight: 900;
   letter-spacing: -.045em;
@@ -424,23 +436,23 @@
 }
 
 .vi-image {
-  margin: 0 auto 24px;
+  margin: 0 auto 16px;
 }
 
 .vi-image img {
-  width: min(460px, 88vw);
+  width: min(300px, 72vw);
   height: auto;
   display: block;
-  border-radius: 24px;
+  border-radius: 18px;
   margin: 0 auto;
-  box-shadow: 0 20px 48px rgba(0,0,0,.08);
+  box-shadow: 0 14px 36px rgba(0,0,0,.08);
 }
 
 .vi-sub {
-  margin: 0 auto 24px;
-  max-width: 520px;
-  font-size: 16px;
-  line-height: 1.7;
+  margin: 0 auto 16px;
+  max-width: 440px;
+  font-size: 14.5px;
+  line-height: 1.6;
   font-weight: 500;
   color: #425466;
 }
@@ -448,14 +460,14 @@
 .vi-cta {
   display: block;
   width: 100%;
-  max-width: 480px;
-  margin: 0 auto 16px;
-  padding: 20px 24px;
+  max-width: 420px;
+  margin: 0 auto 14px;
+  padding: 18px 22px;
   border-radius: 999px;
   background: linear-gradient(180deg, #22C978 0%, #00A85A 100%);
   color: #FFFFFF;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.15;
   font-weight: 900;
   letter-spacing: -.02em;
@@ -471,62 +483,35 @@
   box-shadow: 0 18px 42px rgba(0,168,90,.34), inset 0 1px 0 rgba(255,255,255,.22);
 }
 
-.vi-price-preview {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
+.vi-progress-inline {
+  max-width: 420px;
+  margin: 0 auto;
 }
 
-.vi-price-old {
-  font-size: 15px;
-  color: #8A99A8;
-  text-decoration: line-through;
-  font-weight: 700;
-}
-
-.vi-price-new {
-  font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(36px, 9vw, 52px);
-  line-height: 1;
-  font-weight: 900;
-  color: #0B7FE8;
-  letter-spacing: -.05em;
-}
-
-.vi-price-note {
-  font-size: 14px;
-  color: #4A5A68;
-  font-weight: 600;
-}
-
-.vi-progress-track {
+.vi-progress-track-inline {
   width: 100%;
   height: 4px;
   background: #E5E7EB;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 99;
+  border-radius: 999px;
+  overflow: hidden;
 }
 
-.vi-progress-fill {
+.vi-progress-fill-inline {
   height: 100%;
   background: linear-gradient(90deg, #0B7FE8, #22C978);
-  transition: width .1s linear;
-  border-radius: 0 2px 2px 0;
+  border-radius: 999px;
+  transition: width .05s linear;
 }
 
 @media (max-width: 768px) {
-  .vi-hero { padding: 30px 14px 36px; }
-  .vi-sub { font-size: 15px; }
+  .vi-hero { padding: 20px 14px 18px; }
+  .vi-sub { font-size: 14px; }
 }
 
 @media (max-width: 420px) {
-  .vi-top-bar { padding: 8px 10px; }
-  .vi-top-bar-label { font-size: 9.5px; padding: 4px 10px; }
-  .vi-cta { font-size: 16.5px; padding: 18px 20px; }
+  .vi-top-bar { padding: 8px 18px; }
+  .vi-top-bar-label { font-size: 10px; }
+  .vi-cta { font-size: 15.5px; padding: 16px 18px; }
 }
 
 /* ===== COUNTER ===== */
@@ -619,65 +604,6 @@
   100% { left: 105%; }
 }
 
-.dc-dores-wrap {
-  max-width: 600px;
-  margin: 30px auto 0;
-}
-
-.dc-dores-intro {
-  margin: 0 0 16px;
-  font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(22px, 5vw, 28px);
-  line-height: 1.2;
-  font-weight: 900;
-  letter-spacing: -.03em;
-  color: #082F63;
-}
-
-.dc-dores-lista {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.dc-dor-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 18px 18px;
-  border-radius: 24px;
-  background: #FFFFFF;
-  border: 1px solid rgba(11,127,232,.12);
-  box-shadow: 0 14px 34px rgba(11,127,232,.07);
-  text-align: left;
-}
-
-.dc-dor-icon {
-  width: 28px;
-  height: 28px;
-  min-width: 28px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 1px;
-  background: #FFE5E5;
-  color: #DC2626;
-  font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 14px;
-  line-height: 1;
-  font-weight: 900;
-}
-
-.dc-dor-item p {
-  margin: 0;
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 15.5px;
-  line-height: 1.55;
-  font-weight: 500;
-  color: #425466;
-}
-
 @media (max-width: 480px) {
   .dc-wrap { padding: 34px 12px 40px; }
   .dc-numberline { column-gap: .30em; row-gap: .08em; margin-bottom: 13px; }
@@ -685,12 +611,6 @@
   .dc-count { font-size: clamp(50px, 13vw, 68px); }
   .dc-label { margin-top: 3px; font-size: clamp(18px, 5vw, 24px); }
   .dc-bar { width: min(390px, 94%); height: 13px; }
-  .dc-dores-wrap { max-width: 345px; margin-top: 24px; }
-  .dc-dores-intro { font-size: 22px; margin-bottom: 14px; }
-  .dc-dores-lista { gap: 11px; }
-  .dc-dor-item { padding: 16px 15px; border-radius: 22px; gap: 10px; }
-  .dc-dor-icon { width: 26px; height: 26px; min-width: 26px; font-size: 13px; }
-  .dc-dor-item p { font-size: 14.5px; line-height: 1.5; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -2026,7 +1946,7 @@
 
 /* ===== SOCIAL PROOF CAROUSEL ===== */
 .sp-section {
-  padding: 40px 0 20px;
+  padding: 36px 0 16px;
   overflow: hidden;
   background: transparent;
 }
@@ -2039,9 +1959,9 @@
 }
 
 .sp-title {
-  margin: 0 0 24px;
+  margin: 0 0 20px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(24px, 5.5vw, 34px);
+  font-size: clamp(22px, 5vw, 30px);
   line-height: 1.1;
   font-weight: 900;
   letter-spacing: -.04em;
@@ -2055,20 +1975,22 @@
 
 .sp-carousel-track {
   display: flex;
-  gap: 16px;
-  animation: scrollLeft 25s linear infinite;
+  gap: 14px;
+  animation: scrollLeft 30s linear infinite;
   width: max-content;
 }
 
 .sp-carousel-item {
   flex-shrink: 0;
-  width: 200px;
+  width: 160px;
 }
 
 .sp-carousel-item img {
   width: 100%;
   height: auto;
-  border-radius: 16px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  border-radius: 14px;
   display: block;
 }
 
@@ -2171,13 +2093,13 @@
 
 /* ===== URGÊNCIA ===== */
 .urg-section {
-  padding: 44px 16px 40px;
+  padding: 40px 16px 36px;
   background: transparent;
   font-family: 'Inter', system-ui, sans-serif;
 }
 
 .urg-inner {
-  max-width: 600px;
+  max-width: 540px;
   margin: 0 auto;
   text-align: center;
 }
@@ -2186,14 +2108,14 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 18px;
-  padding: 8px 18px;
+  margin-bottom: 16px;
+  padding: 7px 16px;
   border-radius: 999px;
   background: #FEF2F2;
-  border: 1px solid rgba(220,38,38,.18);
+  border: 1px solid rgba(220,38,38,.15);
   color: #DC2626;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 11.5px;
+  font-size: 10.5px;
   line-height: 1;
   font-weight: 900;
   letter-spacing: .06em;
@@ -2201,20 +2123,20 @@
 }
 
 .urg-title {
-  margin: 0 0 14px;
+  margin: 0 0 12px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(24px, 5.5vw, 34px);
-  line-height: 1.1;
+  font-size: clamp(22px, 5vw, 30px);
+  line-height: 1.15;
   font-weight: 900;
   letter-spacing: -.04em;
   color: #082F63;
 }
 
 .urg-text {
-  margin: 0 auto 24px;
-  max-width: 520px;
-  font-size: 16px;
-  line-height: 1.7;
+  margin: 0 auto 22px;
+  max-width: 460px;
+  font-size: 15px;
+  line-height: 1.65;
   font-weight: 500;
   color: #425466;
 }
@@ -2223,16 +2145,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  margin-bottom: 28px;
-  padding: 24px 20px;
-  border-radius: 20px;
+  gap: 3px;
+  margin-bottom: 24px;
+  padding: 20px 18px;
+  border-radius: 18px;
   background: #FEF9EC;
-  border: 1px solid rgba(234,179,8,.15);
+  border: 1px solid rgba(234,179,8,.12);
 }
 
 .urg-price-old {
-  font-size: 16px;
+  font-size: 15px;
   color: #8A99A8;
   text-decoration: line-through;
   font-weight: 700;
@@ -2240,7 +2162,7 @@
 
 .urg-price-new {
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(36px, 9vw, 52px);
+  font-size: clamp(32px, 8vw, 46px);
   line-height: 1;
   font-weight: 900;
   color: #DC2626;
@@ -2248,7 +2170,7 @@
 }
 
 .urg-price-note {
-  font-size: 14px;
+  font-size: 13px;
   color: #4A5A68;
   font-weight: 600;
 }
@@ -2256,27 +2178,26 @@
 .urg-cta {
   display: block;
   width: 100%;
-  max-width: 480px;
+  max-width: 420px;
   margin: 0 auto;
-  padding: 20px 24px;
+  padding: 18px 22px;
   border-radius: 999px;
   background: linear-gradient(180deg, #DC2626 0%, #B91C1C 100%);
   color: #FFFFFF;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.15;
   font-weight: 900;
   letter-spacing: -.02em;
   text-align: center;
   text-decoration: none;
-  box-shadow: 0 14px 34px rgba(220,38,38,.28), inset 0 1px 0 rgba(255,255,255,.18);
+  box-shadow: 0 14px 34px rgba(220,38,38,.25), inset 0 1px 0 rgba(255,255,255,.15);
   transition: .25s ease;
-  animation: ctaPulse 1.8s ease-in-out infinite;
 }
 
 .urg-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 42px rgba(220,38,38,.34);
+  box-shadow: 0 18px 42px rgba(220,38,38,.32);
 }
 
 /* ===== IDEAL PARA VOCÊ ===== */

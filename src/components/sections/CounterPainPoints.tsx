@@ -2,13 +2,6 @@
 
 import { useEffect, useRef, useState } from "react"
 
-const painPoints = [
-  "Falta de ideias para preparar um atendimento de última hora.",
-  "Criança desmotivada, dispersa ou sem interesse durante a sessão.",
-  "Repetição dos mesmos recursos semana após semana.",
-  "Pouco tempo para adaptar atividades, organizar registros e acompanhar a evolução da criança.",
-]
-
 export function CounterPainPoints() {
   const [count, setCount] = useState(0)
   const [barWidth, setBarWidth] = useState("0%")
@@ -70,18 +63,6 @@ export function CounterPainPoints() {
 
         <div className="dc-bar" role="progressbar" aria-valuenow={count} aria-valuemin={0} aria-valuemax={250}>
           <div className="dc-fill" style={{ width: barWidth }}></div>
-        </div>
-
-        <div className="dc-dores-wrap">
-          <div className="dc-dores-intro">Você reconhece alguma destas situações?</div>
-          <div className="dc-dores-lista">
-            {painPoints.map((point, i) => (
-              <div className="dc-dor-item" key={i}>
-                <div className="dc-dor-icon">✕</div>
-                <p>{point}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </div>

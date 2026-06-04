@@ -6,7 +6,7 @@ export function VendaImediata() {
   const [time, setTime] = useState("")
   const [scrollProgress, setScrollProgress] = useState(0)
   const [isFixed, setIsFixed] = useState(false)
-  const sectionRef = useRef<HTMLDivElement>(null)
+  const heroRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     function update() {
@@ -14,7 +14,7 @@ export function VendaImediata() {
       const fim = new Date()
       fim.setHours(23, 59, 59, 999)
       let diff = fim.getTime() - agora.getTime()
-      if (diff <= 0) { setTime("00h 00m 00s"); return }
+      if (diff <= 0) { setTime("00h 00min 00s"); return }
       const h = Math.floor(diff / 3600000)
       diff -= h * 3600000
       const m = Math.floor(diff / 60000)
@@ -29,14 +29,19 @@ export function VendaImediata() {
 
   useEffect(() => {
     function onScroll() {
+      const hero = heroRef.current
+      if (!hero) return
+      const rect = hero.getBoundingClientRect()
+      const heroBottom = hero.offsetTop + hero.offsetHeight
       const scrollY = window.scrollY
-      setIsFixed(scrollY > 100)
-      const docH = document.documentElement.scrollHeight - window.innerHeight
-      if (docH > 0) {
-        setScrollProgress(Math.min((scrollY / docH) * 100, 100))
-      }
+
+      setIsFixed(scrollY > 60)
+
+      const progress = Math.min(Math.max(scrollY / (heroBottom * 0.6), 0), 1)
+      setScrollProgress(progress * 100)
     }
     window.addEventListener("scroll", onScroll, { passive: true })
+    onScroll()
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
@@ -45,17 +50,21 @@ export function VendaImediata() {
       <div className={`vi-top-bar${isFixed ? " fixed" : ""}`}>
         <div className="vi-top-bar-inner">
           <div className="vi-top-bar-label">
-            <span className="vi-top-bar-icon">&#10024;</span>
-            Oferta por tempo limitado
+            <span className="vi-top-bar-icon">&#127873;</span>
+            BÔNUS ENCERRAM EM
           </div>
           <div className="vi-top-bar-timer">
-            <span>Termina em</span>
-            <strong>{time}</strong>
+            {time.split(" ").map((part, i) => (
+              <span key={i} className="vi-timer-segment">
+                {part}
+                {i < 2 && <span className="vi-timer-sep">:</span>}
+              </span>
+            ))}
           </div>
         </div>
       </div>
 
-      <section className="vi-hero" ref={sectionRef}>
+      <section className="vi-hero" ref={heroRef}>
         <div className="vi-hero-inner">
           <div className="vi-pill">NEUROATIVIDADES KIDS</div>
 
@@ -69,8 +78,8 @@ export function VendaImediata() {
             <img
               src="/images/a4996fc9-5b06-464a-86b1-817af5b4f1ae.webp"
               alt="NeuroAtividades Kids"
-              width={500}
-              height={625}
+              width={340}
+              height={425}
             />
           </div>
 
@@ -84,17 +93,13 @@ export function VendaImediata() {
             QUERO ACESSAR O KIT AGORA
           </a>
 
-          <div className="vi-price-preview">
-            <span className="vi-price-old">de R$ 47,00</span>
-            <span className="vi-price-new">R$ 14,90</span>
-            <span className="vi-price-note">pagamento único &bull; acesso imediato</span>
+          <div className="vi-progress-inline">
+            <div className="vi-progress-track-inline">
+              <div className="vi-progress-fill-inline" style={{ width: `${scrollProgress}%` }} />
+            </div>
           </div>
         </div>
       </section>
-
-      <div className="vi-progress-track">
-        <div className="vi-progress-fill" style={{ width: `${scrollProgress}%` }} />
-      </div>
     </>
   )
 }
