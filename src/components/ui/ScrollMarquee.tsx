@@ -1,155 +1,71 @@
 "use client"
 
-import { useEffect, useRef, useState, useCallback } from "react"
+import { useEffect, useRef } from "react"
 
 interface ScrollMarqueeProps {
   text?: string
   gradient?: string
-  fadeLeft?: string
-  fadeRight?: string
   height?: number
   className?: string
   reverse?: boolean
 }
 
-const SEPARATOR_RE = /•/g
-
-function renderText(text: string) {
-  const parts = text.split(SEPARATOR_RE)
-  const result: React.ReactNode[] = []
-  parts.forEach((part, i) => {
-    result.push(<span key={`t${i}`}>{part}</span>)
-    if (i < parts.length - 1) {
-      result.push(
-        <span key={`s${i}`} style={{ opacity: 0.6, margin: "0 8px" }}>•</span>
-      )
-    }
-  })
-  return result
-}
-
 export function ScrollMarquee({
-  text = "+250 Atividades Psicopedagógicas  •  Acesso Imediato  •  Material em Alta Qualidade  •  ",
-  gradient = "linear-gradient(135deg, #0B7FE8 0%, #1D4ED8 35%, #082F63 65%, #0B7FE8 100%)",
-  fadeLeft,
-  fadeRight,
+  text = "MATERIAL EM ALTA QUALIDADE • ACESSO IMEDIATO • BÔNUS INCLUÍDOS • ",
+  gradient = "linear-gradient(135deg, #fd5b00 0%, #ff8c1a 35%, #ffc107 65%, #ffd41e 100%)",
   height = 48,
   className = "",
   reverse = false,
 }: ScrollMarqueeProps) {
-  const barRef = useRef<HTMLDivElement>(null)
-  const blockRef = useRef<HTMLDivElement>(null)
-  const rafRef = useRef(0)
-  const pos = useRef(0)
-  const blockW = useRef(0)
-  const lastScrollY = useRef(0)
-  const scrollVel = useRef(0)
-  const displayVel = useRef(0)
-  const hovered = useRef(false)
-  const [ready, setReady] = useState(false)
-
-  const reducedMotion =
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
-
-  const fadeL = fadeLeft || gradient.replace(/135deg/, "to right")
-  const fadeR = fadeRight || gradient.replace(/135deg/, "to left")
-
-  const measure = useCallback(() => {
-    if (blockRef.current) blockW.current = blockRef.current.offsetWidth
-  }, [])
+  const containerRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    measure()
-    setReady(true)
-    const ro = new ResizeObserver(measure)
-    if (blockRef.current) ro.observe(blockRef.current)
-    return () => ro.disconnect()
-  }, [measure])
+    const container = containerRef.current
+    const content = contentRef.current
+    if (!container || !content) return
 
-  useEffect(() => {
-    if (reducedMotion || !ready) return
-    lastScrollY.current = window.scrollY
-    const BASE = 0.5
+    let pos = 0
+    let raf: number
+    let lastTime = 0
 
-    const onScroll = () => {
-      const y = window.scrollY
-      const delta = y - lastScrollY.current
-      lastScrollY.current = y
-      scrollVel.current = Math.max(-4, Math.min(4, delta * 0.08))
-    }
-    window.addEventListener("scroll", onScroll, { passive: true })
+    const speed = 80
 
-    const lerp = (a: number, b: number, t: number) => a + (b - a) * t
+    const animate = (time: number) => {
+      if (!lastTime) lastTime = time
+      const dt = (time - lastTime) / 1000
+      lastTime = time
 
-    const loop = () => {
-      const effectiveBase = hovered.current ? 0 : BASE
-      const target = effectiveBase + scrollVel.current
-      displayVel.current = lerp(displayVel.current, target, 0.08)
-      scrollVel.current *= 0.95
+      const dir = reverse ? 1 : -1
+      pos += speed * dt * dir
 
-      pos.current -= displayVel.current * (reverse ? -1 : 1)
-      if (blockW.current > 0) {
-        if (pos.current <= -blockW.current) pos.current += blockW.current
-        if (pos.current > 0) pos.current -= blockW.current
-      }
+      const contentWidth = content.scrollWidth / 2
+      if (!reverse && pos <= -contentWidth) pos += contentWidth
+      if (reverse && pos >= 0) pos -= contentWidth
 
-      if (barRef.current) barRef.current.style.transform = `translateX(${pos.current}px)`
-      rafRef.current = requestAnimationFrame(loop)
+      content.style.transform = `translateX(${pos}px)`
+      raf = requestAnimationFrame(animate)
     }
 
-    rafRef.current = requestAnimationFrame(loop)
-    return () => {
-      cancelAnimationFrame(rafRef.current)
-      window.removeEventListener("scroll", onScroll)
-    }
-  }, [ready, reducedMotion])
+    raf = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(raf)
+  }, [reverse])
 
-  const textStyle: React.CSSProperties = {
-    fontFamily: "'Inter', sans-serif",
-    fontWeight: 700,
-    fontSize: 14,
-    color: "#fff",
-    letterSpacing: "0.8px",
-    textTransform: "uppercase",
-    textShadow: "0 1px 3px rgba(0,0,0,0.2)",
-    whiteSpace: "nowrap",
-    display: "inline-block",
-  }
-
-  const rendered = renderText(text)
-
-  if (reducedMotion) {
-    return (
-      <div style={{ width: "100vw", marginLeft: "calc(-50vw + 50%)", marginTop: 24 }} className={className}>
-        <div style={{ height, display: "flex", alignItems: "center", justifyContent: "center", background: gradient }}>
-          <span style={textStyle}>{rendered}</span>
-        </div>
-      </div>
-    )
-  }
+  const content = (
+    <span className="scroll-marquee-text">{text}</span>
+  )
 
   return (
     <div
-      style={{ width: "100vw", marginLeft: "calc(-50vw + 50%)", marginTop: 24 }}
-      className={className}
-      onMouseEnter={() => { hovered.current = true }}
-      onMouseLeave={() => { hovered.current = false }}
+      ref={containerRef}
+      className={`scroll-marquee ${className}`}
+      style={{ height, background: gradient }}
     >
-      <div style={{
-        height,
-        display: "flex",
-        alignItems: "center",
-        overflow: "hidden",
-        position: "relative",
-        background: gradient,
-      }}>
-        <div style={{ position: "absolute", left: 0, top: 0, width: 80, height: "100%", background: fadeL, zIndex: 2, pointerEvents: "none" }} />
-        <div style={{ position: "absolute", right: 0, top: 0, width: 80, height: "100%", background: fadeR, zIndex: 2, pointerEvents: "none" }} />
-        <div ref={barRef} style={{ display: "flex", willChange: "transform" }}>
-          <div ref={blockRef} style={textStyle}>{rendered}{rendered}</div>
-          <div style={textStyle}>{rendered}{rendered}</div>
-        </div>
+      <div ref={contentRef} className="scroll-marquee-content">
+        {content}
+        {content}
+        {content}
+        {content}
       </div>
     </div>
   )
