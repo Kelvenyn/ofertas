@@ -1,27 +1,34 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useCallback } from "react"
 
 export function Guarantee() {
-  const [scale, setScale] = useState(0.6)
+  const [scale, setScale] = useState(0.5)
   const iconRef = useRef<HTMLDivElement>(null)
+  const rafRef = useRef<number | null>(null)
+
+  const handleScroll = useCallback(() => {
+    if (rafRef.current !== null) return
+    rafRef.current = requestAnimationFrame(() => {
+      const el = iconRef.current
+      if (el) {
+        const rect = el.getBoundingClientRect()
+        const vh = window.innerHeight
+        const progress = Math.max(0, Math.min(1, (vh - rect.top) / (vh * 0.7)))
+        setScale(0.5 + progress * 0.5)
+      }
+      rafRef.current = null
+    })
+  }, [])
 
   useEffect(() => {
-    const el = iconRef.current
-    if (!el) return
-
-    function onScroll() {
-      const rect = el!.getBoundingClientRect()
-      const viewH = window.innerHeight
-      const progress = 1 - (rect.top / viewH)
-      const clamped = Math.min(Math.max(progress, 0), 1)
-      setScale(0.6 + clamped * 0.4)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll()
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
     }
-
-    window.addEventListener("scroll", onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+  }, [handleScroll])
 
   return (
     <section className="gar-section">

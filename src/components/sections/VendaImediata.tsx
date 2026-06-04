@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState, useRef } from "react"
+import { ShinyButton } from "@/components/ui/ShinyButton"
 
 export function VendaImediata() {
   const [time, setTime] = useState("")
@@ -90,9 +91,9 @@ export function VendaImediata() {
             atendimentos infantis.
           </p>
 
-          <a href="#oferta" className="vi-cta">
+          <ShinyButton href="#oferta" className="vi-cta-btn">
             QUERO ACESSAR O KIT AGORA
-          </a>
+          </ShinyButton>
 
           <div className="vi-marquee">
             <div className="vi-marquee-track">

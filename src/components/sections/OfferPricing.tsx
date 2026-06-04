@@ -1,3 +1,5 @@
+import { ShinyButton } from "@/components/ui/ShinyButton"
+
 export function OfferPricing() {
   return (
     <section className="offer-pei-section" id="oferta">
@@ -56,7 +58,9 @@ export function OfferPricing() {
               <li className="muted">Não inclui registro de evolução psicopedagógica</li>
             </ul>
 
-            <a href="https://pay.hotmart.com/I105936984X?off=u2fg19a2&checkoutMode=10" className="offer-btn basic-btn" target="_blank" rel="noopener noreferrer">QUERO O PLANO BÁSICO</a>
+            <ShinyButton href="https://pay.hotmart.com/I105936984X?off=u2fg19a2&checkoutMode=10" className="offer-btn basic-btn" showArrow={false}>
+              QUERO O PLANO BÁSICO
+            </ShinyButton>
           </div>
 
           <div className="offer-card premium-plan">
@@ -94,7 +98,9 @@ export function OfferPricing() {
               <li>Acesso imediato após a compra</li>
             </ul>
 
-            <a href="https://pay.hotmart.com/I105936984X?off=fvch2t63&checkoutMode=10" className="offer-btn premium-btn" target="_blank" rel="noopener noreferrer">QUERO O PLANO COMPLETO</a>
+            <ShinyButton href="https://pay.hotmart.com/I105936984X?off=fvch2t63&checkoutMode=10" className="offer-btn premium-btn" showArrow={false}>
+              QUERO O PLANO COMPLETO
+            </ShinyButton>
           </div>
 
         </div>

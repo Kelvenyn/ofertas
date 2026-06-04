@@ -64,7 +64,9 @@ export function FAQ() {
                   aria-labelledby={btnId}
                   className="faq-acc-panel"
                 >
-                  <p>{item.a}</p>
+                  <div>
+                    <p>{item.a}</p>
+                  </div>
                 </div>
               </div>
             )

@@ -1,3 +1,5 @@
+import { ShinyButton } from "@/components/ui/ShinyButton"
+
 export function Urgencia() {
   return (
     <section className="urg-section">
@@ -29,9 +31,11 @@ export function Urgencia() {
             aplicar com seus pacientes.
           </p>
 
-          <a href="#oferta" className="urg-cta">
-            Comece agora &#8594;
-          </a>
+          <div className="urg-cta-wrap">
+            <ShinyButton href="#oferta" className="urg-cta-btn">
+              Comece agora
+            </ShinyButton>
+          </div>
 
           <div className="urg-trust">
             <span>ACESSO IMEDIATO</span>
