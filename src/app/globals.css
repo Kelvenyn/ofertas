@@ -418,12 +418,10 @@
   padding: 11px 20px;
   z-index: 100;
   position: relative;
-  transition: padding .6s cubic-bezier(.25,.1,.25,1),
-              background .6s cubic-bezier(.25,.1,.25,1),
+  transition: background .6s cubic-bezier(.25,.1,.25,1),
               border-radius .6s cubic-bezier(.25,.1,.25,1),
               box-shadow .6s cubic-bezier(.25,.1,.25,1),
-              width .6s cubic-bezier(.25,.1,.25,1),
-              margin .6s cubic-bezier(.25,.1,.25,1);
+              transform .6s cubic-bezier(.25,.1,.25,1);
 }
 
 .vi-top-bar.fixed {
@@ -432,7 +430,7 @@
   left: 50%;
   right: auto;
   width: fit-content;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scale(.92);
   margin: 0;
   padding: 7px 18px;
   background: rgba(11,127,232,.82);
@@ -686,7 +684,8 @@
   height: 100%;
   background: linear-gradient(90deg, #0B7FE8, #22C978);
   border-radius: 999px;
-  transition: width .05s linear;
+  transform-origin: left;
+  transition: transform .05s linear;
 }
 
 .vi-marquee {
@@ -2260,12 +2259,12 @@
   border: none;
   background: rgba(11,127,232,.25);
   cursor: pointer;
-  transition: width .3s ease, background .3s ease;
+  transition: transform .3s ease, background .3s ease;
   padding: 0;
 }
 
 .sp-stories-dot.active {
-  width: 24px;
+  transform: scaleX(3);
   background: linear-gradient(90deg, #0B7FE8, #49A6FF);
 }
 
