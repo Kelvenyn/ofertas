@@ -27,8 +27,8 @@ export function Guarantee() {
     <section className="gar-section">
       <div className="gar-marquee">
         <div className="gar-marquee-track">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <span key={i}>30 DIAS DE GARANTIA ✦ </span>
+          {Array.from({ length: 14 }).map((_, i) => (
+            <span key={i}>GARANTIA 30 DIAS &bull; </span>
           ))}
         </div>
       </div>
@@ -54,8 +54,8 @@ export function Guarantee() {
 
       <div className="gar-marquee">
         <div className="gar-marquee-track reverse">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <span key={i}>30 DIAS DE GARANTIA ✦ </span>
+          {Array.from({ length: 14 }).map((_, i) => (
+            <span key={i}>GARANTIA 30 DIAS &bull; </span>
           ))}
         </div>
       </div>

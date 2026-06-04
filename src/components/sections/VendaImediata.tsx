@@ -96,8 +96,8 @@ export function VendaImediata() {
 
           <div className="vi-marquee">
             <div className="vi-marquee-track">
-              {Array.from({ length: 10 }).map((_, i) => (
-                <span key={i}>ACESSO IMEDIATO &bull; MATERIAL EM ALTA QUALIDADE &bull; ATIVIDADES PSICOPEDAGÓGICAS &bull; </span>
+              {Array.from({ length: 12 }).map((_, i) => (
+                <span key={i}>MATERIAL EM ALTA QUALIDADE &bull; ACESSO IMEDIATO &bull; </span>
               ))}
             </div>
           </div>

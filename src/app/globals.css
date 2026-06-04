@@ -599,14 +599,14 @@
   margin-top: 20px;
   overflow: hidden;
   width: 100%;
-  background: linear-gradient(90deg, #FF8A5B 0%, #F6A623 40%, #FFD166 70%, #F6A623 100%);
+  background: linear-gradient(90deg, #0B7FE8 0%, #1D4ED8 50%, #082F63 100%);
   padding: 10px 0;
 }
 
 .vi-marquee-track {
   display: flex;
   width: max-content;
-  animation: viMarqueeScroll 20s linear infinite;
+  animation: viMarqueeScroll 30s linear infinite;
 }
 
 .vi-marquee-track span {
@@ -619,7 +619,7 @@
   text-transform: uppercase;
   color: #FFFFFF;
   padding-right: 0;
-  text-shadow: 0 1px 2px rgba(0,0,0,.1);
+  text-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 
 @keyframes viMarqueeScroll {
@@ -2154,7 +2154,7 @@
 
 .urg-card {
   position: relative;
-  background: linear-gradient(160deg, #0D1B2A 0%, #1B2838 40%, #0F1923 100%);
+  background: linear-gradient(160deg, #082F63 0%, #0B3D6D 40%, #0D2B55 100%);
   border-radius: 24px;
   padding: 36px 24px 28px;
   text-align: center;
@@ -2168,7 +2168,7 @@
   transform: translateX(-50%);
   width: 200px;
   height: 120px;
-  background: radial-gradient(ellipse, rgba(255,138,91,.25) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(11,127,232,.2) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -2181,9 +2181,9 @@
   margin-bottom: 24px;
   padding: 7px 16px;
   border-radius: 999px;
-  background: rgba(255,138,91,.15);
-  border: 1px solid rgba(255,138,91,.3);
-  color: #FF8A5B;
+  background: rgba(11,127,232,.18);
+  border: 1px solid rgba(11,127,232,.3);
+  color: #49A6FF;
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 11px;
   line-height: 1;
@@ -2208,7 +2208,7 @@
 }
 
 .urg-highlight {
-  color: #FF8A5B;
+  color: #49A6FF;
 }
 
 .urg-dots {
@@ -2227,7 +2227,7 @@
 }
 
 .urg-dot-active {
-  background: #FF8A5B;
+  background: #0B7FE8;
 }
 
 .urg-text {
@@ -2624,12 +2624,13 @@
   overflow: hidden;
   white-space: nowrap;
   padding: 12px 0;
-  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 58%, #1749B3 100%);
+  background: linear-gradient(90deg, #0B7FE8 0%, #1D4ED8 50%, #082F63 100%);
 }
 
 .gar-marquee-track {
-  display: inline-flex;
-  animation: marqueeScroll 20s linear infinite;
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 30s linear infinite;
 }
 
 .gar-marquee-track.reverse {
@@ -2637,14 +2638,15 @@
 }
 
 .gar-marquee-track span {
-  display: inline-block;
-  padding: 0 24px;
-  font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 14px;
-  font-weight: 900;
-  letter-spacing: .05em;
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .06em;
   text-transform: uppercase;
   color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(0,0,0,.15);
 }
 
 @keyframes marqueeScroll {
