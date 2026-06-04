@@ -295,78 +295,140 @@
 
 /* ===== VENDA IMEDIATA ===== */
 .vi-top-bar {
-  width: fit-content;
-  margin: 0 auto;
-  background: rgba(255,255,255,.72);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,.6);
+  width: 100%;
+  margin: 0 auto 12px;
+  background: linear-gradient(135deg, #0B7FE8 0%, #1D4ED8 50%, #0B7FE8 100%);
   font-family: 'Inter', system-ui, sans-serif;
   text-align: center;
-  padding: 10px 24px;
-  border-radius: 999px;
+  padding: 12px 20px;
   z-index: 100;
   position: relative;
-  transition: all .4s cubic-bezier(.4,0,.2,1);
-  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+  transition: all .5s cubic-bezier(.4,0,.2,1);
 }
 
 .vi-top-bar.fixed {
   position: fixed;
   top: 12px;
   left: 50%;
+  right: auto;
+  width: fit-content;
   transform: translateX(-50%);
-  box-shadow: 0 8px 32px rgba(0,0,0,.12);
-  animation: barAppear .4s cubic-bezier(.4,0,.2,1);
+  margin: 0;
+  padding: 8px 20px;
+  background: rgba(11,127,232,.78);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 999px;
+  box-shadow: 0 8px 32px rgba(11,127,232,.25), inset 0 1px 0 rgba(255,255,255,.15);
+  animation: barSlideIn .5s cubic-bezier(.4,0,.2,1);
 }
 
-@keyframes barAppear {
-  0% { opacity: 0; transform: translateX(-50%) translateY(-20px) scale(.95); }
-  100% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+@keyframes barSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-16px) scale(.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
 }
 
 .vi-top-bar-inner {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 14px;
+  transition: gap .5s cubic-bezier(.4,0,.2,1);
+}
+
+.vi-top-bar.fixed .vi-top-bar-inner {
+  gap: 10px;
 }
 
 .vi-top-bar-label {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  color: #082F63;
+  gap: 7px;
+  color: #FFFFFF;
   font-size: 12px;
   font-weight: 800;
   letter-spacing: .04em;
   text-transform: uppercase;
   white-space: nowrap;
+  transition: all .5s cubic-bezier(.4,0,.2,1);
+}
+
+.vi-top-bar.fixed .vi-top-bar-label {
+  font-size: 10.5px;
+  gap: 5px;
 }
 
 .vi-top-bar-icon {
-  font-size: 14px;
+  font-size: 16px;
+  display: inline-block;
+  animation: giftPulse 2s ease-in-out infinite;
+  transition: font-size .5s cubic-bezier(.4,0,.2,1);
+}
+
+.vi-top-bar.fixed .vi-top-bar-icon {
+  font-size: 13px;
+}
+
+@keyframes giftPulse {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.15) rotate(-5deg); }
+  50% { transform: scale(1) rotate(0deg); }
+  75% { transform: scale(1.1) rotate(5deg); }
+}
+
+.vi-top-bar-text {
+  transition: opacity .3s ease;
 }
 
 .vi-top-bar-timer {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 3px;
+  transition: gap .5s cubic-bezier(.4,0,.2,1);
+}
+
+.vi-top-bar.fixed .vi-top-bar-timer {
+  gap: 1px;
 }
 
 .vi-timer-segment {
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 16px;
   font-weight: 900;
-  color: #DC2626;
+  color: #FFFFFF;
   letter-spacing: -0.02em;
   display: inline-flex;
   align-items: center;
+  background: rgba(255,255,255,.18);
+  padding: 2px 6px;
+  border-radius: 6px;
+  transition: all .5s cubic-bezier(.4,0,.2,1);
+}
+
+.vi-top-bar.fixed .vi-timer-segment {
+  font-size: 13px;
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: rgba(255,255,255,.22);
 }
 
 .vi-timer-sep {
-  color: #DC2626;
+  color: rgba(255,255,255,.7);
   font-weight: 700;
-  margin: 0 3px;
+  margin: 0 2px;
+  font-size: 14px;
+  transition: font-size .5s cubic-bezier(.4,0,.2,1);
+}
+
+.vi-top-bar.fixed .vi-timer-sep {
+  font-size: 12px;
 }
 
 .vi-hero {
@@ -509,8 +571,11 @@
 }
 
 @media (max-width: 420px) {
-  .vi-top-bar { padding: 8px 18px; }
-  .vi-top-bar-label { font-size: 10px; }
+  .vi-top-bar { padding: 10px 16px; }
+  .vi-top-bar-label { font-size: 10.5px; }
+  .vi-top-bar-icon { font-size: 14px; }
+  .vi-timer-segment { font-size: 14px; padding: 2px 5px; }
+  .vi-top-bar.fixed .vi-timer-segment { font-size: 12px; padding: 1px 4px; }
   .vi-cta { font-size: 15.5px; padding: 16px 18px; }
 }
 

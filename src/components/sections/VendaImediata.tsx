@@ -31,7 +31,6 @@ export function VendaImediata() {
     function onScroll() {
       const hero = heroRef.current
       if (!hero) return
-      const rect = hero.getBoundingClientRect()
       const heroBottom = hero.offsetTop + hero.offsetHeight
       const scrollY = window.scrollY
 
@@ -45,16 +44,18 @@ export function VendaImediata() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
+  const timerParts = time.split(" ")
+
   return (
     <>
       <div className={`vi-top-bar${isFixed ? " fixed" : ""}`}>
         <div className="vi-top-bar-inner">
           <div className="vi-top-bar-label">
             <span className="vi-top-bar-icon">&#127873;</span>
-            BÔNUS ENCERRAM EM
+            <span className="vi-top-bar-text">BÔNUS ENCERRAM EM</span>
           </div>
           <div className="vi-top-bar-timer">
-            {time.split(" ").map((part, i) => (
+            {timerParts.map((part, i) => (
               <span key={i} className="vi-timer-segment">
                 {part}
                 {i < 2 && <span className="vi-timer-sep">:</span>}
@@ -93,9 +94,11 @@ export function VendaImediata() {
             QUERO ACESSAR O KIT AGORA
           </a>
 
-          <div className="vi-progress-inline">
-            <div className="vi-progress-track-inline">
-              <div className="vi-progress-fill-inline" style={{ width: `${scrollProgress}%` }} />
+          <div className="vi-marquee">
+            <div className="vi-marquee-track">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <span key={i}>ACESSO IMEDIATO &bull; MATERIAL EM ALTA QUALIDADE &bull; ATIVIDADES PSICOPEDAGÓGICAS &bull; </span>
+              ))}
             </div>
           </div>
         </div>
