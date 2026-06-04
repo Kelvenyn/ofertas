@@ -3,6 +3,7 @@ import { PainPoints } from "@/components/sections/PainPoints";
 import { KitContents } from "@/components/sections/KitContents";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Bonuses } from "@/components/sections/Bonuses";
+import { SocialProof } from "@/components/sections/SocialProof";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <KitContents />
       <HowItWorks />
       <Bonuses />
+      <SocialProof />
     </main>
   );
 }
