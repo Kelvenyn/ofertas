@@ -2,27 +2,43 @@ export function Urgencia() {
   return (
     <section className="urg-section">
       <div className="urg-inner">
-        <div className="urg-pill">OFERTA POR TEMPO LIMITADO</div>
+        <div className="urg-card">
+          <div className="urg-glow" />
 
-        <h2 className="urg-title">
-          Garanta seu acesso<br />antes que o preço suba
-        </h2>
+          <div className="urg-pill">
+            <span className="urg-pill-icon">&#9889;</span>
+            OPORTUNIDADE ÚNICA
+          </div>
 
-        <p className="urg-text">
-          Esta é a sua chance de levar um material completo com mais de 250 atividades
-          psicopedagógicas por um preço que faz sentido. Não espere — o valor
-          promocional pode sair do ar a qualquer momento.
-        </p>
+          <h2 className="urg-title">
+            O que você está<br />
+            esperando para<br />
+            ter <span className="urg-highlight">atendimentos profissionais</span><br />
+            de verdade?
+          </h2>
 
-        <div className="urg-price-block">
-          <span className="urg-price-old">Antes: R$ 47,90</span>
-          <span className="urg-price-new">Por apenas: R$ 17,90</span>
-          <span className="urg-price-note">pagamento único &bull; acesso imediato</span>
+          <div className="urg-dots">
+            <span className="urg-dot" />
+            <span className="urg-dot urg-dot-active" />
+            <span className="urg-dot" />
+          </div>
+
+          <p className="urg-text">
+            Em poucos minutos você já consegue<br />
+            abrir o material e começar a<br />
+            aplicar com seus pacientes.
+          </p>
+
+          <a href="#oferta" className="urg-cta">
+            Comece agora &#8594;
+          </a>
+
+          <div className="urg-trust">
+            <span>ACESSO IMEDIATO</span>
+            <span className="urg-trust-sep">&bull;</span>
+            <span>ACESSO VITALÍCIO</span>
+          </div>
         </div>
-
-        <a href="#oferta" className="urg-cta">
-          QUERO GARANTIR MEU ACESSO
-        </a>
       </div>
     </section>
   )

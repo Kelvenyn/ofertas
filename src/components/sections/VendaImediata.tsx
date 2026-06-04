@@ -70,7 +70,7 @@ export function VendaImediata() {
           <div className="vi-pill">NEUROATIVIDADES KIDS</div>
 
           <h1 className="vi-title">
-            <span className="vi-title-line1">+250 atividades prontas</span>
+            <span className="vi-title-line1">+250 Atividades Prontas</span>
             <span className="vi-title-line2">para atendimentos</span>
             <span className="vi-title-line3">Psicopedagógicos infantis</span>
           </h1>
