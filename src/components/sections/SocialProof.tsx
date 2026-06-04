@@ -20,7 +20,7 @@ export function SocialProof() {
         <div className="sp-carousel-track">
           {[...testimonials, ...testimonials].map((t, i) => (
             <div className="sp-carousel-item" key={i}>
-              <img src={t.src} alt={t.alt} width={200} height={280} />
+              <img src={t.src} alt={t.alt} width={200} height={267} />
             </div>
           ))}
         </div>
