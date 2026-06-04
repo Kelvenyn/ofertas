@@ -10,10 +10,10 @@ export function Footer() {
           </p>
         </div>
       </div>
-      <div className="edu-toast-wrap">
+      <footer className="edu-toast-wrap" role="contentinfo">
         2025 © Todos os direitos reservados. Este material é protegido pela Lei nº 9.610/98,
         sendo proibida a reprodução total ou parcial sem autorização.
-      </div>
+      </footer>
     </>
   )
 }

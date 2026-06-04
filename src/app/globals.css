@@ -4,6 +4,39 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus,
+.sr-only.focus\:not-sr-only:focus {
+  position: fixed;
+  width: auto;
+  height: auto;
+  padding: 12px 24px;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  z-index: 9999;
+  top: 8px;
+  left: 8px;
+  background: #FFFFFF;
+  color: #0B7FE8;
+  font-weight: 700;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.18);
+  text-decoration: none;
+}
+
 @theme inline {
   --font-sans: "Inter", "Inter Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-nunito: "Nunito", "Nunito Fallback", ui-sans-serif, system-ui, sans-serif;
@@ -398,7 +431,7 @@
   letter-spacing: -0.02em;
   display: inline-flex;
   align-items: center;
-  background: rgba(255,255,255,.18);
+  background: rgba(0,0,0,.2);
   padding: 2px 6px;
   border-radius: 6px;
   transition: font-size .6s cubic-bezier(.25,.1,.25,1),
@@ -411,7 +444,7 @@
   font-size: 12px;
   padding: 1px 5px;
   border-radius: 5px;
-  background: rgba(255,255,255,.22);
+  background: rgba(0,0,0,.25);
 }
 
 .vi-timer-sep {
@@ -635,7 +668,7 @@
   font-weight: 900;
   font-size: clamp(32px, 8.4vw, 58px);
   line-height: 1;
-  color: #FF8A5B;
+  color: #D46A3C;
   letter-spacing: -.055em;
   transform: translateY(-1px);
 }
@@ -1825,12 +1858,12 @@
 }
 
 .offer-list li.muted {
-  color: #9AA6B2;
+  color: #5A6B7C;
 }
 
 .offer-list li.muted::before {
   content: "\2014";
-  color: #CBD5E1;
+  color: #94A3B8;
 }
 
 .offer-btn {
@@ -2169,7 +2202,7 @@
 
 .urg-price-old {
   font-size: 15px;
-  color: #8A99A8;
+  color: #5A6B7C;
   text-decoration: line-through;
   font-weight: 700;
 }
@@ -2530,7 +2563,7 @@
 .bon-card-price {
   font-size: 14px;
   font-weight: 700;
-  color: #8A99A8;
+  color: #5A6B7C;
   text-decoration: line-through;
 }
 

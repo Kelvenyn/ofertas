@@ -3,7 +3,6 @@ import { SocialProof } from "@/components/sections/SocialProof"
 import { CounterPainPoints } from "@/components/sections/CounterPainPoints"
 import { KitCards } from "@/components/sections/KitCards"
 import { Benefits } from "@/components/sections/Benefits"
-import { CTAButton } from "@/components/sections/CTAButton"
 import { Urgencia } from "@/components/sections/Urgencia"
 import { IdealParaVoce } from "@/components/sections/IdealParaVoce"
 import { TudoQueVoceRecebe } from "@/components/sections/TudoQueVoceRecebe"
@@ -16,46 +15,52 @@ import { Footer } from "@/components/sections/Footer"
 
 export default function Home() {
   return (
-    <main>
-      {/* 1. Venda Imediata */}
-      <VendaImediata />
+    <>
+      <a href="#oferta" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:text-[#0B7FE8] focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold focus:shadow-lg">
+        Pular para a oferta
+      </a>
 
-      {/* 2. Prova Social */}
-      <SocialProof />
+      <header>
+        <VendaImediata />
+      </header>
 
-      {/* 3. Demonstrativo */}
-      <CounterPainPoints />
-      <KitCards />
+      <main id="conteudo">
+        {/* 2. Prova Social */}
+        <SocialProof />
 
-      {/* 4. Benefícios */}
-      <Benefits />
+        {/* 3. Demonstrativo */}
+        <CounterPainPoints />
+        <KitCards />
 
-      {/* 5. Urgência */}
-      <Urgencia />
+        {/* 4. Benefícios */}
+        <Benefits />
 
-      {/* 6. Ideal para você que deseja */}
-      <IdealParaVoce />
+        {/* 5. Urgência */}
+        <Urgencia />
 
-      {/* 7. Tudo o que você vai receber */}
-      <TudoQueVoceRecebe />
+        {/* 6. Ideal para você que deseja */}
+        <IdealParaVoce />
 
-      {/* 8. Bônus */}
-      <Bonuses />
+        {/* 7. Tudo o que você vai receber */}
+        <TudoQueVoceRecebe />
 
-      {/* 9. Oferta */}
-      <OfferPricing />
+        {/* 8. Bônus */}
+        <Bonuses />
 
-      {/* 10. Garantia */}
-      <Guarantee />
+        {/* 9. Oferta */}
+        <OfferPricing />
 
-      {/* 11. Como é o Acesso */}
-      <ComoEAcesso />
+        {/* 10. Garantia */}
+        <Guarantee />
 
-      {/* 12. FAQ */}
-      <FAQ />
+        {/* 11. Como é o Acesso */}
+        <ComoEAcesso />
 
-      {/* 13. Rodapé */}
+        {/* 12. FAQ */}
+        <FAQ />
+      </main>
+
       <Footer />
-    </main>
+    </>
   )
 }
