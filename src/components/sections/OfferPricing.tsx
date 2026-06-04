@@ -35,9 +35,14 @@ export function OfferPricing() {
             <div className="offer-card-top">
               <div className="plan-label basic-label">PARA COMEÇAR HOJE</div>
               <h3>Plano Básico</h3>
-              <p>
-                Para quem quer acessar as atividades principais e começar a aplicar recursos psicopedagógicos com mais praticidade.
-              </p>
+              <div className="offer-plan-img">
+                <img
+                  src="/images/4943e9df-5a44-4443-b18d-b7084546bdad.webp"
+                  alt="Plano Básico"
+                  width={200}
+                  height={250}
+                />
+              </div>
             </div>
 
             <div className="offer-price-block">
@@ -69,9 +74,14 @@ export function OfferPricing() {
             <div className="offer-card-top">
               <div className="plan-label premium-label">TUDO DESBLOQUEADO</div>
               <h3>Plano Completo</h3>
-              <p>
-                Para quem quer o acesso mais completo, com atividades, fichas, bônus e recursos extras para conduzir atendimentos com mais organização.
-              </p>
+              <div className="offer-plan-img">
+                <img
+                  src="/images/a4996fc9-5b06-464a-86b1-817af5b4f1ae.webp"
+                  alt="Plano Completo"
+                  width={200}
+                  height={250}
+                />
+              </div>
             </div>
 
             <div className="offer-price-block">

@@ -58,6 +58,13 @@ export function SocialProof() {
   const lastTimeRef = useRef(0)
   const autoTimerRef = useRef<NodeJS.Timeout | null>(null)
 
+  // Drag state
+  const isDragging = useRef(false)
+  const dragStartX = useRef(0)
+  const dragStartPos = useRef(0)
+  const lastDragX = useRef(0)
+  const lastDragTime = useRef(0)
+
   const stiffness = 300
   const damping = 26
 
@@ -108,6 +115,57 @@ export function SocialProof() {
   const prev = () => goTo(activeSlide === 0 ? testimonials.length - 1 : activeSlide - 1)
   const next = () => goTo((activeSlide + 1) % testimonials.length)
 
+  // Drag handlers
+  const handleDragStart = (clientX: number) => {
+    isDragging.current = true
+    dragStartX.current = clientX
+    dragStartPos.current = posRef.current
+    lastDragX.current = clientX
+    lastDragTime.current = Date.now()
+    velocityRef.current = 0
+  }
+
+  const handleDragMove = (clientX: number) => {
+    if (!isDragging.current) return
+    const dx = clientX - dragStartX.current
+    const newPos = dragStartPos.current + dx / 200
+    posRef.current = newPos
+
+    const now = Date.now()
+    const timeDelta = now - lastDragTime.current
+    if (timeDelta > 0) {
+      velocityRef.current = (clientX - lastDragX.current) / timeDelta * 0.3
+    }
+    lastDragX.current = clientX
+    lastDragTime.current = now
+  }
+
+  const handleDragEnd = (clientX: number) => {
+    if (!isDragging.current) return
+    isDragging.current = false
+
+    const dx = clientX - dragStartX.current
+    const velocity = velocityRef.current
+
+    let newIndex = activeSlide
+    if (Math.abs(dx) > 60 || Math.abs(velocity) > 0.3) {
+      if (dx < 0 || velocity < -0.3) {
+        newIndex = Math.min(activeSlide + 1, testimonials.length - 1)
+      } else {
+        newIndex = Math.max(activeSlide - 1, 0)
+      }
+    }
+    goTo(newIndex)
+  }
+
+  const onMouseDown = (e: React.MouseEvent) => handleDragStart(e.clientX)
+  const onMouseMove = (e: React.MouseEvent) => handleDragMove(e.clientX)
+  const onMouseUp = (e: React.MouseEvent) => handleDragEnd(e.clientX)
+
+  const onTouchStart = (e: React.TouchEvent) => handleDragStart(e.touches[0].clientX)
+  const onTouchMove = (e: React.TouchEvent) => handleDragMove(e.touches[0].clientX)
+  const onTouchEnd = (e: React.TouchEvent) => handleDragEnd(e.changedTouches[0].clientX)
+
   return (
     <section className="sp-section">
       <div className="sp-inner">
@@ -119,6 +177,13 @@ export function SocialProof() {
           ref={trackRef}
           className="sp-stories-track"
           style={{ perspective: "1100px" } as React.CSSProperties}
+          onMouseDown={onMouseDown}
+          onMouseMove={onMouseMove}
+          onMouseUp={onMouseUp}
+          onMouseLeave={() => isDragging.current && handleDragEnd(lastDragX.current)}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
           {testimonials.map((t, i) => {
             const offset = i - activeSlide
