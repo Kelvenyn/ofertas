@@ -47,7 +47,7 @@ export function Guarantee() {
     }
   }, [handleScroll])
 
-  const marqueeGradient = "linear-gradient(90deg, #22C978 0%, #00A85A 50%, #007D43 100%)"
+  const marqueeGradient = "linear-gradient(135deg, #93C5FD 0%, #0B7FE8 55%, #1D4ED8 100%)"
 
   return (
     <section className="gar-section" ref={sectionRef} aria-labelledby="guarantee-title">

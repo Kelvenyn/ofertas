@@ -32,7 +32,7 @@ export const OFFER: OfferConfig = {
     ctaText: "QUERO ACESSAR O KIT AGORA",
     timerLabel: "BÔNUS ENCERRAM EM",
     marqueeText: "Material em Alta Qualidade • Acesso Imediato • ",
-    marqueeGradient: "linear-gradient(135deg, #fd5b00 0%, #ff8c1a 35%, #ffc107 65%, #ffd41e 100%)",
+    marqueeGradient: "linear-gradient(135deg, #93C5FD 0%, #0B7FE8 55%, #1D4ED8 100%)",
   },
   socialProof: {
     testimonials: [
@@ -64,10 +64,10 @@ export const OFFER: OfferConfig = {
     ],
   },
   benefits: [
-    { icon: "brain", title: "Atenção e Concentração", desc: "Atividades lúdicas para estimular foco, controle inibitório e atenção sustentada." },
-    { icon: "search", title: "Memória e Raciocínio", desc: "Exercícios para desenvolver retenção, associação e pensamento lógico." },
-    { icon: "pencil", title: "Leitura e Escrita", desc: "Materiais para trabalhar consciência fonológica e alfabetização." },
-    { icon: "puzzle", title: "Organização e Praticidade", desc: "Fichas prontas para aplicar rapidamente sem precisar criar do zero." },
+    { icon: "🧠", title: "Atenção e Concentração", desc: "Atividades lúdicas para estimular foco, controle inibitório e atenção sustentada." },
+    { icon: "🔍", title: "Memória e Raciocínio", desc: "Exercícios para desenvolver retenção, associação e pensamento lógico." },
+    { icon: "✏️", title: "Leitura e Escrita", desc: "Materiais para trabalhar consciência fonológica e alfabetização." },
+    { icon: "🧩", title: "Organização e Praticidade", desc: "Fichas prontas para aplicar rapidamente sem precisar criar do zero." },
   ],
   urgency: {
     pill: "OPORTUNIDADE ÚNICA",
@@ -82,10 +82,10 @@ export const OFFER: OfferConfig = {
     title: "Ideal para você que…",
     subtitle: "Este material foi pensado para psicopedagogos, terapeutas e educadores que atuam com crianças e buscam mais organização e praticidade.",
     items: [
-      { icon: "target", title: "Atividades prontas", desc: "Sem precisar criar do zero para cada atendimento" },
-      { icon: "gamepad", title: "Sessões lúdicas", desc: "Recursos que prendem a atenção e motivam as crianças" },
-      { icon: "lightning", title: "Aplicação rápida", desc: "Materiais organizados por habilidade para usar no momento" },
-      { icon: "chart", title: "Acompanhamento", desc: "Fichas e registros para documentar a evolução" },
+      { icon: "🎯", title: "Atividades prontas", desc: "Sem precisar criar do zero para cada atendimento" },
+      { icon: "🎮", title: "Sessões lúdicas", desc: "Recursos que prendem a atenção e motivam as crianças" },
+      { icon: "⚡", title: "Aplicação rápida", desc: "Materiais organizados por habilidade para usar no momento" },
+      { icon: "📊", title: "Acompanhamento", desc: "Fichas e registros para documentar a evolução" },
     ],
   },
   deliverables: {
@@ -198,7 +198,7 @@ export const OFFER: OfferConfig = {
         ctaHref: "https://pay.hotmart.com/Y106153793C?checkoutMode=10",
       },
     ],
-    trustBadges: ["🔒 Compra segura", "⚡ Acesso imediato"],
+    trustBadges: ["🔒 Compra 100% segura", "⚡ Acesso imediato", "🔄 30 dias de garantia"],
   },
   guarantee: {
     marqueeText: "GARANTIA 30 DIAS",
@@ -219,16 +219,20 @@ export const OFFER: OfferConfig = {
   faq: {
     title: "Perguntas Frequentes",
     items: [
-      { q: "Como recebo o material após a compra?", a: "Após a confirmação do pagamento, você recebe o link de acesso no e-mail cadastrado e também no WhatsApp. Basta clicar e fazer o download." },
+      { q: "Como recebo o material após a compra?", a: "Após a confirmação do pagamento, você recebe o link de acesso no e-mail cadastrado imediatamente. Basta clicar e fazer o download — sem esperar atendimento manual." },
       { q: "O material é indicado para qual faixa etária?", a: "As atividades são voltadas para crianças em fase de alfabetização e desenvolvimento infantil, aproximadamente dos 4 aos 12 anos, podendo ser adaptadas conforme a necessidade." },
       { q: "Posso imprimir as atividades quantas vezes quiser?", a: "Sim! Ao adquirir o material, você tem acesso vitalício e pode imprimir quantas vezes precisar para usar com seus pacientes." },
       { q: "O material atende diferentes habilidades?", a: "Sim. As atividades são organizadas por habilidade (atenção, memória, leitura, escrita, raciocínio lógico, etc.), facilitando a escolha do recurso ideal para cada momento." },
-      { q: "E se eu não gostar do material?", a: "Você tem 7 dias de garantia incondicional. Se por qualquer motivo não ficar satisfeito, devolvemos 100% do seu dinheiro." },
+      { q: "Posso parcelar o pagamento?", a: "Sim! O pagamento pode ser feito em até 3x sem juros no cartão de crédito, além de PIX e boleto à vista." },
+      { q: "Em quais dispositivos posso acessar?", a: "O material é em PDF, então você acessa em qualquer dispositivo — computador, celular ou tablet. Basta ter um leitor de PDF (como o Adobe Reader ou o próprio navegador)." },
+      { q: "E se eu não gostar do material?", a: "Você tem 30 dias de garantia incondicional. Se por qualquer motivo não ficar satisfeito, devolvemos 100% do seu dinheiro sem perguntas." },
     ],
   },
   footer: {
     updateTitle: "Material em constante atualização",
     updateBody: "O NeuroAtividades Kids recebe novas atividades periodicamente. Ao adquirir agora, você garante acesso vitalício e todas as atualizações futuras sem pagar nada a mais.",
     copyright: "2025 © Todos os direitos reservados. Este material é protegido pela Lei nº 9.610/98, sendo proibida a reprodução total ou parcial sem autorização.",
+    privacyUrl: "#",
+    termsUrl: "#",
   },
 }

@@ -52,13 +52,13 @@ export interface KitImage {
 }
 
 export interface BenefitItem {
-  icon: import("@/components/icons").IconName
+  icon: string
   title: string
   desc: string
 }
 
 export interface IdealItem {
-  icon: import("@/components/icons").IconName
+  icon: string
   title: string
   desc: string
 }
@@ -161,5 +161,7 @@ export interface OfferConfig {
     updateTitle: string
     updateBody: string
     copyright: string
+    privacyUrl: string
+    termsUrl: string
   }
 }

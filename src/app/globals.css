@@ -455,12 +455,53 @@ html {
 }
 
 .vi-sub {
-  margin: 0 auto 16px;
+  margin: 0 auto 12px;
   max-width: 440px;
   font-size: 14.5px;
   line-height: 1.6;
   font-weight: 500;
   color: var(--text-muted);
+}
+
+.vi-social-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 auto 16px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(11,127,232,.06);
+  border: 1px solid rgba(11,127,232,.12);
+}
+
+.vi-sc-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cta);
+  animation: scDotPulse 1.6s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.vi-sc-dot:nth-child(2) { animation-delay: .2s; }
+.vi-sc-dot:nth-child(3) { animation-delay: .4s; }
+
+@keyframes scDotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+.vi-sc-text {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--brand-deep);
+  white-space: nowrap;
+  letter-spacing: .01em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vi-sc-dot { animation: none; }
 }
 
 .vi-cta {
@@ -1055,14 +1096,36 @@ html {
   box-shadow: 0 4px 16px rgba(34,201,120,.12);
 }
 
-.offer-old-price {
+.offer-old-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 4px;
   min-height: 24px;
+}
+
+.offer-old-price {
   color: var(--strikethrough);
   text-decoration: line-through;
   font-family: 'Manrope', system-ui, sans-serif;
   font-size: 15px;
   font-weight: 700;
-  margin-bottom: 4px;
+}
+
+.offer-discount-badge {
+  background: #DC2626;
+  color: #FFFFFF;
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: .02em;
+}
+
+.premium-plan .offer-discount-badge {
+  background: var(--cta-deep);
 }
 
 .offer-price {
@@ -1259,13 +1322,38 @@ html {
 }
 
 .sp-title {
-  margin: 0 0 24px;
+  margin: 0 0 12px;
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(26px, 6vw, 36px);
   line-height: 1.1;
   font-weight: 900;
   letter-spacing: -.04em;
   color: var(--brand-deep);
+}
+
+.sp-rating-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto 20px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(253,224,71,.12);
+  border: 1px solid rgba(253,224,71,.3);
+}
+
+.sp-stars {
+  font-size: 16px;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.sp-rating-text {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--brand-deep);
+  white-space: nowrap;
 }
 
 .sp-carousel {
@@ -1522,12 +1610,17 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 54px;
-  height: 54px;
+  width: 56px;
+  height: 56px;
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(11,127,232,.1) 0%, var(--brand-subtle) 100%);
-  color: var(--brand);
+  background: linear-gradient(135deg, rgba(11,127,232,.07) 0%, var(--brand-subtle) 100%);
   flex-shrink: 0;
+}
+
+.ben-emoji {
+  font-size: 28px;
+  line-height: 1;
+  display: block;
 }
 
 .ben-item-content {
@@ -1810,9 +1903,14 @@ html {
   width: 60px;
   height: 60px;
   border-radius: 18px;
-  background: rgba(11,127,232,0.12);
+  background: rgba(255,255,255,0.18);
   margin: 0 auto 16px;
-  color: var(--brand);
+}
+
+.idv-emoji {
+  font-size: 28px;
+  line-height: 1;
+  display: block;
 }
 
 .idv-card-title {
@@ -2813,7 +2911,7 @@ html {
 
 /* ===== FOOTER / TOAST ===== */
 .edu-toast-wrap {
-  padding: 20px 16px;
+  padding: 20px 16px 28px;
   text-align: center;
   font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   font-size: 13px;
@@ -2821,5 +2919,35 @@ html {
   color: var(--text-light);
   font-weight: 500;
   border-top: 1px solid rgba(0,0,0,.06);
+}
+
+.footer-copyright {
+  margin: 0 0 10px;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.footer-link {
+  color: var(--brand);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: opacity 150ms ease;
+}
+
+.footer-link:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.footer-sep {
+  color: var(--text-light);
+  font-size: 10px;
 }
 
