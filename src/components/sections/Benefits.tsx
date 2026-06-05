@@ -1,27 +1,7 @@
-const benefits = [
-  {
-    icon: "🧠",
-    title: "Atenção e Concentração",
-    desc: "Atividades lúdicas para estimular foco, controle inibitório e atenção sustentada.",
-  },
-  {
-    icon: "🔍",
-    title: "Memória e Raciocínio",
-    desc: "Exercícios para desenvolver retenção, associação e pensamento lógico.",
-  },
-  {
-    icon: "✏️",
-    title: "Leitura e Escrita",
-    desc: "Materiais para trabalhar consciência fonológica e alfabetização.",
-  },
-  {
-    icon: "🧩",
-    title: "Organização e Praticidade",
-    desc: "Fichas prontas para aplicar rapidamente sem precisar criar do zero.",
-  },
-]
+import { OFFER } from "@/config/offer"
 
 export function Benefits() {
+  const benefits = OFFER.benefits
   return (
     <section className="ben-section">
       <div className="ben-inner">

@@ -1,8 +1,10 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import { OFFER } from "@/config/offer"
 
 export function CounterPainPoints() {
+  const { prefix, target, label } = OFFER.counter
   const [count, setCount] = useState(0)
   const [barWidth, setBarWidth] = useState("0%")
   const counterRef = useRef<HTMLDivElement>(null)
@@ -17,7 +19,6 @@ export function CounterPainPoints() {
         entries.forEach((e) => {
           if (e.isIntersecting && !animated.current) {
             animated.current = true
-            const target = 250
             const duration = 1800
             let start: number | null = null
 
@@ -54,14 +55,14 @@ export function CounterPainPoints() {
     <div className="dc-wrap" ref={counterRef} id="docs-counter">
       <div className="dc-inner">
         <div className="dc-numberline">
-          <span className="dc-prefix">+ de</span>
+          <span className="dc-prefix">{prefix}</span>
           <span className="dc-count" id="dc-count">
             {count}
           </span>
-          <span className="dc-label">atividades psicopedagógicas</span>
+          <span className="dc-label">{label}</span>
         </div>
 
-        <div className="dc-bar" role="progressbar" aria-valuenow={count} aria-valuemin={0} aria-valuemax={250}>
+        <div className="dc-bar" role="progressbar" aria-valuenow={count} aria-valuemin={0} aria-valuemax={target}>
           <div className="dc-fill" style={{ width: barWidth }}></div>
         </div>
       </div>

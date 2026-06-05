@@ -1,17 +1,10 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-
-const bullets = [
-  "Mais de 250 atividades psicopedagógicas prontas",
-  "Materiais para atenção, memória, leitura e escrita",
-  "Atividades lúdicas e imprimíveis",
-  "Fichas de aplicação organizadas por habilidade",
-  "Material pronto para baixar e imprimir",
-  "Acesso imediato após a compra",
-]
+import { OFFER } from "@/config/offer"
 
 export function TudoQueVoceRecebe() {
+  const { pill, title, titleHighlight, image, imageAlt, bullets } = OFFER.deliverables
   const [visibleItems, setVisibleItems] = useState<boolean[]>(new Array(bullets.length).fill(false))
   const listRef = useRef<HTMLDivElement>(null)
 
@@ -45,17 +38,17 @@ export function TudoQueVoceRecebe() {
   return (
     <section className="tqvr-section">
       <div className="tqvr-card">
-        <div className="tqvr-pill">CONTEÚDO DO KIT</div>
+        <div className="tqvr-pill">{pill}</div>
 
         <h2 className="tqvr-title">
-          Veja o que você recebe
-          <span>no <strong>NeuroAtividades Kids</strong></span>
+          {title}
+          <span>no <strong>{titleHighlight}</strong></span>
         </h2>
 
         <div className="tqvr-image">
           <img
-            src="/images/a4996fc9-5b06-464a-86b1-817af5b4f1ae.webp"
-            alt="NeuroAtividades Kids"
+            src={image}
+            alt={imageAlt}
             width={340}
             height={425}
           />

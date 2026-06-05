@@ -1,31 +1,11 @@
-const steps = [
-  {
-    num: "01",
-    title: "Faça a compra",
-    desc: "Escolha seu plano e finalize o pagamento de forma segura.",
-  },
-  {
-    num: "02",
-    title: "Receba o acesso",
-    desc: "O material chega no seu e-mail e WhatsApp imediatamente.",
-  },
-  {
-    num: "03",
-    title: "Baixe e imprima",
-    desc: "Acesse, baixe e imprima as atividades que quiser.",
-  },
-  {
-    num: "04",
-    title: "Aplique nos atendimentos",
-    desc: "Use nas sessões ou envie para casa com os pais.",
-  },
-]
+import { OFFER } from "@/config/offer"
 
 export function ComoEAcesso() {
+  const { title, steps } = OFFER.access
   return (
     <section className="cea-section">
       <div className="cea-inner">
-        <h2 className="cea-title">Como é o acesso</h2>
+        <h2 className="cea-title">{title}</h2>
 
         <div className="cea-steps">
           {steps.map((step, i) => (

@@ -1,37 +1,16 @@
 "use client"
 
 import { useState } from "react"
-
-const faqItems = [
-  {
-    q: "Como recebo o material após a compra?",
-    a: "Após a confirmação do pagamento, você recebe o link de acesso no e-mail cadastrado e também no WhatsApp. Basta clicar e fazer o download.",
-  },
-  {
-    q: "O material é indicado para qual faixa etária?",
-    a: "As atividades são voltadas para crianças em fase de alfabetização e desenvolvimento infantil, aproximadamente dos 4 aos 12 anos, podendo ser adaptadas conforme a necessidade.",
-  },
-  {
-    q: "Posso imprimir as atividades quantas vezes quiser?",
-    a: "Sim! Ao adquirir o material, você tem acesso vitalício e pode imprimir quantas vezes precisar para usar com seus pacientes.",
-  },
-  {
-    q: "O material atende diferentes habilidades?",
-    a: "Sim. As atividades são organizadas por habilidade (atenção, memória, leitura, escrita, raciocínio lógico, etc.), facilitando a escolha do recurso ideal para cada momento.",
-  },
-  {
-    q: "E se eu não gostar do material?",
-    a: "Você tem 7 dias de garantia incondicional. Se por qualquer motivo não ficar satisfeito, devolvemos 100% do seu dinheiro.",
-  },
-]
+import { OFFER } from "@/config/offer"
 
 export function FAQ() {
+  const { title, items: faqItems } = OFFER.faq
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
     <div className="faq-acc-wrap">
       <div className="faq-acc-inner">
-        <h2 className="faq-acc-title">Perguntas Frequentes</h2>
+        <h2 className="faq-acc-title">{title}</h2>
 
         <div className="faq-acc-list" role="list">
           {faqItems.map((item, i) => {
