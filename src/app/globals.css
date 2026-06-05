@@ -1333,7 +1333,7 @@ html {
 .sp-section {
   padding: 44px 0 40px;
   overflow: hidden;
-  background: transparent;
+  background: var(--brand-subtle);
 }
 
 .sp-inner {
@@ -1737,7 +1737,7 @@ html {
 /* ===== URGÊNCIA ===== */
 .urg-section {
   padding: 44px 16px 40px;
-  background: transparent;
+  background: var(--cta-surface);
   font-family: 'Manrope', system-ui, sans-serif;
 }
 
@@ -2095,7 +2095,7 @@ html {
 /* ===== TUDO QUE VOCÃŠ VAI RECEBER ===== */
 .tqvr-section {
   padding: 44px 16px 40px;
-  background: transparent;
+  background: var(--brand-subtle);
   font-family: 'Manrope', system-ui, sans-serif;
 }
 
@@ -2634,7 +2634,7 @@ html {
 /* ===== GUARANTEE ===== */
 .gar-section {
   padding: 0 0 20px;
-  background: transparent;
+  background: var(--cta-surface);
   font-family: 'Manrope', system-ui, sans-serif;
 }
 
@@ -2918,7 +2918,7 @@ html {
 /* ===== FAQ ===== */
 .faq-acc-wrap {
   padding: 44px 16px 44px;
-  background: transparent;
+  background: var(--brand-subtle);
   font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 }
 
