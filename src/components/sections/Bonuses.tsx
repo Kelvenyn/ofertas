@@ -59,11 +59,11 @@ function FlipCard({ front, back, title, desc, price, index }: FlipCardProps) {
                 onLoad={() => setFrontLoaded(true)}
               />
               <div className="bon-new-stripe">
-                <span className="bon-new-stripe-text">🎁 BÔNUS #{bonusNumber}</span>
+                <span className="bon-new-stripe-text"><span aria-hidden="true">🎁</span> BÔNUS #{bonusNumber}</span>
               </div>
               {!flipped && (
                 <div className="bon-new-hand">
-                  <span className="bon-new-hand-emoji">☝🏽</span>
+                  <span className="bon-new-hand-emoji" aria-hidden="true">☝🏽</span>
                 </div>
               )}
             </div>
@@ -77,7 +77,7 @@ function FlipCard({ front, back, title, desc, price, index }: FlipCardProps) {
                 loading="lazy"
               />
               <div className="bon-new-back-hint">
-                &#8634; Toque para voltar
+                <span aria-hidden="true">&#8634;</span> Toque para voltar
               </div>
             </div>
           </div>
@@ -94,12 +94,12 @@ function FlipCard({ front, back, title, desc, price, index }: FlipCardProps) {
         <span className="bon-new-price">{price}</span>
 
         <div className="bon-new-timer">
-          <span className="bon-new-timer-icon">&#9203;</span>
+          <span className="bon-new-timer-icon" aria-hidden="true">&#9203;</span>
           <span className="bon-new-timer-text">OFERTA EXPIRA COM O CRONÔMETRO</span>
         </div>
 
         <div className="bon-new-pill-free">
-          🎁 GRÁTIS
+          <span aria-hidden="true">🎁</span> GRÁTIS
         </div>
       </div>
     </div>

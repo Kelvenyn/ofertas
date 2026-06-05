@@ -79,7 +79,7 @@ export function VendaImediata() {
       <div className={`vi-top-bar${isFixed ? " fixed" : ""}`}>
         <div className="vi-top-bar-inner">
           <div className="vi-top-bar-label">
-            <span className="vi-top-bar-icon">&#127873;</span>
+            <span className="vi-top-bar-icon" aria-hidden="true">&#127873;</span>
             <span className="vi-top-bar-text">{timerLabel}</span>
           </div>
           <div className="vi-top-bar-timer" aria-live="polite" aria-atomic="true">
