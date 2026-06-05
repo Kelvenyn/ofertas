@@ -1535,11 +1535,7 @@ html {
   margin: 20px auto 0;
 }
 
-@media (max-width: 480px) {
-  .benefits-grid { grid-template-columns: 1fr; }
-}
-
-/* card base — matches page design system */
+/* ——— DESKTOP CARD (≥481px): horizontal expansion ——— */
 .benefit-card {
   height: 150px;
   background: var(--surface);
@@ -1565,7 +1561,6 @@ html {
   pointer-events: none;
 }
 
-/* inner row: icon + trail + body */
 .benefit-card-inner {
   display: flex;
   align-items: center;
@@ -1582,6 +1577,7 @@ html {
   flex-shrink: 0;
   border-radius: 16px;
   background: color-mix(in srgb, var(--card-accent, var(--brand)) 8%, var(--surface));
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .benefit-card-emoji {
@@ -1634,11 +1630,7 @@ html {
   overflow: hidden;
 }
 
-.benefit-card-bottom {
-  display: none;
-}
-
-/* expanded state */
+/* ——— DESKTOP expanded state (≥481px) ——— */
 .benefit-card-expanded {
   transform: scale(1.02);
   box-shadow: 0 8px 24px color-mix(in srgb, var(--card-accent, var(--brand)) 10%, transparent);
@@ -1673,21 +1665,68 @@ html {
 }
 
 @keyframes benefitTrail {
-  0% {
+  0%   { opacity: 0; width: 0; }
+  30%  { opacity: 0.4; width: 2px; }
+  70%  { opacity: 0.4; width: 2px; }
+  100% { opacity: 0.15; width: 2px; }
+}
+
+/* ——— MOBILE CARD (≤480px): vertical layout, no horizontal expansion ——— */
+@media (max-width: 480px) {
+  .benefits-grid { grid-template-columns: 1fr; gap: 14px; }
+
+  .benefit-card {
+    height: auto;
+    border-radius: 16px;
+    padding: 20px 18px;
+  }
+
+  .benefit-card-inner {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .benefit-card-icon-cell {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+  }
+
+  .benefit-card-trail {
+    display: none;
+  }
+
+  .benefit-card-body {
+    width: auto !important;
     opacity: 0;
-    width: 0;
+    transform: translateY(6px);
+    transition: opacity 0.4s ease-in-out 0.15s, transform 0.4s ease-in-out 0.15s;
+    text-align: center;
   }
-  30% {
-    opacity: 0.4;
-    width: 2px;
+
+  .benefit-card-expanded .benefit-card-body {
+    opacity: 1;
+    transform: translateY(0);
+    width: auto !important;
   }
-  70% {
-    opacity: 0.4;
-    width: 2px;
+
+  .benefit-card-expanded .benefit-card-border {
+    inset: 6px;
   }
-  100% {
-    opacity: 0.15;
-    width: 2px;
+
+  .benefit-card-expanded {
+    transform: none;
+  }
+
+  .benefit-card-title {
+    white-space: normal;
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .benefit-card-desc {
+    font-size: 13.5px;
+    -webkit-line-clamp: 4;
   }
 }
 
