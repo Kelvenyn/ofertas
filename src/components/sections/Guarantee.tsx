@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState, useCallback } from "react"
+import Image from "next/image"
 import { ScrollMarquee } from "@/components/ui/ScrollMarquee"
 import { OFFER } from "@/config/offer"
 
@@ -39,7 +40,7 @@ export function Guarantee() {
 
       <div className="gar-inner">
         <div className="gar-icon" ref={iconRef} style={{ transform: `scale(${scale})` }}>
-          <img
+          <Image
             src={icon}
             alt={iconAlt}
             width={140}

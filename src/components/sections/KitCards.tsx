@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { OFFER } from "@/config/offer"
 
 export function KitCards() {
@@ -18,7 +19,7 @@ export function KitCards() {
             <div className="esteira-interpretacao-track">
               {[...images, ...images].map((img, i) => (
                 <div className="esteira-interpretacao-img" key={i}>
-                  <img src={img.src} alt={img.alt} width={200} height={280} loading="lazy" />
+                  <Image src={img.src} alt={img.alt} width={200} height={280} />
                 </div>
               ))}
             </div>

@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState, useRef, useCallback } from "react"
+import Image from "next/image"
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { ScrollMarquee } from "@/components/ui/ScrollMarquee"
 import { OFFER } from "@/config/offer"
@@ -97,11 +98,12 @@ export function VendaImediata() {
           </h1>
 
           <div className="vi-image">
-            <img
+            <Image
               src={image}
               alt={imageAlt}
               width={imageWidth}
               height={imageHeight}
+              priority
             />
           </div>
 

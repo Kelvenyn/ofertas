@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
 import { OFFER } from "@/config/offer"
 
 export function TudoQueVoceRecebe() {
@@ -46,7 +47,7 @@ export function TudoQueVoceRecebe() {
         </h2>
 
         <div className="tqvr-image">
-          <img
+          <Image
             src={image}
             alt={imageAlt}
             width={340}

@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { OFFER } from "@/config/offer"
 
@@ -16,7 +17,7 @@ export function OfferPricing() {
           </h2>
 
           <div className="offer-product-preview">
-            <img
+            <Image
               src={image}
               alt={imageAlt}
               width={320}
@@ -39,7 +40,7 @@ export function OfferPricing() {
                 <div className={`plan-label ${plan.featured ? 'premium-label' : 'basic-label'}`}>{plan.label}</div>
                 <h3>{plan.title}</h3>
                 <div className="offer-plan-img">
-                  <img src={plan.image} alt={plan.imageAlt} width={200} height={250} />
+                  <Image src={plan.image} alt={plan.imageAlt} width={200} height={250} />
                 </div>
               </div>
 
