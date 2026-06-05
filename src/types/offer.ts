@@ -73,7 +73,7 @@ export interface BonusItem {
 
 export interface PricingPlan {
   id: string
-  label: string
+  label?: string
   title: string
   image: string
   imageAlt: string
@@ -139,11 +139,6 @@ export interface OfferConfig {
   bonuses: BonusItem[]
   pricing: {
     pill: string
-    heading1: string
-    heading2: string
-    image: string
-    imageAlt: string
-    body: string
     plans: PricingPlan[]
     trustBadges: string[]
   }

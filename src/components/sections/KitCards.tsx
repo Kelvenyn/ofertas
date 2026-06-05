@@ -1,48 +1,115 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState, useCallback } from "react"
 import Image from "next/image"
 import { OFFER } from "@/config/offer"
 
+const DRAG_MULTIPLIER = 1.8
+const SCROLL_SPEED = 0.6
+
 export function KitCards() {
   const { heading1, images } = OFFER.kitCards
-  const wrapRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
+  const offsetRef = useRef(0)
+  const rafRef = useRef<number>(0)
+  const isDragging = useRef(false)
+  const dragStart = useRef(0)
+  const dragOffset = useRef(0)
+  const autoPlay = useRef(true)
+  const resumeTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
+  const [loaded, setLoaded] = useState(false)
 
-  useEffect(() => {
-    const wrap = wrapRef.current
+  const allImages = [...images, ...images, ...images]
+
+  const animate = useCallback(() => {
+    if (!trackRef.current) return
+    if (autoPlay.current && !isDragging.current) {
+      offsetRef.current -= SCROLL_SPEED
+    }
+
     const track = trackRef.current
-    if (!wrap || !track) return
+    const singleSetWidth = track.scrollWidth / 3
 
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        track.style.animationPlayState = entry.isIntersecting ? "running" : "paused"
-      },
-      { threshold: 0 }
-    )
-    obs.observe(wrap)
-    return () => obs.disconnect()
+    if (Math.abs(offsetRef.current) >= singleSetWidth) {
+      offsetRef.current += singleSetWidth
+    }
+    if (offsetRef.current > 0) {
+      offsetRef.current -= singleSetWidth
+    }
+
+    track.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`
+    rafRef.current = requestAnimationFrame(animate)
   }, [])
 
-  return (
-    <div className="bloco-categoria-interpretacao">
-      <div className="bloco-categoria-inner">
-        <div className="cat-topo-interpretacao">
-          <div className="cat-titulo-interpretacao">
-            <span className="cat-heading-principal">{heading1}</span>
-          </div>
-        </div>
+  useEffect(() => {
+    rafRef.current = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(rafRef.current)
+  }, [animate])
 
-        <div className="esteira-interpretacao-wrap" ref={wrapRef}>
-          <div className="esteira-interpretacao">
-            <div className="esteira-interpretacao-track" ref={trackRef}>
-              {[...images, ...images].map((img, i) => (
-                <div className="esteira-interpretacao-img" key={i}>
-                  <Image src={img.src} alt={img.alt} width={200} height={280} />
-                </div>
-              ))}
+  const handleDragStart = useCallback((clientX: number) => {
+    isDragging.current = true
+    dragStart.current = clientX
+    dragOffset.current = offsetRef.current
+    autoPlay.current = false
+    if (resumeTimer.current) clearTimeout(resumeTimer.current)
+  }, [])
+
+  const handleDragMove = useCallback((clientX: number) => {
+    if (!isDragging.current) return
+    const delta = (clientX - dragStart.current) * DRAG_MULTIPLIER
+    offsetRef.current = dragOffset.current + delta
+  }, [])
+
+  const handleDragEnd = useCallback(() => {
+    isDragging.current = false
+    resumeTimer.current = setTimeout(() => {
+      autoPlay.current = true
+    }, 2000)
+  }, [])
+
+  const onMouseDown = (e: React.MouseEvent) => { e.preventDefault(); handleDragStart(e.clientX) }
+  const onMouseMove = (e: React.MouseEvent) => handleDragMove(e.clientX)
+  const onMouseUp = () => handleDragEnd()
+  const onMouseLeave = () => { if (isDragging.current) handleDragEnd() }
+  const onTouchStart = (e: React.TouchEvent) => handleDragStart(e.touches[0].clientX)
+  const onTouchMove = (e: React.TouchEvent) => handleDragMove(e.touches[0].clientX)
+  const onTouchEnd = () => handleDragEnd()
+
+  return (
+    <div className="kc-section">
+      <div className="kc-inner">
+        <h2 className="kc-title">{heading1}</h2>
+      </div>
+
+      <div
+        className="kc-carousel"
+        style={{ cursor: isDragging.current ? "grabbing" : "grab" }}
+        onMouseDown={onMouseDown}
+        onMouseMove={onMouseMove}
+        onMouseUp={onMouseUp}
+        onMouseLeave={onMouseLeave}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        <div
+          ref={trackRef}
+          className="kc-track"
+          style={{ opacity: loaded ? 1 : 0, transition: "opacity 400ms ease" }}
+        >
+          {allImages.map((img, i) => (
+            <div className="kc-card" key={i}>
+              <Image
+                src={img.src}
+                alt={img.alt}
+                width={280}
+                height={400}
+                className="kc-card-img"
+                loading={i === 0 ? "eager" : "lazy"}
+                onLoad={() => { if (i === 0) setLoaded(true) }}
+              />
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

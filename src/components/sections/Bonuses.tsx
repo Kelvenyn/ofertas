@@ -111,11 +111,19 @@ export function Bonuses() {
   return (
     <section className="bon-section">
       <div className="bon-inner">
-        <h2 className="bon-title">6 bônus exclusivos</h2>
+        <div className="bon-headline-pill">
+          <span className="bon-headline-dot" />
+          EXTRA INCLUÍDO
+        </div>
+
+        <h2 className="bon-title">
+          6 BÔNUS <span className="bon-title-green">EXCLUSIVOS</span>
+        </h2>
+
+        <div className="bon-divider" />
 
         <p className="bon-sub">
-          Ao garantir o kit hoje, você leva também estes materiais
-          extras para enriquecer ainda mais sua experiência.
+          Ao adquirir hoje, você também recebe <strong>6 materiais complementares</strong> para deixar seus atendimentos psicopedagógicos mais organizados, práticos e completos.
         </p>
 
         <div className="bon-grid">

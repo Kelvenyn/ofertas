@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito, Manrope } from "next/font/google";
 import { OFFER } from "@/config/offer";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -46,7 +47,9 @@ export default function RootLayout({
         "--bg": p.bg,
       } as React.CSSProperties}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   );
 }
