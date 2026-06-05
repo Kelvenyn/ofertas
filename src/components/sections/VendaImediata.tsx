@@ -35,13 +35,6 @@ export function VendaImediata() {
 
         <p className="vi-sub">{subtitle}</p>
 
-        <div className="vi-social-count" aria-label="Prova social">
-          <span className="vi-sc-dot" aria-hidden="true" />
-          <span className="vi-sc-dot" aria-hidden="true" />
-          <span className="vi-sc-dot" aria-hidden="true" />
-          <span className="vi-sc-text">+250 profissionais já usam este kit</span>
-        </div>
-
         <ShinyButton href="#oferta" className="vi-cta-btn">
           {ctaText}
         </ShinyButton>

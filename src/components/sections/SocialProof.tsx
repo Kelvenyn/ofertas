@@ -231,10 +231,6 @@ export function SocialProof() {
     <section className="sp-section" aria-labelledby="social-proof-title">
       <div className="sp-inner">
         <h2 className="sp-title" id="social-proof-title">O que estão dizendo</h2>
-        <div className="sp-rating-row" aria-label="Avaliação média: 4.9 de 5 estrelas">
-          <span className="sp-stars" aria-hidden="true">⭐⭐⭐⭐⭐</span>
-          <span className="sp-rating-text">4.9/5 — mais de 250 avaliações</span>
-        </div>
       </div>
 
       <div
@@ -321,6 +317,11 @@ export function SocialProof() {
             />
           ))}
         </div>
+      </div>
+
+      <div className="sp-rating-below" aria-label="Avaliação média: 4.9 de 5 estrelas">
+        <span className="sp-stars" aria-hidden="true">⭐⭐⭐⭐⭐</span>
+        <span className="sp-rating-text">4.9/5</span>
       </div>
     </section>
   )

@@ -76,7 +76,7 @@ export const OFFER: OfferConfig = {
     highlight: "atendimentos profissionais",
     body: "Em poucos minutos você já consegue\nabrir o material e começar a\naplicar com seus pacientes.",
     ctaText: "Comece agora",
-    trust: ["ACESSO IMEDIATO", "ACESSO VITALÍCIO"],
+    trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"],
   },
   idealPara: {
     pill: "É PARA VOCÊ",
