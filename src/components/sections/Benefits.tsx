@@ -17,7 +17,7 @@ function BenefitCard({ icon, title, desc, index }: { icon: string; title: string
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.intersectionRatio >= 0.25) {
-          const delay = index * 100
+          const delay = index * 150
           setTimeout(() => setExpanded(true), delay)
           obs.disconnect()
         }
