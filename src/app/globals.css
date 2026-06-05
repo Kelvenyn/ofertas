@@ -1503,8 +1503,12 @@ html {
 /* ===== BENEFITS (animated card) ===== */
 .benefits-section {
   padding: 44px 16px 40px;
-  background: transparent;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 50%, var(--brand-deep) 100%);
   font-family: 'Manrope', system-ui, sans-serif;
+}
+
+.benefits-title {
+  color: #FFFFFF;
 }
 
 .benefits-inner {
@@ -1917,7 +1921,7 @@ html {
 }
 .idv-section {
   padding: 44px 16px 40px;
-  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 50%, var(--brand-deep) 100%);
+  background: transparent;
   font-family: 'Manrope', system-ui, sans-serif;
 }
 
@@ -1934,12 +1938,12 @@ html {
   line-height: 1.1;
   font-weight: 800;
   letter-spacing: -.04em;
-  color: #FFFFFF;
+  color: var(--brand-deep);
   text-wrap: balance;
 }
 
 .idv-title-accent {
-  color: var(--yellow);
+  color: var(--brand);
 }
 
 .idv-grid {
@@ -2044,13 +2048,13 @@ html {
   width: 60px;
   height: 60px;
   border-radius: 18px;
-  background: rgba(255,255,255,0.18);
+  background: color-mix(in srgb, var(--card-accent, var(--brand)) 10%, var(--surface));
   margin: 0 auto 16px;
 }
 
 .idv-card-alt .idv-card-icon {
-  background: color-mix(in srgb, var(--card-accent, var(--brand)) 20%, transparent);
-  border: 1px solid color-mix(in srgb, var(--card-accent, var(--brand)) 30%, transparent);
+  background: color-mix(in srgb, var(--card-accent, var(--brand)) 14%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--card-accent, var(--brand)) 20%, transparent);
 }
 
 .idv-emoji {
