@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito, Inter, Sora, Poppins } from "next/font/google";
+import { Nunito, Inter } from "next/font/google";
 import { OFFER } from "@/config/offer";
 import "./globals.css";
 
@@ -15,17 +15,6 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
-const sora = Sora({
-  variable: "--font-sora",
-  subsets: ["latin"],
-  weight: ["700", "800"],
-});
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-});
 
 export const metadata: Metadata = {
   title: OFFER.meta.title,
@@ -41,7 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${nunito.variable} ${inter.variable} ${sora.variable} ${poppins.variable} antialiased`}
+      className={`${nunito.variable} ${inter.variable} antialiased`}
       style={{
         "--brand": p.brand,
         "--brand-deep": p.brandDeep,

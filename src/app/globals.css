@@ -1,4 +1,4 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
@@ -197,7 +197,7 @@
   --surface: #ffffff;
   --urgency: #dc2626;
 
-  /* === shadcn/ui aliases (mantém compatibilidade) === */
+  /* === shadcn/ui aliases (mantÃ©m compatibilidade) === */
   --background: var(--bg);
   --foreground: var(--text);
   --card: var(--surface);
@@ -715,7 +715,7 @@
 .bloco-categoria-interpretacao {
   padding: 20px 0 36px;
   background: transparent;
-  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   overflow: hidden;
 }
 
@@ -733,7 +733,7 @@
 .cat-titulo-interpretacao {
   max-width: 520px;
   margin: 0 auto;
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: 'Nunito', system-ui, sans-serif;
   line-height: 1.08;
   letter-spacing: -0.05em;
   font-weight: 800;
@@ -837,7 +837,7 @@
 .offer-pei-section {
   padding: 34px 16px 30px;
   background: #FFFFFF;
-  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
 .offer-pei-container {
@@ -860,7 +860,7 @@
   background: #E9FFF4;
   border: 1px solid rgba(0,168,90,.26);
   color: var(--cta-darkest);
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: 'Nunito', system-ui, sans-serif;
   font-size: 13px;
   line-height: 1;
   font-weight: 800;
@@ -871,7 +871,7 @@
 
 .offer-pei-head h2 {
   margin: 0 0 12px;
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(28px, 5vw, 44px);
   line-height: 1.08;
   color: var(--brand-ink);
@@ -893,7 +893,7 @@
 .offer-pei-head p {
   margin: 0 auto;
   max-width: 790px;
-  font-family: 'Poppins', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   font-size: clamp(15px, 2.2vw, 18px);
   line-height: 1.65;
   color: #263846;
@@ -952,7 +952,7 @@
   transform: translateX(-50%);
   background: var(--cta-deep);
   color: #FFFFFF;
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: 'Nunito', system-ui, sans-serif;
   font-size: 12px;
   font-weight: 800;
   padding: 10px 18px;
@@ -970,7 +970,7 @@
   margin: 0 auto 10px;
   padding: 7px 12px;
   border-radius: 999px;
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: 'Nunito', system-ui, sans-serif;
   font-size: 11px;
   line-height: 1;
   font-weight: 800;
@@ -996,7 +996,7 @@
 
 .offer-card-top h3 {
   margin: 0 0 8px;
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(24px, 4vw, 34px);
   line-height: 1.1;
   color: var(--brand-ink);
@@ -1025,7 +1025,7 @@
 .offer-card-top p {
   margin: 0 0 18px;
   text-align: center;
-  font-family: 'Poppins', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   color: #34495A;
   font-size: 15px;
   line-height: 1.55;
@@ -1050,14 +1050,14 @@
   min-height: 24px;
   color: #8A99A8;
   text-decoration: line-through;
-  font-family: 'Poppins', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   font-size: 15px;
   font-weight: 700;
   margin-bottom: 4px;
 }
 
 .offer-price {
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(42px, 8vw, 62px);
   line-height: 1;
   font-weight: 800;
@@ -1072,7 +1072,7 @@
 
 .offer-installments {
   color: #4A5A68;
-  font-family: 'Poppins', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   font-size: 14px;
   font-weight: 600;
 }
@@ -1084,7 +1084,7 @@
   background: #E9FFF4;
   border: 1px solid rgba(0,168,90,.20);
   color: var(--cta-darkest);
-  font-family: 'Poppins', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   font-size: 14px;
   line-height: 1.4;
   font-weight: 700;
@@ -1104,7 +1104,7 @@
   position: relative;
   padding-left: 28px;
   color: #1F2F3D;
-  font-family: 'Poppins', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   font-size: 15.5px;
   line-height: 1.45;
   font-weight: 600;
@@ -1125,7 +1125,7 @@
   left: 0;
   top: 0;
   color: var(--cta-deep);
-  font-family: 'Sora', system-ui, sans-serif;
+  font-family: 'Nunito', system-ui, sans-serif;
   font-weight: 800;
 }
 
@@ -1177,7 +1177,7 @@
   flex-wrap: wrap;
   margin-top: 18px;
   color: #4A5A68;
-  font-family: 'Poppins', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   font-size: 14px;
   font-weight: 600;
   text-align: center;
@@ -1479,7 +1479,7 @@
   .ben-card { padding: 20px 14px; }
 }
 
-/* ===== URGÊNCIA ===== */
+/* ===== URGÃŠNCIA ===== */
 .urg-section {
   padding: 36px 16px 40px;
   background: transparent;
@@ -1612,7 +1612,7 @@
   color: var(--cta);
 }
 
-/* ===== IDEAL PARA VOCÊ ===== */
+/* ===== IDEAL PARA VOCÃŠ ===== */
 .idv-section {
   padding: 44px 16px 40px;
   background: transparent;
@@ -1704,7 +1704,7 @@
   .idv-grid { grid-template-columns: 1fr; }
 }
 
-/* ===== TUDO QUE VOCÊ VAI RECEBER ===== */
+/* ===== TUDO QUE VOCÃŠ VAI RECEBER ===== */
 .tqvr-section {
   padding: 44px 16px 40px;
   background: transparent;
@@ -1813,7 +1813,7 @@
   color: #1F2F3D;
 }
 
-/* ===== BÔNUS ===== */
+/* ===== BÃ”NUS ===== */
 .bon-section {
   padding: 44px 16px 40px;
   background: transparent;
@@ -2025,7 +2025,7 @@
   .bon-grid { grid-template-columns: 1fr; }
 }
 
-/* ===== BÔNUS - NEW CARD DESIGN ===== */
+/* ===== BÃ”NUS - NEW CARD DESIGN ===== */
 .bon-new-card {
   position: relative;
   border-radius: 20px;
@@ -2321,7 +2321,7 @@
   font-weight: 700;
 }
 
-/* ===== COMO É O ACESSO ===== */
+/* ===== COMO Ã‰ O ACESSO ===== */
 .cea-section {
   padding: 44px 16px 40px;
   background: transparent;
@@ -2638,3 +2638,4 @@
   font-weight: 500;
   border-top: 1px solid rgba(0,0,0,.06);
 }
+
