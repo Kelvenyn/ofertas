@@ -120,8 +120,8 @@ export function ScrollMarquee({
 
   const rendered = renderText(text)
 
-  const FADE_L = `linear-gradient(to right, var(--accent, #fd5b00), transparent)`
-  const FADE_R = `linear-gradient(to left, var(--yellow, #ffd41e), transparent)`
+  const FADE_L = `linear-gradient(to right, var(--bg, #FFFFFF), transparent)`
+  const FADE_R = `linear-gradient(to left, var(--bg, #FFFFFF), transparent)`
 
   if (reducedMotion) {
     return (
