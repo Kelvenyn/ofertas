@@ -588,7 +588,7 @@
 
 .scroll-marquee-text {
   display: inline-block;
-  padding: 0 24px;
+  padding: 0 0;
   font-family: 'Manrope', system-ui, sans-serif;
   font-weight: 700;
   font-size: 14px;
@@ -1359,39 +1359,8 @@
   display: block;
 }
 
-.sp-dots-row {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  margin-top: 20px;
-  padding: 0 16px;
-}
-
-.sp-dot-item {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--brand);
-  opacity: 0.18;
-  display: inline-block;
-  animation: spDotPulse 2.4s ease-in-out infinite;
-}
-
-.sp-dot-item:nth-child(2) { animation-delay: 0.4s; }
-.sp-dot-item:nth-child(3) { animation-delay: 0.8s; }
-.sp-dot-item:nth-child(4) { animation-delay: 1.2s; }
-.sp-dot-item:nth-child(5) { animation-delay: 1.6s; }
-.sp-dot-item:nth-child(6) { animation-delay: 2.0s; }
-
-@keyframes spDotPulse {
-  0%, 100% { opacity: 0.18; transform: scale(1); }
-  50% { opacity: 0.72; transform: scale(1.4); }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .sp-marquee-track { animation: none; }
-  .sp-dot-item { animation: none; opacity: 0.4; }
 }
 
 /* ===== BENEFITS ===== */
@@ -1488,7 +1457,7 @@
 
 .ben-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 16px;
   padding: 20px;
   border-radius: 16px;
@@ -1596,21 +1565,76 @@
   50% { transform: translateY(-6px) rotate(5deg); }
 }
 
-.urg-pill {
-  display: inline-flex;
+.urg-timer-row {
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 16px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.16);
-  border: 1px solid rgba(255,255,255,.28);
-  color: rgba(255,255,255,.92);
-  font-family: 'Manrope', system-ui, sans-serif;
-  font-size: 10.5px;
+  gap: 4px;
+  padding: 28px 20px 32px;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 55%, var(--brand-deep) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.urg-timer-row::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0px,
+    transparent 8px,
+    rgba(255,255,255,.03) 8px,
+    rgba(255,255,255,.03) 16px
+  );
+  pointer-events: none;
+}
+
+.urg-timer-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.urg-timer-val {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  padding: 10px 8px;
+  border-radius: 10px;
+  background: rgba(0,0,0,.25);
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: clamp(26px, 8vw, 36px);
+  font-weight: 900;
   line-height: 1;
-  font-weight: 800;
-  letter-spacing: .08em;
+  color: #FFFFFF;
+  letter-spacing: -.03em;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,.15), 0 2px 8px rgba(0,0,0,.1);
+}
+
+.urg-timer-label {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
   text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+}
+
+.urg-timer-colon {
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: clamp(24px, 7vw, 32px);
+  font-weight: 900;
+  color: rgba(255,255,255,.8);
+  margin-top: -18px;
+  animation: urgColonBlink 1s step-end infinite;
+}
+
+@keyframes urgColonBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
 .urg-card-body {
@@ -1676,7 +1700,7 @@
 /* ===== IDEAL PARA VOCÃŠ ===== */
 .idv-section {
   padding: 44px 16px 40px;
-  background: transparent;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 50%, var(--brand-deep) 100%);
   font-family: 'Manrope', system-ui, sans-serif;
 }
 
@@ -1686,41 +1710,18 @@
   text-align: center;
 }
 
-.idv-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 18px;
-  padding: 8px 18px;
-  border-radius: 999px;
-  background: var(--brand-subtle);
-  border: 1px solid rgba(11,127,232,.18);
-  color: var(--brand);
-  font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 11.5px;
-  line-height: 1;
-  font-weight: 900;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-
 .idv-title {
-  margin: 0 0 14px;
+  margin: 0 0 28px;
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(26px, 6vw, 36px);
   line-height: 1.1;
   font-weight: 900;
   letter-spacing: -.04em;
-  color: var(--brand-deep);
+  color: #FFFFFF;
 }
 
-.idv-sub {
-  margin: 0 auto 28px;
-  max-width: 520px;
-  font-size: 16px;
-  line-height: 1.7;
-  font-weight: 500;
-  color: var(--text-muted);
+.idv-title-accent {
+  color: var(--yellow);
 }
 
 .idv-grid {

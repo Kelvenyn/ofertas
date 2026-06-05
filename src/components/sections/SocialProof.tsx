@@ -31,12 +31,6 @@ export function SocialProof() {
           ))}
         </div>
       </div>
-
-      <div className="sp-dots-row">
-        {testimonials.map((_, i) => (
-          <span key={i} className="sp-dot-item" />
-        ))}
-      </div>
     </section>
   )
 }

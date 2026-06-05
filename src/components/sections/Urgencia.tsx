@@ -1,19 +1,51 @@
+"use client"
+
+import { useEffect, useState } from "react"
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { OFFER } from "@/config/offer"
 
+function getTimeLeft() {
+  const now = new Date()
+  const end = new Date()
+  end.setHours(23, 59, 59, 999)
+  let diff = end.getTime() - now.getTime()
+  if (diff < 0) diff = 0
+  const h = Math.floor(diff / 3600000)
+  const m = Math.floor((diff % 3600000) / 60000)
+  const s = Math.floor((diff % 60000) / 1000)
+  return { h, m, s }
+}
+
 export function Urgencia() {
-  const { pill, title, highlight, body, ctaText, trust } = OFFER.urgency
+  const { title, highlight, body, ctaText, trust } = OFFER.urgency
   const titleLines = title.split('\n')
+  const [time, setTime] = useState(getTimeLeft)
+
+  useEffect(() => {
+    const iv = setInterval(() => setTime(getTimeLeft()), 1000)
+    return () => clearInterval(iv)
+  }, [])
 
   return (
     <section className="urg-section">
       <div className="urg-inner">
         <div className="urg-card">
 
-          <div className="urg-card-header">
-            <div className="urg-header-orb" />
-            <span className="urg-header-icon">⚡</span>
-            <div className="urg-pill">{pill}</div>
+          <div className="urg-timer-row">
+            <div className="urg-timer-unit">
+              <span className="urg-timer-val">{String(time.h).padStart(2, "0")}</span>
+              <span className="urg-timer-label">Horas</span>
+            </div>
+            <span className="urg-timer-colon">:</span>
+            <div className="urg-timer-unit">
+              <span className="urg-timer-val">{String(time.m).padStart(2, "0")}</span>
+              <span className="urg-timer-label">Minutos</span>
+            </div>
+            <span className="urg-timer-colon">:</span>
+            <div className="urg-timer-unit">
+              <span className="urg-timer-val">{String(time.s).padStart(2, "0")}</span>
+              <span className="urg-timer-label">Segundos</span>
+            </div>
           </div>
 
           <div className="urg-card-body">

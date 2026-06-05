@@ -1,15 +1,14 @@
 import { OFFER } from "@/config/offer"
 
 export function IdealParaVoce() {
-  const { title, subtitle, items } = OFFER.idealPara
+  const { items } = OFFER.idealPara
   return (
     <section className="idv-section">
       <div className="idv-inner">
-        <h2 className="idv-title">{title}</h2>
-
-        <p className="idv-sub">
-          {subtitle}
-        </p>
+        <h2 className="idv-title">
+          Ideal para você{" "}
+          <span className="idv-title-accent">que…</span>
+        </h2>
 
         <div className="idv-grid">
           {items.map((item, i) => (
