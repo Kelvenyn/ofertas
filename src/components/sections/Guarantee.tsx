@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState, useCallback } from "react"
 import Image from "next/image"
-import { ScrollMarquee } from "@/components/ui/ScrollMarquee"
 import { OFFER } from "@/config/offer"
 
 export function Guarantee() {
@@ -47,9 +46,17 @@ export function Guarantee() {
     }
   }, [handleScroll])
 
+  const marqueeGradient = "linear-gradient(90deg, #22C978 0%, #00A85A 50%, #007D43 100%)"
+
   return (
     <section className="gar-section" ref={sectionRef}>
-      <ScrollMarquee text={marqueeText} />
+      <div className="gar-marquee" style={{ background: marqueeGradient }}>
+        <div className="gar-marquee-track">
+          {[0, 1, 2, 3].map((i) => (
+            <span key={i}>GARANTIA 30 DIAS&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+          ))}
+        </div>
+      </div>
 
       <div
         className="gar-inner"
@@ -82,7 +89,13 @@ export function Guarantee() {
         </p>
       </div>
 
-      <ScrollMarquee text={marqueeText} reverse />
+      <div className="gar-marquee" style={{ background: marqueeGradient }}>
+        <div className="gar-marquee-track reverse">
+          {[0, 1, 2, 3].map((i) => (
+            <span key={i}>GARANTIA 30 DIAS&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
+          ))}
+        </div>
+      </div>
     </section>
   )
 }

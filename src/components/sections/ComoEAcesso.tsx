@@ -1,38 +1,37 @@
 import { OFFER } from "@/config/offer"
 
 function DonutChart({ num, index }: { num: string; index: number }) {
-  const radius = 28
+  const radius = 24
   const circumference = 2 * Math.PI * radius
   const progress = ((index + 1) / 4) * circumference
 
   return (
     <div className="cea-donut">
-      <svg viewBox="0 0 72 72" width="72" height="72">
+      <svg viewBox="0 0 64 64" width="64" height="64">
         <circle
-          cx="36"
-          cy="36"
+          cx="32"
+          cy="32"
           r={radius}
           fill="none"
-          stroke="rgba(255,255,255,0.1)"
-          strokeWidth="5"
+          stroke="rgba(34,201,120,0.12)"
+          strokeWidth="4"
         />
         <circle
-          cx="36"
-          cy="36"
+          cx="32"
+          cy="32"
           r={radius}
           fill="none"
-          stroke="url(#donut-gradient)"
-          strokeWidth="5"
+          stroke="url(#cea-grad)"
+          strokeWidth="4"
           strokeLinecap="round"
           strokeDasharray={circumference}
           strokeDashoffset={circumference - progress}
-          transform="rotate(-90 36 36)"
-          style={{ transition: "stroke-dashoffset 1s ease" }}
+          transform="rotate(-90 32 32)"
         />
         <defs>
-          <linearGradient id="donut-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFD166" />
-            <stop offset="100%" stopColor="#FF8A5B" />
+          <linearGradient id="cea-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#22C978" />
+            <stop offset="100%" stopColor="#00A85A" />
           </linearGradient>
         </defs>
       </svg>
