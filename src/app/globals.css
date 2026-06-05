@@ -2646,7 +2646,7 @@ html {
 /* ===== GUARANTEE ===== */
 .gar-section {
   padding: 0 0 20px;
-  background: var(--cta-surface);
+  background: transparent;
   font-family: 'Manrope', system-ui, sans-serif;
 }
 
@@ -2776,15 +2776,29 @@ html {
   box-shadow: 0 10px 28px color-mix(in srgb, var(--step-color, var(--brand)) 15%, transparent);
 }
 
-.cea-card-icon {
+.cea-circle-wrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 16px;
+  flex-shrink: 0;
+}
+
+.cea-circle-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cea-circle-number {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 72px;
-  height: 72px;
-  border-radius: 22px;
-  margin-bottom: 16px;
-  flex-shrink: 0;
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -.02em;
 }
 
 .cea-card-title {
