@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Nunito, Inter, Sora, Poppins } from "next/font/google";
+import { OFFER } from "@/config/offer";
 import "./globals.css";
 
 const nunito = Nunito({
@@ -27,9 +28,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Atividades psicopedagógicas infantis – melhor-pravoce.online",
-  description:
-    "+250 atividades prontas para atendimentos Psicopedagógicos infantis. Materiais lúdicos, fichas de aplicação e atividades imprimíveis para trabalhar atenção, memória, leitura, escrita e raciocínio lógico com mais praticidade nos atendimentos infantis.",
+  title: OFFER.meta.title,
+  description: OFFER.meta.description,
 };
 
 export default function RootLayout({
@@ -37,10 +37,25 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { palette: p } = OFFER;
   return (
     <html
       lang="pt-BR"
       className={`${nunito.variable} ${inter.variable} ${sora.variable} ${poppins.variable} antialiased`}
+      style={{
+        "--brand": p.brand,
+        "--brand-deep": p.brandDeep,
+        "--brand-ink": p.brandInk,
+        "--brand-dark": p.brandDark,
+        "--brand-light": p.brandLight,
+        "--brand-subtle": p.brandSubtle,
+        "--cta": p.cta,
+        "--cta-deep": p.ctaDeep,
+        "--cta-darkest": p.ctaDarkest,
+        "--accent": p.accent,
+        "--yellow": p.yellow,
+        "--bg": p.bg,
+      } as React.CSSProperties}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
