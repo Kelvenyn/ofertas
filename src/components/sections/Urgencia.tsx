@@ -1,6 +1,8 @@
 import { ShinyButton } from "@/components/ui/ShinyButton"
+import { OFFER } from "@/config/offer"
 
 export function Urgencia() {
+  const { pill, title, highlight, body, ctaText, trust } = OFFER.urgency
   return (
     <section className="urg-section">
       <div className="urg-inner">
@@ -9,13 +11,13 @@ export function Urgencia() {
 
           <div className="urg-pill">
             <span className="urg-pill-icon">&#9889;</span>
-            OPORTUNIDADE ÚNICA
+            {pill}
           </div>
 
           <h2 className="urg-title">
-            O que você está<br />
-            esperando para<br />
-            ter <span className="urg-highlight">atendimentos profissionais</span><br />
+            {title.split('\n').map((line, i, arr) => (
+              <span key={i}>{line}{i === arr.length - 1 && <span className="urg-highlight"> {highlight}</span>}<br /></span>
+            ))}
             de verdade?
           </h2>
 
@@ -26,21 +28,24 @@ export function Urgencia() {
           </div>
 
           <p className="urg-text">
-            Em poucos minutos você já consegue<br />
-            abrir o material e começar a<br />
-            aplicar com seus pacientes.
+            {body.split('\n').map((line, i, arr) => (
+              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+            ))}
           </p>
 
           <div className="urg-cta-wrap">
             <ShinyButton href="#oferta" className="urg-cta-btn">
-              Comece agora
+              {ctaText}
             </ShinyButton>
           </div>
 
           <div className="urg-trust">
-            <span>ACESSO IMEDIATO</span>
-            <span className="urg-trust-sep">&bull;</span>
-            <span>ACESSO VITALÍCIO</span>
+            {trust.map((t, i) => (
+              <span key={i}>
+                {i > 0 && <span className="urg-trust-sep">&bull;</span>}
+                {t}
+              </span>
+            ))}
           </div>
         </div>
       </div>

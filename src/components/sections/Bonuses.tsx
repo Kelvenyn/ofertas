@@ -1,51 +1,7 @@
 "use client"
 
 import { useState, useCallback, useEffect } from "react"
-
-const bonuses = [
-  {
-    front: "/images/CR-NINJA-15.webp",
-    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_26_00.webp",
-    title: "Planner Bíblico",
-    desc: "Cronograma organizado para criar constância na leitura diária.",
-    price: "R$ 47,00",
-  },
-  {
-    front: "/images/CR-NINJA-16.webp",
-    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_56-1.webp",
-    title: "Guia de Oração",
-    desc: "Roteiro diário para aprofundar sua vida espiritual.",
-    price: "R$ 47,00",
-  },
-  {
-    front: "/images/CR-NINJA-17.webp",
-    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_52-1.webp",
-    title: "Planilha de Estudos",
-    desc: "Acompanhe seu progresso na leitura bíblica.",
-    price: "R$ 47,00",
-  },
-  {
-    front: "/images/CR-NINJA-18.webp",
-    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_33.webp",
-    title: "Marcadores Exclusivos",
-    desc: "Organize suas passagens favoritas com facilidade.",
-    price: "R$ 47,00",
-  },
-  {
-    front: "/images/CR-NINJA-15.webp",
-    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_44-1.webp",
-    title: "Devocional Semanal",
-    desc: "Reflexões práticas para cada dia da semana.",
-    price: "R$ 47,00",
-  },
-  {
-    front: "/images/CR-NINJA-16.webp",
-    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_48-1.webp",
-    title: "Atlas Bíblico",
-    desc: "Mapas ilustrados para entender o contexto geográfico.",
-    price: "R$ 47,00",
-  },
-]
+import { OFFER } from "@/config/offer"
 
 interface FlipCardProps {
   front: string
@@ -144,6 +100,7 @@ function FlipCard({ front, back, title, desc, price, index }: FlipCardProps) {
 }
 
 export function Bonuses() {
+  const bonuses = OFFER.bonuses
   return (
     <section className="bon-section">
       <div className="bon-inner">

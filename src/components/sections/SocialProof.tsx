@@ -2,15 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-
-const testimonials = [
-  { src: "/images/CR-NINJA-15.webp", alt: "Depoimento 1", color: "linear-gradient(90deg, #0B7FE8, #1D4ED8)" },
-  { src: "/images/CR-NINJA-16.webp", alt: "Depoimento 2", color: "linear-gradient(90deg, #22C978, #1AAF64)" },
-  { src: "/images/CR-NINJA-17.webp", alt: "Depoimento 3", color: "linear-gradient(90deg, #49A6FF, #0B7FE8)" },
-  { src: "/images/CR-NINJA-18.webp", alt: "Depoimento 4", color: "linear-gradient(90deg, #082F63, #1D4ED8)" },
-  { src: "/images/CR-NINJA-15.webp", alt: "Depoimento 5", color: "linear-gradient(90deg, #22C978, #4ADE80)" },
-  { src: "/images/CR-NINJA-16.webp", alt: "Depoimento 6", color: "linear-gradient(90deg, #0B7FE8, #49A6FF)" },
-]
+import { OFFER } from "@/config/offer"
 
 const CONFIGS = [
   { scale: 1, rotateY: 0, tX: 0, tZ: 0, opacity: 1 },
@@ -49,6 +41,7 @@ function getInterpolatedStyle(offset: number): React.CSSProperties {
 }
 
 export function SocialProof() {
+  const testimonials = OFFER.socialProof.testimonials
   const [activeSlide, setActiveSlide] = useState(0)
   const posRef = useRef(0)
   const velocityRef = useRef(0)
@@ -197,7 +190,7 @@ export function SocialProof() {
               >
                 <div
                   className="sp-stories-card-top"
-                  style={{ background: t.color }}
+                  style={{ background: t.gradient }}
                 />
                 <img
                   src={t.src}

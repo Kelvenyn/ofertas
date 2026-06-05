@@ -3,8 +3,10 @@
 import { useEffect, useState, useRef, useCallback } from "react"
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { ScrollMarquee } from "@/components/ui/ScrollMarquee"
+import { OFFER } from "@/config/offer"
 
 export function VendaImediata() {
+  const { pill, titleLine1, titleLine2, titleLine3, image, imageAlt, imageWidth, imageHeight, subtitle, ctaText, timerLabel, marqueeText, marqueeGradient } = OFFER.hero
   const [time, setTime] = useState("")
   const [flipping, setFlipping] = useState<boolean[]>([false, false, false])
   const prevPartsRef = useRef<string[]>(["", "", ""])
@@ -71,7 +73,7 @@ export function VendaImediata() {
         <div className="vi-top-bar-inner">
           <div className="vi-top-bar-label">
             <span className="vi-top-bar-icon">&#127873;</span>
-            <span className="vi-top-bar-text">BÔNUS ENCERRAM EM</span>
+            <span className="vi-top-bar-text">{timerLabel}</span>
           </div>
           <div className="vi-top-bar-timer">
             {timerParts.map((part, i) => (
@@ -86,36 +88,34 @@ export function VendaImediata() {
 
       <section className="vi-hero" ref={heroRef}>
         <div className="vi-hero-inner">
-          <div className="vi-pill">NEUROATIVIDADES KIDS</div>
+          <div className="vi-pill">{pill}</div>
 
           <h1 className="vi-title">
-            <span className="vi-title-line1">+250 Atividades Prontas</span>
-            <span className="vi-title-line2">para atendimentos</span>
-            <span className="vi-title-line3">Psicopedagógicos infantis</span>
+            <span className="vi-title-line1">{titleLine1}</span>
+            <span className="vi-title-line2">{titleLine2}</span>
+            <span className="vi-title-line3">{titleLine3}</span>
           </h1>
 
           <div className="vi-image">
             <img
-              src="/images/a4996fc9-5b06-464a-86b1-817af5b4f1ae.webp"
-              alt="NeuroAtividades Kids"
-              width={340}
-              height={425}
+              src={image}
+              alt={imageAlt}
+              width={imageWidth}
+              height={imageHeight}
             />
           </div>
 
           <p className="vi-sub">
-            Materiais lúdicos, fichas de aplicação e atividades imprimíveis para trabalhar
-            atenção, memória, leitura, escrita e raciocínio lógico com mais praticidade nos
-            atendimentos infantis.
+            {subtitle}
           </p>
 
           <ShinyButton href="#oferta" className="vi-cta-btn">
-            QUERO ACESSAR O KIT AGORA
+            {ctaText}
           </ShinyButton>
 
           <ScrollMarquee
-            text="MATERIAL EM ALTA QUALIDADE • ACESSO IMEDIATO • BÔNUS INCLUÍDOS • "
-            gradient="linear-gradient(135deg, #fd5b00 0%, #ff8c1a 35%, #ffc107 65%, #ffd41e 100%)"
+            text={marqueeText}
+            gradient={marqueeGradient}
             className="vi-marquee"
           />
         </div>

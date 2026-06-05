@@ -2,8 +2,10 @@
 
 import { useEffect, useRef, useState, useCallback } from "react"
 import { ScrollMarquee } from "@/components/ui/ScrollMarquee"
+import { OFFER } from "@/config/offer"
 
 export function Guarantee() {
+  const { marqueeText, icon, iconAlt, title, body } = OFFER.guarantee
   const [scale, setScale] = useState(0.5)
   const iconRef = useRef<HTMLDivElement>(null)
   const rafRef = useRef<number | null>(null)
@@ -33,28 +35,33 @@ export function Guarantee() {
 
   return (
     <section className="gar-section">
-      <ScrollMarquee text="GARANTIA 30 DIAS" />
+      <ScrollMarquee text={marqueeText} />
 
       <div className="gar-inner">
         <div className="gar-icon" ref={iconRef} style={{ transform: `scale(${scale})` }}>
           <img
-            src="/images/INCONDICIONAL-_1_-1-1.webp"
-            alt="Garantia de 30 dias"
+            src={icon}
+            alt={iconAlt}
             width={140}
             height={140}
           />
         </div>
 
         <div className="gar-content">
-          <h2 className="gar-title">Satisfação garantida<br />ou seu dinheiro de volta.</h2>
+          <h2 className="gar-title">
+            {title.split('\n').map((line, i, arr) => (
+              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+            ))}
+          </h2>
           <p className="gar-text">
-            Teste o <strong>NeuroAtividades Kids</strong> por 30 dias. Se você não gostar por
-            algum motivo, devolvemos 100% do valor, sem perguntas.
+            {body.replace(/\*\*(.+?)\*\*/g, '§§$1§§').split('§§').map((part, i) =>
+              i % 2 === 1 ? <strong key={i}>{part}</strong> : part
+            )}
           </p>
         </div>
       </div>
 
-      <ScrollMarquee text="GARANTIA 30 DIAS" reverse />
+      <ScrollMarquee text={marqueeText} reverse />
     </section>
   )
 }
