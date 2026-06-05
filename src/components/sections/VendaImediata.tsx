@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, useCallback } from "react"
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { ScrollMarquee } from "@/components/ui/ScrollMarquee"
 
@@ -8,6 +8,7 @@ export function VendaImediata() {
   const [time, setTime] = useState("")
   const [flipping, setFlipping] = useState<boolean[]>([false, false, false])
   const prevPartsRef = useRef<string[]>(["", "", ""])
+  const [scrollProgress, setScrollProgress] = useState(0)
   const [isFixed, setIsFixed] = useState(false)
   const heroRef = useRef<HTMLDivElement>(null)
 
@@ -17,7 +18,7 @@ export function VendaImediata() {
       const fim = new Date()
       fim.setHours(23, 59, 59, 999)
       let diff = fim.getTime() - agora.getTime()
-      if (diff <= 0) { setTime("00h 00m 00s"); return }
+      if (diff <= 0) { setTime("00h 00min 00s"); return }
       const h = Math.floor(diff / 3600000)
       diff -= h * 3600000
       const m = Math.floor(diff / 60000)
@@ -25,7 +26,7 @@ export function VendaImediata() {
       const s = Math.floor(diff / 1000)
       const newParts = [
         `${String(h).padStart(2,"0")}h`,
-        `${String(m).padStart(2,"0")}m`,
+        `${String(m).padStart(2,"0")}min`,
         `${String(s).padStart(2,"0")}s`
       ]
 
@@ -51,7 +52,11 @@ export function VendaImediata() {
       if (!hero) return
       const heroBottom = hero.offsetTop + hero.offsetHeight
       const scrollY = window.scrollY
+
       setIsFixed(scrollY > 60)
+
+      const progress = Math.min(Math.max(scrollY / (heroBottom * 0.6), 0), 1)
+      setScrollProgress(progress * 100)
     }
     window.addEventListener("scroll", onScroll, { passive: true })
     onScroll()
@@ -109,7 +114,7 @@ export function VendaImediata() {
           </ShinyButton>
 
           <ScrollMarquee
-            text="Material em Alta Qualidade • Acesso Imediato • "
+            text="MATERIAL EM ALTA QUALIDADE • ACESSO IMEDIATO • BÔNUS INCLUÍDOS • "
             gradient="linear-gradient(135deg, #fd5b00 0%, #ff8c1a 35%, #ffc107 65%, #ffd41e 100%)"
             className="vi-marquee"
           />

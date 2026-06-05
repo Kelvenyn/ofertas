@@ -16,6 +16,7 @@ export function KitCards() {
         <div className="cat-topo-interpretacao">
           <div className="cat-titulo-interpretacao">
             <span className="cat-numero-destaque">Conheça o Material</span>
+            <span className="cat-linha-titulo">Que Vai Transformar<br />Seus Atendimentos</span>
           </div>
         </div>
 
@@ -24,7 +25,7 @@ export function KitCards() {
             <div className="esteira-interpretacao-track">
               {[...kitImages, ...kitImages].map((img, i) => (
                 <div className="esteira-interpretacao-img" key={i}>
-                  <img src={img.src} alt={img.alt} width={220} height={308} loading="lazy" />
+                  <img src={img.src} alt={img.alt} width={200} height={280} loading="lazy" />
                 </div>
               ))}
             </div>

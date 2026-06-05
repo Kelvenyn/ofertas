@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 
 const bullets = [
-  "+ de 250 Atividades Psicopedagógicas prontas",
+  "Mais de 250 atividades psicopedagógicas prontas",
   "Materiais para atenção, memória, leitura e escrita",
   "Atividades lúdicas e imprimíveis",
   "Fichas de aplicação organizadas por habilidade",
