@@ -1,7 +1,7 @@
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { OFFER } from "@/config/offer"
 
-const LAYOUTS = ["default", "highlight", "wide", "compact"]
+const CARD_COLORS = ["#0B7FE8", "#22C978", "#FF8A5B", "#8B5CF6"]
 
 export function Benefits() {
   const benefits = OFFER.benefits
@@ -12,9 +12,14 @@ export function Benefits() {
 
         <div className="ben-list">
           {benefits.map((b, i) => {
-            const layout = LAYOUTS[i % LAYOUTS.length]
+            const color = CARD_COLORS[i % CARD_COLORS.length]
+            const isAlt = i % 2 === 1
             return (
-              <div className={`ben-item ben-item-${layout}`} key={i}>
+              <div
+                className={`ben-item ${isAlt ? "ben-item-alt" : ""}`}
+                key={i}
+                style={{ "--card-accent": color } as React.CSSProperties}
+              >
                 <div className="ben-item-icon" role="img" aria-label={b.title}>
                   <span className="ben-emoji">{b.icon}</span>
                 </div>

@@ -41,18 +41,41 @@ html {
   text-decoration: none;
 }
 
-/* ===== SHINY CTA BUTTON ===== */
+/* ===== SHINY CTA BUTTON (animated conic border) ===== */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-spin {
+  from { --gradient-angle: 0deg; }
+  to   { --gradient-angle: 360deg; }
+}
+
 .shiny-cta {
+  --gradient-angle: 0deg;
   position: relative;
   overflow: hidden;
   border-radius: 9999px;
   padding: 1rem 2.5rem;
-  background: linear-gradient(180deg, #22c55e 0%, #16a34a 55%, #15803d 100%);
-  border: 1.5px solid rgba(255,255,255,0.15);
+  background:
+    linear-gradient(135deg, #15803d, #16a34a) padding-box,
+    conic-gradient(
+      from var(--gradient-angle),
+      transparent 0%,
+      #15803d 5%,
+      #166534 15%,
+      #22c55e 30%,
+      transparent 40%,
+      transparent 100%
+    ) border-box;
+  border: 3px solid transparent;
   cursor: pointer;
   isolation: isolate;
-  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
-  box-shadow: 0 6px 24px rgba(34,197,94,0.28), inset 0 1px 0 rgba(255,255,255,0.2);
+  animation: border-spin 2.5s linear infinite;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  box-shadow: 0 4px 20px hsla(142, 71%, 45%, 0.25);
   text-decoration: none;
   display: inline-block;
 }
@@ -61,20 +84,20 @@ html {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(110deg, transparent 42%, rgba(255,255,255,0.12) 50%, transparent 58%);
+  background: radial-gradient(circle at 50% 50%, white 0.5px, transparent 0);
+  background-size: 4px 4px;
+  opacity: 0.1;
   z-index: 0;
   pointer-events: none;
 }
 
 .shiny-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 36px rgba(34,197,94,0.38), inset 0 1px 0 rgba(255,255,255,0.24);
-  filter: brightness(1.04);
+  transform: scale(1.03);
+  box-shadow: 0 8px 32px hsla(142, 71%, 45%, 0.4);
 }
 
 .shiny-cta:active {
-  transform: translateY(0) scale(0.98);
-  box-shadow: 0 3px 12px rgba(34,197,94,0.22);
+  transform: scale(0.97);
 }
 
 .shiny-cta:focus-visible {
@@ -84,6 +107,20 @@ html {
 
 .shiny-cta-sm {
   padding: 0.5rem 1.25rem;
+}
+
+@supports not (background: conic-gradient(from 0deg, red, blue)) {
+  .shiny-cta {
+    border: 2px solid #22c55e;
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shiny-cta {
+    animation: none;
+    --gradient-angle: 90deg;
+  }
 }
 
 @media (max-width: 640px) {
@@ -506,32 +543,6 @@ html {
   .vi-sc-dot { animation: none; }
 }
 
-.vi-cta {
-  display: block;
-  width: 100%;
-  max-width: 420px;
-  margin: 0 auto 14px;
-  padding: 18px 22px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, var(--cta) 0%, var(--cta-deep) 100%);
-  color: #FFFFFF;
-  font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 17px;
-  line-height: 1.15;
-  font-weight: 900;
-  letter-spacing: -.02em;
-  text-align: center;
-  text-decoration: none;
-  box-shadow: 0 14px 34px rgba(0,168,90,.28), inset 0 1px 0 rgba(255,255,255,.18);
-  transition: .25s ease;
-  animation: ctaPulse 1.8s ease-in-out infinite;
-}
-
-.vi-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 42px rgba(0,168,90,.34), inset 0 1px 0 rgba(255,255,255,.22);
-}
-
 .vi-progress-inline {
   max-width: 420px;
   margin: 0 auto;
@@ -642,7 +653,6 @@ html {
   .vi-top-bar-icon { font-size: 14px; }
   .vi-timer-segment { font-size: 14px; padding: 2px 5px; }
   .vi-top-bar.fixed .vi-timer-segment { font-size: 13px; padding: 2px 6px; }
-  .vi-cta { font-size: 15.5px; padding: 16px 18px; }
   .vi-cta-btn { width: 100%; text-align: center; }
   /* hide label text so all 3 timer segments fit in pill */
   .vi-top-bar.fixed .vi-top-bar-text { display: none; }
@@ -1212,12 +1222,22 @@ html {
 }
 
 .premium-btn.shiny-cta {
-  background: linear-gradient(180deg, var(--cta) 0%, var(--cta-darkest) 100%);
-  box-shadow: 0 4px 20px rgba(34,201,120,.3);
+  background:
+    linear-gradient(135deg, #059669, #047857) padding-box,
+    conic-gradient(
+      from var(--gradient-angle),
+      transparent 0%,
+      #059669 5%,
+      #047857 15%,
+      #10b981 30%,
+      transparent 40%,
+      transparent 100%
+    ) border-box;
+  box-shadow: 0 4px 20px hsla(160, 84%, 39%, 0.3);
 }
 
 .premium-btn.shiny-cta:hover {
-  box-shadow: 0 8px 32px rgba(34,201,120,.45);
+  box-shadow: 0 8px 32px hsla(160, 84%, 39%, 0.45);
 }
 
 .offer-bottom-info {
@@ -1582,32 +1602,15 @@ html {
   padding: 24px 20px;
   border-radius: 20px;
   background: var(--surface);
-  border: 1px solid rgba(11,127,232,.07);
-  box-shadow: var(--shadow-sm);
+  border: 1px solid color-mix(in srgb, var(--card-accent, var(--brand)) 15%, transparent);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--card-accent, var(--brand)) 6%, transparent);
   transition: transform 200ms ease, box-shadow 200ms ease;
   position: relative;
   overflow: hidden;
 }
 
-.ben-item-highlight {
-  grid-column: 1 / -1;
-  flex-direction: row;
-  align-items: center;
-  padding: 28px 24px;
-  background: linear-gradient(135deg, #FFFFFF 0%, #F0F7FF 100%);
-  border-color: rgba(11,127,232,.15);
-}
-
-.ben-item-wide {
-  grid-column: span 2;
-}
-
-@media (max-width: 480px) {
-  .ben-item-highlight,
-  .ben-item-wide {
-    grid-column: 1 / -1;
-    flex-direction: column;
-  }
+.ben-item-alt {
+  transform: translateY(4px);
 }
 
 .ben-item::before {
@@ -1615,14 +1618,18 @@ html {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--brand) 0%, var(--cta) 100%);
+  background: var(--card-accent, var(--brand));
   opacity: 0;
   transition: opacity 200ms ease;
 }
 
 .ben-item:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--card-accent, var(--brand)) 12%, transparent);
+}
+
+.ben-item-alt:hover {
+  transform: translateY(1px);
 }
 
 .ben-item:hover::before {
@@ -1636,14 +1643,8 @@ html {
   width: 56px;
   height: 56px;
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(11,127,232,.07) 0%, var(--brand-subtle) 100%);
+  background: color-mix(in srgb, var(--card-accent, var(--brand)) 10%, var(--surface));
   flex-shrink: 0;
-}
-
-.ben-item-highlight .ben-item-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 18px;
 }
 
 .ben-emoji {
