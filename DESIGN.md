@@ -9,20 +9,13 @@ colors:
   cta-green: "#00A85A"
   cta-green-light: "#22C978"
   urgency-red: "#DC2626"
-  urgency-red-dark: "#B91C1C"
   yellow: "#FFD166"
-  yellow-light: "#FEF9EC"
   background: "#F8FBFF"
   surface: "#FFFFFF"
   text-primary: "#082F63"
   text-body: "#425466"
   text-light: "#5B6B7B"
   border: "#E2E8F0"
-  border-light: "rgba(11,127,232,0.12)"
-  green-light-bg: "#E9FFF4"
-  blue-light-bg: "#EAF5FF"
-  red-light-bg: "#FEF2F2"
-  gold-light-bg: "#FFF8E1"
 typography:
   display:
     fontFamily: "Nunito, system-ui, sans-serif"
@@ -138,7 +131,6 @@ The palette is built around three functional groups: authority (blue), action (g
 - **Text Body** (#425466): Medium gray-blue for body copy. Readable and professional.
 - **Text Light** (#5B6B7B): Light gray for secondary text, captions, and metadata.
 - **Border** (#E2E8F0): Subtle gray for dividers and card borders.
-- **Border Light** (rgba(11,127,232,0.12)): Blue-tinted border for cards and interactive elements.
 
 ### Named Rules
 **The Urgency Rule.** Red (#DC2626) is reserved exclusively for time-sensitive elements: countdown timers, limited-time pricing, and scarcity indicators. Never use red for decorative purposes or non-urgent content.
@@ -185,8 +177,8 @@ The system uses a layered shadow strategy to create depth and hierarchy. Shadows
 
 ### Buttons
 - **Shape:** Pill-shaped (999px radius), full-width on mobile
-- **Primary CTA:** Green gradient (#22C978 → #00A85A), white text, 18px 22px padding, shadow depth
-- **Urgency CTA:** Red gradient (#DC2626 → #B91C1C), white text, same padding
+- **Primary CTA:** Green gradient (#22C978 to #00A85A), white text, 18px 22px padding, shadow depth
+- **Urgency CTA:** Red gradient (#DC2626 to #B91C1C), white text, same padding
 - **Secondary CTA:** White background, dark navy text, blue border
 - **Hover/Focus:** translateY(-2px), enhanced shadow, slight brightness increase
 - **Pulse Animation:** Subtle scale animation (1.045) on primary CTAs
