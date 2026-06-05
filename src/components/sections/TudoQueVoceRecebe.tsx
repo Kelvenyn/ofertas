@@ -6,7 +6,7 @@ import { OFFER } from "@/config/offer"
 
 export function TudoQueVoceRecebe() {
   const { title, titleHighlight, image, imageAlt, bullets } = OFFER.deliverables
-  const [visibleItems, setVisibleItems] = useState<boolean[]>(new Array(bullets.length).fill(false))
+  const [visibleItems, setVisibleItems] = useState<boolean[]>(() => new Array(bullets.length).fill(false))
   const listRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {

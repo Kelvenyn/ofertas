@@ -50,16 +50,22 @@ export function VendaImediata() {
   }, [])
 
   useEffect(() => {
+    let ticking = false
     function onScroll() {
-      const hero = heroRef.current
-      if (!hero) return
-      const heroBottom = hero.offsetTop + hero.offsetHeight
-      const scrollY = window.scrollY
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const hero = heroRef.current
+        if (!hero) { ticking = false; return }
+        const heroBottom = hero.offsetTop + hero.offsetHeight
+        const scrollY = window.scrollY
 
-      setIsFixed(scrollY > 60)
+        setIsFixed(scrollY > 60)
 
-      const progress = Math.min(Math.max(scrollY / (heroBottom * 0.6), 0), 1)
-      setScrollProgress(progress * 100)
+        const progress = Math.min(Math.max(scrollY / (heroBottom * 0.6), 0), 1)
+        setScrollProgress(progress * 100)
+        ticking = false
+      })
     }
     window.addEventListener("scroll", onScroll, { passive: true })
     onScroll()
@@ -76,7 +82,7 @@ export function VendaImediata() {
             <span className="vi-top-bar-icon">&#127873;</span>
             <span className="vi-top-bar-text">{timerLabel}</span>
           </div>
-          <div className="vi-top-bar-timer">
+          <div className="vi-top-bar-timer" aria-live="polite" aria-atomic="true">
             {timerParts.map((part, i) => (
               <span key={i} className={`vi-timer-segment${flipping[i] ? " flip" : ""}`}>
                 {part}

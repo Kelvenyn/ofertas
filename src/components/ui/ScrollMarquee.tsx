@@ -47,6 +47,7 @@ export function ScrollMarquee({
       ref={wrapRef}
       className={`scroll-marquee ${className}`}
       style={{ height, background: gradient }}
+      aria-hidden="true"
       onMouseEnter={pause}
       onMouseLeave={resume}
     >

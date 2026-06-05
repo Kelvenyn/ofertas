@@ -29,7 +29,14 @@ function FlipCard({ front, back, title, desc, price, index }: FlipCardProps) {
 
   return (
     <div className="bon-new-card">
-      <div className="bon-new-image-wrapper" onClick={handleClick}>
+      <div
+        className="bon-new-image-wrapper"
+        onClick={handleClick}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleClick() } }}
+        aria-label={`${flipped ? "Ocultar conteúdo de" : "Ver conteúdo de"} ${title}`}
+      >
         {!frontLoaded && <div className="bon-flip-skeleton" />}
 
         <div
