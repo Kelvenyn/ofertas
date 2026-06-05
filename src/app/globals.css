@@ -598,9 +598,12 @@ html {
   .vi-top-bar-label { font-size: 10.5px; }
   .vi-top-bar-icon { font-size: 14px; }
   .vi-timer-segment { font-size: 14px; padding: 2px 5px; }
-  .vi-top-bar.fixed .vi-timer-segment { font-size: 12px; padding: 1px 4px; }
+  .vi-top-bar.fixed .vi-timer-segment { font-size: 13px; padding: 2px 6px; }
   .vi-cta { font-size: 15.5px; padding: 16px 18px; }
   .vi-cta-btn { width: 100%; text-align: center; }
+  /* hide label text so all 3 timer segments fit in pill */
+  .vi-top-bar.fixed .vi-top-bar-text { display: none; }
+  .vi-top-bar.fixed .vi-top-bar-inner { gap: 10px; }
 }
 
 /* ===== COUNTER ===== */
