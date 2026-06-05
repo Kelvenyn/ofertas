@@ -1,0 +1,170 @@
+export interface OfferPalette {
+  brand: string
+  brandDeep: string
+  brandInk: string
+  brandDark: string
+  brandLight: string
+  brandSubtle: string
+  cta: string
+  ctaDeep: string
+  ctaDarkest: string
+  accent: string
+  yellow: string
+  bg: string
+}
+
+export interface OfferMeta {
+  title: string
+  description: string
+}
+
+export interface OfferHero {
+  pill: string
+  titleLine1: string
+  titleLine2: string
+  titleLine3: string
+  image: string
+  imageAlt: string
+  imageWidth: number
+  imageHeight: number
+  subtitle: string
+  ctaText: string
+  timerLabel: string
+  marqueeText: string
+  marqueeGradient: string
+}
+
+export interface OfferTestimonial {
+  src: string
+  alt: string
+  gradient: string
+}
+
+export interface OfferCounter {
+  prefix: string
+  target: number
+  label: string
+}
+
+export interface KitImage {
+  src: string
+  alt: string
+}
+
+export interface BenefitItem {
+  icon: string
+  title: string
+  desc: string
+}
+
+export interface IdealItem {
+  icon: string
+  title: string
+  desc: string
+}
+
+export interface BonusItem {
+  front: string
+  back: string
+  title: string
+  desc: string
+  price: string
+}
+
+export interface PricingPlan {
+  id: string
+  label: string
+  title: string
+  image: string
+  imageAlt: string
+  featured: boolean
+  badgeText?: string
+  extraNote?: string
+  oldPrice: string
+  price: string
+  installments: string
+  items: string[]
+  mutedItems?: string[]
+  ctaText: string
+  ctaHref: string
+}
+
+export interface AccessStep {
+  num: string
+  title: string
+  desc: string
+}
+
+export interface FaqItem {
+  q: string
+  a: string
+}
+
+export interface OfferConfig {
+  meta: OfferMeta
+  palette: OfferPalette
+  hero: OfferHero
+  socialProof: {
+    testimonials: OfferTestimonial[]
+  }
+  counter: OfferCounter
+  kitCards: {
+    heading1: string
+    heading2: string
+    images: KitImage[]
+  }
+  benefits: BenefitItem[]
+  urgency: {
+    pill: string
+    title: string
+    highlight: string
+    body: string
+    ctaText: string
+    trust: string[]
+  }
+  idealPara: {
+    pill: string
+    title: string
+    subtitle: string
+    items: IdealItem[]
+  }
+  deliverables: {
+    pill: string
+    title: string
+    titleHighlight: string
+    image: string
+    imageAlt: string
+    bullets: string[]
+  }
+  bonuses: BonusItem[]
+  pricing: {
+    pill: string
+    heading1: string
+    heading2: string
+    image: string
+    imageAlt: string
+    body: string
+    plans: PricingPlan[]
+    trustBadges: string[]
+  }
+  guarantee: {
+    marqueeText: string
+    icon: string
+    iconAlt: string
+    title: string
+    body: string
+  }
+  access: {
+    title: string
+    steps: AccessStep[]
+  }
+  faq: {
+    title: string
+    items: FaqItem[]
+  }
+  footer: {
+    updateTitle: string
+    updateBody: string
+    copyright: string
+  }
+}
