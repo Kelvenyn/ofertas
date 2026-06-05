@@ -11,59 +11,29 @@ interface ScrollMarqueeProps {
 }
 
 export function ScrollMarquee({
-  text = "Material em Alta Qualidade • Acesso Imediato • ",
+  text = "MATERIAL EM ALTA QUALIDADE • ACESSO IMEDIATO • BÔNUS INCLUÍDOS • ",
   gradient = "linear-gradient(135deg, #fd5b00 0%, #ff8c1a 35%, #ffc107 65%, #ffd41e 100%)",
   height = 48,
   className = "",
   reverse = false,
 }: ScrollMarqueeProps) {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
-  const pausedRef = useRef(false)
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const container = containerRef.current
-    const content = contentRef.current
-    if (!container || !content) return
+    const wrap = wrapRef.current
+    const track = trackRef.current
+    if (!wrap || !track) return
 
-    let pos = 0
-    let raf: number
-    let lastTime = 0
-
-    const speed = 80
-
-    const animate = (time: number) => {
-      if (!lastTime) lastTime = time
-      const dt = (time - lastTime) / 1000
-      lastTime = time
-
-      if (!pausedRef.current) {
-        const dir = reverse ? 1 : -1
-        pos += speed * dt * dir
-
-        const contentWidth = content.scrollWidth / 3
-        if (!reverse && pos <= -contentWidth) pos += contentWidth
-        if (reverse && pos >= 0) pos -= contentWidth
-
-        content.style.transform = `translateX(${pos}px)`
-      }
-
-      raf = requestAnimationFrame(animate)
-    }
-
-    const onMouseEnter = () => { pausedRef.current = true }
-    const onMouseLeave = () => { pausedRef.current = false }
-
-    container.addEventListener("mouseenter", onMouseEnter)
-    container.addEventListener("mouseleave", onMouseLeave)
-
-    raf = requestAnimationFrame(animate)
-    return () => {
-      cancelAnimationFrame(raf)
-      container.removeEventListener("mouseenter", onMouseEnter)
-      container.removeEventListener("mouseleave", onMouseLeave)
-    }
-  }, [reverse])
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        track.style.animationPlayState = entry.isIntersecting ? "running" : "paused"
+      },
+      { threshold: 0 }
+    )
+    obs.observe(wrap)
+    return () => obs.disconnect()
+  }, [])
 
   const content = (
     <span className="scroll-marquee-text">{text}</span>
@@ -71,11 +41,15 @@ export function ScrollMarquee({
 
   return (
     <div
-      ref={containerRef}
+      ref={wrapRef}
       className={`scroll-marquee ${className}`}
       style={{ height, background: gradient }}
     >
-      <div ref={contentRef} className="scroll-marquee-content">
+      <div
+        ref={trackRef}
+        className="scroll-marquee-content"
+        style={{ animationDirection: reverse ? "reverse" : "normal" }}
+      >
         {content}
         {content}
         {content}
