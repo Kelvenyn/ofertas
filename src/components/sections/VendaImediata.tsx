@@ -21,7 +21,7 @@ export function VendaImediata() {
       const fim = new Date()
       fim.setHours(23, 59, 59, 999)
       let diff = fim.getTime() - agora.getTime()
-      if (diff <= 0) { setTime("00h 00min 00s"); return }
+      if (diff <= 0) { setTime("00h 00m 00s"); return }
       const h = Math.floor(diff / 3600000)
       diff -= h * 3600000
       const m = Math.floor(diff / 60000)
@@ -29,7 +29,7 @@ export function VendaImediata() {
       const s = Math.floor(diff / 1000)
       const newParts = [
         `${String(h).padStart(2,"0")}h`,
-        `${String(m).padStart(2,"0")}min`,
+        `${String(m).padStart(2,"0")}m`,
         `${String(s).padStart(2,"0")}s`
       ]
 

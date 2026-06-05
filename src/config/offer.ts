@@ -31,7 +31,7 @@ export const OFFER: OfferConfig = {
     subtitle: "Materiais lúdicos, fichas de aplicação e atividades imprimíveis para trabalhar atenção, memória, leitura, escrita e raciocínio lógico com mais praticidade nos atendimentos infantis.",
     ctaText: "QUERO ACESSAR O KIT AGORA",
     timerLabel: "BÔNUS ENCERRAM EM",
-    marqueeText: "MATERIAL EM ALTA QUALIDADE • ACESSO IMEDIATO • BÔNUS INCLUÍDOS • ",
+    marqueeText: "Material em Alta Qualidade • Acesso Imediato • ",
     marqueeGradient: "linear-gradient(135deg, #fd5b00 0%, #ff8c1a 35%, #ffc107 65%, #ffd41e 100%)",
   },
   socialProof: {
@@ -47,7 +47,7 @@ export const OFFER: OfferConfig = {
   counter: {
     prefix: "+ de",
     target: 250,
-    label: "atividades psicopedagógicas",
+    label: "Atividades Psicopedagógicas",
   },
   kitCards: {
     heading1: "Conheça o Material",

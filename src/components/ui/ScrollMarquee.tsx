@@ -39,11 +39,16 @@ export function ScrollMarquee({
     <span className="scroll-marquee-text">{text}</span>
   )
 
+  const pause = () => { if (trackRef.current) trackRef.current.style.animationPlayState = "paused" }
+  const resume = () => { if (trackRef.current) trackRef.current.style.animationPlayState = "running" }
+
   return (
     <div
       ref={wrapRef}
       className={`scroll-marquee ${className}`}
       style={{ height, background: gradient }}
+      onMouseEnter={pause}
+      onMouseLeave={resume}
     >
       <div
         ref={trackRef}

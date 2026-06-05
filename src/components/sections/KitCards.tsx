@@ -5,8 +5,7 @@ import Image from "next/image"
 import { OFFER } from "@/config/offer"
 
 export function KitCards() {
-  const { heading1, heading2, images } = OFFER.kitCards
-  const headingLines = heading2.split('\n')
+  const { heading1, images } = OFFER.kitCards
   const wrapRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
 
@@ -30,8 +29,7 @@ export function KitCards() {
       <div className="bloco-categoria-inner">
         <div className="cat-topo-interpretacao">
           <div className="cat-titulo-interpretacao">
-            <span className="cat-numero-destaque">{heading1}</span>
-            <span className="cat-linha-titulo">{headingLines[0]}<br />{headingLines[1]}</span>
+            <span className="cat-heading-principal">{heading1}</span>
           </div>
         </div>
 

@@ -1,3 +1,4 @@
+import { ShinyButton } from "@/components/ui/ShinyButton"
 import { OFFER } from "@/config/offer"
 
 export function Benefits() {
@@ -17,9 +18,11 @@ export function Benefits() {
           ))}
         </div>
 
-        <a href="#oferta" className="ben-cta">
-          QUERO ACESSAR O KIT AGORA
-        </a>
+        <div className="ben-cta-wrap">
+          <ShinyButton href="#oferta">
+            QUERO ACESSAR O KIT AGORA
+          </ShinyButton>
+        </div>
       </div>
     </section>
   )
