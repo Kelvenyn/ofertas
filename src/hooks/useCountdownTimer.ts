@@ -24,9 +24,12 @@ export function useCountdownTimer(): TimeLeft {
   const [time, setTime] = useState<TimeLeft>({ h: 0, m: 0, s: 0 })
 
   useEffect(() => {
-    setTime(getTimeUntilMidnight())
+    const id = setTimeout(() => setTime(getTimeUntilMidnight()), 0)
     const iv = setInterval(() => setTime(getTimeUntilMidnight()), 1000)
-    return () => clearInterval(iv)
+    return () => {
+      clearTimeout(id)
+      clearInterval(iv)
+    }
   }, [])
 
   return time

@@ -17,7 +17,8 @@ export const OFFER: OfferConfig = {
     ctaDarkest: "#007D43",
     accent: "#FF8A5B",
     yellow: "#FFD166",
-    bg: "#F8FBFF",
+    bg: "#FFFFFF",
+    bgAlt: "#F5F8FF",
   },
   hero: {
     pill: "NEUROATIVIDADES KIDS",

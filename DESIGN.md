@@ -10,7 +10,8 @@ colors:
   cta-green-light: "#22C978"
   urgency-red: "#DC2626"
   yellow: "#FFD166"
-  background: "#F8FBFF"
+  background: "#FFFFFF"
+  background-alt: "#F5F8FF"
   surface: "#FFFFFF"
   text-primary: "#082F63"
   text-body: "#425466"
@@ -30,7 +31,7 @@ typography:
     lineHeight: 1.04
     letterSpacing: "-0.05em"
   body:
-    fontFamily: "Inter, system-ui, sans-serif"
+    fontFamily: "Manrope, system-ui, sans-serif"
     fontSize: "clamp(14px, 3.5vw, 16px)"
     fontWeight: 500
     lineHeight: 1.65
@@ -42,12 +43,6 @@ typography:
     lineHeight: 1
     letterSpacing: "0.06em"
     textTransform: "uppercase"
-  secondary:
-    fontFamily: "Sora, system-ui, sans-serif"
-    fontSize: "clamp(28px, 5vw, 44px)"
-    fontWeight: 800
-    lineHeight: 1.08
-    letterSpacing: "-0.045em"
 rounded:
   pill: "999px"
   card: "24px"
@@ -125,7 +120,8 @@ The palette is built around three functional groups: authority (blue), action (g
 - **Gold Accent** (#FFD166): Supporting accent for bonus sections, highlights, and positive emphasis.
 
 ### Neutral
-- **Background** (#F8FBFF): Very light blue-tinted white for body background. Clean and airy.
+- **Background** (#FFFFFF): Pure white background. Clean, high contrast, no AI tint.
+- **Background Alt** (#F5F8FF): Very subtle blue-tinted white for alternate sections. Creates rhythm without the "AI cream" tell.
 - **Surface** (#FFFFFF): Pure white for cards, containers, and elevated elements.
 - **Text Primary** (#082F63): Dark navy for headings and important text. Strong hierarchy.
 - **Text Body** (#425466): Medium gray-blue for body copy. Readable and professional.
@@ -140,16 +136,15 @@ The palette is built around three functional groups: authority (blue), action (g
 ## 3. Typography
 
 **Display Font:** Nunito (with system-ui fallback)
-**Body Font:** Inter (with system-ui fallback)
-**Label/Mono Font:** Sora (for secondary headings and special elements)
+**Body Font:** Manrope (with system-ui fallback)
 
-**Character:** Bold, confident, and action-oriented. Nunito's rounded terminals create approachability while the 900 weight delivers authority. Inter provides clean readability for body copy. The pairing balances friendliness with urgency.
+**Character:** Bold, confident, and action-oriented. Nunito's rounded terminals create approachability while the 900 weight delivers authority. Manrope provides clean, modern readability for body copy. The pairing balances friendliness with urgency while avoiding generic AI font choices.
 
 ### Hierarchy
 - **Hero Display** (900, clamp(34px, 6.3vw, 52px), 1.04): Main headline, maximum impact. Used in hero sections and primary value propositions.
 - **Section Display** (900, clamp(24px, 5.5vw, 34px), 1.1): Section headings. Clear hierarchy with tight letter-spacing (-0.04em).
 - **Card Display** (900, 20px, 1.2): Card titles and feature headings. Compact and punchy.
-- **Body** (500, clamp(14px, 3.5vw, 16px), 1.65): Readable body copy. Inter's humanist forms ensure legibility on mobile.
+- **Body** (500, clamp(14px, 3.5vw, 16px), 1.65): Readable body copy. Manrope's clean forms ensure legibility on mobile.
 - **Label** (900, 10.5px, 0.06em, uppercase): Section pills, badges, and small labels. High contrast for visibility.
 
 ### Named Rules
@@ -209,7 +204,7 @@ The system uses a layered shadow strategy to create depth and hierarchy. Shadows
 - **Item:** White card with subtle border and shadow
 - **Button:** Full-width, flex layout, Nunito font, 900 weight
 - **Icon:** Blue circle (24px) with white chevron, rotates on open
-- **Panel:** Max-height transition, Inter font body text
+- **Panel:** Max-height transition, Manrope font body text
 
 ### Social Proof Cards
 - **Layout:** Auto-fill grid (minmax(220px, 1fr))
@@ -225,7 +220,7 @@ The system uses a layered shadow strategy to create depth and hierarchy. Shadows
 - **Do** implement pill-shaped buttons with gradient backgrounds and shadow depth
 - **Do** use tight letterspacing (-0.04em to -0.05em) on headings for visual density
 - **Do** create visual hierarchy through spacing variation and color contrast
-- **Do** use Nunito for display text and Inter for body copy
+- **Do** use Nunito for display text and Manrope for body copy
 - **Do** implement card-based layouts with generous padding and subtle borders
 - **Do** use social proof elements: testimonials, numbers, visual trust signals
 - **Do** create multiple CTA touchpoints throughout the page

@@ -11,6 +11,7 @@ export interface OfferPalette {
   accent: string
   yellow: string
   bg: string
+  bgAlt: string
 }
 
 export interface OfferMeta {

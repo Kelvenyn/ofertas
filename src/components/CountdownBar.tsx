@@ -19,7 +19,7 @@ export function CountdownBar() {
       : false
 
   useEffect(() => {
-    setCollapsed(window.scrollY >= 80)
+    const raf = requestAnimationFrame(() => setCollapsed(window.scrollY >= 80))
     let ticking = false
     const onScroll = () => {
       if (!ticking) {
@@ -32,6 +32,7 @@ export function CountdownBar() {
     }
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => {
+      cancelAnimationFrame(raf)
       window.removeEventListener("scroll", onScroll)
       cancelAnimationFrame(rafRef.current)
     }
@@ -54,10 +55,12 @@ export function CountdownBar() {
     for (let i = 0; i < 6; i++) {
       if (current[i] !== prev[i]) next[i] = true
     }
-    setFlipping(next)
     prevDigits.current = current
-    const t = setTimeout(() => setFlipping(Array(6).fill(false)), 200)
-    return () => clearTimeout(t)
+    const id = setTimeout(() => {
+      setFlipping(next)
+      setTimeout(() => setFlipping(Array(6).fill(false)), 200)
+    }, 0)
+    return () => clearTimeout(id)
   }, [h, m, s])
 
   const hh = pad(h)
@@ -117,7 +120,7 @@ export function CountdownBar() {
         style={{
           position: "fixed",
           top: collapsed ? 10 : 0,
-          zIndex: 9999,
+          zIndex: 8000,
           height: collapsed ? 46 : 52,
           display: "flex",
           justifyContent: "center",

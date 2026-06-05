@@ -33,13 +33,14 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       }
     }
 
-    const id = "requestIdleCallback" in window
-      ? (window as any).requestIdleCallback(idleInit, { timeout: 2000 })
+    const hasIdle = "requestIdleCallback" in window
+    const id = hasIdle
+      ? (window as Window & { requestIdleCallback(cb: () => void, opts: { timeout: number }): number }).requestIdleCallback(idleInit, { timeout: 2000 })
       : setTimeout(idleInit, 100)
 
     return () => {
-      if ("requestIdleCallback" in window) (window as any).cancelIdleCallback(id)
-      else clearTimeout(id)
+      if (hasIdle) (window as Window & { cancelIdleCallback(id: number): void }).cancelIdleCallback(id as number)
+      else clearTimeout(id as number)
       cleanupRef.current?.()
     }
   }, [])

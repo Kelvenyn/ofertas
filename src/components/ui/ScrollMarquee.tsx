@@ -55,10 +55,13 @@ export function ScrollMarquee({
 
   useEffect(() => {
     measure()
-    setReady(true)
+    const id = setTimeout(() => setReady(true), 0)
     const ro = new ResizeObserver(measure)
     if (blockRef.current) ro.observe(blockRef.current)
-    return () => ro.disconnect()
+    return () => {
+      clearTimeout(id)
+      ro.disconnect()
+    }
   }, [measure])
 
   useEffect(() => {

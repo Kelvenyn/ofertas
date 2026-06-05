@@ -43,11 +43,11 @@ export function SocialProof() {
   const slides = OFFER.socialProof.testimonials
   const COUNT = slides.length
 
+  const [currentPos, setCurrentPos] = useState(0)
   const posRef = useRef(0)
-  const [, forceRender] = useState(0)
-  const rerender = useCallback(() => forceRender((n) => n + 1), [])
 
   const [isInteracting, setIsInteracting] = useState(false)
+  const [isDragging, setIsDragging] = useState(false)
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
@@ -61,10 +61,13 @@ export function SocialProof() {
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)")
-    setPrefersReducedMotion(mq.matches)
+    const id = setTimeout(() => setPrefersReducedMotion(mq.matches), 0)
     const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches)
     mq.addEventListener("change", handler)
-    return () => mq.removeEventListener("change", handler)
+    return () => {
+      clearTimeout(id)
+      mq.removeEventListener("change", handler)
+    }
   }, [])
 
   useEffect(() => {
@@ -105,19 +108,19 @@ export function SocialProof() {
 
       if (Math.abs(displacement) < 0.001 && Math.abs(velocityRef.current) < 0.01) {
         posRef.current = target
+      setCurrentPos(target)
         velocityRef.current = 0
         targetRef.current = null
         animRef.current = null
-        rerender()
         return
       }
 
-      rerender()
+      setCurrentPos(posRef.current)
       animRef.current = requestAnimationFrame(tick)
     }
 
     animRef.current = requestAnimationFrame(tick)
-  }, [stopAnimation, rerender])
+  }, [stopAnimation, setCurrentPos])
 
   useEffect(() => {
     if (isInteracting || prefersReducedMotion) return
@@ -132,7 +135,7 @@ export function SocialProof() {
 
       if (isVisibleRef.current && targetRef.current === null && !paused) {
         posRef.current += dt * 0.15
-        rerender()
+        setCurrentPos(posRef.current)
       }
       id = requestAnimationFrame(autoTick)
     }
@@ -153,7 +156,7 @@ export function SocialProof() {
       cancelAnimationFrame(id)
       document.removeEventListener("visibilitychange", handleVisibility)
     }
-  }, [isInteracting, prefersReducedMotion, rerender])
+  }, [isInteracting, prefersReducedMotion, setCurrentPos])
 
   const goTo = useCallback((direction: number) => {
     stopAnimation()
@@ -171,6 +174,7 @@ export function SocialProof() {
 
     const cardWidth = el.offsetWidth * 0.45 || 300
     dragRef.current = { startX: e.clientX, startPos: posRef.current, cardWidth }
+    setIsDragging(true)
     setIsInteracting(true)
     el.setPointerCapture(e.pointerId)
   }
@@ -180,12 +184,13 @@ export function SocialProof() {
     const delta = e.clientX - dragRef.current.startX
     const posDelta = -(delta / dragRef.current.cardWidth)
     posRef.current = dragRef.current.startPos + posDelta
-    rerender()
+    setCurrentPos(posRef.current)
   }
 
   const handlePointerUp = () => {
     if (dragRef.current) {
       dragRef.current = null
+      setIsDragging(false)
       springToNearest()
       setTimeout(() => setIsInteracting(false), 800)
     }
@@ -213,7 +218,6 @@ export function SocialProof() {
     setTimeout(() => setIsInteracting(false), 800)
   }
 
-  const currentPos = posRef.current
   const centerIndex = Math.round(currentPos)
   const visibleCards = [-2, -1, 0, 1, 2].map((o) => {
     const slideIndex = mod(centerIndex + o, COUNT)
@@ -283,7 +287,7 @@ export function SocialProof() {
                   className="sp-story-card"
                   style={{
                     ...getInterpolatedStyle(visualOffset),
-                    cursor: isCenter ? (dragRef.current ? "grabbing" : "grab") : "pointer",
+                    cursor: isCenter ? (isDragging ? "grabbing" : "grab") : "pointer",
                   }}
                   onClick={() => handleCardClick(visualOffset)}
                   aria-hidden={!isCenter}

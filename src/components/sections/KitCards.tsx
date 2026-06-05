@@ -35,7 +35,7 @@ export function KitCards() {
     return () => obs.disconnect()
   }, [])
 
-  const animate = useCallback(() => {
+  const animate = useCallback(function rafLoop() {
     if (!trackRef.current) return
     if (autoPlay.current && !isDragging.current && isVisibleRef.current && !document.hidden) {
       offsetRef.current -= SCROLL_SPEED
@@ -52,7 +52,7 @@ export function KitCards() {
     }
 
     track.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`
-    rafRef.current = requestAnimationFrame(animate)
+    rafRef.current = requestAnimationFrame(rafLoop)
   }, [])
 
   useEffect(() => {
