@@ -1,0 +1,28 @@
+
+> ai-website-clone-template@0.3.1 dev
+> next dev --port 51421
+
+▲ Next.js 16.2.1 (Turbopack)
+- Local:         http://localhost:51421
+- Network:       http://192.168.3.5:51421
+✓ Ready in 535ms
+
+ GET / 200 in 743ms (next.js: 270ms, application-code: 473ms)
+ GET / 200 in 115ms (next.js: 4ms, application-code: 112ms)
+✓ Compiled in 162ms
+ GET / 200 in 307ms (next.js: 39ms, application-code: 267ms)
+ GET / 200 in 141ms (next.js: 6ms, application-code: 135ms)
+ GET / 200 in 97ms (next.js: 5ms, application-code: 92ms)
+ GET / 200 in 317ms (next.js: 78ms, application-code: 239ms)
+ GET / 200 in 58ms (next.js: 3ms, application-code: 55ms)
+✓ Compiled in 176ms
+✓ Compiled in 162ms
+✓ Compiled in 156ms
+ GET / 200 in 78ms (next.js: 34ms, application-code: 44ms)
+✓ Compiled in 51ms
+✓ Compiled in 55ms
+ GET / 200 in 193ms (next.js: 35ms, application-code: 158ms)
+✓ Compiled in 73ms
+✓ Compiled in 66ms
+✓ Compiled in 151ms
+✓ Compiled in 71ms

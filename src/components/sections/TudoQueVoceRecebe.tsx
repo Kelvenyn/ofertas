@@ -5,7 +5,7 @@ import Image from "next/image"
 import { OFFER } from "@/config/offer"
 
 export function TudoQueVoceRecebe() {
-  const { pill, title, titleHighlight, image, imageAlt, bullets } = OFFER.deliverables
+  const { title, titleHighlight, image, imageAlt, bullets } = OFFER.deliverables
   const [visibleItems, setVisibleItems] = useState<boolean[]>(new Array(bullets.length).fill(false))
   const listRef = useRef<HTMLDivElement>(null)
 
@@ -39,8 +39,6 @@ export function TudoQueVoceRecebe() {
   return (
     <section className="tqvr-section">
       <div className="tqvr-card">
-        <div className="tqvr-pill">{pill}</div>
-
         <h2 className="tqvr-title">
           {title}
           <span>no <strong>{titleHighlight}</strong></span>

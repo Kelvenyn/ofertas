@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito, Inter } from "next/font/google";
+import { Nunito, Manrope } from "next/font/google";
 import { OFFER } from "@/config/offer";
 import "./globals.css";
 
@@ -9,10 +9,10 @@ const nunito = Nunito({
   weight: ["700", "800", "900"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 
@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${nunito.variable} ${inter.variable} antialiased`}
+      className={`${nunito.variable} ${manrope.variable} antialiased`}
       style={{
         "--brand": p.brand,
         "--brand-deep": p.brandDeep,

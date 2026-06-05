@@ -104,8 +104,6 @@ export function Bonuses() {
   return (
     <section className="bon-section">
       <div className="bon-inner">
-        <div className="bon-pill">BÔNUS INCLUÍDOS</div>
-
         <h2 className="bon-title">6 bônus exclusivos</h2>
 
         <p className="bon-sub">

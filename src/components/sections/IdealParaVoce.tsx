@@ -1,12 +1,10 @@
 import { OFFER } from "@/config/offer"
 
 export function IdealParaVoce() {
-  const { pill, title, subtitle, items } = OFFER.idealPara
+  const { title, subtitle, items } = OFFER.idealPara
   return (
     <section className="idv-section">
       <div className="idv-inner">
-        <div className="idv-pill">{pill}</div>
-
         <h2 className="idv-title">{title}</h2>
 
         <p className="idv-sub">

@@ -8,12 +8,14 @@ export function Benefits() {
       <div className="ben-inner">
         <h2 className="ben-title">Benefícios do material</h2>
 
-        <div className="ben-grid">
+        <div className="ben-list">
           {benefits.map((b, i) => (
-            <div className="ben-card" key={i}>
-              <div className="ben-card-icon">{b.icon}</div>
-              <h3 className="ben-card-title">{b.title}</h3>
-              <p className="ben-card-desc">{b.desc}</p>
+            <div className="ben-item" key={i}>
+              <div className="ben-item-icon">{b.icon}</div>
+              <div className="ben-item-content">
+                <h3 className="ben-item-title">{b.title}</h3>
+                <p className="ben-item-desc">{b.desc}</p>
+              </div>
             </div>
           ))}
         </div>
