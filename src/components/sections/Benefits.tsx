@@ -44,7 +44,6 @@ function BenefitCard({ icon, title, desc, index }: { icon: string; title: string
           <p className="benefit-card-desc">{desc}</p>
         </div>
       </div>
-      <span className="benefit-card-bottom">{title}</span>
     </div>
   )
 }
