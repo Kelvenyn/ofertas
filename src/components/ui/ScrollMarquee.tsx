@@ -11,7 +11,7 @@ interface ScrollMarqueeProps {
 }
 
 export function ScrollMarquee({
-  text = "MATERIAL EM ALTA QUALIDADE • ACESSO IMEDIATO • BÔNUS INCLUÍDOS • ",
+  text = "Material em Alta Qualidade • Acesso Imediato • ",
   gradient = "linear-gradient(135deg, #fd5b00 0%, #ff8c1a 35%, #ffc107 65%, #ffd41e 100%)",
   height = 48,
   className = "",
@@ -19,6 +19,7 @@ export function ScrollMarquee({
 }: ScrollMarqueeProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
+  const pausedRef = useRef(false)
 
   useEffect(() => {
     const container = containerRef.current
@@ -36,19 +37,32 @@ export function ScrollMarquee({
       const dt = (time - lastTime) / 1000
       lastTime = time
 
-      const dir = reverse ? 1 : -1
-      pos += speed * dt * dir
+      if (!pausedRef.current) {
+        const dir = reverse ? 1 : -1
+        pos += speed * dt * dir
 
-      const contentWidth = content.scrollWidth / 2
-      if (!reverse && pos <= -contentWidth) pos += contentWidth
-      if (reverse && pos >= 0) pos -= contentWidth
+        const contentWidth = content.scrollWidth / 3
+        if (!reverse && pos <= -contentWidth) pos += contentWidth
+        if (reverse && pos >= 0) pos -= contentWidth
 
-      content.style.transform = `translateX(${pos}px)`
+        content.style.transform = `translateX(${pos}px)`
+      }
+
       raf = requestAnimationFrame(animate)
     }
 
+    const onMouseEnter = () => { pausedRef.current = true }
+    const onMouseLeave = () => { pausedRef.current = false }
+
+    container.addEventListener("mouseenter", onMouseEnter)
+    container.addEventListener("mouseleave", onMouseLeave)
+
     raf = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(raf)
+    return () => {
+      cancelAnimationFrame(raf)
+      container.removeEventListener("mouseenter", onMouseEnter)
+      container.removeEventListener("mouseleave", onMouseLeave)
+    }
   }, [reverse])
 
   const content = (

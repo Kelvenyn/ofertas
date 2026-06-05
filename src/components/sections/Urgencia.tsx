@@ -5,11 +5,8 @@ export function Urgencia() {
     <section className="urg-section">
       <div className="urg-inner">
         <div className="urg-card">
-          <div className="urg-glow" />
-
           <div className="urg-pill">
-            <span className="urg-pill-icon">&#9889;</span>
-            OPORTUNIDADE ÚNICA
+            <span>&#9889;</span> OPORTUNIDADE ÚNICA
           </div>
 
           <h2 className="urg-title">
@@ -19,28 +16,19 @@ export function Urgencia() {
             de verdade?
           </h2>
 
-          <div className="urg-dots">
-            <span className="urg-dot" />
-            <span className="urg-dot urg-dot-active" />
-            <span className="urg-dot" />
-          </div>
-
           <p className="urg-text">
             Em poucos minutos você já consegue<br />
             abrir o material e começar a<br />
             aplicar com seus pacientes.
           </p>
 
-          <div className="urg-cta-wrap">
-            <ShinyButton href="#oferta" className="urg-cta-btn">
-              Comece agora
-            </ShinyButton>
-          </div>
+          <ShinyButton href="#oferta" className="urg-cta-btn">
+            Comece agora
+          </ShinyButton>
 
           <div className="urg-trust">
-            <span>ACESSO IMEDIATO</span>
-            <span className="urg-trust-sep">&bull;</span>
-            <span>ACESSO VITALÍCIO</span>
+            <span>&#128274; ACESSO IMEDIATO</span>
+            <span>&#128274; ACESSO VITALÍCIO</span>
           </div>
         </div>
       </div>

@@ -1,192 +1,142 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useCallback, useEffect } from "react"
 
-interface BonusItem {
+const bonuses = [
+  {
+    front: "/images/CR-NINJA-15.webp",
+    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_26_00.webp",
+    title: "Planner Bíblico",
+    desc: "Cronograma organizado para criar constância na leitura diária.",
+    price: "R$ 47,00",
+  },
+  {
+    front: "/images/CR-NINJA-16.webp",
+    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_56-1.webp",
+    title: "Guia de Oração",
+    desc: "Roteiro diário para aprofundar sua vida espiritual.",
+    price: "R$ 47,00",
+  },
+  {
+    front: "/images/CR-NINJA-17.webp",
+    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_52-1.webp",
+    title: "Planilha de Estudos",
+    desc: "Acompanhe seu progresso na leitura bíblica.",
+    price: "R$ 47,00",
+  },
+  {
+    front: "/images/CR-NINJA-18.webp",
+    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_33.webp",
+    title: "Marcadores Exclusivos",
+    desc: "Organize suas passagens favoritas com facilidade.",
+    price: "R$ 47,00",
+  },
+  {
+    front: "/images/CR-NINJA-15.webp",
+    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_44-1.webp",
+    title: "Devocional Semanal",
+    desc: "Reflexões práticas para cada dia da semana.",
+    price: "R$ 47,00",
+  },
+  {
+    front: "/images/CR-NINJA-16.webp",
+    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_48-1.webp",
+    title: "Atlas Bíblico",
+    desc: "Mapas ilustrados para entender o contexto geográfico.",
+    price: "R$ 47,00",
+  },
+]
+
+interface FlipCardProps {
   front: string
   back: string
   title: string
   desc: string
   price: string
+  index: number
 }
 
-const bonuses: BonusItem[] = [
-  {
-    front: "/images/CR-NINJA-15.webp",
-    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_26_00.webp",
-    title: "Cartões de Reforço Positivo",
-    desc: "Quadro de incentivo lúdico para motivar a criança durante as sessões.",
-    price: "R$ 27,00",
-  },
-  {
-    front: "/images/CR-NINJA-16.webp",
-    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_56-1.webp",
-    title: "Roteiro de Sondagem Inicial",
-    desc: "Guia prático para avaliar o nível da criança e planejar intervenções.",
-    price: "R$ 27,00",
-  },
-  {
-    front: "/images/CR-NINJA-17.webp",
-    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_52-1.webp",
-    title: "Atividades para Casa",
-    desc: "Exercícios para os pais aplicar em casa e reforçar o trabalho.",
-    price: "R$ 27,00",
-  },
-  {
-    front: "/images/CR-NINJA-18.webp",
-    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_33.webp",
-    title: "Registro de Evolução",
-    desc: "Fichas para documentar a evolução da criança com clareza.",
-    price: "R$ 27,00",
-  },
-  {
-    front: "/images/CR-NINJA-15.webp",
-    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_44-1.webp",
-    title: "Jogo da Memória",
-    desc: "Atividade lúdica para estimular memória visual e concentração.",
-    price: "R$ 27,00",
-  },
-  {
-    front: "/images/CR-NINJA-16.webp",
-    back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_48-1.webp",
-    title: "Sequência Lógica",
-    desc: "Exercícios para desenvolver raciocínio e organização mental.",
-    price: "R$ 27,00",
-  },
-]
-
-const totalBonusValue = bonuses.reduce((sum, b) => {
-  const val = parseFloat(b.price.replace("R$ ", "").replace(".", "").replace(",", "."))
-  return sum + val
-}, 0)
-
-function BonusCard({ bonus, index }: { bonus: BonusItem; index: number }) {
+function FlipCard({ front, back, title, desc, price, index }: FlipCardProps) {
   const [flipped, setFlipped] = useState(false)
   const [frontLoaded, setFrontLoaded] = useState(false)
-  const [backLoaded, setBackLoaded] = useState(false)
-  const backImgRef = useRef<HTMLImageElement | null>(null)
 
   useEffect(() => {
     const img = new Image()
-    img.src = bonus.back
-    img.onload = () => setBackLoaded(true)
-    backImgRef.current = img
-  }, [bonus.back])
+    img.src = back
+  }, [back])
 
-  const handleFlip = () => {
-    if (backLoaded) setFlipped(!flipped)
-  }
-
-  return (
-    <div className="bon-card">
-      <div className="bon-card-emoji">&#9757;&#65039;</div>
-
-      <div
-        className={`bon-card-image-wrapper ${flipped ? "flipped" : ""}`}
-        onClick={handleFlip}
-      >
-        {!frontLoaded && <div className="bon-card-skeleton" />}
-
-        <div className="bon-card-image-inner" style={{ opacity: frontLoaded ? 1 : 0 }}>
-          {!flipped ? (
-            <img
-              src={bonus.front}
-              alt={bonus.title}
-              className="bon-card-image"
-              loading="lazy"
-              onLoad={() => setFrontLoaded(true)}
-            />
-          ) : (
-            <img
-              src={bonus.back}
-              alt={`${bonus.title} - conteúdo`}
-              className="bon-card-image"
-              loading="lazy"
-            />
-          )}
-        </div>
-
-        <div className="bon-card-banner">
-          <span>&#127873; BÔNUS #{index + 1}</span>
-        </div>
-      </div>
-
-      <p className="bon-card-hint">Toque na imagem acima para ver o conteúdo.</p>
-
-      <div className="bon-card-pill">{bonus.title}</div>
-
-      <p className="bon-card-desc">{bonus.desc}</p>
-
-      <div className="bon-card-value">
-        Valor: <span>{bonus.price}</span>
-      </div>
-
-      <div className="bon-card-gratis-pill">&#127873; GRÁTIS</div>
-    </div>
-  )
-}
-
-function SummaryCard() {
-  const [timeLeft, setTimeLeft] = useState({ hours: 7, minutes: 52, seconds: 20 })
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        let { hours, minutes, seconds } = prev
-        seconds--
-        if (seconds < 0) {
-          seconds = 59
-          minutes--
-        }
-        if (minutes < 0) {
-          minutes = 59
-          hours--
-        }
-        if (hours < 0) {
-          hours = 23
-          minutes = 59
-          seconds = 59
-        }
-        return { hours, minutes, seconds }
-      })
-    }, 1000)
-    return () => clearInterval(timer)
+  const handleClick = useCallback(() => {
+    setFlipped(f => !f)
   }, [])
 
-  const format = (n: number) => String(n).padStart(2, "0")
+  const bonusNumber = index + 1
 
   return (
-    <div className="bon-summary">
-      <h3 className="bon-summary-title">VALOR TOTAL DOS BÔNUS</h3>
+    <div className="bon-new-card">
+      <div className="bon-new-image-wrapper" onClick={handleClick}>
+        {!frontLoaded && <div className="bon-flip-skeleton" />}
 
-      <div className="bon-summary-price">
-        R$ {totalBonusValue.toFixed(2).replace(".", ",").replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+        <div
+          className="bon-new-perspective"
+          style={{ opacity: frontLoaded ? 1 : 0 }}
+        >
+          <div
+            className="bon-new-inner"
+            style={{
+              transform: flipped ? "rotateY(-180deg)" : "rotateY(0deg)",
+            }}
+          >
+            {/* Front */}
+            <div className="bon-new-face bon-new-front">
+              <img
+                src={front}
+                alt={title}
+                className="bon-new-img"
+                loading="lazy"
+                onLoad={() => setFrontLoaded(true)}
+              />
+              <div className="bon-new-stripe">
+                <span className="bon-new-stripe-text">🎁 BÔNUS #{bonusNumber}</span>
+              </div>
+              {!flipped && (
+                <div className="bon-new-hand">
+                  <span className="bon-new-hand-emoji">☝🏽</span>
+                </div>
+              )}
+            </div>
+
+            {/* Back */}
+            <div className="bon-new-face bon-new-back">
+              <img
+                src={back}
+                alt={`${title} - conteúdo`}
+                className="bon-new-img"
+                loading="lazy"
+              />
+              <div className="bon-new-back-hint">
+                &#8634; Toque para voltar
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <button className="bon-summary-btn">
-        &#127873; GRÁTIS
-      </button>
+      <p className="bon-new-touch-hint">
+        <em>Toque na imagem acima para ver o conteúdo.</em>
+      </p>
 
-      <p className="bon-summary-note">Incluso no Plano Completo</p>
+      <div className="bon-new-info">
+        <span className="bon-new-pill-title">{title}</span>
+        <p className="bon-new-desc">{desc}</p>
+        <span className="bon-new-price">{price}</span>
 
-      <div className="bon-summary-timer-label">
-        &#9203; OFERTA EXPIRA EM
-      </div>
-
-      <div className="bon-summary-timer">
-        <div className="bon-summary-timer-block">
-          <span className="bon-summary-timer-num">{format(timeLeft.hours)}</span>
-          <span className="bon-summary-timer-unit">h</span>
+        <div className="bon-new-timer">
+          <span className="bon-new-timer-icon">&#9203;</span>
+          <span className="bon-new-timer-text">OFERTA EXPIRA COM O CRONÔMETRO</span>
         </div>
-        <span className="bon-summary-timer-sep">:</span>
-        <div className="bon-summary-timer-block">
-          <span className="bon-summary-timer-num">{format(timeLeft.minutes)}</span>
-          <span className="bon-summary-timer-unit">m</span>
-        </div>
-        <span className="bon-summary-timer-sep">:</span>
-        <div className="bon-summary-timer-block">
-          <span className="bon-summary-timer-num">{format(timeLeft.seconds)}</span>
-          <span className="bon-summary-timer-unit">s</span>
+
+        <div className="bon-new-pill-free">
+          🎁 GRÁTIS
         </div>
       </div>
     </div>
@@ -202,17 +152,15 @@ export function Bonuses() {
         <h2 className="bon-title">6 bônus exclusivos</h2>
 
         <p className="bon-sub">
-          Ao garantir o NeuroAtividades Kids hoje, você leva também estes materiais
-          extras para enriquecer ainda mais seus atendimentos.
+          Ao garantir o kit hoje, você leva também estes materiais
+          extras para enriquecer ainda mais sua experiência.
         </p>
 
-        <div className="bon-cards">
+        <div className="bon-grid">
           {bonuses.map((b, i) => (
-            <BonusCard key={i} bonus={b} index={i} />
+            <FlipCard key={i} index={i} {...b} />
           ))}
         </div>
-
-        <SummaryCard />
       </div>
     </section>
   )

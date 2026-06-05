@@ -1,3 +1,5 @@
+import { ShinyButton } from "@/components/ui/ShinyButton"
+
 const benefits = [
   {
     icon: "🧠",
@@ -37,9 +39,9 @@ export function Benefits() {
           ))}
         </div>
 
-        <a href="#oferta" className="ben-cta">
+        <ShinyButton href="#oferta" className="ben-cta-btn">
           QUERO ACESSAR O KIT AGORA
-        </a>
+        </ShinyButton>
       </div>
     </section>
   )

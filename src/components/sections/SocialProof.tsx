@@ -1,170 +1,63 @@
 "use client"
 
-import { useState, useRef, useCallback, useEffect } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useRef, useEffect, useState } from "react"
 
 const testimonials = [
-  { src: "/images/CR-NINJA-15.webp", alt: "Depoimento 1", color: "linear-gradient(90deg, #0B7FE8, #1D4ED8)" },
-  { src: "/images/CR-NINJA-16.webp", alt: "Depoimento 2", color: "linear-gradient(90deg, #22C978, #1AAF64)" },
-  { src: "/images/CR-NINJA-17.webp", alt: "Depoimento 3", color: "linear-gradient(90deg, #49A6FF, #0B7FE8)" },
-  { src: "/images/CR-NINJA-18.webp", alt: "Depoimento 4", color: "linear-gradient(90deg, #082F63, #1D4ED8)" },
-  { src: "/images/CR-NINJA-15.webp", alt: "Depoimento 5", color: "linear-gradient(90deg, #22C978, #4ADE80)" },
-  { src: "/images/CR-NINJA-16.webp", alt: "Depoimento 6", color: "linear-gradient(90deg, #0B7FE8, #49A6FF)" },
+  { src: "/images/CR-NINJA-15.webp", alt: "Depoimento 1" },
+  { src: "/images/CR-NINJA-16.webp", alt: "Depoimento 2" },
+  { src: "/images/CR-NINJA-17.webp", alt: "Depoimento 3" },
+  { src: "/images/CR-NINJA-18.webp", alt: "Depoimento 4" },
+  { src: "/images/CR-NINJA-15.webp", alt: "Depoimento 5" },
+  { src: "/images/CR-NINJA-16.webp", alt: "Depoimento 6" },
 ]
-
-const CONFIGS = [
-  { scale: 1, rotateY: 0, tX: 0, tZ: 0, opacity: 1 },
-  { scale: 0.7, rotateY: 48, tX: 90, tZ: -250, opacity: 0.45 },
-  { scale: 0.5, rotateY: 62, tX: 140, tZ: -420, opacity: 0.1 },
-]
-
-function lerp(a: number, b: number, t: number) {
-  return a + (b - a) * t
-}
-
-function getInterpolatedStyle(offset: number): React.CSSProperties {
-  const absOffset = Math.abs(offset)
-  if (absOffset > 2.5) return { visibility: "hidden", position: "absolute" }
-
-  const sign = offset >= 0 ? 1 : -1
-  const idx = Math.min(Math.floor(absOffset), 1)
-  const frac = absOffset - idx
-  const from = CONFIGS[idx]
-  const to = CONFIGS[Math.min(idx + 1, 2)]
-
-  const scale = lerp(from.scale, to.scale, frac)
-  const rotateY = lerp(from.rotateY, to.rotateY, frac) * -sign
-  const tX = lerp(from.tX, to.tX, frac) * sign
-  const tZ = lerp(from.tZ, to.tZ, frac)
-  const opacity = lerp(from.opacity, to.opacity, frac)
-  const z = Math.round(lerp(10, 1, absOffset / 2))
-
-  return {
-    position: "absolute",
-    transform: `translateX(${tX}%) translateZ(${tZ}px) rotateY(${rotateY}deg) scale(${scale})`,
-    opacity,
-    zIndex: z,
-    willChange: absOffset < 1.5 ? "transform, opacity" : "auto",
-  }
-}
 
 export function SocialProof() {
-  const [activeSlide, setActiveSlide] = useState(0)
-  const posRef = useRef(0)
-  const velocityRef = useRef(0)
-  const targetRef = useRef(0)
+  const containerRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
-  const rafRef = useRef<number>(0)
-  const lastTimeRef = useRef(0)
-  const autoTimerRef = useRef<NodeJS.Timeout | null>(null)
-
-  // Drag state
-  const isDragging = useRef(false)
-  const dragStartX = useRef(0)
-  const dragStartPos = useRef(0)
-  const lastDragX = useRef(0)
-  const lastDragTime = useRef(0)
-
-  const stiffness = 300
-  const damping = 26
-
-  const animate = useCallback((time: number) => {
-    const dt = lastTimeRef.current ? Math.min((time - lastTimeRef.current) / 1000, 0.05) : 0.016
-    lastTimeRef.current = time
-
-    const displacement = posRef.current - targetRef.current
-    const springForce = -stiffness * displacement
-    const dampingForce = -damping * velocityRef.current
-    velocityRef.current += (springForce + dampingForce) * dt
-    posRef.current += velocityRef.current * dt
-
-    const roundPos = Math.round(posRef.current * 100) / 100
-    if (roundPos !== posRef.current || Math.abs(velocityRef.current) > 0.001) {
-      trackRef.current?.style.setProperty("--carousel-offset", `${roundPos}`)
-    }
-
-    rafRef.current = requestAnimationFrame(animate)
-  }, [])
+  const pausedRef = useRef(false)
+  const [activeIdx, setActiveIdx] = useState(0)
 
   useEffect(() => {
-    rafRef.current = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(rafRef.current)
-  }, [animate])
+    const container = containerRef.current
+    const track = trackRef.current
+    if (!container || !track) return
 
-  useEffect(() => {
-    targetRef.current = -activeSlide
-  }, [activeSlide])
+    let pos = 0
+    let raf: number
+    let lastTime = 0
+    const speed = 40
+    const cardWidth = 260
 
-  useEffect(() => {
-    autoTimerRef.current = setInterval(() => {
-      setActiveSlide(prev => (prev + 1) % testimonials.length)
-    }, 4000)
-    return () => {
-      if (autoTimerRef.current) clearInterval(autoTimerRef.current)
-    }
-  }, [])
+    const animate = (time: number) => {
+      if (!lastTime) lastTime = time
+      const dt = (time - lastTime) / 1000
+      lastTime = time
 
-  const goTo = (idx: number) => {
-    if (autoTimerRef.current) clearInterval(autoTimerRef.current)
-    setActiveSlide(idx)
-    autoTimerRef.current = setInterval(() => {
-      setActiveSlide(prev => (prev + 1) % testimonials.length)
-    }, 4000)
-  }
-
-  const prev = () => goTo(activeSlide === 0 ? testimonials.length - 1 : activeSlide - 1)
-  const next = () => goTo((activeSlide + 1) % testimonials.length)
-
-  // Drag handlers
-  const handleDragStart = (clientX: number) => {
-    isDragging.current = true
-    dragStartX.current = clientX
-    dragStartPos.current = posRef.current
-    lastDragX.current = clientX
-    lastDragTime.current = Date.now()
-    velocityRef.current = 0
-  }
-
-  const handleDragMove = (clientX: number) => {
-    if (!isDragging.current) return
-    const dx = clientX - dragStartX.current
-    const newPos = dragStartPos.current + dx / 200
-    posRef.current = newPos
-
-    const now = Date.now()
-    const timeDelta = now - lastDragTime.current
-    if (timeDelta > 0) {
-      velocityRef.current = (clientX - lastDragX.current) / timeDelta * 0.3
-    }
-    lastDragX.current = clientX
-    lastDragTime.current = now
-  }
-
-  const handleDragEnd = (clientX: number) => {
-    if (!isDragging.current) return
-    isDragging.current = false
-
-    const dx = clientX - dragStartX.current
-    const velocity = velocityRef.current
-
-    let newIndex = activeSlide
-    if (Math.abs(dx) > 60 || Math.abs(velocity) > 0.3) {
-      if (dx < 0 || velocity < -0.3) {
-        newIndex = Math.min(activeSlide + 1, testimonials.length - 1)
-      } else {
-        newIndex = Math.max(activeSlide - 1, 0)
+      if (!pausedRef.current) {
+        pos -= speed * dt
+        const totalWidth = cardWidth * testimonials.length
+        if (pos <= -totalWidth) pos += totalWidth
+        track.style.transform = `translateX(${pos}px)`
       }
+
+      raf = requestAnimationFrame(animate)
     }
-    goTo(newIndex)
-  }
 
-  const onMouseDown = (e: React.MouseEvent) => handleDragStart(e.clientX)
-  const onMouseMove = (e: React.MouseEvent) => handleDragMove(e.clientX)
-  const onMouseUp = (e: React.MouseEvent) => handleDragEnd(e.clientX)
+    const onMouseEnter = () => { pausedRef.current = true }
+    const onMouseLeave = () => { pausedRef.current = false }
 
-  const onTouchStart = (e: React.TouchEvent) => handleDragStart(e.touches[0].clientX)
-  const onTouchMove = (e: React.TouchEvent) => handleDragMove(e.touches[0].clientX)
-  const onTouchEnd = (e: React.TouchEvent) => handleDragEnd(e.changedTouches[0].clientX)
+    container.addEventListener("mouseenter", onMouseEnter)
+    container.addEventListener("mouseleave", onMouseLeave)
+
+    raf = requestAnimationFrame(animate)
+    return () => {
+      cancelAnimationFrame(raf)
+      container.removeEventListener("mouseenter", onMouseEnter)
+      container.removeEventListener("mouseleave", onMouseLeave)
+    }
+  }, [])
+
+  const duplicated = [...testimonials, ...testimonials, ...testimonials]
 
   return (
     <section className="sp-section">
@@ -172,61 +65,28 @@ export function SocialProof() {
         <h2 className="sp-title">O que estão dizendo</h2>
       </div>
 
-      <div className="sp-stories-container">
-        <div
-          ref={trackRef}
-          className="sp-stories-track"
-          style={{ perspective: "1100px" } as React.CSSProperties}
-          onMouseDown={onMouseDown}
-          onMouseMove={onMouseMove}
-          onMouseUp={onMouseUp}
-          onMouseLeave={() => isDragging.current && handleDragEnd(lastDragX.current)}
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-        >
-          {testimonials.map((t, i) => {
-            const offset = i - activeSlide
-            const style = getInterpolatedStyle(offset)
-            return (
-              <div
-                key={i}
-                className="sp-stories-card"
-                style={style}
-                onClick={() => goTo(i)}
-              >
-                <div
-                  className="sp-stories-card-top"
-                  style={{ background: t.color }}
-                />
-                <img
-                  src={t.src}
-                  alt={t.alt}
-                  className="sp-stories-card-img"
-                  draggable={false}
-                />
-              </div>
-            )
-          })}
-        </div>
-
-        <button className="sp-stories-arrow sp-stories-arrow-l" onClick={prev} aria-label="Anterior">
-          <ChevronLeft size={22} color="#555" />
-        </button>
-        <button className="sp-stories-arrow sp-stories-arrow-r" onClick={next} aria-label="Próximo">
-          <ChevronRight size={22} color="#555" />
-        </button>
-
-        <div className="sp-stories-dots">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              className={`sp-stories-dot${i === activeSlide ? " active" : ""}`}
-              onClick={() => goTo(i)}
-              aria-label={`Depoimento ${i + 1}`}
-            />
+      <div className="sp-marquee-container" ref={containerRef}>
+        <div className="sp-marquee-track" ref={trackRef}>
+          {duplicated.map((t, i) => (
+            <div className="sp-marquee-card" key={i}>
+              <img
+                src={t.src}
+                alt={t.alt}
+                className="sp-marquee-card-img"
+                draggable={false}
+              />
+            </div>
           ))}
         </div>
+      </div>
+
+      <div className="sp-dots">
+        {testimonials.map((_, i) => (
+          <span
+            key={i}
+            className={`sp-dot${i === activeIdx ? " active" : ""}`}
+          />
+        ))}
       </div>
     </section>
   )

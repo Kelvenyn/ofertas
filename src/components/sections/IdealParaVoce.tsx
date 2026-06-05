@@ -38,8 +38,10 @@ export function IdealParaVoce() {
           {items.map((item, i) => (
             <div className="idv-card" key={i}>
               <div className="idv-card-icon">{item.icon}</div>
-              <h3 className="idv-card-title">{item.title}</h3>
-              <p className="idv-card-desc">{item.desc}</p>
+              <div className="idv-card-content">
+                <h3 className="idv-card-title">{item.title}</h3>
+                <p className="idv-card-desc">{item.desc}</p>
+              </div>
             </div>
           ))}
         </div>
