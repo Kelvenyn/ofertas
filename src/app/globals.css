@@ -1908,6 +1908,13 @@ html {
 
 /* ===== IDEAL PARA VOCÃŠ ===== */
 /* ===== IDEAL PARA VOCÊ ===== */
+
+/* rotating border angle property */
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
 .idv-section {
   padding: 44px 16px 40px;
   background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 50%, var(--brand-deep) 100%);
@@ -1944,10 +1951,18 @@ html {
 
 /* — card base — */
 .idv-card {
+  --border-angle: 0deg;
   padding: 26px 18px 22px;
   border-radius: 20px;
-  background: var(--surface);
-  border: 1px solid rgba(11,127,232,.08);
+  border: 2px solid transparent;
+  background:
+    linear-gradient(var(--surface), var(--surface)) padding-box,
+    conic-gradient(
+      from var(--border-angle),
+      color-mix(in srgb, var(--card-accent, var(--brand)) 0%, transparent) 0%,
+      color-mix(in srgb, var(--card-accent, var(--brand)) 55%, transparent) 15%,
+      color-mix(in srgb, var(--card-accent, var(--brand)) 0%, transparent) 30%
+    ) border-box;
   box-shadow: 0 4px 16px rgba(11,127,232,.07);
   text-align: center;
   position: relative;
@@ -1958,6 +1973,10 @@ html {
   transition: opacity 0.5s ease-out, transform 0.5s ease-out,
               box-shadow 0.3s ease;
   will-change: opacity, transform;
+}
+
+.idv-card-visible {
+  animation: idvBorderSpin 4s linear infinite;
 }
 
 /* colored top bar — draws itself on reveal */
@@ -1982,6 +2001,7 @@ html {
 .idv-card-visible {
   opacity: 1;
   transform: translateY(0) rotateX(0);
+  animation: idvBorderSpin 4s linear infinite;
 }
 
 .idv-card-visible.idv-card-alt {
@@ -1997,6 +2017,10 @@ html {
   animation: idvBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
 }
 
+@keyframes idvBorderSpin {
+  to { --border-angle: 360deg; }
+}
+
 @keyframes idvBounce {
   0%   { transform: scale(0.5) rotate(-8deg); opacity: 0; }
   60%  { transform: scale(1.15) rotate(2deg); opacity: 1; }
@@ -2009,6 +2033,7 @@ html {
   .idv-card-alt:hover {
     transform: translateY(-3px) rotateX(0);
     box-shadow: 0 12px 32px rgba(11,127,232,.18);
+    animation-duration: 2s;
   }
 }
 
@@ -2056,6 +2081,11 @@ html {
   .idv-grid { grid-template-columns: 1fr; }
   .idv-card { padding: 22px 16px; }
   .idv-card-visible.idv-card-alt { transform: translateY(0) rotateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .idv-card-visible { animation: none; }
+  .idv-card-visible .idv-emoji { animation: none; opacity: 1; }
 }
 
 /* ===== TUDO QUE VOCÃŠ VAI RECEBER ===== */
