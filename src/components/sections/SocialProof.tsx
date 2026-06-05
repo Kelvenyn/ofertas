@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useCallback, useEffect, useRef } from "react"
+import Image from "next/image"
 import { OFFER } from "@/config/offer"
 
 const mod = (n: number, m: number) => ((n % m) + m) % m
@@ -287,13 +288,14 @@ export function SocialProof() {
                     className="sp-story-gradient-bar"
                     style={{ background: slide.gradient }}
                   />
-                  <img
+                  <Image
                     src={slide.src}
                     alt={slide.alt}
+                    width={360}
+                    height={640}
                     className="sp-story-img"
                     draggable={false}
                     loading={Math.abs(visualOffset) <= 1 ? "eager" : "lazy"}
-                    decoding="async"
                   />
                 </div>
               )

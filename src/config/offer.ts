@@ -64,10 +64,10 @@ export const OFFER: OfferConfig = {
     ],
   },
   benefits: [
-    { icon: "🧠", title: "Atenção e Concentração", desc: "Atividades lúdicas para estimular foco, controle inibitório e atenção sustentada." },
-    { icon: "🔍", title: "Memória e Raciocínio", desc: "Exercícios para desenvolver retenção, associação e pensamento lógico." },
-    { icon: "✏️", title: "Leitura e Escrita", desc: "Materiais para trabalhar consciência fonológica e alfabetização." },
-    { icon: "🧩", title: "Organização e Praticidade", desc: "Fichas prontas para aplicar rapidamente sem precisar criar do zero." },
+    { icon: "brain", title: "Atenção e Concentração", desc: "Atividades lúdicas para estimular foco, controle inibitório e atenção sustentada." },
+    { icon: "search", title: "Memória e Raciocínio", desc: "Exercícios para desenvolver retenção, associação e pensamento lógico." },
+    { icon: "pencil", title: "Leitura e Escrita", desc: "Materiais para trabalhar consciência fonológica e alfabetização." },
+    { icon: "puzzle", title: "Organização e Praticidade", desc: "Fichas prontas para aplicar rapidamente sem precisar criar do zero." },
   ],
   urgency: {
     pill: "OPORTUNIDADE ÚNICA",
@@ -82,10 +82,10 @@ export const OFFER: OfferConfig = {
     title: "Ideal para você que…",
     subtitle: "Este material foi pensado para psicopedagogos, terapeutas e educadores que atuam com crianças e buscam mais organização e praticidade.",
     items: [
-      { icon: "🎯", title: "Atividades prontas", desc: "Sem precisar criar do zero para cada atendimento" },
-      { icon: "🎮", title: "Sessões lúdicas", desc: "Recursos que prendem a atenção e motivam as crianças" },
-      { icon: "⚡", title: "Aplicação rápida", desc: "Materiais organizados por habilidade para usar no momento" },
-      { icon: "📊", title: "Acompanhamento", desc: "Fichas e registros para documentar a evolução" },
+      { icon: "target", title: "Atividades prontas", desc: "Sem precisar criar do zero para cada atendimento" },
+      { icon: "gamepad", title: "Sessões lúdicas", desc: "Recursos que prendem a atenção e motivam as crianças" },
+      { icon: "lightning", title: "Aplicação rápida", desc: "Materiais organizados por habilidade para usar no momento" },
+      { icon: "chart", title: "Acompanhamento", desc: "Fichas e registros para documentar a evolução" },
     ],
   },
   deliverables: {

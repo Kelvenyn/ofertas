@@ -52,13 +52,13 @@ export interface KitImage {
 }
 
 export interface BenefitItem {
-  icon: string
+  icon: import("@/components/icons").IconName
   title: string
   desc: string
 }
 
 export interface IdealItem {
-  icon: string
+  icon: import("@/components/icons").IconName
   title: string
   desc: string
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState, useCallback } from "react"
+import { useEffect, useRef, useState, useCallback, useMemo } from "react"
 import Image from "next/image"
 import { OFFER } from "@/config/offer"
 
@@ -19,7 +19,7 @@ export function KitCards() {
   const resumeTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
   const [loaded, setLoaded] = useState(false)
 
-  const allImages = [...images, ...images, ...images]
+  const allImages = useMemo(() => [...images, ...images, ...images], [images])
 
   const sectionRef = useRef<HTMLDivElement>(null)
   const isVisibleRef = useRef(true)

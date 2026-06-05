@@ -1,4 +1,5 @@
 import { ShinyButton } from "@/components/ui/ShinyButton"
+import { DynamicIcon } from "@/components/icons"
 import { OFFER } from "@/config/offer"
 
 export function Benefits() {
@@ -11,7 +12,7 @@ export function Benefits() {
         <div className="ben-list">
           {benefits.map((b, i) => (
             <div className="ben-item" key={i}>
-              <div className="ben-item-icon">{b.icon}</div>
+              <div className="ben-item-icon"><DynamicIcon name={b.icon} size={28} /></div>
               <div className="ben-item-content">
                 <h3 className="ben-item-title">{b.title}</h3>
                 <p className="ben-item-desc">{b.desc}</p>

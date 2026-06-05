@@ -1,3 +1,4 @@
+import { DynamicIcon } from "@/components/icons"
 import { OFFER } from "@/config/offer"
 
 export function IdealParaVoce() {
@@ -13,7 +14,7 @@ export function IdealParaVoce() {
         <div className="idv-grid">
           {items.map((item, i) => (
             <div className="idv-card" key={i}>
-              <div className="idv-card-icon">{item.icon}</div>
+              <div className="idv-card-icon"><DynamicIcon name={item.icon} size={28} /></div>
               <h3 className="idv-card-title">{item.title}</h3>
               <p className="idv-card-desc">{item.desc}</p>
             </div>

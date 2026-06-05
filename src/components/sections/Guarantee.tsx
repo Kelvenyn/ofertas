@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState, useCallback } from "react"
 import Image from "next/image"
+import { ScrollMarquee } from "@/components/ui/ScrollMarquee"
 import { OFFER } from "@/config/offer"
 
 export function Guarantee() {
-  const { marqueeText, icon, iconAlt, title, body } = OFFER.guarantee
+  const { icon, iconAlt, title, body } = OFFER.guarantee
   const [visible, setVisible] = useState(false)
   const [sealScale, setSealScale] = useState(0.5)
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -50,13 +51,11 @@ export function Guarantee() {
 
   return (
     <section className="gar-section" ref={sectionRef} aria-labelledby="guarantee-title">
-      <div className="gar-marquee" style={{ background: marqueeGradient }} aria-hidden="true">
-        <div className="gar-marquee-track">
-          {[0, 1, 2, 3].map((i) => (
-            <span key={i}>GARANTIA 30 DIAS&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
-          ))}
-        </div>
-      </div>
+      <ScrollMarquee
+        text="GARANTIA 30 DIAS • SATISFAÇÃO GARANTIDA • DINHEIRO DE VOLTA • "
+        gradient={marqueeGradient}
+        height={44}
+      />
 
       <div
         className="gar-inner"
@@ -89,13 +88,12 @@ export function Guarantee() {
         </p>
       </div>
 
-      <div className="gar-marquee" style={{ background: marqueeGradient }} aria-hidden="true">
-        <div className="gar-marquee-track reverse">
-          {[0, 1, 2, 3].map((i) => (
-            <span key={i}>GARANTIA 30 DIAS&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
-          ))}
-        </div>
-      </div>
+      <ScrollMarquee
+        text="GARANTIA 30 DIAS • SATISFAÇÃO GARANTIDA • DINHEIRO DE VOLTA • "
+        gradient={marqueeGradient}
+        height={44}
+        reverse
+      />
     </section>
   )
 }

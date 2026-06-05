@@ -1,53 +1,36 @@
 "use client"
 
-import { useEffect, useState, useRef, useCallback } from "react"
+import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { ScrollMarquee } from "@/components/ui/ScrollMarquee"
+import { useCountdownTimer } from "@/hooks/useCountdownTimer"
 import { OFFER } from "@/config/offer"
 
 export function VendaImediata() {
   const { pill, titleLine1, titleLine2, titleLine3, image, imageAlt, imageWidth, imageHeight, subtitle, ctaText, timerLabel, marqueeText, marqueeGradient } = OFFER.hero
-  const [time, setTime] = useState("")
+  const { h, m, s } = useCountdownTimer()
   const [flipping, setFlipping] = useState<boolean[]>([false, false, false])
   const prevPartsRef = useRef<string[]>(["", "", ""])
-  const [scrollProgress, setScrollProgress] = useState(0)
   const [isFixed, setIsFixed] = useState(false)
   const heroRef = useRef<HTMLDivElement>(null)
 
+  const timerParts = [
+    `${String(h).padStart(2,"0")}h`,
+    `${String(m).padStart(2,"0")}m`,
+    `${String(s).padStart(2,"0")}s`,
+  ]
+
   useEffect(() => {
-    function update() {
-      const agora = new Date()
-      const fim = new Date()
-      fim.setHours(23, 59, 59, 999)
-      let diff = fim.getTime() - agora.getTime()
-      if (diff <= 0) { setTime("00h 00m 00s"); return }
-      const h = Math.floor(diff / 3600000)
-      diff -= h * 3600000
-      const m = Math.floor(diff / 60000)
-      diff -= m * 60000
-      const s = Math.floor(diff / 1000)
-      const newParts = [
-        `${String(h).padStart(2,"0")}h`,
-        `${String(m).padStart(2,"0")}m`,
-        `${String(s).padStart(2,"0")}s`
-      ]
-
-      const prevParts = prevPartsRef.current
-      const newFlipping = newParts.map((p, i) => p !== prevParts[i])
+    const prevParts = prevPartsRef.current
+    const newFlipping = timerParts.map((p, i) => p !== prevParts[i])
+    prevPartsRef.current = timerParts
+    if (newFlipping.some(Boolean)) {
       setFlipping(newFlipping)
-      prevPartsRef.current = newParts
-
-      if (newFlipping.some(Boolean)) {
-        setTimeout(() => setFlipping([false, false, false]), 150)
-      }
-
-      setTime(newParts.join(" "))
+      const t = setTimeout(() => setFlipping([false, false, false]), 150)
+      return () => clearTimeout(t)
     }
-    update()
-    const iv = setInterval(update, 1000)
-    return () => clearInterval(iv)
-  }, [])
+  })
 
   useEffect(() => {
     let ticking = false
@@ -61,9 +44,6 @@ export function VendaImediata() {
         const scrollY = window.scrollY
 
         setIsFixed(scrollY > 60)
-
-        const progress = Math.min(Math.max(scrollY / (heroBottom * 0.6), 0), 1)
-        setScrollProgress(progress * 100)
         ticking = false
       })
     }
@@ -71,8 +51,6 @@ export function VendaImediata() {
     onScroll()
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
-
-  const timerParts = time.split(" ")
 
   return (
     <>

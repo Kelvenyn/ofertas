@@ -1,30 +1,13 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { ShinyButton } from "@/components/ui/ShinyButton"
+import { useCountdownTimer } from "@/hooks/useCountdownTimer"
 import { OFFER } from "@/config/offer"
-
-function getTimeLeft() {
-  const now = new Date()
-  const end = new Date()
-  end.setHours(23, 59, 59, 999)
-  let diff = end.getTime() - now.getTime()
-  if (diff < 0) diff = 0
-  const h = Math.floor(diff / 3600000)
-  const m = Math.floor((diff % 3600000) / 60000)
-  const s = Math.floor((diff % 60000) / 1000)
-  return { h, m, s }
-}
 
 export function Urgencia() {
   const { title, highlight, body, ctaText, trust } = OFFER.urgency
   const titleLines = title.split('\n')
-  const [time, setTime] = useState(getTimeLeft)
-
-  useEffect(() => {
-    const iv = setInterval(() => setTime(getTimeLeft()), 1000)
-    return () => clearInterval(iv)
-  }, [])
+  const time = useCountdownTimer()
 
   return (
     <section className="urg-section" aria-labelledby="urgency-title">
