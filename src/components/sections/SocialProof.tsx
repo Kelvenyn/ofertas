@@ -223,9 +223,9 @@ export function SocialProof() {
   const activeSlide = mod(Math.round(currentPos), COUNT)
 
   return (
-    <section className="sp-section">
+    <section className="sp-section" aria-labelledby="social-proof-title">
       <div className="sp-inner">
-        <h2 className="sp-title">O que estão dizendo</h2>
+        <h2 className="sp-title" id="social-proof-title">O que estão dizendo</h2>
       </div>
 
       <div
@@ -237,10 +237,17 @@ export function SocialProof() {
         <div
           ref={trackRef}
           className="sp-carousel-track"
+          tabIndex={0}
+          role="group"
+          aria-roledescription="carrossel de depoimentos"
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
           onPointerCancel={handlePointerUp}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowLeft") { e.preventDefault(); setIsInteracting(true); goTo(-1); setTimeout(() => setIsInteracting(false), 800) }
+            if (e.key === "ArrowRight") { e.preventDefault(); setIsInteracting(true); goTo(1); setTimeout(() => setIsInteracting(false), 800) }
+          }}
         >
           <button
             className="sp-arrow sp-arrow-left"
@@ -294,7 +301,7 @@ export function SocialProof() {
           </div>
         </div>
 
-        <div className="sp-dots">
+        <div className="sp-dots" role="group" aria-label="Navegação de slides">
           {slides.map((_, i) => (
             <button
               key={i}

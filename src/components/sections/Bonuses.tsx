@@ -109,14 +109,14 @@ function FlipCard({ front, back, title, desc, price, index }: FlipCardProps) {
 export function Bonuses() {
   const bonuses = OFFER.bonuses
   return (
-    <section className="bon-section">
+    <section className="bon-section" aria-labelledby="bonuses-title">
       <div className="bon-inner">
         <div className="bon-headline-pill">
           <span className="bon-headline-dot" />
           EXTRA INCLUÍDO
         </div>
 
-        <h2 className="bon-title">
+        <h2 className="bon-title" id="bonuses-title">
           6 BÔNUS <span className="bon-title-green">EXCLUSIVOS</span>
         </h2>
 

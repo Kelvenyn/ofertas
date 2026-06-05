@@ -7,13 +7,13 @@ function DonutChart({ num, index }: { num: string; index: number }) {
 
   return (
     <div className="cea-donut">
-      <svg viewBox="0 0 64 64" width="64" height="64">
+      <svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true" focusable="false">
         <circle
           cx="32"
           cy="32"
           r={radius}
           fill="none"
-          stroke="rgba(34,201,120,0.12)"
+          stroke="var(--cta-muted, rgba(34,201,120,0.12))"
           strokeWidth="4"
         />
         <circle
@@ -30,8 +30,8 @@ function DonutChart({ num, index }: { num: string; index: number }) {
         />
         <defs>
           <linearGradient id="cea-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#22C978" />
-            <stop offset="100%" stopColor="#00A85A" />
+            <stop offset="0%" stopColor="var(--cta-light, #22C978)" />
+            <stop offset="100%" stopColor="var(--cta, #00A85A)" />
           </linearGradient>
         </defs>
       </svg>
@@ -43,9 +43,9 @@ function DonutChart({ num, index }: { num: string; index: number }) {
 export function ComoEAcesso() {
   const { title, steps } = OFFER.access
   return (
-    <section className="cea-section">
+    <section className="cea-section" aria-labelledby="access-title">
       <div className="cea-inner">
-        <h2 className="cea-title">{title}</h2>
+        <h2 className="cea-title" id="access-title">{title}</h2>
 
         <div className="cea-steps">
           {steps.map((step, i) => (

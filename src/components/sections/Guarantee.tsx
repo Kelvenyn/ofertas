@@ -49,8 +49,8 @@ export function Guarantee() {
   const marqueeGradient = "linear-gradient(90deg, #22C978 0%, #00A85A 50%, #007D43 100%)"
 
   return (
-    <section className="gar-section" ref={sectionRef}>
-      <div className="gar-marquee" style={{ background: marqueeGradient }}>
+    <section className="gar-section" ref={sectionRef} aria-labelledby="guarantee-title">
+      <div className="gar-marquee" style={{ background: marqueeGradient }} aria-hidden="true">
         <div className="gar-marquee-track">
           {[0, 1, 2, 3].map((i) => (
             <span key={i}>GARANTIA 30 DIAS&nbsp;&nbsp;✦&nbsp;&nbsp;</span>
@@ -76,7 +76,7 @@ export function Guarantee() {
           />
         </div>
 
-        <h2 className="gar-title">
+        <h2 className="gar-title" id="guarantee-title">
           {title.split('\n').map((line, i, arr) => (
             <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
           ))}
@@ -89,7 +89,7 @@ export function Guarantee() {
         </p>
       </div>
 
-      <div className="gar-marquee" style={{ background: marqueeGradient }}>
+      <div className="gar-marquee" style={{ background: marqueeGradient }} aria-hidden="true">
         <div className="gar-marquee-track reverse">
           {[0, 1, 2, 3].map((i) => (
             <span key={i}>GARANTIA 30 DIAS&nbsp;&nbsp;✦&nbsp;&nbsp;</span>

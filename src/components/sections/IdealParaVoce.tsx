@@ -3,9 +3,9 @@ import { OFFER } from "@/config/offer"
 export function IdealParaVoce() {
   const { items } = OFFER.idealPara
   return (
-    <section className="idv-section">
+    <section className="idv-section" aria-labelledby="ideal-title">
       <div className="idv-inner">
-        <h2 className="idv-title">
+        <h2 className="idv-title" id="ideal-title">
           Ideal para você{" "}
           <span className="idv-title-accent">que…</span>
         </h2>

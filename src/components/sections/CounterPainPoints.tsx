@@ -52,14 +52,14 @@ export function CounterPainPoints() {
   }, [])
 
   return (
-    <div className="dc-wrap" ref={counterRef} id="docs-counter">
+    <div className="dc-wrap" ref={counterRef} id="docs-counter" aria-labelledby="counter-label">
       <div className="dc-inner">
         <div className="dc-numberline">
           <span className="dc-prefix">{prefix}</span>
-          <span className="dc-count" id="dc-count">
+          <span className="dc-count" id="dc-count" aria-live="polite" aria-atomic="true">
             {count}
           </span>
-          <span className="dc-label">{label}</span>
+          <span className="dc-label" id="counter-label">{label}</span>
         </div>
 
         <div className="dc-bar" role="progressbar" aria-valuenow={count} aria-valuemin={0} aria-valuemax={target}>

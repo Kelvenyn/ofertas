@@ -21,9 +21,23 @@ export function KitCards() {
 
   const allImages = [...images, ...images, ...images]
 
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const isVisibleRef = useRef(true)
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([entry]) => { isVisibleRef.current = entry.isIntersecting },
+      { threshold: 0.1 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
   const animate = useCallback(() => {
     if (!trackRef.current) return
-    if (autoPlay.current && !isDragging.current) {
+    if (autoPlay.current && !isDragging.current && isVisibleRef.current && !document.hidden) {
       offsetRef.current -= SCROLL_SPEED
     }
 
@@ -76,13 +90,17 @@ export function KitCards() {
   const onTouchEnd = () => handleDragEnd()
 
   return (
-    <div className="kc-section">
+    <div className="kc-section" aria-labelledby="kit-title" ref={sectionRef}>
       <div className="kc-inner">
-        <h2 className="kc-title">{heading1}</h2>
+        <h2 className="kc-title" id="kit-title">{heading1}</h2>
       </div>
 
       <div
         className="kc-carousel"
+        role="region"
+        aria-roledescription="carrossel"
+        aria-label="Kit de materiais"
+        tabIndex={0}
         style={{ cursor: isDragging.current ? "grabbing" : "grab" }}
         onMouseDown={onMouseDown}
         onMouseMove={onMouseMove}
@@ -91,6 +109,19 @@ export function KitCards() {
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
+        onKeyDown={(e) => {
+          if (e.key === "ArrowLeft") {
+            autoPlay.current = false
+            offsetRef.current += 300
+            if (resumeTimer.current) clearTimeout(resumeTimer.current)
+            resumeTimer.current = setTimeout(() => { autoPlay.current = true }, 3000)
+          } else if (e.key === "ArrowRight") {
+            autoPlay.current = false
+            offsetRef.current -= 300
+            if (resumeTimer.current) clearTimeout(resumeTimer.current)
+            resumeTimer.current = setTimeout(() => { autoPlay.current = true }, 3000)
+          }
+        }}
       >
         <div
           ref={trackRef}

@@ -34,7 +34,7 @@ html {
   top: 8px;
   left: 8px;
   background: var(--surface);
-  color: #0B7FE8;
+  color: var(--brand);
   font-weight: 700;
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0,0,0,.18);
@@ -42,33 +42,16 @@ html {
 }
 
 /* ===== SHINY CTA BUTTON ===== */
-@property --gradient-angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
 
 .shiny-cta {
-  --gradient-angle: 0deg;
   position: relative;
   overflow: hidden;
   border-radius: 9999px;
   padding: 1rem 2.5rem;
-  background:
-    linear-gradient(135deg, #15803d, #16a34a) padding-box,
-    conic-gradient(
-      from var(--gradient-angle),
-      transparent 0%,
-      #15803d 5%,
-      #166534 15%,
-      #22c55e 30%,
-      transparent 40%,
-      transparent 100%
-    ) border-box;
-  border: 3px solid transparent;
+  background: linear-gradient(180deg, #22C978 0%, #00A85A 100%);
+  border: none;
   cursor: pointer;
   isolation: isolate;
-  animation: border-spin 2.5s linear infinite;
   transition: transform 150ms ease, box-shadow 150ms ease;
   box-shadow: 0 4px 20px hsla(142, 71%, 45%, 0.25);
   text-decoration: none;
@@ -79,9 +62,7 @@ html {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, white 0.5px, transparent 0);
-  background-size: 4px 4px;
-  opacity: 0.1;
+  background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 50%);
   z-index: 0;
   pointer-events: none;
 }
@@ -100,26 +81,13 @@ html {
   outline-offset: 3px;
 }
 
-@keyframes border-spin {
-  from { --gradient-angle: 0deg; }
-  to   { --gradient-angle: 360deg; }
-}
-
 .shiny-cta-sm {
   padding: 0.5rem 1.25rem;
-}
-
-@supports not (background: conic-gradient(from 0deg, red, blue)) {
-  .shiny-cta {
-    border: 2px solid #22c55e;
-    animation: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .shiny-cta {
     animation: none;
-    --gradient-angle: 90deg;
   }
 }
 
@@ -131,8 +99,6 @@ html {
 @theme inline {
   --font-sans: "Manrope", "Manrope Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-nunito: "Nunito", "Nunito Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-sora: "Sora", "Sora Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-poppins: "Poppins", "Poppins Fallback", ui-sans-serif, system-ui, sans-serif;
 
   --color-primary-blue: #0b7fe8;
   --color-dark-blue: #123a6d;
@@ -195,8 +161,10 @@ html {
   --brand-light: #49a6ff;
   --brand-subtle: #eaf5ff;
   --cta: #22c978;
+  --cta-light: #22C978;
   --cta-deep: #00a85a;
   --cta-darkest: #007d43;
+  --cta-muted: rgba(34,201,120,0.12);
   --accent: #ff8a5b;
   --yellow: #ffd166;
   --bg: #f8fbff;
@@ -1138,16 +1106,7 @@ html {
 }
 
 .premium-btn.shiny-cta {
-  background: linear-gradient(135deg, var(--cta), #1AAF64) padding-box,
-    conic-gradient(
-      from var(--gradient-angle),
-      transparent 0%,
-      var(--cta) 5%,
-      #15803D 15%,
-      #4ADE80 30%,
-      transparent 40%,
-      transparent 100%
-    ) border-box;
+  background: linear-gradient(180deg, var(--cta) 0%, #15803D 100%);
   box-shadow: 0 4px 20px rgba(34,201,120,.3);
 }
 
@@ -1369,16 +1328,20 @@ html {
   height: 8px;
   border-radius: 50%;
   border: none;
-  padding: 0;
+  padding: 18px;
   cursor: pointer;
-  background: rgba(253, 91, 0, 0.3);
-  transition: width 0.3s ease, background 0.3s ease;
+  background: transparent;
+  background-clip: content-box;
+  transition: all 0.3s ease;
 }
 
 .sp-dot-active {
   width: 24px;
+  height: 8px;
   border-radius: 4px;
-  background: linear-gradient(90deg, #fd5b00, #ffd41e);
+  background: linear-gradient(90deg, var(--accent, #fd5b00), var(--yellow, #ffd41e));
+  background-clip: content-box;
+  padding: 18px 8px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1435,9 +1398,11 @@ html {
   background: linear-gradient(90deg, var(--brand) 0%, var(--cta) 100%);
 }
 
-.ben-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(11,127,232,.13);
+@media (hover: hover) {
+  .ben-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(11,127,232,.13);
+  }
 }
 
 .ben-card-icon {
@@ -1772,9 +1737,11 @@ html {
   background: linear-gradient(90deg, var(--brand) 0%, var(--cta) 100%);
 }
 
-.idv-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(11,127,232,.13);
+@media (hover: hover) {
+  .idv-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(11,127,232,.13);
+  }
 }
 
 .idv-card-icon {
@@ -2162,8 +2129,10 @@ html {
   transition: box-shadow .35s ease;
 }
 
-.bon-new-card:hover {
-  box-shadow: 0 12px 40px rgba(0,0,0,.3), 0 0 0 1px rgba(34,201,120,.25);
+@media (hover: hover) {
+  .bon-new-card:hover {
+    box-shadow: 0 12px 40px rgba(0,0,0,.3), 0 0 0 1px rgba(34,201,120,.25);
+  }
 }
 
 .bon-new-image-wrapper {

@@ -4,9 +4,9 @@ import { OFFER } from "@/config/offer"
 export function Benefits() {
   const benefits = OFFER.benefits
   return (
-    <section className="ben-section">
+    <section className="ben-section" aria-labelledby="benefits-title">
       <div className="ben-inner">
-        <h2 className="ben-title">Benefícios do material</h2>
+        <h2 className="ben-title" id="benefits-title">Benefícios do material</h2>
 
         <div className="ben-list">
           {benefits.map((b, i) => (

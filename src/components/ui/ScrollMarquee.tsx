@@ -47,6 +47,7 @@ export function ScrollMarquee({
     window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
   const direction = reverse ? -1 : 1
+  const isVisibleRef = useRef(true)
 
   const measure = useCallback(() => {
     if (blockRef.current) blockW.current = blockRef.current.offsetWidth
@@ -59,6 +60,18 @@ export function ScrollMarquee({
     if (blockRef.current) ro.observe(blockRef.current)
     return () => ro.disconnect()
   }, [measure])
+
+  useEffect(() => {
+    if (!barRef.current) return
+    const parent = barRef.current.closest('.scroll-marquee')
+    if (!parent) return
+    const obs = new IntersectionObserver(
+      ([entry]) => { isVisibleRef.current = entry.isIntersecting },
+      { threshold: 0.1 }
+    )
+    obs.observe(parent)
+    return () => obs.disconnect()
+  }, [])
 
   useEffect(() => {
     if (reducedMotion || !ready) return
@@ -76,6 +89,10 @@ export function ScrollMarquee({
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t
 
     const loop = () => {
+      if (document.hidden || !isVisibleRef.current) {
+        rafRef.current = requestAnimationFrame(loop)
+        return
+      }
       const effectiveBase = hovered.current ? 0 : BASE
       const target = effectiveBase + scrollVel.current
       displayVel.current = lerp(displayVel.current, target, 0.08)
@@ -100,12 +117,8 @@ export function ScrollMarquee({
 
   const rendered = renderText(text)
 
-  const FADE_L = gradient.includes("#8B6914")
-    ? "linear-gradient(to right, #8B6914, transparent)"
-    : "linear-gradient(to right, #fd5b00, transparent)"
-  const FADE_R = gradient.includes("#8B6914")
-    ? "linear-gradient(to left, #8B6914, transparent)"
-    : "linear-gradient(to left, #ffd41e, transparent)"
+  const FADE_L = `linear-gradient(to right, var(--accent, #fd5b00), transparent)`
+  const FADE_R = `linear-gradient(to left, var(--yellow, #ffd41e), transparent)`
 
   if (reducedMotion) {
     return (

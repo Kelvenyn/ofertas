@@ -7,9 +7,9 @@ import { OFFER } from "@/config/offer"
 export function TudoQueVoceRecebe() {
   const { title, titleHighlight, image, imageAlt, bullets } = OFFER.deliverables
   return (
-    <section className="tqvr-section">
+    <section className="tqvr-section" aria-labelledby="deliverables-title">
       <div className="tqvr-card">
-        <h2 className="tqvr-title">
+        <h2 className="tqvr-title" id="deliverables-title">
           {title}
           <span>no <strong>{titleHighlight}</strong></span>
         </h2>

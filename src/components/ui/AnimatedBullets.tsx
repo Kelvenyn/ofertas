@@ -16,13 +16,13 @@ function AnimatedCheck({ checked }: { checked: boolean }) {
     <svg width="28" height="28" viewBox="0 0 40 40" style={{ flexShrink: 0 }}>
       <circle
         cx="20" cy="20" r="18"
-        fill={checked ? "#22c55e" : "rgba(34,197,94,0.15)"}
+        fill={checked ? "var(--cta, #22c55e)" : "var(--cta-muted, rgba(34,197,94,0.15))"}
         style={{ transition: "fill 0.5s ease" }}
       />
       <polyline
         points="12,20 18,26 28,14"
         fill="none"
-        stroke="#ffffff"
+        stroke="var(--surface, #ffffff)"
         strokeWidth="3.5"
         strokeLinecap="round"
         strokeLinejoin="round"

@@ -27,11 +27,11 @@ export function Urgencia() {
   }, [])
 
   return (
-    <section className="urg-section">
+    <section className="urg-section" aria-labelledby="urgency-title">
       <div className="urg-inner">
         <div className="urg-card">
 
-          <div className="urg-timer-row">
+          <div className="urg-timer-row" role="timer" aria-live="polite" aria-label="Tempo restante">
             <div className="urg-timer-unit">
               <span className="urg-timer-val">{String(time.h).padStart(2, "0")}</span>
               <span className="urg-timer-label">Horas</span>
@@ -49,7 +49,7 @@ export function Urgencia() {
           </div>
 
           <div className="urg-card-body">
-            <h2 className="urg-title">
+            <h2 className="urg-title" id="urgency-title">
               {titleLines.map((line, i) => (
                 <span key={i}>
                   {line}

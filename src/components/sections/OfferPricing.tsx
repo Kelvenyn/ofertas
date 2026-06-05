@@ -6,11 +6,11 @@ import { OFFER } from "@/config/offer"
 export function OfferPricing() {
   const { pill, plans, trustBadges } = OFFER.pricing
   return (
-    <section className="offer-pei-section" id="oferta">
+    <section className="offer-pei-section" id="oferta" aria-labelledby="pricing-title">
       <div className="offer-pei-container">
 
         <div className="offer-pei-head">
-          <div className="offer-pei-pill">{pill}</div>
+          <div className="offer-pei-pill" id="pricing-title">{pill}</div>
         </div>
 
         <div className="offer-pei-grid">
