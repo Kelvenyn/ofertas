@@ -1,10 +1,16 @@
 "use client"
 
-import { useState, useCallback, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
-const HAND_IMG = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='80'%3E%F%EF%B8%8F%3C/text%3E%3C/svg%3E"
+interface BonusItem {
+  front: string
+  back: string
+  title: string
+  desc: string
+  price: string
+}
 
-const bonuses = [
+const bonuses: BonusItem[] = [
   {
     front: "/images/CR-NINJA-15.webp",
     back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_26_00.webp",
@@ -49,86 +55,139 @@ const bonuses = [
   },
 ]
 
-interface FlipCardProps {
-  front: string
-  back: string
-  title: string
-  desc: string
-  price: string
-  index: number
-}
+const totalBonusValue = bonuses.reduce((sum, b) => {
+  const val = parseFloat(b.price.replace("R$ ", "").replace(".", "").replace(",", "."))
+  return sum + val
+}, 0)
 
-function FlipCard({ front, back, title, desc, price }: FlipCardProps) {
+function BonusCard({ bonus, index }: { bonus: BonusItem; index: number }) {
   const [flipped, setFlipped] = useState(false)
-  const [hasFlipped, setHasFlipped] = useState(false)
   const [frontLoaded, setFrontLoaded] = useState(false)
+  const [backLoaded, setBackLoaded] = useState(false)
+  const backImgRef = useRef<HTMLImageElement | null>(null)
 
   useEffect(() => {
     const img = new Image()
-    img.src = back
-  }, [back])
+    img.src = bonus.back
+    img.onload = () => setBackLoaded(true)
+    backImgRef.current = img
+  }, [bonus.back])
 
-  const handleClick = useCallback(() => {
-    setFlipped(f => {
-      const next = !f
-      if (!next) setHasFlipped(false)
-      else if (!hasFlipped) setHasFlipped(true)
-      return next
-    })
-  }, [hasFlipped])
+  const handleFlip = () => {
+    if (backLoaded) setFlipped(!flipped)
+  }
 
   return (
-    <div className="bon-flip-card" onClick={handleClick}>
-      {!frontLoaded && (
-        <div className="bon-flip-skeleton" />
-      )}
+    <div className="bon-card">
+      <div className="bon-card-emoji">&#9757;&#65039;</div>
 
       <div
-        className="bon-flip-perspective"
-        style={{ opacity: frontLoaded ? 1 : 0 }}
+        className={`bon-card-image-wrapper ${flipped ? "flipped" : ""}`}
+        onClick={handleFlip}
       >
-        <div
-          className="bon-flip-inner"
-          style={{
-            transform: flipped ? "rotateY(-180deg)" : "rotateY(0deg)",
-          }}
-        >
-          {/* Front */}
-          <div className="bon-flip-face bon-flip-front">
+        {!frontLoaded && <div className="bon-card-skeleton" />}
+
+        <div className="bon-card-image-inner" style={{ opacity: frontLoaded ? 1 : 0 }}>
+          {!flipped ? (
             <img
-              src={front}
-              alt={title}
-              className="bon-flip-img"
+              src={bonus.front}
+              alt={bonus.title}
+              className="bon-card-image"
               loading="lazy"
               onLoad={() => setFrontLoaded(true)}
             />
-            <div className="bon-flip-ribbon">Grátis</div>
-            {!hasFlipped && (
-              <div className="bon-flip-hand">
-                <span className="bon-flip-hand-emoji">&#9757;&#65039;</span>
-              </div>
-            )}
-          </div>
-
-          {/* Back */}
-          <div className="bon-flip-face bon-flip-back">
+          ) : (
             <img
-              src={back}
-              alt={`${title} - conteúdo`}
-              className="bon-flip-img"
+              src={bonus.back}
+              alt={`${bonus.title} - conteúdo`}
+              className="bon-card-image"
               loading="lazy"
             />
-            <div className="bon-flip-back-hint">
-              &#8634; Toque para voltar
-            </div>
-          </div>
+          )}
+        </div>
+
+        <div className="bon-card-banner">
+          <span>&#127873; BÔNUS #{index + 1}</span>
         </div>
       </div>
 
-      <div className="bon-card-info">
-        <h3 className="bon-card-title">{title}</h3>
-        <p className="bon-card-desc">{desc}</p>
-        <span className="bon-card-price">{price}</span>
+      <p className="bon-card-hint">Toque na imagem acima para ver o conteúdo.</p>
+
+      <div className="bon-card-pill">{bonus.title}</div>
+
+      <p className="bon-card-desc">{bonus.desc}</p>
+
+      <div className="bon-card-value">
+        Valor: <span>{bonus.price}</span>
+      </div>
+
+      <div className="bon-card-gratis-pill">&#127873; GRÁTIS</div>
+    </div>
+  )
+}
+
+function SummaryCard() {
+  const [timeLeft, setTimeLeft] = useState({ hours: 7, minutes: 52, seconds: 20 })
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        let { hours, minutes, seconds } = prev
+        seconds--
+        if (seconds < 0) {
+          seconds = 59
+          minutes--
+        }
+        if (minutes < 0) {
+          minutes = 59
+          hours--
+        }
+        if (hours < 0) {
+          hours = 23
+          minutes = 59
+          seconds = 59
+        }
+        return { hours, minutes, seconds }
+      })
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [])
+
+  const format = (n: number) => String(n).padStart(2, "0")
+
+  return (
+    <div className="bon-summary">
+      <h3 className="bon-summary-title">VALOR TOTAL DOS BÔNUS</h3>
+
+      <div className="bon-summary-price">
+        R$ {totalBonusValue.toFixed(2).replace(".", ",").replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+      </div>
+
+      <button className="bon-summary-btn">
+        &#127873; GRÁTIS
+      </button>
+
+      <p className="bon-summary-note">Incluso no Plano Completo</p>
+
+      <div className="bon-summary-timer-label">
+        &#9203; OFERTA EXPIRA EM
+      </div>
+
+      <div className="bon-summary-timer">
+        <div className="bon-summary-timer-block">
+          <span className="bon-summary-timer-num">{format(timeLeft.hours)}</span>
+          <span className="bon-summary-timer-unit">h</span>
+        </div>
+        <span className="bon-summary-timer-sep">:</span>
+        <div className="bon-summary-timer-block">
+          <span className="bon-summary-timer-num">{format(timeLeft.minutes)}</span>
+          <span className="bon-summary-timer-unit">m</span>
+        </div>
+        <span className="bon-summary-timer-sep">:</span>
+        <div className="bon-summary-timer-block">
+          <span className="bon-summary-timer-num">{format(timeLeft.seconds)}</span>
+          <span className="bon-summary-timer-unit">s</span>
+        </div>
       </div>
     </div>
   )
@@ -147,11 +206,13 @@ export function Bonuses() {
           extras para enriquecer ainda mais seus atendimentos.
         </p>
 
-        <div className="bon-grid">
+        <div className="bon-cards">
           {bonuses.map((b, i) => (
-            <FlipCard key={i} index={i} {...b} />
+            <BonusCard key={i} bonus={b} index={i} />
           ))}
         </div>
+
+        <SummaryCard />
       </div>
     </section>
   )

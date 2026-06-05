@@ -2729,166 +2729,296 @@
   color: #425466;
 }
 
-.bon-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+.bon-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 380px;
+  margin: 0 auto 32px;
 }
 
-.bon-flip-card {
-  position: relative;
+.bon-card {
+  background: linear-gradient(180deg, #0B2E4A 0%, #0A1F35 100%);
   border-radius: 20px;
-  background: #FFFFFF;
-  border: 1px solid rgba(234,179,8,.12);
-  box-shadow: 0 8px 24px rgba(234,179,8,.06);
+  padding: 24px 20px 28px;
   text-align: center;
+  position: relative;
   overflow: hidden;
-  cursor: pointer;
 }
 
-.bon-flip-skeleton {
+.bon-card::before {
+  content: '';
   position: absolute;
   inset: 0;
-  border-radius: 20px 20px 0 0;
-  background: rgba(11,127,232,.06);
-  animation: bon-pulse 1.5s ease-in-out infinite;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(180deg, rgba(34,201,120,.4) 0%, rgba(34,201,120,.05) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
-@keyframes bon-pulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
+.bon-card-emoji {
+  font-size: 28px;
+  margin-bottom: 12px;
+  animation: bon-emoji-pulse 2s ease-in-out infinite;
 }
 
-.bon-flip-perspective {
+@keyframes bon-emoji-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+.bon-card-image-wrapper {
   position: relative;
   width: 100%;
   aspect-ratio: 3/4;
-  perspective: 1200px;
+  border-radius: 14px;
   overflow: hidden;
-  border-radius: 20px 20px 0 0;
-  transition: opacity 0.4s ease;
+  margin-bottom: 12px;
+  cursor: pointer;
 }
 
-.bon-flip-inner {
-  position: relative;
+.bon-card-image-inner {
   width: 100%;
   height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 900ms ease-in-out;
-  will-change: transform;
+  transition: opacity 0.3s ease;
 }
 
-.bon-flip-face {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  overflow: hidden;
-  border-radius: 20px 20px 0 0;
-}
-
-.bon-flip-front {
-  z-index: 2;
-}
-
-.bon-flip-back {
-  transform: rotateY(180deg);
-}
-
-.bon-flip-img {
+.bon-card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  pointer-events: none;
 }
 
-.bon-flip-ribbon {
+.bon-card-skeleton {
   position: absolute;
-  top: 12px;
-  right: -28px;
-  padding: 4px 32px;
+  inset: 0;
+  border-radius: 14px;
+  background: rgba(255,255,255,.05);
+  animation: bon-skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes bon-skeleton-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.bon-card-banner {
+  position: absolute;
+  top: 16px;
+  right: -30px;
+  padding: 6px 40px;
   background: #22C978;
   color: #FFFFFF;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 900;
-  letter-spacing: .05em;
+  letter-spacing: .06em;
   text-transform: uppercase;
   transform: rotate(45deg);
-  box-shadow: 0 2px 8px rgba(34,201,120,.3);
+  box-shadow: 0 2px 10px rgba(34,201,120,.4);
   z-index: 5;
 }
 
-.bon-flip-hand {
-  position: absolute;
-  inset: 0;
-  display: flex;
+.bon-card-hint {
+  margin: 0 0 14px;
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(255,255,255,.6);
+}
+
+.bon-card-pill {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
-  pointer-events: none;
-}
-
-.bon-flip-hand-emoji {
-  font-size: 48px;
-  animation: bon-hand-pulse 1.5s ease-in-out infinite;
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,.2));
-}
-
-@keyframes bon-hand-pulse {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.15); }
-}
-
-.bon-flip-back-hint {
-  position: absolute;
-  bottom: 8px;
-  right: 8px;
-  padding: 4px 10px;
+  margin: 0 auto 12px;
+  padding: 8px 20px;
   border-radius: 999px;
-  background: rgba(255,255,255,.2);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,.1);
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(255,255,255,.8);
-  z-index: 5;
-}
-
-.bon-card-info {
-  padding: 14px 16px 18px;
-}
-
-.bon-card-title {
-  margin: 0 0 6px;
+  background: #22C978;
+  color: #FFFFFF;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 15px;
-  font-weight: 900;
-  color: #082F63;
-  letter-spacing: -.02em;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .02em;
 }
 
 .bon-card-desc {
-  margin: 0 0 8px;
-  font-size: 13px;
-  line-height: 1.5;
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.6;
   font-weight: 500;
-  color: #425466;
+  color: rgba(255,255,255,.75);
 }
 
-.bon-card-price {
+.bon-card-value {
+  margin: 0 0 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255,255,255,.6);
+}
+
+.bon-card-value span {
+  color: #FFFFFF;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.bon-card-gratis-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 32px;
+  border-radius: 999px;
+  background: transparent;
+  border: 2px solid #22C978;
+  color: #22C978;
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: .03em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bon-card-gratis-pill:hover {
+  background: #22C978;
+  color: #FFFFFF;
+}
+
+.bon-summary {
+  background: linear-gradient(180deg, #0B2E4A 0%, #0A1F35 100%);
+  border-radius: 20px;
+  padding: 32px 24px;
+  text-align: center;
+  max-width: 380px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.bon-summary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(180deg, rgba(34,201,120,.4) 0%, rgba(34,201,120,.05) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.bon-summary-title {
+  margin: 0 0 12px;
+  font-family: 'Nunito', system-ui, sans-serif;
   font-size: 14px;
-  font-weight: 700;
-  color: #5A6B7C;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+}
+
+.bon-summary-price {
+  margin: 0 0 20px;
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 32px;
+  font-weight: 900;
+  color: rgba(255,255,255,.35);
   text-decoration: line-through;
 }
 
-@media (max-width: 640px) {
-  .bon-grid { grid-template-columns: repeat(2, 1fr); }
+.bon-summary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto 12px;
+  padding: 14px 40px;
+  border-radius: 999px;
+  background: transparent;
+  border: 2px solid #22C978;
+  color: #22C978;
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: .03em;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-@media (max-width: 400px) {
-  .bon-grid { grid-template-columns: 1fr; }
+.bon-summary-btn:hover {
+  background: #22C978;
+  color: #FFFFFF;
+}
+
+.bon-summary-note {
+  margin: 0 0 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,.5);
+}
+
+.bon-summary-timer-label {
+  margin: 0 0 12px;
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+}
+
+.bon-summary-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.bon-summary-timer-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(249,115,22,.3);
+}
+
+.bon-summary-timer-num {
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+.bon-summary-timer-unit {
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,.8);
+  margin-top: 2px;
+}
+
+.bon-summary-timer-sep {
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  color: rgba(255,255,255,.5);
+  margin-bottom: 12px;
+}
+
+@media (max-width: 640px) {
+  .bon-cards { max-width: 100%; }
+  .bon-summary { max-width: 100%; }
 }
 
 /* ===== GUARANTEE ===== */
