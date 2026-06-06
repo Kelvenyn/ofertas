@@ -34,13 +34,6 @@ export const OFFER: OfferConfig = {
     timerLabel: "BÔNUS ENCERRAM EM",
     marqueeText: "+100 Pixel Artes Bíblicas • PDF A4 Pronto para Imprimir • Acesso Imediato • ",
     marqueeGradient: "linear-gradient(135deg, #67E8F9 0%, #0891B2 55%, #0E7490 100%)",
-    bullets: [
-      "+100 Pixel Artes Bíblicas para colorir",
-      "Artes em PDF A4 prontas para imprimir",
-      "Pixel Art por números com personagens bíblicos",
-      "Aprende Ensinamentos, Versículos e Valores Bíblicos",
-      "Ajuda a ocupar a criança com propósito, sem depender do celular",
-    ],
   },
   socialProof: {
     testimonials: [
@@ -59,7 +52,6 @@ export const OFFER: OfferConfig = {
   },
   kitCards: {
     heading1: "Veja as artes bíblicas que vão tirar seu filho do celular e Ensinar Valores Bíblicos",
-    heading2: "Dentro do Pixel Art Bíblico, você encontra +100 artes para ocupar seu filho longe do celular enquanto aprende histórias e valores da Bíblia.",
     images: [
       { src: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_26_00.webp", alt: "Pixel Art Bíblico - Amostra 1" },
       { src: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_56-1.webp", alt: "Pixel Art Bíblico - Amostra 2" },
@@ -81,15 +73,15 @@ export const OFFER: OfferConfig = {
   ],
   urgency: {
     pill: "OPORTUNIDADE ÚNICA",
-    title: "Comece hoje a tirar\nseu filho do celular\ncom",
-    highlight: "+100 Pixel Artes Bíblicas",
-    body: "Mais um dia vendo seu filho preso no celular… mas no fundo você sabe que ele poderia estar usando esse tempo de um jeito melhor.\n\nCom o Pixel Art Bíblico, você entrega +100 Pixel Artes prontas para imprimir. A criança colore, descobre personagens bíblicos e aprende valores cristãos — e você não precisa preparar nada.",
+    title: "Comece hoje a tirar\nseu filho do celular\ncom o",
+    highlight: "Pixel Art Bíblico",
+    body: "",
     ctaText: "QUERO O PIXEL ARTE BÍBLICO",
-    trust: ["ACESSO IMEDIATO", "ACESSO VITALÍCIO"],
+    trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"],
   },
   idealPara: {
     pill: "É PARA VOCÊ",
-    title: "Ideal para você que deseja",
+    title: "Ideal para você que quer",
     subtitle: "Este Pixel Art Bíblico foi pensado para mães cristãs que querem ocupar os filhos com atividades saudáveis e com propósito.",
     items: [
       { icon: "📱", title: "Tirar seu filho do celular sem brigar", desc: "Você entrega uma alternativa pronta, divertida e bíblica para a criança se concentrar longe da tela." },
@@ -149,28 +141,28 @@ export const OFFER: OfferConfig = {
       back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_52-1.webp",
       title: "Colorir com os Salmos",
       desc: "Desenhos para colorir com mensagens inspiradas nos Salmos, ajudando a criança a aprender sobre confiança, gratidão e amor de Deus.",
-      price: "R$ 27,90",
+      price: "R$ 19,90",
     },
     {
       front: "/images/CR-NINJA-18.webp",
       back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_33.webp",
       title: "Colorir com os Provérbios",
       desc: "Desenhos para colorir com mensagens de Provérbios, ensinando sobre sabedoria, obediência, respeito e boas escolhas.",
-      price: "R$ 27,90",
+      price: "R$ 19,90",
     },
     {
       front: "/images/CR-NINJA-15.webp",
       back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_44-1.webp",
       title: "Planner de Leitura Bíblica",
       desc: "Checklist e cronograma organizado mês a mês para acompanhar a leitura bíblica com mais clareza.",
-      price: "R$ 27,90",
+      price: "R$ 37,90",
     },
     {
       front: "/images/CR-NINJA-16.webp",
       back: "/images/ChatGPT-Image-21-de-mai.-de-2026-14_25_48-1.webp",
       title: "Marcadores de Abas Bíblicas",
       desc: "Marcadores práticos, coloridos e bonitos para organizar a Bíblia e encontrar os livros com mais facilidade.",
-      price: "R$ 27,90",
+      price: "R$ 47,90",
     },
   ],
   pricing: {
@@ -202,7 +194,7 @@ export const OFFER: OfferConfig = {
         imageAlt: "Plano Completo",
         featured: true,
         badgeText: "MAIS VENDIDO",
-        oldPrice: "de R$ 59,90",
+        oldPrice: "de R$ 221,30",
         price: "R$ 27,90",
         installments: "ou 4x de R$ 6,97 no cartão",
         items: [

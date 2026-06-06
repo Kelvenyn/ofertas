@@ -124,7 +124,7 @@ export interface OfferConfig {
   counter: OfferCounter
   kitCards: {
     heading1: string
-    heading2: string
+    heading2?: string
     images: KitImage[]
   }
   benefits: BenefitItem[]

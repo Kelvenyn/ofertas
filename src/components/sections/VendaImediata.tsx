@@ -3,7 +3,6 @@
 import Image from "next/image"
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { ScrollMarquee } from "@/components/ui/ScrollMarquee"
-import { AnimatedBullets } from "@/components/ui/AnimatedBullets"
 import { OFFER } from "@/config/offer"
 
 export function VendaImediata() {
@@ -35,10 +34,6 @@ export function VendaImediata() {
         </div>
 
         <p className="vi-sub">{subtitle}</p>
-
-        {OFFER.hero.bullets && (
-          <AnimatedBullets items={OFFER.hero.bullets} className="ab-center" />
-        )}
 
         <ShinyButton href="#oferta" className="vi-cta-btn">
           {ctaText}
