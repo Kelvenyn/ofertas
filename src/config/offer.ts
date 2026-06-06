@@ -2,7 +2,7 @@ import type { OfferConfig } from '@/types/offer'
 
 export const OFFER: OfferConfig = {
   meta: {
-    title: "Pixel Art Bíblico – Atividades bíblicas para tirar seu filho do celular",
+    title: "Pixel Art Bíblico",
     description: "+100 Pixel Artes Bíblicas para colorir e imprimir. Atividades em PDF com personagens bíblicos, ensinamentos e versículos para a criança aprender sobre Deus longe das telas.",
   },
   palette: {

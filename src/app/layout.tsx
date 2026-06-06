@@ -20,6 +20,9 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: OFFER.meta.title,
   description: OFFER.meta.description,
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
