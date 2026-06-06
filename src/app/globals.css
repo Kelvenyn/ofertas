@@ -1,7 +1,4 @@
 ﻿@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
-
 @custom-variant dark (&:is(.dark *));
 
 html {
@@ -225,7 +222,7 @@ html {
   --surface-alt: #F8F9FA;
   --urgency: #dc2626;
 
-  /* === shadcn/ui aliases (mantÃ©m compatibilidade) === */
+  /* === Theme aliases === */
   --background: var(--bg);
   --foreground: var(--text);
   --card: var(--surface);
@@ -414,7 +411,7 @@ html {
 }
 
 .vi-hero {
-  padding: 20px 16px 24px;
+  padding: 20px 16px 0;
   text-align: center;
   background: transparent;
   font-family: 'Manrope', system-ui, sans-serif;
@@ -643,7 +640,7 @@ html {
 }
 
 @media (max-width: 768px) {
-  .vi-hero { padding: 20px 14px 18px; }
+  .vi-hero { padding: 20px 14px 0; }
   .vi-sub { font-size: 14px; }
 }
 

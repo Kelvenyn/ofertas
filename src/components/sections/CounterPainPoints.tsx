@@ -49,7 +49,7 @@ export function CounterPainPoints() {
 
     obs.observe(el)
     return () => obs.disconnect()
-  }, [])
+  }, [target])
 
   return (
     <div className="dc-wrap" ref={counterRef} id="docs-counter" aria-labelledby="counter-label">

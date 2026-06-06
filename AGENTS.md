@@ -1,65 +1,35 @@
-<!-- BEGIN:nextjs-agent-rules -->
-# This is NOT the Next.js you know
+# Agent Notes
 
-This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+Este projeto e um template de landing page low ticket. O objetivo nao e clonar sites; o objetivo e receber uma OA100K, gerar copy comercial e preencher uma landing reutilizavel com nova copy, paleta, imagens e checkout.
 
-# Website Reverse-Engineer Template
+## Prioridades
 
-## What This Is
-A reusable template for reverse-engineering any website into a clean, modern Next.js codebase using AI coding agents. The Next.js + shadcn/ui + Tailwind v4 base is pre-scaffolded — just run `/clone-website <url1> [<url2> ...]`.
+- Manter a pagina rapida, leve e mobile-first.
+- Centralizar conteudo variavel em `src/config/offer.ts`.
+- Preservar componentes de secao como blocos reutilizaveis.
+- Evitar hardcode de copy especifica da oferta dentro dos componentes.
+- Remover assets antigos quando nao forem referenciados pela oferta atual.
 
-## Tech Stack
-- **Framework:** Next.js 16 (App Router, React 19, TypeScript strict)
-- **UI:** shadcn/ui (Radix primitives, Tailwind CSS v4, `cn()` utility)
-- **Icons:** Lucide React (default — will be replaced/supplemented by extracted SVGs)
-- **Styling:** Tailwind CSS v4 with oklch design tokens
-- **Deployment:** Vercel
+## Comandos
 
-## Commands
-- `npm run dev` — Start dev server
-- `npm run build` — Production build
-- `npm run lint` — ESLint check
-- `npm run typecheck` — TypeScript check
-- `npm run check` — Run lint + typecheck + build
-
-## Code Style
-- TypeScript strict mode, no `any`
-- Named exports, PascalCase components, camelCase utils
-- Tailwind utility classes, no inline styles
-- 2-space indentation
-- Responsive: mobile-first
-
-## Design Principles
-- **Pixel-perfect emulation** — match the target's spacing, colors, typography exactly
-- **No personal aesthetic changes during emulation phase** — match 1:1 first, customize later
-- **Real content** — use actual text and assets from the target site, not placeholders
-- **Beauty-first** — every pixel matters
-
-## Project Structure
-```
-src/
-  app/              # Next.js routes
-  components/       # React components
-    ui/             # shadcn/ui primitives
-    icons.tsx       # Extracted SVG icons as React components
-  lib/
-    utils.ts        # cn() utility (shadcn)
-  types/            # TypeScript interfaces
-  hooks/            # Custom React hooks
-public/
-  images/           # Downloaded images from target site
-  videos/           # Downloaded videos from target site
-  seo/              # Favicons, OG images, webmanifest
-docs/
-  research/         # Inspection output (design tokens, components, layout)
-  design-references/ # Screenshots and visual references
-scripts/            # Asset download scripts
+```bash
+npm run dev
+npm run typecheck
+npm run build
+npm run lint
 ```
 
-## MOST IMPORTANT NOTES
-- When launching Claude Code agent teams, ALWAYS have each teammate work in their own worktree branch and merge everyone's work at the end, resolving any merge conflicts smartly since you are basically serving the orchestrator role and have full context to our goals, work given, work achieved, and desired outcomes.
-- After editing `AGENTS.md`, run `bash scripts/sync-agent-rules.sh` to regenerate platform-specific instruction files.
-- After editing `.claude/skills/clone-website/SKILL.md`, run `node scripts/sync-skills.mjs` to regenerate the skill for all platforms.
+## Arquivos Importantes
 
-@docs/research/INSPECTION_GUIDE.md
+- `src/config/offer.ts`: fonte principal da oferta atual.
+- `src/types/offer.ts`: contrato da configuracao.
+- `src/app/page.tsx`: ordem das secoes.
+- `src/app/globals.css`: estilos da landing.
+- `public/images`: imagens da oferta atual.
+
+## Regras De Edicao
+
+- Antes de remover imagens, confirme se elas nao aparecem em `src/config/offer.ts`.
+- Antes de adicionar dependencias, verifique se a solucao nao pode ser feita com React, CSS e componentes existentes.
+- Quando uma mudanca afetar layout, valide desktop e mobile.
+- Depois de alteracoes relevantes, rode `npm run typecheck` e `npm run build`.

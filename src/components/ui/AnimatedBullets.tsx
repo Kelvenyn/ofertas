@@ -73,6 +73,7 @@ export function AnimatedBullets({ items, icons, className = "" }: AnimatedBullet
 
   useEffect(() => {
     if (!containerRef.current) return
+    const timers = timersRef.current
     const obs = new IntersectionObserver(([e]) => {
       if (e.isIntersecting) {
         startSequence()
@@ -82,7 +83,7 @@ export function AnimatedBullets({ items, icons, className = "" }: AnimatedBullet
     obs.observe(containerRef.current)
     return () => {
       obs.disconnect()
-      timersRef.current.forEach(clearTimeout)
+      timers.forEach(clearTimeout)
     }
   }, [startSequence])
 
