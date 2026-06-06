@@ -33,6 +33,7 @@ export interface OfferHero {
   timerLabel: string
   marqueeText: string
   marqueeGradient: string
+  bullets?: string[]
 }
 
 export interface OfferTestimonial {

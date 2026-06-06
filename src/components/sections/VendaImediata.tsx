@@ -35,6 +35,14 @@ export function VendaImediata() {
 
         <p className="vi-sub">{subtitle}</p>
 
+        {OFFER.hero.bullets && (
+          <ul className="vi-bullets">
+            {OFFER.hero.bullets.map((b, i) => (
+              <li key={i} className="vi-bullet">{b}</li>
+            ))}
+          </ul>
+        )}
+
         <ShinyButton href="#oferta" className="vi-cta-btn">
           {ctaText}
         </ShinyButton>

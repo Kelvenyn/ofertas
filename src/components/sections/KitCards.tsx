@@ -8,7 +8,7 @@ const DRAG_MULTIPLIER = 1.8
 const SCROLL_SPEED = 0.6
 
 export function KitCards() {
-  const { heading1, images } = OFFER.kitCards
+  const { heading1, heading2, images } = OFFER.kitCards
   const trackRef = useRef<HTMLDivElement>(null)
   const offsetRef = useRef(0)
   const rafRef = useRef<number>(0)
@@ -93,6 +93,7 @@ export function KitCards() {
     <div className="kc-section" aria-labelledby="kit-title" ref={sectionRef}>
       <div className="kc-inner">
         <h2 className="kc-title" id="kit-title">{heading1}</h2>
+        {heading2 && <p className="kc-subtitle">{heading2}</p>}
       </div>
 
       <div

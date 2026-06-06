@@ -499,6 +499,35 @@ html {
   color: var(--text-muted);
 }
 
+.vi-bullets {
+  list-style: none;
+  margin: 0 auto 20px;
+  padding: 0;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.vi-bullet {
+  position: relative;
+  padding-left: 22px;
+  font-size: 13.5px;
+  line-height: 1.5;
+  font-weight: 600;
+  color: var(--brand-deep);
+}
+
+.vi-bullet::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--cta);
+  font-weight: 700;
+  font-size: 14px;
+}
+
 .vi-social-count {
   display: inline-flex;
   align-items: center;
@@ -792,6 +821,15 @@ html {
   line-height: 1.05;
   margin: 0;
   text-wrap: balance;
+}
+
+.kc-subtitle {
+  margin: 12px auto 0;
+  max-width: 520px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  font-weight: 500;
+  color: var(--text-muted);
 }
 
 .kc-carousel {
