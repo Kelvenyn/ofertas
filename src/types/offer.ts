@@ -141,7 +141,6 @@ export interface OfferConfig {
   pricing: {
     pill: string
     plans: PricingPlan[]
-    trustBadges: string[]
   }
   guarantee: {
     marqueeText: string

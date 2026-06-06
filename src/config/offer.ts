@@ -199,7 +199,6 @@ export const OFFER: OfferConfig = {
         ctaHref: "https://pay.hotmart.com/Y106153793C?checkoutMode=10",
       },
     ],
-    trustBadges: ["🔒 Compra 100% segura", "⚡ Acesso imediato", "🔄 30 dias de garantia"],
   },
   guarantee: {
     marqueeText: "GARANTIA 30 DIAS",

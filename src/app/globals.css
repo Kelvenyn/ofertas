@@ -864,7 +864,7 @@ html {
 
 /* ===== OFFER PEI ===== */
 .offer-pei-section {
-  padding: 44px 16px 40px;
+  padding: 48px 16px 44px;
   background: var(--surface);
   font-family: 'Manrope', system-ui, sans-serif;
 }
@@ -876,14 +876,14 @@ html {
 
 .offer-pei-head {
   text-align: center;
-  margin-bottom: 18px;
+  margin-bottom: 24px;
 }
 
 .offer-pei-pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 0 0 16px;
+  margin: 0 0 18px;
   padding: 10px 18px;
   border-radius: 999px;
   background: var(--cta-surface, #E9FFF4);
@@ -899,7 +899,7 @@ html {
 }
 
 .offer-pei-head h2 {
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(28px, 5vw, 44px);
   line-height: 1.08;
@@ -950,14 +950,14 @@ html {
 .offer-pei-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
+  gap: 20px;
   align-items: stretch;
 }
 
 .offer-card {
   position: relative;
   border-radius: 24px;
-  padding: 24px 20px 20px;
+  padding: 28px 22px 22px;
   overflow: hidden;
   background: var(--surface);
 }
@@ -983,7 +983,7 @@ html {
 
 .premium-plan {
   border: 2px solid var(--cta-deep);
-  padding-top: 58px;
+  padding-top: 62px;
   background: linear-gradient(180deg, var(--cta-surface-deep, #F0FFF8) 0%, var(--surface) 60%);
   transform: scale(1.02);
   animation: premium-glow 3s ease-in-out infinite;
@@ -1056,7 +1056,7 @@ html {
 }
 
 .offer-card-top h3 {
-  margin: 0 0 8px;
+  margin: 0 0 12px;
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(24px, 4vw, 34px);
   line-height: 1.1;
@@ -1073,7 +1073,7 @@ html {
 .offer-plan-img {
   display: flex;
   justify-content: center;
-  margin: 12px 0;
+  margin: 14px 0 16px;
 }
 
 .offer-plan-img img {
@@ -1095,8 +1095,8 @@ html {
 
 .offer-price-block {
   text-align: center;
-  margin-bottom: 18px;
-  padding: 16px 14px;
+  margin-bottom: 20px;
+  padding: 18px 16px;
   border-radius: 18px;
   background: var(--surface-alt, #F8F9FA);
   border: 1px solid rgba(18,58,109,.08);
@@ -1180,7 +1180,7 @@ html {
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 12px;
+  gap: 14px;
 }
 
 .offer-list .ab-item {
@@ -1212,7 +1212,7 @@ html {
   width: 100%;
   text-align: center;
   text-decoration: none;
-  margin-top: 20px;
+  margin-top: 24px;
   box-sizing: border-box;
 }
 
@@ -1240,36 +1240,23 @@ html {
   box-shadow: 0 8px 32px hsla(160, 84%, 39%, 0.45);
 }
 
-.offer-bottom-info {
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-  color: var(--text-muted);
-  font-family: 'Manrope', system-ui, sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  text-align: center;
-}
-
 @media (max-width: 768px) {
   .offer-pei-section {
-    padding: 30px 14px 28px;
+    padding: 36px 14px 32px;
   }
 
   .offer-pei-pill {
     font-size: 12px;
     padding: 10px 17px;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
   }
 
   .offer-pei-head h2 {
-    margin-bottom: 11px;
+    margin-bottom: 14px;
   }
 
   .offer-pei-head h2 .offer-main-line {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .offer-pei-grid {
@@ -1278,12 +1265,12 @@ html {
   }
 
   .offer-card {
-    padding: 22px 16px 18px;
+    padding: 24px 16px 20px;
     border-radius: 20px;
   }
 
   .premium-plan {
-    padding-top: 60px;
+    padding-top: 64px;
   }
 
   .offer-badge {
@@ -1299,6 +1286,7 @@ html {
 
   .offer-card-top h3 {
     font-size: 28px;
+    margin-bottom: 10px;
   }
 
   .offer-price {
@@ -1314,12 +1302,6 @@ html {
     padding: 17px 15px;
   }
 
-  .offer-bottom-info {
-    gap: 10px;
-    font-size: 13px;
-    flex-direction: column;
-  }
-
   .offer-product-preview {
     margin: 0 auto 22px;
   }
@@ -1331,8 +1313,8 @@ html {
 
 /* ===== SOCIAL PROOF CAROUSEL ===== */
 .sp-section {
-  padding: 44px 0 40px;
-  margin-top: -20px;
+  padding: 48px 0 44px;
+  margin-top: 0;
   overflow: hidden;
   background: var(--brand-subtle);
 }
@@ -1345,7 +1327,7 @@ html {
 }
 
 .sp-title {
-  margin: 0 auto 24px;
+  margin: 0 auto 28px;
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(26px, 6vw, 36px);
   line-height: 1.1;
@@ -1518,7 +1500,7 @@ html {
 /* ===== BENEFITS ===== */
 /* ===== BENEFITS (animated card) ===== */
 .benefits-section {
-  padding: 44px 16px 40px;
+  padding: 48px 16px 44px;
   background: var(--brand-subtle);
   font-family: 'Manrope', system-ui, sans-serif;
 }
@@ -1530,7 +1512,7 @@ html {
 }
 
 .benefits-title {
-  margin: 0 0 24px;
+  margin: 0 0 28px;
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(26px, 6vw, 36px);
   line-height: 1.1;
@@ -1748,7 +1730,7 @@ html {
 
 /* ===== URGÊNCIA ===== */
 .urg-section {
-  padding: 44px 16px 40px;
+  padding: 48px 16px 44px;
   background: var(--cta-surface);
   font-family: 'Manrope', system-ui, sans-serif;
 }
@@ -2106,7 +2088,7 @@ html {
 
 /* ===== TUDO QUE VOCÃŠ VAI RECEBER ===== */
 .tqvr-section {
-  padding: 44px 16px 40px;
+  padding: 48px 16px 44px;
   background: var(--brand-subtle);
   font-family: 'Manrope', system-ui, sans-serif;
 }
@@ -2114,7 +2096,7 @@ html {
 .tqvr-card {
   max-width: 640px;
   margin: 0 auto;
-  padding: 32px 24px;
+  padding: 34px 24px;
   border-radius: 24px;
   background: var(--surface);
   border: 1px solid rgba(11,127,232,.10);
@@ -2141,7 +2123,7 @@ html {
 }
 
 .tqvr-title {
-  margin: 0 0 24px;
+  margin: 0 0 28px;
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(22px, 5vw, 30px);
   line-height: 1.15;
@@ -2160,7 +2142,7 @@ html {
 }
 
 .tqvr-image {
-  margin: 0 auto 24px;
+  margin: 0 auto 28px;
 }
 
 .tqvr-image img {
@@ -2190,7 +2172,7 @@ html {
 
 /* ===== BÃ”NUS ===== */
 .bon-section {
-  padding: 44px 16px 40px;
+  padding: 48px 16px 44px;
   background: transparent;
   font-family: 'Manrope', system-ui, sans-serif;
 }
@@ -2220,7 +2202,7 @@ html {
 }
 
 .bon-title {
-  margin: 0 0 24px;
+  margin: 0 0 28px;
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(26px, 6vw, 36px);
   line-height: 1.1;
@@ -2268,7 +2250,7 @@ html {
 }
 
 .bon-sub {
-  margin: 0 auto 28px;
+  margin: 0 auto 32px;
   max-width: 520px;
   font-size: 16px;
   line-height: 1.7;
@@ -2645,7 +2627,7 @@ html {
 
 /* ===== GUARANTEE ===== */
 .gar-section {
-  padding: 0 0 20px;
+  padding: 18px 0 26px;
   background: transparent;
   font-family: 'Manrope', system-ui, sans-serif;
 }
@@ -2685,7 +2667,7 @@ html {
 .gar-inner {
   max-width: 600px;
   margin: 0 auto;
-  padding: 40px 16px;
+  padding: 42px 16px;
   text-align: center;
 }
 
@@ -2702,7 +2684,7 @@ html {
 }
 
 .gar-title {
-  margin: 0 0 24px;
+  margin: 0 0 28px;
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(22px, 5vw, 30px);
   line-height: 1.2;
@@ -2729,7 +2711,7 @@ html {
 
 /* ===== COMO Ã‰ O ACESSO ===== */
 .cea-section {
-  padding: 44px 16px 40px;
+  padding: 48px 16px 44px;
   background: transparent;
   font-family: 'Manrope', system-ui, sans-serif;
 }
@@ -2741,7 +2723,7 @@ html {
 }
 
 .cea-title {
-  margin: 0 0 24px;
+  margin: 0 0 28px;
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(26px, 6vw, 36px);
   line-height: 1.1;
@@ -2943,7 +2925,7 @@ html {
 
 /* ===== FAQ ===== */
 .faq-acc-wrap {
-  padding: 44px 16px 44px;
+  padding: 48px 16px 48px;
   background: var(--brand-subtle);
   font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 }
@@ -2955,7 +2937,7 @@ html {
 
 .faq-acc-title {
   text-align: center;
-  margin: 0 0 24px;
+  margin: 0 0 28px;
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(28px, 6vw, 40px);
   line-height: 1.08;
