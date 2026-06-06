@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title: OFFER.meta.title,
   description: OFFER.meta.description,
   icons: {
-    icon: "/favicon.png",
+    icon: "/icon.png",
   },
 };
 
