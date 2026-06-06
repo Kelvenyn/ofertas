@@ -318,11 +318,7 @@ export function SocialProof() {
           ))}
         </div>
       </div>
-
-      <div className="sp-rating-below" aria-label="Avaliação média: 4.9 de 5 estrelas">
-        <span className="sp-stars" aria-hidden="true">⭐⭐⭐⭐⭐</span>
-        <span className="sp-rating-text">4.9/5</span>
-      </div>
     </section>
   )
 }
+

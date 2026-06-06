@@ -12,13 +12,16 @@ function calcDiscount(oldStr: string, priceStr: string): number {
 }
 
 export function OfferPricing() {
-  const { pill, plans } = OFFER.pricing
+  const { plans } = OFFER.pricing
   return (
     <section className="offer-pei-section" id="oferta" aria-labelledby="pricing-title">
       <div className="offer-pei-container">
 
         <div className="offer-pei-head">
-          <div className="offer-pei-pill" id="pricing-title">{pill}</div>
+          <h2 className="offer-pei-head-title" id="pricing-title">
+            <span className="offer-pei-head-line">ESCOLHA SUA</span>
+            <span className="offer-pei-head-accent">OPÇÃO</span>
+          </h2>
         </div>
 
         <div className="offer-pei-grid">
@@ -67,3 +70,4 @@ export function OfferPricing() {
     </section>
   )
 }
+
