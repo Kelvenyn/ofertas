@@ -30,7 +30,7 @@ export const OFFER: OfferConfig = {
     imageWidth: 340,
     imageHeight: 425,
     subtitle: "Seu filho colore por números, descobre personagens bíblicos e aprende versículos, tudo longe das telas.",
-    ctaText: "QUERO O PIXEL ARTE BÍBLICO",
+    ctaText: "QUERO O PIXEL ART BÍBLICO",
     timerLabel: "BÔNUS ENCERRAM EM",
     marqueeText: "+100 Pixel Artes Bíblicas • PDF A4 Pronto para Imprimir • Acesso Imediato • ",
     marqueeGradient: "linear-gradient(135deg, #67E8F9 0%, #0891B2 55%, #0E7490 100%)",
@@ -76,7 +76,7 @@ export const OFFER: OfferConfig = {
     title: "Comece hoje a tirar\nseu filho do celular\ncom o",
     highlight: "Pixel Art Bíblico",
     body: "",
-    ctaText: "QUERO O PIXEL ARTE BÍBLICO",
+    ctaText: "QUERO O PIXEL ART BÍBLICO",
     trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"],
   },
   idealPara: {
