@@ -104,6 +104,17 @@ export const OFFER: OfferConfig = {
       "Acesso imediato após a compra",
     ],
   },
+  bonusSection: {
+    pill: "EXTRA INCLUÍDO",
+    titleLead: "6 BÔNUS",
+    titleHighlight: "EXCLUSIVOS",
+    subtitle: "Ao adquirir hoje, você também recebe **6 materiais complementares** para deixar seus atendimentos psicopedagógicos mais organizados, práticos e completos.",
+    cardLabel: "BÔNUS",
+    touchHint: "Toque na imagem acima para ver o conteúdo.",
+    backHint: "Toque para voltar",
+    timerText: "OFERTA EXPIRA COM O CRONÔMETRO",
+    freeLabel: "GRÁTIS",
+  },
   bonuses: [
     {
       front: "/images/CR-NINJA-15.webp",
@@ -149,7 +160,8 @@ export const OFFER: OfferConfig = {
     },
   ],
   pricing: {
-    pill: "ESCOLHA SUA OPÇÃO",
+    titleLead: "ESCOLHA SUA",
+    titleHighlight: "OPÇÃO",
     plans: [
       {
         id: "basic",
@@ -201,7 +213,8 @@ export const OFFER: OfferConfig = {
     ],
   },
   guarantee: {
-    marqueeText: "GARANTIA 30 DIAS",
+    marqueeText: "GARANTIA 30 DIAS • SATISFAÇÃO GARANTIDA • DINHEIRO DE VOLTA • ",
+    marqueeGradient: "linear-gradient(135deg, #93C5FD 0%, #0B7FE8 55%, #1D4ED8 100%)",
     icon: "/images/INCONDICIONAL-_1_-1-1.webp",
     iconAlt: "Garantia de 30 dias",
     title: "Satisfação garantida\nou seu dinheiro de volta.",

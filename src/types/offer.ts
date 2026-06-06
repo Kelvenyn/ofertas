@@ -72,6 +72,18 @@ export interface BonusItem {
   price: string
 }
 
+export interface BonusSection {
+  pill: string
+  titleLead: string
+  titleHighlight: string
+  subtitle: string
+  cardLabel: string
+  touchHint: string
+  backHint: string
+  timerText: string
+  freeLabel: string
+}
+
 export interface PricingPlan {
   id: string
   label?: string
@@ -137,13 +149,16 @@ export interface OfferConfig {
     imageAlt: string
     bullets: string[]
   }
+  bonusSection: BonusSection
   bonuses: BonusItem[]
   pricing: {
-    pill: string
+    titleLead: string
+    titleHighlight: string
     plans: PricingPlan[]
   }
   guarantee: {
     marqueeText: string
+    marqueeGradient: string
     icon: string
     iconAlt: string
     title: string

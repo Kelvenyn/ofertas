@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react"
 import Image from "next/image"
+import type { BonusSection } from "@/types/offer"
 
 interface FlipCardProps {
   front: string
@@ -10,9 +11,10 @@ interface FlipCardProps {
   desc: string
   price: string
   index: number
+  labels: BonusSection
 }
 
-export function FlipCard({ front, back, title, desc, price, index }: FlipCardProps) {
+export function FlipCard({ front, back, title, desc, price, index, labels }: FlipCardProps) {
   const [flipped, setFlipped] = useState(false)
   const [frontLoaded, setFrontLoaded] = useState(false)
 
@@ -22,7 +24,7 @@ export function FlipCard({ front, back, title, desc, price, index }: FlipCardPro
   }, [back])
 
   const handleClick = useCallback(() => {
-    setFlipped(f => !f)
+    setFlipped((current) => !current)
   }, [])
 
   const bonusNumber = index + 1
@@ -34,22 +36,23 @@ export function FlipCard({ front, back, title, desc, price, index }: FlipCardPro
         onClick={handleClick}
         role="button"
         tabIndex={0}
-        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); handleClick() } }}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault()
+            handleClick()
+          }
+        }}
         aria-label={`${flipped ? "Ocultar conteúdo de" : "Ver conteúdo de"} ${title}`}
       >
         {!frontLoaded && <div className="bon-flip-skeleton" />}
 
-        <div
-          className="bon-new-perspective"
-          style={{ opacity: frontLoaded ? 1 : 0 }}
-        >
+        <div className="bon-new-perspective" style={{ opacity: frontLoaded ? 1 : 0 }}>
           <div
             className="bon-new-inner"
             style={{
               transform: flipped ? "rotateY(-180deg)" : "rotateY(0deg)",
             }}
           >
-            {/* Front */}
             <div className="bon-new-face bon-new-front">
               <Image
                 src={front}
@@ -61,7 +64,9 @@ export function FlipCard({ front, back, title, desc, price, index }: FlipCardPro
                 onLoad={() => setFrontLoaded(true)}
               />
               <div className="bon-new-stripe">
-                <span className="bon-new-stripe-text"><span aria-hidden="true">🎁</span> BÔNUS #{bonusNumber}</span>
+                <span className="bon-new-stripe-text">
+                  <span aria-hidden="true">🎁</span> {labels.cardLabel} #{bonusNumber}
+                </span>
               </div>
               {!flipped && (
                 <div className="bon-new-hand">
@@ -70,7 +75,6 @@ export function FlipCard({ front, back, title, desc, price, index }: FlipCardPro
               )}
             </div>
 
-            {/* Back */}
             <div className="bon-new-face bon-new-back">
               <Image
                 src={back}
@@ -81,7 +85,7 @@ export function FlipCard({ front, back, title, desc, price, index }: FlipCardPro
                 loading="lazy"
               />
               <div className="bon-new-back-hint">
-                <span aria-hidden="true">&#8634;</span> Toque para voltar
+                <span aria-hidden="true">&#8634;</span> {labels.backHint}
               </div>
             </div>
           </div>
@@ -89,7 +93,7 @@ export function FlipCard({ front, back, title, desc, price, index }: FlipCardPro
       </div>
 
       <p className="bon-new-touch-hint">
-        <em>Toque na imagem acima para ver o conteúdo.</em>
+        <em>{labels.touchHint}</em>
       </p>
 
       <div className="bon-new-info">
@@ -99,11 +103,11 @@ export function FlipCard({ front, back, title, desc, price, index }: FlipCardPro
 
         <div className="bon-new-timer">
           <span className="bon-new-timer-icon" aria-hidden="true">&#9203;</span>
-          <span className="bon-new-timer-text">OFERTA EXPIRA COM O CRONÔMETRO</span>
+          <span className="bon-new-timer-text">{labels.timerText}</span>
         </div>
 
         <div className="bon-new-pill-free">
-          <span aria-hidden="true">🎁</span> GRÁTIS
+          <span aria-hidden="true">🎁</span> {labels.freeLabel}
         </div>
       </div>
     </div>

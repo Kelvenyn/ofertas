@@ -4,32 +4,34 @@ import { AnimatedBullets } from "@/components/ui/AnimatedBullets"
 import { OFFER } from "@/config/offer"
 
 function calcDiscount(oldStr: string, priceStr: string): number {
-  const clean = (s: string) => parseFloat(s.replace(/[^\d,]/g, "").replace(",", "."))
+  const clean = (value: string) => parseFloat(value.replace(/[^\d,]/g, "").replace(",", "."))
   const old = clean(oldStr)
-  const curr = clean(priceStr)
-  if (!old || !curr) return 0
-  return Math.round((1 - curr / old) * 100)
+  const current = clean(priceStr)
+  if (!old || !current) return 0
+  return Math.round((1 - current / old) * 100)
 }
 
 export function OfferPricing() {
-  const { plans } = OFFER.pricing
+  const { titleLead, titleHighlight, plans } = OFFER.pricing
+
   return (
     <section className="offer-pei-section" id="oferta" aria-labelledby="pricing-title">
       <div className="offer-pei-container">
-
         <div className="offer-pei-head">
           <h2 className="offer-pei-head-title" id="pricing-title">
-            <span className="offer-pei-head-line">ESCOLHA SUA</span>
-            <span className="offer-pei-head-accent">OPÇÃO</span>
+            <span className="offer-pei-head-line">{titleLead}</span>
+            <span className="offer-pei-head-accent">{titleHighlight}</span>
           </h2>
         </div>
 
         <div className="offer-pei-grid">
           {plans.map((plan) => {
             const discount = calcDiscount(plan.oldPrice, plan.price)
+
             return (
               <div key={plan.id} className={`offer-card ${plan.featured ? "premium-plan" : "basic-plan"}`}>
                 {plan.badgeText && <div className="offer-badge">{plan.badgeText}</div>}
+
                 <div className="offer-card-top">
                   {plan.label && (
                     <div className={`plan-label ${plan.featured ? "premium-label" : "basic-label"}`}>
@@ -70,4 +72,3 @@ export function OfferPricing() {
     </section>
   )
 }
-
