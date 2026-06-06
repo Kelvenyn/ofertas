@@ -17,7 +17,7 @@ import { Footer } from "@/components/sections/Footer"
 export default function Home() {
   return (
     <>
-      <a href="#oferta" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[var(--z-skip-link)] focus:bg-white focus:text-[#0B7FE8] focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold focus:shadow-lg">
+      <a href="#oferta" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[var(--z-skip-link)] focus:bg-white focus:text-[#0891B2] focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold focus:shadow-lg">
         Pular para a oferta
       </a>
 

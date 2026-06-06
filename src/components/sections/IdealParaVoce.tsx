@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react"
 import { OFFER } from "@/config/offer"
 
-const CARD_COLORS = ["#0B7FE8", "#22C978", "#FF8A5B", "#8B5CF6"]
+const CARD_COLORS = ["#0891B2", "#10B981", "#F59E0B", "#0E7490"]
 
 function IdvCard({ item, index }: { item: { icon: string; title: string; desc: string }; index: number }) {
   const [visible, setVisible] = useState(false)
