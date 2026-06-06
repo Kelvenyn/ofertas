@@ -29,7 +29,7 @@ export const OFFER: OfferConfig = {
     imageAlt: "Pixel Art Bíblico",
     imageWidth: 340,
     imageHeight: 425,
-    subtitle: "Seu filho colore por números, descobre personagens bíblicos e aprende versículos — tudo longe das telas.",
+    subtitle: "Seu filho colore por números, descobre personagens bíblicos e aprende versículos, tudo longe das telas.",
     ctaText: "QUERO O PIXEL ARTE BÍBLICO",
     timerLabel: "BÔNUS ENCERRAM EM",
     marqueeText: "+100 Pixel Artes Bíblicas • PDF A4 Pronto para Imprimir • Acesso Imediato • ",
@@ -65,7 +65,7 @@ export const OFFER: OfferConfig = {
   },
   benefits: [
     { icon: "📱", title: "Menos tempo no celular", desc: "Em vez de dizer 'larga o celular', você oferece uma alternativa pronta, visual e divertida." },
-    { icon: "🎯", title: "Mais foco e concentração", desc: "A criança segue os números e pinta os quadradinhos — estimulando atenção, paciência e concentração." },
+    { icon: "🎯", title: "Mais foco e concentração", desc: "A criança segue os números e pinta os quadradinhos, estimulando atenção, paciência e concentração." },
     { icon: "📖", title: "Aprendizado bíblico leve", desc: "Ensina sobre Deus sem ser pesado. As Pixel Artes apresentam personagens, versículos e valores de forma simples." },
     { icon: "✏️", title: "Praticidade para a mãe", desc: "Você não precisa preparar nada. Basta escolher uma arte, imprimir em A4 e entregar para a criança." },
     { icon: "🧠", title: "Criatividade e coordenação", desc: "Pintar por números trabalha coordenação motora, percepção visual, noção de cores e organização." },
