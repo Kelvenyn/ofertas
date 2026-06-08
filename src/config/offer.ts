@@ -83,7 +83,7 @@ export const OFFER: OfferConfig = {
     pill: "OPORTUNIDADE ÚNICA",
     title: "Comece hoje a tirar\nseu filho do celular\ncom o",
     highlight: "Pixel Art Bíblico",
-    body: "Enquanto outras mães já estão imprimindo e vendo os filhos se concentrarem, você ainda está pensando. Acesse agora antes que a oferta expire.",
+    body: "Enquanto outras mães já estão imprimindo e vendo os filhos se concentrarem, você ainda está pensando. Cada dia sem essa atividade é mais um dia grudado no celular. Acesse agora e veja a diferença na prática.",
     ctaText: "QUERO O PIXEL ART BÍBLICO",
     trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"],
   },
