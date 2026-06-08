@@ -693,6 +693,17 @@ html {
   margin: 0 auto;
 }
 
+.dc-subtitle {
+  font-size: clamp(15px, 3.8vw, 19px);
+  font-weight: 600;
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .dc-numberline {
   display: flex;
   align-items: baseline;
