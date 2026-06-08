@@ -2410,12 +2410,28 @@ html {
 .bon-new-card {
   position: relative;
   border-radius: 20px;
-  background: #ECFEFF;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  background: linear-gradient(135deg, #0891b2 0%, #06b6d4 55%, #0e7490 100%);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.25);
   text-align: center;
   overflow: visible;
   transition: box-shadow .35s ease;
+}
+
+.bon-new-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent 0px,
+    transparent 8px,
+    rgba(255,255,255,.03) 8px,
+    rgba(255,255,255,.03) 16px
+  );
+  pointer-events: none;
+  border-radius: 20px;
+  z-index: 0;
 }
 
 @media (hover: hover) {
@@ -2476,7 +2492,7 @@ html {
 
 .bon-new-badge {
   position: absolute;
-  top: 10px;
+  top: -14px;
   left: 50%;
   transform: translateX(-50%);
   background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
@@ -2533,7 +2549,7 @@ html {
   padding: 10px 16px 0;
   font-size: 13px;
   line-height: 1.4;
-  color: #9ca3af;
+  color: rgba(255,255,255,.7);
 }
 
 .bon-new-touch-hint em {
@@ -2552,14 +2568,17 @@ html {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
+  padding: 7px 12px;
   border-radius: 999px;
-  background: #d1fae5;
-  border: 2px dashed #059669;
-  color: #047857;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 12px;
+  font-size: 11px;
+  line-height: 1;
   font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,.15);
+  border: 1px dashed rgba(255,255,255,.4);
+  color: #FFFFFF;
   white-space: nowrap;
 }
 
@@ -2568,14 +2587,14 @@ html {
   font-size: 14px;
   line-height: 1.5;
   font-weight: 500;
-  color: #4b5563;
+  color: rgba(255,255,255,.85);
   max-width: 280px;
 }
 
 .bon-new-price {
   font-size: 22px;
   font-weight: 800;
-  color: #047857;
+  color: #FFFFFF;
   letter-spacing: -.02em;
 }
 
@@ -2597,7 +2616,7 @@ html {
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: #059669;
+  color: rgba(255,255,255,.8);
   animation: bon-timer-glow 2s ease-in-out infinite;
 }
 
