@@ -230,7 +230,7 @@ export function SocialProof() {
   return (
     <section className="sp-section" aria-labelledby="social-proof-title">
       <div className="sp-inner">
-        <h2 className="sp-title" id="social-proof-title">O que estão dizendo</h2>
+        <h2 className="sp-title" id="social-proof-title">Mães como você já aprovaram</h2>
       </div>
 
       <div

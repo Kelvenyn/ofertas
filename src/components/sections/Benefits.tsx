@@ -64,7 +64,7 @@ export function Benefits() {
 
         <div className="benefits-cta-wrap">
           <ShinyButton href="#oferta">
-            QUERO ACESSAR O KIT AGORA
+            QUERO O PIXEL ART BÍBLICO
           </ShinyButton>
         </div>
       </div>

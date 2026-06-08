@@ -38,7 +38,7 @@ export function VendaImediata() {
         <p className="vi-sub">{subtitle}</p>
 
         {bullets && bullets.length > 0 && (
-          <AnimatedBullets items={bullets} className="vi-bullets" />
+          <AnimatedBullets items={bullets} className="vi-bullets ab-center" />
         )}
 
         <ShinyButton href="#oferta" className="vi-cta-btn">
