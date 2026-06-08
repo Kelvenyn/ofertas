@@ -25,7 +25,7 @@ export const OFFER: OfferConfig = {
     titleLine1: "Tire seu filho do celular",
     titleLine2: "com +100 Pixel Artes Bíblicas",
     titleLine3: "para colorir e imprimir hoje mesmo.",
-    image: "/images/a4996fc9-5b06-464a-86b1-817af5b4f1ae.webp",
+    image: "/images/hero.webp",
     imageAlt: "Pixel Art Bíblico",
     imageWidth: 340,
     imageHeight: 425,
@@ -96,7 +96,7 @@ export const OFFER: OfferConfig = {
     pill: "CONTEÚDO DO KIT",
     title: "Tudo o que você vai receber",
     titleHighlight: "Pixel Art Bíblico",
-    image: "/images/a4996fc9-5b06-464a-86b1-817af5b4f1ae.webp",
+    image: "/images/hero.webp",
     imageAlt: "Pixel Art Bíblico",
     bullets: [
       "+100 Pixel Artes Bíblicas para colorir",
@@ -190,7 +190,7 @@ export const OFFER: OfferConfig = {
       {
         id: "premium",
         title: "Plano Completo",
-        image: "/images/a4996fc9-5b06-464a-86b1-817af5b4f1ae.webp",
+        image: "/images/hero.webp",
         imageAlt: "Plano Completo",
         featured: true,
         badgeText: "MAIS VENDIDO",
