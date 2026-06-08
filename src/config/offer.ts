@@ -217,12 +217,12 @@ export const OFFER: OfferConfig = {
     ],
   },
   guarantee: {
-    marqueeText: "GARANTIA 7 DIAS • SATISFAÇÃO GARANTIDA • DINHEIRO DE VOLTA • ",
+    marqueeText: "GARANTIA 30 DIAS • SATISFAÇÃO GARANTIDA • DINHEIRO DE VOLTA • ",
     marqueeGradient: "linear-gradient(135deg, #67E8F9 0%, #0891B2 55%, #0E7490 100%)",
-    icon: "/images/INCONDICIONAL-_1_-1-1.webp",
-    iconAlt: "Garantia de 7 dias",
+    icon: "/images/Garantia 30 dias.webp",
+    iconAlt: "Garantia de 30 dias",
     title: "Satisfação garantida\nou seu dinheiro de volta.",
-    body: "Teste o **Pixel Art Bíblico** por 7 dias. Se não gostar, devolvemos 100% do valor, sem perguntas.",
+    body: "Teste o **Pixel Art Bíblico** por 30 dias. Se não gostar, devolvemos 100% do valor, sem perguntas.",
   },
   access: {
     title: "Como você recebe e usa o Pixel Art Bíblico",
