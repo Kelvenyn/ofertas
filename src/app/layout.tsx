@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Nunito, Manrope } from "next/font/google";
+import Script from "next/script";
 import { OFFER } from "@/config/offer";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
@@ -59,6 +60,20 @@ export default function RootLayout({
       } as React.CSSProperties}
     >
       <body className="min-h-full flex flex-col">
+        <Script id="utmify-pixel-id" strategy="afterInteractive">
+          {`window.pixelId = "6a271a64526c8a5ae79867ec";`}
+        </Script>
+        <Script
+          id="utmify-pixel"
+          src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="utmify-utms"
+          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+          data-utmify-prevent-subids
+          strategy="afterInteractive"
+        />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>

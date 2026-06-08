@@ -22,9 +22,9 @@ export const OFFER: OfferConfig = {
   },
   hero: {
     pill: "PIXEL ART BÍBLICO",
-    titleLine1: "Tire seu filho do celular",
-    titleLine2: "com +100 Pixel Artes Bíblicas",
-    titleLine3: "para colorir e imprimir hoje mesmo.",
+    titleLine1: "Tire seu filho do celular com",
+    titleLine2: "+100 Pixel Artes Bíblicas para",
+    titleLine3: "colorir e imprimir hoje mesmo.",
     image: "/images/Plano-Completo.webp",
     imageAlt: "Pixel Art Bíblico",
     imageWidth: 340,
