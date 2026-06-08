@@ -1622,6 +1622,7 @@ html {
 
   .benefit-card {
     height: auto;
+    min-height: 150px;
     border-radius: 16px;
     padding: 20px 18px;
   }
@@ -1900,6 +1901,7 @@ html {
   padding: 26px 18px 22px;
   border-radius: 20px;
   border: 2px solid transparent;
+  min-height: 200px;
   background:
     linear-gradient(var(--surface), var(--surface)) padding-box,
     conic-gradient(
@@ -2024,7 +2026,7 @@ html {
 
 @media (max-width: 480px) {
   .idv-grid { grid-template-columns: 1fr; }
-  .idv-card { padding: 22px 16px; }
+  .idv-card { padding: 22px 16px; min-height: 170px; }
   .idv-card-visible.idv-card-alt { transform: translateY(0) rotateX(0); }
 }
 
