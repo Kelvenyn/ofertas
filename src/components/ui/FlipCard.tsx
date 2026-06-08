@@ -8,13 +8,14 @@ interface FlipCardProps {
   front: string
   back: string
   title: string
+  titleBreak?: string
   desc: string
   price: string
   index: number
   labels: BonusSection
 }
 
-export function FlipCard({ front, back, title, desc, price, index, labels }: FlipCardProps) {
+export function FlipCard({ front, back, title, titleBreak, desc, price, index, labels }: FlipCardProps) {
   const [flipped, setFlipped] = useState(false)
   const [frontLoaded, setFrontLoaded] = useState(false)
   const [showPulse, setShowPulse] = useState(false)
@@ -121,7 +122,7 @@ export function FlipCard({ front, back, title, desc, price, index, labels }: Fli
       </p>
 
       <div className="bon-new-info">
-        <span className="bon-new-pill-title">{title}</span>
+        <span className="bon-new-pill-title" dangerouslySetInnerHTML={{ __html: titleBreak || title }} />
         <p className="bon-new-desc">{desc}</p>
         <span className="bon-new-price">{price}</span>
 
