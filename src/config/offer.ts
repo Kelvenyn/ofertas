@@ -44,12 +44,11 @@ export const OFFER: OfferConfig = {
   socialProof: {
     title: "Mães como você já aprovaram",
     testimonials: [
-      { src: "/images/CR-NINJA-15.webp", alt: "Depoimento 1", gradient: "linear-gradient(90deg, #0891B2, #0E7490)" },
-      { src: "/images/CR-NINJA-16.webp", alt: "Depoimento 2", gradient: "linear-gradient(90deg, #10B981, #059669)" },
-      { src: "/images/CR-NINJA-17.webp", alt: "Depoimento 3", gradient: "linear-gradient(90deg, #67E8F9, #0891B2)" },
-      { src: "/images/CR-NINJA-18.webp", alt: "Depoimento 4", gradient: "linear-gradient(90deg, #0E7490, #164E63)" },
-      { src: "/images/CR-NINJA-15.webp", alt: "Depoimento 5", gradient: "linear-gradient(90deg, #10B981, #34D399)" },
-      { src: "/images/CR-NINJA-16.webp", alt: "Depoimento 6", gradient: "linear-gradient(90deg, #0891B2, #67E8F9)" },
+      { src: "/images/Depoimento (1).webp", alt: "Depoimento 1", gradient: "linear-gradient(90deg, #0891B2, #0E7490)" },
+      { src: "/images/Depoimento (2).webp", alt: "Depoimento 2", gradient: "linear-gradient(90deg, #10B981, #059669)" },
+      { src: "/images/Depoimento (3).webp", alt: "Depoimento 3", gradient: "linear-gradient(90deg, #67E8F9, #0891B2)" },
+      { src: "/images/Depoimento (4).webp", alt: "Depoimento 4", gradient: "linear-gradient(90deg, #0E7490, #164E63)" },
+      { src: "/images/Depoimento (5).webp", alt: "Depoimento 5", gradient: "linear-gradient(90deg, #10B981, #34D399)" },
     ],
   },
   counter: {
