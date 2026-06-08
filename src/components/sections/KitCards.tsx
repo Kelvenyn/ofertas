@@ -81,6 +81,8 @@ export function KitCards() {
     }, 2000)
   }, [])
 
+  if (!images || images.length === 0) return null
+
   const onMouseDown = (e: React.MouseEvent) => { e.preventDefault(); handleDragStart(e.clientX) }
   const onMouseMove = (e: React.MouseEvent) => handleDragMove(e.clientX)
   const onMouseUp = () => handleDragEnd()

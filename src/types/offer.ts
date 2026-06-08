@@ -59,6 +59,12 @@ export interface BenefitItem {
   desc: string
 }
 
+export interface BenefitSection {
+  title: string
+  ctaText: string
+  items: BenefitItem[]
+}
+
 export interface IdealItem {
   icon: string
   title: string
@@ -120,6 +126,7 @@ export interface OfferConfig {
   palette: OfferPalette
   hero: OfferHero
   socialProof: {
+    title?: string
     testimonials: OfferTestimonial[]
   }
   counter: OfferCounter
@@ -128,7 +135,7 @@ export interface OfferConfig {
     heading2?: string
     images: KitImage[]
   }
-  benefits: BenefitItem[]
+  benefits: BenefitSection
   urgency: {
     pill: string
     title: string
@@ -180,5 +187,8 @@ export interface OfferConfig {
     copyright: string
     privacyUrl: string
     termsUrl: string
+    missionText?: string
+    privacyLabel?: string
+    termsLabel?: string
   }
 }

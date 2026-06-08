@@ -50,24 +50,23 @@ function BenefitCard({ icon, title, desc, index }: { icon: string; title: string
 }
 
 export function Benefits() {
-  const benefits = OFFER.benefits
+  const { title, ctaText, items } = OFFER.benefits
   return (
     <section className="benefits-section" aria-labelledby="benefits-title">
       <div className="benefits-inner">
         <h2 className="benefits-title" id="benefits-title">
-          O que muda na sua casa quando você tem o{" "}
-          <span className="benefits-highlight">Pixel Art Bíblico</span>
+          {title}
         </h2>
 
         <div className="benefits-grid">
-          {benefits.map((b, i) => (
+          {items.map((b, i) => (
             <BenefitCard key={i} icon={b.icon} title={b.title} desc={b.desc} index={i} />
           ))}
         </div>
 
         <div className="benefits-cta-wrap">
           <ShinyButton href="#oferta">
-            QUERO O PIXEL ART BÍBLICO
+            {ctaText}
           </ShinyButton>
         </div>
       </div>

@@ -41,15 +41,17 @@ export function AnimatedBullets({ items, icons, className = "" }: AnimatedBullet
   const activatedRef = useRef(false)
   const timersRef = useRef<ReturnType<typeof setTimeout>[]>([])
 
-  const prefersReducedMotion = useRef(
-    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  const [prefersReducedMotion] = useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      : false
   )
 
   const startSequence = useCallback(() => {
     if (activatedRef.current) return
     activatedRef.current = true
 
-    if (prefersReducedMotion.current) {
+    if (prefersReducedMotion) {
       setVisible(Array(items.length).fill(true))
       setChecked(Array(items.length).fill(true))
       return
@@ -69,7 +71,7 @@ export function AnimatedBullets({ items, icons, className = "" }: AnimatedBullet
 
       timersRef.current.push(t1, t2)
     }
-  }, [items.length])
+  }, [items.length, prefersReducedMotion])
 
   useEffect(() => {
     if (!containerRef.current) return

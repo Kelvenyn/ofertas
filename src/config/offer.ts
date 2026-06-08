@@ -42,6 +42,7 @@ export const OFFER: OfferConfig = {
     ],
   },
   socialProof: {
+    title: "Mães como você já aprovaram",
     testimonials: [
       { src: "/images/CR-NINJA-15.webp", alt: "Depoimento 1", gradient: "linear-gradient(90deg, #0891B2, #0E7490)" },
       { src: "/images/CR-NINJA-16.webp", alt: "Depoimento 2", gradient: "linear-gradient(90deg, #10B981, #059669)" },
@@ -71,12 +72,16 @@ export const OFFER: OfferConfig = {
       { src: "/images/Página 10.webp", alt: "Pixel Art Bíblico - Página 10" },
     ],
   },
-  benefits: [
-    { icon: "📱", title: "Menos tempo no celular", desc: "Em vez de brigar ou implorar, você oferece uma alternativa pronta, visual e divertida. A criança escolhe a arte e esquece o celular." },
-    { icon: "📖", title: "Aprendizado bíblico leve", desc: "Ensina sobre Deus sem ser pesado. As Pixel Artes apresentam personagens, versículos e valores de forma simples e divertida." },
-    { icon: "✏️", title: "Praticidade para a mãe", desc: "Você não precisa preparar nada, comprar materiais extras ou ficar ao lado. Basta escolher uma arte, imprimir em A4 e entregar." },
-    { icon: "🙏", title: "Valores cristãos na rotina", desc: "Cada momento longe da tela vira oportunidade para falar sobre fé, amor e confiança em Deus, sem precisar sentar para uma aula." },
-  ],
+  benefits: {
+    title: "Por que centenas de mães cristãs estão\ncomprando o Pixel Art Bíblico?",
+    ctaText: "QUERO O PIXEL ART BÍBLICO",
+    items: [
+      { icon: "📱", title: "Menos tempo no celular", desc: "Em vez de brigar ou implorar, você oferece uma alternativa pronta, visual e divertida. A criança escolhe a arte e esquece o celular." },
+      { icon: "📖", title: "Aprendizado bíblico leve", desc: "Ensina sobre Deus sem ser pesado. As Pixel Artes apresentam personagens, versículos e valores de forma simples e divertida." },
+      { icon: "✏️", title: "Praticidade para a mãe", desc: "Você não precisa preparar nada, comprar materiais extras ou ficar ao lado. Basta escolher uma arte, imprimir em A4 e entregar." },
+      { icon: "🙏", title: "Valores cristãos na rotina", desc: "Cada momento longe da tela vira oportunidade para falar sobre fé, amor e confiança em Deus, sem precisar sentar para uma aula." },
+    ],
+  },
   urgency: {
     pill: "OPORTUNIDADE ÚNICA",
     title: "Comece hoje a tirar\nseu filho do celular\ncom o",
@@ -255,7 +260,10 @@ export const OFFER: OfferConfig = {
     updateTitle: "Material em constante atualização",
     updateBody: "O Pixel Art Bíblico recebe novas artes periodicamente. Ao adquirir agora, você garante acesso vitalício e todas as atualizações futuras.",
     copyright: "2026 © Todos os direitos reservados. Este material é protegido pela Lei nº 9.610/98, sendo proibida a reprodução total ou parcial sem autorização.",
-    privacyUrl: "#",
-    termsUrl: "#",
+    missionText: "Transforme o tempo livre do seu filho em momentos de fé e aprendizado com o Pixel Art Bíblico",
+    privacyUrl: "#", // TODO: inserir URLs reais
+    termsUrl: "#", // TODO: inserir URLs reais
+    privacyLabel: "Política de Privacidade",
+    termsLabel: "Termos de Uso",
   },
 }

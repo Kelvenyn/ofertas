@@ -17,7 +17,7 @@ function StepCircle({ index, color }: { index: number; color: string }) {
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.intersectionRatio >= 0.3) {
-          const targetFill = ((index + 1) / 4) * 100
+          const targetFill = ((index + 1) / OFFER.access.steps.length) * 100
           setTimeout(() => setFill(targetFill), index * 150)
           obs.disconnect()
         }

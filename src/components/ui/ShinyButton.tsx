@@ -38,5 +38,4 @@ const ShinyButton: React.FC<ShinyButtonProps> = ({ children, href, onClick, clas
   )
 }
 
-export default ShinyButton
 export { ShinyButton }

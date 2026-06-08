@@ -242,7 +242,6 @@ export function SocialProof() {
         <div
           ref={trackRef}
           className="sp-carousel-track"
-          tabIndex={0}
           role="group"
           aria-roledescription="carrossel de depoimentos"
           onPointerDown={handlePointerDown}
@@ -273,6 +272,9 @@ export function SocialProof() {
           </button>
 
           <div className="sp-carousel-inner">
+            <div aria-live="polite" aria-atomic="true" className="sp-sr-only">
+              {slides[activeSlide]?.alt}
+            </div>
             {visibleCards.map(({ slideIndex, visualOffset }) => {
               const slide = slides[slideIndex]
               const isCenter = Math.abs(visualOffset) < 0.5

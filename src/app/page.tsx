@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic"
 import { CountdownBar } from "@/components/CountdownBar"
 import { VendaImediata } from "@/components/sections/VendaImediata"
 import { SocialProof } from "@/components/sections/SocialProof"
@@ -9,10 +10,10 @@ import { IdealParaVoce } from "@/components/sections/IdealParaVoce"
 import { TudoQueVoceRecebe } from "@/components/sections/TudoQueVoceRecebe"
 import { Bonuses } from "@/components/sections/Bonuses"
 import { OfferPricing } from "@/components/sections/OfferPricing"
-import { Guarantee } from "@/components/sections/Guarantee"
-import { ComoEAcesso } from "@/components/sections/ComoEAcesso"
-import { FAQ } from "@/components/sections/FAQ"
-import { Footer } from "@/components/sections/Footer"
+const Guarantee = dynamic(() => import("@/components/sections/Guarantee").then(m => m.Guarantee))
+const ComoEAcesso = dynamic(() => import("@/components/sections/ComoEAcesso").then(m => m.ComoEAcesso))
+const FAQ = dynamic(() => import("@/components/sections/FAQ").then(m => m.FAQ))
+const Footer = dynamic(() => import("@/components/sections/Footer").then(m => m.Footer))
 
 export default function Home() {
   return (

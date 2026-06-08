@@ -7,6 +7,8 @@ export function FAQ() {
   const { title, items: faqItems } = OFFER.faq
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
+  if (!faqItems || faqItems.length === 0) return null
+
   return (
     <div className="faq-acc-wrap">
       <div className="faq-acc-inner">

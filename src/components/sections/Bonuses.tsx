@@ -13,6 +13,8 @@ export function Bonuses() {
   const bonuses = OFFER.bonuses
   const section = OFFER.bonusSection
 
+  if (!bonuses || bonuses.length === 0) return null
+
   return (
     <section className="bon-section" aria-labelledby="bonuses-title">
       <div className="bon-inner">

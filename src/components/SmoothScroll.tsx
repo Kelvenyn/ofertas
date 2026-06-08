@@ -3,6 +3,11 @@
 import { useEffect, useRef } from "react"
 import Lenis from "lenis"
 
+type WindowWithIdle = Window & {
+  requestIdleCallback: (cb: (deadline: { didTimeout: boolean; timeRemaining: () => number }) => void, options?: { timeout: number }) => number
+  cancelIdleCallback: (id: number) => void
+}
+
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
   const cleanupRef = useRef<(() => void) | null>(null)
 
@@ -35,11 +40,11 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
     const hasIdle = "requestIdleCallback" in window
     const id = hasIdle
-      ? (window as Window & { requestIdleCallback(cb: () => void, opts: { timeout: number }): number }).requestIdleCallback(idleInit, { timeout: 2000 })
+      ? (window as WindowWithIdle).requestIdleCallback(idleInit, { timeout: 2000 })
       : setTimeout(idleInit, 100)
 
     return () => {
-      if (hasIdle) (window as Window & { cancelIdleCallback(id: number): void }).cancelIdleCallback(id as number)
+      if (hasIdle) (window as WindowWithIdle).cancelIdleCallback(id as number)
       else clearTimeout(id as number)
       cleanupRef.current?.()
     }

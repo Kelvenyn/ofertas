@@ -1,5 +1,3 @@
-"use client"
-
 import Image from "next/image"
 import { AnimatedBullets } from "@/components/ui/AnimatedBullets"
 import { OFFER } from "@/config/offer"
@@ -20,7 +18,7 @@ export function TudoQueVoceRecebe() {
             alt={imageAlt}
             width={340}
             height={425}
-            unoptimized
+
           />
         </div>
 

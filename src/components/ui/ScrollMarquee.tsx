@@ -42,9 +42,11 @@ export function ScrollMarquee({
   const hovered = useRef(false)
   const [ready, setReady] = useState(false)
 
-  const reducedMotion =
-    typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  const [reducedMotion] = useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      : false
+  )
 
   const direction = reverse ? -1 : 1
   const isVisibleRef = useRef(true)

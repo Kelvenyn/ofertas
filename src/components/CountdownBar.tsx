@@ -13,10 +13,11 @@ export function CountdownBar() {
   const [flipping, setFlipping] = useState<boolean[]>(Array(6).fill(false))
   const rafRef = useRef(0)
 
-  const reducedMotion =
+  const [reducedMotion] = useState(() =>
     typeof window !== "undefined"
       ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
       : false
+  )
 
   useEffect(() => {
     const raf = requestAnimationFrame(() => setCollapsed(window.scrollY >= 80))
@@ -177,7 +178,7 @@ export function CountdownBar() {
         <div
           role="timer"
           aria-label="Oferta por tempo limitado"
-          aria-live="off"
+          aria-live="polite"
           style={{ display: "flex", alignItems: "center", gap: 3, flexShrink: 0 }}
         >
           <span style={blockStyle}>

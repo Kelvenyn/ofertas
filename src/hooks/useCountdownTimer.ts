@@ -8,20 +8,21 @@ export interface TimeLeft {
   s: number
 }
 
-function getTimeUntilMidnight(): TimeLeft {
+const getTimeUntilMidnight = () => {
   const now = new Date()
-  const end = new Date()
-  end.setHours(23, 59, 59, 999)
-  const diff = Math.max(0, end.getTime() - now.getTime())
+  const tomorrow = new Date(now)
+  tomorrow.setDate(tomorrow.getDate() + 1)
+  tomorrow.setHours(0, 0, 0, 0)
+  const diff = tomorrow.getTime() - now.getTime()
   return {
-    h: Math.floor(diff / 3600000),
-    m: Math.floor((diff % 3600000) / 60000),
-    s: Math.floor((diff % 60000) / 1000),
+    h: Math.floor(diff / (1000 * 60 * 60)),
+    m: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+    s: Math.floor((diff % (1000 * 60)) / 1000),
   }
 }
 
 export function useCountdownTimer(): TimeLeft {
-  const [time, setTime] = useState<TimeLeft>({ h: 0, m: 0, s: 0 })
+  const [time, setTime] = useState<TimeLeft>(getTimeUntilMidnight)
 
   useEffect(() => {
     const id = setTimeout(() => setTime(getTimeUntilMidnight()), 0)

@@ -21,7 +21,14 @@ export const metadata: Metadata = {
   title: OFFER.meta.title,
   description: OFFER.meta.description,
   icons: {
-    icon: "/icon.png",
+    icon: "/favicon.png",
+  },
+  openGraph: {
+    title: OFFER.meta.title,
+    description: OFFER.meta.description,
+    type: "website",
+    locale: "pt_BR",
+    siteName: OFFER.meta.title,
   },
 };
 
@@ -48,6 +55,7 @@ export default function RootLayout({
         "--accent": p.accent,
         "--yellow": p.yellow,
         "--bg": p.bg,
+        "--bg-alt": p.bgAlt,
       } as React.CSSProperties}
     >
       <body className="min-h-full flex flex-col">

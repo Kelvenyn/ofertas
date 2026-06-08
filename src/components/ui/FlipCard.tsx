@@ -67,6 +67,7 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
                 className="bon-new-img"
                 loading="lazy"
                 onLoad={() => setFrontLoaded(true)}
+                onError={(e) => { (e.target as HTMLImageElement).style.display = "none" }}
               />
               {!flipped && (
                 <div className="bon-new-hand">
@@ -101,7 +102,7 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
       </p>
 
       <div className="bon-new-info">
-        <span className="bon-new-pill-title" dangerouslySetInnerHTML={{ __html: titleBreak || title }} />
+        <span className="bon-new-pill-title">{titleBreak || title}</span>
         <p className="bon-new-desc">{desc}</p>
         <span className="bon-new-price">{price}</span>
 
