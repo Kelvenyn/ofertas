@@ -17,14 +17,32 @@ interface FlipCardProps {
 export function FlipCard({ front, back, title, desc, price, index, labels }: FlipCardProps) {
   const [flipped, setFlipped] = useState(false)
   const [frontLoaded, setFrontLoaded] = useState(false)
+  const [showPulse, setShowPulse] = useState(false)
+  const [showBadge, setShowBadge] = useState(false)
 
   useEffect(() => {
     const img = new window.Image()
     img.src = back
   }, [back])
 
+  useEffect(() => {
+    if (!flipped) {
+      setShowPulse(false)
+      setShowBadge(false)
+      const pulseTimer = setTimeout(() => {
+        setShowPulse(true)
+        setShowBadge(true)
+      }, 3000)
+      return () => clearTimeout(pulseTimer)
+    } else {
+      setShowBadge(false)
+    }
+  }, [flipped])
+
   const handleClick = useCallback(() => {
     setFlipped((current) => !current)
+    setShowPulse(false)
+    setShowBadge(false)
   }, [])
 
   const bonusNumber = index + 1
@@ -53,7 +71,7 @@ export function FlipCard({ front, back, title, desc, price, index, labels }: Fli
               transform: flipped ? "rotateY(-180deg)" : "rotateY(0deg)",
             }}
           >
-            <div className="bon-new-face bon-new-front">
+            <div className={`bon-new-face bon-new-front ${showPulse ? 'bon-card-pulse' : ''}`}>
               <Image
                 src={front}
                 alt={title}
@@ -73,6 +91,9 @@ export function FlipCard({ front, back, title, desc, price, index, labels }: Fli
                   <span className="bon-new-hand-emoji" aria-hidden="true">☝🏽</span>
                 </div>
               )}
+              {showBadge && !flipped && (
+                <div className="bon-click-badge">TOQUE PARA VER</div>
+              )}
             </div>
 
             <div className="bon-new-face bon-new-back">
@@ -87,6 +108,9 @@ export function FlipCard({ front, back, title, desc, price, index, labels }: Fli
               <div className="bon-new-back-hint">
                 <span aria-hidden="true">&#8634;</span> {labels.backHint}
               </div>
+              {flipped && (
+                <div className="bon-flip-indicator">←</div>
+              )}
             </div>
           </div>
         </div>
