@@ -34,6 +34,12 @@ export const OFFER: OfferConfig = {
     timerLabel: "BÔNUS ENCERRAM EM",
     marqueeText: "+100 Pixel Artes Bíblicas • PDF A4 Pronto para Imprimir • Acesso Imediato • ",
     marqueeGradient: "linear-gradient(135deg, #67E8F9 0%, #0891B2 55%, #0E7490 100%)",
+    bullets: [
+      "Artes em PDF A4 prontas para imprimir",
+      "Pixel Art por números com personagens bíblicos",
+      "Níveis do básico ao avançado (4 a 8 anos)",
+      "Acesso imediato após a compra",
+    ],
   },
   socialProof: {
     testimonials: [
@@ -91,7 +97,7 @@ export const OFFER: OfferConfig = {
       { icon: "📖", title: "Ensinar sobre Deus de um jeito leve", desc: "A criança colore por números e descobre personagens bíblicos com ensinamentos e versículos." },
       { icon: "🏠", title: "Criar momentos mais tranquilos em casa", desc: "Quando a criança pede o celular, você imprime uma Pixel Arte e transforma o tédio em um momento criativo." },
       { icon: "🌱", title: "Plantar valores cristãos desde cedo", desc: "Cada arte aproxima a criança de valores como fé, obediência, coragem, amor e confiança em Deus." },
-      { icon: "🙏", title: "Colocar mais fé na rotina da criança", desc: "Enquanto colore, seu filho entra em contato com valores cristãos de forma natural." },
+      { icon: "🙏", title: "Cultivar a fé do seu filho sem forçar", desc: "Enquanto colore, seu filho absorve valores cristãos de forma natural, sem pressão." },
     ],
   },
   deliverables: {
@@ -212,17 +218,17 @@ export const OFFER: OfferConfig = {
           "Envio imediato por e-mail",
         ],
         ctaText: "QUERO O PLANO COMPLETO",
-        ctaHref: "https://pay.hotmart.com/Y106153793C",
+        ctaHref: "https://pay.hotmart.com/Q106200323I",
       },
     ],
   },
   guarantee: {
-    marqueeText: "GARANTIA 30 DIAS • SATISFAÇÃO GARANTIDA • DINHEIRO DE VOLTA • ",
+    marqueeText: "GARANTIA 30 DIAS • RISCO ZERO • SATISFAÇÃO OU DINHEIRO DE VOLTA • ",
     marqueeGradient: "linear-gradient(135deg, #67E8F9 0%, #0891B2 55%, #0E7490 100%)",
-    icon: "/images/Garantia 30 dias.webp",
+    icon: "/images/INCONDICIONAL-_1_-1-1.webp",
     iconAlt: "Garantia de 30 dias",
     title: "Satisfação garantida\nou seu dinheiro de volta.",
-    body: "Teste o **Pixel Art Bíblico** por 30 dias. Se não gostar, devolvemos 100% do valor, sem perguntas.",
+    body: "Use o **Pixel Art Bíblico** por 30 dias com sua família. Se você não gostar por qualquer motivo, devolvemos 100% do seu dinheiro — sem perguntas, sem burocracia. Se em 30 dias seu filho não passar menos tempo no celular, a culpa é nossa.",
   },
   access: {
     title: "Como você recebe e usa o Pixel Art Bíblico",

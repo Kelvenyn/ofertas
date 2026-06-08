@@ -3,13 +3,14 @@
 import Image from "next/image"
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { ScrollMarquee } from "@/components/ui/ScrollMarquee"
+import { AnimatedBullets } from "@/components/ui/AnimatedBullets"
 import { OFFER } from "@/config/offer"
 
 export function VendaImediata() {
   const {
     pill, titleLine1, titleLine2, titleLine3,
     image, imageAlt, imageWidth, imageHeight,
-    subtitle, ctaText, marqueeText, marqueeGradient,
+    subtitle, ctaText, marqueeText, marqueeGradient, bullets,
   } = OFFER.hero
 
   return (
@@ -35,6 +36,10 @@ export function VendaImediata() {
         </div>
 
         <p className="vi-sub">{subtitle}</p>
+
+        {bullets && bullets.length > 0 && (
+          <AnimatedBullets items={bullets} className="vi-bullets" />
+        )}
 
         <ShinyButton href="#oferta" className="vi-cta-btn">
           {ctaText}

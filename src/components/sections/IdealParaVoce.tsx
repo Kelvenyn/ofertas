@@ -50,7 +50,7 @@ export function IdealParaVoce() {
       <div className="idv-inner">
         <h2 className="idv-title" id="ideal-title">
           Ideal para você{" "}
-          <span className="idv-title-accent">que…</span>
+          <span className="idv-title-accent">que quer…</span>
         </h2>
 
         <div className="idv-grid">
