@@ -18,32 +18,15 @@ interface FlipCardProps {
 export function FlipCard({ front, back, title, titleBreak, desc, price, index, labels }: FlipCardProps) {
   const [flipped, setFlipped] = useState(false)
   const [frontLoaded, setFrontLoaded] = useState(false)
-  const [showPulse, setShowPulse] = useState(false)
-  const [showBadge, setShowBadge] = useState(false)
 
   useEffect(() => {
     const img = new window.Image()
     img.src = back
   }, [back])
 
-  useEffect(() => {
-    if (!flipped) {
-      setShowPulse(false)
-      setShowBadge(false)
-      const pulseTimer = setTimeout(() => {
-        setShowPulse(true)
-        setShowBadge(true)
-      }, 3000)
-      return () => clearTimeout(pulseTimer)
-    } else {
-      setShowBadge(false)
-    }
-  }, [flipped])
 
   const handleClick = useCallback(() => {
     setFlipped((current) => !current)
-    setShowPulse(false)
-    setShowBadge(false)
   }, [])
 
   const bonusNumber = index + 1
@@ -72,7 +55,7 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
               transform: flipped ? "rotateY(-180deg)" : "rotateY(0deg)",
             }}
           >
-            <div className={`bon-new-face bon-new-front ${showPulse ? 'bon-card-pulse' : ''}`}>
+            <div className="bon-new-face bon-new-front">
               <Image
                 src={front}
                 alt={title}
@@ -82,19 +65,15 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
                 loading="lazy"
                 onLoad={() => setFrontLoaded(true)}
               />
-              <div className="bon-new-stripe">
-                <span className="bon-new-stripe-text">
-                  <span aria-hidden="true">🎁</span> {labels.cardLabel} #{bonusNumber}
-                </span>
+              <div className="bon-new-badge">
+                <span aria-hidden="true">🎁</span> {labels.cardLabel} #{bonusNumber}
               </div>
               {!flipped && (
                 <div className="bon-new-hand">
                   <span className="bon-new-hand-emoji" aria-hidden="true">☝🏽</span>
                 </div>
               )}
-              {showBadge && !flipped && (
-                <div className="bon-click-badge">TOQUE PARA VER</div>
-              )}
+
             </div>
 
             <div className="bon-new-face bon-new-back">
