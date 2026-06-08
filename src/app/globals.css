@@ -2411,7 +2411,7 @@ html {
   position: relative;
   border-radius: 20px;
   background: var(--card-dark);
-  border: 1px solid rgba(16,185,129,.15);
+  border: 1px solid rgba(16, 185, 129, 0.25);
   box-shadow: 0 8px 32px rgba(0,0,0,.25), 0 0 0 0 rgba(16,185,129,0);
   text-align: center;
   overflow: hidden;
@@ -2487,7 +2487,7 @@ html {
   letter-spacing: .05em;
   text-transform: uppercase;
   transform: rotate(45deg);
-  box-shadow: 0 2px 12px rgba(16,185,129,.4);
+  box-shadow: 0 2px 12px rgba(16, 185, 129, 0.5);
   z-index: 5;
 }
 
@@ -2610,7 +2610,65 @@ html {
   font-weight: 900;
   letter-spacing: .04em;
   text-transform: uppercase;
-  box-shadow: 0 2px 12px rgba(16,185,129,.35);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+}
+
+/* Pulse animation for bonus cards */
+@keyframes bon-card-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+.bon-card-pulse {
+  animation: bon-card-pulse 2s ease-in-out infinite;
+}
+
+/* Click badge for bonus cards */
+.bon-click-badge {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  z-index: 10;
+  animation: bon-badge-fade-in 0.5s ease-out 1s both;
+}
+
+@keyframes bon-badge-fade-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Mobile: permanent badge */
+@media (max-width: 768px) {
+  .bon-click-badge {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* Flip indicator for bonus cards */
+.bon-flip-indicator {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  transition: opacity 0.3s ease;
 }
 
 /* ===== GUARANTEE ===== */
