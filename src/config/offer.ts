@@ -36,7 +36,7 @@ export const OFFER: OfferConfig = {
     marqueeGradient: "linear-gradient(135deg, #67E8F9 0%, #0891B2 55%, #0E7490 100%)",
     bullets: [
       "Artes em PDF A4 prontas para imprimir",
-      "Pixel Art por números com personagens bíblicos",
+      "Pixel Art por números com personagens",
       "Níveis do básico ao avançado (4 a 8 anos)",
       "Acesso imediato após a compra",
     ],
