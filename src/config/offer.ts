@@ -29,7 +29,7 @@ export const OFFER: OfferConfig = {
     imageAlt: "Pixel Art Bíblico",
     imageWidth: 340,
     imageHeight: 425,
-    subtitle: "Seu filho colore por números, revela personagens bíblicos aos poucos e aprende ensinamentos, versículos e valores cristãos longe das telas.",
+    subtitle: "Seu filho colore por números, revela personagens bíblicos aos poucos e aprende sobre Deus longe das telas — sem brigar, sem complicação, sem culpa.",
     ctaText: "QUERO O PIXEL ART BÍBLICO",
     timerLabel: "BÔNUS ENCERRAM EM",
     marqueeText: "+100 Pixel Artes Bíblicas • PDF A4 Pronto para Imprimir • Acesso Imediato • ",
