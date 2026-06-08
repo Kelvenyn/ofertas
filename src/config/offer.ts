@@ -175,7 +175,7 @@ export const OFFER: OfferConfig = {
         id: "basic",
         label: "PARA COMEÇAR HOJE",
         title: "Plano Básico",
-        image: "/images/4943e9df-5a44-4443-b18d-b7084546bdad.webp",
+        image: "/images/Plano-Completo.webp",
         imageAlt: "Plano Básico",
         featured: false,
         oldPrice: "de R$ 39,90",
