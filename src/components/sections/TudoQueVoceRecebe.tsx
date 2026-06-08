@@ -20,6 +20,7 @@ export function TudoQueVoceRecebe() {
             alt={imageAlt}
             width={340}
             height={425}
+            unoptimized
           />
         </div>
 

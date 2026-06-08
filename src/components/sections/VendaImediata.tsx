@@ -30,6 +30,7 @@ export function VendaImediata() {
             width={imageWidth}
             height={imageHeight}
             priority
+            unoptimized
           />
         </div>
 

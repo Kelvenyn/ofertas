@@ -40,7 +40,7 @@ export function OfferPricing() {
                   )}
                   <h3>{plan.title}</h3>
                   <div className="offer-plan-img">
-                    <Image src={plan.image} alt={plan.imageAlt} width={300} height={375} />
+                    <Image src={plan.image} alt={plan.imageAlt} width={300} height={375} unoptimized />
                   </div>
                 </div>
 
