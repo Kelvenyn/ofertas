@@ -2255,6 +2255,7 @@ html {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
+  padding-top: 20px;
 }
 
 .bon-flip-card {
@@ -2571,13 +2572,13 @@ html {
   padding: 7px 12px;
   border-radius: 999px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1;
   font-weight: 800;
   letter-spacing: .06em;
   text-transform: uppercase;
   background: rgba(255,255,255,.15);
-  border: 1px dashed rgba(255,255,255,.4);
+  border: 2px solid rgba(255,255,255,.5);
   color: #FFFFFF;
   white-space: nowrap;
 }
@@ -2586,7 +2587,7 @@ html {
   margin: 0;
   font-size: 14px;
   line-height: 1.5;
-  font-weight: 500;
+  font-weight: 600;
   color: rgba(255,255,255,.85);
   max-width: 280px;
 }
@@ -2613,7 +2614,7 @@ html {
 
 .bon-new-timer-text {
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: rgba(255,255,255,.8);
@@ -2645,6 +2646,9 @@ html {
   letter-spacing: .04em;
   text-transform: uppercase;
   box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  position: relative;
+  z-index: 20;
+  border: 2px solid #059669;
 }
 
 /* Pulse animation for bonus cards */
