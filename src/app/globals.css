@@ -2410,17 +2410,17 @@ html {
 .bon-new-card {
   position: relative;
   border-radius: 20px;
-  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-  border: 1px solid rgba(14, 165, 233, 0.3);
-  box-shadow: 0 8px 32px rgba(14, 165, 233, 0.25);
+  background: #FFFFFF;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
   text-align: center;
-  overflow: hidden;
+  overflow: visible;
   transition: box-shadow .35s ease;
 }
 
 @media (hover: hover) {
   .bon-new-card:hover {
-    box-shadow: 0 12px 40px rgba(14, 165, 233, 0.35), 0 0 0 1px rgba(14, 165, 233, 0.3);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
   }
 }
 
@@ -2474,26 +2474,29 @@ html {
   pointer-events: none;
 }
 
-.bon-new-stripe {
+.bon-new-badge {
   position: absolute;
-  top: 18px;
-  right: -32px;
-  padding: 6px 40px;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
   background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
   color: #FFFFFF;
+  padding: 6px 16px;
+  border-radius: 999px;
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 800;
   letter-spacing: .05em;
   text-transform: uppercase;
-  transform: rotate(45deg);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 10;
+  white-space: nowrap;
+  animation: bon-badge-float 2s ease-in-out infinite;
 }
 
-.bon-new-stripe-text {
-  white-space: nowrap;
+@keyframes bon-badge-float {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-4px); }
 }
 
 .bon-new-hand {
@@ -2530,7 +2533,7 @@ html {
   padding: 10px 16px 0;
   font-size: 13px;
   line-height: 1.4;
-  color: rgba(255,255,255,.6);
+  color: #9ca3af;
 }
 
 .bon-new-touch-hint em {
@@ -2549,16 +2552,15 @@ html {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 6px 16px;
+  padding: 8px 16px;
   border-radius: 999px;
-  background: var(--cta);
-  color: #FFFFFF;
+  background: #d1fae5;
+  border: 2px dashed #059669;
+  color: #047857;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
-  letter-spacing: .03em;
-  text-transform: uppercase;
-  box-shadow: 0 2px 8px rgba(16,185,129,.3);
+  white-space: nowrap;
 }
 
 .bon-new-desc {
@@ -2566,14 +2568,14 @@ html {
   font-size: 14px;
   line-height: 1.5;
   font-weight: 500;
-  color: rgba(255,255,255,.75);
+  color: #4b5563;
   max-width: 280px;
 }
 
 .bon-new-price {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 800;
-  color: #FFFFFF;
+  color: #047857;
   letter-spacing: -.02em;
 }
 
@@ -2595,7 +2597,19 @@ html {
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.55);
+  color: #059669;
+  animation: bon-timer-glow 2s ease-in-out infinite;
+}
+
+@keyframes bon-timer-glow {
+  0%, 100% { 
+    opacity: 0.6;
+    text-shadow: none;
+  }
+  50% { 
+    opacity: 1;
+    text-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+  }
 }
 
 .bon-new-pill-free {
@@ -2604,14 +2618,14 @@ html {
   justify-content: center;
   padding: 8px 24px;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--cta) 0%, var(--cta-deep) 100%);
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
   color: #FFFFFF;
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: 14px;
   font-weight: 900;
   letter-spacing: .04em;
   text-transform: uppercase;
-  box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
 }
 
 /* Pulse animation for bonus cards */
@@ -2622,36 +2636,6 @@ html {
 
 .bon-card-pulse {
   animation: bon-card-pulse 2s ease-in-out infinite;
-}
-
-/* Click badge for bonus cards */
-.bon-click-badge {
-  position: absolute;
-  bottom: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  z-index: 10;
-  animation: bon-badge-fade-in 0.5s ease-out 1s both;
-}
-
-@keyframes bon-badge-fade-in {
-  from { opacity: 0; transform: translateX(-50%) translateY(10px); }
-  to { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
-
-/* Mobile: permanent badge */
-@media (max-width: 768px) {
-  .bon-click-badge {
-    animation: none;
-    opacity: 1;
-  }
 }
 
 /* Flip indicator for bonus cards */
