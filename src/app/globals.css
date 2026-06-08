@@ -456,7 +456,7 @@ html {
   line-height: 1.06;
   font-weight: 800;
   letter-spacing: -.04em;
-  color: var(--brand-deep);
+  color: var(--brand-ink);
   text-wrap: balance;
 }
 
@@ -475,7 +475,7 @@ html {
   line-height: 1.1;
   font-weight: 900;
   letter-spacing: -.045em;
-  color: var(--brand);
+  color: var(--brand-deep);
 }
 
 .vi-image {
