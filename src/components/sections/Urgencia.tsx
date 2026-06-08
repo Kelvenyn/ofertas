@@ -42,7 +42,6 @@ export function Urgencia() {
                   <br />
                 </span>
               ))}
-              de verdade?
             </h2>
 
             <p className="urg-text">
