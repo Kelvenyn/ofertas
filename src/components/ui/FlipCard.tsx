@@ -33,6 +33,9 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
 
   return (
     <div className="bon-new-card">
+      <div className="bon-new-badge">
+        <span aria-hidden="true">🎁</span> {labels.cardLabel} #{bonusNumber}
+      </div>
       <div
         className="bon-new-image-wrapper"
         onClick={handleClick}
@@ -65,9 +68,6 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
                 loading="lazy"
                 onLoad={() => setFrontLoaded(true)}
               />
-              <div className="bon-new-badge">
-                <span aria-hidden="true">🎁</span> {labels.cardLabel} #{bonusNumber}
-              </div>
               {!flipped && (
                 <div className="bon-new-hand">
                   <span className="bon-new-hand-emoji" aria-hidden="true">☝🏽</span>
