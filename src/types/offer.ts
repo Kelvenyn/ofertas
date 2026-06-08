@@ -69,6 +69,7 @@ export interface BonusItem {
   front: string
   back: string
   title: string
+  titleBreak?: string
   desc: string
   price: string
 }
