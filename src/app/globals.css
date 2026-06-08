@@ -498,6 +498,31 @@ html {
   color: var(--text-muted);
 }
 
+.vi-bullets {
+  margin-bottom: 24px;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vi-bullets .ab-item {
+  justify-content: center;
+  background: rgba(16, 185, 129, 0.08);
+  border-radius: 999px;
+  padding: 10px 20px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vi-bullets .ab-text {
+  text-align: left;
+  font-weight: 600;
+}
+
 .vi-social-count {
   display: inline-flex;
   align-items: center;
