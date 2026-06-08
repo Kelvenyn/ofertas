@@ -243,7 +243,7 @@ export const OFFER: OfferConfig = {
       { q: "Meu filho vai conseguir colorir sozinho?", a: "Sim. A criança segue a legenda de cores e pinta os números. Crianças menores podem precisar de ajuda no começo." },
       { q: "O que vem dentro do Pixel Art Bíblico?", a: "+100 Pixel Artes em PDF com personagens bíblicos, pintura por números, legenda de cores, ensinamentos e versículos. No Plano Completo, você também recebe todos os bônus." },
       { q: "Posso imprimir mais de uma vez?", a: "Sim. Depois de baixar, você pode imprimir sempre que quiser para uso pessoal da sua família." },
-      { q: "E se eu não gostar do material?", a: "Você tem 7 dias de garantia para testar. Se não gostar, devolvemos 100% do valor." },
+      { q: "E se eu não gostar do material?", a: "Você tem 30 dias de garantia para testar. Se não gostar, devolvemos 100% do valor." },
       { q: "Preciso saber mexer em algum programa?", a: "Não. Basta acessar o PDF, baixar e imprimir. A criança também não precisa de telas." },
       { q: "Qual plano vale mais a pena?", a: "O Plano Completo. Por apenas R$ 10 a mais, você leva todos os 6 bônus." },
     ],
