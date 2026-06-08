@@ -272,7 +272,7 @@ export function SocialProof() {
           </button>
 
           <div className="sp-carousel-inner">
-            <div aria-live="polite" aria-atomic="true" className="sp-sr-only">
+            <div aria-live="polite" aria-atomic="true" className="sr-only">
               {slides[activeSlide]?.alt}
             </div>
             {visibleCards.map(({ slideIndex, visualOffset }) => {
