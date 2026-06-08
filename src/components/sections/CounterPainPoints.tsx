@@ -54,10 +54,6 @@ export function CounterPainPoints() {
   return (
     <div className="dc-wrap" ref={counterRef} id="docs-counter" aria-labelledby="counter-label">
       <div className="dc-inner">
-        <p className="dc-subtitle">
-          Enquanto você ainda está decidindo, outras mães já estão imprimindo e vendo os filhos se concentrarem longe das telas.
-        </p>
-
         <div className="dc-numberline">
           <span className="dc-prefix">{prefix}</span>
           <span className="dc-count" id="dc-count" aria-live="polite" aria-atomic="true">

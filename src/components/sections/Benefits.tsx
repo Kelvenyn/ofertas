@@ -54,7 +54,10 @@ export function Benefits() {
   return (
     <section className="benefits-section" aria-labelledby="benefits-title">
       <div className="benefits-inner">
-        <h2 className="benefits-title" id="benefits-title">O que muda na sua casa quando você tem o Pixel Art Bíblico</h2>
+        <h2 className="benefits-title" id="benefits-title">
+          O que muda na sua casa quando você tem o{" "}
+          <span className="benefits-highlight">Pixel Art Bíblico</span>
+        </h2>
 
         <div className="benefits-grid">
           {benefits.map((b, i) => (
