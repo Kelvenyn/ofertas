@@ -49,8 +49,7 @@ export function IdealParaVoce() {
     <section className="idv-section" aria-labelledby="ideal-title">
       <div className="idv-inner">
         <h2 className="idv-title" id="ideal-title">
-          Ideal para você{" "}
-          <span className="idv-title-accent">que quer…</span>
+          Ideal para você que quer
         </h2>
 
         <div className="idv-grid">

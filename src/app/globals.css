@@ -387,14 +387,14 @@ html {
   justify-content: center;
   gap: 8px;
   width: auto;
-  min-width: min(100%, 320px);
+  min-width: min(100%, 300px);
   text-align: center;
 }
 
 .benefits-cta-wrap .shiny-cta,
 .urg-cta-wrap .shiny-cta,
 .offer-btn.shiny-cta {
-  width: min(100%, 340px);
+  width: min(100%, 320px);
 }
 
 .offer-btn.shiny-cta {
@@ -1005,7 +1005,7 @@ html {
 
 .offer-btn {
   display: block;
-  width: min(100%, 340px);
+  width: min(100%, 320px);
   text-align: center;
   text-decoration: none;
   margin-top: 24px;
@@ -1605,7 +1605,7 @@ html {
 }
 
 .urg-cta-btn {
-  width: min(100%, 340px);
+  width: min(100%, 320px);
   margin-inline: auto;
 }
 
@@ -1958,6 +1958,7 @@ html {
   line-height: 1.7;
   font-weight: 500;
   color: var(--text-muted);
+  white-space: pre-line;
 }
 
 .bon-sub strong {
@@ -1991,35 +1992,44 @@ html {
 /* ===== BÃ”NUS - NEW CARD DESIGN ===== */
 .bon-new-card {
   position: relative;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #0891b2 0%, #06b6d4 55%, #0e7490 100%);
-  border: 1px solid rgba(14, 165, 233, 0.3);
-  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.25);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,251,252,.98)) padding-box,
+    linear-gradient(135deg, var(--bon-accent, #0891B2), transparent 72%) border-box;
+  border: 1px solid rgba(8,145,178,0.12);
+  box-shadow: 0 10px 28px rgba(8,145,178,0.08);
   text-align: center;
   overflow: visible;
-  transition: box-shadow .35s ease;
+  transition: transform .25s ease, box-shadow .35s ease, border-color .35s ease;
 }
 
 .bon-new-card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent 0px,
-    transparent 8px,
-    rgba(255,255,255,.03) 8px,
-    rgba(255,255,255,.03) 16px
-  );
+  background: linear-gradient(180deg, rgba(255,255,255,.55), transparent 18%, transparent 82%, rgba(8,145,178,.05));
   pointer-events: none;
-  border-radius: 20px;
+  border-radius: 22px;
   z-index: 0;
 }
 
+.bon-new-card:nth-child(1) { --bon-accent: #0891B2; }
+.bon-new-card:nth-child(2) { --bon-accent: #10B981; }
+.bon-new-card:nth-child(3) { --bon-accent: #F59E0B; }
+.bon-new-card:nth-child(4) { --bon-accent: #0E7490; }
+.bon-new-card:nth-child(5) { --bon-accent: #14B8A6; }
+.bon-new-card:nth-child(6) { --bon-accent: #059669; }
+
 @media (hover: hover) {
   .bon-new-card:hover {
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(8,145,178,0.12);
+    border-color: color-mix(in srgb, var(--bon-accent, #0891B2) 24%, rgba(8,145,178,0.12));
   }
+}
+
+@media (hover: hover) {
+  .bon-new-card:hover { box-shadow: 0 16px 34px rgba(8,145,178,0.12); }
 }
 
 .bon-new-image-wrapper {
@@ -2029,7 +2039,9 @@ html {
   perspective: 1200px;
   overflow: hidden;
   cursor: pointer;
-  border-radius: 20px 20px 0 0;
+  background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(242,247,249,.96));
+  border-radius: 22px 22px 0 0;
+  border-bottom: 1px solid rgba(8,145,178,.08);
 }
 
 .bon-new-perspective {
@@ -2053,7 +2065,7 @@ html {
   inset: 0;
   backface-visibility: hidden;
   overflow: hidden;
-  border-radius: 20px 20px 0 0;
+  border-radius: 22px 22px 0 0;
 }
 
 .bon-new-front {
@@ -2077,7 +2089,7 @@ html {
   top: -14px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  background: var(--bon-accent, #0891B2);
   color: #FFFFFF;
   padding: 6px 16px;
   border-radius: 999px;
@@ -2086,7 +2098,7 @@ html {
   font-weight: 800;
   letter-spacing: .05em;
   text-transform: uppercase;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
   z-index: 10;
   white-space: nowrap;
   animation: bon-badge-float 2s ease-in-out infinite;
@@ -2131,7 +2143,8 @@ html {
   padding: 10px 16px 0;
   font-size: 13px;
   line-height: 1.4;
-  color: rgba(255,255,255,.7);
+  color: var(--text-light);
+  opacity: .92;
 }
 
 .bon-new-touch-hint em {
@@ -2144,6 +2157,8 @@ html {
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  background: linear-gradient(180deg, rgba(8,145,178,.05), rgba(16,185,129,.03));
+  border-radius: 0 0 22px 22px;
 }
 
 .bon-new-pill-title {
@@ -2158,9 +2173,9 @@ html {
   font-weight: 800;
   letter-spacing: .06em;
   text-transform: uppercase;
-  background: rgba(255,255,255,.15);
-  border: 2px solid rgba(255,255,255,.5);
-  color: #FFFFFF;
+  background: rgba(8,145,178,.10);
+  border: 1px solid rgba(8,145,178,.14);
+  color: var(--brand-ink);
   white-space: nowrap;
 }
 
@@ -2169,15 +2184,15 @@ html {
   font-size: 14px;
   line-height: 1.5;
   font-weight: 600;
-  color: rgba(255,255,255,.85);
+  color: var(--text-muted);
   max-width: 280px;
 }
 
 .bon-new-price {
   font-size: 22px;
   font-weight: 800;
-  color: #FFFFFF;
-  letter-spacing: -.02em;
+  color: var(--cta-darkest);
+  letter-spacing: 0;
 }
 
 .bon-new-timer {
@@ -2198,7 +2213,7 @@ html {
   font-weight: 800;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.8);
+  color: var(--cta-deep);
   animation: bon-timer-glow 2s ease-in-out infinite;
 }
 
@@ -2219,17 +2234,17 @@ html {
   justify-content: center;
   padding: 8px 24px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: #FFFFFF;
+  background: rgba(16,185,129,.12);
+  color: var(--cta-darkest);
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: 14px;
   font-weight: 900;
   letter-spacing: .04em;
   text-transform: uppercase;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.14);
   position: relative;
   z-index: 20;
-  border: 2px solid #059669;
+  border: 1px solid rgba(16,185,129,.22);
 }
 
 /* Flip indicator for bonus cards */
