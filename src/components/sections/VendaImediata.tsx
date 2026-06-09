@@ -20,9 +20,9 @@ export function VendaImediata() {
         <div className="vi-pill">{pill}</div>
 
         <h1 className="vi-title">
-          <span className="vi-title-line1">{titleLine1}</span>
+          {titleLine1 && <span className="vi-title-line1">{titleLine1}</span>}
           <span className="vi-title-line2">{titleLine2}</span>
-          <span className="vi-title-line3">{titleLine3}</span>
+          {titleLine3 && <span className="vi-title-line3">{titleLine3}</span>}
         </h1>
 
         <div className="vi-image">

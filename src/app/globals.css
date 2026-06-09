@@ -302,7 +302,7 @@ html {
   border: 1px solid rgba(8,145,178,.18);
   color: var(--brand);
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 10.5px;
+  font-size: 11px;
   line-height: 1;
   font-weight: 900;
   letter-spacing: .06em;
@@ -329,16 +329,16 @@ html {
 }
 
 .vi-title-line1 {
-  font-size: clamp(28px, 6.6vw, 40px);
+  font-size: clamp(30px, 6.6vw, 42px);
 }
 
 .vi-title-line2 {
-  font-size: clamp(27px, 6.4vw, 36px);
+  font-size: clamp(30px, 6.4vw, 40px);
   color: var(--brand);
 }
 
 .vi-title-line3 {
-  font-size: clamp(25px, 5.8vw, 34px);
+  font-size: clamp(26px, 5.8vw, 34px);
   color: var(--brand-ink);
 }
 
@@ -357,8 +357,8 @@ html {
   max-width: 520px;
   margin: 0 auto 18px;
   font-family: 'Manrope', system-ui, sans-serif;
-  font-size: 15px;
-  line-height: 1.55;
+  font-size: 16px;
+  line-height: 1.6;
   font-weight: 500;
   color: var(--text-muted);
 }
@@ -379,6 +379,13 @@ html {
 .vi-bullets .ab-text {
   color: var(--brand-deep);
   font-weight: 700;
+  font-size: 14.5px;
+}
+
+@media (max-width: 480px) {
+  .vi-bullets .ab-text {
+    font-size: 14px;
+  }
 }
 
 .vi-cta-btn {
@@ -444,7 +451,7 @@ html {
   }
 
   .vi-sub {
-    font-size: 14.5px;
+    font-size: 15.5px;
   }
 
   .vi-bullets .ab-item {
