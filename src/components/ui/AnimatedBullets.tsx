@@ -35,8 +35,8 @@ function AnimatedCheck({ checked }: { checked: boolean }) {
 }
 
 export function AnimatedBullets({ items, icons, className = "" }: AnimatedBulletsProps) {
-  const [visible, setVisible] = useState<boolean[]>(Array(items.length).fill(false))
-  const [checked, setChecked] = useState<boolean[]>(Array(items.length).fill(false))
+  // Começa visível: itens são legíveis imediatamente, animação é apenas enhancement
+  const [animated, setAnimated] = useState<boolean[]>(Array(items.length).fill(false))
   const containerRef = useRef<HTMLDivElement>(null)
   const activatedRef = useRef(false)
   const timersRef = useRef<ReturnType<typeof setTimeout>[]>([])
@@ -48,28 +48,14 @@ export function AnimatedBullets({ items, icons, className = "" }: AnimatedBullet
   )
 
   const startSequence = useCallback(() => {
-    if (activatedRef.current) return
+    if (activatedRef.current || prefersReducedMotion) return
     activatedRef.current = true
 
-    if (prefersReducedMotion) {
-      setVisible(Array(items.length).fill(true))
-      setChecked(Array(items.length).fill(true))
-      return
-    }
-
     for (let i = 0; i < items.length; i++) {
-      const showTime = i * ITEM_DELAY
-      const checkTime = showTime + CHECK_DELAY
-
-      const t1 = setTimeout(() => {
-        setVisible(prev => { const n = [...prev]; n[i] = true; return n })
-      }, showTime)
-
-      const t2 = setTimeout(() => {
-        setChecked(prev => { const n = [...prev]; n[i] = true; return n })
-      }, checkTime)
-
-      timersRef.current.push(t1, t2)
+      const t = setTimeout(() => {
+        setAnimated(prev => { const n = [...prev]; n[i] = true; return n })
+      }, i * ITEM_DELAY)
+      timersRef.current.push(t)
     }
   }, [items.length, prefersReducedMotion])
 
@@ -96,15 +82,15 @@ export function AnimatedBullets({ items, icons, className = "" }: AnimatedBullet
           key={i}
           className="ab-item"
           style={{
-            opacity: visible[i] ? 1 : 0,
-            transform: visible[i] ? "translateX(0)" : "translateX(-12px)",
-            transition: "opacity 400ms ease-out, transform 400ms ease-out",
+            opacity: 1,
+            transform: animated[i] ? "translateX(0)" : undefined,
+            transition: "transform 400ms ease-out",
           }}
         >
           {icons?.[i] ? (
             <span className="ab-icon">{icons[i]}</span>
           ) : (
-            <AnimatedCheck checked={checked[i]} />
+            <AnimatedCheck checked={true} />
           )}
           <span className="ab-text">{item}</span>
         </div>

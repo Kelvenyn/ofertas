@@ -8,13 +8,13 @@ import "./globals.css";
 const nunito = Nunito({
   variable: "--font-nunito",
   subsets: ["latin"],
-  weight: ["700", "800", "900"],
+  weight: ["800", "900"],
 });
 
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "700"],
 });
 
 
@@ -60,13 +60,33 @@ export default function RootLayout({
       } as React.CSSProperties}
     >
       <body className="min-h-full flex flex-col">
-        <Script id="utmify-pixel-id" strategy="afterInteractive">
+        {/* Meta Pixel — inline no head para disparar antes do JS do React */}
+        <Script id="meta-pixel" strategy="beforeInteractive">
+          {`
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','967822526249349');
+fbq('track','PageView');
+`}
+        </Script>
+        <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src="https://www.facebook.com/tr?id=967822526249349&ev=PageView&noscript=1"
+            alt=""
+          />
+        </noscript>
+
+        {/* Utmify — antecipado para beforeInteractive */}
+        <Script id="utmify-pixel-id" strategy="beforeInteractive">
           {`window.pixelId = "6a271a64526c8a5ae79867ec";`}
         </Script>
         <Script
           id="utmify-pixel"
           src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
         <Script
           id="utmify-utms"

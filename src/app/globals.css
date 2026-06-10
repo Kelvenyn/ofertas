@@ -3,6 +3,8 @@
 
 html {
   overflow-x: hidden;
+  /* Reserva espaço para a CountdownBar fixa (52px) evitando layout shift (CLS) */
+  padding-top: 52px;
 }
 
 .sr-only {

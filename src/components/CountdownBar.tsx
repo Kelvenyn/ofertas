@@ -41,12 +41,8 @@ export function CountdownBar() {
 
   useEffect(() => {
     if (!barRef.current) return
-    const ro = new ResizeObserver(([entry]) => {
-      const height = entry.contentRect.height
-      document.documentElement.style.paddingTop = `${height + (collapsed ? 10 : 0)}px`
-    })
-    ro.observe(barRef.current)
-    return () => ro.disconnect()
+    // Ajuste fino do paddingTop após a barra colapsar (pill ~46px + margin 10px)
+    document.documentElement.style.paddingTop = collapsed ? "56px" : "52px"
   }, [collapsed])
 
   useEffect(() => {
