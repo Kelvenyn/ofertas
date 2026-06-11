@@ -4,6 +4,7 @@ import { VendaImediata } from "@/components/sections/VendaImediata"
 import { SocialProof } from "@/components/sections/SocialProof"
 import { CounterPainPoints } from "@/components/sections/CounterPainPoints"
 import { KitCards } from "@/components/sections/KitCards"
+import { KitCardsReversed } from "@/components/sections/KitCardsReversed"
 import { Benefits } from "@/components/sections/Benefits"
 import { Urgencia } from "@/components/sections/Urgencia"
 import { IdealParaVoce } from "@/components/sections/IdealParaVoce"
@@ -35,6 +36,7 @@ export default function Home() {
         {/* 3. Demonstrativo */}
         <CounterPainPoints />
         <KitCards />
+        <KitCardsReversed />
 
         {/* 4. Benefícios */}
         <Benefits />

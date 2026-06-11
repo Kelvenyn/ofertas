@@ -507,7 +507,7 @@ html {
   font-family: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   padding: 44px 16px 40px;
   text-align: center;
-  background: var(--brand);
+  background: transparent;
 }
 
 .dc-inner {
@@ -524,7 +524,7 @@ html {
   flex-wrap: wrap;
   column-gap: .38em;
   row-gap: .12em;
-  color: #FFFFFF;
+  color: var(--brand-deep);
   margin: 2px 0 16px;
 }
 
@@ -532,7 +532,7 @@ html {
   font-weight: 900;
   font-size: clamp(32px, 8.4vw, 58px);
   line-height: 1;
-  color: var(--yellow);
+  color: var(--accent);
   letter-spacing: -.055em;
   transform: translateY(-1px);
 }
@@ -541,7 +541,7 @@ html {
   font-size: clamp(50px, 11vw, 82px);
   font-weight: 900;
   line-height: 1;
-  color: #FFFFFF;
+  color: var(--brand);
   letter-spacing: -.07em;
 }
 
@@ -551,7 +551,7 @@ html {
   margin-top: 4px;
   font-size: clamp(18px, 4.8vw, 27px);
   font-weight: 900;
-  color: #FFFFFF;
+  color: var(--brand-deep);
   letter-spacing: -.03em;
   line-height: 1.16;
 }
@@ -560,7 +560,7 @@ html {
   position: relative;
   height: 14px;
   border-radius: 999px;
-  background: rgba(255,255,255,.20);
+  background: rgba(8,145,178,.12);
   overflow: hidden;
   margin: 13px auto 0;
   width: min(500px, 92%);
