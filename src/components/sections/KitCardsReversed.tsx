@@ -17,7 +17,8 @@ export function KitCardsReversed() {
   const dragOffset = useRef(0)
   const autoPlay = useRef(true)
   const resumeTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
-  const [loaded, setLoaded] = useState(true)
+  const initializedRef = useRef(false)
+  const [ready, setReady] = useState(false)
 
   const reversedImages = useMemo(() => [...images].reverse(), [images])
   const allImages = useMemo(() => [...reversedImages, ...reversedImages, ...reversedImages], [reversedImages])
@@ -49,21 +50,28 @@ export function KitCardsReversed() {
 
   const animate = useCallback(function rafLoop() {
     if (!trackRef.current) return
-    if (autoPlay.current && !isDragging.current && isVisibleRef.current && !document.hidden) {
-      offsetRef.current += SCROLL_SPEED
-    }
-
     const track = trackRef.current
     const singleSetWidth = getSetWidth()
-    if (singleSetWidth <= 0) {
+
+    if (singleSetWidth > 0 && !initializedRef.current) {
+      offsetRef.current = -singleSetWidth
+      initializedRef.current = true
+      setReady(true)
+    }
+
+    if (!initializedRef.current) {
       rafRef.current = requestAnimationFrame(rafLoop)
       return
     }
 
-    if (offsetRef.current >= singleSetWidth) {
+    if (autoPlay.current && !isDragging.current && isVisibleRef.current && !document.hidden) {
+      offsetRef.current += SCROLL_SPEED
+    }
+
+    if (offsetRef.current >= 0) {
       offsetRef.current -= singleSetWidth
     }
-    if (offsetRef.current < 0) {
+    if (offsetRef.current <= -singleSetWidth - 1) {
       offsetRef.current += singleSetWidth
     }
 
@@ -140,7 +148,7 @@ export function KitCardsReversed() {
         <div
           ref={trackRef}
           className="kc-track"
-          style={{ opacity: loaded ? 1 : 0, transition: "opacity 400ms ease" }}
+          style={{ opacity: ready ? 1 : 0, transition: "opacity 400ms ease" }}
         >
           {allImages.map((img, i) => (
             <div className="kc-card" key={i}>
@@ -151,7 +159,6 @@ export function KitCardsReversed() {
                 height={400}
                 className="kc-card-img"
                 loading={i === 0 ? "eager" : "lazy"}
-                onLoad={() => { if (i === 0) setLoaded(true) }}
               />
             </div>
           ))}

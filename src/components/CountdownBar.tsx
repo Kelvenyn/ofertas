@@ -41,8 +41,7 @@ export function CountdownBar() {
 
   useEffect(() => {
     if (!barRef.current) return
-    // Ajuste fino do paddingTop após a barra colapsar (pill ~46px + margin 10px)
-    document.documentElement.style.paddingTop = collapsed ? "56px" : "52px"
+    document.documentElement.style.paddingTop = collapsed ? "64px" : "60px"
   }, [collapsed])
 
   useEffect(() => {
@@ -68,7 +67,7 @@ export function CountdownBar() {
     display: "inline-block",
     fontFamily: "'Manrope', sans-serif",
     fontWeight: 700,
-    fontSize: collapsed ? 13 : 15,
+    fontSize: collapsed ? 14 : 18,
     color: "#0891B2",
     fontVariantNumeric: "tabular-nums",
     transform: !reducedMotion && flipping[idx] ? "scaleY(0)" : "scaleY(1)",
@@ -77,8 +76,8 @@ export function CountdownBar() {
 
   const blockStyle: React.CSSProperties = {
     background: "rgba(8,145,178,0.12)",
-    borderRadius: 6,
-    padding: "2px 7px",
+    borderRadius: 8,
+    padding: "4px 9px",
     display: "inline-flex",
     gap: 1,
   }
@@ -86,7 +85,7 @@ export function CountdownBar() {
   const colonStyle: React.CSSProperties = {
     fontFamily: "'Manrope', sans-serif",
     fontWeight: 700,
-    fontSize: collapsed ? 12 : 14,
+    fontSize: collapsed ? 13 : 17,
     color: "#0891B2",
     animation: reducedMotion ? "none" : "cb-colon-blink 0.8s step-end infinite",
   }
@@ -118,11 +117,11 @@ export function CountdownBar() {
           position: "fixed",
           top: collapsed ? 10 : 0,
           zIndex: 8000,
-          height: collapsed ? 46 : 52,
+          height: collapsed ? 52 : 60,
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          gap: collapsed ? 8 : 12,
+          gap: collapsed ? 10 : 14,
           padding: "0 16px",
           background: collapsed
             ? "rgba(255,255,255,0.35)"
@@ -150,7 +149,7 @@ export function CountdownBar() {
           className="cb-gift"
           style={{
             display: "inline-block",
-            fontSize: collapsed ? 14 : 16,
+            fontSize: collapsed ? 15 : 18,
             animation: reducedMotion ? "none" : "cb-pulse-gift 1.4s infinite",
             flexShrink: 0,
           }}
@@ -166,7 +165,7 @@ export function CountdownBar() {
             letterSpacing: 0.5,
             whiteSpace: "nowrap",
             textTransform: "uppercase",
-            fontSize: collapsed ? 11 : 13,
+            fontSize: collapsed ? 12 : 14,
           }}
         >
           Bônus encerram em
