@@ -36,6 +36,17 @@ export function KitCardsReversed() {
     return () => obs.disconnect()
   }, [])
 
+  const getSetWidth = useCallback(() => {
+    if (!trackRef.current || !trackRef.current.children.length) return 0
+    const n = trackRef.current.children.length / 3
+    const gap = 16
+    let w = 0
+    for (let i = 0; i < n; i++) {
+      w += (trackRef.current.children[i] as HTMLElement).offsetWidth
+    }
+    return w + (n - 1) * gap
+  }, [])
+
   const animate = useCallback(function rafLoop() {
     if (!trackRef.current) return
     if (autoPlay.current && !isDragging.current && isVisibleRef.current && !document.hidden) {
@@ -43,7 +54,11 @@ export function KitCardsReversed() {
     }
 
     const track = trackRef.current
-    const singleSetWidth = track.scrollWidth / 3
+    const singleSetWidth = getSetWidth()
+    if (singleSetWidth <= 0) {
+      rafRef.current = requestAnimationFrame(rafLoop)
+      return
+    }
 
     if (offsetRef.current >= singleSetWidth) {
       offsetRef.current -= singleSetWidth
@@ -54,7 +69,7 @@ export function KitCardsReversed() {
 
     track.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`
     rafRef.current = requestAnimationFrame(rafLoop)
-  }, [])
+  }, [getSetWidth])
 
   useEffect(() => {
     rafRef.current = requestAnimationFrame(animate)

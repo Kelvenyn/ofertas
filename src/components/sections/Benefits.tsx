@@ -39,7 +39,6 @@ function BenefitCard({ icon, title, desc, index }: { icon: string; title: string
         <div className="benefit-card-icon-cell">
           <span className="benefit-card-emoji">{icon}</span>
         </div>
-        <span className="benefit-card-trail" />
         <div className="benefit-card-body">
           <h3 className="benefit-card-title">{title}</h3>
           <p className="benefit-card-desc">{desc}</p>

@@ -136,7 +136,7 @@ export const OFFER: OfferConfig = {
       title: "Jogos Bíblicos",
       titleBreak: "Jogos Bíblicos",
       desc: "Atividades divertidas com personagens e histórias da Bíblia em formato de jogos, cruzadinhas, caça-palavras e desafios que ensinam enquanto entretêm.",
-      price: "R$ 27,90",
+      price: "R$ 37,90",
     },
     {
       front: "/images/bonus-2-frente.webp",
@@ -144,7 +144,7 @@ export const OFFER: OfferConfig = {
       title: "Devocional Infantil",
       titleBreak: "Devocional Infantil",
       desc: "Devocional diário com leituras curtas, perguntas para refletir e orações simples para a criança ter um momento especial com Deus todos os dias.",
-      price: "R$ 29,90",
+      price: "R$ 39,90",
     },
     {
       front: "/images/bonus-3-frente.webp",
@@ -152,7 +152,7 @@ export const OFFER: OfferConfig = {
       title: "Kit Rotina Cristã",
       titleBreak: "Kit Rotina Cristã",
       desc: "Quadro de rotina, cards de incentivo e lembretes bíblicos para ajudar a criança a organizar o dia com mais disciplina e propósito.",
-      price: "R$ 34,90",
+      price: "R$ 44,90",
     },
     {
       front: "/images/bonus-4-frente.webp",
@@ -160,7 +160,7 @@ export const OFFER: OfferConfig = {
       title: "Salmos para Colorir",
       titleBreak: "Salmos para Colorir",
       desc: "Desenhos inspirados nos Salmos para colorir, com versículos que ensinam sobre gratidão, confiança e o amor de Deus de forma leve.",
-      price: "R$ 19,90",
+      price: "R$ 29,90",
     },
     {
       front: "/images/bonus-5-frente.webp",
@@ -168,7 +168,7 @@ export const OFFER: OfferConfig = {
       title: "Provérbios para Colorir",
       titleBreak: "Provérbios para Colorir",
       desc: "Atividades para colorir com mensagens dos Provérbios, ensinando sabedoria, obediência e boas escolhas de maneira divertida.",
-      price: "R$ 19,90",
+      price: "R$ 29,90",
     },
     {
       front: "/images/bonus-6-frente.webp",
@@ -176,7 +176,7 @@ export const OFFER: OfferConfig = {
       title: "Versículos no Potinho",
       titleBreak: "Versículos no Potinho",
       desc: "Pote com 30 versículos bíblicos para sortear todos os dias. Ideal para momentos de oração em família e começar o dia com fé.",
-      price: "R$ 24,90",
+      price: "R$ 34,90",
     },
   ],
   pricing: {

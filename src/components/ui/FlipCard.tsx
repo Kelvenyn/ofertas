@@ -24,7 +24,6 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
     img.src = back
   }, [back])
 
-
   const handleClick = useCallback(() => {
     setFlipped((current) => !current)
   }, [])
@@ -72,9 +71,9 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
               {!flipped && (
                 <div className="bon-new-hand">
                   <span className="bon-new-hand-emoji" aria-hidden="true">☝🏽</span>
+                  <span className="bon-new-hand-label">Toque para ver</span>
                 </div>
               )}
-
             </div>
 
             <div className="bon-new-face bon-new-back">
@@ -86,25 +85,23 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
                 className="bon-new-img"
                 loading="lazy"
               />
-              <div className="bon-new-back-hint">
-                <span aria-hidden="true">&#8634;</span> {labels.backHint}
-              </div>
               {flipped && (
-                <div className="bon-flip-indicator">←</div>
+                <div className="bon-flip-indicator-center">
+                  <span className="bon-flip-indicator-icon" aria-hidden="true">↩</span>
+                  <span className="bon-flip-indicator-label">Voltar</span>
+                </div>
               )}
             </div>
           </div>
         </div>
       </div>
 
-      <p className="bon-new-touch-hint">
-        <em>{labels.touchHint}</em>
-      </p>
-
       <div className="bon-new-info">
         <span className="bon-new-pill-title">{titleBreak || title}</span>
         <p className="bon-new-desc">{desc}</p>
-        <span className="bon-new-price">{price}</span>
+        <span className="bon-new-price">
+          <span className="bon-new-price-label">De </span><span className="bon-new-price-old">{price}</span>
+        </span>
 
         <div className="bon-new-timer">
           <span className="bon-new-timer-icon" aria-hidden="true">&#9203;</span>

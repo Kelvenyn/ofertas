@@ -1290,9 +1290,9 @@ html {
   margin: 20px auto 0;
 }
 
-/* ——— DESKTOP CARD (≥481px): horizontal expansion ——— */
+/* ——— DESKTOP CARD (≥481px): vertical stacked ——— */
 .benefit-card {
-  min-height: 180px;
+  min-height: 220px;
   background: var(--surface);
   position: relative;
   display: grid;
@@ -1300,7 +1300,7 @@ html {
   border-radius: 20px;
   overflow: hidden;
   box-sizing: border-box;
-  padding: 20px 22px;
+  padding: 26px 24px 22px;
   border: 1px solid rgba(8,145,178,.07);
   box-shadow: 0 2px 8px rgba(8,145,178,.05);
   transition: all 0.6s ease-in-out;
@@ -1320,73 +1320,54 @@ html {
 
 .benefit-card-inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0;
+  gap: 14px;
   width: 100%;
   transition: all 0.6s ease-in-out;
 }
 
 .benefit-card-icon-cell {
-  width: 52px;
-  height: 52px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border-radius: 16px;
+  border-radius: 18px;
   background: color-mix(in srgb, var(--card-accent, var(--brand)) 8%, var(--surface));
   overflow: hidden;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .benefit-card-emoji {
-  font-size: 24px;
+  font-size: 28px;
   line-height: 1;
   display: block;
 }
 
-.benefit-card-trail {
-  width: 0;
-  height: 28px;
-  flex-shrink: 0;
-  opacity: 0;
-  pointer-events: none;
-  border-radius: 2px;
-}
-
 .benefit-card-body {
-  overflow: hidden;
-  width: 0;
-  opacity: 0;
-  transition: all 0.5s ease-in-out 0.3s;
-  text-align: left;
-  flex-shrink: 1;
-  min-width: 0;
+  text-align: center;
+  width: 100%;
 }
 
 .benefit-card-title {
-  margin: 0 0 4px;
+  margin: 0 0 6px;
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: 20px;
   font-weight: 900;
   color: var(--brand-deep);
   letter-spacing: -.02em;
   line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .benefit-card-desc {
-  margin: 0;
+  margin: 0 auto;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.55;
   font-weight: 500;
   color: var(--text-muted);
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  max-width: 260px;
 }
 
 /* ——— DESKTOP expanded state (≥481px) ——— */
@@ -1403,11 +1384,10 @@ html {
 }
 
 .benefit-card-expanded .benefit-card-inner {
-  gap: 10px;
+  gap: 16px;
 }
 
 .benefit-card-expanded .benefit-card-body {
-  width: auto;
   opacity: 1;
 }
 
@@ -1416,29 +1396,20 @@ html {
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--card-accent, var(--brand)) 20%, transparent);
 }
 
-.benefit-card-expanded .benefit-card-trail {
-  width: 2px;
-  opacity: 0.4;
-  animation: benefitTrail 0.8s ease-in-out;
-  background: linear-gradient(180deg, var(--card-accent, var(--brand)), transparent);
-}
-
-@keyframes benefitTrail {
-  0%   { opacity: 0; width: 0; }
-  30%  { opacity: 0.4; width: 2px; }
-  70%  { opacity: 0.4; width: 2px; }
-  100% { opacity: 0.15; width: 2px; }
-}
-
-/* ——— MOBILE CARD (≤480px): vertical layout, no horizontal expansion ——— */
+/* ——— MOBILE CARD (≤480px) ——— */
 @media (max-width: 480px) {
-  .benefits-grid { grid-template-columns: 1fr; gap: 14px; }
+  .benefits-grid { 
+    grid-template-columns: 1fr;
+    gap: 14px;
+    max-width: 340px;
+    margin-inline: auto;
+  }
 
   .benefit-card {
     height: auto;
-    min-height: 150px;
+    min-height: 170px;
     border-radius: 16px;
-    padding: 20px 18px;
+    padding: 22px 16px;
   }
 
   .benefit-card-inner {
@@ -1452,12 +1423,7 @@ html {
     border-radius: 14px;
   }
 
-  .benefit-card-trail {
-    display: none;
-  }
-
   .benefit-card-body {
-    width: auto !important;
     opacity: 0;
     transform: translateY(6px);
     transition: opacity 0.5s ease-in-out 0.2s, transform 0.5s ease-in-out 0.2s;
@@ -1467,7 +1433,6 @@ html {
   .benefit-card-expanded .benefit-card-body {
     opacity: 1;
     transform: translateY(0);
-    width: auto !important;
   }
 
   .benefit-card-expanded .benefit-card-border {
@@ -1486,7 +1451,6 @@ html {
 
   .benefit-card-desc {
     font-size: 15.5px;
-    -webkit-line-clamp: 4;
   }
 }
 
@@ -1681,17 +1645,17 @@ html {
 .idv-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
+  gap: 18px;
   perspective: 800px;
 }
 
 /* — card base — */
 .idv-card {
   --border-angle: 0deg;
-  padding: 26px 18px 22px;
+  padding: 30px 22px 26px;
   border-radius: 20px;
   border: 2px solid transparent;
-  min-height: 200px;
+  min-height: 220px;
   background:
     linear-gradient(var(--surface), var(--surface)) padding-box,
     conic-gradient(
@@ -1778,11 +1742,11 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
   border-radius: 18px;
   background: color-mix(in srgb, var(--card-accent, var(--brand)) 10%, var(--surface));
-  margin: 0 auto 16px;
+  margin: 0 auto 18px;
 }
 
 .idv-card-alt .idv-card-icon {
@@ -1791,7 +1755,7 @@ html {
 }
 
 .idv-emoji {
-  font-size: 28px;
+  font-size: 32px;
   line-height: 1;
   display: block;
   opacity: 0;
@@ -1815,8 +1779,12 @@ html {
 }
 
 @media (max-width: 480px) {
-  .idv-grid { grid-template-columns: 1fr; }
-  .idv-card { padding: 22px 16px; min-height: 170px; }
+  .idv-grid { 
+    grid-template-columns: 1fr;
+    max-width: 340px;
+    margin-inline: auto;
+  }
+  .idv-card { padding: 26px 18px; min-height: 180px; }
   .idv-card-visible.idv-card-alt { transform: translateY(0) rotateX(0); }
 }
 
@@ -2121,8 +2089,10 @@ html {
   position: absolute;
   inset: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   z-index: 10;
   pointer-events: none;
 }
@@ -2130,33 +2100,59 @@ html {
 .bon-new-hand-emoji {
   font-size: 52px;
   filter: drop-shadow(0 4px 12px rgba(0,0,0,.3));
+  animation: bon-hand-bounce 2s ease-in-out infinite;
 }
 
-.bon-new-back-hint {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  padding: 5px 12px;
-  border-radius: 999px;
-  background: rgba(0,0,0,.45);
-  border: 1px solid rgba(255,255,255,.15);
-  font-size: 11px;
-  font-weight: 600;
-  color: rgba(255,255,255,.85);
-  z-index: 5;
+@keyframes bon-hand-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
-.bon-new-touch-hint {
-  margin: 0;
-  padding: 10px 16px 0;
+.bon-new-hand-label {
+  font-family: 'Nunito', system-ui, sans-serif;
   font-size: 13px;
-  line-height: 1.4;
-  color: var(--text-light);
-  opacity: .92;
+  font-weight: 800;
+  color: #FFFFFF;
+  text-shadow: 0 1px 4px rgba(0,0,0,.4);
+  background: rgba(0,0,0,.4);
+  padding: 5px 14px;
+  border-radius: 999px;
+  letter-spacing: .03em;
+  backdrop-filter: blur(2px);
 }
 
-.bon-new-touch-hint em {
-  font-style: italic;
+/* Center flip-back indicator on back face */
+.bon-flip-indicator-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  z-index: 10;
+  pointer-events: none;
+  background: rgba(0,0,0,.35);
+  transition: opacity 0.3s ease;
+}
+
+.bon-flip-indicator-icon {
+  font-size: 44px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.3));
+  animation: bon-hand-bounce 2s ease-in-out infinite;
+}
+
+.bon-flip-indicator-label {
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: #FFFFFF;
+  text-shadow: 0 1px 4px rgba(0,0,0,.4);
+  background: rgba(0,0,0,.4);
+  padding: 5px 14px;
+  border-radius: 999px;
+  letter-spacing: .03em;
+  backdrop-filter: blur(2px);
 }
 
 .bon-new-info {
@@ -2201,6 +2197,19 @@ html {
   font-weight: 800;
   color: var(--cta-darkest);
   letter-spacing: 0;
+}
+
+.bon-new-price-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-right: 2px;
+}
+
+.bon-new-price-old {
+  text-decoration: line-through;
+  text-decoration-color: rgba(239,68,68,.7);
+  text-decoration-thickness: 2px;
 }
 
 .bon-new-timer {
@@ -2255,23 +2264,7 @@ html {
   border: 1px solid rgba(16,185,129,.22);
 }
 
-/* Flip indicator for bonus cards */
-.bon-flip-indicator {
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  transition: opacity 0.3s ease;
-}
+
 
 /* ===== GUARANTEE ===== */
 .gar-section {
@@ -2360,7 +2353,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 28px 20px 24px;
+  padding: 32px 24px 28px;
   border-radius: 20px;
   background: #FFFFFF;
   border: 1px solid color-mix(in srgb, var(--step-color, var(--brand)) 20%, transparent);
@@ -2394,15 +2387,15 @@ html {
   align-items: center;
   justify-content: center;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 900;
   letter-spacing: -.02em;
 }
 
 .cea-card-title {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 800;
   color: var(--brand-deep);
   letter-spacing: -.02em;
@@ -2411,7 +2404,7 @@ html {
 
 .cea-card-desc {
   margin: 0;
-  font-size: 13px;
+  font-size: 15px;
   line-height: 1.6;
   font-weight: 500;
   color: var(--text-muted);
@@ -2419,7 +2412,7 @@ html {
 
 @media (max-width: 480px) {
   .cea-grid { grid-template-columns: 1fr; }
-  .cea-card { padding: 24px 18px 20px; }
+  .cea-card { padding: 26px 20px 24px; }
 }
 
 /* ===== CREATOR ===== */

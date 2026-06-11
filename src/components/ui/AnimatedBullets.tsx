@@ -35,7 +35,6 @@ function AnimatedCheck({ checked }: { checked: boolean }) {
 }
 
 export function AnimatedBullets({ items, icons, className = "" }: AnimatedBulletsProps) {
-  // Começa visível: itens são legíveis imediatamente, animação é apenas enhancement
   const [animated, setAnimated] = useState<boolean[]>(Array(items.length).fill(false))
   const containerRef = useRef<HTMLDivElement>(null)
   const activatedRef = useRef(false)
@@ -48,8 +47,13 @@ export function AnimatedBullets({ items, icons, className = "" }: AnimatedBullet
   )
 
   const startSequence = useCallback(() => {
-    if (activatedRef.current || prefersReducedMotion) return
+    if (activatedRef.current) return
     activatedRef.current = true
+
+    if (prefersReducedMotion) {
+      setAnimated(Array(items.length).fill(true))
+      return
+    }
 
     for (let i = 0; i < items.length; i++) {
       const t = setTimeout(() => {
@@ -67,7 +71,7 @@ export function AnimatedBullets({ items, icons, className = "" }: AnimatedBullet
         startSequence()
         obs.disconnect()
       }
-    }, { threshold: 0.3 })
+    }, { threshold: 0.25 })
     obs.observe(containerRef.current)
     return () => {
       obs.disconnect()
@@ -82,15 +86,16 @@ export function AnimatedBullets({ items, icons, className = "" }: AnimatedBullet
           key={i}
           className="ab-item"
           style={{
-            opacity: 1,
-            transform: animated[i] ? "translateX(0)" : undefined,
-            transition: "transform 400ms ease-out",
+            opacity: animated[i] ? 1 : 0,
+            transform: animated[i] ? "translateX(0)" : "translateX(-12px)",
+            transition: "opacity 500ms ease-out, transform 500ms ease-out",
+            transitionDelay: animated[i] ? `${i * 60}ms` : "0ms",
           }}
         >
           {icons?.[i] ? (
             <span className="ab-icon">{icons[i]}</span>
           ) : (
-            <AnimatedCheck checked={true} />
+            <AnimatedCheck checked={animated[i]} />
           )}
           <span className="ab-text">{item}</span>
         </div>
