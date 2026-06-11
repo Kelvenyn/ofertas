@@ -2022,12 +2022,7 @@ html {
   z-index: 0;
 }
 
-.bon-new-card:nth-child(1) { --bon-accent: #0891B2; }
-.bon-new-card:nth-child(2) { --bon-accent: #10B981; }
-.bon-new-card:nth-child(3) { --bon-accent: #F59E0B; }
-.bon-new-card:nth-child(4) { --bon-accent: #0E7490; }
-.bon-new-card:nth-child(5) { --bon-accent: #14B8A6; }
-.bon-new-card:nth-child(6) { --bon-accent: #059669; }
+.bon-new-card { --bon-accent: #0891B2; }
 
 @media (hover: hover) {
   .bon-new-card:hover {
