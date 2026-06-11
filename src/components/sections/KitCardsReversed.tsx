@@ -17,7 +17,7 @@ export function KitCardsReversed() {
   const dragOffset = useRef(0)
   const autoPlay = useRef(true)
   const resumeTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(true)
 
   const reversedImages = useMemo(() => [...images].reverse(), [images])
   const allImages = useMemo(() => [...reversedImages, ...reversedImages, ...reversedImages], [reversedImages])
@@ -93,7 +93,7 @@ export function KitCardsReversed() {
   const onTouchEnd = () => handleDragEnd()
 
   return (
-    <div className="kc-section" aria-labelledby="kit-title-rev" ref={sectionRef}>
+    <div className="kc-section" ref={sectionRef}>
       <div
         className="kc-carousel"
         role="region"
