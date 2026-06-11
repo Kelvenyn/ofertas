@@ -75,10 +75,10 @@ export const OFFER: OfferConfig = {
     title: "Por que centenas de mães cristãs estão\ncomprando o Pixel Art Bíblico?",
     ctaText: "QUERO O PIXEL ART BÍBLICO",
     items: [
-      { icon: "📱", title: "Menos tempo no celular", desc: "Em vez de brigar ou implorar, você oferece uma alternativa pronta, visual e divertida. A criança escolhe a arte e esquece o celular." },
-      { icon: "📖", title: "Aprendizado bíblico leve", desc: "Ensina sobre Deus sem ser pesado. As Pixel Artes apresentam personagens, versículos e valores de forma simples e divertida." },
-      { icon: "✏️", title: "Praticidade para a mãe", desc: "Você não precisa preparar nada, comprar materiais extras ou ficar ao lado. Basta escolher uma arte, imprimir em A4 e entregar." },
-      { icon: "🙏", title: "Valores cristãos na rotina", desc: "Cada momento longe da tela vira oportunidade para falar sobre fé, amor e confiança em Deus, sem precisar sentar para uma aula." },
+      { icon: "📱", title: "Menos tempo no celular", desc: "Em vez de brigar, você oferece uma alternativa pronta, visual e divertida." },
+      { icon: "📖", title: "Aprendizado bíblico leve", desc: "As Pixel Artes apresentam personagens, versículos e valores de forma lúdica." },
+      { icon: "✏️", title: "Coordenação motora", desc: "Ao pintar por números, a criança trabalha coordenação motora, percepção visual e noção das cores." },
+      { icon: "🙏", title: "Praticidade", desc: "Você não precisa preparar nada. Basta escolher uma arte e imprimir em A4." },
     ],
   },
   urgency: {

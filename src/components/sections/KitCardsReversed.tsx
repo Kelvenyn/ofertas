@@ -93,7 +93,7 @@ export function KitCardsReversed() {
   const onTouchEnd = () => handleDragEnd()
 
   return (
-    <div className="kc-section" ref={sectionRef}>
+    <div className="kc-section kc-section-rev" ref={sectionRef}>
       <div
         className="kc-carousel"
         role="region"
