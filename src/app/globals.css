@@ -507,7 +507,7 @@ html {
   font-family: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   padding: 44px 16px 40px;
   text-align: center;
-  background: transparent;
+  background: var(--brand);
 }
 
 .dc-inner {
@@ -524,7 +524,7 @@ html {
   flex-wrap: wrap;
   column-gap: .38em;
   row-gap: .12em;
-  color: var(--brand-deep);
+  color: #FFFFFF;
   margin: 2px 0 16px;
 }
 
@@ -532,7 +532,7 @@ html {
   font-weight: 900;
   font-size: clamp(32px, 8.4vw, 58px);
   line-height: 1;
-  color: var(--accent);
+  color: var(--yellow);
   letter-spacing: -.055em;
   transform: translateY(-1px);
 }
@@ -541,7 +541,7 @@ html {
   font-size: clamp(50px, 11vw, 82px);
   font-weight: 900;
   line-height: 1;
-  color: var(--brand);
+  color: #FFFFFF;
   letter-spacing: -.07em;
 }
 
@@ -551,7 +551,7 @@ html {
   margin-top: 4px;
   font-size: clamp(18px, 4.8vw, 27px);
   font-weight: 900;
-  color: var(--brand-deep);
+  color: #FFFFFF;
   letter-spacing: -.03em;
   line-height: 1.16;
 }
@@ -560,7 +560,7 @@ html {
   position: relative;
   height: 14px;
   border-radius: 999px;
-  background: rgba(8,145,178,.12);
+  background: rgba(255,255,255,.20);
   overflow: hidden;
   margin: 13px auto 0;
   width: min(500px, 92%);
@@ -708,7 +708,7 @@ html {
 /* ===== OFFER PEI ===== */
 .offer-pei-section {
   padding: 48px 16px 44px;
-  background: var(--surface);
+  background: var(--brand-ink);
   font-family: 'Manrope', system-ui, sans-serif;
 }
 
@@ -738,11 +738,11 @@ html {
 }
 
 .offer-pei-head-line {
-  color: var(--brand-ink);
+  color: #FFFFFF;
 }
 
 .offer-pei-head-accent {
-  color: var(--cta-deep);
+  color: var(--brand-light);
   margin-top: 4px;
 }
 
@@ -752,12 +752,12 @@ html {
   font-family: 'Manrope', system-ui, sans-serif;
   font-size: clamp(15px, 2.2vw, 18px);
   line-height: 1.65;
-  color: var(--text-muted);
+  color: rgba(255,255,255,.85);
   font-weight: 500;
 }
 
 .offer-pei-head p strong {
-  color: var(--brand-ink);
+  color: #FFFFFF;
   font-weight: 700;
 }
 
@@ -1109,7 +1109,7 @@ html {
   padding: 48px 0 44px;
   margin-top: 0;
   overflow: hidden;
-  background: var(--brand-subtle);
+  background: var(--brand-deep);
 }
 
 .sp-inner {
@@ -1126,7 +1126,7 @@ html {
   line-height: 1.1;
   font-weight: 900;
   letter-spacing: -.04em;
-  color: var(--brand-deep);
+  color: #FFFFFF;
 }
 
 .sp-carousel {
@@ -1250,7 +1250,7 @@ html {
 /* ===== BENEFITS (animated card) ===== */
 .benefits-section {
   padding: 48px 16px 44px;
-  background: var(--brand-subtle);
+  background: transparent;
   font-family: 'Manrope', system-ui, sans-serif;
 }
 
@@ -1489,7 +1489,7 @@ html {
 /* ===== URGÊNCIA ===== */
 .urg-section {
   padding: 48px 16px 44px;
-  background: var(--cta-surface);
+  background: var(--brand-ink);
   font-family: 'Manrope', system-ui, sans-serif;
 }
 
@@ -1819,7 +1819,7 @@ html {
 /* ===== TUDO QUE VOCÃŠ VAI RECEBER ===== */
 .tqvr-section {
   padding: 48px 16px 44px;
-  background: var(--brand-subtle);
+  background: var(--cta-darkest);
   font-family: 'Manrope', system-ui, sans-serif;
 }
 
@@ -2324,7 +2324,7 @@ html {
 /* ===== COMO Ã‰ O ACESSO ===== */
 .cea-section {
   padding: 48px 16px 44px;
-  background: transparent;
+  background: var(--brand-deep);
   font-family: 'Manrope', system-ui, sans-serif;
 }
 
@@ -2341,7 +2341,7 @@ html {
   line-height: 1.1;
   font-weight: 900;
   letter-spacing: -.04em;
-  color: var(--brand-deep);
+  color: #FFFFFF;
   text-wrap: balance;
 }
 
@@ -2538,7 +2538,7 @@ html {
 /* ===== FAQ ===== */
 .faq-acc-wrap {
   padding: 48px 16px 48px;
-  background: var(--brand-subtle);
+  background: transparent;
   font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 }
 
@@ -2658,8 +2658,7 @@ html {
 /* ===== FOOTER / TOAST ===== */
 .footer-mission {
   padding: 32px 16px;
-  background: var(--bg-alt);
-  border-top: 1px solid rgba(0,0,0,.06);
+  background: var(--brand-ink);
 }
 
 .footer-mission-inner {
@@ -2672,7 +2671,7 @@ html {
   font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.7;
-  color: #64748b;
+  color: rgba(255,255,255,.85);
   margin: 0;
 }
 
@@ -2682,9 +2681,10 @@ html {
   font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   font-size: 13px;
   line-height: 1.6;
-  color: var(--text-light);
+  color: rgba(255,255,255,.75);
   font-weight: 500;
-  border-top: 1px solid rgba(0,0,0,.06);
+  background: var(--brand-ink);
+  border-top: 1px solid rgba(255,255,255,.08);
 }
 
 .footer-copyright {
@@ -2700,7 +2700,7 @@ html {
 }
 
 .footer-link {
-  color: var(--brand);
+  color: var(--brand-light);
   text-decoration: none;
   font-size: 12px;
   font-weight: 600;
@@ -2713,7 +2713,7 @@ html {
 }
 
 .footer-sep {
-  color: var(--text-light);
+  color: rgba(255,255,255,.4);
   font-size: 10px;
 }
 
