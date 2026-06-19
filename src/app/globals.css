@@ -59,13 +59,13 @@ html {
   border-radius: 9999px;
   padding: 1rem 2.5rem;
   background:
-    linear-gradient(135deg, #15803d, #16a34a) padding-box,
+    linear-gradient(135deg, #D97706, #B45309) padding-box,
     conic-gradient(
       from var(--gradient-angle),
       transparent 0%,
-      #15803d 5%,
-      #166534 15%,
-      #22c55e 30%,
+      #D97706 5%,
+      #B45309 15%,
+      #F59E0B 30%,
       transparent 40%,
       transparent 100%
     ) border-box;
@@ -74,7 +74,7 @@ html {
   isolation: isolate;
   animation: border-spin 2.5s linear infinite;
   transition: transform 150ms ease, box-shadow 150ms ease;
-  box-shadow: 0 4px 20px hsla(142, 71%, 45%, 0.25);
+  box-shadow: 0 4px 20px hsla(37, 92%, 43%, 0.25);
   text-decoration: none;
   display: inline-block;
   white-space: nowrap;
@@ -95,7 +95,7 @@ html {
 
 .shiny-cta:hover {
   transform: scale(1.03);
-  box-shadow: 0 8px 32px hsla(142, 71%, 45%, 0.4);
+  box-shadow: 0 8px 32px hsla(37, 92%, 43%, 0.4);
 }
 
 .shiny-cta:active {
@@ -113,7 +113,7 @@ html {
 
 @supports not (background: conic-gradient(from 0deg, red, blue)) {
   .shiny-cta {
-    border: 2px solid #22c55e;
+    border: 2px solid #D97706;
     animation: none;
   }
 }
@@ -138,12 +138,12 @@ html {
   --font-sans: "Manrope", "Manrope Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-nunito: "Nunito", "Nunito Fallback", ui-sans-serif, system-ui, sans-serif;
 
-  --color-primary-blue: #0b7fe8;
-  --color-dark-blue: #123a6d;
-  --color-darker-blue: #082f63;
-  --color-accent-coral: #ff8a5b;
-  --color-green-cta: #0bb869;
-  --color-green-dark: #00b368;
+  --color-primary-blue: #7C3AED;
+  --color-dark-blue: #6D28D9;
+  --color-darker-blue: #4C1D95;
+  --color-accent-coral: #F59E0B;
+  --color-green-cta: #D97706;
+  --color-green-dark: #B45309;  
   --color-red-urgency: #dc2626;
   --color-yellow: #ffd166;
   --color-body-bg: #ffffff;
@@ -202,28 +202,28 @@ html {
   --z-countdown-bar: 8000;
 
   /* === SHADOW TIERS === */
-  --shadow-sm: 0 2px 8px rgba(8,145,178,0.06);
-  --shadow-md: 0 4px 16px rgba(8,145,178,0.09);
-  --shadow-lg: 0 12px 36px rgba(8,145,178,0.14);
+  --shadow-sm: 0 2px 8px rgba(124,67,237,0.06);
+  --shadow-md: 0 4px 16px rgba(124,67,237,0.09);
+  --shadow-lg: 0 12px 36px rgba(124,67,237,0.14);
 
   /* === PALETA DE OFERTA (sobrescritos por offer.ts via layout.tsx) === */
-  --brand: #0891b2;
-  --brand-deep: #0e7490;
-  --brand-ink: #164e63;
-  --brand-dark: #06b6d4;
-  --brand-light: #67e8f9;
-  --brand-subtle: #ecfeff;
-  --cta: #10b981;
-  --cta-light: #10B981;
-  --cta-deep: #059669;
-  --cta-darkest: #047857;
-  --cta-muted: rgba(16,185,129,0.12);
-  --cta-surface: #D1FAE5;
-  --cta-surface-deep: #ECFDF5;
-  --accent: #f59e0b;
-  --yellow: #ffd166;
+  --brand: #7C3AED;
+  --brand-deep: #6D28D9;
+  --brand-ink: #4C1D95;
+  --brand-dark: #8B5CF6;
+  --brand-light: #C4B5FD;
+  --brand-subtle: #F5F3FF;
+  --cta: #D97706;
+  --cta-light: #D97706;
+  --cta-deep: #B45309;
+  --cta-darkest: #92400E;
+  --cta-muted: rgba(217,119,6,0.12);
+  --cta-surface: #FEF3C7;
+  --cta-surface-deep: #FFFBEB;
+  --accent: #F59E0B;
+  --yellow: #FBBF24;
   --bg: #ffffff;
-  --bg-alt: #f5f8ff;
+  --bg-alt: #FFFBEB;
   --text: #111111;
   --text-muted: #425466;
   --text-light: #5b6b7b;
@@ -301,7 +301,7 @@ html {
   padding: 6px 16px;
   border-radius: 999px;
   background: var(--brand-subtle);
-  border: 1px solid rgba(8,145,178,.18);
+  border: 1px solid rgba(124,67,237,.18);
   color: var(--brand);
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: 11px;
@@ -560,18 +560,18 @@ html {
   position: relative;
   height: 14px;
   border-radius: 999px;
-  background: rgba(8,145,178,.12);
+  background: rgba(124,67,237,.12);
   overflow: hidden;
   margin: 13px auto 0;
   width: min(500px, 92%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 8px 20px rgba(8,145,178,.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 8px 20px rgba(124,67,237,.08);
 }
 
 .dc-fill {
   width: 0%;
   height: 100%;
   background: linear-gradient(90deg, var(--brand) 0%, var(--brand-light) 52%, var(--accent) 100%);
-  box-shadow: 0 10px 22px rgba(8,145,178,.18);
+  box-shadow: 0 10px 22px rgba(124,67,237,.18);
   border-radius: inherit;
   position: relative;
 }
@@ -787,10 +787,10 @@ html {
 
 @keyframes premium-glow {
   0%, 100% {
-    box-shadow: 0 18px 42px rgba(5,150,105,.18), 0 0 0 3px rgba(16,185,129,.15);
+    box-shadow: 0 18px 42px rgba(180,83,9,.18), 0 0 0 3px rgba(217,119,6,.15);
   }
   50% {
-    box-shadow: 0 22px 52px rgba(5,150,105,.32), 0 0 0 5px rgba(16,185,129,.28);
+    box-shadow: 0 22px 52px rgba(180,83,9,.32), 0 0 0 5px rgba(217,119,6,.28);
   }
 }
 
@@ -815,7 +815,7 @@ html {
   background: linear-gradient(
     110deg,
     transparent 30%,
-    rgba(16,185,129,.18) 50%,
+    rgba(217,119,6,.18) 50%,
     transparent 70%
   );
   background-size: 200% 100%;
@@ -842,7 +842,7 @@ html {
   padding: 10px 18px;
   border-radius: 999px;
   white-space: nowrap;
-  box-shadow: 0 8px 22px rgba(5,150,105,.25);
+  box-shadow: 0 8px 22px rgba(180,83,9,.25);
   z-index: 3;
   letter-spacing: .05em;
 }
@@ -870,7 +870,7 @@ html {
 
 .premium-label {
   background: var(--cta-surface, #E9FFF4);
-  border: 1px solid rgba(5,150,105,.24);
+  border: 1px solid rgba(180,83,9,.24);
   color: var(--cta-darkest);
 }
 
@@ -927,8 +927,8 @@ html {
 
 .premium-plan .offer-price-block {
   background: var(--cta-surface, #E9FFF4);
-  border: 1px solid rgba(5,150,105,.18);
-  box-shadow: 0 4px 16px rgba(16,185,129,.12);
+  border: 1px solid rgba(180,83,9,.18);
+  box-shadow: 0 4px 16px rgba(217,119,6,.12);
 }
 
 .offer-old-price-row {
@@ -975,7 +975,7 @@ html {
 
 .premium-plan .offer-price {
   color: var(--cta-deep);
-  text-shadow: 0 2px 8px rgba(16,185,129,.15);
+  text-shadow: 0 2px 8px rgba(217,119,6,.15);
 }
 
 .offer-installments {
@@ -1033,21 +1033,21 @@ html {
 
 .premium-btn.shiny-cta {
   background:
-    linear-gradient(135deg, #059669, #047857) padding-box,
+    linear-gradient(135deg, #B45309, #92400E) padding-box,
     conic-gradient(
       from var(--gradient-angle),
       transparent 0%,
-      #059669 5%,
-      #047857 15%,
-      #10b981 30%,
+      #B45309 5%,
+      #92400E 15%,
+      #D97706 30%,
       transparent 40%,
       transparent 100%
     ) border-box;
-  box-shadow: 0 4px 20px hsla(160, 84%, 39%, 0.3);
+  box-shadow: 0 4px 20px hsla(37, 92%, 43%, 0.3);
 }
 
 .premium-btn.shiny-cta:hover {
-  box-shadow: 0 8px 32px hsla(160, 84%, 39%, 0.45);
+  box-shadow: 0 8px 32px hsla(37, 92%, 43%, 0.45);
 }
 
 @media (max-width: 768px) {
@@ -1301,8 +1301,8 @@ html {
   overflow: hidden;
   box-sizing: border-box;
   padding: 26px 24px 22px;
-  border: 1px solid rgba(8,145,178,.07);
-  box-shadow: 0 2px 8px rgba(8,145,178,.05);
+  border: 1px solid rgba(124,67,237,.07);
+  box-shadow: 0 2px 8px rgba(124,67,237,.05);
   transition: all 0.6s ease-in-out;
   cursor: default;
 }
@@ -1664,7 +1664,7 @@ html {
       color-mix(in srgb, var(--card-accent, var(--brand)) 55%, transparent) 15%,
       color-mix(in srgb, var(--card-accent, var(--brand)) 0%, transparent) 30%
     ) border-box;
-  box-shadow: 0 4px 16px rgba(8,145,178,.07);
+  box-shadow: 0 4px 16px rgba(124,67,237,.07);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1733,7 +1733,7 @@ html {
   .idv-card:hover,
   .idv-card-alt:hover {
     transform: translateY(-3px) rotateX(0);
-    box-shadow: 0 12px 32px rgba(8,145,178,.18);
+    box-shadow: 0 12px 32px rgba(124,67,237,.18);
     animation-duration: 2s;
   }
 }
@@ -1801,8 +1801,8 @@ html {
   padding: 34px 24px;
   border-radius: 24px;
   background: var(--surface);
-  border: 1px solid rgba(8,145,178,.10);
-  box-shadow: 0 14px 40px rgba(8,145,178,.08);
+  border: 1px solid rgba(124,67,237,.10);
+  box-shadow: 0 14px 40px rgba(124,67,237,.08);
   text-align: center;
 }
 
@@ -1814,7 +1814,7 @@ html {
   padding: 8px 18px;
   border-radius: 999px;
   background: var(--brand-subtle);
-  border: 1px solid rgba(8,145,178,.18);
+  border: 1px solid rgba(124,67,237,.18);
   color: var(--brand);
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: 11.5px;
@@ -1862,7 +1862,7 @@ html {
   padding: 14px 18px;
   border-radius: 16px;
   background: var(--cta-surface);
-  border: 1px solid rgba(5,150,105,.12);
+  border: 1px solid rgba(180,83,9,.12);
 }
 
 .tqvr-bullets .ab-text {
@@ -1903,7 +1903,7 @@ html {
   padding: 8px 18px;
   border-radius: 999px;
   background: var(--cta-surface, #E8F8EE);
-  color: var(--cta-deep, #16a34a);
+  color: var(--cta-deep, #B45309);
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: 11.5px;
   line-height: 1;
@@ -1916,7 +1916,7 @@ html {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--cta-deep, #16a34a);
+  background: var(--cta-deep, #B45309);
   flex-shrink: 0;
 }
 
@@ -1958,7 +1958,7 @@ html {
   position: absolute;
   inset: 0;
   border-radius: 20px 20px 0 0;
-  background: rgba(8,145,178,.06);
+  background: rgba(124,67,237,.06);
   animation: bon-pulse 1.5s ease-in-out infinite;
 }
 
@@ -1976,9 +1976,9 @@ html {
   border-radius: 22px;
   background:
     linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,251,252,.98)) padding-box,
-    linear-gradient(135deg, var(--bon-accent, #0891B2), transparent 72%) border-box;
-  border: 1px solid rgba(8,145,178,0.12);
-  box-shadow: 0 10px 28px rgba(8,145,178,0.08);
+    linear-gradient(135deg, var(--bon-accent, #7C3AED), transparent 72%) border-box;
+  border: 1px solid rgba(124,67,237,0.12);
+  box-shadow: 0 10px 28px rgba(124,67,237,0.08);
   text-align: center;
   overflow: visible;
   transition: transform .25s ease, box-shadow .35s ease, border-color .35s ease;
@@ -1988,24 +1988,24 @@ html {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,.55), transparent 18%, transparent 82%, rgba(8,145,178,.05));
+  background: linear-gradient(180deg, rgba(255,255,255,.55), transparent 18%, transparent 82%, rgba(124,67,237,.05));
   pointer-events: none;
   border-radius: 22px;
   z-index: 0;
 }
 
-.bon-new-card { --bon-accent: #0891B2; }
+.bon-new-card { --bon-accent: #7C3AED; }
 
 @media (hover: hover) {
   .bon-new-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 34px rgba(8,145,178,0.12);
-    border-color: color-mix(in srgb, var(--bon-accent, #0891B2) 24%, rgba(8,145,178,0.12));
+    box-shadow: 0 16px 34px rgba(124,67,237,0.12);
+    border-color: color-mix(in srgb, var(--bon-accent, #7C3AED) 24%, rgba(124,67,237,0.12));
   }
 }
 
 @media (hover: hover) {
-  .bon-new-card:hover { box-shadow: 0 16px 34px rgba(8,145,178,0.12); }
+  .bon-new-card:hover { box-shadow: 0 16px 34px rgba(124,67,237,0.12); }
 }
 
 .bon-new-image-wrapper {
@@ -2017,7 +2017,7 @@ html {
   cursor: pointer;
   background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(242,247,249,.96));
   border-radius: 22px 22px 0 0;
-  border-bottom: 1px solid rgba(8,145,178,.08);
+  border-bottom: 1px solid rgba(124,67,237,.08);
 }
 
 .bon-new-perspective {
@@ -2065,7 +2065,7 @@ html {
   top: -14px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--bon-accent, #0891B2);
+  background: var(--bon-accent, #7C3AED);
   color: #FFFFFF;
   padding: 6px 16px;
   border-radius: 999px;
@@ -2161,7 +2161,7 @@ html {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(180deg, rgba(8,145,178,.05), rgba(16,185,129,.03));
+  background: linear-gradient(180deg, rgba(124,67,237,.05), rgba(217,119,6,.03));
   border-radius: 0 0 22px 22px;
 }
 
@@ -2177,8 +2177,8 @@ html {
   font-weight: 800;
   letter-spacing: .06em;
   text-transform: uppercase;
-  background: rgba(8,145,178,.10);
-  border: 1px solid rgba(8,145,178,.14);
+  background: rgba(124,67,237,.10);
+  border: 1px solid rgba(124,67,237,.14);
   color: var(--brand-ink);
   white-space: nowrap;
 }
@@ -2251,7 +2251,7 @@ html {
   justify-content: center;
   padding: 8px 24px;
   border-radius: 999px;
-  background: rgba(16,185,129,.12);
+  background: rgba(217,119,6,.12);
   color: var(--cta-darkest);
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: 14px;
@@ -2261,7 +2261,7 @@ html {
   box-shadow: 0 2px 8px rgba(16, 185, 129, 0.14);
   position: relative;
   z-index: 20;
-  border: 1px solid rgba(16,185,129,.22);
+  border: 1px solid rgba(217,119,6,.22);
 }
 
 

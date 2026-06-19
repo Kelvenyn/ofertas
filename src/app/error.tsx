@@ -31,7 +31,7 @@ export default function Error({
           padding: "12px 24px",
           borderRadius: "8px",
           border: "none",
-          background: "#0891B2",
+          background: "#7C3AED",
           color: "white",
           fontSize: "1rem",
           cursor: "pointer",

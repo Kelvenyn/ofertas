@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react"
 import { OFFER } from "@/config/offer"
 
-const STEP_COLORS = ["#0891B2", "#10B981", "#F59E0B", "#0E7490"]
+const STEP_COLORS = ["#7C3AED", "#D97706", "#F59E0B", "#6D28D9"]
 const CIRCLE_RADIUS = 34
 const CIRCUMFERENCE = 2 * Math.PI * CIRCLE_RADIUS
 
