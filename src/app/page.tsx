@@ -19,7 +19,7 @@ const Footer = dynamic(() => import("@/components/sections/Footer").then(m => m.
 export default function Home() {
   return (
     <>
-      <a href="#oferta" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[var(--z-skip-link)] focus:bg-white focus:text-[#6B46C1] focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold focus:shadow-lg">
+      <a href="#oferta" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[var(--z-skip-link)] focus:bg-white focus:text-[var(--brand)] focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold focus:shadow-lg">
         Pular para a oferta
       </a>
 

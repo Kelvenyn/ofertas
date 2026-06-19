@@ -59,13 +59,13 @@ html {
   border-radius: 9999px;
   padding: 1rem 2.5rem;
   background:
-    linear-gradient(135deg, #B8860B, #8B6914) padding-box,
+    linear-gradient(135deg, var(--cta-deep), var(--cta-darkest)) padding-box,
     conic-gradient(
       from var(--gradient-angle),
       transparent 0%,
-      #B8860B 5%,
-      #8B6914 15%,
-      #D4A017 30%,
+      var(--cta) 5%,
+      var(--cta-deep) 15%,
+      var(--cta-light) 30%,
       transparent 40%,
       transparent 100%
     ) border-box;
@@ -74,7 +74,7 @@ html {
   isolation: isolate;
   animation: border-spin 2.5s linear infinite;
   transition: transform 150ms ease, box-shadow 150ms ease;
-  box-shadow: 0 4px 20px hsla(41, 89%, 38%, 0.25);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--cta) 25%, transparent);
   text-decoration: none;
   display: inline-block;
   white-space: nowrap;
@@ -95,7 +95,7 @@ html {
 
 .shiny-cta:hover {
   transform: scale(1.03);
-  box-shadow: 0 8px 32px hsla(41, 89%, 38%, 0.4);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--cta) 40%, transparent);
 }
 
 .shiny-cta:active {
@@ -113,7 +113,7 @@ html {
 
 @supports not (background: conic-gradient(from 0deg, red, blue)) {
   .shiny-cta {
-    border: 2px solid #B8860B;
+    border: 2px solid var(--cta);
     animation: none;
   }
 }
@@ -138,12 +138,12 @@ html {
   --font-sans: "Manrope", "Manrope Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-nunito: "Nunito", "Nunito Fallback", ui-sans-serif, system-ui, sans-serif;
 
-  --color-primary-blue: #6B46C1;
-  --color-dark-blue: #553C9A;
-  --color-darker-blue: #44337A;
-  --color-accent-coral: #D4A017;
-  --color-green-cta: #B8860B;
-  --color-green-dark: #8B6914;  
+  --color-primary-blue: #2A4A6B;
+  --color-dark-blue: #1E3A52;
+  --color-darker-blue: #142838;
+  --color-accent-coral: #D47A5A;
+  --color-green-cta: #D47A5A;
+  --color-green-dark: #B86040;  
   --color-red-urgency: #dc2626;
   --color-yellow: #ffd166;
   --color-body-bg: #ffffff;
@@ -202,28 +202,28 @@ html {
   --z-countdown-bar: 8000;
 
   /* === SHADOW TIERS === */
-  --shadow-sm: 0 2px 8px rgba(107,70,193,0.06);
-  --shadow-md: 0 4px 16px rgba(107,70,193,0.09);
-  --shadow-lg: 0 12px 36px rgba(107,70,193,0.14);
+  --shadow-sm: 0 2px 8px rgba(42,74,107,0.06);
+  --shadow-md: 0 4px 16px rgba(42,74,107,0.09);
+  --shadow-lg: 0 12px 36px rgba(42,74,107,0.14);
 
   /* === PALETA DE OFERTA (sobrescritos por offer.ts via layout.tsx) === */
-  --brand: #6B46C1;
-  --brand-deep: #553C9A;
-  --brand-ink: #44337A;
-  --brand-dark: #805AD5;
-  --brand-light: #D6BCFA;
-  --brand-subtle: #FAF5FF;
-  --cta: #B8860B;
-  --cta-light: #B8860B;
-  --cta-deep: #8B6914;
-  --cta-darkest: #6B4F0A;
-  --cta-muted: rgba(184,134,11,0.12);
-  --cta-surface: #FEF8E7;
-  --cta-surface-deep: #FFFDF5;
-  --accent: #D4A017;
+  --brand: #2A4A6B;
+  --brand-deep: #1E3A52;
+  --brand-ink: #142838;
+  --brand-dark: #3E6A94;
+  --brand-light: #A8C5DE;
+  --brand-subtle: #EDF3F8;
+  --cta: #D47A5A;
+  --cta-light: #D47A5A;
+  --cta-deep: #B86040;
+  --cta-darkest: #8C4428;
+  --cta-muted: rgba(212,122,90,0.12);
+  --cta-surface: #FDF6ED;
+  --cta-surface-deep: #FFF8F2;
+  --accent: #E8927C;
   --yellow: #F5D76E;
   --bg: #ffffff;
-  --bg-alt: #FDF8F0;
+  --bg-alt: #FDF6ED;
   --text: #111111;
   --text-muted: #425466;
   --text-light: #5b6b7b;
@@ -240,7 +240,7 @@ html {
   --popover-foreground: var(--text);
   --primary: var(--brand);
   --primary-foreground: var(--surface);
-  --secondary: #f3f8ff;
+  --secondary: #EDF3F8;
   --secondary-foreground: var(--brand-ink);
   --muted: #f0f4f8;
   --muted-foreground: var(--text-light);
@@ -301,7 +301,7 @@ html {
   padding: 6px 16px;
   border-radius: 999px;
   background: var(--brand-subtle);
-  border: 1px solid rgba(107,70,193,.18);
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, transparent);
   color: var(--brand);
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: 11px;
@@ -560,18 +560,18 @@ html {
   position: relative;
   height: 14px;
   border-radius: 999px;
-  background: rgba(107,70,193,.12);
+  background: color-mix(in srgb, var(--brand) 12%, transparent);
   overflow: hidden;
   margin: 13px auto 0;
   width: min(500px, 92%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 8px 20px rgba(107,70,193,.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 8px 20px color-mix(in srgb, var(--brand) 8%, transparent);
 }
 
 .dc-fill {
   width: 0%;
   height: 100%;
   background: linear-gradient(90deg, var(--brand) 0%, var(--brand-light) 52%, var(--accent) 100%);
-  box-shadow: 0 10px 22px rgba(107,70,193,.18);
+  box-shadow: 0 10px 22px color-mix(in srgb, var(--brand) 18%, transparent);
   border-radius: inherit;
   position: relative;
 }
@@ -782,16 +782,16 @@ html {
 }
 
 .basic-plan {
-  border: 1px solid rgba(18,58,109,.14);
-  box-shadow: 0 14px 32px rgba(18,58,109,.08);
+  border: 1px solid color-mix(in srgb, var(--brand) 14%, transparent);
+  box-shadow: 0 14px 32px color-mix(in srgb, var(--brand) 8%, transparent);
 }
 
 @keyframes premium-glow {
   0%, 100% {
-    box-shadow: 0 18px 42px rgba(139,105,20,.18), 0 0 0 3px rgba(184,134,11,.15);
+    box-shadow: 0 18px 42px color-mix(in srgb, var(--cta-deep) 18%, transparent), 0 0 0 3px color-mix(in srgb, var(--cta) 15%, transparent);
   }
   50% {
-    box-shadow: 0 22px 52px rgba(139,105,20,.32), 0 0 0 5px rgba(184,134,11,.28);
+    box-shadow: 0 22px 52px color-mix(in srgb, var(--cta-deep) 32%, transparent), 0 0 0 5px color-mix(in srgb, var(--cta) 28%, transparent);
   }
 }
 
@@ -816,7 +816,7 @@ html {
   background: linear-gradient(
     110deg,
     transparent 30%,
-    rgba(184,134,11,.18) 50%,
+    color-mix(in srgb, var(--cta) 18%, transparent) 50%,
     transparent 70%
   );
   background-size: 200% 100%;
@@ -843,7 +843,7 @@ html {
   padding: 10px 18px;
   border-radius: 999px;
   white-space: nowrap;
-  box-shadow: 0 8px 22px rgba(139,105,20,.25);
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--cta-deep) 25%, transparent);
   z-index: 3;
   letter-spacing: .05em;
 }
@@ -865,13 +865,13 @@ html {
 
 .basic-label {
   background: #F3FAFE;
-  border: 1px solid rgba(18,58,109,.12);
+  border: 1px solid color-mix(in srgb, var(--brand) 12%, transparent);
   color: var(--brand-ink);
 }
 
 .premium-label {
   background: var(--cta-surface, #E9FFF4);
-  border: 1px solid rgba(139,105,20,.24);
+  border: 1px solid color-mix(in srgb, var(--cta-deep) 24%, transparent);
   color: var(--cta-darkest);
 }
 
@@ -923,13 +923,13 @@ html {
   padding: 18px 16px;
   border-radius: 18px;
   background: var(--surface-alt, #F8F9FA);
-  border: 1px solid rgba(18,58,109,.08);
+  border: 1px solid color-mix(in srgb, var(--brand) 8%, transparent);
 }
 
 .premium-plan .offer-price-block {
   background: var(--cta-surface, #E9FFF4);
-  border: 1px solid rgba(139,105,20,.18);
-  box-shadow: 0 4px 16px rgba(184,134,11,.12);
+  border: 1px solid color-mix(in srgb, var(--cta-deep) 18%, transparent);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--cta) 12%, transparent);
 }
 
 .offer-old-price-row {
@@ -976,7 +976,7 @@ html {
 
 .premium-plan .offer-price {
   color: var(--cta-deep);
-  text-shadow: 0 2px 8px rgba(184,134,11,.15);
+  text-shadow: 0 2px 8px color-mix(in srgb, var(--cta) 15%, transparent);
 }
 
 .offer-installments {
@@ -1034,21 +1034,21 @@ html {
 
 .premium-btn.shiny-cta {
   background:
-    linear-gradient(135deg, #8B6914, #6B4F0A) padding-box,
+    linear-gradient(135deg, var(--cta-deep), var(--cta-darkest)) padding-box,
     conic-gradient(
       from var(--gradient-angle),
       transparent 0%,
-      #8B6914 5%,
-      #6B4F0A 15%,
-      #B8860B 30%,
+      var(--cta-deep) 5%,
+      var(--cta-darkest) 15%,
+      var(--cta) 30%,
       transparent 40%,
       transparent 100%
     ) border-box;
-  box-shadow: 0 4px 20px hsla(41, 89%, 38%, 0.3);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--cta) 30%, transparent);
 }
 
 .premium-btn.shiny-cta:hover {
-  box-shadow: 0 8px 32px hsla(41, 89%, 38%, 0.45);
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--cta) 45%, transparent);
 }
 
 @media (max-width: 768px) {
@@ -1302,8 +1302,8 @@ html {
   overflow: hidden;
   box-sizing: border-box;
   padding: 26px 24px 22px;
-  border: 1px solid rgba(107,70,193,.07);
-  box-shadow: 0 2px 8px rgba(107,70,193,.05);
+  border: 1px solid color-mix(in srgb, var(--brand) 7%, transparent);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--brand) 5%, transparent);
   transition: all 0.6s ease-in-out;
   cursor: default;
 }
@@ -1665,7 +1665,7 @@ html {
       color-mix(in srgb, var(--card-accent, var(--brand)) 55%, transparent) 15%,
       color-mix(in srgb, var(--card-accent, var(--brand)) 0%, transparent) 30%
     ) border-box;
-  box-shadow: 0 4px 16px rgba(107,70,193,.07);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--brand) 7%, transparent);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1734,7 +1734,7 @@ html {
   .idv-card:hover,
   .idv-card-alt:hover {
     transform: translateY(-3px) rotateX(0);
-    box-shadow: 0 12px 32px rgba(107,70,193,.18);
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--brand) 18%, transparent);
     animation-duration: 2s;
   }
 }
@@ -1802,8 +1802,8 @@ html {
   padding: 34px 24px;
   border-radius: 24px;
   background: var(--surface);
-  border: 1px solid rgba(107,70,193,.10);
-  box-shadow: 0 14px 40px rgba(107,70,193,.08);
+  border: 1px solid color-mix(in srgb, var(--brand) 10%, transparent);
+  box-shadow: 0 14px 40px color-mix(in srgb, var(--brand) 8%, transparent);
   text-align: center;
 }
 
@@ -1815,7 +1815,7 @@ html {
   padding: 8px 18px;
   border-radius: 999px;
   background: var(--brand-subtle);
-  border: 1px solid rgba(107,70,193,.18);
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, transparent);
   color: var(--brand);
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: 11.5px;
@@ -1863,7 +1863,7 @@ html {
   padding: 14px 18px;
   border-radius: 16px;
   background: var(--cta-surface);
-  border: 1px solid rgba(139,105,20,.12);
+  border: 1px solid color-mix(in srgb, var(--cta-deep) 12%, transparent);
 }
 
 .tqvr-bullets .ab-text {
@@ -1904,7 +1904,7 @@ html {
   padding: 8px 18px;
   border-radius: 999px;
   background: var(--cta-surface, #E8F8EE);
-  color: var(--cta-deep, #8B6914);
+  color: var(--cta-deep, var(--cta-deep));
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: 11.5px;
   line-height: 1;
@@ -1917,7 +1917,7 @@ html {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--cta-deep, #8B6914);
+  background: var(--cta-deep, var(--cta-deep));
   flex-shrink: 0;
 }
 
@@ -1959,7 +1959,7 @@ html {
   position: absolute;
   inset: 0;
   border-radius: 20px 20px 0 0;
-  background: rgba(107,70,193,.06);
+  background: color-mix(in srgb, var(--brand) 6%, transparent);
   animation: bon-pulse 1.5s ease-in-out infinite;
 }
 
@@ -1977,9 +1977,9 @@ html {
   border-radius: 22px;
   background:
     linear-gradient(180deg, rgba(255,255,255,.96), rgba(248,251,252,.98)) padding-box,
-    linear-gradient(135deg, var(--bon-accent, #6B46C1), transparent 72%) border-box;
-  border: 1px solid rgba(107,70,193,0.12);
-  box-shadow: 0 10px 28px rgba(107,70,193,0.08);
+    linear-gradient(135deg, var(--bon-accent, var(--brand)), transparent 72%) border-box;
+  border: 1px solid color-mix(in srgb, var(--brand) 12%, transparent);
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--brand) 8%, transparent);
   text-align: center;
   overflow: visible;
   transition: transform .25s ease, box-shadow .35s ease, border-color .35s ease;
@@ -1989,24 +1989,24 @@ html {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,.55), transparent 18%, transparent 82%, rgba(107,70,193,.05));
+  background: linear-gradient(180deg, rgba(255,255,255,.55), transparent 18%, transparent 82%, color-mix(in srgb, var(--brand) 5%, transparent));
   pointer-events: none;
   border-radius: 22px;
   z-index: 0;
 }
 
-.bon-new-card { --bon-accent: #6B46C1; }
+.bon-new-card { --bon-accent: var(--brand); }
 
 @media (hover: hover) {
   .bon-new-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 16px 34px rgba(107,70,193,0.12);
-    border-color: color-mix(in srgb, var(--bon-accent, #6B46C1) 24%, rgba(107,70,193,0.12));
+    box-shadow: 0 16px 34px color-mix(in srgb, var(--brand) 12%, transparent);
+    border-color: color-mix(in srgb, var(--bon-accent, var(--brand)) 24%, color-mix(in srgb, var(--brand) 12%, transparent));
   }
 }
 
 @media (hover: hover) {
-  .bon-new-card:hover { box-shadow: 0 16px 34px rgba(107,70,193,0.12); }
+  .bon-new-card:hover { box-shadow: 0 16px 34px color-mix(in srgb, var(--brand) 12%, transparent); }
 }
 
 .bon-new-image-wrapper {
@@ -2018,7 +2018,7 @@ html {
   cursor: pointer;
   background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(242,247,249,.96));
   border-radius: 22px 22px 0 0;
-  border-bottom: 1px solid rgba(107,70,193,.08);
+  border-bottom: 1px solid color-mix(in srgb, var(--brand) 8%, transparent);
 }
 
 .bon-new-perspective {
@@ -2066,7 +2066,7 @@ html {
   top: -14px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--bon-accent, #6B46C1);
+  background: var(--bon-accent, var(--brand));
   color: #FFFFFF;
   padding: 6px 16px;
   border-radius: 999px;
@@ -2162,7 +2162,7 @@ html {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(180deg, rgba(107,70,193,.05), rgba(184,134,11,.03));
+  background: linear-gradient(180deg, color-mix(in srgb, var(--brand) 5%, transparent), color-mix(in srgb, var(--cta) 3%, transparent));
   border-radius: 0 0 22px 22px;
 }
 
@@ -2178,8 +2178,8 @@ html {
   font-weight: 800;
   letter-spacing: .06em;
   text-transform: uppercase;
-  background: rgba(107,70,193,.10);
-  border: 1px solid rgba(107,70,193,.14);
+  background: color-mix(in srgb, var(--brand) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--brand) 14%, transparent);
   color: var(--brand-ink);
   white-space: nowrap;
 }
@@ -2252,7 +2252,7 @@ html {
   justify-content: center;
   padding: 8px 24px;
   border-radius: 999px;
-  background: rgba(184,134,11,.12);
+  background: color-mix(in srgb, var(--cta) 12%, transparent);
   color: var(--cta-darkest);
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: 14px;
@@ -2262,7 +2262,7 @@ html {
   box-shadow: 0 2px 8px rgba(16, 185, 129, 0.14);
   position: relative;
   z-index: 20;
-  border: 1px solid rgba(184,134,11,.22);
+  border: 1px solid color-mix(in srgb, var(--cta) 22%, transparent);
 }
 
 

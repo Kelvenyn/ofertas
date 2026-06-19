@@ -68,14 +68,14 @@ export function CountdownBar() {
     fontFamily: "'Manrope', sans-serif",
     fontWeight: 700,
     fontSize: collapsed ? 14 : 18,
-    color: "#6B46C1",
+    color: "var(--brand)",
     fontVariantNumeric: "tabular-nums",
     transform: !reducedMotion && flipping[idx] ? "scaleY(0)" : "scaleY(1)",
     transition: "transform 100ms ease-in-out",
   })
 
   const blockStyle: React.CSSProperties = {
-    background: "rgba(107,70,193,0.12)",
+    background: "color-mix(in srgb, var(--brand) 12%, transparent)",
     borderRadius: 8,
     padding: "4px 9px",
     display: "inline-flex",
@@ -86,7 +86,7 @@ export function CountdownBar() {
     fontFamily: "'Manrope', sans-serif",
     fontWeight: 700,
     fontSize: collapsed ? 13 : 17,
-    color: "#6B46C1",
+    color: "var(--brand)",
     animation: reducedMotion ? "none" : "cb-colon-blink 0.8s step-end infinite",
   }
 
@@ -125,7 +125,7 @@ export function CountdownBar() {
           padding: "0 16px",
           background: collapsed
             ? "rgba(255,255,255,0.35)"
-            : "rgba(107,70,193,0.10)",
+            : "color-mix(in srgb, var(--brand) 10%, transparent)",
           backdropFilter: collapsed
             ? "blur(36px) saturate(240%)"
             : "blur(20px) saturate(180%)",
@@ -138,8 +138,8 @@ export function CountdownBar() {
           border: collapsed ? "1px solid rgba(255,255,255,0.25)" : undefined,
           borderRadius: collapsed ? 50 : 0,
           boxShadow: collapsed
-            ? "0 4px 24px rgba(107,70,193,0.15)"
-            : "0 2px 24px rgba(107,70,193,0.1)",
+            ? "0 4px 24px color-mix(in srgb, var(--brand) 15%, transparent)"
+            : "0 2px 24px color-mix(in srgb, var(--brand) 10%, transparent)",
           transition: reducedMotion
             ? "all 150ms linear"
             : "all 420ms cubic-bezier(0.22, 1, 0.36, 1)",

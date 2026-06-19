@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react"
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { OFFER } from "@/config/offer"
 
-const CARD_COLORS = ["#6B46C1", "#B8860B", "#D4A017", "#553C9A"]
+const CARD_COLORS = ["#2A4A6B", "#D47A5A", "#A8C5DE", "#1E3A52"]
 
 function BenefitCard({ icon, title, desc, index }: { icon: string; title: string; desc: string; index: number }) {
   const [expanded, setExpanded] = useState(false)
