@@ -138,12 +138,12 @@ html {
   --font-sans: "Manrope", "Manrope Fallback", ui-sans-serif, system-ui, sans-serif;
   --font-nunito: "Nunito", "Nunito Fallback", ui-sans-serif, system-ui, sans-serif;
 
-  --color-primary-blue: #1E2A44;
-  --color-dark-blue: #182338;
-  --color-darker-blue: #121C30;
-  --color-accent-coral: #28A745;
-  --color-green-cta: #28A745;
-  --color-green-dark: #1E8B37;  
+  --color-primary-blue: #0A1F44;
+  --color-dark-blue: #081733;
+  --color-darker-blue: #061226;
+  --color-accent-coral: #16A34A;
+  --color-green-cta: #16A34A;
+  --color-green-dark: #11863D;  
   --color-red-urgency: #dc2626;
   --color-yellow: #ffd166;
   --color-body-bg: #ffffff;
@@ -202,28 +202,28 @@ html {
   --z-countdown-bar: 8000;
 
   /* === SHADOW TIERS === */
-  --shadow-sm: 0 2px 8px rgba(30,42,68,0.06);
-  --shadow-md: 0 4px 16px rgba(30,42,68,0.09);
-  --shadow-lg: 0 12px 36px rgba(30,42,68,0.14);
+  --shadow-sm: 0 2px 8px rgba(10,31,68,0.06);
+  --shadow-md: 0 4px 16px rgba(10,31,68,0.09);
+  --shadow-lg: 0 12px 36px rgba(10,31,68,0.14);
 
   /* === PALETA DE OFERTA (sobrescritos por offer.ts via layout.tsx) === */
-  --brand: #1E2A44;
-  --brand-deep: #182338;
-  --brand-ink: #121C30;
-  --brand-dark: #2A3D5E;
-  --brand-light: #C8CED9;
-  --brand-subtle: #E8EAF0;
-  --cta: #28A745;
-  --cta-light: #28A745;
-  --cta-deep: #1E8B37;
-  --cta-darkest: #156629;
-  --cta-muted: rgba(40,167,69,0.12);
-  --cta-surface: #EEF7F0;
-  --cta-surface-deep: #F5FBF6;
-  --accent: #C9A24E;
-  --yellow: #D4B85A;
-  --bg: #FAFAF7;
-  --bg-alt: #F4EFE3;
+  --brand: #0A1F44;
+  --brand-deep: #081733;
+  --brand-ink: #061226;
+  --brand-dark: #1A2F54;
+  --brand-light: #B0B8C7;
+  --brand-subtle: #E4E6EB;
+  --cta: #16A34A;
+  --cta-light: #16A34A;
+  --cta-deep: #11863D;
+  --cta-darkest: #0E6B31;
+  --cta-muted: rgba(22,163,74,0.12);
+  --cta-surface: #ECF7F0;
+  --cta-surface-deep: #F4FBF6;
+  --accent: #E11D2E;
+  --yellow: #FFC107;
+  --bg: #FFF8E8;
+  --bg-alt: #FFC107;
   --text: #333333;
   --text-muted: #6B6B6B;
   --text-light: #6B6B6B;
@@ -240,7 +240,7 @@ html {
   --popover-foreground: var(--text);
   --primary: var(--brand);
   --primary-foreground: var(--surface);
-  --secondary: #E8EAF0;
+  --secondary: #E4E6EB;
   --secondary-foreground: var(--brand-ink);
   --muted: #f0f4f8;
   --muted-foreground: var(--text-light);
