@@ -348,16 +348,21 @@ html {
 }
 
 .vi-image {
-  margin: 0 auto 24px;
+  margin: 0 auto 32px;
+  position: relative;
 }
 
 .vi-image img {
-  width: min(340px, 86vw);
+  width: min(380px, 90vw);
   height: auto;
   display: block;
   margin: 0 auto;
   border-radius: 16px;
-  border: 2px solid color-mix(in srgb, var(--brand) 30%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--brand) 25%, transparent);
+  box-shadow:
+    0 0 0 0 transparent,
+    0 20px 52px -10px color-mix(in srgb, var(--accent) 38%, transparent),
+    0 6px 16px -4px color-mix(in srgb, var(--brand) 18%, transparent);
 }
 
 .vi-sub {
@@ -884,7 +889,7 @@ html {
 }
 
 .offer-plan-img img {
-  max-width: 260px;
+  max-width: 290px;
   height: auto;
   display: block;
   margin: 0 auto;
@@ -892,8 +897,11 @@ html {
 
 .basic-plan .offer-plan-img img,
 .premium-plan .offer-plan-img img {
-  border-radius: 16px;
-  border: 2px solid color-mix(in srgb, var(--brand) 30%, transparent);
+  border-radius: 14px;
+  border: 1.5px solid color-mix(in srgb, var(--brand) 25%, transparent);
+  box-shadow:
+    0 20px 48px -10px color-mix(in srgb, var(--accent) 35%, transparent),
+    0 6px 14px -4px color-mix(in srgb, var(--brand) 16%, transparent);
 }
 
 .offer-card-top p {
@@ -1842,12 +1850,15 @@ html {
 }
 
 .tqvr-image img {
-  width: min(300px, 75vw);
+  width: min(340px, 80vw);
   height: auto;
   display: block;
   margin: 0 auto;
   border-radius: 16px;
-  border: 2px solid color-mix(in srgb, var(--brand) 30%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--brand) 25%, transparent);
+  box-shadow:
+    0 20px 52px -10px color-mix(in srgb, var(--accent) 38%, transparent),
+    0 6px 16px -4px color-mix(in srgb, var(--brand) 18%, transparent);
 }
 
 .tqvr-bullets.ab-list {
@@ -1944,10 +1955,25 @@ html {
 }
 
 .bon-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 18px;
   padding-top: 20px;
+}
+
+.bon-grid > * {
+  flex: 0 0 calc(33.333% - 13px);
+  min-width: 240px;
+  max-width: 380px;
+}
+
+@media (max-width: 900px) {
+  .bon-grid > * { flex: 0 0 calc(50% - 9px); }
+}
+
+@media (max-width: 480px) {
+  .bon-grid > * { flex: 0 0 100%; max-width: 100%; }
 }
 
 .bon-flip-skeleton {
@@ -1958,13 +1984,6 @@ html {
   animation: bon-pulse 1.5s ease-in-out infinite;
 }
 
-@media (max-width: 900px) {
-  .bon-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 480px) {
-  .bon-grid { grid-template-columns: 1fr; }
-}
 
 /* ===== BÃ”NUS - NEW CARD DESIGN ===== */
 .bon-new-card {
