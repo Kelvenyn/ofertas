@@ -29,7 +29,7 @@ export const OFFER: OfferConfig = {
     imageAlt: "Lembrancinhas para Crisma",
     imageWidth: 340,
     imageHeight: 425,
-    subtitle: "Tenha em mãos +50 Modelos fáceis de montar e organizados por temas para entregar ao crismando sem precisar você criar nada do zero.",
+    subtitle: "Tenha em mãos +50 Modelos de Lembrancinhas,\nfáceis de montar e organizados por temas\npara entregar ao crismando\nsem precisar você criar nada do zero.",
     ctaText: "QUERO AS LEMBRANCINHAS",
     timerLabel: "BÔNUS ENCERRAM EM",
     marqueeText: "+50 Modelos de Lembrancinhas • PDF A4 – Alta Qualidade • Acesso Imediato • ",
