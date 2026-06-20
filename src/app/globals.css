@@ -312,7 +312,7 @@ html {
 }
 
 .vi-title {
-  margin: 0 auto 40px;
+  margin: 0 auto 24px;
   max-width: 540px;
 }
 
@@ -338,7 +338,7 @@ html {
 .vi-title-line2 {
   font-size: clamp(24px, 5.6vw, 32px);
   color: var(--brand);
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
 .vi-title-line3 {
@@ -348,7 +348,7 @@ html {
 }
 
 .vi-image {
-  margin: 0 auto 32px;
+  margin: 0 auto 24px;
 }
 
 .vi-image img {
@@ -360,7 +360,7 @@ html {
 
 .vi-sub {
   max-width: 520px;
-  margin: 0 auto 18px;
+  margin: 0 auto 16px;
   font-family: 'Manrope', system-ui, sans-serif;
   font-size: 17px;
   line-height: 1.65;
@@ -573,7 +573,7 @@ html {
 .dc-fill {
   width: 0%;
   height: 100%;
-  background: linear-gradient(90deg, #FFF8E8 0%, #FFF8E8 52%, #FFF8E8 100%);
+  background: linear-gradient(90deg, var(--brand) 0%, var(--brand-light) 52%, var(--accent) 100%);
   box-shadow: 0 10px 22px color-mix(in srgb, var(--brand) 18%, transparent);
   border-radius: inherit;
   position: relative;
@@ -670,7 +670,7 @@ html {
   width: clamp(200px, 36vw, 300px);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.10), 0 0 0 1px rgba(253,91,0,0.08);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.10);
 }
 
 .kc-card-img {
