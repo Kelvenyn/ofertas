@@ -520,7 +520,7 @@ html {
   font-weight: 900;
   font-size: clamp(32px, 8.4vw, 58px);
   line-height: 1;
-  color: #FFF8E8;
+  color: var(--brand);
   letter-spacing: -.055em;
   transform: translateY(-1px);
 }
