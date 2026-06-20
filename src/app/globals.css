@@ -782,7 +782,7 @@ html {
 }
 
 .basic-plan {
-  border: 1px solid color-mix(in srgb, var(--brand) 14%, transparent);
+  border: 1.5px solid color-mix(in srgb, var(--brand) 20%, transparent);
   box-shadow: 0 14px 32px color-mix(in srgb, var(--brand) 8%, transparent);
 }
 
