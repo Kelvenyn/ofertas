@@ -75,9 +75,8 @@ export function OfferPricing() {
                 {plan.mutedItems && plan.mutedItems.length > 0 && (
                   <ul style={{ margin: "12px 0 0", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 8 }}>
                     {plan.mutedItems.map((item, i) => (
-                      <li key={i} style={{ fontSize: 13.5, color: "var(--text-muted)", display: "flex", alignItems: "center", gap: 8 }}>
-                        <span style={{ fontSize: 14 }}>✗</span>
-                        <span>{item}</span>
+                      <li key={i} style={{ fontSize: 13.5, color: "var(--text-muted)", textAlign: "center" }}>
+                        {item}
                       </li>
                     ))}
                   </ul>

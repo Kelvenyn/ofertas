@@ -29,7 +29,7 @@ export default function PoliticaDePrivacidadePage() {
           <p>
             Esta Política de Privacidade é aplicável ao site <strong>universoeduk.com</strong> e aos produtos
             digitais comercializados sob a marca <strong>Universo Eduk</strong>, operados por pessoa física
-            com e-mail de contato: <strong>kelvenyn@gmail.com</strong>.
+            com e-mail de contato: <strong>contatouniversoeduk@gmail.com</strong>.
           </p>
         </Section>
 
@@ -90,7 +90,7 @@ export default function PoliticaDePrivacidadePage() {
             <li>Solicitar a portabilidade dos dados;</li>
             <li>Revogar o consentimento, quando aplicável.</li>
           </ul>
-          <p>Para exercer seus direitos, entre em contato pelo e-mail: <strong>kelvenyn@gmail.com</strong>. Atendemos em até 15 dias úteis.</p>
+          <p>Para exercer seus direitos, entre em contato pelo e-mail: <strong>contatouniversoeduk@gmail.com</strong>. Atendemos em até 15 dias úteis.</p>
         </Section>
 
         <Section title="8. Cookies e Tecnologias de Rastreamento">
@@ -119,7 +119,7 @@ export default function PoliticaDePrivacidadePage() {
         <Section title="11. Contato">
           <p>
             Dúvidas sobre esta política ou sobre o tratamento dos seus dados pessoais:<br />
-            <strong>E-mail:</strong> kelvenyn@gmail.com
+            <strong>E-mail:</strong> contatouniversoeduk@gmail.com
           </p>
         </Section>
 

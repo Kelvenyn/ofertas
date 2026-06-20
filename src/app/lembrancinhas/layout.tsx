@@ -4,10 +4,10 @@ import { OFFER } from "@/config/offers/lembrancinhas/offer"
 import { OfferProvider } from "@/context/offer-context"
 
 export const metadata: Metadata = {
-  title: OFFER.meta.title,
+  title: "Lembrancinhas Cristã",
   description: OFFER.meta.description,
   icons: {
-    icon: "/favicon.png",
+    icon: "/images/lembrancinhas/favicon.png",
   },
   openGraph: {
     title: OFFER.meta.title,

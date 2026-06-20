@@ -74,7 +74,7 @@ export default function TermosDeUsoPage() {
           <p>
             Oferecemos <strong>garantia incondicional de 30 (trinta) dias</strong> a partir da data da compra.
             Se por qualquer motivo você não estiver satisfeito com o produto, basta solicitar o reembolso
-            pelo e-mail <strong>kelvenyn@gmail.com</strong> ou diretamente pela plataforma Hotmart.
+            pelo e-mail <strong>contatouniversoeduk@gmail.com</strong> ou diretamente pela plataforma Hotmart.
             O valor será devolvido integralmente, sem perguntas.
           </p>
           <p>
@@ -113,7 +113,7 @@ export default function TermosDeUsoPage() {
         <Section title="9. Contato">
           <p>
             Para dúvidas, sugestões ou exercício de direitos:<br />
-            <strong>E-mail:</strong> kelvenyn@gmail.com
+            <strong>E-mail:</strong> contatouniversoeduk@gmail.com
           </p>
         </Section>
 
