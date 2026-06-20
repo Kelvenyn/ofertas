@@ -6,7 +6,7 @@ import { useOffer } from "@/context/offer-context"
 
 export function TudoQueVoceRecebe() {
   const offer = useOffer()
-  const { title, titleHighlight, image, imageAlt, bullets } = offer.deliverables
+  const { title, image, imageAlt, bullets } = offer.deliverables
   return (
     <section className="tqvr-section" aria-labelledby="deliverables-title">
       <div className="tqvr-card">

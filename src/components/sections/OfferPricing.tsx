@@ -42,6 +42,18 @@ export function OfferPricing() {
                     </div>
                   )}
                   <h3>{plan.title}</h3>
+                  {plan.extraNote && (
+                    <p style={{
+                      margin: "0 0 10px",
+                      fontSize: 13,
+                      fontWeight: 800,
+                      color: "var(--cta-deep)",
+                      letterSpacing: "0.04em",
+                      textTransform: "uppercase",
+                    }}>
+                      {plan.extraNote}
+                    </p>
+                  )}
                   <div className="offer-plan-img">
                     <Image src={plan.image} alt={plan.imageAlt} width={300} height={375} />
                   </div>
@@ -59,6 +71,17 @@ export function OfferPricing() {
                 </div>
 
                 <AnimatedBullets items={plan.items} className="offer-list" />
+
+                {plan.mutedItems && plan.mutedItems.length > 0 && (
+                  <ul style={{ margin: "12px 0 0", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 8 }}>
+                    {plan.mutedItems.map((item, i) => (
+                      <li key={i} style={{ fontSize: 13.5, color: "var(--text-muted)", display: "flex", alignItems: "center", gap: 8 }}>
+                        <span style={{ fontSize: 14 }}>✗</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
 
                 <ShinyButton
                   href={plan.ctaHref}
