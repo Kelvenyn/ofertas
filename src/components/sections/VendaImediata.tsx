@@ -13,7 +13,6 @@ export function VendaImediata() {
     image, imageAlt, imageWidth, imageHeight,
     subtitle, ctaText, marqueeText, marqueeGradient, bullets,
   } = offer.hero
-  const subtitleLines = subtitle.split("\n")
 
   return (
     <section className="vi-hero">
@@ -36,14 +35,7 @@ export function VendaImediata() {
           />
         </div>
 
-        <p className="vi-sub">
-          {subtitleLines.map((line, i) => (
-            <span key={i}>
-              {line}
-              {i < subtitleLines.length - 1 && <br />}
-            </span>
-          ))}
-        </p>
+        <p className="vi-sub">{subtitle}</p>
 
         {bullets && bullets.length > 0 && (
           <AnimatedBullets items={bullets} className="vi-bullets ab-center" />
