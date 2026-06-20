@@ -1,7 +1,10 @@
-import { OFFER } from "@/config/offer"
+"use client"
+
+import { useOffer } from "@/context/offer-context"
 
 export function Footer() {
-  const { updateTitle, updateBody, copyright, privacyUrl, termsUrl } = OFFER.footer
+  const offer = useOffer()
+  const { updateTitle, updateBody, copyright, privacyUrl, termsUrl } = offer.footer
   return (
     <>
       <div className="pei-promo-wrap">

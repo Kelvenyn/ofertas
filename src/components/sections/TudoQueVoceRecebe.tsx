@@ -1,9 +1,12 @@
+"use client"
+
 import Image from "next/image"
 import { AnimatedBullets } from "@/components/ui/AnimatedBullets"
-import { OFFER } from "@/config/offer"
+import { useOffer } from "@/context/offer-context"
 
 export function TudoQueVoceRecebe() {
-  const { title, titleHighlight, image, imageAlt, bullets } = OFFER.deliverables
+  const offer = useOffer()
+  const { title, titleHighlight, image, imageAlt, bullets } = offer.deliverables
   return (
     <section className="tqvr-section" aria-labelledby="deliverables-title">
       <div className="tqvr-card">

@@ -1,7 +1,7 @@
 "use client"
 
 import { FlipCard } from "@/components/ui/FlipCard"
-import { OFFER } from "@/config/offer"
+import { useOffer } from "@/context/offer-context"
 
 function renderStrongText(text: string) {
   return text.replace(/\*\*(.+?)\*\*/g, "§§$1§§").split("§§").map((part, i) =>
@@ -10,8 +10,9 @@ function renderStrongText(text: string) {
 }
 
 export function Bonuses() {
-  const bonuses = OFFER.bonuses
-  const section = OFFER.bonusSection
+  const offer = useOffer()
+  const bonuses = offer.bonuses
+  const section = offer.bonusSection
 
   if (!bonuses || bonuses.length === 0) return null
 

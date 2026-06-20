@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useState, useEffect } from "react"
-import { OFFER } from "@/config/offer"
+import { useOffer } from "@/context/offer-context"
 
 const CARD_COLORS = ["#0A1F44", "#16A34A", "#E11D2E", "#081733"]
 
@@ -44,7 +44,8 @@ function IdvCard({ item, index }: { item: { icon: string; title: string; desc: s
 }
 
 export function IdealParaVoce() {
-  const { items } = OFFER.idealPara
+  const offer = useOffer()
+  const { items } = offer.idealPara
   return (
     <section className="idv-section" aria-labelledby="ideal-title">
       <div className="idv-inner">

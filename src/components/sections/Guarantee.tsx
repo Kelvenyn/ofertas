@@ -3,10 +3,11 @@
 import { useEffect, useRef, useState, useCallback } from "react"
 import Image from "next/image"
 import { ScrollMarquee } from "@/components/ui/ScrollMarquee"
-import { OFFER } from "@/config/offer"
+import { useOffer } from "@/context/offer-context"
 
 export function Guarantee() {
-  const { icon, iconAlt, title, body, marqueeText, marqueeGradient } = OFFER.guarantee
+  const offer = useOffer()
+  const { icon, iconAlt, title, body, marqueeText, marqueeGradient } = offer.guarantee
   const [visible, setVisible] = useState(false)
   const [sealScale, setSealScale] = useState(0.5)
   const sectionRef = useRef<HTMLDivElement>(null)

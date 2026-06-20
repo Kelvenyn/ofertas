@@ -2,10 +2,11 @@
 
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { useCountdownTimer } from "@/hooks/useCountdownTimer"
-import { OFFER } from "@/config/offer"
+import { useOffer } from "@/context/offer-context"
 
 export function Urgencia() {
-  const { title, highlight, body, ctaText, trust } = OFFER.urgency
+  const offer = useOffer()
+  const { title, highlight, body, ctaText, trust } = offer.urgency
   const titleLines = title.split('\n')
   const time = useCountdownTimer()
 

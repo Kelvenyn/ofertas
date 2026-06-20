@@ -1,7 +1,9 @@
+"use client"
+
 import Image from "next/image"
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { AnimatedBullets } from "@/components/ui/AnimatedBullets"
-import { OFFER } from "@/config/offer"
+import { useOffer } from "@/context/offer-context"
 
 function calcDiscount(oldStr: string, priceStr: string): number {
   const clean = (value: string) => parseFloat(value.replace(/[^\d,]/g, "").replace(",", "."))
@@ -12,7 +14,8 @@ function calcDiscount(oldStr: string, priceStr: string): number {
 }
 
 export function OfferPricing() {
-  const { titleLead, titleHighlight, plans } = OFFER.pricing
+  const offer = useOffer()
+  const { titleLead, titleHighlight, plans } = offer.pricing
 
   return (
     <section className="offer-pei-section" id="oferta" aria-labelledby="pricing-title">

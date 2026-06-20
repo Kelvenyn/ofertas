@@ -4,14 +4,15 @@ import Image from "next/image"
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { ScrollMarquee } from "@/components/ui/ScrollMarquee"
 import { AnimatedBullets } from "@/components/ui/AnimatedBullets"
-import { OFFER } from "@/config/offer"
+import { useOffer } from "@/context/offer-context"
 
 export function VendaImediata() {
+  const offer = useOffer()
   const {
     pill, titleLine1, titleLine2, titleLine3,
     image, imageAlt, imageWidth, imageHeight,
     subtitle, ctaText, marqueeText, marqueeGradient, bullets,
-  } = OFFER.hero
+  } = offer.hero
   const subtitleLines = subtitle.split("\n")
 
   return (

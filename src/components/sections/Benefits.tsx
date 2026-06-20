@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react"
 import { ShinyButton } from "@/components/ui/ShinyButton"
-import { OFFER } from "@/config/offer"
+import { useOffer } from "@/context/offer-context"
 
 const CARD_COLORS = ["#0A1F44", "#16A34A", "#E11D2E", "#081733"]
 
@@ -49,7 +49,8 @@ function BenefitCard({ icon, title, desc, index }: { icon: string; title: string
 }
 
 export function Benefits() {
-  const { title, ctaText, items } = OFFER.benefits
+  const offer = useOffer()
+  const { title, ctaText, items } = offer.benefits
   return (
     <section className="benefits-section" aria-labelledby="benefits-title">
       <div className="benefits-inner">

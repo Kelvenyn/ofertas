@@ -2,13 +2,14 @@
 
 import { useEffect, useRef, useState, useCallback, useMemo } from "react"
 import Image from "next/image"
-import { OFFER } from "@/config/offer"
+import { useOffer } from "@/context/offer-context"
 
 const DRAG_MULTIPLIER = 1.8
 const SCROLL_SPEED = 0.6
 
 export function KitCards() {
-  const { heading1, heading2, images } = OFFER.kitCards
+  const offer = useOffer()
+  const { heading1, heading2, images } = offer.kitCards
   const trackRef = useRef<HTMLDivElement>(null)
   const offsetRef = useRef(0)
   const rafRef = useRef<number>(0)

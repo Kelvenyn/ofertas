@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from "react"
 import Image from "next/image"
-import { OFFER } from "@/config/offer"
+import { useOffer } from "@/context/offer-context"
 
 const mod = (n: number, m: number) => ((n % m) + m) % m
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t
@@ -40,7 +40,8 @@ function getInterpolatedStyle(offset: number): React.CSSProperties {
 }
 
 export function SocialProof() {
-  const slides = OFFER.socialProof.testimonials
+  const offer = useOffer()
+  const slides = offer.socialProof.testimonials
   const COUNT = slides.length
 
   const [currentPos, setCurrentPos] = useState(0)
@@ -230,7 +231,7 @@ export function SocialProof() {
   return (
     <section className="sp-section" aria-labelledby="social-proof-title">
       <div className="sp-inner">
-        <h2 className="sp-title" id="social-proof-title">{OFFER.socialProof.title}</h2>
+        <h2 className="sp-title" id="social-proof-title">{offer.socialProof.title}</h2>
       </div>
 
       <div

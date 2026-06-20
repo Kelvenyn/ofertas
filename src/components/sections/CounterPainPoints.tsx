@@ -1,10 +1,11 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { OFFER } from "@/config/offer"
+import { useOffer } from "@/context/offer-context"
 
 export function CounterPainPoints() {
-  const { prefix, target, label } = OFFER.counter
+  const offer = useOffer()
+  const { prefix, target, label } = offer.counter
   const [count, setCount] = useState(0)
   const [barWidth, setBarWidth] = useState("0%")
   const counterRef = useRef<HTMLDivElement>(null)

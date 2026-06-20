@@ -1,10 +1,11 @@
 "use client"
 
 import { useState } from "react"
-import { OFFER } from "@/config/offer"
+import { useOffer } from "@/context/offer-context"
 
 export function FAQ() {
-  const { title, items: faqItems } = OFFER.faq
+  const offer = useOffer()
+  const { title, items: faqItems } = offer.faq
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   if (!faqItems || faqItems.length === 0) return null

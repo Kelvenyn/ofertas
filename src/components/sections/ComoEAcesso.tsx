@@ -1,13 +1,13 @@
 "use client"
 
 import { useRef, useState, useEffect } from "react"
-import { OFFER } from "@/config/offer"
+import { useOffer } from "@/context/offer-context"
 
 const STEP_COLORS = ["#0A1F44", "#16A34A", "#E11D2E", "#081733"]
 const CIRCLE_RADIUS = 34
 const CIRCUMFERENCE = 2 * Math.PI * CIRCLE_RADIUS
 
-function StepCircle({ index, color }: { index: number; color: string }) {
+function StepCircle({ index, color, total }: { index: number; color: string; total: number }) {
   const [fill, setFill] = useState(0)
   const circleRef = useRef<HTMLDivElement>(null)
 
@@ -17,7 +17,7 @@ function StepCircle({ index, color }: { index: number; color: string }) {
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.intersectionRatio >= 0.3) {
-          const targetFill = ((index + 1) / OFFER.access.steps.length) * 100
+          const targetFill = ((index + 1) / total) * 100
           setTimeout(() => setFill(targetFill), index * 150)
           obs.disconnect()
         }
@@ -26,7 +26,7 @@ function StepCircle({ index, color }: { index: number; color: string }) {
     )
     obs.observe(el)
     return () => obs.disconnect()
-  }, [index])
+  }, [index, total])
 
   const dashoffset = CIRCUMFERENCE - (fill / 100) * CIRCUMFERENCE
 
@@ -67,7 +67,8 @@ function StepCircle({ index, color }: { index: number; color: string }) {
 }
 
 export function ComoEAcesso() {
-  const { title, steps } = OFFER.access
+  const offer = useOffer()
+  const { title, steps } = offer.access
   return (
     <section className="cea-section" aria-labelledby="access-title">
       <div className="cea-inner">
@@ -78,7 +79,7 @@ export function ComoEAcesso() {
             const color = STEP_COLORS[i]
             return (
               <div className="cea-card" key={i} style={{ "--step-color": color } as React.CSSProperties}>
-                <StepCircle index={i} color={color} />
+                <StepCircle index={i} color={color} total={steps.length} />
                 <h3 className="cea-card-title">{step.title}</h3>
                 <p className="cea-card-desc">{step.desc}</p>
               </div>
