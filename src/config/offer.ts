@@ -32,12 +32,12 @@ export const OFFER: OfferConfig = {
     subtitle: "Tenha em mãos +50 Modelos fáceis de montar e organizados por temas para entregar ao crismando sem precisar você criar nada do zero.",
     ctaText: "QUERO AS LEMBRANCINHAS",
     timerLabel: "BÔNUS ENCERRAM EM",
-    marqueeText: " ✦  +50 Modelos de Lembrancinhas  ✦  PDF A4 – Alta Qualidade  ✦  Acesso Imediato  ✦  ",
+    marqueeText: "+50 Modelos de Lembrancinhas • PDF A4 – Alta Qualidade • Acesso Imediato • ",
     marqueeGradient: "linear-gradient(135deg, #B0B8C7 0%, #0A1F44 55%, #061226 100%)",
     bullets: [],
   },
   socialProof: {
-    title: "Mães como você já aprovaram",
+    title: "Catequistas de todo o Brasil\njá usam e aprovam",
     testimonials: [
       { src: "/images/Depoimento (1).webp", alt: "Depoimento 1", gradient: "linear-gradient(90deg, #0A1F44, #081733)" },
       { src: "/images/Depoimento (2).webp", alt: "Depoimento 2", gradient: "linear-gradient(90deg, #16A34A, #11863D)" },
@@ -70,7 +70,7 @@ export const OFFER: OfferConfig = {
     ],
   },
   benefits: {
-    title: "Deixe a caminhada da Crisma mais especial\ncom lembrancinhas de Fé e Propósito",
+    title: "Por que centenas de catequistas\nestão comprando as Lembrancinhas?",
     ctaText: "QUERO AS LEMBRANCINHAS",
     items: [
       { icon: "⏱️", title: "Praticidade", desc: "50 modelos prontos, você baixa, imprime e entrega em menos de 10 minutos." },
@@ -107,16 +107,14 @@ export const OFFER: OfferConfig = {
     bullets: [
       "+50 Modelos de Lembrancinhas para Crisma",
       "Lembrancinhas de Cura",
-      "Lembrancinhas de Espírito Santo",
+      "Lembrancinhas do Espírito Santo",
       "Lembrancinhas de Fé",
-      "Lembrancinhas de Apóstolos",
+      "Lembrancinhas dos Apóstolos",
       "Lembrancinhas de Gratidão",
       "Lembrancinhas de Propósito",
-      "Lembrancinhas de Descontraídas",
-      "Lembrancinhas de Oração",
-      "Lembrancinhas de Motivação",
-      "Lembrancinhas de Delicadas",
-      "Material em PDF para Baixar, imprimir e usar",
+      "Lembrancinhas Descontraídas",
+      "E muito mais",
+      "Arquivos em PDF prontos para impressão (A4)",
     ],
   },
   bonusSection: {

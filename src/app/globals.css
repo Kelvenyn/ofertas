@@ -312,7 +312,7 @@ html {
 }
 
 .vi-title {
-  margin: 0 auto 24px;
+  margin: 0 auto 32px;
   max-width: 540px;
 }
 
@@ -341,6 +341,7 @@ html {
 
 .vi-title-line3 {
   font-size: clamp(17px, 4vw, 22px);
+  font-weight: 700;
   color: var(--brand-ink);
 }
 
@@ -614,7 +615,7 @@ html {
 
 .kc-section-rev {
   padding-top: 0;
-  background: var(--bg-alt);
+  background: transparent;
 }
 
 .kc-inner {
@@ -1187,6 +1188,7 @@ html {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: top;
   display: block;
   pointer-events: none;
   border-radius: 22px;

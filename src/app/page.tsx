@@ -7,7 +7,6 @@ import { KitCards } from "@/components/sections/KitCards"
 import { KitCardsReversed } from "@/components/sections/KitCardsReversed"
 import { Benefits } from "@/components/sections/Benefits"
 import { Urgencia } from "@/components/sections/Urgencia"
-import { IdealParaVoce } from "@/components/sections/IdealParaVoce"
 import { TudoQueVoceRecebe } from "@/components/sections/TudoQueVoceRecebe"
 import { Bonuses } from "@/components/sections/Bonuses"
 import { OfferPricing } from "@/components/sections/OfferPricing"
@@ -44,10 +43,7 @@ export default function Home() {
         {/* 5. Urgência */}
         <Urgencia />
 
-        {/* 6. Ideal para você que deseja */}
-        <IdealParaVoce />
-
-        {/* 7. Tudo o que você vai receber */}
+        {/* 6. Tudo o que você vai receber */}
         <TudoQueVoceRecebe />
 
         {/* 8. Bônus */}

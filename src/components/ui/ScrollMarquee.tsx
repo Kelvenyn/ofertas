@@ -17,7 +17,7 @@ function renderText(text: string) {
     result.push(<span key={`t${i}`}>{part}</span>)
     if (i < parts.length - 1) {
       result.push(
-        <span key={`s${i}`} style={{ opacity: 0.5, margin: "0 8px" }}>✦</span>
+        <span key={`s${i}`} style={{ opacity: 0.5, margin: "0 18px" }}>✦</span>
       )
     }
   })
