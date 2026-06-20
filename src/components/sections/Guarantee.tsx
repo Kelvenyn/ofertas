@@ -59,7 +59,7 @@ export function Guarantee() {
 
   return (
     <section className="gar-section" ref={sectionRef} aria-labelledby="guarantee-title">
-      <ScrollMarquee text={marqueeText} gradient={marqueeGradient} height={44} />
+      <ScrollMarquee text={marqueeText} gradient={marqueeGradient} height={44} fadeColor="var(--brand-subtle, #E4E6EB)" />
 
       <div
         className="gar-inner"
@@ -92,7 +92,7 @@ export function Guarantee() {
         </p>
       </div>
 
-      <ScrollMarquee text={marqueeText} gradient={marqueeGradient} height={44} reverse />
+      <ScrollMarquee text={marqueeText} gradient={marqueeGradient} height={44} reverse fadeColor="var(--brand-subtle, #E4E6EB)" />
     </section>
   )
 }

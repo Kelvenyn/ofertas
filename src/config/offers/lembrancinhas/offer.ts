@@ -33,7 +33,7 @@ export const OFFER: OfferConfig = {
     ctaText: "QUERO AS LEMBRANCINHAS",
     timerLabel: "BÔNUS ENCERRAM EM",
     marqueeText: "+50 Modelos de Lembrancinhas • PDF A4 – Alta Qualidade • Acesso Imediato • ",
-    marqueeGradient: "linear-gradient(135deg, #B0B8C7 0%, #0A1F44 55%, #061226 100%)",
+    marqueeGradient: "linear-gradient(90deg, #8B5E0A 0%, #C8860A 30%, #E8A020 55%, #F5C518 80%, #C8860A 100%)",
     bullets: [],
   },
   socialProof: {
@@ -235,7 +235,7 @@ export const OFFER: OfferConfig = {
   },
   guarantee: {
     marqueeText: "GARANTIA 30 DIAS • RISCO ZERO • SATISFAÇÃO OU DINHEIRO DE VOLTA • ",
-    marqueeGradient: "linear-gradient(135deg, #B0B8C7 0%, #0A1F44 55%, #061226 100%)",
+    marqueeGradient: "linear-gradient(90deg, #8B5E0A 0%, #C8860A 30%, #E8A020 55%, #F5C518 80%, #C8860A 100%)",
     icon: "/images/lembrancinhas/garantia-30-dias.webp",
     iconAlt: "Garantia de 30 dias",
     title: "Compra 100% segura e garantida!",

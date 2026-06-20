@@ -8,6 +8,7 @@ interface ScrollMarqueeProps {
   height?: number
   className?: string
   reverse?: boolean
+  fadeColor?: string
 }
 
 function renderText(text: string) {
@@ -26,10 +27,11 @@ function renderText(text: string) {
 
 export function ScrollMarquee({
   text = "MATERIAL EM ALTA QUALIDADE • ACESSO IMEDIATO • BÔNUS INCLUÍDOS • ",
-  gradient = "linear-gradient(135deg, #fd5b00 0%, #ff8c1a 35%, #ffc107 65%, #ffd41e 100%)",
+  gradient = "linear-gradient(135deg, #C8860A 0%, #E8A020 35%, #F5C842 65%, #FDD835 100%)",
   height = 48,
   className = "",
   reverse = false,
+  fadeColor = "var(--bg, #FFF8E8)",
 }: ScrollMarqueeProps) {
   const barRef = useRef<HTMLDivElement>(null)
   const blockRef = useRef<HTMLDivElement>(null)
@@ -40,6 +42,7 @@ export function ScrollMarquee({
   const scrollVel = useRef(0)
   const displayVel = useRef(0)
   const hovered = useRef(false)
+  const [copies, setCopies] = useState(4)
   const [ready, setReady] = useState(false)
 
   const [reducedMotion] = useState(() =>
@@ -52,17 +55,25 @@ export function ScrollMarquee({
   const isVisibleRef = useRef(true)
 
   const measure = useCallback(() => {
-    if (blockRef.current) blockW.current = blockRef.current.offsetWidth
+    if (!blockRef.current) return
+    const w = blockRef.current.offsetWidth
+    if (w > 0) {
+      blockW.current = w
+      const needed = Math.ceil((window.innerWidth * 2.5) / w) + 2
+      setCopies(Math.max(needed, 4))
+    }
   }, [])
 
   useEffect(() => {
     measure()
-    const id = setTimeout(() => setReady(true), 0)
+    const id = setTimeout(() => { measure(); setReady(true) }, 50)
     const ro = new ResizeObserver(measure)
     if (blockRef.current) ro.observe(blockRef.current)
+    window.addEventListener("resize", measure, { passive: true })
     return () => {
       clearTimeout(id)
       ro.disconnect()
+      window.removeEventListener("resize", measure)
     }
   }, [measure])
 
@@ -121,9 +132,8 @@ export function ScrollMarquee({
   }, [ready, reducedMotion, direction])
 
   const rendered = renderText(text)
-
-  const FADE_L = `linear-gradient(to right, var(--bg, #FFFFFF), transparent)`
-  const FADE_R = `linear-gradient(to left, var(--bg, #FFFFFF), transparent)`
+  const FADE_L = `linear-gradient(to right, ${fadeColor}, transparent)`
+  const FADE_R = `linear-gradient(to left, ${fadeColor}, transparent)`
 
   if (reducedMotion) {
     return (
@@ -146,8 +156,16 @@ export function ScrollMarquee({
       <div className="scroll-marquee-fade-left" style={{ background: FADE_L }} />
       <div className="scroll-marquee-fade-right" style={{ background: FADE_R }} />
       <div ref={barRef} className="scroll-marquee-bar">
-        <div ref={blockRef} className="scroll-marquee-text">{rendered}{rendered}</div>
-        <div className="scroll-marquee-text">{rendered}{rendered}</div>
+        <div ref={blockRef} className="scroll-marquee-text">
+          {Array.from({ length: copies }, (_, i) => (
+            <span key={i} style={{ display: "inline" }}>{rendered}</span>
+          ))}
+        </div>
+        <div className="scroll-marquee-text">
+          {Array.from({ length: copies }, (_, i) => (
+            <span key={i} style={{ display: "inline" }}>{rendered}</span>
+          ))}
+        </div>
       </div>
     </div>
   )
