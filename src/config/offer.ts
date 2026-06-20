@@ -24,7 +24,7 @@ export const OFFER: OfferConfig = {
     pill: "LEMBRANCINHAS CRISTÃ",
     titleLine1: "+50 Modelos Exclusivos",
     titleLine2: "de Lembrancinhas para Crisma",
-    titleLine3: "Organizadas por temas, prontas\npara imprimir e entregar.",
+    titleLine3: "Organizadas por temas, prontas para imprimir e entregar.",
     image: "/images/plano-completo.webp",
     imageAlt: "Lembrancinhas para Crisma",
     imageWidth: 340,
@@ -37,7 +37,7 @@ export const OFFER: OfferConfig = {
     bullets: [],
   },
   socialProof: {
-    title: "Catequistas de todo o Brasil\njá usam e aprovam",
+    title: "Catequistas de todo o Brasil já usam e aprovam",
     testimonials: [
       { src: "/images/Depoimento (1).webp", alt: "Depoimento 1", gradient: "linear-gradient(90deg, #0A1F44, #081733)" },
       { src: "/images/Depoimento (2).webp", alt: "Depoimento 2", gradient: "linear-gradient(90deg, #16A34A, #11863D)" },
@@ -70,7 +70,7 @@ export const OFFER: OfferConfig = {
     ],
   },
   benefits: {
-    title: "Por que centenas de catequistas\nestão comprando as Lembrancinhas?",
+    title: "Por que centenas de catequistas estão comprando as Lembrancinhas?",
     ctaText: "QUERO AS LEMBRANCINHAS",
     items: [
       { icon: "⏱️", title: "Praticidade", desc: "50 modelos prontos, você baixa, imprime e entrega em menos de 10 minutos." },
@@ -81,7 +81,7 @@ export const OFFER: OfferConfig = {
   },
   urgency: {
     pill: "OPORTUNIDADE ÚNICA",
-    title: "Deixe cada encontro mais especial\ncom uma lembrancinha de fé\npronta para entregar",
+    title: "Deixe cada encontro mais especial com uma lembrancinha de fé pronta para entregar",
     highlight: "",
     body: "Enquanto você pensa, outras catequistas já estão baixando os modelos. O preço promocional não dura para sempre.",
     ctaText: "QUERO AS LEMBRANCINHAS",
@@ -112,8 +112,7 @@ export const OFFER: OfferConfig = {
       "Lembrancinhas dos Apóstolos",
       "Lembrancinhas de Gratidão",
       "Lembrancinhas de Propósito",
-      "Lembrancinhas Descontraídas",
-      "E muito mais",
+      "Lembrancinhas Descontraídas e muito mais",
       "Arquivos em PDF prontos para impressão (A4)",
     ],
   },
@@ -132,9 +131,9 @@ export const OFFER: OfferConfig = {
     {
       front: "/images/bonus-1-frente.webp",
       back: "/images/bonus-1-verso.webp",
-      title: "Tutorial de Montagem",
-      titleBreak: "Tutorial de\nMontagem",
-      desc: "Orientações passo a passo para montagem, impressão, recorte e finalização das lembrancinhas.",
+      title: "Montagem das Lembrancinhas",
+      titleBreak: "Montagem das\nLembrancinhas",
+      desc: "Orientações passo a passo para montagem, impressão, recorte e finalização de cada lembrancinha.",
       price: "R$ 19,90",
     },
     {
@@ -142,7 +141,7 @@ export const OFFER: OfferConfig = {
       back: "/images/bonus-2-verso.webp",
       title: "Lembrancinhas Dinâmicas",
       titleBreak: "Lembrancinhas\nDinâmicas",
-      desc: "Modelos interativos para usar em atividades, reflexões e momentos especiais dos encontros.",
+      desc: "Modelos focados na interação, para usar em atividades, reflexões e momentos especiais dos encontros.",
       price: "R$ 29,90",
     },
     {
@@ -185,9 +184,9 @@ export const OFFER: OfferConfig = {
       {
         id: "basic",
         label: "PARA COMEÇAR HOJE",
-        title: "Plano Básico",
-        image: "/images/Plano Completo.webp",
-        imageAlt: "Plano Básico",
+        title: "Plano Basico",
+        image: "/images/Plano Básico.webp",
+        imageAlt: "Plano Basico",
         featured: false,
         oldPrice: "de R$ 39,90",
         price: "R$ 17,90",

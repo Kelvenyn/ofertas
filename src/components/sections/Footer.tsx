@@ -14,7 +14,7 @@ export function Footer() {
       <div className="footer-mission">
         <div className="footer-mission-inner">
           <p>
-            O Pixel Art Bíblico foi criado com um propósito simples: ajudar mães cristãs a ocupar seus filhos com atividades saudáveis, longe das telas, enquanto ensina valores bíblicos de forma divertida e acessível. Cada arte é pensada para ser impressa em casa, sem complicação, sem precisar de materiais extras.
+            Prepare encontros de Crisma mais bonitos e significativos com lembrancinhas de Fé e Propósito. Cada modelo é pensado para ser impresso em casa, sem complicação, sem precisar de materiais extras.
           </p>
         </div>
       </div>

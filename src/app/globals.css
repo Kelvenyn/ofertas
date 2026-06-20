@@ -328,6 +328,7 @@ html {
   font-weight: 900;
   letter-spacing: 0;
   color: var(--brand-ink);
+  text-wrap: balance;
 }
 
 .vi-title-line1 {
@@ -908,6 +909,11 @@ html {
   margin: 0 auto;
 }
 
+.basic-plan .offer-plan-img img {
+  border-radius: 16px;
+  border: 2px solid color-mix(in srgb, var(--brand) 30%, transparent);
+}
+
 .offer-card-top p {
   margin: 0 0 18px;
   text-align: center;
@@ -1133,6 +1139,7 @@ html {
   font-weight: 900;
   letter-spacing: -.04em;
   color: #FFFFFF;
+  text-wrap: balance;
 }
 
 .sp-carousel {
@@ -1835,6 +1842,7 @@ html {
   font-weight: 900;
   letter-spacing: -.04em;
   color: var(--brand-deep);
+  text-wrap: balance;
 }
 
 .tqvr-title span {
@@ -2303,6 +2311,7 @@ html {
   font-weight: 900;
   letter-spacing: -.04em;
   color: var(--brand-deep);
+  text-wrap: balance;
 }
 
 .gar-text {
@@ -2556,6 +2565,7 @@ html {
   font-weight: 900;
   letter-spacing: -.05em;
   color: var(--brand-deep);
+  text-wrap: balance;
 }
 
 .faq-acc-list {

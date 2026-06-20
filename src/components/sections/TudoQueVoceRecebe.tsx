@@ -9,7 +9,6 @@ export function TudoQueVoceRecebe() {
       <div className="tqvr-card">
         <h2 className="tqvr-title" id="deliverables-title">
           {title}
-          <span>no <strong>{titleHighlight}</strong></span>
         </h2>
 
         <div className="tqvr-image">
