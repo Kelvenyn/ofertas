@@ -104,7 +104,6 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
         </span>
 
         <div className="bon-new-timer">
-          <span className="bon-new-timer-icon" aria-hidden="true">&#9203;</span>
           <span className="bon-new-timer-text">{labels.timerText}</span>
         </div>
 

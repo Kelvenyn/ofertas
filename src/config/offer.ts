@@ -124,7 +124,7 @@ export const OFFER: OfferConfig = {
     cardLabel: "BÔNUS",
     touchHint: "Toque na imagem acima para ver o conteúdo.",
     backHint: "Toque para voltar",
-    timerText: "BÔNUS DISPONÍVEIS SOMENTE NO PLANO COMPLETO",
+    timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO",
     freeLabel: "GRÁTIS",
   },
   bonuses: [
@@ -163,9 +163,9 @@ export const OFFER: OfferConfig = {
     {
       front: "/images/bonus-5-frente.webp",
       back: "/images/bonus-5-verso.webp",
-      title: "Marcador de Páginas",
-      titleBreak: "Marcador de\nPáginas",
-      desc: "+100 marcadores católicos para entregar com a Bíblia, caderno ou material da catequese.",
+      title: "150 Marcadores Católicos",
+      titleBreak: "150 Marcadores\nCatólicos",
+      desc: "+150 marcadores católicos para entregar com a Bíblia, caderno ou material da catequese.",
       price: "R$ 9,90",
     },
     {
@@ -183,10 +183,9 @@ export const OFFER: OfferConfig = {
     plans: [
       {
         id: "basic",
-        label: "PARA COMEÇAR HOJE",
-        title: "Plano Basico",
+        title: "Plano Básico",
         image: "/images/Plano Básico.webp",
-        imageAlt: "Plano Basico",
+        imageAlt: "Plano Básico",
         featured: false,
         oldPrice: "de R$ 39,90",
         price: "R$ 17,90",
@@ -221,7 +220,7 @@ export const OFFER: OfferConfig = {
           "🎁 Bônus 02: Lembrancinhas Dinâmicas",
           "🎁 Bônus 03: Calendário Catequético",
           "🎁 Bônus 04: Lembrancinhas de Santos Católicos",
-          "🎁 Bônus 05: Marcador de Páginas Católico",
+          "🎁 Bônus 05: 150 Marcadores Católicos",
           "🎁 Bônus 06: Tags Católica para encontros de Crisma",
           "Lembrancinhas organizadas por temas",
           "Arquivos em PDF prontos para impressão (A4)",
@@ -257,7 +256,7 @@ export const OFFER: OfferConfig = {
       { q: "Como vou receber as lembrancinhas?", a: "Você recebe os arquivos por e-mail logo após a confirmação da compra." },
       { q: "As lembrancinhas são físicas ou digitais?", a: "São digitais. Você recebe os arquivos em PDF para baixar, imprimir e entregar nos encontros." },
       { q: "Preciso editar alguma coisa?", a: "Não. As lembrancinhas já vêm prontas. Você não precisa de Canva, programas ou design." },
-      { q: "O que vem no Plano Completo?", a: "O produto principal (50 lembrancinhas) + 6 bônus: Montagem, Lembrancinhas Dinâmicas, Calendário Catequético, Santos Católicos, Marcador de Páginas e Tags Católica." },
+      { q: "O que vem no Plano Completo?", a: "O produto principal (50 lembrancinhas) + 6 bônus: Montagem, Lembrancinhas Dinâmicas, Calendário Catequético, Santos Católicos, 150 Marcadores Católicos e Tags Católica." },
       { q: "E se eu comprar e não gostar?", a: "Você tem 30 dias de garantia. Se não for para você, basta solicitar o reembolso e devolvemos 100% do valor." },
     ],
   },

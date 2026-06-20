@@ -11,14 +11,6 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="footer-mission">
-        <div className="footer-mission-inner">
-          <p>
-            Prepare encontros de Crisma mais bonitos e significativos com lembrancinhas de Fé e Propósito. Cada modelo é pensado para ser impresso em casa, sem complicação, sem precisar de materiais extras.
-          </p>
-        </div>
-      </div>
-
       <footer className="edu-toast-wrap" role="contentinfo">
         <p className="footer-copyright">{copyright}</p>
         <div className="footer-links">

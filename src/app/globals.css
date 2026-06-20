@@ -312,7 +312,7 @@ html {
 }
 
 .vi-title {
-  margin: 0 auto 32px;
+  margin: 0 auto 40px;
   max-width: 540px;
 }
 
@@ -347,7 +347,7 @@ html {
 }
 
 .vi-image {
-  margin: 0 auto 22px;
+  margin: 0 auto 32px;
 }
 
 .vi-image img {
@@ -1073,7 +1073,7 @@ html {
 
   .offer-pei-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 28px;
   }
 
   .offer-card {
@@ -2243,6 +2243,9 @@ html {
   text-transform: uppercase;
   color: var(--cta-deep);
   animation: bon-timer-glow 2s ease-in-out infinite;
+  white-space: pre-line;
+  text-align: center;
+  line-height: 1.4;
 }
 
 @keyframes bon-timer-glow {
