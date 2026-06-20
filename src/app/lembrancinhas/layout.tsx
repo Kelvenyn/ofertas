@@ -60,6 +60,7 @@ fbq('track','PageView');
       />
 
       <div
+        id="offer-root"
         style={{
           "--brand": p.brand,
           "--brand-deep": p.brandDeep,

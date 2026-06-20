@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic"
+import { PaletteSwitcher } from "@/components/dev/PaletteSwitcher"
 import { CountdownBar } from "@/components/CountdownBar"
 import { VendaImediata } from "@/components/sections/VendaImediata"
 import { SocialProof } from "@/components/sections/SocialProof"
@@ -63,6 +64,8 @@ export default function LembrancinhasPage() {
       </main>
 
       <Footer />
+
+      <PaletteSwitcher />
     </>
   )
 }
