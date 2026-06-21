@@ -192,7 +192,7 @@ export const OFFER: OfferConfig = {
           "Não inclui os bônus do Plano Completo",
         ],
         ctaText: "QUERO AS LEMBRANCINHAS",
-        ctaHref: "https://pay.hotmart.com/X106419670A",
+        ctaHref: "https://ggcheckout.app/checkout/v5/M5N8grnzZN1q1S3WHGEU",
       },
       {
         id: "premium",
@@ -218,7 +218,7 @@ export const OFFER: OfferConfig = {
           "Acesso vitalício ao material",
         ],
         ctaText: "QUERO AS LEMBRANCINHAS",
-        ctaHref: "https://pay.hotmart.com/B106419789P",
+        ctaHref: "https://ggcheckout.app/checkout/v5/SC5cTWnDnJxzyzm1jxOs",
       },
     ],
   },
