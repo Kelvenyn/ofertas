@@ -11,10 +11,18 @@ interface ShinyButtonProps {
 }
 
 const ShinyButton: React.FC<ShinyButtonProps> = ({ children, href, onClick, className = "", showArrow = true, compact = false }) => {
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!href?.startsWith("#")) return
+    e.preventDefault()
+    const target = document.getElementById(href.slice(1))
+    if (target) target.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
+
   if (href) {
     return (
       <a
         href={href}
+        onClick={handleAnchorClick}
         className={`shiny-cta group ${compact ? "shiny-cta-sm" : ""} ${className}`}
       >
         <span className="relative z-10 flex items-center justify-center gap-2 font-bold text-base tracking-wide text-white w-full">

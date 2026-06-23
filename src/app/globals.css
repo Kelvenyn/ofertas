@@ -3,6 +3,7 @@
 
 html {
   overflow-x: hidden;
+  scroll-behavior: smooth;
   /* Reserva espaço para a CountdownBar fixa (60px) evitando layout shift (CLS) */
   padding-top: 60px;
 }
