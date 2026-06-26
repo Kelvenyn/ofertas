@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-type PaletteKey = "atual" | "a" | "b" | "c"
+type PaletteKey = "atual" | "a" | "b" | "c" | "d" | "e" | "f"
 
 const PALETTES: Record<PaletteKey, { label: string; swatch: string; vars: Record<string, string> }> = {
   atual: {
@@ -79,6 +79,63 @@ const PALETTES: Record<PaletteKey, { label: string; swatch: string; vars: Record
       "--yellow": "#E8A020",
       "--bg": "#FBF6EE",
       "--bg-alt": "#E8A020",
+    },
+  },
+  d: {
+    label: "D — Azul Petróleo & Coral",
+    swatch: "#0D4F4F",
+    vars: {
+      "--brand": "#0D4F4F",
+      "--brand-deep": "#0A3D3D",
+      "--brand-ink": "#062B2B",
+      "--brand-dark": "#126161",
+      "--brand-light": "#7AB8B8",
+      "--brand-subtle": "#E0F0F0",
+      "--cta": "#16A34A",
+      "--cta-deep": "#11863D",
+      "--cta-darkest": "#0E6B31",
+      "--accent": "#E8634A",
+      "--yellow": "#F0B040",
+      "--bg": "#F5F8F0",
+      "--bg-alt": "#E8634A",
+    },
+  },
+  e: {
+    label: "E — Verde Menta & Lilás",
+    swatch: "#2D5A4B",
+    vars: {
+      "--brand": "#2D5A4B",
+      "--brand-deep": "#214336",
+      "--brand-ink": "#172E25",
+      "--brand-dark": "#3A705E",
+      "--brand-light": "#8DB8A8",
+      "--brand-subtle": "#E6F0EC",
+      "--cta": "#16A34A",
+      "--cta-deep": "#11863D",
+      "--cta-darkest": "#0E6B31",
+      "--accent": "#9B59B6",
+      "--yellow": "#E8A040",
+      "--bg": "#F5F8F8",
+      "--bg-alt": "#9B59B6",
+    },
+  },
+  f: {
+    label: "F — Rosa Antigo & Terracota",
+    swatch: "#8C4A5A",
+    vars: {
+      "--brand": "#8C4A5A",
+      "--brand-deep": "#6E3847",
+      "--brand-ink": "#502735",
+      "--brand-dark": "#A85A6E",
+      "--brand-light": "#D4A0B0",
+      "--brand-subtle": "#F2E4E8",
+      "--cta": "#16A34A",
+      "--cta-deep": "#11863D",
+      "--cta-darkest": "#0E6B31",
+      "--accent": "#C0734A",
+      "--yellow": "#E8A040",
+      "--bg": "#FFF5F5",
+      "--bg-alt": "#C0734A",
     },
   },
 }
