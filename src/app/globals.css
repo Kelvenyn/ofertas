@@ -1793,7 +1793,7 @@ html {
 /* ===== TUDO QUE VOCÃŠ VAI RECEBER ===== */
 .tqvr-section {
   padding: 48px 16px 44px;
-  background: var(--cta);
+  background: var(--brand-deep);
   font-family: 'Manrope', system-ui, sans-serif;
 }
 
@@ -2359,7 +2359,7 @@ html {
   line-height: 1.1;
   font-weight: 900;
   letter-spacing: -.04em;
-  color: #FFFFFF;
+  color: var(--surface);
   text-wrap: balance;
 }
 
@@ -2376,7 +2376,7 @@ html {
   align-items: center;
   padding: 32px 24px 28px;
   border-radius: 20px;
-  background: #FFFFFF;
+  background: var(--surface);
   border: 1px solid color-mix(in srgb, var(--step-color, var(--brand)) 20%, transparent);
   box-shadow: 0 4px 16px color-mix(in srgb, var(--step-color, var(--brand)) 8%, transparent);
   text-align: center;
