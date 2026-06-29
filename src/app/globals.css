@@ -898,11 +898,8 @@ html {
 
 .basic-plan .offer-plan-img img,
 .premium-plan .offer-plan-img img {
-  border-radius: 14px;
-  border: 1.5px solid color-mix(in srgb, var(--brand) 25%, transparent);
-  box-shadow:
-    0 20px 48px -10px color-mix(in srgb, var(--accent) 35%, transparent),
-    0 6px 14px -4px color-mix(in srgb, var(--brand) 16%, transparent);
+  max-width: 290px;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08));
 }
 
 .offer-card-top p {
