@@ -1,3 +1,22 @@
+# Config Panel Implementation Plan
+
+> **For agentic workers:** REQUIRED SUB-SKILL: Use subagent-driven-development or executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+
+**Goal:** Replace PaletteSwitcher with a richer ConfigPanel that lets the user customize palette, marquee, titles, and CTAs via a floating UI, then export a JSON config.
+
+**Architecture:** A single `ConfigPanel` client component with inline styles, reading from `useOffer()` for initial values and managing local state for edits. Palette changes apply CSS vars live; text changes show a modified indicator. "Gerar Config" outputs JSON to a textarea for copying.
+
+**Tech Stack:** React, Next.js, TypeScript, CSS custom properties
+
+## Global Constraints
+
+- Follow existing PaletteSwitcher pattern (inline styles, floating position)
+- Read values from `useOffer()` context
+- CTA color always stays green regardless of palette
+- Only modify files listed below
+
+---
+
 ### Task 1: Create ConfigPanel component
 
 **Files:**
@@ -375,4 +394,41 @@ Expected: Compiled successfully, no errors
 ```bash
 git add src/components/dev/ConfigPanel.tsx
 git commit -m "feat: create ConfigPanel component with palette, text, and gradient controls"
+```
+
+---
+
+### Task 2: Wire ConfigPanel into psicopedagogia page
+
+**Files:**
+- Modify: `src/app/psicopedagogia/page.tsx`
+
+**Interfaces:**
+- Consumes: `ConfigPanel` from `@/components/dev/ConfigPanel`
+
+- [ ] **Step 1: Replace PaletteSwitcher import with ConfigPanel**
+
+In `src/app/psicopedagogia/page.tsx`, change:
+```typescript
+import { PaletteSwitcher } from "@/components/dev/PaletteSwitcher"
+```
+to:
+```typescript
+import { ConfigPanel } from "@/components/dev/ConfigPanel"
+```
+
+- [ ] **Step 2: Replace PaletteSwitcher usage with ConfigPanel**
+
+Change `<PaletteSwitcher />` to `<ConfigPanel />` at the bottom of the JSX.
+
+- [ ] **Step 3: Build to verify**
+
+Run: `cmd.exe /c "npm run build"`
+Expected: Compiled successfully, no errors
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add src/app/psicopedagogia/page.tsx
+git commit -m "feat: replace PaletteSwitcher with ConfigPanel on psicopedagogia page"
 ```

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState } from "react"
 import { useOffer } from "@/context/offer-context"
 
 type PaletteKey = "atual" | "a" | "b" | "c" | "d" | "e" | "f"
@@ -103,6 +103,7 @@ export function ConfigPanel() {
 
   const original = {
     marqueeText: offer.hero.marqueeText,
+    marqueeGradient: "Padrão (da paleta)",
     heroCta: offer.hero.ctaText,
     heroTitle1: offer.hero.titleLine1,
     heroTitle2: offer.hero.titleLine2,
@@ -125,7 +126,7 @@ export function ConfigPanel() {
     return values[key as keyof typeof values] !== original[key]
   }
 
-  const generateConfig = useCallback(() => {
+  function generateConfig() {
     const paletteVars = PALETTES[activePalette].vars
     const config = {
       palette: {
@@ -155,7 +156,7 @@ export function ConfigPanel() {
       urgencyCtaText: values.urgencyCta,
     }
     setGenerated(JSON.stringify(config, null, 2))
-  }, [activePalette, values, offer.hero.marqueeGradient])
+  }
 
   function copyToClipboard() {
     if (generated) navigator.clipboard.writeText(generated)
@@ -241,7 +242,7 @@ export function ConfigPanel() {
           {/* Marquee Gradient */}
           <label style={{ ...labelStyle, marginTop: 12 }}>
             Gradiente do Marquee
-            {isModified("marqueeGradient" as any) && <span style={modifiedBadge}>✓</span>}
+            {isModified("marqueeGradient") && <span style={modifiedBadge}>✓</span>}
           </label>
           <select style={inputStyle} value={values.marqueeGradient}
             onChange={(e) => setVal("marqueeGradient", e.target.value)}>
@@ -329,7 +330,7 @@ export function ConfigPanel() {
           background: "#1a1a1a", border: "2px solid #444",
           cursor: "pointer", display: "flex", alignItems: "center",
           justifyContent: "center", boxShadow: "0 4px 16px rgba(0,0,0,0.4)",
-          fontSize: 20, transition: "transform 150ms",
+          fontSize: 20,
         }}>
         ⚙️
       </button>
