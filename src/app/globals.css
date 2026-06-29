@@ -358,12 +358,7 @@ html {
   height: auto;
   display: block;
   margin: 0 auto;
-  border-radius: 16px;
-  border: 1.5px solid color-mix(in srgb, var(--brand) 25%, transparent);
-  box-shadow:
-    0 0 0 0 transparent,
-    0 20px 52px -10px color-mix(in srgb, var(--accent) 38%, transparent),
-    0 6px 16px -4px color-mix(in srgb, var(--brand) 18%, transparent);
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08));
 }
 
 .vi-sub {
@@ -1852,11 +1847,7 @@ html {
   height: auto;
   display: block;
   margin: 0 auto;
-  border-radius: 16px;
-  border: 1.5px solid color-mix(in srgb, var(--brand) 25%, transparent);
-  box-shadow:
-    0 20px 52px -10px color-mix(in srgb, var(--accent) 38%, transparent),
-    0 6px 16px -4px color-mix(in srgb, var(--brand) 18%, transparent);
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08));
 }
 
 .tqvr-bullets.ab-list {
