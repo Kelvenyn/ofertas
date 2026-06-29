@@ -203,7 +203,7 @@ export const OFFER: OfferConfig = {
           "Não inclui os bônus do Plano Completo",
         ],
         ctaText: "QUERO ESSA OPÇÃO!",
-        ctaHref: "#",
+        ctaHref: "https://ggcheckout.app/checkout/v5/0PPwwQUNNadq3EBOBJ8P",
       },
       {
         id: "premium",
@@ -227,7 +227,7 @@ export const OFFER: OfferConfig = {
           "Compra segura",
         ],
         ctaText: "QUERO O PLANO COMPLETO!",
-        ctaHref: "#",
+        ctaHref: "https://ggcheckout.app/checkout/v5/ynv8yHYYJNcf0Y4GQe9F",
       },
     ],
   },
