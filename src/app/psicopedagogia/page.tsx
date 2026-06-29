@@ -10,7 +10,6 @@ import { Urgencia } from "@/components/sections/Urgencia"
 import { TudoQueVoceRecebe } from "@/components/sections/TudoQueVoceRecebe"
 import { Bonuses } from "@/components/sections/Bonuses"
 import { OfferPricing } from "@/components/sections/OfferPricing"
-import { ConfigPanel } from "@/components/dev/ConfigPanel"
 const Guarantee = dynamic(() => import("@/components/sections/Guarantee").then(m => m.Guarantee))
 const ComoEAcesso = dynamic(() => import("@/components/sections/ComoEAcesso").then(m => m.ComoEAcesso))
 const FAQ = dynamic(() => import("@/components/sections/FAQ").then(m => m.FAQ))
@@ -45,8 +44,6 @@ export default function PsicopedagogiaPage() {
       </main>
 
       <Footer />
-
-      <ConfigPanel />
     </>
   )
 }

@@ -33,7 +33,7 @@ export const OFFER: OfferConfig = {
     ctaText: "QUERO O MAPA DE PERFIL INFANTIL",
     timerLabel: "BÔNUS ENCERRAM EM",
     marqueeText: "15 Perfis Infantis • Atividade-guia para cada perfil • Acesso Imediato • ",
-    marqueeGradient: "linear-gradient(90deg, #006D6D 0%, #008585 30%, #6BB5B5 55%, #D6F0F0 80%, #006D6D 100%)",
+    marqueeGradient: "linear-gradient(90deg, #0EA5E9 0%, #38BDF8 30%, #7DD3FC 55%, #E0F2FE 80%, #0EA5E9 100%)",
     bullets: [
       "Identificar o perfil da criança",
       "Escolher a atividade certa",
@@ -45,14 +45,14 @@ export const OFFER: OfferConfig = {
   socialProof: {
     title: "Psicopedagogas de todo o Brasil já usam e aprovam",
     testimonials: [
-      { src: "/images/psicopedagogia/Depoimento (1).webp", alt: "Depoimento 1", gradient: "linear-gradient(90deg, #006D6D, #005252)" },
-      { src: "/images/psicopedagogia/Depoimento (2).webp", alt: "Depoimento 2", gradient: "linear-gradient(90deg, #00B86B, #009455)" },
-      { src: "/images/psicopedagogia/Depoimento (3).webp", alt: "Depoimento 3", gradient: "linear-gradient(90deg, #6BB5B5, #006D6D)" },
-      { src: "/images/psicopedagogia/Depoimento (4).webp", alt: "Depoimento 4", gradient: "linear-gradient(90deg, #005252, #003838)" },
-      { src: "/images/psicopedagogia/Depoimento (5).webp", alt: "Depoimento 5", gradient: "linear-gradient(90deg, #00B86B, #FF5A3A)" },
-      { src: "/images/psicopedagogia/Depoimento (6).webp", alt: "Depoimento 6", gradient: "linear-gradient(90deg, #006D6D, #00B86B)" },
-      { src: "/images/psicopedagogia/Depoimento (7).webp", alt: "Depoimento 7", gradient: "linear-gradient(90deg, #6BB5B5, #005252)" },
-      { src: "/images/psicopedagogia/Depoimento (8).webp", alt: "Depoimento 8", gradient: "linear-gradient(90deg, #FF5A3A, #006D6D)" },
+      { src: "/images/psicopedagogia/Depoimento (1).webp", alt: "Depoimento 1", gradient: "linear-gradient(90deg, #0EA5E9, #0284C7)" },
+      { src: "/images/psicopedagogia/Depoimento (2).webp", alt: "Depoimento 2", gradient: "linear-gradient(90deg, #16A34A, #11863D)" },
+      { src: "/images/psicopedagogia/Depoimento (3).webp", alt: "Depoimento 3", gradient: "linear-gradient(90deg, #7DD3FC, #0EA5E9)" },
+      { src: "/images/psicopedagogia/Depoimento (4).webp", alt: "Depoimento 4", gradient: "linear-gradient(90deg, #0284C7, #0369A1)" },
+      { src: "/images/psicopedagogia/Depoimento (5).webp", alt: "Depoimento 5", gradient: "linear-gradient(90deg, #16A34A, #F59E0B)" },
+      { src: "/images/psicopedagogia/Depoimento (6).webp", alt: "Depoimento 6", gradient: "linear-gradient(90deg, #0EA5E9, #16A34A)" },
+      { src: "/images/psicopedagogia/Depoimento (7).webp", alt: "Depoimento 7", gradient: "linear-gradient(90deg, #7DD3FC, #0284C7)" },
+      { src: "/images/psicopedagogia/Depoimento (8).webp", alt: "Depoimento 8", gradient: "linear-gradient(90deg, #F59E0B, #0EA5E9)" },
     ],
   },
   counter: {
@@ -234,7 +234,7 @@ export const OFFER: OfferConfig = {
   },
   guarantee: {
     marqueeText: "GARANTIA 30 DIAS • RISCO ZERO • SATISFAÇÃO OU DINHEIRO DE VOLTA • ",
-    marqueeGradient: "linear-gradient(90deg, #006D6D 0%, #008585 30%, #6BB5B5 55%, #D6F0F0 80%, #006D6D 100%)",
+    marqueeGradient: "linear-gradient(90deg, #0EA5E9 0%, #38BDF8 30%, #7DD3FC 55%, #E0F2FE 80%, #0EA5E9 100%)",
     icon: "/images/psicopedagogia/garantia-30-dias.webp",
     iconAlt: "Garantia de 30 dias",
     title: "Compra 100% segura e garantida!",

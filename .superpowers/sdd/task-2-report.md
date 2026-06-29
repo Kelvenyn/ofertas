@@ -1,36 +1,29 @@
-# Task 2 Report: Wire ConfigPanel into psicopedagogia page
+# Task 2: Psicopedagogia Layout - Report
 
-## What was changed
+## What was implemented
 
-Modified `src/app/psicopedagogia/page.tsx`:
+Created `src/app/psicopedagogia/layout.tsx` — the layout for the `/psicopedagogia` route. It:
 
-1. **Added import** of `ConfigPanel` from `@/components/dev/ConfigPanel` (line 13)
-2. **Added `<ConfigPanel />`** JSX element after `<Footer />` (line 49)
+- Imports `OFFER` config from `@/config/offers/psicopedagogia/offer`
+- Exports `Metadata` with title "Mapa de Perfil Infantil", OG tags, and favicon
+- Injects Facebook/TikTok/Utmify tracking scripts (identical to lembrancinhas)
+- Wraps children in a `<div id="offer-root">` with CSS custom properties from the OFFER palette
+- Wraps content in `<OfferProvider offer={OFFER}>`
 
-Note: The PaletteSwitcher import and usage had already been removed by a prior commit (`62b39eb`). Instead of a "replace," this was an "add" operation.
+## Test results
 
-## Build result
+- **tsc --noEmit**: Passed (no errors)
+- **eslint**: 1 warning — `<img>` without `<Image>` on noscript tag (same pattern as lembrancinhas layout; 3 pre-existing warnings not related to this file)
+- **next build**: Compiled successfully, no new errors
 
-```
-✓ Compiled successfully in 1841ms
-  Running TypeScript ...
-  Finished TypeScript in 2.1s ...
-```
-
-All routes built without errors. No warnings or type issues.
+Note: `/psicopedagogia` doesn't appear in the build route list because no `page.tsx` exists yet (expected — it's created in a subsequent task).
 
 ## Files changed
 
-- `src/app/psicopedagogia/page.tsx` — 2 insertions
+- Created: `src/app/psicopedagogia/layout.tsx` (84 lines)
 
-## Self-review
+## Self-review findings
 
-- Import is correctly placed after the section imports (following existing code style)
-- `<ConfigPanel />` is rendered after `<Footer />`, matching the original PaletteSwitcher position
-- The `ConfigPanel` component is a `"use client"` component — no dynamic import needed
-- No unused imports or dead code introduced
-- No lint or type errors
-
-## Concerns
-
-None. The integration is straightforward and clean.
+- The noscript `<img>` tag triggers a lint warning (`@next/next/no-img-element`), but this is consistent with the `lembrancinhas/layout.tsx` pattern. The reference file includes an `eslint-disable-next-line` comment that the brief code omitted. This is a pre-existing convention choice.
+- No page.tsx yet — the route won't render until the page is created in a later task.
+- CSS custom properties and OfferProvider wiring match the established pattern.
