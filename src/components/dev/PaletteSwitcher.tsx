@@ -141,7 +141,7 @@ const PALETTES: Record<PaletteKey, { label: string; swatch: string; vars: Record
 }
 
 export function PaletteSwitcher() {
-  const [active, setActive] = useState<PaletteKey>("atual")
+  const [active, setActive] = useState<PaletteKey>("d")
   const [open, setOpen] = useState(false)
 
   function applyPalette(key: PaletteKey) {
