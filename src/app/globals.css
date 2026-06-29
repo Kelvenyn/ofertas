@@ -853,7 +853,7 @@ html {
 }
 
 .basic-label {
-  background: #F3FAFE;
+  background: var(--brand-subtle);
   border: 1px solid color-mix(in srgb, var(--brand) 12%, transparent);
   color: var(--brand-ink);
 }

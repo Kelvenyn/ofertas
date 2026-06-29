@@ -260,7 +260,7 @@ export function SocialProof() {
             aria-label="Slide anterior"
             onPointerDown={(e) => e.stopPropagation()}
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand-light)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6" /></svg>
           </button>
 
           <button
@@ -269,7 +269,7 @@ export function SocialProof() {
             aria-label="Próximo slide"
             onPointerDown={(e) => e.stopPropagation()}
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand-light)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6" /></svg>
           </button>
 
           <div className="sp-carousel-inner">

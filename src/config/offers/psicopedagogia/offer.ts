@@ -30,7 +30,7 @@ export const OFFER: OfferConfig = {
     imageWidth: 340,
     imageHeight: 425,
     subtitle: "Tenha em mãos um mapa visual para identificar perfis infantis e escolher a atividade certa para cada sessão, sem precisar improvisar.",
-    ctaText: "QUERO O MAPA DE PERFIL INFANTIL",
+    ctaText: "QUERO O MAPA DE PERFIL INFANTIL →",
     timerLabel: "BÔNUS ENCERRAM EM",
     marqueeText: "15 Perfis Infantis • Atividade-guia para cada perfil • Acesso Imediato • ",
     marqueeGradient: "linear-gradient(90deg, #006D6D 0%, #008585 30%, #6BB5B5 55%, #D6F0F0 80%, #006D6D 100%)",
@@ -77,7 +77,7 @@ export const OFFER: OfferConfig = {
   },
   benefits: {
     title: "Por que psicopedagogas iniciantes estão comprando o Mapa de Perfil Infantil?",
-    ctaText: "QUERO O MAPA DE PERFIL INFANTIL",
+    ctaText: "QUERO O MAPA DE PERFIL",
     items: [
       { icon: "🧠", title: "Praticidade", desc: "15 perfis prontos, você identifica a criança e já sabe qual atividade aplicar em cada sessão." },
       { icon: "🎯", title: "Direcionamento", desc: "Cada perfil tem uma atividade-guia específica, sem precisar escolher no improviso." },
@@ -90,7 +90,7 @@ export const OFFER: OfferConfig = {
     title: "Deixe suas sessões mais seguras com um mapa visual pronto para usar",
     highlight: "",
     body: "Enquanto você pensa, outras psicopedagogas já estão usando o mapa nos atendimentos. O preço promocional não dura para sempre.",
-    ctaText: "QUERO ACESSAR AGORA E USAR HOJE",
+    ctaText: "QUERO ACESSAR AGORA",
     trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"],
   },
   idealPara: {
@@ -233,12 +233,12 @@ export const OFFER: OfferConfig = {
     ],
   },
   guarantee: {
-    marqueeText: "GARANTIA 15 DIAS • RISCO ZERO • SATISFAÇÃO OU DINHEIRO DE VOLTA • ",
+    marqueeText: "GARANTIA 30 DIAS • RISCO ZERO • SATISFAÇÃO OU DINHEIRO DE VOLTA • ",
     marqueeGradient: "linear-gradient(90deg, #006D6D 0%, #008585 30%, #6BB5B5 55%, #D6F0F0 80%, #006D6D 100%)",
     icon: "/images/psicopedagogia/garantia-30-dias.webp",
-    iconAlt: "Garantia de 15 dias",
+    iconAlt: "Garantia de 30 dias",
     title: "Compra 100% segura e garantida!",
-    body: "Você tem **15 dias de garantia** para testar o material. Se não gostar por qualquer motivo, devolvemos 100% do valor. Sem perguntas, sem burocracia.",
+    body: "Você tem **30 dias de garantia** para testar o material. Se não gostar por qualquer motivo, devolvemos 100% do valor. Sem perguntas, sem burocracia.",
   },
   access: {
     title: "Como você vai receber seu Mapa de Perfil Infantil",
@@ -256,7 +256,7 @@ export const OFFER: OfferConfig = {
       { q: "O material é físico ou digital?", a: "É 100% digital. Você recebe o PDF para baixar, imprimir e consultar no celular, tablet ou computador." },
       { q: "Preciso editar alguma coisa?", a: "Não. O mapa já vem pronto. Você não precisa de Canva, programas ou design." },
       { q: "O que vem no Plano Completo?", a: "O Mapa de Perfil Infantil + 6 bônus: Roteiro Sessão Sem Travar, Checklist Anti-Improviso, Atividades Prontas, Mapa dos Perfis Combinados, Fichas de Evolução e Kit Visual de Combinados." },
-      { q: "E se eu comprar e não gostar?", a: "Você tem 15 dias de garantia. Se não for para você, basta solicitar o reembolso e devolvemos 100% do valor." },
+      { q: "E se eu comprar e não gostar?", a: "Você tem 30 dias de garantia. Se não for para você, basta solicitar o reembolso e devolvemos 100% do valor." },
     ],
   },
   footer: {
