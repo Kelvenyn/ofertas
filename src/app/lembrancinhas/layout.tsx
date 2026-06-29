@@ -29,7 +29,7 @@ export default function LembrancinhasLayout({
       <Script id="meta-pixel" strategy="afterInteractive">
         {`
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1024867226763534');
+fbq('init','1653520942410205');
 fbq('track','PageView');
 `}
       </Script>
@@ -39,28 +39,26 @@ fbq('track','PageView');
           height="1"
           width="1"
           style={{ display: "none" }}
-          src="https://www.facebook.com/tr?id=1024867226763534&ev=PageView&noscript=1"
+          src="https://www.facebook.com/tr?id=1653520942410205&ev=PageView&noscript=1"
           alt=""
         />
       </noscript>
 
+      <Script id="utmify-pixel-id" strategy="afterInteractive">
+        {`window.pixelId = "6a39b5a3d2e009d7c7ae0f21";`}
+      </Script>
       <Script
+        id="utmify-pixel"
+        src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"
+        strategy="afterInteractive"
+      />
+      <Script
+        id="utmify-utms"
         src="https://cdn.utmify.com.br/scripts/utms/latest.js"
         data-utmify-prevent-xcod-sck
         data-utmify-prevent-subids
-        async
-        defer
+        strategy="afterInteractive"
       />
-      <Script id="utmify-pixel-init" strategy="afterInteractive">
-        {`
-window.pixelId = "6a42e043af23a1372722f211";
-var a = document.createElement("script");
-a.setAttribute("async", "");
-a.setAttribute("defer", "");
-a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-document.head.appendChild(a);
-`}
-      </Script>
 
       <div
         id="offer-root"
