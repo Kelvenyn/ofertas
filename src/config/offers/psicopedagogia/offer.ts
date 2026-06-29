@@ -52,7 +52,6 @@ export const OFFER: OfferConfig = {
       { src: "/images/psicopedagogia/Depoimento (5).webp", alt: "Depoimento 5", gradient: "linear-gradient(90deg, #16A34A, #F59E0B)" },
       { src: "/images/psicopedagogia/Depoimento (6).webp", alt: "Depoimento 6", gradient: "linear-gradient(90deg, #0EA5E9, #16A34A)" },
       { src: "/images/psicopedagogia/Depoimento (7).webp", alt: "Depoimento 7", gradient: "linear-gradient(90deg, #7DD3FC, #0284C7)" },
-      { src: "/images/psicopedagogia/Depoimento (8).webp", alt: "Depoimento 8", gradient: "linear-gradient(90deg, #F59E0B, #0EA5E9)" },
     ],
   },
   counter: {
