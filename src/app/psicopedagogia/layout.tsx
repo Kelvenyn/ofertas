@@ -26,22 +26,15 @@ export default function PsicopedagogiaLayout({
   const { palette: p } = OFFER
   return (
     <>
-      <Script id="meta-pixel" strategy="afterInteractive">
-        {`
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1024867226763534');
-fbq('track','PageView');
-`}
-      </Script>
-      <noscript>
-        <img
-          height="1"
-          width="1"
-          style={{ display: "none" }}
-          src="https://www.facebook.com/tr?id=1024867226763534&ev=PageView&noscript=1"
-          alt=""
-        />
-      </noscript>
+      {/* Trackhub: inicializa o(s) Meta Pixel(s) ativos dinamicamente (via /api/config) e
+          espelha os eventos server-side (Meta CAPI) com o mesmo event_id (dedup). Substitui
+          o snippet estático do Pixel — o pixel 1024867226763534 já está configurado no hub. */}
+      <Script
+        async
+        src="https://hub.universoeduk.com/tracker.js"
+        data-checkout-hosts="ggcheckout.app"
+        strategy="afterInteractive"
+      />
 
       <Script
         src="https://cdn.utmify.com.br/scripts/utms/latest.js"
