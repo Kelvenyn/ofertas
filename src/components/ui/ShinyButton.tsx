@@ -12,6 +12,7 @@ interface ShinyButtonProps {
 
 const ShinyButton: React.FC<ShinyButtonProps> = ({ children, href, onClick, className = "", showArrow = true, compact = false }) => {
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    onClick?.()
     if (!href?.startsWith("#")) return
     e.preventDefault()
     const target = document.getElementById(href.slice(1))
