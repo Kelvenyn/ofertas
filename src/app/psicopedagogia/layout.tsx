@@ -29,6 +29,12 @@ export default function PsicopedagogiaLayout({
       {/* Trackhub: inicializa o(s) Meta Pixel(s) ativos dinamicamente (via /api/config) e
           espelha os eventos server-side (Meta CAPI) com o mesmo event_id (dedup). Substitui
           o snippet estático do Pixel — o pixel 1024867226763534 já está configurado no hub. */}
+      <Script id="trackhub-autogrant" strategy="beforeInteractive">
+        {`
+document.cookie = "trck_consent=granted; path=/; max-age=31536000; SameSite=Lax" + (location.protocol === "https:" ? "; Secure" : "");
+try { localStorage.setItem("trck_consent", "granted"); } catch {}
+`}
+      </Script>
       <Script
         async
         src="https://hub.universoeduk.com/tracker.js"
