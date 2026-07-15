@@ -1,0 +1,90 @@
+import type { OfferConfig } from "@/types/offer"
+import { OFFER as psicopedagogiaOffer } from "@/config/offers/psicopedagogia/offer"
+
+const bonusNames = [
+  ["Calendário Laboral de 12 Semanas", "Organize as próximas sessões e mantenha variedade durante as semanas."],
+  ["Planejador de Sessões Personalizadas", "Planeje atendimentos de acordo com a empresa, equipe e tempo disponível."],
+  ["Guia de Condução Profissional", "Conduza cada sessão com mais clareza, segurança e presença profissional."],
+  ["Banco de Comandos para Ginástica Laboral", "Tenha orientações prontas para conduzir os movimentos com facilidade."],
+  ["Sessões Laborais Temáticas", "Varie os atendimentos com temas prontos para ocasiões especiais."],
+  ["Ficha de Acompanhamento das Empresas", "Registre atendimentos e acompanhe cada empresa com mais organização."],
+]
+
+export const OFFER: OfferConfig = {
+  ...psicopedagogiaOffer,
+  meta: {
+    title: "Sessões Laborais Prontas para Fisioterapeutas",
+    description: "72 sessões de ginástica laboral prontas para aplicar em equipes administrativas e operacionais.",
+  },
+  palette: {
+    brand: "#0F766E",
+    brandDeep: "#115E59",
+    brandInk: "#134E4A",
+    brandDark: "#14B8A6",
+    brandLight: "#5EEAD4",
+    brandSubtle: "#CCFBF1",
+    cta: "#EA580C",
+    ctaDeep: "#C2410C",
+    ctaDarkest: "#9A3412",
+    accent: "#F59E0B",
+    yellow: "#FBBF24",
+    bg: "#F0FDFA",
+    bgAlt: "#F59E0B",
+  },
+  hero: {
+    ...psicopedagogiaOffer.hero,
+    pill: "SESSÕES LABORAIS PRONTAS",
+    titleLine1: "72 Sessões de",
+    titleLine2: "Ginástica Laboral Prontas",
+    titleLine3: "Escolha, abra e aplique sem repetir os mesmos exercícios.",
+    imageAlt: "Biblioteca de Sessões de Ginástica Laboral",
+    subtitle: "Tenha sessões completas para equipes administrativas e operacionais, organizadas por objetivo, duração e região corporal.",
+    ctaText: "QUERO AS SESSÕES PRONTAS",
+    timerLabel: "BÔNUS ENCERRAM EM",
+    marqueeText: "72 Sessões Prontas • Administrativa e Operacional • 5, 10 e 15 Minutos • Acesso Imediato • ",
+    marqueeGradient: "linear-gradient(90deg, #0F766E 0%, #14B8A6 35%, #5EEAD4 60%, #CCFBF1 80%, #0F766E 100%)",
+    bullets: ["Evitar repetir os mesmos exercícios", "Escolher a sessão pelo tempo disponível", "Atender equipes administrativas e operacionais", "Aplicar com mais segurança e organização"],
+  },
+  socialProof: { ...psicopedagogiaOffer.socialProof, title: "Fisioterapeutas de todo o Brasil já usam e aprovam" },
+  counter: { prefix: "+ de", target: 72, label: "Sessões laborais prontas para aplicar" },
+  kitCards: { ...psicopedagogiaOffer.kitCards, heading1: "Veja como suas sessões ficam organizadas para aplicar:" },
+  benefits: {
+    title: "Por que fisioterapeutas estão escolhendo as Sessões Laborais Prontas?",
+    ctaText: "QUERO AS SESSÕES PRONTAS",
+    items: [
+      { icon: "⏱️", title: "Mais tempo", desc: "Abra uma sessão pronta e pare de perder tempo montando sequências do zero." },
+      { icon: "🔄", title: "Mais variedade", desc: "Tenha opções para variar as atividades sem repetir sempre os mesmos alongamentos." },
+      { icon: "📋", title: "Mais organização", desc: "Escolha por equipe, objetivo, região corporal e tempo disponível." },
+      { icon: "💼", title: "Mais profissionalismo", desc: "Conduza atendimentos dinâmicos, adequados e bem estruturados." },
+    ],
+  },
+  urgency: { pill: "OPORTUNIDADE ÚNICA", title: "Chegue à próxima sessão com uma sequência pronta para aplicar", highlight: "", body: "Você já conhece os exercícios. O que falta é uma biblioteca organizada para escolher, abrir e conduzir sem improvisar.", ctaText: "QUERO ACESSAR AGORA", trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"] },
+  idealPara: { pill: "É PARA VOCÊ", title: "Este material é ideal para fisioterapeutas que desejam:", subtitle: "Mais repertório, menos planejamento e sessões mais dinâmicas nas empresas.", items: [
+    { icon: "🏢", title: "Atender equipes", desc: "Ter opções para colaboradores administrativos e operacionais." },
+    { icon: "⚡", title: "Ganhar agilidade", desc: "Preparar a atividade em poucos minutos antes do atendimento." },
+    { icon: "🧩", title: "Variar sessões", desc: "Escolher objetivos e regiões corporais sem repetir a mesma sequência." },
+    { icon: "✅", title: "Conduzir com segurança", desc: "Ter um passo a passo claro para aplicar em cada empresa." },
+  ] },
+  deliverables: { ...psicopedagogiaOffer.deliverables, pill: "ACESSO IMEDIATO", title: "Tudo o que você vai receber", imageAlt: "Sessões Laborais Prontas", bullets: ["72 sessões completas de ginástica laboral", "36 sessões para equipe administrativa", "36 sessões para equipe operacional", "Sessões de 5, 10 e 15 minutos", "Objetivos, regiões corporais e sequência dos exercícios", "Comandos de condução e sugestões de adaptação", "PDFs para celular, tablet, computador ou impressão"] },
+  bonusSection: { ...psicopedagogiaOffer.bonusSection, pill: "EXTRAS INCLUÍDOS", titleLead: "6 BÔNUS", titleHighlight: "EXCLUSIVOS", subtitle: "No Plano Completo, você recebe materiais extras para planejar, conduzir e acompanhar seus atendimentos." },
+  bonuses: psicopedagogiaOffer.bonuses.map((bonus, index) => ({ ...bonus, title: bonusNames[index][0], titleBreak: bonusNames[index][0], desc: bonusNames[index][1] })),
+  pricing: { titleLead: "ESCOLHA O PLANO", titleHighlight: "IDEAL PARA VOCÊ", plans: [
+    { ...psicopedagogiaOffer.pricing.plans[0], title: "Plano Básico", imageAlt: "Plano Básico de Sessões Laborais", oldPrice: "de R$ 39,90", price: "R$ 17,90", installments: "ou 4x de R$ 4,47 no cartão", items: ["72 sessões de ginástica laboral prontas", "36 sessões administrativas e 36 operacionais", "Sessões de 5, 10 e 15 minutos", "Arquivos em PDF para consulta e impressão"], mutedItems: ["Não inclui os bônus do Plano Completo"], ctaText: "QUERO O PLANO BÁSICO", ctaHref: "#oferta" },
+    { ...psicopedagogiaOffer.pricing.plans[1], title: "Plano Completo", imageAlt: "Plano Completo de Sessões Laborais", oldPrice: "de R$ 147,00", price: "R$ 27,90", installments: "ou 4x de R$ 6,97 no cartão", items: ["72 sessões de ginástica laboral prontas", ...bonusNames.map(([name]) => `🎁 ${name}`), "Acesso imediato e vitalício"], ctaText: "QUERO O PLANO COMPLETO", ctaHref: "#oferta" },
+  ] },
+  guarantee: { ...psicopedagogiaOffer.guarantee, marqueeText: "GARANTIA 30 DIAS • RISCO ZERO • SATISFAÇÃO OU DINHEIRO DE VOLTA • ", marqueeGradient: "linear-gradient(90deg, #0F766E 0%, #14B8A6 35%, #5EEAD4 60%, #CCFBF1 80%, #0F766E 100%)", title: "Compra 100% segura e garantida!", body: "Você tem **30 dias de garantia** para conhecer as Sessões Laborais Prontas. Se o material não atender às suas necessidades, pode solicitar o reembolso dentro desse período." },
+  access: { title: "Como você vai receber suas Sessões Laborais Prontas", steps: [
+    { num: "01", title: "Conclua sua compra", desc: "Após o pagamento, seu acesso é liberado automaticamente." },
+    { num: "02", title: "Receba no e-mail", desc: "As instruções chegam no e-mail cadastrado na compra." },
+    { num: "03", title: "Acesse os PDFs", desc: "Tudo organizado para consultar no celular, tablet ou computador." },
+    { num: "04", title: "Escolha e aplique", desc: "Identifique a equipe, duração e objetivo. Depois, é só abrir a ficha." },
+  ] },
+  faq: { title: "Perguntas Frequentes", items: [
+    { q: "Como vou receber as sessões?", a: "Após a confirmação da compra, você recebe o acesso digital aos arquivos em PDF." },
+    { q: "As sessões servem para quais equipes?", a: "Você recebe 36 sessões para equipes administrativas e 36 para equipes operacionais." },
+    { q: "Quais durações estão disponíveis?", a: "Há sessões de 5, 10 e 15 minutos para se adaptar ao tempo da empresa." },
+    { q: "Preciso criar ou editar alguma coisa?", a: "Não. As sessões já vêm prontas, com sequência, comandos e orientações para aplicar." },
+    { q: "E se eu não gostar?", a: "Você conta com 30 dias de garantia para avaliar o material." },
+  ] },
+  footer: { ...psicopedagogiaOffer.footer, updateTitle: "Material em constante atualização", updateBody: "As Sessões Laborais Prontas recebem melhorias e correções periódicas. Ao adquirir agora, você garante acesso vitalício.", missionText: "Conduza sessões de ginástica laboral com mais variedade, organização e menos improviso", privacyUrl: "/psicopedagogia/politica-de-privacidade", termsUrl: "/psicopedagogia/termos-de-uso" },
+}
