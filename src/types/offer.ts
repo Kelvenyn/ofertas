@@ -51,6 +51,8 @@ export interface OfferCounter {
 export interface KitImage {
   src: string
   alt: string
+  width?: number
+  height?: number
 }
 
 export interface BenefitItem {
