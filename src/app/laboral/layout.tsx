@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { OFFER } from "@/config/offers/laboral/offer"
 import { OfferProvider } from "@/context/offer-context"
-import { PaletteSwitcher } from "@/components/dev/PaletteSwitcher"
 
 export const metadata: Metadata = {
   title: OFFER.meta.title,
@@ -18,7 +17,6 @@ export default function LaboralLayout({ children }: { children: React.ReactNode 
       "--accent": p.accent, "--yellow": p.yellow, "--bg": p.bg, "--bg-alt": p.bgAlt,
     } as React.CSSProperties}>
       <OfferProvider offer={OFFER}>{children}</OfferProvider>
-      <PaletteSwitcher />
     </div>
   )
 }
