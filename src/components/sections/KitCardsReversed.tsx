@@ -20,6 +20,7 @@ export function KitCardsReversed() {
   const resumeTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
   const initializedRef = useRef(false)
   const [ready, setReady] = useState(false)
+  const [landscapeImages, setLandscapeImages] = useState<Record<string, boolean>>({})
 
   const reversedImages = useMemo(() => [...images].reverse(), [images])
   const allImages = useMemo(() => [...reversedImages, ...reversedImages, ...reversedImages], [reversedImages])
@@ -106,6 +107,23 @@ export function KitCardsReversed() {
     }, 2000)
   }, [])
 
+  const updateImageLayout = useCallback((src: string, image: HTMLImageElement) => {
+    const { naturalWidth, naturalHeight } = image
+
+    if (!naturalWidth || !naturalHeight) return
+
+    if (naturalWidth > naturalHeight) {
+      setLandscapeImages((current) => current[src] ? current : { ...current, [src]: true })
+    }
+  }, [])
+
+  useEffect(() => {
+    const imagesInSection = sectionRef.current?.querySelectorAll<HTMLImageElement>(".kc-card-img")
+    imagesInSection?.forEach((image) => {
+      if (image.complete) updateImageLayout(image.dataset.kcSrc ?? "", image)
+    })
+  }, [updateImageLayout])
+
   if (!images || images.length === 0) return null
 
   const onMouseDown = (e: React.MouseEvent) => { e.preventDefault(); handleDragStart(e.clientX) }
@@ -152,14 +170,16 @@ export function KitCardsReversed() {
           style={{ opacity: ready ? 1 : 0, transition: "opacity 400ms ease" }}
         >
           {allImages.map((img, i) => (
-            <div className="kc-card" key={i}>
+            <div className={`kc-card${landscapeImages[img.src] ? " kc-card-landscape" : ""}`} key={i}>
               <Image
                 src={img.src}
                 alt={img.alt}
                 width={280}
                 height={400}
                 className="kc-card-img"
+                data-kc-src={img.src}
                 loading={i === 0 ? "eager" : "lazy"}
+                onLoad={(event) => updateImageLayout(img.src, event.currentTarget)}
               />
             </div>
           ))}

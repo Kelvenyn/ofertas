@@ -642,6 +642,7 @@ html {
 
 .kc-track {
   display: flex;
+  align-items: flex-start;
   gap: 16px;
   will-change: transform;
 }
@@ -652,6 +653,10 @@ html {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 28px rgba(0,0,0,0.10);
+}
+
+.kc-card-landscape {
+  aspect-ratio: 16 / 9;
 }
 
 .kc-card-img {
