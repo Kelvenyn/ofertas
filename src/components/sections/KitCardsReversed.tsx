@@ -170,12 +170,16 @@ export function KitCardsReversed() {
           style={{ opacity: ready ? 1 : 0, transition: "opacity 400ms ease" }}
         >
           {allImages.map((img, i) => (
-            <div className={`kc-card${landscapeImages[img.src] ? " kc-card-landscape" : ""}`} key={i}>
+            <div
+              className={`kc-card${landscapeImages[img.src] || (img.width && img.height && img.width > img.height) ? " kc-card-landscape" : ""}`}
+              key={i}
+              style={img.width && img.height ? { aspectRatio: `${img.width} / ${img.height}` } : undefined}
+            >
               <Image
                 src={img.src}
                 alt={img.alt}
-                width={280}
-                height={400}
+                width={img.width ?? 280}
+                height={img.height ?? 400}
                 className="kc-card-img"
                 data-kc-src={img.src}
                 loading={i === 0 ? "eager" : "lazy"}

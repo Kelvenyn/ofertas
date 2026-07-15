@@ -632,8 +632,6 @@ html {
 .kc-carousel {
   overflow: hidden;
   cursor: grab;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
 }
 
 .kc-carousel:active {
