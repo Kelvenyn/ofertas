@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function LaboralLayout({ children }: { children: React.ReactNode }) {
   const { palette: p } = OFFER
   return (
-    <div id="offer-root" style={{
+    <div id="offer-root" className="laboral-offer" style={{
       "--brand": p.brand, "--brand-deep": p.brandDeep, "--brand-ink": p.brandInk,
       "--brand-dark": p.brandDark, "--brand-light": p.brandLight, "--brand-subtle": p.brandSubtle,
       "--cta": p.cta, "--cta-deep": p.ctaDeep, "--cta-darkest": p.ctaDarkest,

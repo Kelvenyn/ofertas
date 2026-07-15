@@ -342,6 +342,10 @@ html {
   margin-bottom: 12px;
 }
 
+.laboral-offer .vi-title-line2 {
+  font-size: clamp(26px, 6vw, 34px);
+}
+
 .vi-title-line3 {
   font-size: clamp(17px, 4vw, 22px);
   font-weight: 700;
@@ -648,8 +652,10 @@ html {
 .kc-card {
   flex-shrink: 0;
   width: clamp(200px, 36vw, 300px);
+  aspect-ratio: 280 / 400;
   border-radius: 16px;
   overflow: hidden;
+  background: var(--surface);
   box-shadow: 0 8px 28px rgba(0,0,0,0.10);
 }
 
@@ -659,9 +665,9 @@ html {
 
 .kc-card-img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
   user-select: none;
 }
 
