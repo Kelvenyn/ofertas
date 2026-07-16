@@ -2,7 +2,7 @@ import type { OfferConfig } from "@/types/offer"
 import { OFFER as psicopedagogiaOffer } from "@/config/offers/psicopedagogia/offer"
 
 const bonuses = [
-  { title: "20 Alongamentos para Equipe Operacional", titleBreak: "20 Alongamentos\nEquipe Operacional", desc: "Feche a sessão trabalhando o corpo, além da interação em grupo.", price: "R$ 19,90" },
+  { title: "20 Alongamentos para Equipe Operacional", titleBreak: "20 Alongamentos\nEquipe Operacional", desc: "Encerre a sessão trabalhando o corpo da equipe operacional.", price: "R$ 19,90" },
   { title: "20 Alongamentos para Equipe Administrativa", titleBreak: "20 Alongamentos\nEquipe Administrativa", desc: "Exercícios voltados para quem passa a maior parte do expediente sentado.", price: "R$ 19,90" },
   { title: "Dinâmicas com Objetos do Trabalho", titleBreak: "Dinâmicas com\nObjetos do Trabalho", desc: "Dinâmicas com materiais já disponíveis na empresa, sem precisar comprar equipamentos.", price: "R$ 29,90" },
   { title: "Lista de Presença e Sessões", titleBreak: "Lista de Presença\ne Sessões", desc: "Controle quem participou, quais dinâmicas foram aplicadas e quando.", price: "R$ 19,90" },
@@ -16,20 +16,20 @@ export const OFFER: OfferConfig = {
   palette: { brand: "#059669", brandDeep: "#047857", brandInk: "#065F46", brandDark: "#10B981", brandLight: "#6EE7B7", brandSubtle: "#D1FAE5", cta: "#16A34A", ctaDeep: "#15803D", ctaDarkest: "#166534", accent: "#0EA5E9", yellow: "#FACC15", bg: "#ECFDF5", bgAlt: "#16A34A" },
   hero: {
     ...psicopedagogiaOffer.hero,
-    pill: "PARA FISIOTERAPEUTAS QUE ATENDEM EMPRESAS", titleLine1: "50 Dinâmicas Prontas", titleLine2: "de Ginástica Laboral", titleLine3: "Para energizar equipes administrativas e operacionais e aumentar a participação em cada sessão.", imageAlt: "50 Dinâmicas Prontas de Ginástica Laboral",
-    subtitle: "Tenha dinâmicas adequadas ao perfil dos colaboradores, ao objetivo do momento e ao tempo disponível na empresa.", ctaText: "QUERO AS DINÂMICAS PRONTAS", marqueeText: "50 DINÂMICAS PRONTAS ✦ PARA FISIOTERAPEUTAS ✦ ADMINISTRATIVO ✦ OPERACIONAL ✦ ", marqueeGradient: "linear-gradient(90deg, #047857 0%, #16A34A 100%)",
-    bullets: ["Dinâmicas para diferentes perfis de colaboradores", "Organizadas por objetivo e formato de participação", "Opções para aplicações de 5, 10 e 15 minutos", "Material prático para consultar pelo celular ou imprimir"],
+    pill: "PARA FISIOTERAPEUTAS QUE ATENDEM EMPRESAS", titleLine1: "50 Dinâmicas Prontas", titleLine2: "de Ginástica Laboral", titleLine3: "Para engajar até os colaboradores mais resistentes, do operacional ao administrativo, sem precisar pesquisar nada na internet.", imageAlt: "50 Dinâmicas Prontas de Ginástica Laboral",
+    subtitle: "Identifique o perfil da equipe, escolha o objetivo do momento de acordo com o tempo disponível e aplique a dinâmica certa.", ctaText: "QUERO AS DINÂMICAS PRONTAS", marqueeText: "50 DINÂMICAS PRONTAS ✦ PARA FISIOTERAPEUTAS ✦ ADMINISTRATIVO ✦ OPERACIONAL ✦ ", marqueeGradient: "linear-gradient(90deg, #047857 0%, #16A34A 100%)",
+    bullets: ["Dinâmicas adequadas a cada perfil de equipe", "Organizadas por objetivo, para encontrar rapidamente", "Opções para aplicações de 5, 10 e 15 minutos", "Material prático para consultar pelo celular ou imprimir"],
   },
-  socialProof: { ...psicopedagogiaOffer.socialProof, title: "Fisioterapeutas de todo o Brasil já usam e aprovam" },
-  counter: { prefix: "+ de", target: 50, label: "dinâmicas laborais prontas para aplicar" },
-  kitCards: { ...psicopedagogiaOffer.kitCards, heading1: "Veja como suas dinâmicas ficam organizadas para aplicar:" },
-  benefits: { title: "Por que fisioterapeutas estão escolhendo as Dinâmicas Laborais Prontas?", ctaText: "QUERO AS DINÂMICAS PRONTAS", items: [
+  socialProof: { ...psicopedagogiaOffer.socialProof, title: "Fisioterapeutas que atendem empresa, igual você, já usam e aprovam" },
+  counter: { prefix: "+ de", target: 50, label: "Dinâmicas Laborais prontas para aplicar" },
+  kitCards: { ...psicopedagogiaOffer.kitCards, heading1: "Veja como encontrar a dinâmica certa para cada momento:" },
+  benefits: { title: "Como esse material está transformando as Dinâmicas Laborais.", ctaText: "QUERO AS DINÂMICAS PRONTAS", items: [
     { icon: "⏱️", title: "Mais tempo", desc: "Abra uma dinâmica pronta e pare de perder tempo criando atividades novas toda semana." },
-    { icon: "🔄", title: "Mais variedade", desc: "Tenha opções para variar as sessões sem repetir sempre o mesmo aquecimento." },
+    { icon: "🔄", title: "Mais variedade", desc: "Alterne entre 50 opções e evite repetir sempre o mesmo aquecimento." },
     { icon: "📋", title: "Mais organização", desc: "Escolha por equipe, objetivo, formato de participação e tempo disponível." },
-    { icon: "💼", title: "Mais engajamento", desc: "Conduza sessões mais participativas, mesmo com colaboradores resistentes." },
+    { icon: "💼", title: "Mais engajamento", desc: "Dinâmicas pensadas para envolver até os colaboradores mais resistentes." },
   ] },
-  urgency: { pill: "OPORTUNIDADE ÚNICA", title: "Chegue à próxima sessão com uma dinâmica pronta para aplicar", highlight: "", body: "Você já conhece os exercícios técnicos. O que falta é um repertório de dinâmicas organizado para escolher, abrir e conduzir sem monotonia.", ctaText: "QUERO ACESSAR AGORA", trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"] },
+  urgency: { pill: "OPORTUNIDADE ÚNICA", title: "Leve sempre uma dinâmica pronta para a próxima sessão", highlight: "", body: "Você já domina a parte técnica. Falta um repertório pronto para escolher, abrir e aplicar com facilidade.", ctaText: "QUERO ACESSAR AGORA", trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"] },
   idealPara: { pill: "É PARA VOCÊ", title: "Este material é ideal para fisioterapeutas que desejam:", subtitle: "Mais repertório, menos planejamento e sessões mais dinâmicas nas empresas.", items: [
     { icon: "🏢", title: "Atender equipes", desc: "Ter opções para colaboradores administrativos e operacionais." }, { icon: "⚡", title: "Ganhar agilidade", desc: "Preparar a atividade em poucos minutos antes do atendimento." }, { icon: "🧩", title: "Variar sessões", desc: "Escolher objetivos e formatos sem repetir a mesma dinâmica." }, { icon: "✅", title: "Conduzir com segurança", desc: "Ter um passo a passo claro para aplicar em cada empresa." },
   ] },
