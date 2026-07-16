@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react"
 import { useOffer } from "@/context/offer-context"
 
-const STEP_COLORS = ["var(--brand)", "var(--cta)", "var(--accent)", "var(--brand-deep)"]
+const STEP_COLORS = ["var(--brand)"]
 const CIRCLE_RADIUS = 34
 const CIRCUMFERENCE = 2 * Math.PI * CIRCLE_RADIUS
 

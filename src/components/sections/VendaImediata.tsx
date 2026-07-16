@@ -49,7 +49,7 @@ export function VendaImediata() {
           text={marqueeText}
           gradient={marqueeGradient}
           className="vi-marquee"
-          fadeColor="var(--bg, #FFF8E8)"
+          fadeColor="transparent"
         />
       </div>
     </section>
