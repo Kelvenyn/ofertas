@@ -291,10 +291,6 @@ export function SocialProof() {
                   onClick={() => handleCardClick(visualOffset)}
                   aria-hidden={!isCenter}
                 >
-                  <div
-                    className="sp-story-gradient-bar"
-                    style={{ background: slide.gradient }}
-                  />
                   <Image
                     src={slide.src}
                     alt={slide.alt}
@@ -324,4 +320,3 @@ export function SocialProof() {
     </section>
   )
 }
-

@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useOffer } from "@/context/offer-context"
 
 const DRAG_MULTIPLIER = 1.8
-const SCROLL_SPEED = 0.6
+const SCROLL_SPEED = 0.3
 
 export function KitCards() {
   const offer = useOffer()
@@ -20,6 +20,7 @@ export function KitCards() {
   const resumeTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
   const [loaded, setLoaded] = useState(false)
   const [landscapeImages, setLandscapeImages] = useState<Record<string, boolean>>({})
+  const [imageRatios, setImageRatios] = useState<Record<string, string>>({})
 
   const allImages = useMemo(() => [...images, ...images, ...images], [images])
 
@@ -103,6 +104,9 @@ export function KitCards() {
 
     if (!naturalWidth || !naturalHeight) return
 
+    const ratio = `${naturalWidth} / ${naturalHeight}`
+    setImageRatios((current) => current[src] ? current : { ...current, [src]: ratio })
+
     if (naturalWidth > naturalHeight) {
       setLandscapeImages((current) => current[src] ? current : { ...current, [src]: true })
     }
@@ -171,7 +175,7 @@ export function KitCards() {
             <div
               className={`kc-card${landscapeImages[img.src] || (img.width && img.height && img.width > img.height) ? " kc-card-landscape" : ""}`}
               key={i}
-              style={img.width && img.height ? { aspectRatio: `${img.width} / ${img.height}` } : undefined}
+              style={{ aspectRatio: imageRatios[img.src] ?? (img.width && img.height ? `${img.width} / ${img.height}` : undefined) }}
             >
               <Image
                 src={img.src}
