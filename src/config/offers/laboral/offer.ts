@@ -2,22 +2,22 @@ import type { OfferConfig } from "@/types/offer"
 import { OFFER as psicopedagogiaOffer } from "@/config/offers/psicopedagogia/offer"
 
 const bonuses = [
-  ["20 Exercícios/Alongamentos para Equipes Operacionais", "Feche a sessão trabalhando o corpo, além da interação em grupo.", "R$ 19,90"],
-  ["20 Exercícios/Alongamentos para Equipes Administrativas", "Exercícios voltados para quem passa a maior parte do expediente sentado.", "R$ 19,90"],
-  ["Dinâmicas com Objetos do Ambiente de Trabalho", "Dinâmicas com materiais já disponíveis na empresa, sem precisar comprar equipamentos.", "R$ 29,90"],
-  ["Lista de Presença e Registro de Sessões", "Controle quem participou, quais dinâmicas foram aplicadas e quando.", "R$ 19,90"],
-  ["Dinâmicas para SIPAT e Datas Comemorativas", "Dinâmicas prontas para SIPAT, semana interna e datas especiais da empresa.", "R$ 29,90"],
-  ["Técnicas de Respiração para Encerrar a Sessão", "Exercícios simples de respiração para fechar a sessão com o grupo mais calmo e focado.", "R$ 19,90"],
+  { title: "20 Alongamentos para Equipe Operacional", titleBreak: "20 Alongamentos\nEquipe Operacional", desc: "Feche a sessão trabalhando o corpo, além da interação em grupo.", price: "R$ 19,90" },
+  { title: "20 Alongamentos para Equipe Administrativa", titleBreak: "20 Alongamentos\nEquipe Administrativa", desc: "Exercícios voltados para quem passa a maior parte do expediente sentado.", price: "R$ 19,90" },
+  { title: "Dinâmicas com Objetos do Trabalho", titleBreak: "Dinâmicas com\nObjetos do Trabalho", desc: "Dinâmicas com materiais já disponíveis na empresa, sem precisar comprar equipamentos.", price: "R$ 29,90" },
+  { title: "Lista de Presença e Sessões", titleBreak: "Lista de Presença\ne Sessões", desc: "Controle quem participou, quais dinâmicas foram aplicadas e quando.", price: "R$ 19,90" },
+  { title: "Dinâmicas para SIPAT e Datas Especiais", titleBreak: "SIPAT e Datas\nEspeciais", desc: "Dinâmicas prontas para SIPAT, semana interna e datas especiais da empresa.", price: "R$ 29,90" },
+  { title: "Respiração para Encerrar a Sessão", titleBreak: "Respiração para\nEncerrar a Sessão", desc: "Exercícios simples de respiração para fechar a sessão com o grupo mais calmo e focado.", price: "R$ 19,90" },
 ] as const
 
 export const OFFER: OfferConfig = {
   ...psicopedagogiaOffer,
   meta: { title: "50 Dinâmicas Prontas de Ginástica Laboral", description: "Dinâmicas práticas para fisioterapeutas energizarem e engajarem equipes nas empresas." },
-  palette: { brand: "#0E7490", brandDeep: "#155E75", brandInk: "#164E63", brandDark: "#06B6D4", brandLight: "#67E8F9", brandSubtle: "#CFFAFE", cta: "#F97316", ctaDeep: "#EA580C", ctaDarkest: "#C2410C", accent: "#E11D48", yellow: "#FACC15", bg: "#ECFEFF", bgAlt: "#F97316" },
+  palette: { brand: "#059669", brandDeep: "#047857", brandInk: "#065F46", brandDark: "#10B981", brandLight: "#6EE7B7", brandSubtle: "#D1FAE5", cta: "#F97316", ctaDeep: "#EA580C", ctaDarkest: "#C2410C", accent: "#0EA5E9", yellow: "#FACC15", bg: "#ECFDF5", bgAlt: "#F97316" },
   hero: {
     ...psicopedagogiaOffer.hero,
     pill: "PARA FISIOTERAPEUTAS QUE ATENDEM EMPRESAS", titleLine1: "50 Dinâmicas Prontas", titleLine2: "de Ginástica Laboral", titleLine3: "Para energizar equipes administrativas e operacionais e aumentar a participação em cada sessão.", imageAlt: "50 Dinâmicas Prontas de Ginástica Laboral",
-    subtitle: "Tenha dinâmicas adequadas ao perfil dos colaboradores, ao objetivo do momento e ao tempo disponível na empresa.", ctaText: "QUERO AS DINÂMICAS PRONTAS", marqueeText: "50 DINÂMICAS PRONTAS ✦ PARA FISIOTERAPEUTAS ✦ ADMINISTRATIVO ✦ OPERACIONAL ✦ ", marqueeGradient: "linear-gradient(90deg, #0E7490 0%, #06B6D4 35%, #67E8F9 60%, #F97316 82%, #0E7490 100%)",
+    subtitle: "Tenha dinâmicas adequadas ao perfil dos colaboradores, ao objetivo do momento e ao tempo disponível na empresa.", ctaText: "QUERO AS DINÂMICAS PRONTAS", marqueeText: "50 DINÂMICAS PRONTAS ✦ PARA FISIOTERAPEUTAS ✦ ADMINISTRATIVO ✦ OPERACIONAL ✦ ", marqueeGradient: "linear-gradient(90deg, #059669 0%, #10B981 35%, #6EE7B7 60%, #F97316 82%, #059669 100%)",
     bullets: ["Dinâmicas para diferentes perfis de colaboradores", "Organizadas por objetivo e formato de participação", "Opções para aplicações de 5, 10 e 15 minutos", "Material prático para consultar pelo celular ou imprimir"],
   },
   socialProof: { ...psicopedagogiaOffer.socialProof, title: "Fisioterapeutas de todo o Brasil já usam e aprovam" },
@@ -35,12 +35,12 @@ export const OFFER: OfferConfig = {
   ] },
   deliverables: { ...psicopedagogiaOffer.deliverables, pill: "ACESSO IMEDIATO", title: "Tudo o que você vai receber", imageAlt: "Dinâmicas Laborais Prontas", bullets: ["50 dinâmicas completas de ginástica laboral", "25 dinâmicas para equipe administrativa", "25 dinâmicas para equipe operacional", "Dinâmicas de 5, 10 e 15 minutos", "Objetivo, formato de participação e passo a passo de cada dinâmica", "Comandos de condução e sugestões de adaptação", "PDFs para celular, tablet, computador ou impressão"] },
   bonusSection: { ...psicopedagogiaOffer.bonusSection, pill: "EXTRAS INCLUÍDOS", titleLead: "6 BÔNUS", titleHighlight: "EXCLUSIVOS", subtitle: "No Plano Completo, você recebe materiais extras para planejar, conduzir e encerrar seus atendimentos com dinâmica e exercício físico." },
-  bonuses: psicopedagogiaOffer.bonuses.map((bonus, index) => ({ ...bonus, title: bonuses[index][0], titleBreak: bonuses[index][0], desc: bonuses[index][1], price: bonuses[index][2] })),
+  bonuses: psicopedagogiaOffer.bonuses.map((bonus, index) => ({ ...bonus, ...bonuses[index] })),
   pricing: { titleLead: "ESCOLHA O PLANO", titleHighlight: "IDEAL PARA VOCÊ", plans: [
     { ...psicopedagogiaOffer.pricing.plans[0], title: "Plano Básico", imageAlt: "Plano Básico de Dinâmicas Laborais", oldPrice: "de R$ 39,90", price: "R$ 17,90", installments: "ou 4x de R$ 4,47 no cartão", items: ["50 dinâmicas de ginástica laboral prontas", "25 dinâmicas administrativas e 25 operacionais", "Dinâmicas de 5, 10 e 15 minutos", "Arquivos em PDF para consulta e impressão"], mutedItems: ["Não inclui os bônus do Plano Completo"], ctaText: "QUERO O PLANO BÁSICO" },
-    { ...psicopedagogiaOffer.pricing.plans[1], title: "Plano Completo", imageAlt: "Plano Completo de Dinâmicas Laborais", oldPrice: "de R$ 147,00", price: "R$ 27,90", installments: "ou 4x de R$ 6,97 no cartão", items: ["50 dinâmicas de ginástica laboral prontas", ...bonuses.map(([title]) => `🎁 ${title}`), "Acesso imediato e vitalício"], ctaText: "QUERO O PLANO COMPLETO" },
+    { ...psicopedagogiaOffer.pricing.plans[1], title: "Plano Completo", imageAlt: "Plano Completo de Dinâmicas Laborais", oldPrice: "de R$ 147,00", price: "R$ 27,90", installments: "ou 4x de R$ 6,97 no cartão", items: ["50 dinâmicas de ginástica laboral prontas", ...bonuses.map(({ title }) => `🎁 ${title}`), "Acesso imediato e vitalício"], ctaText: "QUERO O PLANO COMPLETO" },
   ] },
-  guarantee: { ...psicopedagogiaOffer.guarantee, marqueeText: "GARANTIA 30 DIAS ✦ RISCO ZERO ✦ SATISFAÇÃO OU DINHEIRO DE VOLTA ✦ ", marqueeGradient: "linear-gradient(90deg, #0E7490 0%, #06B6D4 35%, #67E8F9 60%, #F97316 82%, #0E7490 100%)", body: "Você tem **30 dias de garantia** para conhecer as Dinâmicas Laborais Prontas. Se o material não atender às suas necessidades, pode solicitar o reembolso dentro desse período." },
+  guarantee: { ...psicopedagogiaOffer.guarantee, marqueeText: "GARANTIA 30 DIAS ✦ RISCO ZERO ✦ SATISFAÇÃO OU DINHEIRO DE VOLTA ✦ ", marqueeGradient: "linear-gradient(90deg, #059669 0%, #10B981 35%, #6EE7B7 60%, #F97316 82%, #059669 100%)", body: "Você tem **30 dias de garantia** para conhecer as Dinâmicas Laborais Prontas. Se o material não atender às suas necessidades, pode solicitar o reembolso dentro desse período." },
   access: { title: "Como você vai receber suas Dinâmicas Laborais Prontas", steps: [
     { num: "01", title: "Conclua sua compra", desc: "Após o pagamento, seu acesso é liberado automaticamente." }, { num: "02", title: "Receba no e-mail", desc: "As instruções chegam no e-mail cadastrado na compra." }, { num: "03", title: "Acesse os PDFs", desc: "Tudo organizado para consultar no celular, tablet ou computador." }, { num: "04", title: "Escolha e aplique", desc: "Identifique a equipe, o objetivo e o tempo disponível. Depois, é só abrir a dinâmica." },
   ] },
