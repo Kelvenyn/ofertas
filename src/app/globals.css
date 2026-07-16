@@ -369,6 +369,26 @@ html {
   filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08));
 }
 
+.laboral-offer .vi-image img,
+.laboral-offer .tqvr-image img,
+.laboral-offer .basic-plan .offer-plan-img img,
+.laboral-offer .premium-plan .offer-plan-img img {
+  filter: drop-shadow(0 16px 28px color-mix(in srgb, var(--brand) 22%, transparent));
+  animation: laboral-image-emphasis 3.6s ease-in-out infinite;
+}
+
+@keyframes laboral-image-emphasis {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.018); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .laboral-offer .vi-image img,
+  .laboral-offer .tqvr-image img,
+  .laboral-offer .basic-plan .offer-plan-img img,
+  .laboral-offer .premium-plan .offer-plan-img img { animation: none; }
+}
+
 .vi-sub {
   max-width: 460px;
   margin: 0 auto 16px;
@@ -655,11 +675,11 @@ html {
 
 .kc-card {
   flex-shrink: 0;
-  width: clamp(220px, 39vw, 330px);
+  width: clamp(240px, 42vw, 360px);
   aspect-ratio: 280 / 400;
   border-radius: 16px;
   overflow: hidden;
-  background: var(--surface);
+  background: transparent;
   box-shadow: 0 8px 28px rgba(0,0,0,0.10);
 }
 
@@ -1122,7 +1142,7 @@ html {
 
 /* ===== SOCIAL PROOF CAROUSEL ===== */
 .sp-section {
-  padding: 48px 0 44px;
+  padding: 48px 0 28px;
   margin-top: 0;
   overflow: hidden;
   background: var(--brand-deep);
@@ -1165,7 +1185,7 @@ html {
   perspective: 1100px;
   width: 100%;
   max-width: 700px;
-  height: clamp(340px, 50vw, 520px);
+  height: clamp(360px, 53vw, 550px);
 }
 
 .sp-carousel-inner {
@@ -2304,7 +2324,7 @@ html {
 /* ===== GUARANTEE ===== */
 .gar-section {
   padding: 18px 0 26px;
-  background: var(--brand-subtle);
+  background: #FFFFFF;
   font-family: 'Manrope', system-ui, sans-serif;
 }
 
