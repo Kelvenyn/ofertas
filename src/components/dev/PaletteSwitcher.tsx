@@ -23,7 +23,7 @@ const PALETTES: Record<PaletteKey, { label: string; swatch: string; vars: Record
   verde: {
     label: "Verde Energia",
     swatch: "#059669",
-    vars: { "--brand": "#059669", "--brand-deep": "#047857", "--brand-ink": "#065F46", "--brand-dark": "#10B981", "--brand-light": "#6EE7B7", "--brand-subtle": "#D1FAE5", "--cta": "#F97316", "--cta-deep": "#EA580C", "--cta-darkest": "#C2410C", "--accent": "#0EA5E9", "--yellow": "#FACC15", "--bg": "#ECFDF5", "--bg-alt": "#F97316" },
+    vars: { "--brand": "#059669", "--brand-deep": "#047857", "--brand-ink": "#065F46", "--brand-dark": "#10B981", "--brand-light": "#6EE7B7", "--brand-subtle": "#D1FAE5", "--cta": "#16A34A", "--cta-deep": "#15803D", "--cta-darkest": "#166534", "--accent": "#0EA5E9", "--yellow": "#FACC15", "--bg": "#ECFDF5", "--bg-alt": "#16A34A" },
   },
 }
 
