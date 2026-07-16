@@ -394,7 +394,7 @@ html {
 }
 
 .vi-bullets .ab-text {
-  color: var(--brand-deep);
+  color: #353535;
   font-weight: 700;
   font-size: 15px;
 }
@@ -702,7 +702,7 @@ html {
 .ab-text {
   font-family: 'Manrope', system-ui, sans-serif;
   font-size: clamp(14px, 3.5vw, 16px);
-  color: var(--brand-deep);
+  color: #353535;
   line-height: 1.4;
   text-align: left;
 }
@@ -1012,7 +1012,7 @@ html {
 }
 
 .offer-list .ab-text {
-  color: var(--text);
+  color: #353535;
   font-family: 'Manrope', system-ui, sans-serif;
   font-size: 15.5px;
   line-height: 1.45;
@@ -1324,7 +1324,7 @@ html {
 .benefit-card-border {
   position: absolute;
   inset: 0;
-  border: 2px solid var(--brand);
+  border: 2px solid color-mix(in srgb, var(--brand) 38%, #FFFFFF);
   border-radius: 18px;
   opacity: 0;
   transform: rotate(8deg);
@@ -1676,7 +1676,7 @@ html {
     conic-gradient(
       from var(--border-angle),
       color-mix(in srgb, var(--card-accent, var(--brand)) 0%, transparent) 0%,
-      color-mix(in srgb, var(--card-accent, var(--brand)) 55%, transparent) 15%,
+      color-mix(in srgb, var(--card-accent, var(--brand)) 35%, transparent) 15%,
       color-mix(in srgb, var(--card-accent, var(--brand)) 0%, transparent) 30%
     ) border-box;
   box-shadow: 0 4px 16px color-mix(in srgb, var(--brand) 7%, transparent);
@@ -1687,7 +1687,7 @@ html {
   opacity: 0;
   transform: translateY(24px) rotateX(4deg);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out,
-              box-shadow 0.3s ease;
+              box-shadow 0.3s ease, background 0.35s ease, border-color 0.35s ease;
   will-change: opacity, transform;
 }
 
@@ -1702,7 +1702,7 @@ html {
   left: 0;
   right: 0;
   height: 3px;
-  background: var(--card-accent, var(--brand));
+  background: color-mix(in srgb, var(--card-accent, var(--brand)) 52%, #FFFFFF);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
@@ -1885,7 +1885,7 @@ html {
 .tqvr-bullets .ab-text {
   font-size: 15px;
   font-weight: 600;
-  color: var(--text);
+  color: #353535;
 }
 
 /* ===== BÃ”NUS ===== */

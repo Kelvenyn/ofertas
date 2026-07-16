@@ -4,8 +4,9 @@ import { OfferProvider } from "@/context/offer-context"
 import { PaletteSwitcher } from "@/components/dev/PaletteSwitcher"
 
 export const metadata: Metadata = {
-  title: OFFER.meta.title,
+  title: "Ginástica Laboral",
   description: OFFER.meta.description,
+  icons: { icon: "/images/laboral/favicon.webp" },
 }
 
 export default function LaboralLayout({ children }: { children: React.ReactNode }) {
