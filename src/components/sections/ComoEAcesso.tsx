@@ -76,7 +76,7 @@ export function ComoEAcesso() {
 
         <div className="cea-grid">
           {steps.map((step, i) => {
-            const color = STEP_COLORS[i]
+            const color = STEP_COLORS[i % STEP_COLORS.length]
             return (
               <div className="cea-card" key={i} style={{ "--step-color": color } as React.CSSProperties}>
                 <StepCircle index={i} color={color} total={steps.length} />
