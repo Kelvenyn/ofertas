@@ -21,7 +21,7 @@ const PALETTES: Record<PaletteKey, Palette> = {
 }
 
 export function PaletteSwitcher() {
-  const [active, setActive] = useState<PaletteKey>("verde")
+  const [active, setActive] = useState<PaletteKey>("turquesa")
   const [open, setOpen] = useState(false)
 
   function applyPalette(key: PaletteKey) {
