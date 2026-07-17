@@ -15,7 +15,7 @@ const bonuses = [
 export const OFFER: OfferConfig = {
   ...psicopedagogiaOffer,
   meta: { title: "Ginástica Laboral", description: "Dinâmicas práticas para fisioterapeutas energizarem e engajarem equipes nas empresas." },
-  palette: { brand: "#059669", brandDeep: "#047857", brandInk: "#065F46", brandDark: "#10B981", brandLight: "#6EE7B7", brandSubtle: "#D1FAE5", cta: "#16A34A", ctaDeep: "#15803D", ctaDarkest: "#166534", accent: "#0EA5E9", yellow: "#FACC15", bg: "#ECFDF5", bgAlt: "#16A34A" },
+  palette: { brand: "#0E7490", brandDeep: "#155E75", brandInk: "#164E63", brandDark: "#06B6D4", brandLight: "#67E8F9", brandSubtle: "#CFFAFE", cta: "#16A34A", ctaDeep: "#15803D", ctaDarkest: "#166534", accent: "#F97316", yellow: "#FACC15", bg: "#ECFEFF", bgAlt: "#0E7490" },
   hero: {
     ...psicopedagogiaOffer.hero,
     pill: "PARA FISIOTERAPEUTAS QUE ATENDEM EMPRESAS", titleLine1: "50 Dinâmicas Prontas", titleLine2: "de Ginástica Laboral", titleLine3: "Para engajar até os colaboradores mais resistentes, do operacional ao administrativo, sem precisar pesquisar nada na internet.", image: laboralImage(psicopedagogiaOffer.hero.image), imageAlt: "50 Dinâmicas Prontas de Ginástica Laboral",
