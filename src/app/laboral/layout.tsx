@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import Script from "next/script"
 import { OFFER } from "@/config/offers/laboral/offer"
-import { PaletteSwitcher } from "@/components/dev/PaletteSwitcher"
 import { OfferProvider } from "@/context/offer-context"
 
 export const metadata: Metadata = {
@@ -55,7 +54,6 @@ fbq('track', 'PageView');
       } as React.CSSProperties}>
         <OfferProvider offer={OFFER}>{children}</OfferProvider>
       </div>
-      <PaletteSwitcher />
     </>
   )
 }
