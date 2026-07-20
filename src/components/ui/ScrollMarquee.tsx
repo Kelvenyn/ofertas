@@ -16,11 +16,9 @@ function renderText(text: string) {
   const result: React.ReactNode[] = []
   parts.forEach((part, i) => {
     result.push(<span key={`t${i}`}>{part}</span>)
-    if (i < parts.length - 1) {
-      result.push(
-        <span key={`s${i}`} style={{ opacity: 0.65, margin: "0 48px" }}>✦</span>
-      )
-    }
+    result.push(
+      <span key={`s${i}`} style={{ opacity: 0.65, margin: "0 36px" }}>✦</span>
+    )
   })
   return result
 }
