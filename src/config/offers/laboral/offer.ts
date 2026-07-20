@@ -14,15 +14,15 @@ const bonuses = [
 
 export const OFFER: OfferConfig = {
   ...psicopedagogiaOffer,
-  meta: { title: "Ginástica Laboral", description: "Dinâmicas práticas para fisioterapeutas energizarem e engajarem equipes nas empresas." },
+  meta: { title: "Ginástica Laboral", description: "Dinâmicas práticas para professores de ginástica laboral energizarem e engajarem equipes nas empresas." },
   palette: { brand: "#0E7490", brandDeep: "#155E75", brandInk: "#164E63", brandDark: "#06B6D4", brandLight: "#67E8F9", brandSubtle: "#CFFAFE", cta: "#16A34A", ctaDeep: "#15803D", ctaDarkest: "#166534", accent: "#F97316", yellow: "#FACC15", bg: "#ECFEFF", bgAlt: "#0E7490" },
   hero: {
     ...psicopedagogiaOffer.hero,
-    pill: "PARA FISIOTERAPEUTAS QUE ATENDEM EMPRESAS", titleLine1: "50 Dinâmicas Prontas", titleLine2: "de Ginástica Laboral", titleLine3: "Para engajar até os colaboradores mais resistentes, do operacional ao administrativo, sem precisar pesquisar nada na internet.", image: laboralImage(psicopedagogiaOffer.hero.image), imageAlt: "50 Dinâmicas Prontas de Ginástica Laboral",
-    subtitle: "Identifique o perfil da equipe, escolha o objetivo do momento de acordo com o tempo disponível e aplique a dinâmica certa.", ctaText: "QUERO AS DINÂMICAS PRONTAS", marqueeText: "50 DINÂMICAS PRONTAS ✦ PARA FISIOTERAPEUTAS ✦ ADMINISTRATIVO ✦ OPERACIONAL ✦ ", marqueeGradient: "linear-gradient(90deg, var(--brand) 0%, var(--brand-deep) 100%)",
+    pill: "PARA PROFESSORES DE GINÁSTICA LABORAL", titleLine1: "50 Dinâmicas Prontas", titleLine2: "de Ginástica Laboral", titleLine3: "Para engajar até os colaboradores mais resistentes, do operacional ao administrativo, sem precisar pesquisar nada na internet.", image: laboralImage(psicopedagogiaOffer.hero.image), imageAlt: "50 Dinâmicas Prontas de Ginástica Laboral",
+    subtitle: "Identifique o perfil da equipe, escolha o objetivo do momento de acordo com o tempo disponível e aplique a dinâmica certa.", ctaText: "QUERO AS DINÂMICAS PRONTAS", marqueeText: "50 DINÂMICAS PRONTAS     ✦     ADMINISTRATIVO     ✦     OPERACIONAL     ✦     ACESSO IMEDIATO     ✦     ", marqueeGradient: "linear-gradient(90deg, var(--brand) 0%, var(--brand-deep) 100%)",
     bullets: ["Dinâmicas adequadas a cada perfil de equipe", "Organizadas por objetivo, para encontrar rapidamente", "Opções para aplicações de 5, 10 e 15 minutos", "Material prático para consultar pelo celular ou imprimir"],
   },
-  socialProof: { ...psicopedagogiaOffer.socialProof, title: "Fisioterapeutas que atendem empresa, igual você, já usam e aprovam", testimonials: psicopedagogiaOffer.socialProof.testimonials.map((testimonial) => ({ ...testimonial, src: laboralImage(testimonial.src) })) },
+  socialProof: { ...psicopedagogiaOffer.socialProof, title: "Professores que atendem empresas, igual você, já usam e aprovam", testimonials: psicopedagogiaOffer.socialProof.testimonials.map((testimonial) => ({ ...testimonial, src: laboralImage(testimonial.src) })) },
   counter: { prefix: "+ de", target: 50, label: "Dinâmicas Laborais prontas para aplicar" },
   kitCards: { ...psicopedagogiaOffer.kitCards, heading1: "Veja como encontrar a dinâmica certa para cada momento:", images: psicopedagogiaOffer.kitCards.images.map((image) => ({ ...image, src: laboralImage(image.src) })) },
   benefits: { title: "Como esse material está transformando as Dinâmicas Laborais.", ctaText: "QUERO AS DINÂMICAS PRONTAS", items: [
@@ -32,7 +32,7 @@ export const OFFER: OfferConfig = {
     { icon: "💼", title: "Mais engajamento", desc: "Dinâmicas pensadas para envolver até os colaboradores mais resistentes." },
   ] },
   urgency: { pill: "OPORTUNIDADE ÚNICA", title: "Leve sempre uma dinâmica pronta para a próxima sessão", highlight: "", body: "Você já domina a parte técnica. Falta um repertório pronto para escolher, abrir e aplicar com facilidade.", ctaText: "QUERO ACESSAR AGORA", trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"] },
-  idealPara: { pill: "É PARA VOCÊ", title: "Este material é ideal para fisioterapeutas que desejam:", subtitle: "Mais repertório, menos planejamento e sessões mais dinâmicas nas empresas.", items: [
+  idealPara: { pill: "É PARA VOCÊ", title: "Este material é ideal para professores de ginástica laboral que desejam:", subtitle: "Mais repertório, menos planejamento e sessões mais dinâmicas nas empresas.", items: [
     { icon: "🏢", title: "Atender equipes", desc: "Ter opções para colaboradores administrativos e operacionais." }, { icon: "⚡", title: "Ganhar agilidade", desc: "Preparar a atividade em poucos minutos antes do atendimento." }, { icon: "🧩", title: "Variar sessões", desc: "Escolher objetivos e formatos sem repetir a mesma dinâmica." }, { icon: "✅", title: "Conduzir com segurança", desc: "Ter um passo a passo claro para aplicar em cada empresa." },
   ] },
   deliverables: { ...psicopedagogiaOffer.deliverables, pill: "ACESSO IMEDIATO", title: "Tudo o que você vai receber", image: laboralImage(psicopedagogiaOffer.deliverables.image), imageAlt: "Dinâmicas Laborais Prontas", bullets: ["50 dinâmicas completas de ginástica laboral", "25 dinâmicas para equipe administrativa", "25 dinâmicas para equipe operacional", "Dinâmicas de 5, 10 e 15 minutos", "Objetivo, formato de participação e passo a passo de cada dinâmica", "Comandos de condução e sugestões de adaptação", "PDFs para celular, tablet, computador ou impressão"] },
