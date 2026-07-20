@@ -19,7 +19,7 @@ export const OFFER: OfferConfig = {
   hero: {
     ...psicopedagogiaOffer.hero,
     pill: "PARA PROFESSORES DE GINÁSTICA LABORAL", titleLine1: "50 Dinâmicas Prontas", titleLine2: "de Ginástica Laboral", titleLine3: "Para engajar até os colaboradores mais resistentes, do operacional ao administrativo, sem precisar pesquisar nada na internet.", image: laboralImage(psicopedagogiaOffer.hero.image), imageAlt: "50 Dinâmicas Prontas de Ginástica Laboral",
-    subtitle: "Identifique o perfil da equipe, escolha o objetivo do momento de acordo com o tempo disponível e aplique a dinâmica certa.", ctaText: "QUERO AS DINÂMICAS PRONTAS", marqueeText: "50 DINÂMICAS PRONTAS     ✦     ADMINISTRATIVO     ✦     OPERACIONAL     ✦     ACESSO IMEDIATO     ✦     ", marqueeGradient: "linear-gradient(90deg, var(--brand) 0%, var(--brand-deep) 100%)",
+    subtitle: "Identifique o perfil da equipe, escolha o objetivo do momento de acordo com o tempo disponível e aplique a dinâmica certa.", ctaText: "QUERO AS DINÂMICAS PRONTAS", marqueeText: "50 DINÂMICAS PRONTAS ✦ ADMINISTRATIVO ✦ OPERACIONAL ✦ ACESSO IMEDIATO ✦ ", marqueeGradient: "linear-gradient(90deg, var(--brand) 0%, var(--brand-deep) 100%)",
     bullets: ["Dinâmicas adequadas a cada perfil de equipe", "Organizadas por objetivo, para encontrar rapidamente", "Opções para aplicações de 5, 10 e 15 minutos", "Material prático para consultar pelo celular ou imprimir"],
   },
   socialProof: { ...psicopedagogiaOffer.socialProof, title: "Professores que atendem empresas, igual você, já usam e aprovam", testimonials: psicopedagogiaOffer.socialProof.testimonials.map((testimonial) => ({ ...testimonial, src: laboralImage(testimonial.src) })) },

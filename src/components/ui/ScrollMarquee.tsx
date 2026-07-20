@@ -12,13 +12,13 @@ interface ScrollMarqueeProps {
 }
 
 function renderText(text: string) {
-  const parts = text.split(/•/g)
+  const parts = text.split(/[•✦]/u).map((part) => part.trim()).filter(Boolean)
   const result: React.ReactNode[] = []
   parts.forEach((part, i) => {
     result.push(<span key={`t${i}`}>{part}</span>)
     if (i < parts.length - 1) {
       result.push(
-        <span key={`s${i}`} style={{ opacity: 0.5, margin: "0 18px" }}>✦</span>
+        <span key={`s${i}`} style={{ opacity: 0.65, margin: "0 48px" }}>✦</span>
       )
     }
   })
