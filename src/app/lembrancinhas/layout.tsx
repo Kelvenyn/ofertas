@@ -44,22 +44,6 @@ fbq('track','PageView');
         />
       </noscript>
 
-      <Script id="utmify-pixel-id" strategy="afterInteractive">
-        {`window.pixelId = "6a39b5a3d2e009d7c7ae0f21";`}
-      </Script>
-      <Script
-        id="utmify-pixel"
-        src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"
-        strategy="afterInteractive"
-      />
-      <Script
-        id="utmify-utms"
-        src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-        data-utmify-prevent-xcod-sck
-        data-utmify-prevent-subids
-        strategy="afterInteractive"
-      />
-
       <div
         id="offer-root"
         style={{
