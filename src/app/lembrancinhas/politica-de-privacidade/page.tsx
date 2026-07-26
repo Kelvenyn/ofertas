@@ -36,7 +36,7 @@ export default function PoliticaDePrivacidadePage() {
         <Section title="2. Dados Pessoais Coletados">
           <p>Coletamos os seguintes dados pessoais:</p>
           <ul>
-            <li><strong>Dados de identificação:</strong> nome completo e endereço de e-mail fornecidos no momento da compra pela plataforma Hotmart.</li>
+            <li><strong>Dados de identificação:</strong> nome completo e endereço de e-mail fornecidos no momento da compra pela plataforma Cakto.</li>
             <li><strong>Dados de navegação:</strong> endereço IP, tipo de dispositivo, navegador, páginas visitadas e tempo de permanência, coletados automaticamente por ferramentas de análise.</li>
             <li><strong>Dados de rastreamento de marketing:</strong> identificadores de sessão e parâmetros UTM, coletados pelo Meta Pixel (Facebook) para mensuração de campanhas.</li>
           </ul>
@@ -65,7 +65,7 @@ export default function PoliticaDePrivacidadePage() {
         <Section title="5. Compartilhamento de Dados">
           <p>Seus dados podem ser compartilhados com os seguintes terceiros, exclusivamente para as finalidades descritas:</p>
           <ul>
-            <li><strong>Hotmart:</strong> plataforma de processamento de pagamentos e entrega do produto digital;</li>
+            <li><strong>Cakto:</strong> plataforma de processamento de pagamentos e entrega do produto digital;</li>
             <li><strong>Meta Platforms (Facebook):</strong> ferramenta de mensuração de anúncios (Meta Pixel).</li>
           </ul>
           <p>Não vendemos, alugamos ou cedemos seus dados a terceiros para fins comerciais.</p>
@@ -103,8 +103,8 @@ export default function PoliticaDePrivacidadePage() {
         <Section title="9. Segurança">
           <p>
             Adotamos medidas técnicas e organizacionais para proteger seus dados contra acesso não autorizado,
-            perda ou destruição. As transações financeiras são processadas integralmente pela Hotmart, que possui
-            certificação PCI-DSS.
+            perda ou destruição. As transações financeiras são processadas integralmente pela Cakto, plataforma
+            de pagamentos com infraestrutura própria de segurança para dados de cartão e Pix.
           </p>
         </Section>
 

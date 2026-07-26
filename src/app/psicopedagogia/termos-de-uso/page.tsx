@@ -41,7 +41,7 @@ export default function TermosDeUsoPage() {
             O produto é entregue exclusivamente em formato digital, sem envio de material físico.
           </p>
           <p>
-            Os arquivos são disponibilizados por e-mail e/ou plataforma Hotmart imediatamente após
+            Os arquivos são disponibilizados por e-mail e/ou plataforma Cakto imediatamente após
             a confirmação do pagamento.
           </p>
         </Section>
@@ -75,7 +75,7 @@ export default function TermosDeUsoPage() {
           <p>
             Oferecemos <strong>garantia incondicional de 15 (quinze) dias</strong> a partir da data da compra.
             Se por qualquer motivo você não estiver satisfeito com o produto, basta solicitar o reembolso
-            pelo e-mail <strong>contatouniversoeduk@gmail.com</strong> ou diretamente pela plataforma Hotmart.
+            pelo e-mail <strong>contatouniversoeduk@gmail.com</strong> ou diretamente pela plataforma Cakto.
             O valor será devolvido integralmente, sem perguntas.
           </p>
           <p>
