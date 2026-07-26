@@ -40,7 +40,7 @@ export default function PoliticaDePrivacidadePage() {
           <ul>
             <li><strong>Dados de identificação:</strong> nome completo e endereço de e-mail fornecidos no momento da compra pela plataforma Hotmart.</li>
             <li><strong>Dados de navegação:</strong> endereço IP, tipo de dispositivo, navegador, páginas visitadas e tempo de permanência, coletados automaticamente por ferramentas de análise.</li>
-            <li><strong>Dados de rastreamento de marketing:</strong> identificadores de sessão e parâmetros UTM, coletados pelo Meta Pixel (Facebook) e pelo Utmify para mensuração de campanhas.</li>
+            <li><strong>Dados de rastreamento de marketing:</strong> identificadores de sessão e parâmetros UTM, coletados pelo Meta Pixel (Facebook) para mensuração de campanhas.</li>
           </ul>
         </Section>
 
@@ -68,8 +68,7 @@ export default function PoliticaDePrivacidadePage() {
           <p>Seus dados podem ser compartilhados com os seguintes terceiros, exclusivamente para as finalidades descritas:</p>
           <ul>
             <li><strong>Hotmart:</strong> plataforma de processamento de pagamentos e entrega do produto digital;</li>
-            <li><strong>Meta Platforms (Facebook):</strong> ferramenta de mensuração de anúncios (Meta Pixel);</li>
-            <li><strong>Utmify:</strong> ferramenta de rastreamento de fontes de tráfego.</li>
+            <li><strong>Meta Platforms (Facebook):</strong> ferramenta de mensuração de anúncios (Meta Pixel).</li>
           </ul>
           <p>Não vendemos, alugamos ou cedemos seus dados a terceiros para fins comerciais.</p>
         </Section>
