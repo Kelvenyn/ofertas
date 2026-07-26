@@ -13,28 +13,9 @@ export default function LaboralLayout({ children }: { children: React.ReactNode 
   const { palette: p } = OFFER
   return (
     <>
-      {/* Pixel Meta removido daqui: o tracker.js do Hub já inicializa o pixel
-          configurado em Configurações > Integrações (client-side, com o mesmo
-          event_id da CAPI) — manter os dois causaria PageView/ViewContent
-          duplicados na Meta para o mesmo pixel. */}
-      <Script
-        id="utmify-pixel-init-laboral"
-        strategy="afterInteractive"
-      >
-        {`window.pixelId = "6a5965f393dcaa95d693af7a";`}
-      </Script>
-      <Script
-        id="utmify-pixel-laboral"
-        src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"
-        strategy="afterInteractive"
-      />
-      <Script
-        id="utmify-utms-laboral"
-        src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-        data-utmify-prevent-xcod-sck
-        data-utmify-prevent-subids
-        strategy="afterInteractive"
-      />
+      {/* Pixel Meta: o tracker.js do Hub já inicializa o(s) pixel(s) ativos (via
+          /api/config, client-side, com o mesmo event_id da CAPI) — não embarcar
+          pixel próprio nem Utmify aqui pra não duplicar PageView/ViewContent. */}
       <Script
         id="hub-tracker-laboral"
         src="https://hub.universoeduk.com/tracker.js"
