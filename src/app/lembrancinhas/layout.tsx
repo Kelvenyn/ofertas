@@ -26,23 +26,19 @@ export default function LembrancinhasLayout({
   const { palette: p } = OFFER
   return (
     <>
-      <Script id="meta-pixel" strategy="afterInteractive">
-        {`
-!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1653520942410205');
-fbq('track','PageView');
-`}
-      </Script>
-      <noscript>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          height="1"
-          width="1"
-          style={{ display: "none" }}
-          src="https://www.facebook.com/tr?id=1653520942410205&ev=PageView&noscript=1"
-          alt=""
-        />
-      </noscript>
+      {/* Pixel Meta: o tracker.js do Hub já inicializa o(s) pixel(s) ativos (via
+          /api/config, client-side, com o mesmo event_id da CAPI) — não embarcar
+          pixel próprio nem Utmify aqui pra não duplicar PageView/ViewContent.
+          Removido o snippet fbq('init', '1653520942410205') + <noscript> que estava
+          hardcoded aqui e duplicava PageView com o tracker do Hub. Oferta inativa e
+          sem checkout configurado (ctaHref="#" em offer.ts) — o ggCheckout usado
+          antes foi desligado do Hub e da lista default de hosts do tracker.js.
+          Antes de reativar: cadastrar o produto na Cakto e trocar os ctaHref. */}
+      <Script
+        id="hub-tracker-lembrancinhas"
+        src="https://hub.universoeduk.com/tracker.js"
+        strategy="afterInteractive"
+      />
 
       <div
         id="offer-root"
