@@ -203,7 +203,7 @@ export const OFFER: OfferConfig = {
           "Não inclui os bônus do Plano Completo",
         ],
         ctaText: "QUERO ESSA OPÇÃO!",
-        ctaHref: "https://ggcheckout.app/checkout/v5/0PPwwQUNNadq3EBOBJ8P",
+        ctaHref: "https://pay.cakto.com.br/eatwbfw_1008940",
       },
       {
         id: "premium",
@@ -227,7 +227,7 @@ export const OFFER: OfferConfig = {
           "Compra segura",
         ],
         ctaText: "QUERO O PLANO COMPLETO!",
-        ctaHref: "https://ggcheckout.app/checkout/v5/ynv8yHYYJNcf0Y4GQe9F",
+        ctaHref: "https://pay.cakto.com.br/8kdi43w_1008944",
       },
     ],
   },

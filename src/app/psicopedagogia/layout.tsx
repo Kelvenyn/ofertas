@@ -26,13 +26,17 @@ export default function PsicopedagogiaLayout({
   const { palette: p } = OFFER
   return (
     <>
-      {/* Trackhub: inicializa o(s) Meta Pixel(s) ativos dinamicamente (via /api/config) e
-          espelha os eventos server-side (Meta CAPI) com o mesmo event_id (dedup). Substitui
-          o snippet estático do Pixel — o pixel 1024867226763534 já está configurado no hub. */}
+      {/* Pixel Meta: o tracker.js do Hub já inicializa o(s) pixel(s) ativos (via
+          /api/config, client-side, com o mesmo event_id da CAPI) — não embarcar
+          pixel próprio nem Utmify aqui pra não duplicar PageView/ViewContent.
+          Checkout desta oferta é Cakto: não sobrescrever data-checkout-hosts — o
+          default do tracker.js já cobre cakto.com.br (além de wa.me). O ggCheckout
+          foi desligado do Hub (e removido da lista default do tracker.js), então
+          um data-checkout-hosts="ggcheckout.app" aqui só quebraria a propagação
+          do trck_uid pro checkout real desta oferta. */}
       <Script
-        async
+        id="hub-tracker-psicopedagogia"
         src="https://hub.universoeduk.com/tracker.js"
-        data-checkout-hosts="ggcheckout.app"
         strategy="afterInteractive"
       />
 
