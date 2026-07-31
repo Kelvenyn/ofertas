@@ -192,7 +192,9 @@ export const OFFER: OfferConfig = {
           "Não inclui os bônus do Plano Completo",
         ],
         ctaText: "QUERO AS LEMBRANCINHAS",
-        ctaHref: "https://ggcheckout.app/checkout/v5/dHk0JD3TBWiyj6MKWQP0",
+        // TODO: oferta inativa, sem link de checkout Cakto ainda. Substituir por
+        // https://pay.cakto.com.br/... real antes de reativar (ggCheckout foi desligado).
+        ctaHref: "#",
       },
       {
         id: "premium",
@@ -218,7 +220,9 @@ export const OFFER: OfferConfig = {
           "Acesso vitalício ao material",
         ],
         ctaText: "QUERO AS LEMBRANCINHAS",
-        ctaHref: "https://ggcheckout.app/checkout/v5/M5N8grnzZN1q1S3WHGEU",
+        // TODO: oferta inativa, sem link de checkout Cakto ainda. Substituir por
+        // https://pay.cakto.com.br/... real antes de reativar (ggCheckout foi desligado).
+        ctaHref: "#",
       },
     ],
   },
