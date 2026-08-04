@@ -4,8 +4,7 @@ import { OFFER as laboralOffer } from "@/config/offers/laboral/offer"
 const image = (src: string) => {
   const filename = src.split("/").pop()
 
-  if (filename === "garantia-30-dias.webp") return "/images/croqui/garantia-30-dias.webp"
-  return `/images/croqui/Novos/${filename?.replace(/\.webp$/i, ".png")}`
+  return `/images/croqui/${filename}`
 }
 
 const bonuses = [
@@ -70,7 +69,7 @@ export const OFFER: OfferConfig = {
     titleLine1: "+60 Bases de Croqui",
     titleLine2: "Prontas para Desenhar",
     titleLine3: "Suas Roupas em Minutos",
-    image: "/images/croqui/Novos/Plano Básico.png",
+    image: "/images/croqui/Plano Completo.webp",
     imageAlt: "Mockup do pacote de bases de croqui",
     subtitle: "Pare de travar na folha em branco e comece a desenhar suas roupas com bases de croqui prontas.",
     subtitlePosition: "beforeImage",
@@ -120,7 +119,7 @@ export const OFFER: OfferConfig = {
     ...laboralOffer.deliverables,
     pill: "ACESSO IMEDIATO",
     title: "TUDO O QUE VOCÊ VAI RECEBER",
-    image: "/images/croqui/Novos/Plano Básico.png",
+    image: "/images/croqui/Plano Completo.webp",
     imageAlt: "Mockup do pacote de bases de croqui",
     bullets: [
       "60 bases femininas prontas para imprimir",
@@ -154,7 +153,7 @@ export const OFFER: OfferConfig = {
       {
         ...laboralOffer.pricing.plans[0],
         title: "Plano Básico",
-        image: "/images/croqui/Novos/Plano Completo.png",
+        image: "/images/croqui/Plano Básico.webp",
         imageAlt: "Plano Básico de Bases de Croqui",
         oldPrice: "R$ 27,90",
         price: "R$ 17,90",
@@ -167,7 +166,7 @@ export const OFFER: OfferConfig = {
       {
         ...laboralOffer.pricing.plans[1],
         title: "Plano Completo",
-        image: "/images/croqui/Novos/Plano Básico.png",
+        image: "/images/croqui/Plano Completo.webp",
         imageAlt: "Plano Completo de Bases de Croqui",
         featured: true,
         oldPrice: "R$ 37,90",
