@@ -20,7 +20,7 @@ function calcDiscount(oldStr: string, priceStr: string): number {
 
 export function OfferPricing() {
   const offer = useOffer()
-  const { titleLead, titleHighlight, plans } = offer.pricing
+  const { titleLead, titleHighlight, plans, note, trustText } = offer.pricing
 
   useEffect(() => {
     trackEvent("ViewContent", {
@@ -115,6 +115,13 @@ export function OfferPricing() {
             )
           })}
         </div>
+
+        {(note || trustText) && (
+          <div className="offer-pricing-reassurance">
+            {note && <p className="offer-pricing-note">“{note}”</p>}
+            {trustText && <p className="offer-pricing-trust">{trustText}</p>}
+          </div>
+        )}
       </div>
     </section>
   )

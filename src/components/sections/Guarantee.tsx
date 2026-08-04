@@ -7,7 +7,7 @@ import { useOffer } from "@/context/offer-context"
 
 export function Guarantee() {
   const offer = useOffer()
-  const { icon, iconAlt, title, body, marqueeText, marqueeGradient } = offer.guarantee
+  const { icon, iconAlt, title, body, marqueeText, marqueeGradient, sealText } = offer.guarantee
   const [visible, setVisible] = useState(false)
   const [sealScale, setSealScale] = useState(0.5)
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -70,13 +70,19 @@ export function Guarantee() {
         }}
       >
         <div ref={sealRef} className="gar-icon" style={{ transform: `scale(${sealScale})` }}>
-          <Image
-            src={icon}
-            alt={iconAlt}
-            width={180}
-            height={180}
-            style={{ width: "clamp(140px, 30vw, 200px)", height: "auto" }}
-          />
+          {sealText ? (
+            <div className="gar-seal" role="img" aria-label={iconAlt}>
+              {sealText.split("\n").map((line) => <span key={line}>{line}</span>)}
+            </div>
+          ) : (
+            <Image
+              src={icon}
+              alt={iconAlt}
+              width={180}
+              height={180}
+              style={{ width: "clamp(140px, 30vw, 200px)", height: "auto" }}
+            />
+          )}
         </div>
 
         <h2 className="gar-title" id="guarantee-title">
