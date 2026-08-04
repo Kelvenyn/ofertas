@@ -53,5 +53,5 @@ export const OFFER: OfferConfig = {
     { q: "Como recebo e uso os materiais?", a: "Após a confirmação da compra, você recebe as instruções de acesso por e-mail. Os arquivos podem ser consultados no celular ou computador, baixados e impressos quando necessário." },
     { q: "E se o kit não fizer sentido para a minha rotina?", a: "Você tem 30 dias de garantia para conhecer o material. Se ele não atender às suas necessidades, pode solicitar o reembolso dentro desse prazo." },
   ] },
-  footer: { ...laboralOffer.footer, updateTitle: "Material feito para consulta prática", updateBody: "O Kit de Preparação para Castração foi organizado para tornar a conferência da mesa e da sala mais clara no dia a dia.", missionText: "Prepare a mesa para castrações com mais clareza, organização e segurança", privacyUrl: "/castracao/politica-de-privacidade", termsUrl: "/castracao/termos-de-uso" },
+  footer: { ...laboralOffer.footer, updateTitle: "Material feito para consulta prática", updateBody: "O Kit de Preparação para Castração foi organizado para tornar a conferência da mesa e da sala mais clara no dia a dia.", missionText: "Prepare a mesa para castrações com mais clareza, organização e segurança", privacyUrl: "/politica-de-privacidade", termsUrl: "/termos-de-uso" },
 }
