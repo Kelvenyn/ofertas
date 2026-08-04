@@ -34,6 +34,8 @@ export interface OfferHero {
   marqueeText: string
   marqueeGradient: string
   bullets?: string[]
+  subtitlePosition?: "beforeImage" | "afterImage"
+  socialProofCaption?: string
 }
 
 export interface OfferTestimonial {
@@ -92,6 +94,7 @@ export interface BonusSection {
   backHint: string
   timerText: string
   freeLabel: string
+  cardImageAspect?: "landscape" | "portrait"
 }
 
 export interface PricingPlan {
@@ -145,6 +148,7 @@ export interface OfferConfig {
     body: string
     ctaText: string
     trust: string[]
+    timerMode?: "hoursMinutesSeconds" | "minutesSeconds"
   }
   idealPara: {
     pill: string
@@ -166,6 +170,8 @@ export interface OfferConfig {
     titleLead: string
     titleHighlight: string
     plans: PricingPlan[]
+    note?: string
+    trustText?: string
   }
   guarantee: {
     marqueeText: string
@@ -174,10 +180,12 @@ export interface OfferConfig {
     iconAlt: string
     title: string
     body: string
+    sealText?: string
   }
   access: {
     title: string
     steps: AccessStep[]
+    ctaText?: string
   }
   faq: {
     title: string
@@ -192,5 +200,6 @@ export interface OfferConfig {
     missionText?: string
     privacyLabel?: string
     termsLabel?: string
+    showUpdate?: boolean
   }
 }

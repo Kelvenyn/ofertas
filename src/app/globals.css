@@ -2067,6 +2067,10 @@ html {
   border-bottom: 1px solid color-mix(in srgb, var(--brand) 8%, transparent);
 }
 
+.bon-new-image-portrait {
+  aspect-ratio: 3 / 4;
+}
+
 .bon-new-perspective {
   position: relative;
   width: 100%;

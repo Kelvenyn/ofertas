@@ -36,7 +36,7 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
         <span aria-hidden="true">🎁</span> {labels.cardLabel} #{bonusNumber}
       </div>
       <div
-        className="bon-new-image-wrapper"
+        className={`bon-new-image-wrapper${labels.cardImageAspect === "portrait" ? " bon-new-image-portrait" : ""}`}
         onClick={handleClick}
         role="button"
         tabIndex={0}
