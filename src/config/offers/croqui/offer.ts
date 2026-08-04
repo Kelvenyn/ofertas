@@ -211,7 +211,7 @@ export const OFFER: OfferConfig = {
     ...laboralOffer.footer,
     showUpdate: false,
     copyright: "© Todos os direitos reservados. Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Fazemos todos os esforços para indicar claramente as informações do produto. Não vendemos seu e-mail ou dados a terceiros. Dúvidas? Fale conosco de Segunda a Sexta, das 09h às 18h.",
-    privacyUrl: "#",
-    termsUrl: "#",
+    privacyUrl: "/politica-de-privacidade",
+    termsUrl: "/termos-de-uso",
   },
 }
