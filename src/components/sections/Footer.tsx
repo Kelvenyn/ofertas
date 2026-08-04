@@ -4,15 +4,15 @@ import { useOffer } from "@/context/offer-context"
 
 export function Footer() {
   const offer = useOffer()
-  const { updateTitle, updateBody, copyright, privacyUrl, termsUrl } = offer.footer
+  const { updateTitle, updateBody, copyright, privacyUrl, termsUrl, showUpdate = true } = offer.footer
   return (
     <>
-      <div className="pei-promo-wrap">
-        <div className="pei-promo-inner">
-          <h3>{updateTitle}</h3>
-          <p>{updateBody}</p>
-        </div>
-      </div>
+      {showUpdate && <div className="pei-promo-wrap">
+          <div className="pei-promo-inner">
+            <h3>{updateTitle}</h3>
+            <p>{updateBody}</p>
+          </div>
+        </div>}
 
       <footer className="edu-toast-wrap" role="contentinfo">
         <p className="footer-copyright">{copyright}</p>

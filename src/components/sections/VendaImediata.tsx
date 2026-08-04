@@ -11,7 +11,7 @@ export function VendaImediata() {
   const {
     pill, titleLine1, titleLine2, titleLine3,
     image, imageAlt, imageWidth, imageHeight,
-    subtitle, ctaText, marqueeText, marqueeGradient, bullets,
+    subtitle, ctaText, marqueeText, marqueeGradient, bullets, subtitlePosition = "afterImage", socialProofCaption,
   } = offer.hero
 
   return (
@@ -25,6 +25,8 @@ export function VendaImediata() {
           {titleLine3 && <span className="vi-title-line3">{titleLine3}</span>}
         </h1>
 
+        {subtitlePosition === "beforeImage" && <p className="vi-sub vi-sub-before-image">{subtitle}</p>}
+
         <div className="vi-image">
           <Image
             src={image}
@@ -35,7 +37,9 @@ export function VendaImediata() {
           />
         </div>
 
-        <p className="vi-sub">{subtitle}</p>
+        {socialProofCaption && <p className="vi-social-proof-caption">{socialProofCaption}</p>}
+
+        {subtitlePosition !== "beforeImage" && <p className="vi-sub">{subtitle}</p>}
 
         {bullets && bullets.length > 0 && (
           <AnimatedBullets items={bullets} className="vi-bullets ab-center" />

@@ -6,7 +6,7 @@ import { useOffer } from "@/context/offer-context"
 
 export function Urgencia() {
   const offer = useOffer()
-  const { title, highlight, body, ctaText, trust } = offer.urgency
+  const { title, highlight, body, ctaText, trust, timerMode = "hoursMinutesSeconds" } = offer.urgency
   const titleLines = title.split('\n')
   const time = useCountdownTimer()
 
@@ -16,11 +16,13 @@ export function Urgencia() {
         <div className="urg-card">
 
           <div className="urg-timer-row" role="timer" aria-live="polite" aria-label="Tempo restante">
-            <div className="urg-timer-unit">
-              <span className="urg-timer-val">{String(time.h).padStart(2, "0")}</span>
-              <span className="urg-timer-label">Horas</span>
-            </div>
-            <span className="urg-timer-colon">:</span>
+            {timerMode === "hoursMinutesSeconds" && <>
+              <div className="urg-timer-unit">
+                <span className="urg-timer-val">{String(time.h).padStart(2, "0")}</span>
+                <span className="urg-timer-label">Horas</span>
+              </div>
+              <span className="urg-timer-colon">:</span>
+            </>}
             <div className="urg-timer-unit">
               <span className="urg-timer-val">{String(time.m).padStart(2, "0")}</span>
               <span className="urg-timer-label">Minutos</span>

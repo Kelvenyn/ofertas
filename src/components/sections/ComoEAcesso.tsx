@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from "react"
 import { useOffer } from "@/context/offer-context"
+import { ShinyButton } from "@/components/ui/ShinyButton"
 
 const STEP_COLORS = ["var(--brand)"]
 const CIRCLE_RADIUS = 34
@@ -68,7 +69,7 @@ function StepCircle({ index, color, total }: { index: number; color: string; tot
 
 export function ComoEAcesso() {
   const offer = useOffer()
-  const { title, steps } = offer.access
+  const { title, steps, ctaText } = offer.access
   return (
     <section className="cea-section" aria-labelledby="access-title">
       <div className="cea-inner">
@@ -86,6 +87,8 @@ export function ComoEAcesso() {
             )
           })}
         </div>
+
+        {ctaText && <div className="mt-7"><ShinyButton href="#oferta">{ctaText}</ShinyButton></div>}
       </div>
     </section>
   )

@@ -400,6 +400,32 @@ html {
   text-wrap: balance;
 }
 
+.vi-sub-before-image {
+  margin-bottom: 22px;
+  font-weight: 800;
+  color: var(--brand-ink);
+}
+
+.vi-social-proof-caption {
+  max-width: 400px;
+  margin: -8px auto 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-wrap: balance;
+}
+
+.croqui-offer .vi-title-line1,
+.croqui-offer .vi-title-line2,
+.croqui-offer .vi-title-line3 {
+  font-size: clamp(29px, 6.8vw, 43px);
+  color: var(--brand-ink);
+  margin-bottom: 0;
+}
+
+.croqui-offer .vi-title-line2 { color: var(--brand); }
+
 .vi-bullets {
   width: min(420px, 100%);
   margin: 0 auto 16px;
@@ -747,6 +773,29 @@ html {
   margin: 0 auto;
 }
 
+.offer-pricing-reassurance {
+  margin: 28px auto 0;
+  max-width: 640px;
+  text-align: center;
+}
+
+.offer-pricing-note {
+  margin: 0;
+  color: #FFFFFF;
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: clamp(17px, 3.5vw, 21px);
+  font-weight: 800;
+  line-height: 1.4;
+  text-wrap: balance;
+}
+
+.offer-pricing-trust {
+  margin: 12px 0 0;
+  color: color-mix(in srgb, #FFFFFF 90%, transparent);
+  font-size: 13px;
+  font-weight: 800;
+}
+
 .offer-pei-head {
   text-align: center;
   margin-bottom: 24px;
@@ -937,6 +986,28 @@ html {
   max-width: 290px;
   filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08));
 }
+
+.croqui-offer .vi-image img,
+.croqui-offer .tqvr-image img,
+.croqui-offer .offer-plan-img img,
+.confissao-offer .vi-image img,
+.confissao-offer .tqvr-image img,
+.confissao-offer .offer-plan-img img {
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, #FFFFFF);
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(45, 31, 16, 0.10);
+  filter: none;
+}
+
+.croqui-offer .offer-pei-grid {
+  align-items: start;
+}
+
+.croqui-offer .premium-plan {
+  padding-top: 28px;
+  transform: none;
+}
+
 
 .offer-card-top p {
   margin: 0 0 18px;
@@ -2349,6 +2420,31 @@ html {
   height: auto;
   display: block;
   margin: 0 auto;
+}
+
+.gar-seal {
+  width: clamp(140px, 30vw, 200px);
+  aspect-ratio: 1;
+  display: grid;
+  place-content: center;
+  gap: 2px;
+  margin: 0 auto;
+  border: 7px solid var(--brand);
+  border-radius: 50%;
+  background: var(--brand-deep);
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--brand) 24%, transparent), inset 0 0 0 5px color-mix(in srgb, #FFFFFF 72%, transparent);
+  color: #FFFFFF;
+  font-family: 'Nunito', system-ui, sans-serif;
+  font-size: clamp(29px, 7vw, 42px);
+  font-weight: 900;
+  letter-spacing: -.04em;
+  line-height: .8;
+  text-align: center;
+}
+
+.gar-seal span:last-child {
+  font-size: .48em;
+  letter-spacing: .08em;
 }
 
 .gar-title {

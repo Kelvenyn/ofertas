@@ -171,6 +171,7 @@ export const OFFER: OfferConfig = {
   pricing: {
     titleLead: "ESCOLHA O PLANO",
     titleHighlight: "IDEAL PARA VOCÊ",
+    note: "O Guia Visual da Confissão recebe melhorias e correções periódicas. Ao adquirir agora, você garante acesso vitalício.",
     plans: [
       {
         ...laboralOffer.pricing.plans[0],

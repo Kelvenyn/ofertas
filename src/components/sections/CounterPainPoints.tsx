@@ -60,7 +60,9 @@ export function CounterPainPoints() {
           <span className="dc-count" id="dc-count" aria-live="polite" aria-atomic="true">
             {count}
           </span>
-          <span className="dc-label" id="counter-label">{label}</span>
+          <span className="dc-label" id="counter-label">
+            {label.split("\n").map((line, index, lines) => <span key={index}>{line}{index < lines.length - 1 && <br />}</span>)}
+          </span>
         </div>
 
         <div className="dc-bar" role="progressbar" aria-valuenow={count} aria-valuemin={0} aria-valuemax={target}>
