@@ -9,7 +9,7 @@ const SCROLL_SPEED = 0.3
 
 export function KitCards() {
   const offer = useOffer()
-  const { heading1, heading2, images } = offer.kitCards
+  const { heading1, heading2, images, displayAspect = "auto" } = offer.kitCards
   const trackRef = useRef<HTMLDivElement>(null)
   const offsetRef = useRef(0)
   const rafRef = useRef<number>(0)
@@ -173,9 +173,9 @@ export function KitCards() {
         >
           {allImages.map((img, i) => (
             <div
-              className={`kc-card${landscapeImages[img.src] || (img.width && img.height && img.width > img.height) ? " kc-card-landscape" : ""}`}
+              className={`kc-card${displayAspect === "portrait" ? " kc-card-portrait" : landscapeImages[img.src] || (img.width && img.height && img.width > img.height) ? " kc-card-landscape" : ""}`}
               key={i}
-              style={{ aspectRatio: imageRatios[img.src] ?? (img.width && img.height ? `${img.width} / ${img.height}` : undefined) }}
+              style={{ aspectRatio: displayAspect === "portrait" ? "3 / 4" : imageRatios[img.src] ?? (img.width && img.height ? `${img.width} / ${img.height}` : undefined) }}
             >
               <Image
                 src={img.src}
