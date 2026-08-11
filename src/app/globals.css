@@ -289,6 +289,9 @@ html {
   background: var(--bg);
 }
 
+#offer-root :is(h1, h2, h3) { text-wrap: balance; }
+#offer-root p { text-wrap: pretty; }
+
 .vi-hero {
   padding: 22px 16px 0;
   text-align: center;
