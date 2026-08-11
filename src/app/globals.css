@@ -282,6 +282,13 @@ html {
   }
 }
 
+/* A paleta é definida no contêiner de cada oferta. Seções transparentes, como
+   o hero, precisam deste fundo para refletir a variação escolhida na página. */
+#offer-root {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
 .vi-hero {
   padding: 22px 16px 0;
   text-align: center;
