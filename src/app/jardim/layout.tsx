@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "35 Projetos de Jardins Verticais",
   description: OFFER.meta.description,
   icons: {
-    icon: "/images/jardim/favicon.png",
+    icon: "/images/jardim/favicon.webp",
   },
   openGraph: {
     title: OFFER.meta.title,
