@@ -139,6 +139,7 @@ export interface OfferConfig {
     heading1: string
     heading2?: string
     images: KitImage[]
+    displayAspect?: "auto" | "portrait"
   }
   benefits: BenefitSection
   urgency: {
