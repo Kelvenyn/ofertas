@@ -396,7 +396,10 @@ html {
   .laboral-offer .vi-image img,
   .laboral-offer .tqvr-image img,
   .laboral-offer .basic-plan .offer-plan-img img,
-  .laboral-offer .premium-plan .offer-plan-img img { animation: none; }
+  .laboral-offer .premium-plan .offer-plan-img img,
+  .jardim-offer .vi-image img,
+  .jardim-offer .tqvr-image img,
+  .jardim-offer .offer-plan-img img { animation: none; }
 }
 
 .vi-sub {
@@ -1054,6 +1057,18 @@ html {
   border-radius: 14px;
   box-shadow: 0 10px 24px color-mix(in srgb, var(--brand-deep) 12%, transparent);
   filter: none;
+  animation: laboral-image-emphasis 3.6s ease-in-out infinite;
+}
+
+.jardim-offer .premium-plan {
+  padding-top: 28px;
+  transform: none;
+}
+
+.jardim-offer .offer-card-top h3 {
+  min-height: 2.2em;
+  display: grid;
+  place-items: center;
 }
 
 .croqui-offer .premium-plan {
