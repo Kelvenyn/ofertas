@@ -1047,6 +1047,15 @@ html {
   align-items: start;
 }
 
+.jardim-offer .vi-image img,
+.jardim-offer .tqvr-image img,
+.jardim-offer .offer-plan-img img {
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, #FFFFFF);
+  border-radius: 14px;
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--brand-deep) 12%, transparent);
+  filter: none;
+}
+
 .croqui-offer .premium-plan {
   padding-top: 28px;
   transform: none;

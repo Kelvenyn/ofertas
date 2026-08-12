@@ -42,6 +42,7 @@ export default function JardimLayout({
 
       <div
         id="offer-root"
+        className="jardim-offer"
         style={{
           "--brand": p.brand,
           "--brand-deep": p.brandDeep,
