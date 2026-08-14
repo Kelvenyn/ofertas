@@ -62,7 +62,7 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
                 src={front}
                 alt={title}
                 width={400}
-                height={300}
+                height={533}
                 className="bon-new-img"
                 loading="lazy"
                 onLoad={() => setFrontLoaded(true)}
@@ -81,7 +81,7 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
                 src={back}
                 alt={`${title} - conteúdo`}
                 width={400}
-                height={300}
+                height={533}
                 className="bon-new-img"
                 loading="lazy"
               />

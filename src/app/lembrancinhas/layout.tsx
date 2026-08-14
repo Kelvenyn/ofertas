@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Lembrancinhas Cristã",
   description: OFFER.meta.description,
   icons: {
-    icon: "/images/lembrancinhas/favicon.png",
+    icon: "/images/lembrancinhas/favicon.webp",
   },
   openGraph: {
     title: OFFER.meta.title,
@@ -26,14 +26,7 @@ export default function LembrancinhasLayout({
   const { palette: p } = OFFER
   return (
     <>
-      {/* Pixel Meta: o tracker.js do Hub já inicializa o(s) pixel(s) ativos (via
-          /api/config, client-side, com o mesmo event_id da CAPI) — não embarcar
-          pixel próprio nem Utmify aqui pra não duplicar PageView/ViewContent.
-          Removido o snippet fbq('init', '1653520942410205') + <noscript> que estava
-          hardcoded aqui e duplicava PageView com o tracker do Hub. Oferta inativa e
-          sem checkout configurado (ctaHref="#" em offer.ts) — o ggCheckout usado
-          antes foi desligado do Hub e da lista default de hosts do tracker.js.
-          Antes de reativar: cadastrar o produto na Cakto e trocar os ctaHref. */}
+      {/* O tracker.js do Hub centraliza os eventos desta página. */}
       <Script
         id="hub-tracker-lembrancinhas"
         src="https://hub.universoeduk.com/tracker.js"
@@ -42,6 +35,7 @@ export default function LembrancinhasLayout({
 
       <div
         id="offer-root"
+        className="lembrancinhas-offer"
         style={{
           "--brand": p.brand,
           "--brand-deep": p.brandDeep,
