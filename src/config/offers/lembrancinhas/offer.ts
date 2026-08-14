@@ -46,7 +46,6 @@ export const OFFER: OfferConfig = {
       { src: "/images/lembrancinhas/Depoimento (5).webp", alt: "Depoimento 5", gradient: "linear-gradient(90deg, #16A34A, #E11D2E)" },
       { src: "/images/lembrancinhas/Depoimento (6).webp", alt: "Depoimento 6", gradient: "linear-gradient(90deg, #0A1F44, #16A34A)" },
       { src: "/images/lembrancinhas/Depoimento (7).webp", alt: "Depoimento 7", gradient: "linear-gradient(90deg, #B0B8C7, #081733)" },
-      { src: "/images/lembrancinhas/Depoimento (8).webp", alt: "Depoimento 8", gradient: "linear-gradient(90deg, #E11D2E, #0A1F44)" },
     ],
   },
   counter: {
@@ -55,6 +54,7 @@ export const OFFER: OfferConfig = {
     label: "Modelos de Lembrancinhas para Crisma",
   },
   kitCards: {
+    displayAspect: "portrait",
     heading1: "Veja como são os modelos que você vai receber:",
     images: [
       { src: "/images/lembrancinhas/Imagem (1).webp", alt: "Lembrancinha para Crisma 1", width: 208, height: 192 },
@@ -67,6 +67,10 @@ export const OFFER: OfferConfig = {
       { src: "/images/lembrancinhas/Imagem (8).webp", alt: "Lembrancinha para Crisma 8", width: 188, height: 80 },
       { src: "/images/lembrancinhas/Imagem (9).webp", alt: "Lembrancinha para Crisma 9", width: 188, height: 80 },
       { src: "/images/lembrancinhas/Imagem (10).webp", alt: "Lembrancinha para Crisma 10", width: 188, height: 80 },
+      { src: "/images/lembrancinhas/Imagem (11).webp", alt: "Lembrancinha para Crisma 11", width: 188, height: 80 },
+      { src: "/images/lembrancinhas/Imagem (12).webp", alt: "Lembrancinha para Crisma 12", width: 188, height: 80 },
+      { src: "/images/lembrancinhas/Imagem (13).webp", alt: "Lembrancinha para Crisma 13", width: 188, height: 80 },
+      { src: "/images/lembrancinhas/Imagem (14).webp", alt: "Lembrancinha para Crisma 14", width: 188, height: 80 },
     ],
   },
   benefits: {
@@ -118,14 +122,15 @@ export const OFFER: OfferConfig = {
   },
   bonusSection: {
     pill: "EXTRA INCLUÍDO",
-    titleLead: "5 BÔNUS",
+    titleLead: "4 BÔNUS",
     titleHighlight: "EXCLUSIVOS",
-    subtitle: "Além dos 50 Modelos, ao adquirir o Plano Completo você também recebe 06 bônus especiais.",
+    subtitle: "Além dos 50 modelos, ao adquirir o Plano Completo você também recebe 4 bônus especiais.",
     cardLabel: "BÔNUS",
     touchHint: "Toque na imagem acima para ver o conteúdo.",
     backHint: "Toque para voltar",
     timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO",
     freeLabel: "GRÁTIS",
+    cardImageAspect: "portrait",
   },
   bonuses: [
     {
@@ -160,14 +165,6 @@ export const OFFER: OfferConfig = {
       desc: "Modelos com santos para inspirar fé e servir como exemplo de vida cristã aos crismandos.",
       price: "R$ 29,90",
     },
-    {
-      front: "/images/lembrancinhas/bonus-5-frente.webp",
-      back: "/images/lembrancinhas/bonus-5-verso.webp",
-      title: "150 Marcadores Católicos",
-      titleBreak: "150 Marcadores\nCatólicos",
-      desc: "+150 marcadores católicos para entregar com a Bíblia, caderno ou material da catequese.",
-      price: "R$ 9,90",
-    },
   ],
   pricing: {
     titleLead: "APROVEITE ENQUANTO",
@@ -192,9 +189,7 @@ export const OFFER: OfferConfig = {
           "Não inclui os bônus do Plano Completo",
         ],
         ctaText: "QUERO AS LEMBRANCINHAS",
-        // TODO: oferta inativa, sem link de checkout Cakto ainda. Substituir por
-        // https://pay.cakto.com.br/... real antes de reativar (ggCheckout foi desligado).
-        ctaHref: "#",
+        ctaHref: "https://pay.cakto.com.br/zekijga",
       },
       {
         id: "premium",
@@ -212,7 +207,6 @@ export const OFFER: OfferConfig = {
           "🎁 Bônus 02: Lembrancinhas Dinâmicas",
           "🎁 Bônus 03: Calendário Catequético",
           "🎁 Bônus 04: Lembrancinhas de Santos Católicos",
-          "🎁 Bônus 05: 150 Marcadores Católicos",
           "Lembrancinhas organizadas por temas",
           "Arquivos em PDF prontos para impressão (A4)",
           "Material prático e organizado",
@@ -220,9 +214,7 @@ export const OFFER: OfferConfig = {
           "Acesso vitalício ao material",
         ],
         ctaText: "QUERO AS LEMBRANCINHAS",
-        // TODO: oferta inativa, sem link de checkout Cakto ainda. Substituir por
-        // https://pay.cakto.com.br/... real antes de reativar (ggCheckout foi desligado).
-        ctaHref: "#",
+        ctaHref: "https://pay.cakto.com.br/37nb8vz",
       },
     ],
   },

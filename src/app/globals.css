@@ -399,7 +399,10 @@ html {
   .laboral-offer .premium-plan .offer-plan-img img,
   .jardim-offer .vi-image img,
   .jardim-offer .tqvr-image img,
-  .jardim-offer .offer-plan-img img { animation: none; }
+  .jardim-offer .offer-plan-img img,
+  .lembrancinhas-offer .vi-image img,
+  .lembrancinhas-offer .tqvr-image img,
+  .lembrancinhas-offer .offer-plan-img img { animation: none; }
 }
 
 .vi-sub {
@@ -1056,6 +1059,19 @@ html {
   border: 1px solid color-mix(in srgb, var(--brand) 18%, #FFFFFF);
   border-radius: 14px;
   box-shadow: 0 10px 24px color-mix(in srgb, var(--brand-deep) 12%, transparent);
+  filter: none;
+  animation: laboral-image-emphasis 3.6s ease-in-out infinite;
+}
+
+/* The plan artwork is the primary visual anchor for this offer. */
+.lembrancinhas-offer .vi-image img,
+.lembrancinhas-offer .tqvr-image img,
+.lembrancinhas-offer .offer-plan-img img {
+  border: 1px solid color-mix(in srgb, var(--brand-light) 58%, #FFFFFF);
+  border-radius: 22px;
+  box-shadow:
+    0 14px 30px color-mix(in srgb, var(--brand-deep) 20%, transparent),
+    0 0 34px color-mix(in srgb, var(--accent) 22%, transparent);
   filter: none;
   animation: laboral-image-emphasis 3.6s ease-in-out infinite;
 }
