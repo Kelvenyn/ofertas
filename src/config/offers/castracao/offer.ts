@@ -29,12 +29,6 @@ export const OFFER: OfferConfig = {
     { icon: "✏️", title: "Adaptação", desc: "Listas de materiais separadas, evite confusões na hora da castração." },
   ] },
   urgency: { pill: "OFERTA POR TEMPO LIMITADO", title: "Prepare a mesa com segurança antes do próximo procedimento", highlight: "", body: "Tenha um guia visual para conferir a organização da bancada, os instrumentos e os materiais essenciais antes de entrar na sala.", ctaText: "QUERO ACESSAR AGORA", trust: ["ACESSO IMEDIATO", "MATERIAL DIGITAL"] },
-  idealPara: { pill: "É PARA VOCÊ", title: "ESTE KIT É IDEAL PARA QUEM DESEJA:", subtitle: "Mais clareza antes da castração e menos espaço para improvisos na preparação.", items: [
-    { icon: "🛡️", title: "Preparar com segurança", desc: "Evitar esquecer materiais essenciais e entrar na sala com mais confiança." },
-    { icon: "🔎", title: "Visualizar a bancada", desc: "Ter um guia prático para dispor instrumentos e materiais." },
-    { icon: "📋", title: "Conferir cada etapa", desc: "Seguir checklists para garantir que nada fique de lado." },
-    { icon: "🗂️", title: "Organizar a rotina", desc: "Registrar e adaptar a preparação às necessidades da clínica." },
-  ] },
   deliverables: { ...laboralOffer.deliverables, pill: "⚡ ACESSO IMEDIATO", title: "TUDO O QUE VOCÊ VAI RECEBER", titleHighlight: "", image: castracaoImage(laboralOffer.deliverables.image), imageAlt: "Kit de preparação para castração", bullets: ["Mapa visual para castração de cão macho", "Mapa visual para castração de cão fêmea", "Mapa visual para castração de gato macho", "Mapa visual para castração de gata fêmea", "Checklist de preparação da sala", "Lista visual de materiais e consumíveis", "Guia visual dos instrumentos", "Checklist de conferência da mesa", "Folhas de consulta rápida"] },
   bonusSection: { ...laboralOffer.bonusSection, pill: "EXTRAS INCLUÍDOS", titleLead: "4 BÔNUS", titleHighlight: "EXCLUSIVOS", subtitle: "No Plano Completo, você também recebe materiais para organizar a rotina e consultar o essencial com ainda mais agilidade." },
   bonuses: laboralOffer.bonuses.slice(0, bonuses.length).map((bonus, index) => ({ ...bonus, front: castracaoImage(bonus.front), back: castracaoImage(bonus.back), ...bonuses[index] })),

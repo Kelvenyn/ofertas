@@ -8,6 +8,8 @@ brand
 
 Brazilian entrepreneurs, digital creators, and infoprodutors. They operate in the digital marketing space, selling courses, templates, toolkits, and guides. They are action-oriented, results-driven, and respond to urgency. Their context is mobile-first, often browsing on phones during breaks or while multitasking.
 
+Current catalog (7 offers, see `CLAUDE.md` for routes and status): psicopedagogia guides, ginástica laboral (corporate wellness) dynamics, veterinary castration checklists, Catholic confession guides, fashion sketch bases, vertical-garden project packs, and Christian party favors — a mix of professional-reference and hobby/craft niches, not just "courses."
+
 ## Product Purpose
 
 A high-converting sales page for low-ticket digital products. The page exists to drive immediate purchases through urgency, social proof, and aggressive CTAs. Success looks like: visitor lands, sees the offer, feels the urgency, and clicks the CTA button within 30 seconds.

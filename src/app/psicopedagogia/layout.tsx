@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Mapa de Perfil Infantil",
   description: OFFER.meta.description,
   icons: {
-    icon: "/images/psicopedagogia/favicon.png",
+    icon: "/images/psicopedagogia/favicon.webp",
   },
   openGraph: {
     title: OFFER.meta.title,

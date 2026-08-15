@@ -1,8 +1,10 @@
 # Agent Notes
 
-Projeto com 4 landing pages de venda low-ticket, cada uma em sua própria rota, compartilhando
+Projeto com 7 landing pages de venda low-ticket, cada uma em sua própria rota, compartilhando
 componentes de seção e a mesma infraestrutura de tracking (um painel externo, o "Hub"). Ler
-`CLAUDE.md` para a visão geral do produto e `PRODUCT.md` para brand/design principles.
+`CLAUDE.md` para a lista completa de ofertas e regras de produto, `PRODUCT.md` para brand/design
+principles e `DESIGN.md` para o sistema de design compartilhado (cada oferta troca cores via
+`palette` em `offer.ts`; layout, tipografia e padrões de componente são os mesmos entre ofertas).
 
 ## Prioridades
 
@@ -23,7 +25,7 @@ npm run lint
 
 ## Arquivos Importantes
 
-- `src/config/offers/<oferta>/offer.ts`: fonte de conteúdo de cada oferta (4 hoje: `psicopedagogia`, `laboral`, `castracao`, `lembrancinhas`).
+- `src/config/offers/<oferta>/offer.ts`: fonte de conteúdo de cada oferta (7 hoje: `psicopedagogia`, `laboral`, `castracao`, `confissao`, `croqui`, `jardim`, `lembrancinhas` — ver tabela completa em `CLAUDE.md`).
 - `src/types/offer.ts`: contrato `OfferConfig` compartilhado por todas as ofertas.
 - `src/app/<oferta>/layout.tsx`: metadata + carregamento do `tracker.js` do Hub.
 - `src/app/<oferta>/page.tsx`: composição das seções da oferta.

@@ -27,8 +27,8 @@ export const OFFER: OfferConfig = {
     titleLine3: "Identifique, escolha e conduza com mais segurança",
     image: "/images/psicopedagogia/Plano Completo.webp",
     imageAlt: "Mapa de Perfil Infantil",
-    imageWidth: 340,
-    imageHeight: 425,
+    imageWidth: 1080,
+    imageHeight: 1080,
     subtitle: "Tenha em mãos um mapa visual para identificar perfis infantis e escolher a atividade certa para cada sessão, sem precisar improvisar.",
     ctaText: "QUERO O MAPA DE PERFIL INFANTIL",
     timerLabel: "BÔNUS ENCERRAM EM",
@@ -91,17 +91,6 @@ export const OFFER: OfferConfig = {
     body: "Enquanto você pensa, outras psicopedagogas já estão usando o mapa nos atendimentos. O preço promocional não dura para sempre.",
     ctaText: "QUERO ACESSAR AGORA",
     trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"],
-  },
-  idealPara: {
-    pill: "É PARA VOCÊ",
-    title: "ESTE MATERIAL É IDEAL PARA VOCÊ QUE DESEJA:",
-    subtitle: "Feito para psicopedagogas iniciantes que querem mais segurança nos primeiros atendimentos.",
-    items: [
-      { icon: "🚀", title: "Praticidade", desc: "Ter um mapa visual para seguir antes e durante cada atendimento" },
-      { icon: "🎯", title: "Direcionamento", desc: "Saber exatamente qual atividade aplicar de acordo com o perfil da criança" },
-      { icon: "🧩", title: "Variedade", desc: "Ter opções para cada tipo de perfil infantil sem repetir atividade" },
-      { icon: "💪", title: "Preparo", desc: "Entrar na sessão com um caminho claro, mesmo sem experiência prática" },
-    ],
   },
   deliverables: {
     pill: "⚡ ACESSO IMEDIATO",

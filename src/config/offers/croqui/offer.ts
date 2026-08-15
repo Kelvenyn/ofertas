@@ -71,8 +71,9 @@ export const OFFER: OfferConfig = {
     titleLine3: "Suas Roupas em Minutos",
     image: "/images/croqui/Plano Completo.webp",
     imageAlt: "Mockup do pacote de bases de croqui",
+    imageWidth: 1254,
+    imageHeight: 1254,
     subtitle: "Pare de travar na folha em branco e comece a desenhar suas roupas com bases de croqui prontas.",
-    subtitlePosition: "beforeImage",
     ctaText: "QUERO ACESSAR AGORA",
     marqueeText: "60 BASES DE CROQUI ✦ PRONTAS PARA IMPRIMIR ✦ ACESSO IMEDIATO ✦ ",
     marqueeGradient: "linear-gradient(90deg, var(--brand) 0%, var(--brand-deep) 100%)",
@@ -93,8 +94,9 @@ export const OFFER: OfferConfig = {
     heading1: "Veja as bases que você vai usar para tirar suas ideias do papel:",
     images: demoImageOrder.map((index) => {
       const item = laboralOffer.kitCards.images[index]
-      return { ...item, src: image(item.src), alt: "Base de croqui pronta para desenhar" }
+      return { ...item, src: image(item.src), alt: "Base de croqui pronta para desenhar", width: 280, height: 396 }
     }),
+    displayAspect: "portrait",
   },
   benefits: {
     title: "COM O PACK CROQUI PRONTO, SUAS IDEIAS VIRAM CRIAÇÕES",

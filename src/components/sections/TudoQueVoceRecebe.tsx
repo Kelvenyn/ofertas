@@ -19,8 +19,7 @@ export function TudoQueVoceRecebe() {
             src={image}
             alt={imageAlt}
             width={340}
-            height={425}
-
+            height={340}
           />
         </div>
 

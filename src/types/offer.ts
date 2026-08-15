@@ -69,12 +69,6 @@ export interface BenefitSection {
   items: BenefitItem[]
 }
 
-export interface IdealItem {
-  icon: string
-  title: string
-  desc: string
-}
-
 export interface BonusItem {
   front: string
   back: string
@@ -150,12 +144,6 @@ export interface OfferConfig {
     ctaText: string
     trust: string[]
     timerMode?: "hoursMinutesSeconds" | "minutesSeconds"
-  }
-  idealPara: {
-    pill: string
-    title: string
-    subtitle: string
-    items: IdealItem[]
   }
   deliverables: {
     pill: string

@@ -72,6 +72,8 @@ export const OFFER: OfferConfig = {
     image: confissaoImage("Plano Completo.webp"),
     subtitle: "Prepare sua confissão com um passo a passo visual para organizar o exame de consciência, saber o que dizer ao padre e sair do confessionário sem a sensação de ter feito algo errado.",
     imageAlt: "Guia Visual da Confissão",
+    imageWidth: 700,
+    imageHeight: 700,
     ctaText: "QUERO ACESSAR AGORA",
     marqueeText: "GUIA VISUAL ✦ EXAME DE CONSCIÊNCIA ✦ PASSO A PASSO ✦ ACESSO IMEDIATO ✦ ",
     marqueeGradient: "linear-gradient(90deg, var(--brand) 0%, var(--brand-deep) 100%)",
@@ -105,6 +107,7 @@ export const OFFER: OfferConfig = {
       width: 600,
       height: 900,
     })),
+    displayAspect: "portrait",
   },
   benefits: {
     title: "O GUIA VISUAL DA CONFISSÃO POSSUI:",
@@ -123,17 +126,6 @@ export const OFFER: OfferConfig = {
     body: "Você já sabe que precisa se confessar. Falta um passo a passo pronto para organizar o que dizer e sair em paz.",
     ctaText: "QUERO ACESSAR AGORA",
     trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"],
-  },
-  idealPara: {
-    pill: "É PARA VOCÊ",
-    title: "ESTE GUIA É IDEAL PARA QUEM DESEJA:",
-    subtitle: "Mais clareza para se preparar, confessar-se e seguir em paz.",
-    items: [
-      { icon: "📝", title: "Se preparar", desc: "Organizar um exame de consciência antes de ir ao confessionário." },
-      { icon: "🗣️", title: "Saber o que dizer", desc: "Ter frases prontas para iniciar a conversa com o padre com mais segurança." },
-      { icon: "🕊️", title: "Confessar-se em paz", desc: "Seguir cada etapa sem medo de esquecer o que é importante." },
-      { icon: "🙏", title: "Viver a fé", desc: "Criar uma rotina mais presente de reconciliação e proximidade com Deus." },
-    ],
   },
   deliverables: {
     ...laboralOffer.deliverables,

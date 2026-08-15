@@ -85,6 +85,15 @@ components:
 
 # Design System: Low Ticket Sales Page
 
+> **Nota sobre cor:** este documento descreve o sistema compartilhado por todas as 7 ofertas do
+> projeto (`ofertas`) — layout, tipografia, sombras, componentes e as regras de "do/don't"
+> valem igualmente para qualquer rota. A paleta de cor abaixo (frontmatter `colors:` e a seção
+> 2) é a paleta de referência do template; na prática, **cada oferta define a própria `palette`**
+> em `src/config/offers/<oferta>/offer.ts` e aplica via CSS custom properties (`--brand`,
+> `--brand-deep`, `--cta`, `--accent`, etc.) no `layout.tsx` correspondente. Use os hex fixos
+> aqui como ponto de partida ao criar uma oferta nova, não como a cor "oficial" do site — não
+> existe uma cor única global.
+
 ## 1. Overview
 
 **Creative North Star: "The Urgent Closer"**
