@@ -69,7 +69,7 @@ export function OfferPricing() {
                     </p>
                   )}
                   <div className="offer-plan-img">
-                    <Image src={plan.image} alt={plan.imageAlt} width={300} height={375} />
+                    <Image src={plan.image} alt={plan.imageAlt} width={300} height={300} />
                   </div>
                 </div>
 

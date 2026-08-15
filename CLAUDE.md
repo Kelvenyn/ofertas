@@ -2,22 +2,38 @@
 
 # CLAUDE.md — Páginas de Oferta (`ofertas`)
 
-4 landing pages de venda low-ticket, cada uma em sua própria rota, compartilhando componentes de seção e a mesma infraestrutura de tracking (um painel externo, o "Hub").
+7 landing pages de venda low-ticket, cada uma em sua própria rota, compartilhando componentes de seção e a mesma infraestrutura de tracking (um painel externo, o "Hub").
 
 Idioma padrão das respostas e notas de trabalho: português do Brasil.
 
 ## Ofertas
 
-| Rota | Config | Checkout | Status |
-|---|---|---|---|
-| `/psicopedagogia` | `src/config/offers/psicopedagogia/offer.ts` | Cakto | ativa |
-| `/laboral` | `src/config/offers/laboral/offer.ts` (herda de psicopedagogia) | Cakto | ativa |
-| `/castracao` | `src/config/offers/castracao/offer.ts` (herda de laboral) | Cakto | ativa |
-| `/lembrancinhas` | `src/config/offers/lembrancinhas/offer.ts` (independente) | **sem checkout** (`ctaHref: "#"`, placeholder) | inativa |
+| Rota | Config | Página | Checkout | Status |
+|---|---|---|---|---|
+| `/psicopedagogia` | `src/config/offers/psicopedagogia/offer.ts` | própria | Cakto | ativa |
+| `/laboral` | `src/config/offers/laboral/offer.ts` (herda de psicopedagogia) | reexporta psicopedagogia | Cakto | ativa |
+| `/castracao` | `src/config/offers/castracao/offer.ts` (herda de laboral) | própria | Cakto | ativa |
+| `/confissao` | `src/config/offers/confissao/offer.ts` (herda de laboral) | reexporta psicopedagogia | Cakto | ativa |
+| `/croqui` | `src/config/offers/croqui/offer.ts` (herda de laboral) | própria | Cakto | ativa |
+| `/jardim` | `src/config/offers/jardim/offer.ts` (herda de psicopedagogia) | própria | Cakto | ativa |
+| `/lembrancinhas` | `src/config/offers/lembrancinhas/offer.ts` (independente) | própria | Cakto | ativa — **é o destino do redirect da raiz (`/`)** |
 
-`/` (raiz) só faz `redirect("/lembrancinhas")` — não é um hub navegável, e não há link cruzado entre ofertas. Só `psicopedagogia` e `lembrancinhas` têm páginas de política de privacidade/termos de uso; `laboral` e `castracao` não têm.
+`/` (raiz) faz `redirect("/lembrancinhas")` — ou seja, todo o tráfego que bate na raiz do domínio cai nessa oferta; não é um hub navegável, e não há link cruzado entre ofertas. Todas as 7 ofertas têm checkout Cakto real configurado (nenhum `ctaHref` placeholder). Política de privacidade e termos de uso são só as páginas genéricas da raiz (`/politica-de-privacidade`, `/termos-de-uso`) — o `footer.privacyUrl`/`termsUrl` de todas as 7 ofertas aponta para elas. Não crie página de política/termos dentro de `src/app/<oferta>/`: já existiram versões desatualizadas ali (citavam produto e tracking antigos) e foram removidas em favor da página única da raiz.
 
-Antes de reativar `lembrancinhas`: cadastrar o produto na Cakto e trocar os dois `ctaHref` de `"#"` para o link real (`https://pay.cakto.com.br/...`).
+## Composição das páginas
+
+Todas as 7 ofertas renderizam as seções na mesma ordem fixa (definida em cada `page.tsx`):
+
+```text
+CountdownBar → VendaImediata (hero) → SocialProof → CounterPainPoints →
+KitCards → KitCardsReversed → Benefits → Urgencia → TudoQueVoceRecebe →
+Bonuses → OfferPricing → Guarantee → ComoEAcesso → FAQ → Footer
+```
+
+## Pontos de atenção conhecidos
+
+- Imagens de "kit"/carrossel (`kitCards`) e de bônus (`bonusSection`) podem ser retrato ou paisagem — o contrato já prevê isso via `kitCards.displayAspect` e `bonusSection.cardImageAspect` (`src/types/offer.ts`). Ao adicionar imagens novas ou uma oferta nova, sempre declarar essas duas flags de acordo com a orientação real do arquivo — deixá-las no padrão quando o material é retrato causa um salto de layout no carrossel assim que a imagem carrega.
+- As imagens de "Plano Completo"/"Plano Básico" (usadas no hero, em `TudoQueVoceRecebe` e em `OfferPricing`) são sempre quadradas em todas as 7 ofertas hoje. `hero.imageWidth`/`imageHeight` em cada `offer.ts` deve bater com a proporção real do arquivo — um valor de proporção diferente da imagem real causa reflow visível assim que ela carrega (o CSS usa `height: auto`).
 
 ## Tracking
 
@@ -43,7 +59,7 @@ npm run build
 
 ```text
 src/app/<oferta>/layout.tsx          # metadata + carregamento do tracker.js do Hub
-src/app/<oferta>/page.tsx            # composição das seções (laboral reexporta psicopedagogia)
+src/app/<oferta>/page.tsx            # composição das seções (laboral e confissao reexportam psicopedagogia)
 src/config/offers/<oferta>/offer.ts  # conteúdo/cores/copy/checkout da oferta
 src/types/offer.ts                   # contrato OfferConfig
 src/lib/trackhub.ts                  # trackEvent(), ponte com o tracker.js do Hub
@@ -56,4 +72,4 @@ docs/research/                       # material de pesquisa/benchmark visual (n�
 1. Checkout: só Cakto. Nunca apontar `ctaHref` para ggCheckout ou Hotmart.
 2. Tracking: só via `tracker.js` do Hub. Nunca pixel/GTM/Utmify embarcado numa página de oferta.
 3. Conteúdo de oferta fica em `offer.ts`, nunca hardcoded num componente de seção.
-4. Antes de reativar uma oferta inativa, confirmar que o `ctaHref` aponta para um checkout Cakto real, não placeholder.
+4. Antes de publicar uma oferta nova, confirmar que todo `ctaHref` aponta para um checkout Cakto real, não placeholder (`"#"`).

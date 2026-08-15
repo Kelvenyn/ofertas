@@ -14,7 +14,7 @@ export const OFFER: OfferConfig = {
     titleLine1: "+60 Modelos de Lembrancinhas",
     titleLine2: "Prontas para seus Encontros",
     titleLine3: "Organizadas por temas, tudo pronto para você só imprimir e entregar.",
-    image: "/images/lembrancinhas/Plano Completo.webp", imageAlt: "Plano Completo de Lembrancinhas Cristãs", imageWidth: 340, imageHeight: 425,
+    image: "/images/lembrancinhas/Plano Completo.webp", imageAlt: "Plano Completo de Lembrancinhas Cristãs", imageWidth: 1254, imageHeight: 1254,
     subtitle: "Tenha em mãos +60 modelos de lembrancinhas, escolha o que preferir, imprima e entregue, sem perder tempo procurando ideias na internet ou criando tudo do zero.",
     ctaText: "QUERO AS LEMBRANCINHAS", timerLabel: "BÔNUS ENCERRAM EM",
     marqueeText: "+60 MODELOS ✦ PDF A4, ALTA QUALIDADE ✦ ACESSO IMEDIATO ✦ PRONTAS PARA IMPRIMIR ✦ ",
@@ -51,15 +51,6 @@ export const OFFER: OfferConfig = {
     pill: "OPORTUNIDADE ÚNICA", title: "Quantas vezes você deixou de presentear seus participantes por não ter ideias?", highlight: "",
     body: "Imagine a reação das pessoas ao receberem algo diferente. Em cada encontro, você pode entregar uma lembrancinha linda e cheia de significado.",
     ctaText: "QUERO AS LEMBRANCINHAS", trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"],
-  },
-  idealPara: {
-    pill: "É PARA VOCÊ", title: "Ideal para você que deseja", subtitle: "Feito para quem quer tornar encontros cristãos mais especiais, sem perder tempo criando tudo do zero.",
-    items: [
-      { icon: "📋", title: "Praticidade", desc: "Ter uma lembrancinha pronta sem precisar criar nada do zero" },
-      { icon: "💡", title: "Variedade", desc: "Ter modelos para diferentes temas e encontros sem repetir" },
-      { icon: "💝", title: "Recordação", desc: "Entregar algo que as pessoas levam para casa e guardam" },
-      { icon: "🙏", title: "Fé e propósito", desc: "Transmitir mensagens que fortalecem cada encontro cristão" },
-    ],
   },
   deliverables: {
     pill: "CONTEÚDO DO KIT", title: "Tudo o que você vai receber", titleHighlight: "", image: "/images/lembrancinhas/Plano Completo.webp", imageAlt: "Plano Completo de Lembrancinhas Cristãs",
