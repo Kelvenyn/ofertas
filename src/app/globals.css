@@ -405,6 +405,17 @@ html {
   .lembrancinhas-offer .offer-plan-img img { animation: none; }
 }
 
+.vi-audience {
+  max-width: 500px;
+  margin: -10px auto 16px;
+  color: var(--brand-ink);
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: clamp(15px, 3.8vw, 18px);
+  font-weight: 700;
+  line-height: 1.5;
+  text-wrap: balance;
+}
+
 .vi-sub {
   max-width: 460px;
   margin: 0 auto 16px;
@@ -1053,6 +1064,11 @@ html {
   align-items: start;
 }
 
+.offer-pei-grid-single {
+  grid-template-columns: minmax(0, 520px);
+  justify-content: center;
+}
+
 .jardim-offer .vi-image img,
 .jardim-offer .tqvr-image img,
 .jardim-offer .offer-plan-img img {
@@ -1074,6 +1090,18 @@ html {
     0 0 34px color-mix(in srgb, var(--accent) 22%, transparent);
   filter: none;
   animation: laboral-image-emphasis 3.6s ease-in-out infinite;
+}
+
+.lembrancinhas-offer .vi-title-line1 {
+  font-size: clamp(27px, 6.7vw, 42px);
+  letter-spacing: -0.025em;
+}
+
+.lembrancinhas-offer .vi-title-line2 {
+  max-width: 340px;
+  margin-inline: auto;
+  font-size: clamp(22px, 5.5vw, 32px);
+  line-height: 1.12;
 }
 
 .jardim-offer .premium-plan {
