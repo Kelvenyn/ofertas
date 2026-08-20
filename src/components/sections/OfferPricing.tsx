@@ -41,7 +41,7 @@ export function OfferPricing() {
           </h2>
         </div>
 
-        <div className="offer-pei-grid">
+        <div className={`offer-pei-grid${plans.length === 1 ? " offer-pei-grid-single" : ""}`}>
           {plans.map((plan) => {
             const discount = calcDiscount(plan.oldPrice, plan.price)
 

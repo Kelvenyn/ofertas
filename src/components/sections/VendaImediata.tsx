@@ -9,7 +9,7 @@ import { useOffer } from "@/context/offer-context"
 export function VendaImediata() {
   const offer = useOffer()
   const {
-    pill, titleLine1, titleLine2, titleLine3,
+    pill, titleLine1, titleLine2, titleLine3, audience,
     image, imageAlt, imageWidth, imageHeight,
     subtitle, ctaText, marqueeText, marqueeGradient, bullets, subtitlePosition = "afterImage", socialProofCaption,
   } = offer.hero
@@ -24,6 +24,8 @@ export function VendaImediata() {
           <span className="vi-title-line2">{titleLine2}</span>
           {titleLine3 && <span className="vi-title-line3">{titleLine3}</span>}
         </h1>
+
+        {audience && <p className="vi-audience">{audience}</p>}
 
         {subtitlePosition === "beforeImage" && <p className="vi-sub vi-sub-before-image">{subtitle}</p>}
 

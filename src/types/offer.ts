@@ -24,6 +24,7 @@ export interface OfferHero {
   titleLine1: string
   titleLine2: string
   titleLine3: string
+  audience?: string
   image: string
   imageAlt: string
   imageWidth: number
