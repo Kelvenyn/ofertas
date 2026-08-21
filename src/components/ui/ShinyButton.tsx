@@ -8,9 +8,10 @@ interface ShinyButtonProps {
   className?: string
   showArrow?: boolean
   compact?: boolean
+  disabled?: boolean
 }
 
-const ShinyButton: React.FC<ShinyButtonProps> = ({ children, href, onClick, className = "", showArrow = true, compact = false }) => {
+const ShinyButton: React.FC<ShinyButtonProps> = ({ children, href, onClick, className = "", showArrow = true, compact = false, disabled = false }) => {
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     onClick?.()
     if (!href?.startsWith("#")) return
@@ -19,7 +20,7 @@ const ShinyButton: React.FC<ShinyButtonProps> = ({ children, href, onClick, clas
     if (target) target.scrollIntoView({ behavior: "smooth", block: "start" })
   }
 
-  if (href) {
+  if (href && !disabled) {
     return (
       <a
         href={href}
@@ -37,7 +38,8 @@ const ShinyButton: React.FC<ShinyButtonProps> = ({ children, href, onClick, clas
   return (
     <button
       onClick={onClick}
-      className={`shiny-cta group ${compact ? "shiny-cta-sm" : ""} ${className}`}
+      disabled={disabled}
+      className={`shiny-cta group disabled:cursor-not-allowed disabled:opacity-60 ${compact ? "shiny-cta-sm" : ""} ${className}`}
     >
       <span className="relative z-10 flex items-center justify-center gap-2 font-bold text-base tracking-wide text-white w-full">
         {children}

@@ -2991,3 +2991,48 @@ html {
   font-size: 10px;
 }
 
+.sp-problem-section {
+  background: var(--bg);
+  padding: 48px 20px;
+}
+
+.sp-problem-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sp-problem-inner h2 {
+  color: var(--brand-ink);
+  font-family: var(--font-display, Nunito, system-ui, sans-serif);
+  font-size: clamp(24px, 5.5vw, 34px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.sp-problem-questions {
+  display: grid;
+  gap: 10px;
+  margin: 24px 0;
+}
+
+.sp-problem-questions p {
+  margin: 0;
+  border: 1px solid color-mix(in srgb, var(--brand) 18%, white);
+  border-radius: 16px;
+  background: white;
+  color: var(--brand-ink);
+  padding: 14px 18px;
+  font-weight: 700;
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--brand) 8%, transparent);
+}
+
+.sp-problem-conclusion {
+  margin: 28px 0 0;
+  color: var(--brand-ink);
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
