@@ -41,6 +41,7 @@ function getInterpolatedStyle(offset: number): React.CSSProperties {
 
 export function SocialProof() {
   const offer = useOffer()
+  const { questions, conclusion } = offer.socialProof
   const slides = offer.socialProof.testimonials
   const COUNT = slides.length
 
@@ -227,6 +228,20 @@ export function SocialProof() {
   })
 
   const activeSlide = mod(Math.round(currentPos), COUNT)
+
+  if (questions?.length) {
+    return (
+      <section className="sp-problem-section" aria-labelledby="problem-title">
+        <div className="sp-problem-inner">
+          <h2 id="problem-title">{offer.socialProof.title}</h2>
+          <div className="sp-problem-questions">
+            {questions.map((question) => <p key={question}>“{question}”</p>)}
+          </div>
+          {conclusion && <p className="sp-problem-conclusion">{conclusion}</p>}
+        </div>
+      </section>
+    )
+  }
 
   return (
     <section className="sp-section" aria-labelledby="social-proof-title">

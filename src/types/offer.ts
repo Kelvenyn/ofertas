@@ -107,7 +107,8 @@ export interface PricingPlan {
   items: string[]
   mutedItems?: string[]
   ctaText: string
-  ctaHref: string
+  ctaHref?: string
+  ctaDisabled?: boolean
 }
 
 export interface AccessStep {
@@ -128,6 +129,8 @@ export interface OfferConfig {
   socialProof: {
     title?: string
     testimonials: OfferTestimonial[]
+    questions?: string[]
+    conclusion?: string
   }
   counter: OfferCounter
   kitCards: {

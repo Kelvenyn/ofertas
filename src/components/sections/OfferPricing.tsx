@@ -98,16 +98,17 @@ export function OfferPricing() {
 
                 <ShinyButton
                   href={plan.ctaHref}
+                  disabled={plan.ctaDisabled}
                   className={`offer-btn ${plan.featured ? "premium-btn" : "basic-btn"}`}
                   showArrow={false}
-                  onClick={() =>
-                    trackEvent("InitiateCheckout", {
+                  onClick={() => {
+                    if (!plan.ctaDisabled) trackEvent("InitiateCheckout", {
                       value: parsePrice(plan.price),
                       currency: "BRL",
                       content_ids: [plan.id],
                       content_name: plan.title,
                     })
-                  }
+                  }}
                 >
                   {plan.ctaText}
                 </ShinyButton>
