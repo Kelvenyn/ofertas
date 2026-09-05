@@ -26,17 +26,15 @@ export default function PsicopedagogiaLayout({
   const { palette: p } = OFFER
   return (
     <>
-      {/* Pixel Meta: o tracker.js do Hub já inicializa o(s) pixel(s) ativos (via
-          /api/config, client-side, com o mesmo event_id da CAPI) — não embarcar
-          pixel próprio nem Utmify aqui pra não duplicar PageView/ViewContent.
-          Checkout desta oferta é Cakto: não sobrescrever data-checkout-hosts — o
-          default do tracker.js já cobre cakto.com.br (além de wa.me). O ggCheckout
-          foi desligado do Hub (e removido da lista default do tracker.js), então
-          um data-checkout-hosts="ggcheckout.app" aqui só quebraria a propagação
-          do trck_uid pro checkout real desta oferta. */}
       <Script
-        id="hub-tracker-psicopedagogia"
-        src="https://hub.universoeduk.com/tracker.js"
+        id="cashflow-tracker-mapa-infantil"
+        src="https://cashflow.mentoriaprocesso.com/t/p.js?w=743002a9-8ace-4256-b34d-5cfb2461eacc&o=da308c1d-8e9b-46c3-b9f4-5657d8f51335"
+        data-offer="da308c1d-8e9b-46c3-b9f4-5657d8f51335"
+        data-nowprocket
+        data-no-minify="1"
+        data-no-optimize="1"
+        data-cfasync="false"
+        async
         strategy="afterInteractive"
       />
 
