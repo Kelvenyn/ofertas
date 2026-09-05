@@ -18,6 +18,10 @@ export default function TilapiaLayout({ children }: { children: React.ReactNode 
         id="cashflow-tracker-tilapia"
         src="https://cashflow.mentoriaprocesso.com/t/p.js?w=743002a9-8ace-4256-b34d-5cfb2461eacc&o=5d5d7f10-8a99-4d2e-b882-1731ba58774f"
         data-offer="5d5d7f10-8a99-4d2e-b882-1731ba58774f"
+        data-nowprocket
+        data-no-minify="1"
+        data-no-optimize="1"
+        data-cfasync="false"
         async
         strategy="afterInteractive"
       />
