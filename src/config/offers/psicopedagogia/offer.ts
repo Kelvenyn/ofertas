@@ -192,7 +192,7 @@ export const OFFER: OfferConfig = {
           "Não inclui os bônus do Plano Completo",
         ],
         ctaText: "QUERO ESSA OPÇÃO!",
-        ctaHref: "https://pay.cakto.com.br/eatwbfw_1008940",
+        ctaHref: "https://pay.hotmart.com/Q107277076H?checkoutMode=10",
       },
       {
         id: "premium",
@@ -216,7 +216,7 @@ export const OFFER: OfferConfig = {
           "Compra segura",
         ],
         ctaText: "QUERO O PLANO COMPLETO!",
-        ctaHref: "https://pay.cakto.com.br/8kdi43w_1008944",
+        ctaHref: "https://pay.hotmart.com/M107277069H?checkoutMode=10",
       },
     ],
   },
