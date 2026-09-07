@@ -31,6 +31,7 @@ export const OFFER: OfferConfig = {
   kitCards: {
     heading1: "Veja como são os projetos que você vai ter em mãos:",
     images: Array.from({ length: 16 }, (_, index) => ({ src: image(`Imagem (${index + 1}).webp`), alt: `Projeto ${index + 1} de área de serviço pequena`, width: 2000, height: 1414 })),
+    displayAspect: "auto",
   },
   benefits: {
     title: "Por que mulheres com áreas de serviço pequenas estão escolhendo os 50 Projetos?", ctaText: "QUERO VER OS 50 PROJETOS",
@@ -50,7 +51,7 @@ export const OFFER: OfferConfig = {
     pill: "ACESSO IMEDIATO", title: "TUDO O QUE VOCÊ VAI RECEBER", titleHighlight: "", image: image("Plano Completo.webp"), imageAlt: "Plano Completo — Projetos de Áreas de Serviço Pequenas",
     bullets: ["Projetos Prontos de Áreas de Serviço Pequenas", "50 modelos visuais organizados para comparar", "Ideias de varal, armários, bancada e armazenamento", "Medidas ilustrativas para ajudar na visualização", "Material digital para consultar pelo celular, tablet ou computador", "Referências visuais fáceis de comparar e adaptar", "Entrega imediata por e-mail"],
   },
-  bonusSection: { pill: "EXTRA INCLUÍDO", titleLead: "6 BÔNUS", titleHighlight: "EXCLUSIVOS", subtitle: "Além dos 50 Projetos de Áreas de Serviço Pequenas, ao adquirir o Plano Completo você também recebe 6 bônus especiais.", cardLabel: "BÔNUS", touchHint: "Toque na imagem acima para ver o conteúdo.", backHint: "Toque para voltar", timerText: "BÔNUS DISPONÍVEL NO PLANO COMPLETO", freeLabel: "GRÁTIS", cardImageAspect: "portrait" },
+  bonusSection: { pill: "EXTRA INCLUÍDO", titleLead: "6 BÔNUS", titleHighlight: "EXCLUSIVOS", subtitle: "Além dos 50 Projetos de Áreas de Serviço Pequenas, ao adquirir o Plano Completo você também recebe 6 bônus especiais.", cardLabel: "BÔNUS", touchHint: "Toque na imagem acima para ver o conteúdo.", backHint: "Toque para voltar", timerText: "BÔNUS DISPONÍVEL NO PLANO COMPLETO", freeLabel: "GRÁTIS", cardImageAspect: "landscape" },
   bonuses: [
     ["25 Ideias de Varal para Pouco Espaço", "Soluções visuais para secar roupas sem deixar o varal dominar sua área de serviço.", "R$ 19,90"],
     ["20 Ideias de Armários para Áreas de Serviço Pequenas", "Referências para guardar produtos, utensílios e roupas sem deixar os armários ocuparem toda a lavanderia.", "R$ 19,90"],
