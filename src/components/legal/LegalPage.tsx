@@ -1,14 +1,14 @@
 import type { ReactNode } from "react"
 import Link from "next/link"
 
-type LegalPageProps = { title: string; children: ReactNode }
+type LegalPageProps = { title: string; children: ReactNode; backHref?: string; backLabel?: string }
 
-export function LegalPage({ title, children }: LegalPageProps) {
+export function LegalPage({ title, children, backHref = "/", backLabel = "← Voltar às ofertas" }: LegalPageProps) {
   return (
     <main style={{ background: "#FFFDF9", minHeight: "100vh", padding: "56px 16px 80px" }}>
       <article style={{ maxWidth: 760, margin: "0 auto", fontFamily: "var(--font-manrope), sans-serif", color: "#312E2A" }}>
-        <Link href="/" style={{ display: "inline-flex", alignItems: "center", color: "#7F1D1D", fontWeight: 700, fontSize: 14, marginBottom: 32, textDecoration: "none" }}>
-          ← Voltar às ofertas
+        <Link href={backHref} style={{ display: "inline-flex", alignItems: "center", color: "#7F1D1D", fontWeight: 700, fontSize: 14, marginBottom: 32, textDecoration: "none" }}>
+          {backLabel}
         </Link>
         <h1 style={{ fontFamily: "var(--font-nunito), sans-serif", fontSize: "clamp(28px, 6vw, 42px)", fontWeight: 900, color: "#3B0715", margin: "0 0 8px", lineHeight: 1.1 }}>
           {title}
