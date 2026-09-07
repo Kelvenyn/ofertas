@@ -9,7 +9,7 @@ export const OFFER: OfferConfig = {
   },
   palette: {
     brand: "#0F766E", brandDeep: "#115E59", brandInk: "#16302B", brandDark: "#2BAA9A", brandLight: "#8BD5CA", brandSubtle: "#E6F5F2",
-    cta: "#C2410C", ctaDeep: "#9A3412", ctaDarkest: "#7C2D12", accent: "#D97706", yellow: "#F4B942", bg: "#FAFCFB", bgAlt: "#115E59",
+    cta: "#16A34A", ctaDeep: "#11863D", ctaDarkest: "#0E6B31", accent: "#D97706", yellow: "#F4B942", bg: "#FAFCFB", bgAlt: "#115E59",
   },
   hero: {
     pill: "50 PROJETOS VISUAIS",
