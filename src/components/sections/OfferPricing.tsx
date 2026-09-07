@@ -1,11 +1,9 @@
 "use client"
 
-import { useEffect } from "react"
 import Image from "next/image"
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { AnimatedBullets } from "@/components/ui/AnimatedBullets"
 import { useOffer } from "@/context/offer-context"
-import { trackEvent } from "@/lib/trackhub"
 
 function parsePrice(value: string): number {
   return parseFloat(value.replace(/[^\d,]/g, "").replace(",", ".")) || 0
@@ -21,15 +19,6 @@ function calcDiscount(oldStr: string, priceStr: string): number {
 export function OfferPricing() {
   const offer = useOffer()
   const { titleLead, titleHighlight, plans, note, trustText } = offer.pricing
-
-  useEffect(() => {
-    trackEvent("ViewContent", {
-      currency: "BRL",
-      content_ids: plans.map((plan) => plan.id),
-      content_name: offer.meta.title,
-    })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return (
     <section className="offer-pei-section" id="oferta" aria-labelledby="pricing-title">
@@ -101,14 +90,6 @@ export function OfferPricing() {
                   disabled={plan.ctaDisabled}
                   className={`offer-btn ${plan.featured ? "premium-btn" : "basic-btn"}`}
                   showArrow={false}
-                  onClick={() => {
-                    if (!plan.ctaDisabled) trackEvent("InitiateCheckout", {
-                      value: parsePrice(plan.price),
-                      currency: "BRL",
-                      content_ids: [plan.id],
-                      content_name: plan.title,
-                    })
-                  }}
                 >
                   {plan.ctaText}
                 </ShinyButton>
