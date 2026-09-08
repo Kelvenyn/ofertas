@@ -8,7 +8,6 @@ export const metadata: Metadata = { title: OFFER.meta.title, description: OFFER.
 export default function LavanderiaLayout({ children }: { children: React.ReactNode }) {
   const { palette: p } = OFFER
   return <>
-    <Script id="hub-tracker-lavanderia" src="https://hub.universoeduk.com/tracker.js" strategy="afterInteractive" />
     <Script
       id="cashflow-tracker-lavanderia"
       src="https://cashflow.mentoriaprocesso.com/t/p.js?w=743002a9-8ace-4256-b34d-5cfb2461eacc&o=858b9d0c-d3f7-4e71-a0b6-288817b6d656"
