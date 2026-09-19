@@ -63,17 +63,15 @@ export const OFFER: OfferConfig = {
     bg: "#FCF8F1",
     bgAlt: "#6F4A1F"
   },
+  orientation: "portrait",
   hero: {
     ...laboralOffer.hero,
     pill: "PARA QUEM CRIA MODA",
-    titleLine1: "+60 Bases de Croqui",
-    titleLine2: "Prontas para Desenhar",
-    titleLine3: "Suas Roupas em Minutos",
+    headline: "+60 Bases de Croqui\nProntas para Desenhar",
+    subline: "Suas Roupas em Minutos",
     image: "/images/croqui/Plano Completo.webp",
     imageAlt: "Mockup do pacote de bases de croqui",
-    imageWidth: 1254,
-    imageHeight: 1254,
-    subtitle: "Pare de travar na folha em branco e comece a desenhar suas roupas com bases de croqui prontas.",
+    support: "Pare de travar na folha em branco e comece a desenhar suas roupas com bases de croqui prontas.",
     ctaText: "QUERO ACESSAR AGORA",
     marqueeText: "60 BASES DE CROQUI ✦ PRONTAS PARA IMPRIMIR ✦ ACESSO IMEDIATO ✦ ",
     bullets: ["60 bases femininas prontas", "Arquivos em PNG e PDF", "Bases na proporção das 9 cabeças", "Imprima e comece a desenhar imediatamente"]
@@ -90,12 +88,11 @@ export const OFFER: OfferConfig = {
   },
   kitCards: {
     ...laboralOffer.kitCards,
-    heading1: "Veja as bases que você vai usar para tirar suas ideias do papel:",
+    heading: "Veja as bases que você vai usar para tirar suas ideias do papel:",
     images: demoImageOrder.map((index) => {
       const item = laboralOffer.kitCards.images[index]
-      return { ...item, src: image(item.src), alt: "Base de croqui pronta para desenhar", width: 280, height: 396 }
-    }),
-    displayAspect: "portrait"
+      return { ...item, src: image(item.src), alt: "Base de croqui pronta para desenhar" }
+    })
   },
   benefits: {
     title: "COM O PACK CROQUI PRONTO, SUAS IDEIAS VIRAM CRIAÇÕES",
@@ -132,12 +129,10 @@ export const OFFER: OfferConfig = {
   },
   bonusSection: {
     ...laboralOffer.bonusSection,
-    pill: "EXTRAS INCLUÍDOS",
     titleLead: "5 BÔNUS",
     titleHighlight: "EXCLUSIVOS",
     subtitle: "No Plano Completo, você também recebe materiais para ampliar ainda mais suas criações e agilizar seu processo.",
-    timerText: "BÔNUS DISPONÍVEL SOMENTE\nNO PLANO COMPLETO",
-    cardImageAspect: "portrait"
+    timerText: "BÔNUS DISPONÍVEL SOMENTE\nNO PLANO COMPLETO"
   },
   bonuses: laboralOffer.bonuses.slice(0, bonuses.length).map((bonus, index) => ({
     ...bonus,

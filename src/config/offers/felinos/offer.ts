@@ -9,10 +9,11 @@ export const OFFER: OfferConfig = {
     brand: "#D97706", brandDeep: "#9A3412", brandInk: "#431407", brandDark: "#F59E0B", brandLight: "#FCD34D", brandSubtle: "#FFF7ED",
     cta: "#16A34A", ctaDeep: "#11863D", ctaDarkest: "#0E6B31", accent: "#EA580C", yellow: "#FDE047", bg: "#FFFBEB", bgAlt: "#FED7AA"
   },
+  orientation: "landscape",
   hero: {
-    pill: "MAPA DOS COMPORTAMENTOS FELINOS", titleLine1: "Mapa dos Comportamentos Felinos", titleLine2: "para tutores que querem entender melhor seus gatos", titleLine3: "Entenda os sinais, saiba como agir e fortaleça o vínculo com seu gato",
-    image: "/images/felinos/Plano Completo.webp", imageAlt: "Mapa dos Comportamentos Felinos", imageWidth: 1080, imageHeight: 1080,
-    subtitle: "Tenha em mãos um mapa visual para entender o que os comportamentos do seu gato podem estar comunicando, reconhecer sinais de bem-estar e saber como responder em cada situação, sem ficar tentando adivinhar o que ele quer dizer.",
+    pill: "MAPA DOS COMPORTAMENTOS FELINOS", headline: "Mapa dos Comportamentos Felinos\npara tutores que querem entender melhor seus gatos", subline: "Entenda os sinais, saiba como agir e fortaleça o vínculo com seu gato",
+    image: "/images/felinos/Plano Completo.webp", imageAlt: "Mapa dos Comportamentos Felinos",
+    support: "Tenha em mãos um mapa visual para entender o que os comportamentos do seu gato podem estar comunicando, reconhecer sinais de bem-estar e saber como responder em cada situação, sem ficar tentando adivinhar o que ele quer dizer.",
     ctaText: "QUERO O MAPA", marqueeText: "COMPORTAMENTOS FELINOS • SIGNIFICADOS E CONTEXTOS • ACESSO IMEDIATO • ",
     bullets: ["Entender o que seu gato está comunicando", "Reconhecer sinais de felicidade e bem-estar", "Identificar demonstrações de carinho e confiança", "Saber como agir diante de cada comportamento"]
   },
@@ -28,7 +29,7 @@ export const OFFER: OfferConfig = {
     ]
   },
   counter: { prefix: "+ de", target: 30, label: "Comportamentos Felinos organizados\npara você entender seu gato" },
-  kitCards: { heading1: "Veja como é o mapa que você vai usar:", images: Array.from({ length: 10 }, (_, index) => ({ src: `/images/felinos/Imagem (${index + 1}).webp`, alt: `Página ${index + 1} do Mapa dos Comportamentos Felinos`, width: 208, height: 134 })) },
+  kitCards: { heading: "Veja como é o mapa que você vai usar:", images: Array.from({ length: 10 }, (_, index) => ({ src: `/images/felinos/Imagem (${index + 1}).webp`, alt: `Página ${index + 1} do Mapa dos Comportamentos Felinos` })) },
   benefits: {
     title: "Por que tutores de gatos estão usando o Mapa dos Comportamentos Felinos?", ctaText: "QUERO O MAPA",
     items: [
@@ -40,7 +41,7 @@ export const OFFER: OfferConfig = {
   },
   urgency: { title: "Pare de ficar tentando adivinhar o que seu gato quer dizer", highlight: "", body: "Enquanto você tenta interpretar sozinho cada mordida, olhar, movimento do rabo ou mudança de comportamento, o Mapa dos Comportamentos Felinos te ajuda a observar os sinais com mais clareza e saber como responder.", ctaText: "QUERO O MAPA", trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"] },
   deliverables: { title: "TUDO O QUE VOCÊ VAI RECEBER", image: "/images/felinos/Plano Completo.webp", imageAlt: "Mapa dos Comportamentos Felinos", bullets: ["Mapa dos Comportamentos Felinos completo", "30 sinais e comportamentos felinos explicados", "Sinais de carinho, confiança, conforto e limites", "Leitura de olhos, orelhas, rabo e postura corporal", "Orientação simples de como agir em cada situação", "O que observar no corpo e no contexto antes de interpretar", "Material visual e fácil de consultar", "Entrega imediata por e-mail"] },
-  bonusSection: { pill: "EXTRA INCLUÍDO", titleLead: "6 BÔNUS", titleHighlight: "EXCLUSIVOS", subtitle: "Além do Mapa dos Comportamentos Felinos, ao adquirir o Plano Completo você também recebe 6 bônus especiais.", cardLabel: "BÔNUS", timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO", freeLabel: "GRÁTIS" },
+  bonusSection: { titleLead: "6 BÔNUS", titleHighlight: "EXCLUSIVOS", subtitle: "Além do Mapa dos Comportamentos Felinos, ao adquirir o Plano Completo você também recebe 6 bônus especiais.", cardLabel: "BÔNUS", timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO", freeLabel: "GRÁTIS" },
   bonuses: [
     { front: "/images/felinos/bonus-1-frente.webp", back: "/images/felinos/bonus-1-verso.webp", title: "Fichas Visuais do Rabo Felino", titleBreak: "Fichas Visuais\ndo Rabo Felino", desc: "Fichas visuais para identificar posições e movimentos do rabo, entender o que podem indicar e o que observar antes de interpretar.", price: "R$ 12,90" },
     { front: "/images/felinos/bonus-2-frente.webp", back: "/images/felinos/bonus-2-verso.webp", title: "Sinais de Carinho e Confiança", titleBreak: "Sinais de Carinho\ne Confiança", desc: "Um guia visual para reconhecer carinho, confiança e proximidade, entender o contexto de cada sinal e evitar conclusões apressadas.", price: "R$ 12,90" },

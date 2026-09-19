@@ -9,13 +9,13 @@ const SCROLL_SPEED = 0.3
 
 interface InfiniteImageRailProps {
   images: KitImage[]
-  displayAspect: "auto" | "portrait"
+  orientation: "portrait" | "landscape"
   direction?: "forward" | "reverse"
   heading?: string
   subtitle?: string
 }
 
-export function InfiniteImageRail({ images, displayAspect, direction = "forward", heading, subtitle }: InfiniteImageRailProps) {
+export function InfiniteImageRail({ images, orientation, direction = "forward", heading, subtitle }: InfiniteImageRailProps) {
   const trackRef = useRef<HTMLDivElement>(null)
   const sectionRef = useRef<HTMLDivElement>(null)
   const offsetRef = useRef(0)
@@ -142,15 +142,15 @@ export function InfiniteImageRail({ images, displayAspect, direction = "forward"
         <div ref={trackRef} className="kc-track" style={{ opacity: ready ? 1 : 0, transition: "opacity 400ms ease" }}>
           {repeatedImages.map((image, index) => (
             <div
-              className={`kc-card${displayAspect === "portrait" ? " kc-card-portrait" : landscapeImages[image.src] || (image.width && image.height && image.width > image.height) ? " kc-card-landscape" : ""}`}
+              className={`kc-card${orientation === "portrait" ? " kc-card-portrait" : landscapeImages[image.src] ? " kc-card-landscape" : ""}`}
               key={`${image.src}-${index}`}
-              style={{ aspectRatio: displayAspect === "portrait" ? "3 / 4" : imageRatios[image.src] ?? (image.width && image.height ? `${image.width} / ${image.height}` : undefined) }}
+              style={{ aspectRatio: orientation === "portrait" ? "3 / 4" : imageRatios[image.src] }}
             >
               <Image
                 src={image.src}
                 alt={image.alt}
-                width={image.width ?? 280}
-                height={image.height ?? 400}
+                width={orientation === "portrait" ? 300 : 280}
+                height={orientation === "portrait" ? 400 : 210}
                 className="kc-card-img"
                 data-kc-src={image.src}
                 sizes="(max-width: 570px) 240px, (max-width: 857px) 42vw, 360px"

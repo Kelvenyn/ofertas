@@ -51,7 +51,7 @@ function BenefitCard({ icon, title, desc, index }: { icon: string; title: string
 
 export function Benefits() {
   const offer = useOffer()
-  const { title, ctaText, items, image, imageAlt, imageWidth = 1254, imageHeight = 1254 } = offer.benefits
+  const { title, ctaText, items, image, imageAlt } = offer.benefits
   return (
     <section className="benefits-section" aria-labelledby="benefits-title">
       <div className="benefits-inner">
@@ -61,7 +61,7 @@ export function Benefits() {
 
         {image && (
           <div className="benefits-image">
-            <Image src={image} alt={imageAlt ?? "Imagem do material"} width={imageWidth} height={imageHeight} sizes="(max-width: 700px) 100vw, 520px" />
+            <Image src={image} alt={imageAlt ?? "Imagem do material"} width={1080} height={1080} sizes="(max-width: 700px) 100vw, 520px" />
           </div>
         )}
 

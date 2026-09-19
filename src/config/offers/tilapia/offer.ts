@@ -15,16 +15,15 @@ export const OFFER: OfferConfig = {
     description: "48 projetos visuais de criadouros para tilápias, organizados por espaço e com tamanhos definidos para você escolher e montar."
   },
   palette: { brand: "#0E7490", brandDeep: "#164E63", brandInk: "#083344", brandDark: "#22A6C3", brandLight: "#A5E3EC", brandSubtle: "#E8F8F8", cta: "#16A34A", ctaDeep: "#11863D", ctaDarkest: "#0E6B31", accent: "#D99922", yellow: "#F4C95D", bg: "#F3FAFA", bgAlt: "#164E63" },
+  orientation: "landscape",
   hero: {
     pill: "48 PROJETOS VISUAIS",
-    titleLine1: "48 Projetos Visuais",
-    titleLine2: "de Criadouros para Tilápias",
-    titleLine3: "",
-    image: image("Plano Completo.webp"), imageAlt: "Plano Completo: Projetos de Criadouros para Tilápias", imageWidth: 1080, imageHeight: 1080,
-    audience: "Escolha o modelo que combina com seu espaço e visualize tudo antes da montagem",
-    subtitle: "Tenha modelos prontos para comparar diferentes estruturas, organizar as caixas no espaço que você tem e usar como referência antes de começar a montagem.",
+    headline: "48 Projetos Visuais\nde Criadouros para Tilápias",
+    subline: "Escolha o modelo que combina com seu espaço e visualize tudo antes da montagem",
+    image: image("Plano Completo.webp"), imageAlt: "Plano Completo: Projetos de Criadouros para Tilápias",
+    support: "Tenha modelos prontos para comparar diferentes estruturas, organizar as caixas no espaço que você tem e usar como referência antes de começar a montagem.",
     ctaText: "QUERO OS PROJETOS", marqueeText: "48 PROJETOS ✦ PDF ALTA QUALIDADE ✦ ACESSO IMEDIATO ✦ TAMANHOS JÁ DEFINIDOS ✦ ",
-    bullets: ["Projetos para todos os tipos de espaço", "Tamanhos já definidos", "Clareza para organizar cada estrutura", "Dicas para evitar erros na montagem", "Acesso imediato após a compra"]
+    bullets: ["Projetos para todos os tipos de espaço", "Tamanhos já definidos", "Clareza para organizar cada estrutura", "Dicas para evitar erros na montagem"]
   },
   socialProof: {
     title: "Quem já usa os projetos aprova",
@@ -32,9 +31,8 @@ export const OFFER: OfferConfig = {
   },
   counter: { prefix: "", target: 48, label: "Projetos visuais de criadouros\npara você escolher e montar" },
   kitCards: {
-    heading1: "Veja como são os projetos que você vai receber:",
-    images: Array.from({ length: 18 }, (_, index) => ({ src: image(`Imagem (${index + 1}).webp`), alt: `Projeto visual de criadouro para tilápias ${index + 1}`, width: 2000, height: 1414 })),
-    displayAspect: "auto"
+    heading: "Veja como são os projetos que você vai receber:",
+    images: Array.from({ length: 18 }, (_, index) => ({ src: image(`Imagem (${index + 1}).webp`), alt: `Projeto visual de criadouro para tilápias ${index + 1}` }))
   },
   benefits: {
     title: "Por que quem quer criar tilápia está escolhendo os Projetos?", ctaText: "QUERO OS PROJETOS",
@@ -50,7 +48,7 @@ export const OFFER: OfferConfig = {
     title: "TUDO O QUE VOCÊ VAI RECEBER", image: image("Plano Completo.webp"), imageAlt: "Projetos Visuais de Criadouros de Tilápias",
     bullets: ["48 Projetos Visuais de Criadouros de Tilápias", "Projetos para Quintais Pequenos", "Projetos para Terrenos", "Projetos para Sítios e Chácaras", "Projetos para Corredores e Espaços Estreitos", "Projetos para Fundos de Casa", "Projetos para Cantos de Terreno", "Projetos para Áreas Cobertas", "Projetos para Pequenas Áreas Produtivas", "Arquivos em PDF prontos para consulta"]
   },
-  bonusSection: { pill: "EXTRA INCLUÍDO", titleLead: "4 BÔNUS", titleHighlight: "EXCLUSIVOS", subtitle: "Além dos 48 Projetos, ao adquirir o Plano Completo você também recebe 4 bônus especiais.", cardLabel: "BÔNUS", timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO", freeLabel: "GRÁTIS", cardImageAspect: "landscape" },
+  bonusSection: { titleLead: "4 BÔNUS", titleHighlight: "EXCLUSIVOS", subtitle: "Além dos 48 Projetos, ao adquirir o Plano Completo você também recebe 4 bônus especiais.", cardLabel: "BÔNUS", timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO", freeLabel: "GRÁTIS" },
   bonuses: bonuses.map(([title, titleBreak, desc], index) => ({ front: image(`bonus-${index + 1}-frente.webp`), back: image(`bonus-${index + 1}-verso.webp`), title, titleBreak, desc, price: "R$ 27,00" })),
   pricing: {
     titleLead: "ESCOLHA O", titleHighlight: "PLANO IDEAL PARA VOCÊ",

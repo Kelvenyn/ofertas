@@ -21,19 +21,14 @@ export interface OfferMeta {
 
 export interface OfferHero {
   pill: string
-  titleLine1: string
-  titleLine2: string
-  titleLine3: string
-  audience?: string
-  image: string
+  headline: string         // ≤ 70 car.; "\n" força quebra de linha (não conta no limite)
+  subline: string         // ≤ 70 car.
+  image: string           // "plano-completo.webp" (sempre quadrada 1080×1080)
   imageAlt: string
-  imageWidth: number
-  imageHeight: number
-  subtitle: string
-  ctaText: string
-  marqueeText: string
-  bullets?: string[]
-  subtitlePosition?: "beforeImage" | "afterImage"
+  support: string         // ≤ 160 car. (texto de apoio, depois do CTA)
+  bullets: string[]       // exatamente 4, ≤ 34 car. cada
+  ctaText: string         // ≤ 17 car.
+  marqueeText: string     // ≤ 70 car.
 }
 
 export interface OfferTestimonial {
@@ -50,8 +45,6 @@ export interface OfferCounter {
 export interface KitImage {
   src: string
   alt: string
-  width?: number
-  height?: number
 }
 
 export interface BenefitItem {
@@ -66,8 +59,6 @@ export interface BenefitSection {
   items: BenefitItem[]
   image?: string
   imageAlt?: string
-  imageWidth?: number
-  imageHeight?: number
 }
 
 export interface BonusItem {
@@ -80,14 +71,12 @@ export interface BonusItem {
 }
 
 export interface BonusSection {
-  pill: string
   titleLead: string
   titleHighlight: string
   subtitle: string
   cardLabel: string
   timerText: string
   freeLabel: string
-  cardImageAspect?: "landscape" | "portrait"
 }
 
 export interface PricingPlan {
@@ -122,17 +111,18 @@ export interface FaqItem {
 export interface OfferConfig {
   meta: OfferMeta
   palette: OfferPalette
+  paletteCandidates?: OfferPalette[]        // 5 candidatas (Fase 4)
+  orientation: "portrait" | "landscape"     // governa kit + bônus (Fase 5)
+  sections?: Partial<Record<SectionId, boolean>>  // ligar/desligar (Fase 6)
   hero: OfferHero
   socialProof: {
-    title?: string
+    title: string
     testimonials: OfferTestimonial[]
   }
   counter: OfferCounter
   kitCards: {
-    heading1: string
-    heading2?: string
+    heading: string
     images: KitImage[]
-    displayAspect?: "auto" | "portrait"
   }
   benefits: BenefitSection
   urgency: {
@@ -184,3 +174,7 @@ export interface OfferConfig {
     showUpdate?: boolean
   }
 }
+
+export type SectionId =
+  | "socialProof" | "counter" | "kit" | "kitReversed" | "benefits" | "urgency"
+  | "deliverables" | "bonuses" | "pricing" | "guarantee" | "access" | "faq" | "footer"

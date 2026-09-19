@@ -20,16 +20,14 @@ export const OFFER: OfferConfig = {
     "bg": "#F7F8F8",
     "bgAlt": "#1B252C"
   },
+  "orientation": "landscape",
   "hero": {
     "pill": "GUIA VISUAL PARA CONSULTAR NA OBRA",
-    "titleLine1": "Guia Prático",
-    "titleLine2": "de Instalação de",
-    "titleLine3": "Calhas e Rufos",
+    "headline": "Guia Prático\nde Instalação de",
+    "subline": "Calhas e Rufos",
     "image": "/images/calha/Plano Completo.webp",
     "imageAlt": "Guia Prático de Instalação de Calhas e Rufos com seis materiais extras",
-    "imageWidth": 1080,
-    "imageHeight": 1080,
-    "subtitle": "Tenha em mãos um guia visual prático com projetos de calhas e rufos para consultar direto na obra: tipos de instalação, o que observar antes de começar, como organizar a execução e quais pontos conferir para reduzir improviso, retrabalho, infiltração e acabamento mal feito.",
+    "support": "Tenha em mãos um guia visual prático com projetos de calhas e rufos para consultar direto na obra: tipos de instalação, o que observar antes de começar, como organizar a execução e quais pontos conferir para reduzir improviso, retrabalho, infiltração e acabamento mal feito.",
     "ctaText": "QUERO O GUIA",
     "marqueeText": "MARQUE • CONFIRA OS CAIMENTOS • INSTALE DO JEITO CERTO • REDUZA RETRABALHO • ",
     "bullets": [
@@ -74,124 +72,85 @@ export const OFFER: OfferConfig = {
     "label": "Projetos visuais de calhas e rufos\npara consultar direto na obra"
   },
   "kitCards": {
-    "heading1": "Veja o guia visual que você vai receber",
+    "heading": "Veja o guia visual que você vai receber",
     "images": [
       {
         "src": "/images/calha/Imagem (1).webp",
-        "alt": "Projeto visual 1 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 1 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (2).webp",
-        "alt": "Projeto visual 2 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 2 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (3).webp",
-        "alt": "Projeto visual 3 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 3 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (4).webp",
-        "alt": "Projeto visual 4 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 4 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (5).webp",
-        "alt": "Projeto visual 5 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 5 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (6).webp",
-        "alt": "Projeto visual 6 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 6 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (7).webp",
-        "alt": "Projeto visual 7 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 7 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (8).webp",
-        "alt": "Projeto visual 8 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 8 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (9).webp",
-        "alt": "Projeto visual 9 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 9 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (10).webp",
-        "alt": "Projeto visual 10 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 10 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (11).webp",
-        "alt": "Projeto visual 11 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 11 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (12).webp",
-        "alt": "Projeto visual 12 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 12 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (13).webp",
-        "alt": "Projeto visual 13 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 13 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (14).webp",
-        "alt": "Projeto visual 14 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 14 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (15).webp",
-        "alt": "Projeto visual 15 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 15 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (16).webp",
-        "alt": "Projeto visual 16 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 16 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (17).webp",
-        "alt": "Projeto visual 17 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 17 do Guia Prático de Instalação de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Imagem (18).webp",
-        "alt": "Projeto visual 18 do Guia Prático de Instalação de Calhas e Rufos",
-        "width": 2000,
-        "height": 1414
+        "alt": "Projeto visual 18 do Guia Prático de Instalação de Calhas e Rufos"
       }
     ],
-    "displayAspect": "auto"
   },
   "benefits": {
     "image": "/images/calha/Benefício.webp",
     "imageAlt": "Benefícios do Guia Prático de Instalação de Calhas e Rufos",
-    "imageWidth": 1254,
-    "imageHeight": 1254,
     "title": "O Guia Prático vai te trazer mais:",
     "ctaText": "QUERO O GUIA",
     "items": [
@@ -251,14 +210,12 @@ export const OFFER: OfferConfig = {
     ]
   },
   "bonusSection": {
-    "pill": "EXTRA INCLUÍDO",
     "titleLead": "6 BÔNUS",
     "titleHighlight": "EXCLUSIVOS",
     "subtitle": "Além do Guia Prático, no Plano Completo você também recebe 6 materiais extras para consultar durante a obra, evitar improviso, conferir pontos críticos e organizar melhor o serviço.",
     "cardLabel": "BÔNUS",
     "timerText": "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO",
-    "freeLabel": "GRÁTIS",
-    "cardImageAspect": "landscape"
+    "freeLabel": "GRÁTIS"
   },
   "bonuses": [
     {

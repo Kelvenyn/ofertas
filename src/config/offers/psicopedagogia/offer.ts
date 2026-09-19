@@ -20,16 +20,14 @@ export const OFFER: OfferConfig = {
     bg: "#F0F9FF",
     bgAlt: "#F59E0B"
   },
+  orientation: "landscape",
   hero: {
     pill: "MAPA DE PERFIL INFANTIL",
-    titleLine1: "Mapa de Perfil Infantil",
-    titleLine2: "para psicopedagogas iniciantes",
-    titleLine3: "Identifique, escolha e conduza com mais segurança",
+    headline: "Mapa de Perfil Infantil\npara psicopedagogas iniciantes",
+    subline: "Identifique, escolha e conduza com mais segurança",
     image: "/images/psicopedagogia/Plano Completo.webp",
     imageAlt: "Mapa de Perfil Infantil",
-    imageWidth: 1080,
-    imageHeight: 1080,
-    subtitle: "Tenha em mãos um mapa visual para identificar perfis infantis e escolher a atividade certa para cada sessão, sem precisar improvisar.",
+    support: "Tenha em mãos um mapa visual para identificar perfis infantis e escolher a atividade certa para cada sessão, sem precisar improvisar.",
     ctaText: "QUERO O MAPA DE PERFIL INFANTIL",
     marqueeText: "15 Perfis Infantis • Atividade-guia para cada perfil • Acesso Imediato • ",
     bullets: [
@@ -37,7 +35,6 @@ export const OFFER: OfferConfig = {
       "Escolher a atividade certa",
       "Definir o objetivo da sessão",
       "Conduzir sem improvisar",
-      "Atender com mais segurança",
     ]
   },
   socialProof: {
@@ -58,18 +55,18 @@ export const OFFER: OfferConfig = {
     label: "Perfis Infantis organizados para suas sessões"
   },
   kitCards: {
-    heading1: "Veja como é o mapa que você vai usar nas sessões:",
+    heading: "Veja como é o mapa que você vai usar nas sessões:",
     images: [
-      { src: "/images/psicopedagogia/Imagem (1).webp", alt: "Mapa de Perfil Infantil 1", width: 208, height: 134 },
-      { src: "/images/psicopedagogia/Imagem (2).webp", alt: "Mapa de Perfil Infantil 2", width: 208, height: 134 },
-      { src: "/images/psicopedagogia/Imagem (3).webp", alt: "Mapa de Perfil Infantil 3", width: 208, height: 134 },
-      { src: "/images/psicopedagogia/Imagem (4).webp", alt: "Mapa de Perfil Infantil 4", width: 208, height: 134 },
-      { src: "/images/psicopedagogia/Imagem (5).webp", alt: "Mapa de Perfil Infantil 5", width: 208, height: 134 },
-      { src: "/images/psicopedagogia/Imagem (6).webp", alt: "Mapa de Perfil Infantil 6", width: 208, height: 134 },
-      { src: "/images/psicopedagogia/Imagem (7).webp", alt: "Mapa de Perfil Infantil 7", width: 208, height: 134 },
-      { src: "/images/psicopedagogia/Imagem (8).webp", alt: "Mapa de Perfil Infantil 8", width: 208, height: 134 },
-      { src: "/images/psicopedagogia/Imagem (9).webp", alt: "Mapa de Perfil Infantil 9", width: 208, height: 134 },
-      { src: "/images/psicopedagogia/Imagem (10).webp", alt: "Mapa de Perfil Infantil 10", width: 208, height: 134 },
+      { src: "/images/psicopedagogia/Imagem (1).webp", alt: "Mapa de Perfil Infantil 1" },
+      { src: "/images/psicopedagogia/Imagem (2).webp", alt: "Mapa de Perfil Infantil 2" },
+      { src: "/images/psicopedagogia/Imagem (3).webp", alt: "Mapa de Perfil Infantil 3" },
+      { src: "/images/psicopedagogia/Imagem (4).webp", alt: "Mapa de Perfil Infantil 4" },
+      { src: "/images/psicopedagogia/Imagem (5).webp", alt: "Mapa de Perfil Infantil 5" },
+      { src: "/images/psicopedagogia/Imagem (6).webp", alt: "Mapa de Perfil Infantil 6" },
+      { src: "/images/psicopedagogia/Imagem (7).webp", alt: "Mapa de Perfil Infantil 7" },
+      { src: "/images/psicopedagogia/Imagem (8).webp", alt: "Mapa de Perfil Infantil 8" },
+      { src: "/images/psicopedagogia/Imagem (9).webp", alt: "Mapa de Perfil Infantil 9" },
+      { src: "/images/psicopedagogia/Imagem (10).webp", alt: "Mapa de Perfil Infantil 10" },
     ]
   },
   benefits: {
@@ -104,7 +101,6 @@ export const OFFER: OfferConfig = {
     ]
   },
   bonusSection: {
-    pill: "EXTRA INCLUÍDO",
     titleLead: "6 BÔNUS",
     titleHighlight: "EXCLUSIVOS",
     subtitle: "Além do Mapa de Perfil Infantil, ao adquirir o Plano Completo você também recebe 6 bônus especiais.",

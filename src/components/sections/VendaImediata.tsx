@@ -9,10 +9,11 @@ import { useOffer } from "@/context/offer-context"
 export function VendaImediata() {
   const offer = useOffer()
   const {
-    pill, titleLine1, titleLine2, titleLine3, audience,
-    image, imageAlt, imageWidth, imageHeight,
-    subtitle, ctaText, marqueeText, bullets, subtitlePosition = "afterImage",
+    pill, headline, subline,
+    image, imageAlt,
+    support, ctaText, marqueeText, bullets,
   } = offer.hero
+  const [headlineLine1, headlineLine2] = headline.split("\n")
 
   return (
     <section className="vi-hero">
@@ -20,26 +21,22 @@ export function VendaImediata() {
         <div className="vi-pill">{pill}</div>
 
         <h1 className="vi-title">
-          {titleLine1 && <span className="vi-title-line1">{titleLine1}</span>}
-          <span className="vi-title-line2">{titleLine2}</span>
-          {titleLine3 && <span className="vi-title-line3">{titleLine3}</span>}
+          {headlineLine1 && <span className="vi-title-line1">{headlineLine1}</span>}
+          {headlineLine2 && <span className="vi-title-line2">{headlineLine2}</span>}
+          {subline && <span className="vi-title-line3">{subline}</span>}
         </h1>
-
-        {audience && <p className="vi-audience">{audience}</p>}
-
-        {subtitlePosition === "beforeImage" && <p className="vi-sub vi-sub-before-image">{subtitle}</p>}
 
         <div className="vi-image">
           <Image
             src={image}
             alt={imageAlt}
-            width={imageWidth}
-            height={imageHeight}
+            width={1080}
+            height={1080}
             priority
           />
         </div>
 
-        {subtitlePosition !== "beforeImage" && <p className="vi-sub">{subtitle}</p>}
+        {support && <p className="vi-sub">{support}</p>}
 
         {bullets && bullets.length > 0 && (
           <AnimatedBullets items={bullets} className="vi-bullets ab-center" />

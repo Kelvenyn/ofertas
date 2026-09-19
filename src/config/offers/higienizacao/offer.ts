@@ -2,9 +2,7 @@ import type { OfferConfig } from "@/types/offer"
 
 const pages = Array.from({ length: 15 }, (_, index) => ({
   src: `/images/higienizacao/page-${String(index + 1).padStart(2, "0")}.webp`,
-  alt: `Página ${index + 1} do Manual Prático de Diagnóstico e Decisão para Higienização`,
-  width: 1200,
-  height: 1697
+  alt: `Página ${index + 1} do Manual Prático de Diagnóstico e Decisão para Higienização`
 }))
 
 const bonusDetails = [
@@ -66,16 +64,14 @@ export const OFFER: OfferConfig = {
     bg: "#F8FAFC",
     bgAlt: "#1E293B"
   },
+  orientation: "portrait",
   hero: {
     pill: "MANUAL PRÁTICO DE HIGIENIZAÇÃO",
-    titleLine1: "Manual Prático de",
-    titleLine2: "Diagnóstico e Decisão",
-    titleLine3: "para Higienização de Sofás, Colchões e Cadeiras Estofadas",
+    headline: "Manual Prático de\nDiagnóstico e Decisão",
+    subline: "para Higienização de Sofás, Colchões e Cadeiras Estofadas",
     image: "/images/higienizacao/plan-complete.webp",
     imageAlt: "Manual Prático de Diagnóstico e Decisão para Higienização com seis bônus",
-    imageWidth: 1080,
-    imageHeight: 1080,
-    subtitle: "Tenha sempre em mãos uma referência visual para entender o que está diante de você, o que precisa observar, quais riscos avaliar e qual caminho considerar antes e durante cada higienização.",
+    support: "Tenha sempre em mãos uma referência visual para entender o que está diante de você, o que precisa observar, quais riscos avaliar e qual caminho considerar antes e durante cada higienização.",
     ctaText: "QUERO TER O MANUAL",
     marqueeText: "IDENTIFIQUE • AVALIE • HIGIENIZE DO JEITO CERTO • REDUZA ERROS E RETRABALHO • ",
     bullets: [
@@ -98,9 +94,8 @@ export const OFFER: OfferConfig = {
     label: "Diagnósticos de sofás, colchões e cadeiras estofadas\npara avaliar e higienizar"
   },
   kitCards: {
-    heading1: "Veja como o manual ajuda você a consultar durante o serviço:",
-    images: pages,
-    displayAspect: "portrait"
+    heading: "Veja como o manual ajuda você a consultar durante o serviço:",
+    images: pages
   },
   benefits: {
     title: "O manual prático vai te trazer mais:",
@@ -150,14 +145,12 @@ export const OFFER: OfferConfig = {
     ]
   },
   bonusSection: {
-    pill: "EXTRAS INCLUÍDOS",
     titleLead: "6 BÔNUS",
     titleHighlight: "EXCLUSIVOS",
     subtitle: "Além do Manual Prático, no Plano Completo você também recebe 6 materiais extras para facilitar seu serviço, reduzir dúvidas no atendimento e ajudar antes, durante e depois da higienização de estofados.",
     cardLabel: "BÔNUS",
     timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO",
-    freeLabel: "GRÁTIS",
-    cardImageAspect: "portrait"
+    freeLabel: "GRÁTIS"
   },
   bonuses: bonusDetails.map((bonus, index) => ({
     front: `/images/higienizacao/bonus-${String(index + 1).padStart(2, "0")}-front.webp`,

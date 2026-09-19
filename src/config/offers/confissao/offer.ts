@@ -63,17 +63,15 @@ export const OFFER: OfferConfig = {
     bg: "#FFF7F5",
     bgAlt: "#4C0519"
   },
+  orientation: "portrait",
   hero: {
     ...laboralOffer.hero,
     pill: "PARA QUEM VAI SE CONFESSAR",
-    titleLine1: "Guia Visual",
-    titleLine2: "da Confissão",
-    titleLine3: "",
+    headline: "Guia Visual\nda Confissão",
+    subline: "Prepare sua confissão com um passo a passo visual para organizar o exame de consciência, saber o que dizer ao padre e sair do confessionário sem a sensação de ter feito algo errado.",
     image: confissaoImage("Plano Completo.webp"),
-    subtitle: "Prepare sua confissão com um passo a passo visual para organizar o exame de consciência, saber o que dizer ao padre e sair do confessionário sem a sensação de ter feito algo errado.",
     imageAlt: "Guia Visual da Confissão",
-    imageWidth: 700,
-    imageHeight: 700,
+    support: "Prepare sua confissão com um passo a passo visual para organizar o exame de consciência, saber o que dizer ao padre e sair do confessionário sem a sensação de ter feito algo errado.",
     ctaText: "QUERO ACESSAR AGORA",
     marqueeText: "GUIA VISUAL ✦ EXAME DE CONSCIÊNCIA ✦ PASSO A PASSO ✦ ACESSO IMEDIATO ✦ ",
     bullets: [
@@ -99,14 +97,11 @@ export const OFFER: OfferConfig = {
   },
   kitCards: {
     ...laboralOffer.kitCards,
-    heading1: "VEJA O GUIA VISUAL DA CONFISSÃO POR DENTRO",
+    heading: "VEJA O GUIA VISUAL DA CONFISSÃO POR DENTRO",
     images: Array.from({ length: 14 }, (_, index) => ({
       src: confissaoImage(`Imagem (${index + 1}).webp`),
-      alt: `Página ${index + 1} do Guia Visual da Confissão`,
-      width: 600,
-      height: 900
-    })),
-    displayAspect: "portrait"
+      alt: `Página ${index + 1} do Guia Visual da Confissão`
+    }))
   },
   benefits: {
     title: "O GUIA VISUAL DA CONFISSÃO POSSUI:",
@@ -143,12 +138,10 @@ export const OFFER: OfferConfig = {
   },
   bonusSection: {
     ...laboralOffer.bonusSection,
-    pill: "EXTRAS INCLUÍDOS",
     titleLead: "6 BÔNUS",
     titleHighlight: "EXCLUSIVOS",
     subtitle: "No Plano Completo, você recebe materiais extras para se preparar, se confessar e viver com mais profundidade sua vida espiritual.",
-    timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO",
-    cardImageAspect: "portrait"
+    timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO"
   },
   bonuses: laboralOffer.bonuses.map((bonus, index) => ({
     ...bonus,

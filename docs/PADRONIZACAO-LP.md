@@ -23,11 +23,20 @@ Regra central: **a página é sempre a mesma estrutura; o que muda por oferta é
 
 **Arquivos alterados na Fase 1:** commit `1f5ad08` (`refactor: limpa css morto, campos nao renderizados e assets orfaos`). Plano publicado nos commits `f459251` (documento) e `ff064c3` (ponteiro no `AGENTS.md`).
 
-### ⏳ O que falta (Fases 2 a 8)
+### ✅ Fase 2 — Contrato novo (concluída)
+
+| Item | Resultado |
+|---|---|
+| `OfferConfig` novo | `src/types/offer.ts` conforme o Anexo A: hero `headline`/`subline`/`support` (+`bullets` obrigatório), `orientation`, `sections`, `paletteCandidates`, `kitCards.heading`, `bonusSection` sem `pill`; removidos `titleLine1/2/3`, `audience`, `subtitle`, `subtitlePosition`, `imageWidth`/`imageHeight`, `displayAspect`, `cardImageAspect`, `heading1/2`, `bonusSection.pill` |
+| 15 ofertas migradas | Remapeamento mecânico (sem reescrever copy): `titleLine1/2`→`headline` (`\n`), `titleLine3`/`audience`→`subline`, `subtitle`→`support`; bullets cortados para 4 onde passava (box, lavanderia, tilapia, psicopedagogia); `orientation` por oferta (landscape: box, calha, castracao, felinos, laboral, lavanderia, psicopedagogia, tilapia; portrait: demais) |
+| Componentes | `VendaImediata` (headline/subline/support, imagem 1080²), `KitCards`/`KitCardsReversed` + `InfiniteImageRail` (governados por `orientation`), `Bonuses` (sem pill) + `FlipCard` (retrato via `orientation`), `Benefits` (sem dimensões configuráveis) |
+| Validador de copy | `npm run offer:validate` agora checa os limites da §6 (com resolução de spreads) e os campos removidos; violações de copy saem como **avisos** até a Fase 8 (hoje: ~200 avisos esperados); campos removidos e `orientation` ausente são **erro** |
+| Portão de qualidade | `typecheck` ✅ · `test` 9/9 ✅ · `lint` ✅ · `offer:validate` ✅ (0 erros) · `build` ✅ (26 rotas) |
+
+### ⏳ O que falta (Fases 3 a 8)
 
 | Fase | O que fazer | Pontos de atenção |
 |---|---|---|
-| 2 | **Contrato novo** conforme o Anexo A + validador de limites de copy no `npm run offer:validate` | Trocar `titleLine1/2/3`+`audience`+`subtitle` por `headline`/`subline`/`support`; remover `displayAspect`/`cardImageAspect`/`imageWidth`/`imageHeight` |
 | 3 | **Hero novo**: ordem Pill → Headline → Subline → Imagem → CTA → Apoio → 4 Bullets → Marquee; imagem `max-height: min(200px, 26vh)`; CTA segue `#oferta` | Números já validados: CTA 100% na dobra em 105/105 medições (15 ofertas × 7 viewports). Não regredir isso |
 | 4 | **Paletas**: 5 candidatas por oferta + gerador ("variações da atual" + "aleatórias") + validação de contraste nos pares reais | CTA verde, bullets verdes com check branco e o glass da barra do topo **não mudam** com a paleta |
 | 5 | **Orientação** `portrait`/`landscape` governando kit + bônus + os dois trilhos | Dois trilhos: full-bleed 100% de largura, cards maiores (proposta 78vw no celular), fade nas laterais, direções opostas (A→Z e Z→A) |

@@ -20,13 +20,13 @@ export const OFFER: OfferConfig = {
     brand: "#B45309", brandDeep: "#78350F", brandInk: "#3B1A0B", brandDark: "#D97706", brandLight: "#FCD34D", brandSubtle: "#FFF7ED",
     cta: "#16A34A", ctaDeep: "#15803D", ctaDarkest: "#14532D", accent: "#EA580C", yellow: "#FBBF24", bg: "#FFF9F5", bgAlt: "#7C2D12"
   },
+  orientation: "portrait",
   hero: {
     pill: "MANUAL PRÁTICO DE BANCADA",
-    titleLine1: "Manual Prático de Diagnóstico e Conserto para Amolar",
-    titleLine2: "Alicate, Tesoura e Faca",
-    titleLine3: "Identifique, corrija e amole do jeito certo",
-    image: image("Plano Completo.webp"), imageAlt: "Manual Prático de Diagnóstico e Conserto", imageWidth: 1080, imageHeight: 1080,
-    subtitle: "Tenha sempre em mãos um material visual para entender o que está errado, onde olhar, o que corrigir, quando amolar e como conferir se o serviço realmente ficou bom.",
+    headline: "Manual Prático de Diagnóstico e Conserto para Amolar\nAlicate, Tesoura e Faca",
+    subline: "Identifique, corrija e amole do jeito certo",
+    image: image("Plano Completo.webp"), imageAlt: "Manual Prático de Diagnóstico e Conserto",
+    support: "Tenha sempre em mãos um material visual para entender o que está errado, onde olhar, o que corrigir, quando amolar e como conferir se o serviço realmente ficou bom.",
     ctaText: "QUERO TER O MANUAL", marqueeText: "30 DIAGNÓSTICOS • ALICATES • TESOURAS • FACAS • ACESSO IMEDIATO • ",
     bullets: ["Diagnostique antes de amolar", "Veja exatamente onde observar", "Corrija com mais segurança", "Teste antes de devolver ao cliente"]
   },
@@ -36,12 +36,12 @@ export const OFFER: OfferConfig = {
   },
   counter: { prefix: "", target: 30, label: "Diagnósticos de alicates, tesouras e facas\npara consultar e amolar" },
   kitCards: {
-    heading1: "Veja como o manual ajuda você a consultar na bancada:",
-    images: Array.from({ length: 16 }, (_, index) => ({ src: image(`Imagem (${index + 1}).webp`), alt: `Página ${index + 1} do Manual Prático`, width: 208, height: 134 }))
+    heading: "Veja como o manual ajuda você a consultar na bancada:",
+    images: Array.from({ length: 16 }, (_, index) => ({ src: image(`Imagem (${index + 1}).webp`), alt: `Página ${index + 1} do Manual Prático` }))
   },
   benefits: {
     title: "O manual prático vai te trazer mais:", ctaText: "QUERO TER O MANUAL",
-    image: image("Beneficio.webp"), imageAlt: "Profissional usando o Manual Prático na bancada de amolação", imageWidth: 1254, imageHeight: 1254,
+    image: image("Beneficio.webp"), imageAlt: "Profissional usando o Manual Prático na bancada de amolação",
     items: [
       { icon: "🔍", title: "Clareza", desc: "Você bate o olho na peça e já tem um caminho mais claro de onde começar a observar." },
       { icon: "🎯", title: "Direcionamento", desc: "Entende melhor se precisa corrigir alguma coisa antes ou se já é hora de amolar." },
@@ -59,9 +59,9 @@ export const OFFER: OfferConfig = {
     bullets: ["Manual Prático de Diagnóstico e Conserto de Alicate, Tesoura e Faca", "30 problemas organizados entre alicates, tesouras e facas", "Diagnóstico visual para saber onde está a falha", "Passo a passo de correção para cada problema", "Orientação para saber quando corrigir e quando amolar", "Testes finais para conferir se a peça ficou boa", "Material visual e fácil de consultar na bancada"]
   },
   bonusSection: {
-    pill: "🎁 EXTRA INCLUÍDO", titleLead: "6 BÔNUS", titleHighlight: "EXCLUSIVOS",
+    titleLead: "6 BÔNUS", titleHighlight: "EXCLUSIVOS",
     subtitle: "Além do Manual Prático, você também recebe 6 materiais extras para facilitar sua rotina, reduzir dúvida na bancada e ajudar antes, durante e depois da amolação.",
-    cardLabel: "BÔNUS", timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO", freeLabel: "GRÁTIS", cardImageAspect: "portrait"
+    cardLabel: "BÔNUS", timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO", freeLabel: "GRÁTIS"
   },
   bonuses: bonusDetails.map(([title, titleBreak, desc, price], index) => {
     const number = String(index + 1).padStart(2, "0")

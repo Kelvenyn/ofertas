@@ -22,14 +22,14 @@ export const OFFER: OfferConfig = {
     brand: "#C2410C", brandDeep: "#9A3412", brandInk: "#431407", brandDark: "#EA580C", brandLight: "#FDBA74", brandSubtle: "#FFF7ED",
     cta: "#16A34A", ctaDeep: "#15803D", ctaDarkest: "#14532D", accent: "#B45309", yellow: "#F59E0B", bg: "#FFFBF7", bgAlt: "#9A3412"
   },
+  orientation: "portrait",
   hero: {
     ...base.hero,
     pill: "GUIA VISUAL DO PORCELANATO",
-    titleLine1: "37 Cuidados Essenciais para",
-    titleLine2: "Manter Seu Porcelanato Sempre Bonito,",
-    titleLine3: "Sem Marcas e Bem Cuidado",
-    image: "/images/porcelanato/Plano Completo.webp", imageAlt: "Guia Visual do Porcelanato", imageWidth: 1080, imageHeight: 1080,
-    subtitle: "Tenha no celular um guia visual completo para descobrir como limpar, tirar manchas e o que evitar para cuidar bem do seu piso.",
+    headline: "37 Cuidados Essenciais para\nManter Seu Porcelanato Sempre Bonito,",
+    subline: "Sem Marcas e Bem Cuidado",
+    image: "/images/porcelanato/Plano Completo.webp", imageAlt: "Guia Visual do Porcelanato",
+    support: "Tenha no celular um guia visual completo para descobrir como limpar, tirar manchas e o que evitar para cuidar bem do seu piso.",
     ctaText: "QUERO O GUIA AGORA",
     marqueeText: "PORCELANATO BONITO ✦ SEM MARCAS ✦ O QUE USAR ✦ COMO LIMPAR ✦ O QUE EVITAR ✦ BEM CUIDADO ✦ PORCELANATO BONITO ✦ SEM MARCAS ✦ O QUE USAR ✦ COMO LIMPAR ✦ O QUE EVITAR ✦ BEM CUIDADO",
     bullets: ["Identifique seu tipo de porcelanato", "Descubra o que pode e o que não pode usar no piso", "Aprenda a limpar sem deixar marcas depois que seca", "Evite erros que podem prejudicar a aparência do porcelanato"]
@@ -40,12 +40,10 @@ export const OFFER: OfferConfig = {
   },
   counter: { prefix: "+", target: 50, label: "Páginas passo a passo para você\ncuidar do seu Porcelanato" },
   kitCards: {
-    heading1: "Veja por dentro o Guia Visual do Porcelanato",
+    heading: "Veja por dentro o Guia Visual do Porcelanato",
     images: Array.from({ length: 15 }, (_, index) => ({
       src: `/images/porcelanato/Imagem (${index + 1}).webp`,
-      alt: `Página ${index + 1} do Guia Visual do Porcelanato`,
-      width: 1055,
-      height: 1491
+      alt: `Página ${index + 1} do Guia Visual do Porcelanato`
     }))
   },
   benefits: {
@@ -67,8 +65,8 @@ export const OFFER: OfferConfig = {
     bullets: ["Guia Visual do Porcelanato", "37 Cuidados para manter seu porcelanato mais bonito", "Identificação dos tipos de porcelanato", "Produtos que podem ou não ser usados no piso", "O jeito certo de limpar cada tipo de porcelanato", "Como evitar marcas e aparência embaçada depois da limpeza", "Soluções para sujeiras do dia a dia", "Guia de Consulta Rápida"]
   },
   bonusSection: {
-    ...base.bonusSection, pill: "EXTRAS INCLUÍDOS", titleLead: "6 BÔNUS PARA DEIXAR SEU GUIA", titleHighlight: "AINDA MAIS COMPLETO",
-    subtitle: "Além do Guia Visual do Porcelanato, escolhendo o Plano Completo você recebe estes 6 materiais adicionais.", cardImageAspect: "portrait"
+    ...base.bonusSection, titleLead: "6 BÔNUS PARA DEIXAR SEU GUIA", titleHighlight: "AINDA MAIS COMPLETO",
+    subtitle: "Além do Guia Visual do Porcelanato, escolhendo o Plano Completo você recebe estes 6 materiais adicionais."
   },
   bonuses: base.bonuses.map((bonus, index) => ({ ...bonus, front: image(bonus.front), back: image(bonus.back), title: bonusDetails[index][0], titleBreak: bonusDetails[index][1], desc: bonusDetails[index][2], price: "R$ 19,90" })),
   pricing: {

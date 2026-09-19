@@ -20,16 +20,14 @@ export const OFFER: OfferConfig = {
     bg: "#F8FAFF",
     bgAlt: "#1E3A8A"
   },
+  orientation: "landscape",
   hero: {
     pill: "GUIA VISUAL PASSO A PASSO",
-    titleLine1: "Guia Passo a Passo de Box",
-    titleLine2: "com Tijolos e Blocos de Vidro",
-    titleLine3: "Meça, monte e finalize com acabamento profissional",
+    headline: "Guia Passo a Passo de Box\ncom Tijolos e Blocos de Vidro",
+    subline: "Meça, monte e finalize com acabamento profissional",
     image: "/images/box/Plano Completo.webp",
     imageAlt: "Guia Passo a Passo de Box com Tijolos e Blocos de Vidro",
-    imageWidth: 1080,
-    imageHeight: 1080,
-    subtitle: "Tenha em mãos um guia visual para montar diferentes modelos de box com tijolos e blocos de vidro e acompanhar o serviço do início ao acabamento, sem improvisar durante a obra.",
+    support: "Tenha em mãos um guia visual para montar diferentes modelos de box com tijolos e blocos de vidro e acompanhar o serviço do início ao acabamento, sem improvisar durante a obra.",
     ctaText: "QUERO O GUIA VISUAL DE BOX",
     marqueeText: "30 Modelos Visuais • Passo a Passo Visual • Acesso Imediato • 15 Modelos com Tijolos • 15 Modelos com Blocos de Vidro • 6 Bônus Práticos • ",
     bullets: [
@@ -37,7 +35,6 @@ export const OFFER: OfferConfig = {
       "Confira e defina a obra",
       "Faça a obra com um passo a passo",
       "Evite improvisos",
-      "Entregue um acabamento profissional",
     ]
   },
   socialProof: {
@@ -57,14 +54,10 @@ export const OFFER: OfferConfig = {
     label: "Modelos com Tijolos e Blocos de Vidro organizados para você consultar na obra"
   },
   kitCards: {
-    heading1: "Veja como é o Guia passo a passo que você vai usar nas suas obras:",
-    heading2: "30 modelos visuais de box com tijolos e blocos de vidro para consultar durante o serviço",
-    displayAspect: "auto",
+    heading: "Veja como é o Guia passo a passo que você vai usar nas suas obras: 30 modelos visuais de box com tijolos e blocos de vidro para consultar durante o serviço",
     images: Array.from({ length: 16 }, (_, index) => ({
       src: `/images/box/Imagem (${index + 1}).webp`,
-      alt: `Modelo de box com tijolos e blocos de vidro ${index + 1}`,
-      width: 1200,
-      height: 848
+      alt: `Modelo de box com tijolos e blocos de vidro ${index + 1}`
     }))
   },
   benefits: {
@@ -99,14 +92,12 @@ export const OFFER: OfferConfig = {
     ]
   },
   bonusSection: {
-    pill: "✦ EXTRA INCLUÍDO",
     titleLead: "6 BÔNUS",
     titleHighlight: "EXCLUSIVOS",
     subtitle: "Além do Guia passo a passo, ao adquirir o Plano Completo você também recebe 6 bônus especiais.",
     cardLabel: "BÔNUS",
     timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO",
     freeLabel: "GRÁTIS",
-    cardImageAspect: "landscape"
   },
   bonuses: [
     { front: "/images/box/bonus-1-frente.webp", back: "/images/box/bonus-1-verso.webp", title: "+10 Modelos de Box para Banheiros Pequenos", titleBreak: "+10 Modelos de Box\npara Banheiros Pequenos", desc: "Referências visuais para escolher modelos que aproveitem melhor espaços compactos sem prejudicar a circulação." },

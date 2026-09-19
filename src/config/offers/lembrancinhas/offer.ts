@@ -9,14 +9,13 @@ export const OFFER: OfferConfig = {
     brand: "#9D3A58", brandDeep: "#5C1E34", brandInk: "#35101D", brandDark: "#C35C7D", brandLight: "#F0C4D1", brandSubtle: "#FFF0F4",
     cta: "#16A34A", ctaDeep: "#11863D", ctaDarkest: "#0E6B31", accent: "#C78C5C", yellow: "#E5B96B", bg: "#FFF7F8", bgAlt: "#5C1E34"
   },
+  orientation: "portrait",
   hero: {
     pill: "PARA LÍDERES DE MULHERES",
-    titleLine1: "+60 Lembrancinhas Cristãs",
-    titleLine2: "para Deixar Seus Encontros Ainda Mais Especiais",
-    titleLine3: "",
-    audience: "Para você que cuida da organização dos cultos, chás, reuniões e encontros de mulheres da sua igreja.",
-    image: "/images/lembrancinhas/Plano Completo.webp", imageAlt: "Kit Encontros Especiais com Lembrancinhas Cristãs", imageWidth: 1254, imageHeight: 1254,
-    subtitle: "Em vez de procurar uma nova ideia toda vez, tenha +60 modelos organizados por temas para escolher, imprimir e usar quando precisar.",
+    headline: "+60 Lembrancinhas Cristãs\npara Deixar Seus Encontros Ainda Mais Especiais",
+    subline: "Para você que cuida da organização dos cultos, chás, reuniões e encontros de mulheres da sua igreja.",
+    image: "/images/lembrancinhas/Plano Completo.webp", imageAlt: "Kit Encontros Especiais com Lembrancinhas Cristãs",
+    support: "Em vez de procurar uma nova ideia toda vez, tenha +60 modelos organizados por temas para escolher, imprimir e usar quando precisar.",
     ctaText: "QUERO AS LEMBRANCINHAS", marqueeText: "+60 MODELOS ✦ PDF A4, ALTA QUALIDADE ✦ ACESSO IMEDIATO ✦ PRONTAS PARA IMPRIMIR ✦ ",
     bullets: ["+60 modelos organizados por temas", "Para todos os tipos de encontros", "Material em PDF de alta qualidade", "Economia de tempo e criatividade"]
   },
@@ -34,8 +33,8 @@ export const OFFER: OfferConfig = {
   },
   counter: { prefix: "+ de", target: 60, label: "Modelos de Lembrancinhas Cristãs" },
   kitCards: {
-    displayAspect: "portrait", heading1: "Veja como são os modelos que você vai receber:",
-    images: Array.from({ length: 14 }, (_, index) => ({ src: `/images/lembrancinhas/Imagem (${index + 1}).webp`, alt: `Lembrancinha Cristã ${index + 1}`, width: 208, height: 277 }))
+    heading: "Veja como são os modelos que você vai receber:",
+    images: Array.from({ length: 14 }, (_, index) => ({ src: `/images/lembrancinhas/Imagem (${index + 1}).webp`, alt: `Lembrancinha Cristã ${index + 1}` }))
   },
   benefits: {
     title: "Para facilitar seus próximos encontros", ctaText: "QUERO TER AS LEMBRANCINHAS",
@@ -56,8 +55,8 @@ export const OFFER: OfferConfig = {
     bullets: ["+60 Modelos de Lembrancinhas Cristãs", "Lembrancinhas de Cura", "Lembrancinhas do Espírito Santo", "Lembrancinhas de Fé", "Lembrancinhas dos Apóstolos", "Lembrancinhas de Gratidão", "Lembrancinhas de Propósito", "Lembrancinhas descontraídas e muito mais", "Arquivos em PDF prontos para impressão (A4)"]
   },
   bonusSection: {
-    pill: "EXTRA INCLUÍDO", titleLead: "4 BÔNUS", titleHighlight: "EXCLUSIVOS", subtitle: "Além dos +60 modelos, você também recebe 4 bônus especiais.",
-    cardLabel: "BÔNUS", timerText: "BÔNUS INCLUSOS\nPOR TEMPO LIMITADO", freeLabel: "GRÁTIS", cardImageAspect: "portrait"
+    titleLead: "4 BÔNUS", titleHighlight: "EXCLUSIVOS", subtitle: "Além dos +60 modelos, você também recebe 4 bônus especiais.",
+    cardLabel: "BÔNUS", timerText: "BÔNUS INCLUSOS\nPOR TEMPO LIMITADO", freeLabel: "GRÁTIS"
   },
   bonuses: [
     { front: "/images/lembrancinhas/bonus-1-frente.webp", back: "/images/lembrancinhas/bonus-1-verso.webp", title: "Vídeos Aulas de Montagem das Lembrancinhas", titleBreak: "Vídeos Aulas de Montagem\ndas Lembrancinhas", desc: "Aulas em vídeo com orientações passo a passo para montagem, impressão, recorte e finalização de cada lembrancinha.", price: "R$ 19,90" },

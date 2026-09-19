@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from "react"
 import Image from "next/image"
 import type { BonusSection } from "@/types/offer"
+import { useOffer } from "@/context/offer-context"
 
 interface FlipCardProps {
   front: string
@@ -16,6 +17,7 @@ interface FlipCardProps {
 }
 
 export function FlipCard({ front, back, title, titleBreak, desc, price, index, labels }: FlipCardProps) {
+  const { orientation } = useOffer()
   const [flipped, setFlipped] = useState(false)
   const [frontLoaded, setFrontLoaded] = useState(false)
 
@@ -36,7 +38,7 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
         <span aria-hidden="true">🎁</span> {labels.cardLabel} #{bonusNumber}
       </div>
       <div
-        className={`bon-new-image-wrapper${labels.cardImageAspect === "portrait" ? " bon-new-image-portrait" : ""}`}
+        className={`bon-new-image-wrapper${orientation === "portrait" ? " bon-new-image-portrait" : ""}`}
         onClick={handleClick}
         role="button"
         tabIndex={0}

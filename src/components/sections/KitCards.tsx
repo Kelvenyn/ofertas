@@ -4,6 +4,7 @@ import { useOffer } from "@/context/offer-context"
 import { InfiniteImageRail } from "@/components/ui/InfiniteImageRail"
 
 export function KitCards() {
-  const { kitCards } = useOffer()
-  return <InfiniteImageRail images={kitCards.images} displayAspect={kitCards.displayAspect ?? "auto"} heading={kitCards.heading1} subtitle={kitCards.heading2} />
+  const offer = useOffer()
+  const { kitCards } = offer
+  return <InfiniteImageRail images={kitCards.images} orientation={offer.orientation} heading={kitCards.heading} />
 }

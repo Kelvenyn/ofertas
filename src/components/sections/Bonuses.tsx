@@ -19,11 +19,6 @@ export function Bonuses() {
   return (
     <section className="bon-section" aria-labelledby="bonuses-title">
       <div className="bon-inner">
-        <div className="bon-headline-pill">
-          <span className="bon-headline-dot" />
-          {section.pill}
-        </div>
-
         <h2 className="bon-title" id="bonuses-title">
           {section.titleLead} <span className="bon-title-green">{section.titleHighlight}</span>
         </h2>
