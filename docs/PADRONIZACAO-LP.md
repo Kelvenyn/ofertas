@@ -38,13 +38,14 @@ Regra central: **a página é sempre a mesma estrutura; o que muda por oferta é
 | Item | Resultado |
 |---|---|
 | Ordem nova | `VendaImediata.tsx`: Pill → Headline → Subline (`<p>`, fora do `h1`) → Imagem → CTA (`#oferta`) → Apoio → 4 Bullets → Marquee |
-| Imagem | `max-height: min(200px, 26vh)` com aspecto preservado (`max-width` + `height/width: auto`) |
-| Compactação mobile (≤480px) | Hero 16px topo, pill mb 10, título mb 8, linha1 mín 26px, linha2 mín 21px, linha3/subline mín 16px + mb 16, imagem mb 24 (overrides `*-offer` mantidos até a Fase 8 por especificidade maior) |
+| Imagem | Preenche a dobra: absoluta contida na área flex (esticа com folga, encolhe com falta; teto 60vh); CTA termina ~18px acima da dobra |
+| Compactação mobile (≤480px) | Hero 16px topo, dobra desconta 60px (barra) + 16px + 18px; pill mb 10, título mb 8, linha1 mín 26px, linha2 mín 21px, linha3/subline mín 16px + mb 16 (overrides `*-offer` mantidos até a Fase 8 por especificidade maior) |
 | CSS morto | Removidos `.vi-audience`, `.vi-sub-before-image`, `.vi-social-proof-caption` (campos já fora do contrato) |
-| CTA na dobra | **104/105 medições** (15 ofertas × 7 viewports) via screenshots headless + virtual-time + análise de pixels (determinístico; recaptura confirma os mesmos valores). Exceção: `lavanderia` em 320×568 (CTA top 560/568) — copy 2× acima dos limites (headline 84/70, subline 148/70); Fase 8 resolve por construção. Menores folgas: felinos/lembrancinhas em 320×568 com 1px |
+| Trilhos do kit | Espaçamento enxuto e por orientação: seção 28/12px, trilho `gap` 12px, cards retrato `clamp(200px,56vw,300px)` 3/4 e paisagem com placeholder 3/2 imediato (proporção natural após carregar; salto de layout reduzido de ~170px para ~9px) |
+| CTA na dobra | **105/105 medições** (15 ofertas × 7 viewports, motor de layout real via CDP com hosts externos bloqueados; pior folga 30px). Recaptura confirma estabilidade |
 | Portão de qualidade | `typecheck` ✅ · `test` 9/9 ✅ · `lint` ✅ · `offer:validate` ✅ (0 erros) · `build` ✅ (26 rotas) |
 
-> Nota de método: o load via CDP trava neste sandbox em recurso externo (servidor responde o corpo em ~60ms; renderer não completa o load), então a medição usou `--screenshot` + `--virtual-time-budget` + detecção do botão verde por pixels. Scripts em `C:\Users\maryk\AppData\Local\Temp\opencode\` (`shots-only.cjs`, `analyze-fold.cjs`, `png-tools.cjs`).
+> Nota de método: o load via CDP trava neste sandbox em recurso externo (servidor responde o corpo em ~60ms; renderer não completa o load). A medição final usou CDP com `Network.setBlockedURLs` (fontes + tracker) — motor de layout real, `getBoundingClientRect` do `.vi-cta-btn` vs. `innerHeight`, e geometria dos trilhos (`.kc-section`, `.kc-card`). Scripts em `C:\Users\maryk\AppData\Local\Temp\opencode\` (`measure-cdp.mjs`, `shots-only.cjs`, `analyze-fold.cjs`, `png-tools.cjs`).
 > Observação: títulos estouram a largura em telas pequenas (ex.: psicopedagogia/lavanderia em 390px) — pré-existente (CSS do título inalterado nesta fase), tratado na Fase 8 (copy dentro dos limites + revisão dos clamps).
 
 ### ⏳ O que falta (Fases 4 a 8)
@@ -120,9 +121,14 @@ Garantia → Como é o acesso → FAQ → Rodapé (+ aviso de atualização)
 
 ### 3.2 Comportamento responsivo da imagem (validado)
 
-`max-height: min(200px, 26vh)` — a imagem encolhe sozinha em telas baixas e mantém 200px nas altas.
+A dobra (`.vi-fold`) tem altura fixa (`100svh` menos 60px do padding que a barra fixa
+aplica no `<html>`, menos padding do hero, menos 18px de respiro). A imagem é absoluta
+contida na área flex: **esticа quando sobra espaço e encolhe quando falta** (até o
+mínimo), e o CTA termina sempre ~18px acima da dobra — último elemento da tela.
 
-Medição final (ordem acima aplicada, 15 ofertas × 7 viewports): **CTA inteiro na primeira dobra em 105/105 medições**, incluindo 320×568, 360×640 e 1366×768. Pior caso (`felinos`, título longo) com 36px de folga em 320×568.
+Medição final (15 ofertas × 7 viewports, motor de layout real via CDP):
+**CTA inteiro na primeira dobra em 105/105 medições**, pior folga 30px
+(`alicate` 360×640). Inclui 320×568 e 1366×768. Método e scripts em §0.
 
 ### 3.3 Limites de copy do hero
 

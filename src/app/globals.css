@@ -130,6 +130,7 @@ html {
 
 @media (max-width: 640px) {
   .shiny-cta { padding: 0.875rem 2rem; font-size: 15px; letter-spacing: normal; }
+  .vi-fold .vi-cta-btn.shiny-cta { font-size: 15px; }
   .shiny-cta-sm { padding: 0.45rem 1rem; font-size: 11px; }
 }
 
@@ -302,6 +303,29 @@ html {
   margin: 0 auto;
 }
 
+/* Bloco da primeira dobra (Fase 3): altura fixa na tela; a imagem estica quando
+   sobra espaço e encolhe quando falta, e o CTA termina sempre no fim da dobra.
+   Desconta os 60px do padding-top que a barra de contagem fixa aplica no <html>
+   + o padding-top do hero + 18px de respiro: CTA termina ~18px acima da dobra.
+   font-size/line-height 0: quebras de linha do JSX viram itens flex anônimos
+   que ocupariam ~24px cada — os filhos com texto definem os próprios. */
+.vi-fold {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100vh - 100px);
+  height: calc(100svh - 100px);
+  padding-bottom: 12px;
+  font-size: 0;
+  line-height: 0;
+}
+
+.vi-fold .vi-cta-btn {
+  flex-shrink: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
 .vi-pill {
   display: inline-flex;
   align-items: center;
@@ -423,21 +447,29 @@ html {
 }
 
 .vi-image {
-  margin: 0 auto 32px;
+  margin: 0 auto 24px;
   position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: 60vh;
+  overflow: hidden;
 }
 
 .laboral-offer .vi-image {
   margin-bottom: 24px;
 }
 
-.vi-image img {
+.vi-hero .vi-image img {
+  position: absolute;
+  inset: 0;
+  margin: auto;
   width: auto;
-  height: auto;
-  max-width: min(380px, 90vw);
-  max-height: min(200px, 26vh);
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   display: block;
-  margin: 0 auto;
   filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08));
 }
 
@@ -562,6 +594,11 @@ html {
     padding: 16px 14px 0;
   }
 
+  .vi-fold {
+    height: calc(100vh - 94px);
+    height: calc(100svh - 94px);
+  }
+
   .vi-pill {
     margin-bottom: 10px;
   }
@@ -584,10 +621,6 @@ html {
 
   .vi-subline {
     margin-bottom: 16px;
-  }
-
-  .vi-image {
-    margin-bottom: 24px;
   }
 
   .vi-sub {
@@ -744,7 +777,7 @@ html {
 /* ===== KIT CARDS ===== */
 /* ===== KIT CARDS CAROUSEL ===== */
 .kc-section {
-  padding: 36px 0 24px;
+  padding: 28px 0 12px;
   background: transparent;
   font-family: 'Manrope', system-ui, sans-serif;
   overflow: hidden;
@@ -760,7 +793,7 @@ html {
   margin: 0 auto;
   text-align: center;
   padding: 0 16px;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .kc-title {
@@ -795,7 +828,7 @@ html {
 .kc-track {
   display: flex;
   align-items: flex-start;
-  gap: 16px;
+  gap: 12px;
   will-change: transform;
 }
 
@@ -810,11 +843,12 @@ html {
 }
 
 .kc-card-landscape {
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 3 / 2;
 }
 
 .kc-card-portrait {
   aspect-ratio: 3 / 4;
+  width: clamp(200px, 56vw, 300px);
 }
 
 .kc-card-img {

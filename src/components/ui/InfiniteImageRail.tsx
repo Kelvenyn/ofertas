@@ -28,7 +28,6 @@ export function InfiniteImageRail({ images, orientation, direction = "forward", 
   const isVisible = useRef(true)
   const resumeTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
   const [ready, setReady] = useState(false)
-  const [landscapeImages, setLandscapeImages] = useState<Record<string, boolean>>({})
   const [imageRatios, setImageRatios] = useState<Record<string, string>>({})
 
   const orderedImages = useMemo(() => direction === "reverse" ? [...images].reverse() : images, [direction, images])
@@ -83,7 +82,6 @@ export function InfiniteImageRail({ images, orientation, direction = "forward", 
     if (!naturalWidth || !naturalHeight) return
     const ratio = `${naturalWidth} / ${naturalHeight}`
     setImageRatios((current) => current[src] ? current : { ...current, [src]: ratio })
-    if (naturalWidth > naturalHeight) setLandscapeImages((current) => current[src] ? current : { ...current, [src]: true })
     if (first) setReady(true)
   }, [])
 
@@ -142,7 +140,7 @@ export function InfiniteImageRail({ images, orientation, direction = "forward", 
         <div ref={trackRef} className="kc-track" style={{ opacity: ready ? 1 : 0, transition: "opacity 400ms ease" }}>
           {repeatedImages.map((image, index) => (
             <div
-              className={`kc-card${orientation === "portrait" ? " kc-card-portrait" : landscapeImages[image.src] ? " kc-card-landscape" : ""}`}
+              className={`kc-card${orientation === "portrait" ? " kc-card-portrait" : " kc-card-landscape"}`}
               key={`${image.src}-${index}`}
               style={{ aspectRatio: orientation === "portrait" ? "3 / 4" : imageRatios[image.src] }}
             >

@@ -18,28 +18,30 @@ export function VendaImediata() {
   return (
     <section className="vi-hero">
       <div className="vi-hero-inner">
-        <div className="vi-pill">{pill}</div>
+        <div className="vi-fold">
+          <div className="vi-pill">{pill}</div>
 
-        <h1 className="vi-title">
-          {headlineLine1 && <span className="vi-title-line1">{headlineLine1}</span>}
-          {headlineLine2 && <span className="vi-title-line2">{headlineLine2}</span>}
-        </h1>
+          <h1 className="vi-title">
+            {headlineLine1 && <span className="vi-title-line1">{headlineLine1}</span>}
+            {headlineLine2 && <span className="vi-title-line2">{headlineLine2}</span>}
+          </h1>
 
-        {subline && <p className="vi-subline vi-title-line3">{subline}</p>}
+          {subline && <p className="vi-subline vi-title-line3">{subline}</p>}
 
-        <div className="vi-image">
-          <Image
-            src={image}
-            alt={imageAlt}
-            width={1080}
-            height={1080}
-            priority
-          />
+          <div className="vi-image">
+            <Image
+              src={image}
+              alt={imageAlt}
+              width={1080}
+              height={1080}
+              priority
+            />
+          </div>
+
+          <ShinyButton href="#oferta" className="vi-cta-btn max-w-full whitespace-normal">
+            {ctaText}
+          </ShinyButton>
         </div>
-
-        <ShinyButton href="#oferta" className="vi-cta-btn max-w-full whitespace-normal">
-          {ctaText}
-        </ShinyButton>
 
         {support && <p className="vi-sub">{support}</p>}
 
