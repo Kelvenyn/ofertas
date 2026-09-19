@@ -23,8 +23,9 @@ export function VendaImediata() {
         <h1 className="vi-title">
           {headlineLine1 && <span className="vi-title-line1">{headlineLine1}</span>}
           {headlineLine2 && <span className="vi-title-line2">{headlineLine2}</span>}
-          {subline && <span className="vi-title-line3">{subline}</span>}
         </h1>
+
+        {subline && <p className="vi-subline vi-title-line3">{subline}</p>}
 
         <div className="vi-image">
           <Image
@@ -36,15 +37,15 @@ export function VendaImediata() {
           />
         </div>
 
+        <ShinyButton href="#oferta" className="vi-cta-btn max-w-full whitespace-normal">
+          {ctaText}
+        </ShinyButton>
+
         {support && <p className="vi-sub">{support}</p>}
 
         {bullets && bullets.length > 0 && (
           <AnimatedBullets items={bullets} className="vi-bullets ab-center" />
         )}
-
-        <ShinyButton href="#oferta" className="vi-cta-btn max-w-full whitespace-normal">
-          {ctaText}
-        </ShinyButton>
 
         <ScrollMarquee
           text={marqueeText}

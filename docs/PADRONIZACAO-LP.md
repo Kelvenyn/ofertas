@@ -33,11 +33,24 @@ Regra central: **a página é sempre a mesma estrutura; o que muda por oferta é
 | Validador de copy | `npm run offer:validate` agora checa os limites da §6 (com resolução de spreads) e os campos removidos; violações de copy saem como **avisos** até a Fase 8 (hoje: ~200 avisos esperados); campos removidos e `orientation` ausente são **erro** |
 | Portão de qualidade | `typecheck` ✅ · `test` 9/9 ✅ · `lint` ✅ · `offer:validate` ✅ (0 erros) · `build` ✅ (26 rotas) |
 
-### ⏳ O que falta (Fases 3 a 8)
+### ✅ Fase 3 — Hero novo (concluída)
+
+| Item | Resultado |
+|---|---|
+| Ordem nova | `VendaImediata.tsx`: Pill → Headline → Subline (`<p>`, fora do `h1`) → Imagem → CTA (`#oferta`) → Apoio → 4 Bullets → Marquee |
+| Imagem | `max-height: min(200px, 26vh)` com aspecto preservado (`max-width` + `height/width: auto`) |
+| Compactação mobile (≤480px) | Hero 16px topo, pill mb 10, título mb 8, linha1 mín 26px, linha2 mín 21px, linha3/subline mín 16px + mb 16, imagem mb 24 (overrides `*-offer` mantidos até a Fase 8 por especificidade maior) |
+| CSS morto | Removidos `.vi-audience`, `.vi-sub-before-image`, `.vi-social-proof-caption` (campos já fora do contrato) |
+| CTA na dobra | **104/105 medições** (15 ofertas × 7 viewports) via screenshots headless + virtual-time + análise de pixels (determinístico; recaptura confirma os mesmos valores). Exceção: `lavanderia` em 320×568 (CTA top 560/568) — copy 2× acima dos limites (headline 84/70, subline 148/70); Fase 8 resolve por construção. Menores folgas: felinos/lembrancinhas em 320×568 com 1px |
+| Portão de qualidade | `typecheck` ✅ · `test` 9/9 ✅ · `lint` ✅ · `offer:validate` ✅ (0 erros) · `build` ✅ (26 rotas) |
+
+> Nota de método: o load via CDP trava neste sandbox em recurso externo (servidor responde o corpo em ~60ms; renderer não completa o load), então a medição usou `--screenshot` + `--virtual-time-budget` + detecção do botão verde por pixels. Scripts em `C:\Users\maryk\AppData\Local\Temp\opencode\` (`shots-only.cjs`, `analyze-fold.cjs`, `png-tools.cjs`).
+> Observação: títulos estouram a largura em telas pequenas (ex.: psicopedagogia/lavanderia em 390px) — pré-existente (CSS do título inalterado nesta fase), tratado na Fase 8 (copy dentro dos limites + revisão dos clamps).
+
+### ⏳ O que falta (Fases 4 a 8)
 
 | Fase | O que fazer | Pontos de atenção |
 |---|---|---|
-| 3 | **Hero novo**: ordem Pill → Headline → Subline → Imagem → CTA → Apoio → 4 Bullets → Marquee; imagem `max-height: min(200px, 26vh)`; CTA segue `#oferta` | Números já validados: CTA 100% na dobra em 105/105 medições (15 ofertas × 7 viewports). Não regredir isso |
 | 4 | **Paletas**: 5 candidatas por oferta + gerador ("variações da atual" + "aleatórias") + validação de contraste nos pares reais | CTA verde, bullets verdes com check branco e o glass da barra do topo **não mudam** com a paleta |
 | 5 | **Orientação** `portrait`/`landscape` governando kit + bônus + os dois trilhos | Dois trilhos: full-bleed 100% de largura, cards maiores (proposta 78vw no celular), fade nas laterais, direções opostas (A→Z e Z→A) |
 | 6 | **Seções ligáveis/desligáveis** (todas), FAQ com exatamente 5 perguntas, depoimentos até 7 | Hoje o FAQ corta em 5 itens e o carrossel renderiza 5 slides fixos — os dois pontos precisam mudar |
