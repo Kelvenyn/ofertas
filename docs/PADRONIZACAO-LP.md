@@ -9,7 +9,7 @@ Regra central: **a página é sempre a mesma estrutura; o que muda por oferta é
 
 ## 0. Status da execução (atualizado em 19/09/2026)
 
-### ✅ Fase 1 — Limpeza (concluída, no working tree, ainda não commitada)
+### ✅ Fase 1 — Limpeza (concluída e commitada)
 
 | Item | Resultado |
 |---|---|
@@ -21,7 +21,7 @@ Regra central: **a página é sempre a mesma estrutura; o que muda por oferta é
 | Portão de qualidade | `typecheck` ✅ · `test` 9/9 ✅ · `lint` ✅ · `build` ✅ (30 rotas geradas) |
 | Regressão visual | Screenshot da primeira dobra idêntico ao estado anterior (zero mudança visual) |
 
-**Arquivos alterados na Fase 1 (não commitados):** `src/app/globals.css`, `src/types/offer.ts`, `src/components/sections/SocialProof.tsx`, `src/components/sections/VendaImediata.tsx`, os 15 `src/config/offers/*/offer.ts`, 35 imagens deletadas em `public/images/**`, pastas `public/seo` e `public/videos` deletadas, 4 páginas em `src/app/{psicopedagogia,tilapia}/{politica-de-privacidade,termos-de-uso}` deletadas. Novo: `docs/PADRONIZACAO-LP.md`.
+**Arquivos alterados na Fase 1:** commit `1f5ad08` (`refactor: limpa css morto, campos nao renderizados e assets orfaos`). Plano publicado nos commits `f459251` (documento) e `ff064c3` (ponteiro no `AGENTS.md`).
 
 ### ⏳ O que falta (Fases 2 a 8)
 
