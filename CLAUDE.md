@@ -2,7 +2,7 @@
 
 # CLAUDE.md — Páginas de Oferta (`ofertas`)
 
-13 landing pages de venda low-ticket, cada uma em sua própria rota, compartilhando shell de seções, catálogo operacional, temas e tracking opcional da Cashflow.
+15 landing pages de venda low-ticket, cada uma em sua própria rota, compartilhando shell de seções, catálogo operacional, temas e tracking opcional da Cashflow.
 
 Idioma padrão das respostas e notas de trabalho: português do Brasil.
 
@@ -11,6 +11,8 @@ Idioma padrão das respostas e notas de trabalho: português do Brasil.
 | Rota | Config | Checkout | Status |
 |---|---|---|---|
 | `/alicate` | `src/config/offers/alicate/offer.ts` | Hotmart | ativa |
+| `/box` | `src/config/offers/box/offer.ts` | Hotmart | ativa |
+| `/calha` | `src/config/offers/calha/offer.ts` | Hotmart | ativa |
 | `/castracao` | `src/config/offers/castracao/offer.ts` | Cakto | ativa |
 | `/confissao` | `src/config/offers/confissao/offer.ts` | Cakto | ativa |
 | `/croqui` | `src/config/offers/croqui/offer.ts` | Cakto | ativa |
@@ -36,18 +38,20 @@ KitCards → KitCardsReversed → Benefits → Urgencia → TudoQueVoceRecebe �
 Bonuses → OfferPricing → Guarantee → ComoEAcesso → FAQ → Footer
 ```
 
+Ordem do hero (§3.1 do plano): Pill → Headline → Subline → Imagem → CTA (`#oferta`, último da dobra) → Apoio → 4 Bullets → Marquee. Contrato em `src/types/offer.ts` (Fase 2); limites de copy na §6 do plano, verificados como avisos por `npm run offer:validate`.
+
 ## Pontos de atenção conhecidos
 
-- Imagens de "kit"/carrossel (`kitCards`) e de bônus (`bonusSection`) podem ser retrato ou paisagem — o contrato já prevê isso via `kitCards.displayAspect` e `bonusSection.cardImageAspect` (`src/types/offer.ts`). Ao adicionar imagens novas ou uma oferta nova, sempre declarar essas duas flags de acordo com a orientação real do arquivo — deixá-las no padrão quando o material é retrato causa um salto de layout no carrossel assim que a imagem carrega.
-- As imagens de "Plano Completo"/"Plano Básico" (usadas no hero, em `TudoQueVoceRecebe` e em `OfferPricing`) são sempre quadradas nas ofertas com esses dois planos. `hero.imageWidth`/`imageHeight` em cada `offer.ts` deve bater com a proporção real do arquivo — um valor de proporção diferente da imagem real causa reflow visível assim que ela carrega (o CSS usa `height: auto`).
+- Imagens de "kit"/carrossel (`kitCards`) e de bônus seguem o `orientation` da oferta (`"portrait"` ou `"landscape"` em `offer.ts`, validado como erro pelo `offer:validate`). Não existem mais flags por bloco: retrato força 3/4, paisagem usa placeholder 3/2 e refina para a proporção natural ao carregar.
+- As imagens de "Plano Completo"/"Plano Básico" (usadas no hero, em `TudoQueVoceRecebe` e em `OfferPricing`) são sempre quadradas (1080×1080). A imagem do hero é absoluta contida na área flex da dobra (`.vi-fold`, altura fixa `100svh` com descontos) — não dimensione via `width`/`height` no componente.
 
 ## Catálogo, paletas e tracking
 
-`src/config/offers/catalog.json` é a configuração-base versionada: `status` (`draft`, `active` ou `archived`), preset de paleta, classe legada, favicon e configuração Cashflow opcional. O painel publicado grava somente os overrides de status e paleta no Blob privado da Vercel. Ausência de Cashflow não bloqueia a página, mas aparece como `tracking pendente` no painel.
+`src/config/offers/catalog.json` é a configuração-base versionada: `status` (`draft`, `active` ou `archived`), preset de paleta (`paletteKey`), classe legada (`className`, em remoção na Fase 8), favicon e configuração Cashflow opcional. O painel publicado grava somente os overrides de status e paleta no Blob privado da Vercel. Ausência de Cashflow não bloqueia a página, mas aparece como `tracking pendente` no painel e no `offer:validate`.
 
 `OfferRouteLayout` carrega `https://cashflow.mentoriaprocesso.com/t/p.js` com `afterInteractive` somente quando `cashflow` estiver configurado no catálogo. Preserve `data-offer`, `data-nowprocket`, `data-no-minify`, `data-no-optimize` e `data-cfasync`. Nunca embarque pixel Meta, GTM ou Utmify diretamente.
 
-Há dez presets globais em `src/config/offers/palettes.ts`; CTA e bullets permanecem verdes e elementos de urgência permanecem vermelhos. Uma oferta com `paletteKey: null` preserva a paleta de `offer.ts`. Em qualquer ambiente, `/admin/ofertas` e `/<slug>/paleta` exigem sessão administrativa e PIN `1010` para salvar. As credenciais vivem apenas nas variáveis `ADMIN_EMAIL` e `ADMIN_PASSWORD` da Vercel; o PIN previne cliques acidentais, não substitui a autenticação.
+Há dez presets globais em `src/config/offers/palettes.ts`; CTA e bullets permanecem verdes e elementos de urgência permanecem vermelhos. Uma oferta com `paletteKey: null` preserva a paleta de `offer.ts`. Em qualquer ambiente, `/admin/ofertas` e `/<slug>/paleta` exigem sessão administrativa (`ADMIN_EMAIL`/`ADMIN_PASSWORD` na Vercel) e PIN de confirmação para salvar — hoje hardcoded como `"1010"` (`PaletteEditor.tsx`, API `admin/offers/[slug]`, `AdminOffersClient.tsx`); a Fase 4 troca por `PALETTE_PIN` de ambiente. O PIN previne cliques acidentais, não substitui a autenticação.
 
 ## Stack
 

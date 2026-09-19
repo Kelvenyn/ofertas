@@ -85,12 +85,13 @@ components:
 
 # Design System: Low Ticket Sales Page
 
-> **Nota sobre cor:** este documento descreve o sistema compartilhado por todas as 13 ofertas do
+> **Nota sobre cor:** este documento descreve o sistema compartilhado por todas as 15 ofertas do
 > projeto (`ofertas`) — layout, tipografia, sombras, componentes e as regras de "do/don't"
 > valem igualmente para qualquer rota. A paleta abaixo é a referência do template. Cada oferta
 > mantém uma `palette` em `offer.ts`; `paletteKey` no catálogo pode substituí-la por um dos dez
-> presets de `src/config/offers/palettes.ts`. CTA e bullets permanecem verdes, urgência permanece
-> vermelha e os demais fundos, barras, bordas e sombras derivam da paleta efetiva.
+> presets de `src/config/offers/palettes.ts`. Na prática, CTA/bullets usam os tokens fixos
+> `#16A34A`/`#11863D`/`#0E6B31` (`FIXED_ACTION_COLORS`), urgência permanece vermelha e os demais
+> fundos, barras, bordas e sombras derivam da paleta efetiva.
 
 ## 1. Overview
 

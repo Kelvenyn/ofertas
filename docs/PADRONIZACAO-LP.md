@@ -23,7 +23,7 @@ Regra central: **a página é sempre a mesma estrutura; o que muda por oferta é
 
 **Arquivos alterados na Fase 1:** commit `1f5ad08` (`refactor: limpa css morto, campos nao renderizados e assets orfaos`). Plano publicado nos commits `f459251` (documento) e `ff064c3` (ponteiro no `AGENTS.md`).
 
-### ✅ Fase 2 — Contrato novo (concluída)
+### ✅ Fase 2 — Contrato novo (concluída e commitada em `920721d`)
 
 | Item | Resultado |
 |---|---|
@@ -32,6 +32,28 @@ Regra central: **a página é sempre a mesma estrutura; o que muda por oferta é
 | Componentes | `VendaImediata` (headline/subline/support, imagem 1080²), `KitCards`/`KitCardsReversed` + `InfiniteImageRail` (governados por `orientation`), `Bonuses` (sem pill) + `FlipCard` (retrato via `orientation`), `Benefits` (sem dimensões configuráveis) |
 | Validador de copy | `npm run offer:validate` agora checa os limites da §6 (com resolução de spreads) e os campos removidos; violações de copy saem como **avisos** até a Fase 8 (hoje: ~200 avisos esperados); campos removidos e `orientation` ausente são **erro** |
 | Portão de qualidade | `typecheck` ✅ · `test` 9/9 ✅ · `lint` ✅ · `offer:validate` ✅ (0 erros) · `build` ✅ (26 rotas) |
+
+### ✅ Fase 3 — Hero novo (concluída e commitada em `86f4659` + `f903032`)
+
+| Item | Resultado |
+|---|---|
+| Ordem | `VendaImediata.tsx`: `.vi-fold` (Pill → Headline → Subline `<p>` fora do `h1` → Imagem → CTA `#oferta`) + Apoio → 4 Bullets → Marquee |
+| Dobra fixa | `.vi-fold` com altura fixa (`100svh` menos 60px do padding-top que a barra fixa aplica no `<html>`, menos padding do hero, menos 18px de respiro); imagem absoluta contida na área flex — estica com folga, encolhe com falta (teto 60vh); CTA termina ~18px acima da dobra. `font-size/line-height: 0` no fold (quebras JSX viravam itens flex anônimos de ~24px); `.vi-cta-btn` com fonte/linha explícitas (16px/1.5, 15px ≤640px) |
+| Compactação mobile | Hero 16px topo, dobra desconta 60px (barra) + 16px + 18px; pill mb 10, título mb 8, linha1 mín 26px, linha2 mín 21px, linha3/subline mín 16px + mb 16 (overrides `*-offer` mantidos até a Fase 8 por especificidade maior) |
+| CSS morto | Removidos `.vi-audience`, `.vi-sub-before-image`, `.vi-social-proof-caption` |
+| Trilhos do kit | Espaçamento enxuto e por orientação: seção 28/12px, trilho `gap` 12px, cards retrato `clamp(200px,56vw,300px)` 3/4 e paisagem com placeholder 3/2 imediato (proporção natural após carregar; salto reduzido de ~170px para ~9px). Direções opostas já via `direction="reverse"` no `KitCardsReversed` |
+| CTA na dobra | **105/105 medições** (15 ofertas × 7 viewports, motor de layout real via CDP com hosts externos bloqueados; pior folga 30px). Recaptura confirma estabilidade |
+| Portão de qualidade | `typecheck` ✅ · `test` 9/9 ✅ · `lint` ✅ · `offer:validate` ✅ (0 erros) · `build` ✅ (26 rotas) |
+
+> Nota de método: o load via CDP trava neste sandbox em recurso externo (servidor responde o corpo em ~60ms; renderer não completa o load). A medição final usou CDP com `Network.setBlockedURLs` (fontes + tracker) — motor de layout real, `getBoundingClientRect` do `.vi-cta-btn` vs. `innerHeight`, e geometria dos trilhos (`.kc-section`, `.kc-card`). Scripts em `C:\Users\maryk\AppData\Local\Temp\opencode\` (`measure-cdp.mjs`, `shots-only.cjs`, `analyze-fold.cjs`, `png-tools.cjs` — fora do git, podem não sobreviver entre sessões).
+> Observação: títulos estouram a largura em telas pequenas (ex.: psicopedagogia/lavanderia em 390px) — pré-existente, tratado na Fase 8 (copy dentro dos limites + revisão dos clamps).
+
+### 🟡 Fase 4 — Paletas (parcial, NÃO commitada)
+
+| Item | Estado |
+|---|---|
+| `src/lib/color.ts` (untracked) | Pronto: `parseHex`/`rgbToHex`/`rgbToHsl`/`hslToRgb`/`hexToHsl`/`hslToHex`/`shiftHue`/`withLightness`, `relativeLuminance`/`contrastRatio`, `validatePaletteContrast` (6 pares reais: branco sobre brand/brandDeep/ctaDeep/ctaDarkest, brandInk sobre bg/brandSubtle), `mulberry32`, `repairPaletteContrast`, `generatePaletteCandidates` (variações de matiz + aleatórias com seed, CTA herdado da base, só retorna aprovadas). Sem testes próprios; nada o importa ainda |
+| Falta (para o Codex) | Popular `paletteCandidates` (5 por oferta) — o campo já existe no contrato; o painel lê do Blob com o código como padrão (decidir onde vivem as candidatas); UI de escolha + "Gerar novas paletas" (hoje o `PaletteEditor` só lista os 10 presets e salva 1 `paletteKey`); trocar o PIN `"1010"` hardcoded (`PaletteEditor.tsx:31,33,90`, `api/admin/offers/[slug]/route.ts:18`, `AdminOffersClient.tsx:43,44`) por `PALETTE_PIN`; estender o teste de contraste às candidatas (critério §11.3). Atenção: paletas inline de `offer.ts` nunca passaram por contraste (ex.: psicopedagogia reprova "branco sobre brand" 2.77:1) — o teste atual só cobre os 10 presets |
 
 ### ✅ Fase 3 — Hero novo (concluída)
 
@@ -48,15 +70,15 @@ Regra central: **a página é sempre a mesma estrutura; o que muda por oferta é
 > Nota de método: o load via CDP trava neste sandbox em recurso externo (servidor responde o corpo em ~60ms; renderer não completa o load). A medição final usou CDP com `Network.setBlockedURLs` (fontes + tracker) — motor de layout real, `getBoundingClientRect` do `.vi-cta-btn` vs. `innerHeight`, e geometria dos trilhos (`.kc-section`, `.kc-card`). Scripts em `C:\Users\maryk\AppData\Local\Temp\opencode\` (`measure-cdp.mjs`, `shots-only.cjs`, `analyze-fold.cjs`, `png-tools.cjs`).
 > Observação: títulos estouram a largura em telas pequenas (ex.: psicopedagogia/lavanderia em 390px) — pré-existente (CSS do título inalterado nesta fase), tratado na Fase 8 (copy dentro dos limites + revisão dos clamps).
 
-### ⏳ O que falta (Fases 4 a 8)
+### ⏳ O que falta (Fases 4-resto a 8 — guia para o Codex)
 
-| Fase | O que fazer | Pontos de atenção |
+| Fase | O que fazer | Estado atual / pontos de atenção |
 |---|---|---|
-| 4 | **Paletas**: 5 candidatas por oferta + gerador ("variações da atual" + "aleatórias") + validação de contraste nos pares reais | CTA verde, bullets verdes com check branco e o glass da barra do topo **não mudam** com a paleta |
-| 5 | **Orientação** `portrait`/`landscape` governando kit + bônus + os dois trilhos | Dois trilhos: full-bleed 100% de largura, cards maiores (proposta 78vw no celular), fade nas laterais, direções opostas (A→Z e Z→A) |
-| 6 | **Seções ligáveis/desligáveis** (todas), FAQ com exatamente 5 perguntas, depoimentos até 7 | Hoje o FAQ corta em 5 itens e o carrossel renderiza 5 slides fixos — os dois pontos precisam mudar |
-| 7 | **Painel `/painel`**: login (e-mail/senha via env), lista das 15 ofertas, preview ao vivo, abas Cores/Imagens/Oferta/Copy/Seções, upload em massa por nome com PNG→WebP, "Gerar prompt" e "Colar copy" | PIN do `/<slug>/paleta` sai do código (hoje está escrito em `PaletteEditor.tsx` e aparece na tela!) e vira `PALETTE_PIN` |
-| 8 | **Migração das 15 ofertas**: copy dentro dos limites, imagens nos nomes padrão, remover `*-offer` do CSS, apagar status/draft + `/admin` + APIs | Só remover o admin **depois** do painel funcionar. `catalog.json` perde `status`/`className` |
+| 4-resto | Popular `paletteCandidates` (5/oferta), UI de escolha + "Gerar novas paletas", `PALETTE_PIN`, contraste das candidatas | Base pronta em `src/lib/color.ts` (não commitado). CTA/bullets/glass **não mudam** com a paleta (§4.2). `PaletteEditor` atual só salva 1 `paletteKey` |
+| 5-resto | Trilhos full-bleed 100vw + fade lateral + cards 78vw + ajuste no painel | Já pronto: `orientation` governa kit+bônus, direções opostas (`direction="reverse"`), espaçamento enxuto, placeholder por orientação. Falta: largura total, máscara de fade, cards maiores. Cards hoje: 240px mobile (`clamp(240px,42vw,360px)`), retrato `clamp(200px,56vw,300px)` |
+| 6 | `sections` ligando/desligando tudo no `OfferPage`, FAQ exatamente 5, depoimentos até 7 | Tipo `SectionId` existe mas `OfferPage.tsx` ignora `sections`. `FAQ.tsx:10` corta com `slice(0, 5)`. `SocialProof` renderiza todos os configurados — impor teto 7 |
+| 7 | Painel `/painel` (login env, lista, preview, abas Cores/Imagens/Oferta/Copy/Seções, upload em massa PNG→WebP, "Gerar prompt"/"Colar copy") | Existe só `/admin/*` + `/<slug>/paleta` (PIN `"1010"` hardcoded em 3 arquivos). Estender `operational-catalog.ts` (hoje só `status`+`paletteKey`) para copy/orientação/checkout/tracking |
+| 8 | Migrar copy para os limites (~200 avisos hoje no `offer:validate`), imagens nos nomes padrão (§8.1), remover `*-offer` do CSS (57 ocorrências) + `className` do catálogo (11 em uso), apagar `status`/draft + `/admin` + APIs | Só remover o admin **depois** do painel funcionar. `catalog.json` perde `status`/`className`. Título mobile estourado sai com a copy nos limites |
 
 ### ⚠️ Armadilhas aprendidas nesta sessão (importante para não repetir)
 

@@ -1,6 +1,6 @@
 # Ofertas — Landing Pages Universo Eduk
 
-Projeto Next.js com **13 landing pages de venda low-ticket**, cada uma em sua própria rota,
+Projeto Next.js com **15 landing pages de venda low-ticket**, cada uma em sua própria rota,
 compartilhando shell de seções, catálogo, temas e tracking opcional da Cashflow. Ver `CLAUDE.md`
 para a documentação completa e `AGENTS.md`/`PRODUCT.md`/`DESIGN.md` para convenções de edição e
 sistema de design.
@@ -10,6 +10,8 @@ sistema de design.
 | Rota | Produto |
 |---|---|
 | `/alicate` | Manual prático de alicate amperímetro |
+| `/box` | Guia passo a passo de box com tijolos e blocos de vidro |
+| `/calha` | Guia prático de calhas e rufos |
 | `/psicopedagogia` | Mapa de Perfil Infantil para psicopedagogas iniciantes |
 | `/laboral` | Dinâmicas prontas de ginástica laboral |
 | `/castracao` | Mapa visual de preparação para castração (veterinária) |
