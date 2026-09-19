@@ -26,6 +26,7 @@ npm run lint
 
 ## Arquivos Importantes
 
+- `docs/PADRONIZACAO-LP.md`: plano "Padronização LP" — status da execução, decisões fechadas (hero/CTA na primeira dobra, limites de copy, paletas, orientação, trilhos, painel), critérios de aceite e o contrato novo. **Ler antes de mexer em layout, copy ou componentes de seção.**
 - `src/config/offers/<oferta>/offer.ts`: conteúdo comercial das 13 ofertas: `alicate`, `castracao`, `confissao`, `croqui`, `felinos`, `higienizacao`, `jardim`, `laboral`, `lavanderia`, `lembrancinhas`, `porcelanato`, `psicopedagogia` e `tilapia`.
 - `src/config/offers/catalog.json`: configuração-base versionada (status, paleta, favicon e Cashflow); alterações operacionais publicadas pelo painel são mantidas no Blob privado da Vercel.
 - `src/types/offer.ts`: contrato `OfferConfig` compartilhado por todas as ofertas.
