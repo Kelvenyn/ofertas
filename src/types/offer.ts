@@ -68,6 +68,10 @@ export interface BenefitSection {
   title: string
   ctaText: string
   items: BenefitItem[]
+  image?: string
+  imageAlt?: string
+  imageWidth?: number
+  imageHeight?: number
 }
 
 export interface BonusItem {
@@ -76,7 +80,7 @@ export interface BonusItem {
   title: string
   titleBreak?: string
   desc: string
-  price: string
+  price?: string
 }
 
 export interface BonusSection {
@@ -104,6 +108,7 @@ export interface PricingPlan {
   oldPrice: string
   price: string
   installments: string
+  installmentsPosition?: "abovePrice" | "belowPrice"
   items: string[]
   mutedItems?: string[]
   ctaText: string
@@ -169,8 +174,8 @@ export interface OfferConfig {
   guarantee: {
     marqueeText: string
     marqueeGradient: string
-    icon: string
-    iconAlt: string
+    icon?: string
+    iconAlt?: string
     title: string
     body: string
     sealText?: string

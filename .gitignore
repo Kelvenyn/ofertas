@@ -49,3 +49,7 @@ next-env.d.ts
 temp/
 
 .playwright-mcp/
+.env*
+
+# Exportações PNG de origem; a oferta Alicate serve apenas os WebPs normalizados.
+public/images/alicate/PNG/

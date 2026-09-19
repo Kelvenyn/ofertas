@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "slug": "box",
+  "catalogDefaults": {
+    "status": "draft",
+    "paletteKey": null,
+    "cashflow": null
+  },
+  "copy": {
+    "sourceName": "PV.txt",
+    "requiresAgent": true,
+    "reason": "A copy precisa ser adaptada ao contrato OfferConfig; o importador não inventa conteúdo comercial."
+  },
+  "counts": {
+    "page": 16,
+    "testimonial": 6,
+    "bonus": 12,
+    "plan": 2
+  },
+  "assets": [
+    {
+      "sourceName": "Imagem (1).png",
+      "kind": "page",
+      "targetName": "page-01.webp"
+    },
+    {
+      "sourceName": "Imagem (2).png",
+      "kind": "page",
+      "targetName": "page-02.webp"
+    },
+    {
+      "sourceName": "Imagem (3).png",
+      "kind": "page",
+      "targetName": "page-03.webp"
+    },
+    {
+      "sourceName": "Imagem (4).png",
+      "kind": "page",
+      "targetName": "page-04.webp"
+    },
+    {
+      "sourceName": "Imagem (5).png",
+      "kind": "page",
+      "targetName": "page-05.webp"
+    },
+    {
+      "sourceName": "Imagem (6).png",
+      "kind": "page",
+      "targetName": "page-06.webp"
+    },
+    {
+      "sourceName": "Imagem (7).png",
+      "kind": "page",
+      "targetName": "page-07.webp"
+    },
+    {
+      "sourceName": "Imagem (8).png",
+      "kind": "page",
+      "targetName": "page-08.webp"
+    },
+    {
+      "sourceName": "Imagem (9).png",
+      "kind": "page",
+      "targetName": "page-09.webp"
+    },
+    {
+      "sourceName": "Imagem (10).png",
+      "kind": "page",
+      "targetName": "page-10.webp"
+    },
+    {
+      "sourceName": "Imagem (11).png",
+      "kind": "page",
+      "targetName": "page-11.webp"
+    },
+    {
+      "sourceName": "Imagem (12).png",
+      "kind": "page",
+      "targetName": "page-12.webp"
+    },
+    {
+      "sourceName": "Imagem (13).png",
+      "kind": "page",
+      "targetName": "page-13.webp"
+    },
+    {
+      "sourceName": "Imagem (14).png",
+      "kind": "page",
+      "targetName": "page-14.webp"
+    },
+    {
+      "sourceName": "Imagem (15).png",
+      "kind": "page",
+      "targetName": "page-15.webp"
+    },
+    {
+      "sourceName": "Imagem (16).png",
+      "kind": "page",
+      "targetName": "page-16.webp"
+    },
+    {
+      "sourceName": "Depoimento (1).png",
+      "kind": "testimonial",
+      "targetName": "testimonial-01.webp"
+    },
+    {
+      "sourceName": "Depoimento (2).png",
+      "kind": "testimonial",
+      "targetName": "testimonial-02.webp"
+    },
+    {
+      "sourceName": "Depoimento (3).png",
+      "kind": "testimonial",
+      "targetName": "testimonial-03.webp"
+    },
+    {
+      "sourceName": "Depoimento (4).png",
+      "kind": "testimonial",
+      "targetName": "testimonial-04.webp"
+    },
+    {
+      "sourceName": "Depoimento (5).png",
+      "kind": "testimonial",
+      "targetName": "testimonial-05.webp"
+    },
+    {
+      "sourceName": "Depoimento (6).png",
+      "kind": "testimonial",
+      "targetName": "testimonial-06.webp"
+    },
+    {
+      "sourceName": "bonus-1-verso.png",
+      "kind": "bonus",
+      "targetName": "bonus-01-back.webp"
+    },
+    {
+      "sourceName": "bonus-1-frente.png",
+      "kind": "bonus",
+      "targetName": "bonus-01-front.webp"
+    },
+    {
+      "sourceName": "bonus-2-verso.png",
+      "kind": "bonus",
+      "targetName": "bonus-02-back.webp"
+    },
+    {
+      "sourceName": "bonus-2-frente.png",
+      "kind": "bonus",
+      "targetName": "bonus-02-front.webp"
+    },
+    {
+      "sourceName": "bonus-3-verso.png",
+      "kind": "bonus",
+      "targetName": "bonus-03-back.webp"
+    },
+    {
+      "sourceName": "bonus-3-frente.png",
+      "kind": "bonus",
+      "targetName": "bonus-03-front.webp"
+    },
+    {
+      "sourceName": "bonus-4-verso.png",
+      "kind": "bonus",
+      "targetName": "bonus-04-back.webp"
+    },
+    {
+      "sourceName": "bonus-4-frente.png",
+      "kind": "bonus",
+      "targetName": "bonus-04-front.webp"
+    },
+    {
+      "sourceName": "bonus-5-verso.png",
+      "kind": "bonus",
+      "targetName": "bonus-05-back.webp"
+    },
+    {
+      "sourceName": "bonus-5-frente.png",
+      "kind": "bonus",
+      "targetName": "bonus-05-front.webp"
+    },
+    {
+      "sourceName": "bonus-6-verso.png",
+      "kind": "bonus",
+      "targetName": "bonus-06-back.webp"
+    },
+    {
+      "sourceName": "bonus-6-frente.png",
+      "kind": "bonus",
+      "targetName": "bonus-06-front.webp"
+    },
+    {
+      "sourceName": "Plano Básico.png",
+      "kind": "plan",
+      "targetName": "plan-basic.webp"
+    },
+    {
+      "sourceName": "Plano Completo.png",
+      "kind": "plan",
+      "targetName": "plan-complete.webp"
+    }
+  ],
+  "ignoredFiles": [],
+  "nextSteps": [
+    "Adaptar a copy para src/config/offers/box/offer.ts.",
+    "Cadastrar checkouts, paleta e Cashflow no catálogo.",
+    "Rodar npm run offer:validate, testes, typecheck e build antes de ativar."
+  ]
+}

@@ -10,7 +10,7 @@ interface FlipCardProps {
   title: string
   titleBreak?: string
   desc: string
-  price: string
+  price?: string
   index: number
   labels: BonusSection
 }
@@ -99,9 +99,9 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
       <div className="bon-new-info">
         <span className="bon-new-pill-title">{titleBreak || title}</span>
         <p className="bon-new-desc">{desc}</p>
-        <span className="bon-new-price">
+        {price && <span className="bon-new-price">
           <span className="bon-new-price-label">De </span><span className="bon-new-price-old">{price}</span>
-        </span>
+        </span>}
 
         <div className="bon-new-timer">
           <span className="bon-new-timer-text">{labels.timerText}</span>

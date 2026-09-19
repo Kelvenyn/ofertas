@@ -1,3 +1,1 @@
-import PsicopedagogiaPage from "@/app/psicopedagogia/page"
-
-export default PsicopedagogiaPage
+export { default } from "@/components/OfferPage"

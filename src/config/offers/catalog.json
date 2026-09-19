@@ -1,0 +1,146 @@
+{
+  "homepageOffer": "lembrancinhas",
+  "offers": {
+    "alicate": {
+      "label": "Alicate Amperímetro",
+      "status": "active",
+      "paletteKey": null,
+      "className": "alicate-offer",
+      "favicon": "/images/alicate/favicon.webp",
+      "cashflow": {
+        "workspaceId": "743002a9-8ace-4256-b34d-5cfb2461eacc",
+        "offerId": "31f8a6d0-f4cf-42b5-a2e6-995f08c59ac4"
+      }
+    },
+    "box": {
+      "label": "Box",
+      "status": "active",
+      "paletteKey": null,
+      "className": "box-offer",
+      "favicon": "/images/box/favicon.webp",
+      "cashflow": {
+        "workspaceId": "743002a9-8ace-4256-b34d-5cfb2461eacc",
+        "offerId": "d15ab5fb-7991-4c59-bb78-6f2763e5775b"
+      }
+    },
+    "calha": {
+      "label": "Guia Prático de Calhas e Rufos",
+      "status": "active",
+      "paletteKey": "terracota",
+      "className": "calha-offer",
+      "favicon": "/images/calha/favicon.webp",
+      "cashflow": {
+        "workspaceId": "743002a9-8ace-4256-b34d-5cfb2461eacc",
+        "offerId": "34a4bda8-2f33-4a05-adca-b94f5bed24f6"
+      }
+    },
+    "castracao": {
+      "label": "Castração",
+      "status": "active",
+      "paletteKey": null,
+      "className": "castracao-offer",
+      "favicon": "/images/castracao/favicon.webp",
+      "cashflow": null
+    },
+    "confissao": {
+      "label": "Confissão",
+      "status": "active",
+      "paletteKey": null,
+      "className": "laboral-offer confissao-offer",
+      "favicon": "/images/confissao/favicon.webp",
+      "cashflow": null
+    },
+    "croqui": {
+      "label": "Croqui",
+      "status": "active",
+      "paletteKey": null,
+      "className": "laboral-offer croqui-offer",
+      "favicon": "/images/croqui/favicon.webp",
+      "cashflow": null
+    },
+    "felinos": {
+      "label": "Felinos",
+      "status": "active",
+      "paletteKey": null,
+      "className": "",
+      "favicon": "/images/felinos/favicon.webp",
+      "cashflow": null
+    },
+    "higienizacao": {
+      "label": "Higienização de Estofados",
+      "status": "active",
+      "paletteKey": "grafite-dourado",
+      "className": "higienizacao-offer",
+      "favicon": "/images/higienizacao/favicon.webp",
+      "cashflow": {
+        "workspaceId": "743002a9-8ace-4256-b34d-5cfb2461eacc",
+        "offerId": "a4e2c680-4214-4804-90c8-a3d908dc103c"
+      }
+    },
+    "jardim": {
+      "label": "Jardins Verticais",
+      "status": "active",
+      "paletteKey": null,
+      "className": "jardim-offer",
+      "favicon": "/images/jardim/favicon.webp",
+      "cashflow": null
+    },
+    "laboral": {
+      "label": "Ginástica Laboral",
+      "status": "active",
+      "paletteKey": null,
+      "className": "laboral-offer",
+      "favicon": "/images/laboral/favicon.webp",
+      "cashflow": null
+    },
+    "lavanderia": {
+      "label": "Lavanderias Pequenas",
+      "status": "active",
+      "paletteKey": null,
+      "className": "",
+      "favicon": "/images/lavanderia/favicon.webp",
+      "cashflow": {
+        "workspaceId": "743002a9-8ace-4256-b34d-5cfb2461eacc",
+        "offerId": "858b9d0c-d3f7-4e71-a0b6-288817b6d656"
+      }
+    },
+    "lembrancinhas": {
+      "label": "Lembrancinhas Cristãs",
+      "status": "active",
+      "paletteKey": null,
+      "className": "lembrancinhas-offer",
+      "favicon": "/images/lembrancinhas/favicon.webp",
+      "cashflow": null
+    },
+    "porcelanato": {
+      "label": "Porcelanato",
+      "status": "active",
+      "paletteKey": null,
+      "className": "porcelanato-offer",
+      "favicon": "/images/porcelanato/favicon.webp",
+      "cashflow": null
+    },
+    "psicopedagogia": {
+      "label": "Psicopedagogia",
+      "status": "active",
+      "paletteKey": null,
+      "className": "",
+      "favicon": "/images/psicopedagogia/favicon.webp",
+      "cashflow": {
+        "workspaceId": "743002a9-8ace-4256-b34d-5cfb2461eacc",
+        "offerId": "da308c1d-8e9b-46c3-b9f4-5657d8f51335"
+      }
+    },
+    "tilapia": {
+      "label": "Tilápia",
+      "status": "active",
+      "paletteKey": null,
+      "className": "",
+      "favicon": "/images/tilapia/favicon.webp",
+      "cashflow": {
+        "workspaceId": "743002a9-8ace-4256-b34d-5cfb2461eacc",
+        "offerId": "b6f77b1d-115d-45ff-a9ee-b4ed79b73845"
+      }
+    }
+  }
+}

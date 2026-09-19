@@ -85,14 +85,12 @@ components:
 
 # Design System: Low Ticket Sales Page
 
-> **Nota sobre cor:** este documento descreve o sistema compartilhado por todas as 7 ofertas do
+> **Nota sobre cor:** este documento descreve o sistema compartilhado por todas as 13 ofertas do
 > projeto (`ofertas`) — layout, tipografia, sombras, componentes e as regras de "do/don't"
-> valem igualmente para qualquer rota. A paleta de cor abaixo (frontmatter `colors:` e a seção
-> 2) é a paleta de referência do template; na prática, **cada oferta define a própria `palette`**
-> em `src/config/offers/<oferta>/offer.ts` e aplica via CSS custom properties (`--brand`,
-> `--brand-deep`, `--cta`, `--accent`, etc.) no `layout.tsx` correspondente. Use os hex fixos
-> aqui como ponto de partida ao criar uma oferta nova, não como a cor "oficial" do site — não
-> existe uma cor única global.
+> valem igualmente para qualquer rota. A paleta abaixo é a referência do template. Cada oferta
+> mantém uma `palette` em `offer.ts`; `paletteKey` no catálogo pode substituí-la por um dos dez
+> presets de `src/config/offers/palettes.ts`. CTA e bullets permanecem verdes, urgência permanece
+> vermelha e os demais fundos, barras, bordas e sombras derivam da paleta efetiva.
 
 ## 1. Overview
 
@@ -116,7 +114,7 @@ The system prioritizes mobile-first design (768px viewport first), visual hierar
 The palette is built around three functional groups: authority (blue), action (green), and urgency (red), with coral and yellow as supporting accents.
 
 ### Primary
-- **Authority Blue** (#0B7FE8): Primary brand color for CTAs, links, highlights, and trust signals. Used extensively in buttons, badges, and section accents.
+- **Authority Blue** (#0B7FE8): Reference brand color for links, highlights, trust signals, and section accents. An offer preset may replace it.
 - **Deep Navy** (#123A6D): Secondary brand color for premium elements, text hierarchy, and depth. Used in pricing sections and premium plans.
 - **Darker Navy** (#082F63): Primary text color for headings and body copy. Provides strong contrast against light backgrounds.
 

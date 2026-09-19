@@ -9,7 +9,6 @@ interface AnimatedBulletsProps {
 }
 
 const ITEM_DELAY = 180
-const CHECK_DELAY = 600
 
 function AnimatedCheck({ checked }: { checked: boolean }) {
   return (

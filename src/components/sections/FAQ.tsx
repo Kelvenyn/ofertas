@@ -5,7 +5,9 @@ import { useOffer } from "@/context/offer-context"
 
 export function FAQ() {
   const offer = useOffer()
-  const { title, items: faqItems } = offer.faq
+  const { title, items } = offer.faq
+  // Mantém a seção concisa e consistente em todas as páginas de oferta.
+  const faqItems = items.slice(0, 5)
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   if (!faqItems || faqItems.length === 0) return null

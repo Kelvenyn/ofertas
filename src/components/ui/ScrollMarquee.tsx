@@ -25,7 +25,7 @@ function renderText(text: string) {
 
 export function ScrollMarquee({
   text = "MATERIAL EM ALTA QUALIDADE • ACESSO IMEDIATO • BÔNUS INCLUÍDOS • ",
-  gradient = "linear-gradient(135deg, #C8860A 0%, #E8A020 35%, #F5C842 65%, #FDD835 100%)",
+  gradient = "var(--marquee-gradient)",
   height = 48,
   className = "",
   reverse = false,
@@ -135,7 +135,7 @@ export function ScrollMarquee({
 
   if (reducedMotion) {
     return (
-      <div className={`scroll-marquee ${className}`} style={{ height, background: gradient }} aria-hidden="true">
+      <div className={`scroll-marquee ${className}`} style={{ height, background: `var(--marquee-gradient, ${gradient})` }} aria-hidden="true">
         <div style={{ height: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
           <span className="scroll-marquee-text">{rendered}</span>
         </div>
@@ -146,7 +146,7 @@ export function ScrollMarquee({
   return (
     <div
       className={`scroll-marquee ${className}`}
-      style={{ height, background: gradient }}
+      style={{ height, background: `var(--marquee-gradient, ${gradient})` }}
       aria-hidden="true"
       onMouseEnter={() => { hovered.current = true }}
       onMouseLeave={() => { hovered.current = false }}

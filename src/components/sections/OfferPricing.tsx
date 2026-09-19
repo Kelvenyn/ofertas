@@ -36,8 +36,6 @@ export function OfferPricing() {
 
             return (
               <div key={plan.id} className={`offer-card ${plan.featured ? "premium-plan" : "basic-plan"}`}>
-                {plan.badgeText && <div className="offer-badge">{plan.badgeText}</div>}
-
                 <div className="offer-card-top">
                   {plan.label && (
                     <div className={`plan-label ${plan.featured ? "premium-label" : "basic-label"}`}>
@@ -69,8 +67,13 @@ export function OfferPricing() {
                       <span className="offer-discount-badge">-{discount}%</span>
                     )}
                   </div>
+                  {plan.installmentsPosition === "abovePrice" && (
+                    <div className="offer-installments offer-installments-above">{plan.installments}</div>
+                  )}
                   <div className="offer-price">{plan.price}</div>
-                  <div className="offer-installments">{plan.installments}</div>
+                  {plan.installmentsPosition !== "abovePrice" && (
+                    <div className="offer-installments">{plan.installments}</div>
+                  )}
                 </div>
 
                 <AnimatedBullets items={plan.items} className="offer-list" />

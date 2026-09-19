@@ -1,59 +1,10 @@
-import type { Metadata } from "next"
-import Script from "next/script"
+import { createOfferMetadata, OfferRouteLayout } from "@/components/OfferRouteLayout"
 import { OFFER } from "@/config/offers/lembrancinhas/offer"
-import { OfferProvider } from "@/context/offer-context"
 
-export const metadata: Metadata = {
-  title: "Lembrancinhas Cristã",
-  description: OFFER.meta.description,
-  icons: {
-    icon: "/images/lembrancinhas/favicon.webp",
-  },
-  openGraph: {
-    title: OFFER.meta.title,
-    description: OFFER.meta.description,
-    type: "website",
-    locale: "pt_BR",
-    siteName: OFFER.meta.title,
-  },
-}
+const SLUG = "lembrancinhas"
 
-export default function LembrancinhasLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  const { palette: p } = OFFER
-  return (
-    <>
-      {/* O tracker.js do Hub centraliza os eventos desta página. */}
-      <Script
-        id="hub-tracker-lembrancinhas"
-        src="https://hub.universoeduk.com/tracker.js"
-        strategy="afterInteractive"
-      />
+export const metadata = createOfferMetadata(SLUG, OFFER)
 
-      <div
-        id="offer-root"
-        className="lembrancinhas-offer"
-        style={{
-          "--brand": p.brand,
-          "--brand-deep": p.brandDeep,
-          "--brand-ink": p.brandInk,
-          "--brand-dark": p.brandDark,
-          "--brand-light": p.brandLight,
-          "--brand-subtle": p.brandSubtle,
-          "--cta": p.cta,
-          "--cta-deep": p.ctaDeep,
-          "--cta-darkest": p.ctaDarkest,
-          "--accent": p.accent,
-          "--yellow": p.yellow,
-          "--bg": p.bg,
-          "--bg-alt": p.bgAlt,
-        } as React.CSSProperties}
-      >
-        <OfferProvider offer={OFFER}>{children}</OfferProvider>
-      </div>
-    </>
-  )
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return <OfferRouteLayout slug={SLUG} offer={OFFER}>{children}</OfferRouteLayout>
 }

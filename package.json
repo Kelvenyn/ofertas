@@ -17,9 +17,13 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm run build"
+    "test": "node --test",
+    "offer:new": "node scripts/import-offer.mjs",
+    "offer:validate": "node scripts/validate-offers.mjs",
+    "check": "npm test && npm run offer:validate && npm run lint && npm run typecheck && npm run build"
   },
   "dependencies": {
+    "@vercel/blob": "^2.8.0",
     "lenis": "^1.3.23",
     "lucide-react": "^1.6.0",
     "next": "^16.2.7",

@@ -11,7 +11,7 @@ export function VendaImediata() {
   const {
     pill, titleLine1, titleLine2, titleLine3, audience,
     image, imageAlt, imageWidth, imageHeight,
-    subtitle, ctaText, marqueeText, marqueeGradient, bullets, subtitlePosition = "afterImage", socialProofCaption,
+    subtitle, ctaText, marqueeText, bullets, subtitlePosition = "afterImage", socialProofCaption,
   } = offer.hero
 
   return (
@@ -47,13 +47,13 @@ export function VendaImediata() {
           <AnimatedBullets items={bullets} className="vi-bullets ab-center" />
         )}
 
-        <ShinyButton href="#oferta" className="vi-cta-btn">
+        <ShinyButton href="#oferta" className="vi-cta-btn max-w-full whitespace-normal">
           {ctaText}
         </ShinyButton>
 
         <ScrollMarquee
           text={marqueeText}
-          gradient={marqueeGradient}
+          gradient="var(--marquee-gradient)"
           className="vi-marquee"
           fadeColor="transparent"
         />

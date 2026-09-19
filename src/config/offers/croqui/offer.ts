@@ -182,7 +182,7 @@ export const OFFER: OfferConfig = {
   },
   guarantee: {
     ...laboralOffer.guarantee,
-    icon: image(laboralOffer.guarantee.icon),
+    icon: laboralOffer.guarantee.icon ? image(laboralOffer.guarantee.icon) : undefined,
     iconAlt: "Garantia de 30 dias",
     marqueeText: "GARANTIA 30 DIAS ✦ RISCO ZERO ✦ COMPRA SEGURA ✦ ",
     marqueeGradient: "linear-gradient(90deg, var(--brand) 0%, var(--brand-deep) 100%)",

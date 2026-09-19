@@ -1,0 +1,14 @@
+.agents
+.docs
+.superpowers
+.git
+.next
+.vercel
+node_modules
+
+# Legacy source exports not referenced by the current Alicate offer.
+public/images/alicate/PNG
+
+# Local-only material and test fixtures.
+.env*
+tests

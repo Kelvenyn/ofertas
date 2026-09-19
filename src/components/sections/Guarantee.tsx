@@ -7,7 +7,7 @@ import { useOffer } from "@/context/offer-context"
 
 export function Guarantee() {
   const offer = useOffer()
-  const { icon, iconAlt, title, body, marqueeText, marqueeGradient, sealText } = offer.guarantee
+  const { icon, iconAlt = "Garantia de 30 dias", title, body, marqueeText, sealText } = offer.guarantee
   const [visible, setVisible] = useState(false)
   const [sealScale, setSealScale] = useState(0.5)
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -59,7 +59,7 @@ export function Guarantee() {
 
   return (
     <section className="gar-section" ref={sectionRef} aria-labelledby="guarantee-title">
-      <ScrollMarquee text={marqueeText} gradient={marqueeGradient} height={44} fadeColor="transparent" />
+      <ScrollMarquee text={marqueeText} gradient="var(--marquee-gradient)" height={44} fadeColor="transparent" />
 
       <div
         className="gar-inner"
@@ -74,7 +74,7 @@ export function Guarantee() {
             <div className="gar-seal" role="img" aria-label={iconAlt}>
               {sealText.split("\n").map((line) => <span key={line}>{line}</span>)}
             </div>
-          ) : (
+          ) : icon ? (
             <Image
               src={icon}
               alt={iconAlt}
@@ -82,7 +82,7 @@ export function Guarantee() {
               height={180}
               style={{ width: "clamp(140px, 30vw, 200px)", height: "auto" }}
             />
-          )}
+          ) : <div className="gar-seal" role="img" aria-label={iconAlt}><span>30</span><span>DIAS</span></div>}
         </div>
 
         <h2 className="gar-title" id="guarantee-title">
@@ -98,7 +98,7 @@ export function Guarantee() {
         </p>
       </div>
 
-      <ScrollMarquee text={marqueeText} gradient={marqueeGradient} height={44} reverse fadeColor="transparent" />
+      <ScrollMarquee text={marqueeText} gradient="var(--marquee-gradient)" height={44} reverse fadeColor="transparent" />
     </section>
   )
 }

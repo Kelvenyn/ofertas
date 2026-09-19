@@ -1,23 +1,31 @@
 # Ofertas — Landing Pages Universo Eduk
 
-Projeto Next.js com **7 landing pages de venda low-ticket**, cada uma em sua própria rota,
-compartilhando componentes de seção e a mesma infraestrutura de tracking (um painel externo,
-o "Hub"). Ver `CLAUDE.md` para a documentação completa (lista de ofertas, regras de produto,
-tracking) e `AGENTS.md`/`PRODUCT.md`/`DESIGN.md` para convenções de edição e sistema de design.
+Projeto Next.js com **13 landing pages de venda low-ticket**, cada uma em sua própria rota,
+compartilhando shell de seções, catálogo, temas e tracking opcional da Cashflow. Ver `CLAUDE.md`
+para a documentação completa e `AGENTS.md`/`PRODUCT.md`/`DESIGN.md` para convenções de edição e
+sistema de design.
 
 ## Ofertas ativas
 
 | Rota | Produto |
 |---|---|
+| `/alicate` | Manual prático de alicate amperímetro |
 | `/psicopedagogia` | Mapa de Perfil Infantil para psicopedagogas iniciantes |
 | `/laboral` | Dinâmicas prontas de ginástica laboral |
 | `/castracao` | Mapa visual de preparação para castração (veterinária) |
 | `/confissao` | Guia visual da confissão católica |
 | `/croqui` | Bases de croqui para desenho de moda |
+| `/felinos` | Mapa dos comportamentos felinos |
+| `/higienizacao` | Manual de higienização de estofados |
 | `/jardim` | Projetos de jardins verticais |
+| `/lavanderia` | Projetos de áreas de serviço pequenas |
 | `/lembrancinhas` | Lembrancinhas cristãs para encontros — **também é o destino de `/`** |
+| `/tilapia` | Projetos visuais de criadouros de tilápia |
+| `/porcelanato` | Guia visual do porcelanato |
 
-Todas usam checkout Cakto e o mesmo script de tracking do Hub (`hub.universoeduk.com/tracker.js`).
+As ofertas usam checkout Cakto ou Hotmart. Quando configurado no catálogo, o layout compartilhado
+carrega o script fornecido pela Cashflow; ofertas sem essa configuração continuam públicas e são
+marcadas como `tracking pendente` no painel.
 
 ## Stack
 
@@ -40,42 +48,44 @@ npm run build
 ## Estrutura principal
 
 ```text
-src/app/<oferta>/layout.tsx          Metadata da oferta + carregamento do tracker.js do Hub
-src/app/<oferta>/page.tsx            Composição das seções da oferta
-src/config/offers/<oferta>/offer.ts  Conteúdo, paleta, imagens, preços e checkout da oferta
+src/app/<oferta>/                    Adapters mínimos para o shell e editor protegido de paleta
+src/components/OfferPage.tsx         Composição única das seções
+src/components/OfferRouteLayout.tsx  Metadata, status, tema e Cashflow
+src/config/offers/<oferta>/offer.ts  Conteúdo, imagens, preços e checkout da oferta
+src/config/offers/catalog.json       Status, preset, favicon e Cashflow por oferta
+src/config/offers/palettes.ts        Dez presets globais acessíveis
 src/types/offer.ts                   Contrato TypeScript OfferConfig, compartilhado por todas
 src/components/sections/             Blocos de seção reutilizáveis entre ofertas
 src/components/ui/                   Componentes visuais compartilhados (botões, cards, etc.)
-src/lib/trackhub.ts                  trackEvent(), ponte com o tracker.js do Hub
 src/app/globals.css                  Estilos globais e estilos das seções
 public/images/<oferta>/              Assets de cada oferta
 ```
 
-Cada oferta define sua própria paleta de cor em `offer.ts` (`palette`), aplicada via CSS
-custom properties no `layout.tsx` correspondente — não existe uma paleta única global.
+`paletteKey: null` no catálogo preserva exatamente a paleta de `offer.ts`. Uma chave seleciona um
+dos dez presets globais; verde de CTA/bullets e vermelho de urgência são tokens semânticos fixos.
+Use `/admin/ofertas` e `/<slug>/paleta` para administrar status e paletas. O acesso exige as variáveis privadas `ADMIN_EMAIL` e `ADMIN_PASSWORD`; os ajustes salvos ficam no Blob privado da Vercel e entram em vigor sem um novo commit.
 
 ## Como criar uma oferta nova
 
-1. Duplique uma pasta existente próxima do novo produto em `src/config/offers/<nova-oferta>/offer.ts`
-   (ofertas que herdam de outra, como `castracao` herda de `laboral`, reduzem bastante a
-   quantidade de campos que precisam ser reescritos — ver exemplos no próprio repositório).
-2. Preencha `meta`, `palette`, `hero`, `benefits`, `bonuses`, `pricing`, `guarantee`, `access`,
-   `faq` e `footer` de acordo com o contrato `OfferConfig` em `src/types/offer.ts`.
-3. Coloque as imagens em `public/images/<nova-oferta>/` e referencie como
-   `/images/<nova-oferta>/arquivo.webp`.
-4. Declare `kitCards.displayAspect` e `bonusSection.cardImageAspect` como `"portrait"` quando
-   o material for retrato — o padrão assume paisagem.
-5. Crie `src/app/<nova-oferta>/layout.tsx` (metadata + `<Script>` do tracker do Hub) e
-   `src/app/<nova-oferta>/page.tsx` (composição das seções, mesma ordem usada nas outras ofertas).
-6. Troque o `ctaHref` de cada plano em `pricing.plans` para o link real de checkout Cakto —
-   nunca deixar placeholder (`"#"`) numa oferta publicada.
-7. Rode `npm run typecheck` e `npm run build` antes de considerar pronto.
+Use o skill local `$nova-oferta` com a pasta-fonte e o slug. Ele lê `PV.txt`, inventaria os assets,
+roda o importador determinístico, cria a entrada como `draft` e orienta a adaptação da copy ao
+contrato atual. O comando mecânico também pode ser inspecionado antes de gravar:
+
+```bash
+node scripts/import-offer.mjs --source <pasta> --slug <slug> --dry-run
+node scripts/import-offer.mjs --source <pasta> --slug <slug>
+node scripts/validate-offers.mjs
+```
+
+Só promova a oferta para `active` depois de configurar checkouts reais, concluir lint, typecheck,
+build e validar a página em desktop e mobile. O importador preserva a pasta-fonte e recusa
+sobrescrever um slug existente.
 
 ## Cuidados de edição
 
 - Toda copy variável de uma oferta vive em `offer.ts`, nunca hardcoded num componente de seção.
 - Antes de remover imagens de `public/images/<oferta>/`, confirme que não são referenciadas em
   `offer.ts`.
-- Nunca embarcar pixel Meta, GTM ou Utmify direto numa página — o tracking é só via `tracker.js`
-  do Hub (ver `CLAUDE.md`).
+- Nunca embarcar pixel Meta, GTM ou Utmify direto numa página; tracking é somente pelo script
+  Cashflow configurado no catálogo.
 - Quando uma mudança afetar layout, valide desktop e mobile.

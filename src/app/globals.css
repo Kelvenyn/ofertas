@@ -362,6 +362,60 @@ html {
   color: var(--brand-ink);
 }
 
+/* The Porcelanato headline is intentionally set as three balanced, equal-weight lines. */
+.porcelanato-offer .vi-title {
+  max-width: 680px;
+}
+
+.porcelanato-offer .vi-title-line1,
+.porcelanato-offer .vi-title-line2,
+.porcelanato-offer .vi-title-line3 {
+  color: var(--brand);
+  font-size: clamp(20.5px, 5.35vw, 35px);
+  font-weight: 900;
+  line-height: 1.12;
+  margin-bottom: 0;
+  text-wrap: balance;
+}
+
+.porcelanato-offer .vi-title-line1 {
+  color: var(--brand-ink);
+}
+
+.porcelanato-offer .vi-image {
+  margin-bottom: 24px;
+}
+
+/* As artes quadradas do Porcelanato são o principal ponto visual da oferta. */
+.porcelanato-offer .vi-image,
+.porcelanato-offer .tqvr-image,
+.porcelanato-offer .offer-plan-img {
+  position: relative;
+  isolation: isolate;
+}
+
+.porcelanato-offer .vi-image::before,
+.porcelanato-offer .tqvr-image::before {
+  content: "";
+  position: absolute;
+  inset: 18%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--brand-light) 28%, transparent) 0%, transparent 70%);
+  filter: blur(28px);
+}
+
+.porcelanato-offer .vi-image img,
+.porcelanato-offer .tqvr-image img,
+.porcelanato-offer .offer-plan-img img {
+  position: relative;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  filter: none;
+  animation: laboral-image-emphasis 3.6s ease-in-out infinite;
+}
+
 .vi-image {
   margin: 0 auto 32px;
   position: relative;
@@ -402,7 +456,10 @@ html {
   .jardim-offer .offer-plan-img img,
   .lembrancinhas-offer .vi-image img,
   .lembrancinhas-offer .tqvr-image img,
-  .lembrancinhas-offer .offer-plan-img img { animation: none; }
+  .lembrancinhas-offer .offer-plan-img img,
+  .porcelanato-offer .vi-image img,
+  .porcelanato-offer .tqvr-image img,
+  .porcelanato-offer .offer-plan-img img { animation: none; }
 }
 
 .vi-audience {
@@ -461,15 +518,24 @@ html {
 
 .vi-bullets .ab-item {
   width: 100%;
+  height: 60px;
   padding: 10px 20px;
   border-radius: 999px;
   background: color-mix(in srgb, var(--cta) 9%, white);
+  justify-content: center;
+  text-align: center;
 }
 
 .vi-bullets .ab-text {
   color: #353535;
   font-weight: 700;
   font-size: 15px;
+  text-align: center;
+  text-wrap: balance;
+}
+
+@media (min-width: 769px) {
+  .vi-sub { max-width: 600px; }
 }
 
 @media (max-width: 480px) {
@@ -484,8 +550,10 @@ html {
   justify-content: center;
   gap: 8px;
   width: auto;
+  max-width: 100%;
   min-width: min(100%, 300px);
   text-align: center;
+  white-space: normal;
 }
 
 .benefits-cta-wrap .shiny-cta,
@@ -744,36 +812,6 @@ html {
   aspect-ratio: 3 / 4;
 }
 
-.palette-menu,
-.palette-menu-reopen {
-  position: fixed;
-  right: 14px;
-  bottom: 14px;
-  z-index: 100;
-  font-family: 'Manrope', system-ui, sans-serif;
-}
-
-.palette-menu {
-  width: min(270px, calc(100vw - 28px));
-  max-height: calc(100vh - 28px);
-  padding: 14px;
-  border: 1px solid rgba(0,0,0,.12);
-  border-radius: 16px;
-  background: rgba(255,255,255,.96);
-  box-shadow: 0 12px 32px rgba(0,0,0,.18);
-  overflow-y: auto;
-}
-
-.palette-menu-head { display: flex; align-items: center; justify-content: space-between; color: #18351E; }
-.palette-menu-head button { border: 0; background: transparent; font-size: 24px; line-height: 1; cursor: pointer; }
-.palette-menu p { margin: 6px 0 10px; color: #526158; font-size: 12px; line-height: 1.35; }
-.palette-menu-options { display: grid; gap: 7px; }
-.palette-menu-options button { display: flex; align-items: center; gap: 9px; width: 100%; padding: 8px; border: 1px solid #E1E5DF; border-radius: 10px; background: #FFF; color: #243127; font: inherit; font-size: 13px; font-weight: 700; text-align: left; cursor: pointer; }
-.palette-menu-options button:hover, .palette-menu-options button:focus-visible { border-color: #4F7A3A; outline: 2px solid #B7D59C; outline-offset: 1px; }
-.palette-swatches { display: flex; overflow: hidden; border-radius: 999px; }
-.palette-swatches i { display: block; width: 12px; height: 20px; }
-.palette-menu-reopen { border: 0; border-radius: 999px; padding: 10px 14px; background: #284C2A; color: #FFF; box-shadow: 0 8px 22px rgba(0,0,0,.18); cursor: pointer; font: inherit; font-size: 13px; font-weight: 800; }
-
 .kc-card-img {
   width: 100%;
   height: 100%;
@@ -825,6 +863,7 @@ html {
 /* ===== OFFER PEI ===== */
 .offer-pei-section {
   padding: 48px 16px 44px;
+  scroll-margin-top: 72px;
   background: var(--brand-ink);
   font-family: 'Manrope', system-ui, sans-serif;
 }
@@ -914,6 +953,8 @@ html {
   padding: 28px 22px 22px;
   overflow: visible;
   background: var(--surface);
+  display: flex;
+  flex-direction: column;
 }
 
 .basic-plan {
@@ -937,27 +978,10 @@ html {
 
 .premium-plan {
   border: 2px solid var(--cta-deep);
-  padding-top: 62px;
+  padding-top: 28px;
   background: linear-gradient(180deg, var(--cta-surface-deep, #F0FFF8) 0%, var(--surface) 60%);
-  transform: scale(1.02);
-  animation: premium-glow 3s ease-in-out infinite;
-}
-
-.premium-plan::after {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: 26px;
-  background: linear-gradient(
-    110deg,
-    transparent 30%,
-    color-mix(in srgb, var(--cta) 18%, transparent) 50%,
-    transparent 70%
-  );
-  background-size: 200% 100%;
-  animation: premium-shimmer 4s linear infinite;
-  pointer-events: none;
-  z-index: 0;
+  transform: none;
+  animation: none;
 }
 
 .basic-btn {
@@ -1023,6 +1047,9 @@ html {
   font-weight: 800;
   text-align: center;
   letter-spacing: -0.04em;
+  min-height: 2.2em;
+  display: grid;
+  place-items: center;
 }
 
 .premium-plan .offer-card-top h3 {
@@ -1033,6 +1060,8 @@ html {
   display: flex;
   justify-content: center;
   margin: 14px 0 16px;
+  height: 290px;
+  align-items: center;
 }
 
 .offer-plan-img img {
@@ -1206,11 +1235,16 @@ html {
   font-weight: 600;
 }
 
+.offer-installments-above {
+  margin: 0 0 8px;
+}
+
 .offer-list.ab-list {
   list-style: none;
   margin: 0;
   padding: 0;
   gap: 14px;
+  flex: 1;
 }
 
 .offer-list .ab-item {
@@ -1245,30 +1279,12 @@ html {
   margin-top: 24px;
   box-sizing: border-box;
   margin-inline: auto;
+  margin-bottom: 0;
 }
 
 .offer-btn.shiny-cta {
   padding: 18px 16px;
   font-size: 15.5px;
-}
-
-.premium-btn.shiny-cta {
-  background:
-    linear-gradient(135deg, var(--cta-deep), var(--cta-darkest)) padding-box,
-    conic-gradient(
-      from var(--gradient-angle),
-      transparent 0%,
-      var(--cta-deep) 5%,
-      var(--cta-darkest) 15%,
-      var(--cta) 30%,
-      transparent 40%,
-      transparent 100%
-    ) border-box;
-  box-shadow: 0 4px 20px color-mix(in srgb, var(--cta) 30%, transparent);
-}
-
-.premium-btn.shiny-cta:hover {
-  box-shadow: 0 8px 32px color-mix(in srgb, var(--cta) 45%, transparent);
 }
 
 @media (max-width: 768px) {
@@ -1295,13 +1311,7 @@ html {
   }
 
   .premium-plan {
-    padding-top: 64px;
-  }
-
-  .offer-badge {
-    top: 12px;
-    font-size: 11px;
-    padding: 8px 16px;
+    padding-top: 24px;
   }
 
   .plan-label {
@@ -1488,7 +1498,7 @@ html {
 }
 
 .benefits-title {
-  margin: 0 0 28px;
+  margin: 0 0 22px;
   font-family: 'Nunito', system-ui, sans-serif;
   font-size: clamp(26px, 6vw, 36px);
   line-height: 1.1;
@@ -1496,6 +1506,20 @@ html {
   letter-spacing: -.04em;
   color: var(--brand-deep);
   text-wrap: balance;
+}
+
+.benefits-image {
+  width: min(520px, 100%);
+  margin: 0 auto 28px;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 14px 32px color-mix(in srgb, var(--brand-deep) 18%, transparent);
+}
+
+.benefits-image img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .benefits-highlight {
@@ -2174,25 +2198,18 @@ html {
 }
 
 .bon-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
   padding-top: 20px;
 }
 
-.bon-grid > * {
-  flex: 0 0 calc(50% - 9px);
-  min-width: 240px;
-  max-width: 380px;
-}
+.bon-grid > * { min-width: 0; }
 
-@media (max-width: 900px) {
-  .bon-grid > * { flex: 0 0 calc(50% - 9px); }
-}
+@media (max-width: 900px) { .bon-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 @media (max-width: 480px) {
-  .bon-grid > * { flex: 0 0 100%; max-width: 100%; }
+  .bon-grid { grid-template-columns: 1fr; }
 }
 
 .bon-flip-skeleton {
@@ -2914,6 +2931,7 @@ html {
 }
 
 .faq-acc-panel p {
+  white-space: pre-line;
   margin: 0;
   font-family: 'Manrope', system-ui, sans-serif;
   font-size: 14.5px;

@@ -1,6 +1,7 @@
 "use client"
 
 import { useRef, useState, useEffect } from "react"
+import Image from "next/image"
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { useOffer } from "@/context/offer-context"
 
@@ -50,13 +51,19 @@ function BenefitCard({ icon, title, desc, index }: { icon: string; title: string
 
 export function Benefits() {
   const offer = useOffer()
-  const { title, ctaText, items } = offer.benefits
+  const { title, ctaText, items, image, imageAlt, imageWidth = 1254, imageHeight = 1254 } = offer.benefits
   return (
     <section className="benefits-section" aria-labelledby="benefits-title">
       <div className="benefits-inner">
         <h2 className="benefits-title" id="benefits-title">
           {title}
         </h2>
+
+        {image && (
+          <div className="benefits-image">
+            <Image src={image} alt={imageAlt ?? "Imagem do material"} width={imageWidth} height={imageHeight} sizes="(max-width: 700px) 100vw, 520px" />
+          </div>
+        )}
 
         <div className="benefits-grid">
           {items.map((b, i) => (
