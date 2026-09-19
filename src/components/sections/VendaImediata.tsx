@@ -11,7 +11,7 @@ export function VendaImediata() {
   const {
     pill, titleLine1, titleLine2, titleLine3, audience,
     image, imageAlt, imageWidth, imageHeight,
-    subtitle, ctaText, marqueeText, bullets, subtitlePosition = "afterImage", socialProofCaption,
+    subtitle, ctaText, marqueeText, bullets, subtitlePosition = "afterImage",
   } = offer.hero
 
   return (
@@ -38,8 +38,6 @@ export function VendaImediata() {
             priority
           />
         </div>
-
-        {socialProofCaption && <p className="vi-social-proof-caption">{socialProofCaption}</p>}
 
         {subtitlePosition !== "beforeImage" && <p className="vi-sub">{subtitle}</p>}
 

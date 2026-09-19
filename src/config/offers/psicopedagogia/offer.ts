@@ -3,7 +3,7 @@ import type { OfferConfig } from '@/types/offer'
 export const OFFER: OfferConfig = {
   meta: {
     title: "Mapa de Perfil Infantil para Psicopedagogas Iniciantes",
-    description: "Um mapa visual e prático para psicopedagogas iniciantes identificarem o perfil da criança e conduzirem o atendimento com mais segurança.",
+    description: "Um mapa visual e prático para psicopedagogas iniciantes identificarem o perfil da criança e conduzirem o atendimento com mais segurança."
   },
   palette: {
     brand: "#0EA5E9",
@@ -18,7 +18,7 @@ export const OFFER: OfferConfig = {
     accent: "#F59E0B",
     yellow: "#FBBF24",
     bg: "#F0F9FF",
-    bgAlt: "#F59E0B",
+    bgAlt: "#F59E0B"
   },
   hero: {
     pill: "MAPA DE PERFIL INFANTIL",
@@ -31,33 +31,31 @@ export const OFFER: OfferConfig = {
     imageHeight: 1080,
     subtitle: "Tenha em mãos um mapa visual para identificar perfis infantis e escolher a atividade certa para cada sessão, sem precisar improvisar.",
     ctaText: "QUERO O MAPA DE PERFIL INFANTIL",
-    timerLabel: "BÔNUS ENCERRAM EM",
     marqueeText: "15 Perfis Infantis • Atividade-guia para cada perfil • Acesso Imediato • ",
-    marqueeGradient: "linear-gradient(90deg, #0EA5E9 0%, #38BDF8 30%, #7DD3FC 55%, #E0F2FE 80%, #0EA5E9 100%)",
     bullets: [
       "Identificar o perfil da criança",
       "Escolher a atividade certa",
       "Definir o objetivo da sessão",
       "Conduzir sem improvisar",
       "Atender com mais segurança",
-    ],
+    ]
   },
   socialProof: {
     title: "Psicopedagogas de todo o Brasil já usam e aprovam",
     testimonials: [
-      { src: "/images/psicopedagogia/Depoimento (1).webp", alt: "Depoimento 1", gradient: "linear-gradient(90deg, #0EA5E9, #0284C7)" },
-      { src: "/images/psicopedagogia/Depoimento (2).webp", alt: "Depoimento 2", gradient: "linear-gradient(90deg, #16A34A, #11863D)" },
-      { src: "/images/psicopedagogia/Depoimento (3).webp", alt: "Depoimento 3", gradient: "linear-gradient(90deg, #7DD3FC, #0EA5E9)" },
-      { src: "/images/psicopedagogia/Depoimento (4).webp", alt: "Depoimento 4", gradient: "linear-gradient(90deg, #0284C7, #0369A1)" },
-      { src: "/images/psicopedagogia/Depoimento (5).webp", alt: "Depoimento 5", gradient: "linear-gradient(90deg, #16A34A, #F59E0B)" },
-      { src: "/images/psicopedagogia/Depoimento (6).webp", alt: "Depoimento 6", gradient: "linear-gradient(90deg, #0EA5E9, #16A34A)" },
-      { src: "/images/psicopedagogia/Depoimento (7).webp", alt: "Depoimento 7", gradient: "linear-gradient(90deg, #7DD3FC, #0284C7)" },
-    ],
+      { src: "/images/psicopedagogia/Depoimento (1).webp", alt: "Depoimento 1" },
+      { src: "/images/psicopedagogia/Depoimento (2).webp", alt: "Depoimento 2" },
+      { src: "/images/psicopedagogia/Depoimento (3).webp", alt: "Depoimento 3" },
+      { src: "/images/psicopedagogia/Depoimento (4).webp", alt: "Depoimento 4" },
+      { src: "/images/psicopedagogia/Depoimento (5).webp", alt: "Depoimento 5" },
+      { src: "/images/psicopedagogia/Depoimento (6).webp", alt: "Depoimento 6" },
+      { src: "/images/psicopedagogia/Depoimento (7).webp", alt: "Depoimento 7" },
+    ]
   },
   counter: {
     prefix: "+ de",
     target: 15,
-    label: "Perfis Infantis organizados para suas sessões",
+    label: "Perfis Infantis organizados para suas sessões"
   },
   kitCards: {
     heading1: "Veja como é o mapa que você vai usar nas sessões:",
@@ -72,7 +70,7 @@ export const OFFER: OfferConfig = {
       { src: "/images/psicopedagogia/Imagem (8).webp", alt: "Mapa de Perfil Infantil 8", width: 208, height: 134 },
       { src: "/images/psicopedagogia/Imagem (9).webp", alt: "Mapa de Perfil Infantil 9", width: 208, height: 134 },
       { src: "/images/psicopedagogia/Imagem (10).webp", alt: "Mapa de Perfil Infantil 10", width: 208, height: 134 },
-    ],
+    ]
   },
   benefits: {
     title: "Por que psicopedagogas iniciantes estão comprando o Mapa de Perfil Infantil?",
@@ -82,20 +80,17 @@ export const OFFER: OfferConfig = {
       { icon: "🎯", title: "Direcionamento", desc: "Cada perfil tem uma atividade-guia específica, sem precisar escolher no improviso." },
       { icon: "📋", title: "Organização", desc: "Um mapa visual que mostra o perfil, o objetivo e a atividade ideal em segundos." },
       { icon: "✅", title: "Segurança", desc: "Mesmo nos primeiros atendimentos, você tem um caminho claro para conduzir a sessão." },
-    ],
+    ]
   },
   urgency: {
-    pill: "OPORTUNIDADE ÚNICA",
     title: "Deixe suas sessões mais seguras com um mapa visual pronto para usar",
     highlight: "",
     body: "Enquanto você pensa, outras psicopedagogas já estão usando o mapa nos atendimentos. O preço promocional não dura para sempre.",
     ctaText: "QUERO ACESSAR AGORA",
-    trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"],
+    trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"]
   },
   deliverables: {
-    pill: "⚡ ACESSO IMEDIATO",
     title: "TUDO O QUE VOCÊ VAI RECEBER",
-    titleHighlight: "",
     image: "/images/psicopedagogia/Plano Completo.webp",
     imageAlt: "Mapa de Perfil Infantil",
     bullets: [
@@ -106,7 +101,7 @@ export const OFFER: OfferConfig = {
       "Arquivo digital pronto para imprimir",
       "Material visual e fácil de consultar",
       "Entrega imediata por e-mail",
-    ],
+    ]
   },
   bonusSection: {
     pill: "EXTRA INCLUÍDO",
@@ -114,10 +109,8 @@ export const OFFER: OfferConfig = {
     titleHighlight: "EXCLUSIVOS",
     subtitle: "Além do Mapa de Perfil Infantil, ao adquirir o Plano Completo você também recebe 6 bônus especiais.",
     cardLabel: "BÔNUS",
-    touchHint: "Toque na imagem acima para ver o conteúdo.",
-    backHint: "Toque para voltar",
     timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO",
-    freeLabel: "GRÁTIS",
+    freeLabel: "GRÁTIS"
   },
   bonuses: [
     {
@@ -126,7 +119,7 @@ export const OFFER: OfferConfig = {
       title: "Roteiro Sessão Sem Travar",
       titleBreak: "Roteiro Sessão\nSem Travar",
       desc: "Um roteiro prático para saber como conduzir a sessão do início ao fim, sem ficar perdida ou travar no meio do atendimento.",
-      price: "R$ 29,90",
+      price: "R$ 29,90"
     },
     {
       front: "/images/psicopedagogia/bonus-2-frente.webp",
@@ -134,7 +127,7 @@ export const OFFER: OfferConfig = {
       title: "Checklist Anti-Improviso",
       titleBreak: "Checklist\nAnti-Improviso",
       desc: "Um checklist simples para preparar a sessão antes da criança chegar, com perfil, objetivo, atividade, materiais e plano B.",
-      price: "R$ 12,90",
+      price: "R$ 12,90"
     },
     {
       front: "/images/psicopedagogia/bonus-3-frente.webp",
@@ -142,7 +135,7 @@ export const OFFER: OfferConfig = {
       title: "Atividades Prontas",
       titleBreak: "Atividades Prontas",
       desc: "75 atividades prontas, separadas por perfil infantil, para ter mais opções do que aplicar em cada tipo de criança.",
-      price: "R$ 19,90",
+      price: "R$ 19,90"
     },
     {
       front: "/images/psicopedagogia/bonus-4-frente.webp",
@@ -150,7 +143,7 @@ export const OFFER: OfferConfig = {
       title: "Mapa dos Perfis Combinados",
       titleBreak: "Mapa dos Perfis\nCombinados",
       desc: "Um mapa visual para quando a criança apresenta mais de um comportamento, como agitação com impulsividade ou ansiedade com resistência.",
-      price: "R$ 19,90",
+      price: "R$ 19,90"
     },
     {
       front: "/images/psicopedagogia/bonus-5-frente.webp",
@@ -158,7 +151,7 @@ export const OFFER: OfferConfig = {
       title: "Fichas de Evolução da Criança",
       titleBreak: "Fichas de Evolução\nda Criança",
       desc: "Fichas práticas para registrar a sessão, acompanhar avanços e planejar o próximo atendimento com mais organização.",
-      price: "R$ 12,90",
+      price: "R$ 12,90"
     },
     {
       front: "/images/psicopedagogia/bonus-6-frente.webp",
@@ -166,7 +159,7 @@ export const OFFER: OfferConfig = {
       title: "Kit Visual de Combinados",
       titleBreak: "Kit Visual de\nCombinados",
       desc: "Cards visuais para criar combinados com a criança, organizar a sessão e retomar regras sem transformar tudo em bronca.",
-      price: "R$ 12,90",
+      price: "R$ 12,90"
     },
   ],
   pricing: {
@@ -192,7 +185,7 @@ export const OFFER: OfferConfig = {
           "Não inclui os bônus do Plano Completo",
         ],
         ctaText: "QUERO ESSA OPÇÃO!",
-        ctaHref: "https://pay.hotmart.com/Q107277076H?checkoutMode=10",
+        ctaHref: "https://pay.hotmart.com/Q107277076H?checkoutMode=10"
       },
       {
         id: "premium",
@@ -216,26 +209,25 @@ export const OFFER: OfferConfig = {
           "Compra segura",
         ],
         ctaText: "QUERO O PLANO COMPLETO!",
-        ctaHref: "https://pay.hotmart.com/M107277069H?checkoutMode=10",
+        ctaHref: "https://pay.hotmart.com/M107277069H?checkoutMode=10"
       },
-    ],
+    ]
   },
   guarantee: {
     marqueeText: "GARANTIA 30 DIAS • RISCO ZERO • SATISFAÇÃO OU DINHEIRO DE VOLTA • ",
-    marqueeGradient: "linear-gradient(90deg, #0EA5E9 0%, #38BDF8 30%, #7DD3FC 55%, #E0F2FE 80%, #0EA5E9 100%)",
     icon: "/images/psicopedagogia/garantia-30-dias.webp",
     iconAlt: "Garantia de 30 dias",
     title: "Compra 100% segura e garantida!",
-    body: "Você tem **30 dias de garantia** para testar o material. Se não gostar por qualquer motivo, devolvemos 100% do valor. Sem perguntas, sem burocracia.",
+    body: "Você tem **30 dias de garantia** para testar o material. Se não gostar por qualquer motivo, devolvemos 100% do valor. Sem perguntas, sem burocracia."
   },
   access: {
     title: "Como você vai receber seu Mapa de Perfil Infantil",
     steps: [
-      { num: "01", title: "Conclua sua compra", desc: "Após o pagamento, seu acesso é liberado automaticamente." },
-      { num: "02", title: "Receba no e-mail", desc: "As instruções chegam diretamente no e-mail cadastrado na compra." },
-      { num: "03", title: "Acesse os materiais", desc: "Tudo organizado em PDF, pronto para baixar e usar." },
-      { num: "04", title: "Use nas sessões", desc: "Consulte pelo celular, tablet ou computador antes ou durante o atendimento." },
-    ],
+      { title: "Conclua sua compra", desc: "Após o pagamento, seu acesso é liberado automaticamente." },
+      { title: "Receba no e-mail", desc: "As instruções chegam diretamente no e-mail cadastrado na compra." },
+      { title: "Acesse os materiais", desc: "Tudo organizado em PDF, pronto para baixar e usar." },
+      { title: "Use nas sessões", desc: "Consulte pelo celular, tablet ou computador antes ou durante o atendimento." },
+    ]
   },
   faq: {
     title: "Perguntas Frequentes",
@@ -245,16 +237,13 @@ export const OFFER: OfferConfig = {
       { q: "Preciso editar alguma coisa?", a: "Não. O mapa já vem pronto. Você não precisa de Canva, programas ou design." },
       { q: "O que vem no Plano Completo?", a: "O Mapa de Perfil Infantil + 6 bônus: Roteiro Sessão Sem Travar, Checklist Anti-Improviso, Atividades Prontas, Mapa dos Perfis Combinados, Fichas de Evolução e Kit Visual de Combinados." },
       { q: "E se eu comprar e não gostar?", a: "Você tem 30 dias de garantia. Se não for para você, basta solicitar o reembolso e devolvemos 100% do valor." },
-    ],
+    ]
   },
   footer: {
     updateTitle: "Material em constante atualização",
     updateBody: "O Mapa de Perfil Infantil recebe novos perfis e atividades periodicamente. Ao adquirir agora, você garante acesso vitalício e todas as atualizações futuras.",
     copyright: "Copyright © 2026 | Todos os direitos reservados. Este material é protegido pela Lei nº 9.610/98, sendo proibida a reprodução total ou parcial sem autorização.",
-    missionText: "Conduza suas sessões psicopedagógicas com mais segurança, clareza e menos improviso",
-    privacyUrl: "/psicopedagogia/politica-de-privacidade",
-    termsUrl: "/psicopedagogia/termos-de-uso",
-    privacyLabel: "Política de Privacidade",
-    termsLabel: "Termos de Uso",
-  },
+    privacyUrl: "/politica-de-privacidade",
+    termsUrl: "/termos-de-uso"
+    }
 }

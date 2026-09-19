@@ -31,18 +31,14 @@ export interface OfferHero {
   imageHeight: number
   subtitle: string
   ctaText: string
-  timerLabel: string
   marqueeText: string
-  marqueeGradient: string
   bullets?: string[]
   subtitlePosition?: "beforeImage" | "afterImage"
-  socialProofCaption?: string
 }
 
 export interface OfferTestimonial {
   src: string
   alt: string
-  gradient: string
 }
 
 export interface OfferCounter {
@@ -89,8 +85,6 @@ export interface BonusSection {
   titleHighlight: string
   subtitle: string
   cardLabel: string
-  touchHint: string
-  backHint: string
   timerText: string
   freeLabel: string
   cardImageAspect?: "landscape" | "portrait"
@@ -103,7 +97,6 @@ export interface PricingPlan {
   image: string
   imageAlt: string
   featured: boolean
-  badgeText?: string
   extraNote?: string
   oldPrice: string
   price: string
@@ -117,7 +110,6 @@ export interface PricingPlan {
 }
 
 export interface AccessStep {
-  num: string
   title: string
   desc: string
 }
@@ -134,8 +126,6 @@ export interface OfferConfig {
   socialProof: {
     title?: string
     testimonials: OfferTestimonial[]
-    questions?: string[]
-    conclusion?: string
   }
   counter: OfferCounter
   kitCards: {
@@ -146,7 +136,6 @@ export interface OfferConfig {
   }
   benefits: BenefitSection
   urgency: {
-    pill: string
     title: string
     highlight: string
     body: string
@@ -155,9 +144,7 @@ export interface OfferConfig {
     timerMode?: "hoursMinutesSeconds" | "minutesSeconds"
   }
   deliverables: {
-    pill: string
     title: string
-    titleHighlight: string
     image: string
     imageAlt: string
     bullets: string[]
@@ -173,7 +160,6 @@ export interface OfferConfig {
   }
   guarantee: {
     marqueeText: string
-    marqueeGradient: string
     icon?: string
     iconAlt?: string
     title: string
@@ -195,9 +181,6 @@ export interface OfferConfig {
     copyright: string
     privacyUrl: string
     termsUrl: string
-    missionText?: string
-    privacyLabel?: string
-    termsLabel?: string
     showUpdate?: boolean
   }
 }

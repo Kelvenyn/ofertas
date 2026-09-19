@@ -31,9 +31,7 @@ export const OFFER: OfferConfig = {
     "imageHeight": 1080,
     "subtitle": "Tenha em mãos um guia visual prático com projetos de calhas e rufos para consultar direto na obra: tipos de instalação, o que observar antes de começar, como organizar a execução e quais pontos conferir para reduzir improviso, retrabalho, infiltração e acabamento mal feito.",
     "ctaText": "QUERO O GUIA",
-    "timerLabel": "BÔNUS ENCERRAM EM",
     "marqueeText": "MARQUE • CONFIRA OS CAIMENTOS • INSTALE DO JEITO CERTO • REDUZA RETRABALHO • ",
-    "marqueeGradient": "linear-gradient(90deg, #1B252C 0%, #34424D 38%, #D6A329 70%, #1B252C 100%)",
     "bullets": [
       "Projetos ilustrados para diferentes situações de obra",
       "Passo a passo visual para preparar, instalar e conferir",
@@ -46,33 +44,27 @@ export const OFFER: OfferConfig = {
     "testimonials": [
       {
         "src": "/images/calha/Depoimento (1).webp",
-        "alt": "Depoimento 1 de cliente do Guia Prático de Calhas e Rufos",
-        "gradient": "linear-gradient(90deg, #1B252C, #34424D)"
+        "alt": "Depoimento 1 de cliente do Guia Prático de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Depoimento (2).webp",
-        "alt": "Depoimento 2 de cliente do Guia Prático de Calhas e Rufos",
-        "gradient": "linear-gradient(90deg, #D6A329, #34424D)"
+        "alt": "Depoimento 2 de cliente do Guia Prático de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Depoimento (3).webp",
-        "alt": "Depoimento 3 de cliente do Guia Prático de Calhas e Rufos",
-        "gradient": "linear-gradient(90deg, #1B252C, #34424D)"
+        "alt": "Depoimento 3 de cliente do Guia Prático de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Depoimento (4).webp",
-        "alt": "Depoimento 4 de cliente do Guia Prático de Calhas e Rufos",
-        "gradient": "linear-gradient(90deg, #D6A329, #34424D)"
+        "alt": "Depoimento 4 de cliente do Guia Prático de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Depoimento (5).webp",
-        "alt": "Depoimento 5 de cliente do Guia Prático de Calhas e Rufos",
-        "gradient": "linear-gradient(90deg, #1B252C, #34424D)"
+        "alt": "Depoimento 5 de cliente do Guia Prático de Calhas e Rufos"
       },
       {
         "src": "/images/calha/Depoimento (6).webp",
-        "alt": "Depoimento 6 de cliente do Guia Prático de Calhas e Rufos",
-        "gradient": "linear-gradient(90deg, #D6A329, #34424D)"
+        "alt": "Depoimento 6 de cliente do Guia Prático de Calhas e Rufos"
       }
     ]
   },
@@ -236,7 +228,6 @@ export const OFFER: OfferConfig = {
     ]
   },
   "urgency": {
-    "pill": "REFERÊNCIA PARA A OBRA",
     "title": "Quantas vezes você começou um serviço sem ter certeza se estava fazendo aquele encontro do jeito certo?",
     "highlight": "",
     "body": "Tenha uma referência visual para consultar o tipo de instalação, entender o que observar e conferir os pontos importantes antes de cortar, montar ou entregar o serviço.",
@@ -246,9 +237,7 @@ export const OFFER: OfferConfig = {
     ]
   },
   "deliverables": {
-    "pill": "MATERIAL DIGITAL",
     "title": "TUDO O QUE VOCÊ VAI RECEBER",
-    "titleHighlight": "",
     "image": "/images/calha/Plano Completo.webp",
     "imageAlt": "Guia Prático de Instalação de Calhas e Rufos e os seis extras do Plano Completo",
     "bullets": [
@@ -267,8 +256,6 @@ export const OFFER: OfferConfig = {
     "titleHighlight": "EXCLUSIVOS",
     "subtitle": "Além do Guia Prático, no Plano Completo você também recebe 6 materiais extras para consultar durante a obra, evitar improviso, conferir pontos críticos e organizar melhor o serviço.",
     "cardLabel": "BÔNUS",
-    "touchHint": "Toque na imagem acima para ver o conteúdo.",
-    "backHint": "Toque para voltar",
     "timerText": "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO",
     "freeLabel": "GRÁTIS",
     "cardImageAspect": "landscape"
@@ -350,7 +337,6 @@ export const OFFER: OfferConfig = {
         "image": "/images/calha/Plano Completo.webp",
         "imageAlt": "Plano Completo do Guia Prático de Instalação de Calhas e Rufos com seis bônus",
         "featured": true,
-        "badgeText": "MELHOR ESCOLHA",
         "oldPrice": "de R$ 147,00",
         "price": "R$ 27,90",
         "installments": "ou 4x de R$ 6,97 no cartão",
@@ -373,7 +359,6 @@ export const OFFER: OfferConfig = {
   },
   "guarantee": {
     "marqueeText": "GARANTIA 30 DIAS • RISCO ZERO • SATISFAÇÃO OU DINHEIRO DE VOLTA • ",
-    "marqueeGradient": "linear-gradient(90deg, #1B252C 0%, #34424D 42%, #D6A329 72%, #1B252C 100%)",
     "icon": "/images/calha/garantia-30-dias.webp",
     "iconAlt": "Garantia de 30 dias",
     "title": "Compra 100% segura e garantida!",
@@ -383,22 +368,18 @@ export const OFFER: OfferConfig = {
     "title": "Como você vai receber seu Guia Prático",
     "steps": [
       {
-        "num": "01",
         "title": "Escolha seu plano",
         "desc": "Selecione o Plano Básico ou o Plano Completo e conclua o pagamento."
       },
       {
-        "num": "02",
         "title": "Aguarde a confirmação",
         "desc": "Assim que o pagamento for confirmado, as informações de acesso serão enviadas para você."
       },
       {
-        "num": "03",
         "title": "Acesse o material",
         "desc": "Abra o conteúdo digital pelo celular, tablet ou computador."
       },
       {
-        "num": "04",
         "title": "Consulte durante a obra",
         "desc": "Use o guia para conferir a instalação e tomar decisões com mais segurança."
       }
@@ -436,9 +417,6 @@ export const OFFER: OfferConfig = {
     "copyright": "Copyright © 2026 | Todos os direitos reservados. Este material é protegido pela Lei nº 9.610/98, sendo proibida a reprodução total ou parcial sem autorização.",
     "privacyUrl": "/politica-de-privacidade",
     "termsUrl": "/termos-de-uso",
-    "missionText": "Marque, confira os caimentos e instale do jeito certo.",
-    "privacyLabel": "Política de Privacidade",
-    "termsLabel": "Termos de Uso",
     "showUpdate": false
   }
 }

@@ -3,7 +3,7 @@ import type { OfferConfig } from "@/types/offer"
 export const OFFER: OfferConfig = {
   meta: {
     title: "Guia Passo a Passo de Box com Tijolos e Blocos de Vidro",
-    description: "Um guia visual para pedreiros montarem box com tijolos e blocos de vidro, do planejamento ao acabamento profissional.",
+    description: "Um guia visual para pedreiros montarem box com tijolos e blocos de vidro, do planejamento ao acabamento profissional."
   },
   palette: {
     brand: "#2563EB",
@@ -18,7 +18,7 @@ export const OFFER: OfferConfig = {
     accent: "#C2410C",
     yellow: "#FBBF24",
     bg: "#F8FAFF",
-    bgAlt: "#1E3A8A",
+    bgAlt: "#1E3A8A"
   },
   hero: {
     pill: "GUIA VISUAL PASSO A PASSO",
@@ -31,32 +31,30 @@ export const OFFER: OfferConfig = {
     imageHeight: 1080,
     subtitle: "Tenha em mãos um guia visual para montar diferentes modelos de box com tijolos e blocos de vidro e acompanhar o serviço do início ao acabamento, sem improvisar durante a obra.",
     ctaText: "QUERO O GUIA VISUAL DE BOX",
-    timerLabel: "BÔNUS ESPECIAIS ENCERRAM EM",
     marqueeText: "30 Modelos Visuais • Passo a Passo Visual • Acesso Imediato • 15 Modelos com Tijolos • 15 Modelos com Blocos de Vidro • 6 Bônus Práticos • ",
-    marqueeGradient: "linear-gradient(90deg, #1E3A8A 0%, #2563EB 30%, #60A5FA 55%, #BFDBFE 80%, #1E3A8A 100%)",
     bullets: [
       "Visualize o box antes de começar",
       "Confira e defina a obra",
       "Faça a obra com um passo a passo",
       "Evite improvisos",
       "Entregue um acabamento profissional",
-    ],
+    ]
   },
   socialProof: {
     title: "Pedreiros de todo o Brasil já estão usando o Guia passo a passo",
     testimonials: [
-      { src: "/images/box/Depoimento (1).webp", alt: "Depoimento 1", gradient: "linear-gradient(90deg, #1E3A8A, #2563EB)" },
-      { src: "/images/box/Depoimento (2).webp", alt: "Depoimento 2", gradient: "linear-gradient(90deg, #16A34A, #11863D)" },
-      { src: "/images/box/Depoimento (3).webp", alt: "Depoimento 3", gradient: "linear-gradient(90deg, #60A5FA, #2563EB)" },
-      { src: "/images/box/Depoimento (4).webp", alt: "Depoimento 4", gradient: "linear-gradient(90deg, #1E3A8A, #172554)" },
-      { src: "/images/box/Depoimento (5).webp", alt: "Depoimento 5", gradient: "linear-gradient(90deg, #16A34A, #C2410C)" },
-      { src: "/images/box/Depoimento (6).webp", alt: "Depoimento 6", gradient: "linear-gradient(90deg, #2563EB, #16A34A)" },
-    ],
+      { src: "/images/box/Depoimento (1).webp", alt: "Depoimento 1" },
+      { src: "/images/box/Depoimento (2).webp", alt: "Depoimento 2" },
+      { src: "/images/box/Depoimento (3).webp", alt: "Depoimento 3" },
+      { src: "/images/box/Depoimento (4).webp", alt: "Depoimento 4" },
+      { src: "/images/box/Depoimento (5).webp", alt: "Depoimento 5" },
+      { src: "/images/box/Depoimento (6).webp", alt: "Depoimento 6" },
+    ]
   },
   counter: {
     prefix: "",
     target: 30,
-    label: "Modelos com Tijolos e Blocos de Vidro organizados para você consultar na obra",
+    label: "Modelos com Tijolos e Blocos de Vidro organizados para você consultar na obra"
   },
   kitCards: {
     heading1: "Veja como é o Guia passo a passo que você vai usar nas suas obras:",
@@ -66,8 +64,8 @@ export const OFFER: OfferConfig = {
       src: `/images/box/Imagem (${index + 1}).webp`,
       alt: `Modelo de box com tijolos e blocos de vidro ${index + 1}`,
       width: 1200,
-      height: 848,
-    })),
+      height: 848
+    }))
   },
   benefits: {
     title: "Por que pedreiros estão escolhendo o Guia Passo a Passo de Box?",
@@ -77,20 +75,17 @@ export const OFFER: OfferConfig = {
       { icon: "📋", title: "Organização", desc: "Modelos, materiais, nichos e etapas reunidos em um só lugar." },
       { icon: "✅", title: "Segurança", desc: "Mesmo quando aparecer um modelo que você ainda não fez, você tem uma referência para evitar improvisos durante o serviço." },
       { icon: "📈", title: "Oportunidade", desc: "Tenha uma referência para consultar quando o cliente pedir um modelo que você ainda não fez." },
-    ],
+    ]
   },
   urgency: {
-    pill: "OPORTUNIDADE ÚNICA",
     title: "Tenha mais segurança para pegar serviços de box com um guia passo a passo pronto para consultar",
     highlight: "",
     body: "Enquanto você pensa, outros pedreiros já estão usando o guia e pegando mais serviços de box com tijolo e bloco de vidro.",
     ctaText: "QUERO ACESSAR AGORA",
-    trust: ["ACESSO IMEDIATO • MATERIAL DIGITAL"],
+    trust: ["ACESSO IMEDIATO • MATERIAL DIGITAL"]
   },
   deliverables: {
-    pill: "⚡ ACESSO IMEDIATO",
     title: "TUDO O QUE VOCÊ VAI RECEBER",
-    titleHighlight: "",
     image: "/images/box/Plano Completo.webp",
     imageAlt: "Guia Visual Passo a Passo de Box",
     bullets: [
@@ -101,7 +96,7 @@ export const OFFER: OfferConfig = {
       "Passo a passo visual da montagem do início ao acabamento",
       "Referências de nichos, meia parede, divisórias e diferentes modelos",
       "Material digital visual e fácil de consultar na obra",
-    ],
+    ]
   },
   bonusSection: {
     pill: "✦ EXTRA INCLUÍDO",
@@ -109,11 +104,9 @@ export const OFFER: OfferConfig = {
     titleHighlight: "EXCLUSIVOS",
     subtitle: "Além do Guia passo a passo, ao adquirir o Plano Completo você também recebe 6 bônus especiais.",
     cardLabel: "BÔNUS",
-    touchHint: "Toque na imagem acima para ver o conteúdo.",
-    backHint: "Toque para voltar",
     timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO",
     freeLabel: "GRÁTIS",
-    cardImageAspect: "landscape",
+    cardImageAspect: "landscape"
   },
   bonuses: [
     { front: "/images/box/bonus-1-frente.webp", back: "/images/box/bonus-1-verso.webp", title: "+10 Modelos de Box para Banheiros Pequenos", titleBreak: "+10 Modelos de Box\npara Banheiros Pequenos", desc: "Referências visuais para escolher modelos que aproveitem melhor espaços compactos sem prejudicar a circulação." },
@@ -140,7 +133,7 @@ export const OFFER: OfferConfig = {
         items: ["Guia Visual Passo a Passo de Box com Tijolos e Blocos de Vidro", "15 modelos com tijolos e alvenaria", "15 modelos com blocos de vidro", "Acesso ao material pelo celular, tablet ou computador"],
         mutedItems: ["Não inclui os 6 bônus do Plano Completo"],
         ctaText: "QUERO ESSA OPÇÃO!",
-        ctaHref: "https://pay.hotmart.com/O107671809H",
+        ctaHref: "https://pay.hotmart.com/O107671809H"
       },
       {
         id: "premium",
@@ -148,32 +141,30 @@ export const OFFER: OfferConfig = {
         image: "/images/box/Plano Completo.webp",
         imageAlt: "Plano Completo do Guia de Box",
         featured: true,
-        badgeText: "MAIS COMPLETO",
         oldPrice: "",
         price: "R$ 27,90",
         installments: "Consulte as opções de pagamento no checkout",
         items: ["Guia Visual Passo a Passo de Box com Tijolos e Blocos de Vidro", "🎁 Bônus 01: +10 Modelos de Box para Banheiros Pequenos", "🎁 Bônus 02: +12 Projetos de Nichos Integrados ao Box", "🎁 Bônus 03: Guia Visual de Acabamentos", "🎁 Bônus 04: Ficha de Medição do Banheiro", "🎁 Bônus 05: Lista de Materiais por Tipo de Box", "🎁 Bônus 06: Checklist Final do Box", "Acesso ao material pelo celular, tablet ou computador", "Compra segura"],
         ctaText: "QUERO O PLANO COMPLETO!",
-        ctaHref: "https://pay.hotmart.com/U107671878D",
+        ctaHref: "https://pay.hotmart.com/U107671878D"
       },
-    ],
+    ]
   },
   guarantee: {
     marqueeText: "GARANTIA 30 DIAS • RISCO ZERO • SATISFAÇÃO OU DINHEIRO DE VOLTA • ",
-    marqueeGradient: "linear-gradient(90deg, #1E3A8A 0%, #2563EB 30%, #60A5FA 55%, #BFDBFE 80%, #1E3A8A 100%)",
     icon: "/images/box/garantia-30-dias.webp",
     iconAlt: "Garantia de 30 dias",
     title: "Compra 100% segura e garantida!",
-    body: "Você tem **30 dias de garantia** para testar o material. Se não gostar por qualquer motivo, devolvemos 100% do valor. Sem perguntas, sem burocracia.",
+    body: "Você tem **30 dias de garantia** para testar o material. Se não gostar por qualquer motivo, devolvemos 100% do valor. Sem perguntas, sem burocracia."
   },
   access: {
     title: "Como você vai receber seu Guia de Box",
     steps: [
-      { num: "01", title: "Conclua sua compra", desc: "Após o pagamento, seu acesso é liberado automaticamente." },
-      { num: "02", title: "Receba no e-mail", desc: "As instruções chegam diretamente no e-mail cadastrado na compra." },
-      { num: "03", title: "Acesse os materiais", desc: "Tudo organizado em arquivos digitais, prontos para consultar." },
-      { num: "04", title: "Use nas obras", desc: "Consulte pelo celular, tablet ou computador durante o serviço." },
-    ],
+      { title: "Conclua sua compra", desc: "Após o pagamento, seu acesso é liberado automaticamente." },
+      { title: "Receba no e-mail", desc: "As instruções chegam diretamente no e-mail cadastrado na compra." },
+      { title: "Acesse os materiais", desc: "Tudo organizado em arquivos digitais, prontos para consultar." },
+      { title: "Use nas obras", desc: "Consulte pelo celular, tablet ou computador durante o serviço." },
+    ]
   },
   faq: {
     title: "Perguntas Frequentes",
@@ -183,16 +174,13 @@ export const OFFER: OfferConfig = {
       { q: "O guia mostra apenas modelos prontos?", a: "Não. O material reúne referências de modelos, materiais, preparação e etapas visuais da montagem até o acabamento." },
       { q: "O que vem no Plano Completo?", a: "O Guia Passo a Passo de Box + 6 bônus: modelos para banheiros pequenos, projetos de nichos, guia de acabamentos, ficha de medição, lista de materiais e checklist final." },
       { q: "E se eu comprar e não gostar?", a: "Você tem 30 dias de garantia. Se não for para você, basta solicitar o reembolso e devolvemos 100% do valor." },
-    ],
+    ]
   },
   footer: {
     updateTitle: "Material em constante atualização",
     updateBody: "O Guia Passo a Passo de Box pode receber novos modelos e referências periodicamente. Ao adquirir, você garante acesso ao material e às atualizações futuras que forem disponibilizadas.",
     copyright: "Copyright © 2026 | Todos os direitos reservados. Este material é protegido pela Lei nº 9.610/98, sendo proibida a reprodução total ou parcial sem autorização.",
-    missionText: "Monte boxes com mais segurança, clareza e acabamento profissional",
     privacyUrl: "/politica-de-privacidade",
-    termsUrl: "/termos-de-uso",
-    privacyLabel: "Política de Privacidade",
-    termsLabel: "Termos de Uso",
-  },
+    termsUrl: "/termos-de-uso"
+    }
 }
