@@ -18,6 +18,10 @@ interface UpdateVersionedValueOptions<TCurrent, TNext, R> {
 
 const CONFLICT_RETRY_DELAY_MS = 20
 
+export function normalizeIfMatchEtag(etag: string): string {
+  return etag.startsWith("W/") ? etag.slice(2) : etag
+}
+
 export async function updateVersionedValue<TCurrent, TNext, R>({
   read,
   update,

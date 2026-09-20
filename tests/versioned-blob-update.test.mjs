@@ -8,7 +8,12 @@ const helperSource = await readFile(new URL("../src/lib/versioned-blob-update.ts
 const helperModule = ts.transpileModule(helperSource, {
   compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
 }).outputText
-const { updateVersionedValue } = await import(`data:text/javascript;base64,${Buffer.from(helperModule).toString("base64")}`)
+const { normalizeIfMatchEtag, updateVersionedValue } = await import(`data:text/javascript;base64,${Buffer.from(helperModule).toString("base64")}`)
+
+test("removes the weak prefix before using an ETag with ifMatch", () => {
+  assert.equal(normalizeIfMatchEtag('W/"etag-value"'), '"etag-value"')
+  assert.equal(normalizeIfMatchEtag('"etag-value"'), '"etag-value"')
+})
 
 test("re-reads and reapplies an update after an ETag conflict", async () => {
   let stored = {

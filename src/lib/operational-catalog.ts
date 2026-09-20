@@ -8,7 +8,7 @@ import { PALETTE_KEYS, type PaletteKey, getPalette } from "@/config/offers/palet
 import { repairPaletteContrast } from "@/lib/color"
 import { validateOfferConfig } from "@/lib/offer-validation"
 import { applyOfferCatalogPatch, findOfferBySlug, getCheckoutSummary, migrateLegacyOffer, OfferRoutingError, validateOfferSlug } from "@/lib/offer-routing"
-import { updateVersionedValue } from "@/lib/versioned-blob-update"
+import { normalizeIfMatchEtag, updateVersionedValue } from "@/lib/versioned-blob-update"
 import type { OfferConfig } from "@/types/offer"
 
 const BLOB_PATH = "admin/ofertas-operacionais.json"
@@ -145,7 +145,7 @@ async function readOverrides(): Promise<{ overrides: Record<string, OfferOverrid
   if (!blob) return { overrides: {} }
   try {
     const payload = await new Response(blob.stream).json()
-    return { overrides: validateOverrides(payload), etag: blob.blob.etag }
+    return { overrides: validateOverrides(payload), etag: normalizeIfMatchEtag(blob.blob.etag) }
   } catch (error) {
     // A malformed existing operational catalog must never restore older public routes/statuses.
     throw new Error("O catálogo operacional da oferta não pôde ser lido.", { cause: error })
