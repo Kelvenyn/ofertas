@@ -1,22 +1,24 @@
 import catalogData from "./catalog.json"
-import { getPalette, PALETTE_KEYS, type PaletteKey } from "./palettes"
-import type { OfferConfig, OfferPalette } from "@/types/offer"
-
-export const OFFER_STATUSES = ["draft", "active", "archived"] as const
-export type OfferStatus = (typeof OFFER_STATUSES)[number]
+import type { OfferConfig } from "@/types/offer"
+import { getCheckoutSummary as summarizeCheckouts } from "@/lib/offer-routing"
 
 export interface CashflowConfig {
   workspaceId: string
   offerId: string
 }
 
+export type OfferStatus = "active" | "inactive" | "draft"
+
 export interface OfferCatalogEntry {
+  /** Immutable identity used for Blob storage and the original offer configuration. */
+  id: string
+  /** The only public route currently resolving to this offer. */
+  slug: string
   label: string
   status: OfferStatus
-  paletteKey: PaletteKey | null
-  className: string
   favicon: string | null
   cashflow: CashflowConfig | null
+  [key: string]: unknown
 }
 
 export interface OfferCatalog {
@@ -24,26 +26,30 @@ export interface OfferCatalog {
   offers: Record<string, OfferCatalogEntry>
 }
 
-export const OFFER_CATALOG = catalogData as OfferCatalog
+type StaticOfferCatalog = {
+  homepageOffer: string
+  offers: Record<string, { label: string; favicon: string | null; cashflow: CashflowConfig | null; status?: OfferStatus }>
+}
+
+const staticCatalog = catalogData as StaticOfferCatalog
+
+// The original catalog keys become stable IDs. Operational slugs may change in Blob.
+export const OFFER_CATALOG: OfferCatalog = {
+  homepageOffer: staticCatalog.homepageOffer,
+  offers: Object.fromEntries(Object.entries(staticCatalog.offers).map(([id, entry]) => [id, {
+    ...entry,
+    id,
+    slug: id,
+    status: entry.status ?? "active",
+  } satisfies OfferCatalogEntry])),
+}
 
 export function getCatalogEntry(slug: string): OfferCatalogEntry | undefined {
   return OFFER_CATALOG.offers[slug]
 }
 
-export function isKnownStatus(value: unknown): value is OfferStatus {
-  return typeof value === "string" && OFFER_STATUSES.includes(value as OfferStatus)
-}
-
-export function isKnownPalette(value: unknown): value is PaletteKey {
-  return typeof value === "string" && PALETTE_KEYS.includes(value as PaletteKey)
-}
-
-export function isOfferPublic(entry: OfferCatalogEntry, environment = process.env.NODE_ENV): boolean {
-  return environment !== "production" || entry.status === "active"
-}
-
-export function resolveOfferPalette(entry: OfferCatalogEntry, fallback: OfferPalette): OfferPalette {
-  return entry.paletteKey ? getPalette(entry.paletteKey) : fallback
+export function getCatalogEntryById(id: string): OfferCatalogEntry | undefined {
+  return Object.values(OFFER_CATALOG.offers).find((entry) => entry.id === id)
 }
 
 export function cashflowScriptUrl(config: CashflowConfig): string {
@@ -51,7 +57,5 @@ export function cashflowScriptUrl(config: CashflowConfig): string {
 }
 
 export function getCheckoutSummary(offer: OfferConfig): { count: number; valid: boolean } {
-  const links = offer.pricing.plans.map((plan) => plan.ctaHref).filter(Boolean) as string[]
-  const valid = links.length > 0 && links.every((link) => /^https:\/\/(pay\.hotmart\.com|pay\.cakto\.com\.br)\//.test(link))
-  return { count: links.length, valid }
+  return summarizeCheckouts(offer)
 }

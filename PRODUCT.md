@@ -8,7 +8,7 @@ brand
 
 Brazilian entrepreneurs, digital creators, and infoprodutors. They operate in the digital marketing space, selling courses, templates, toolkits, and guides. They are action-oriented, results-driven, and respond to urgency. Their context is mobile-first, often browsing on phones during breaks or while multitasking.
 
-Current catalog (15 offers, see `CLAUDE.md` for routes and status): alicate amperímetro, box com tijolos e blocos de vidro, calhas e rufos, psicopedagogia, ginástica laboral, castração veterinária, confissão católica, croqui de moda, comportamento felino, higienização de estofados, jardins verticais, lavanderias pequenas, lembrancinhas cristãs, porcelanato e criação de tilápias — a mix of professional-reference and hobby/craft niches, not just "courses."
+Current catalog (15 offers, see `CLAUDE.md` for routes): alicate amperímetro, box com tijolos e blocos de vidro, calhas e rufos, psicopedagogia, ginástica laboral, castração veterinária, confissão católica, croqui de moda, comportamento felino, higienização de estofados, jardins verticais, lavanderias pequenas, lembrancinhas cristãs, porcelanato e criação de tilápias — a mix of professional-reference and hobby/craft niches, not just "courses."
 
 ## Product Purpose
 

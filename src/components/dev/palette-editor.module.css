@@ -20,24 +20,20 @@
 .heading strong { font: 900 18px/1.15 Nunito, system-ui, sans-serif; }
 .heading code { color: #697386; font-size: 11px; }
 .iconButton { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid #d7dce3; border-radius: 10px; background: #fff; color: #172033; cursor: pointer; }
-.note { margin: 0 0 12px; padding: 10px; border-radius: 10px; background: #fff7dc; color: #664e00; font-size: 12px; line-height: 1.45; }
 .options { display: grid; gap: 6px; }
 .options button { min-height: 44px; display: grid; grid-template-columns: 72px 1fr 18px; align-items: center; gap: 9px; padding: 6px 9px; border: 1px solid #d7dce3; border-radius: 11px; background: #fff; color: #263147; cursor: pointer; font: 800 12px/1.2 Manrope, system-ui, sans-serif; text-align: left; }
 .options button:hover { border-color: #8994a5; }
 .options button[aria-pressed="true"] { border-color: #1e293b; background: #f3f5f7; box-shadow: inset 3px 0 0 #d4a017; }
 .swatches { display: flex; overflow: hidden; height: 24px; border: 1px solid #d7dce3; border-radius: 8px; }
 .swatches i { flex: 1; }
-.saveArea { display: grid; grid-template-columns: 92px 1fr; gap: 8px; margin-top: 14px; }
-.saveArea label { min-height: 42px; display: flex; align-items: center; gap: 5px; padding: 0 9px; border: 1px solid #cbd2dc; border-radius: 11px; }
-.saveArea input { width: 100%; min-width: 0; border: 0; outline: 0; font: 800 12px/1 Manrope, system-ui, sans-serif; }
-.save { min-height: 42px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 0; border-radius: 11px; background: #1e293b; color: #fff; cursor: pointer; font: 800 12px/1 Manrope, system-ui, sans-serif; }
+.save { width: 100%; min-height: 42px; margin-top: 14px; display: inline-flex; align-items: center; justify-content: center; gap: 7px; border: 0; border-radius: 11px; background: #1e293b; color: #fff; cursor: pointer; font: 800 12px/1 Manrope, system-ui, sans-serif; }
 .save:disabled { cursor: wait; opacity: .65; }
 .success, .error { margin: 10px 0 0; font-size: 11px; font-weight: 700; line-height: 1.45; }
 .success { color: #146634; }
 .error { color: #a11932; }
 .back { display: inline-block; margin-top: 12px; color: #46536a; font-size: 12px; font-weight: 800; text-underline-offset: 3px; }
 .reopen { position: fixed; z-index: var(--z-skip-link); right: 18px; bottom: 18px; min-height: 44px; padding: 0 16px; border: 1px solid #d4a017; border-radius: 12px; background: #1e293b; color: #fff; box-shadow: 0 12px 30px rgba(15, 23, 42, .22); cursor: pointer; font: 800 13px/1 Manrope, system-ui, sans-serif; }
-.editor button:focus-visible, .editor input:focus-visible, .back:focus-visible, .reopen:focus-visible { outline: 3px solid #d4a017; outline-offset: 2px; }
+.editor button:focus-visible, .back:focus-visible, .reopen:focus-visible { outline: 3px solid #d4a017; outline-offset: 2px; }
 
 @media (max-width: 640px) {
   .editor { top: auto; right: 8px; bottom: 8px; left: 8px; width: auto; max-height: 48vh; border-radius: 16px; }

@@ -1,0 +1,10 @@
+.page { min-height: 100vh; margin: -60px -16px 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr); background: #f8fafc; color: #172033; }
+.intro { padding: clamp(48px, 10vw, 144px); display: flex; flex-direction: column; justify-content: center; color: #f8fafc; background: #172033; }
+.eyebrow { margin: 0 0 16px; color: #d4a017; font-size: .75rem; font-weight: 800; letter-spacing: .14em; }
+.intro h1, .panel h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.05; letter-spacing: -.04em; }
+.intro > p:last-child { max-width: 34rem; margin: 24px 0 0; color: #d8e0ea; font-size: 1.05rem; line-height: 1.65; }
+.panel { display: flex; align-items: center; padding: clamp(32px, 7vw, 96px); }
+.formWrap { width: min(100%, 420px); margin: auto; }
+.panel h2 { color: #172033; font-size: clamp(1.8rem, 3vw, 2.5rem); }
+.description { margin: 14px 0 32px; color: #556274; line-height: 1.55; }
+@media (max-width: 760px) { .page { display: block; } .intro { min-height: 260px; padding: 72px 24px 40px; } .intro h1 { font-size: 2.2rem; } .panel { padding: 40px 24px 56px; } }

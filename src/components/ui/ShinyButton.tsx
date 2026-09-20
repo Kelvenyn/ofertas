@@ -29,7 +29,7 @@ const ShinyButton: React.FC<ShinyButtonProps> = ({ children, href, onClick, clas
       >
         <span className="relative z-10 flex min-w-0 items-center justify-center gap-2 font-bold text-base tracking-wide text-white w-full">
           {children}
-          {showArrow && <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />}
+          {showArrow && <ArrowRight className="shiny-cta-arrow w-4 h-4 transition-transform group-hover:translate-x-1" />}
         </span>
       </a>
     )
@@ -43,7 +43,7 @@ const ShinyButton: React.FC<ShinyButtonProps> = ({ children, href, onClick, clas
     >
       <span className="relative z-10 flex min-w-0 items-center justify-center gap-2 font-bold text-base tracking-wide text-white w-full">
         {children}
-        {showArrow && <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />}
+        {showArrow && <ArrowRight className="shiny-cta-arrow w-4 h-4 transition-transform group-hover:translate-x-1" />}
       </span>
     </button>
   )

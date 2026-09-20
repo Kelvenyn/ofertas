@@ -18,6 +18,7 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Universo Eduk",
   description: "Materiais educativos e criativos para catequistas e educadores.",
+  icons: { icon: "/favicon.webp" },
 };
 
 export default function RootLayout({

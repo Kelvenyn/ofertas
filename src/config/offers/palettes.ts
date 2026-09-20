@@ -1,10 +1,7 @@
 import type { OfferPalette } from "@/types/offer"
+import { FIXED_ACTION_COLORS, repairPaletteContrast } from "@/lib/color"
 
-export const FIXED_ACTION_COLORS = {
-  cta: "#16A34A",
-  ctaDeep: "#11863D",
-  ctaDarkest: "#0E6B31",
-} as const
+export { FIXED_ACTION_COLORS } from "@/lib/color"
 
 export const PALETTES = {
   petroleo: {
@@ -58,20 +55,21 @@ export function getPalette(key: PaletteKey): OfferPalette {
 }
 
 export function paletteCssVariables(palette: OfferPalette): React.CSSProperties {
+  const safePalette = repairPaletteContrast(palette)
   return {
-    "--brand": palette.brand,
-    "--brand-deep": palette.brandDeep,
-    "--brand-ink": palette.brandInk,
-    "--brand-dark": palette.brandDark,
-    "--brand-light": palette.brandLight,
-    "--brand-subtle": palette.brandSubtle,
-    "--cta": FIXED_ACTION_COLORS.cta,
-    "--cta-deep": FIXED_ACTION_COLORS.ctaDeep,
-    "--cta-darkest": FIXED_ACTION_COLORS.ctaDarkest,
-    "--accent": palette.accent,
-    "--yellow": palette.yellow,
-    "--bg": palette.bg,
-    "--bg-alt": palette.bgAlt,
-    "--marquee-gradient": `linear-gradient(90deg, ${palette.brandDeep} 0%, ${palette.brand} 42%, ${palette.brandDark} 72%, ${palette.brandDeep} 100%)`,
+    "--brand": safePalette.brand,
+    "--brand-deep": safePalette.brandDeep,
+    "--brand-ink": safePalette.brandInk,
+    "--brand-dark": safePalette.brandDark,
+    "--brand-light": safePalette.brandLight,
+    "--brand-subtle": safePalette.brandSubtle,
+    "--cta": safePalette.cta,
+    "--cta-deep": safePalette.ctaDeep,
+    "--cta-darkest": safePalette.ctaDarkest,
+    "--accent": safePalette.accent,
+    "--yellow": safePalette.yellow,
+    "--bg": safePalette.bg,
+    "--bg-alt": safePalette.bgAlt,
+    "--marquee-gradient": `linear-gradient(108deg, ${safePalette.brandDeep} 0%, ${safePalette.brandInk} 100%)`,
   } as React.CSSProperties
 }

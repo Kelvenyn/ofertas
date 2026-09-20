@@ -4,17 +4,7 @@ import Image from "next/image"
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { AnimatedBullets } from "@/components/ui/AnimatedBullets"
 import { useOffer } from "@/context/offer-context"
-
-function parsePrice(value: string): number {
-  return parseFloat(value.replace(/[^\d,]/g, "").replace(",", ".")) || 0
-}
-
-function calcDiscount(oldStr: string, priceStr: string): number {
-  const old = parsePrice(oldStr)
-  const current = parsePrice(priceStr)
-  if (!old || !current) return 0
-  return Math.round((1 - current / old) * 100)
-}
+import { calculateDiscountPercentage } from "@/lib/pricing"
 
 export function OfferPricing() {
   const offer = useOffer()
@@ -32,7 +22,7 @@ export function OfferPricing() {
 
         <div className={`offer-pei-grid${plans.length === 1 ? " offer-pei-grid-single" : ""}`}>
           {plans.map((plan) => {
-            const discount = calcDiscount(plan.oldPrice, plan.price)
+            const discount = calculateDiscountPercentage(plan.oldPrice, plan.price)
 
             return (
               <div key={plan.id} className={`offer-card ${plan.featured ? "premium-plan" : "basic-plan"}`}>
@@ -46,7 +36,7 @@ export function OfferPricing() {
                   {plan.extraNote && (
                     <p style={{
                       margin: "0 0 10px",
-                      fontSize: 13,
+                      fontSize: "calc(13px * var(--lp-font-scale, 1))",
                       fontWeight: 800,
                       color: "var(--cta-deep)",
                       letterSpacing: "0.04em",
@@ -64,7 +54,7 @@ export function OfferPricing() {
                   <div className="offer-old-price-row">
                     <span className="offer-old-price">{plan.oldPrice}</span>
                     {discount > 0 && (
-                      <span className="offer-discount-badge">-{discount}%</span>
+                      <span className="offer-discount-badge">{discount}% OFF</span>
                     )}
                   </div>
                   {plan.installmentsPosition === "abovePrice" && (
@@ -81,7 +71,7 @@ export function OfferPricing() {
                 {plan.mutedItems && plan.mutedItems.length > 0 && (
                   <ul style={{ margin: "12px 0 0", padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 8 }}>
                     {plan.mutedItems.map((item, i) => (
-                      <li key={i} style={{ fontSize: 13.5, color: "var(--text-muted)", textAlign: "center" }}>
+                      <li key={i} style={{ fontSize: "calc(13.5px * var(--lp-font-scale, 1))", color: "var(--text-muted)", textAlign: "center" }}>
                         {item}
                       </li>
                     ))}

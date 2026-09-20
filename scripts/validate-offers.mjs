@@ -1,19 +1,18 @@
 #!/usr/bin/env node
-import { readFile, readdir } from "node:fs/promises"
+import { open, readFile, readdir } from "node:fs/promises"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
-const STATUSES = new Set(["draft", "active", "archived"])
 const CHECKOUT_PATTERN = /^https:\/\/(?:pay\.hotmart\.com|pay\.cakto\.com\.br)\//
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 const LEGACY_HOST_PATTERN = new RegExp(["hub", "universoeduk", "com"].join("\\."), "i")
 const LEGACY_SCRIPT_PATTERN = new RegExp(["tracker", "js"].join("\\."), "i")
 
-// Limites de copy (§6 do plano; Fase 2: reportados como avisos — viram erro na Fase 8).
+// Limites de copy (§6 do plano); qualquer violação bloqueia a publicação.
 // Comprimento medido sem as quebras forçadas "\n" do headline.
 const COPY_LIMITS = {
   heroPill: 30, heroHeadline: 70, heroSubline: 70, heroSupport: 160,
-  heroBullets: 4, heroBullet: 34, heroCta: 17, heroMarquee: 70,
+  heroBullets: 4, heroBullet: 34, heroCta: 34, heroMarquee: 70,
   socialTitle: 48, testimonialsMax: 7,
   counterPrefix: 8, counterLabel: 44,
   kitHeading: 48, kitMin: 10, kitMax: 18,
@@ -109,8 +108,8 @@ async function loadBases(root, source) {
   return bases
 }
 
-function checkCopyLimits(slug, source, bases, warnings) {
-  const copy = (msg) => warnings.push(`${slug}: copy ${msg}`)
+function checkCopyLimits(slug, source, bases, errors) {
+  const copy = (msg) => errors.push(`${slug}: copy ${msg}`)
   const hero = resolveSection(source, bases, "hero")
   if (hero) {
     const pill = getStr(hero, "pill")
@@ -281,6 +280,27 @@ async function collectSourceFiles(directory) {
   return nested.flat()
 }
 
+async function collectFiles(directory) {
+  const entries = await readdir(directory, { withFileTypes: true })
+  const nested = await Promise.all(entries.map(async (entry) => {
+    const target = path.join(directory, entry.name)
+    if (entry.isDirectory()) return collectFiles(target)
+    return entry.isFile() ? [target] : []
+  }))
+  return nested.flat()
+}
+
+async function isWebpFile(filePath) {
+  const handle = await open(filePath, "r")
+  try {
+    const header = Buffer.alloc(12)
+    const { bytesRead } = await handle.read(header, 0, header.length, 0)
+    return bytesRead === 12 && header.toString("ascii", 0, 4) === "RIFF" && header.toString("ascii", 8, 12) === "WEBP"
+  } finally {
+    await handle.close()
+  }
+}
+
 export async function validateOffers(workspaceRoot = process.cwd()) {
   const errors = []
   const warnings = []
@@ -292,26 +312,42 @@ export async function validateOffers(workspaceRoot = process.cwd()) {
 
   if (!catalog.offers || typeof catalog.offers !== "object") errors.push("catalog.json precisa conter offers.")
   if (!catalog.offers?.[catalog.homepageOffer]) errors.push("homepageOffer não aponta para uma oferta cadastrada.")
+  if (catalog.offers?.[catalog.homepageOffer]?.status === "draft") errors.push("homepageOffer não pode apontar para um rascunho.")
 
-  for (const [slug, entry] of Object.entries(catalog.offers ?? {})) {
-    if (!STATUSES.has(entry.status)) errors.push(`${slug}: status inválido (${entry.status}).`)
-    if (entry.paletteKey !== null && !configuredPalettes.has(entry.paletteKey)) errors.push(`${slug}: paleta desconhecida (${entry.paletteKey}).`)
-    if (entry.cashflow === null) warnings.push(`${slug}: tracking Cashflow pendente.`)
-    else if (!UUID_PATTERN.test(entry.cashflow?.workspaceId ?? "") || !UUID_PATTERN.test(entry.cashflow?.offerId ?? "")) errors.push(`${slug}: configuração Cashflow inválida.`)
+  const entries = Object.entries(catalog.offers ?? {})
+  const draftCount = entries.filter(([, entry]) => entry.status === "draft").length
+  const publishedCount = entries.length - draftCount
+  if (publishedCount !== 15) errors.push("catalog.json precisa conter as 15 ofertas publicadas.")
 
-    if (entry.status !== "active") continue
+  for (const [slug, entry] of entries) {
+    if (entry.status !== undefined && entry.status !== "draft") errors.push(`${slug}: status legado ou inválido (${entry.status}).`)
+    if (Object.hasOwn(entry, "paletteKey") || Object.hasOwn(entry, "className")) {
+      errors.push(`${slug}: catálogo ainda contém paletteKey ou className legado.`)
+    }
+    if (typeof entry.label !== "string" || !entry.label.trim()) errors.push(`${slug}: label ausente.`)
+    if (entry.favicon !== null && (typeof entry.favicon !== "string" || !entry.favicon.endsWith(".webp"))) errors.push(`${slug}: favicon precisa ser WebP.`)
+    const isDraft = entry.status === "draft"
+    if (isDraft) warnings.push(`${slug}: rascunho não publicado; configure checkout, valide e faça QA antes de ativar.`)
+    if (entry.cashflow === null) {
+      if (!isDraft) warnings.push(`${slug}: tracking Cashflow pendente.`)
+    } else if (!UUID_PATTERN.test(entry.cashflow?.workspaceId ?? "") || !UUID_PATTERN.test(entry.cashflow?.offerId ?? "")) {
+      errors.push(`${slug}: configuração Cashflow inválida.`)
+    }
+
     const offerPath = path.join(root, "src", "config", "offers", slug, "offer.ts")
     let offerSource
     try {
       offerSource = await readFile(offerPath, "utf8")
     } catch {
-      errors.push(`${slug}: oferta ativa sem offer.ts.`)
+      errors.push(`${slug}: oferta publicada sem offer.ts.`)
       continue
     }
-    const checkoutLinks = [...offerSource.matchAll(/ctaHref\s*:\s*["']([^"']+)["']/g)].map((match) => match[1])
-    if (!checkoutLinks.length) errors.push(`${slug}: oferta ativa sem checkout explícito.`)
-    for (const checkout of checkoutLinks) if (!CHECKOUT_PATTERN.test(checkout)) errors.push(`${slug}: checkout inválido (${checkout}).`)
-    if (/ctaDisabled\s*:\s*true/.test(offerSource)) errors.push(`${slug}: oferta ativa contém CTA desabilitado.`)
+    if (!isDraft) {
+      const checkoutLinks = [...offerSource.matchAll(/ctaHref\s*:\s*["']([^"']+)["']/g)].map((match) => match[1])
+      if (!checkoutLinks.length) errors.push(`${slug}: oferta publicada sem checkout explícito.`)
+      for (const checkout of checkoutLinks) if (!CHECKOUT_PATTERN.test(checkout)) errors.push(`${slug}: checkout inválido (${checkout}).`)
+      if (/ctaDisabled\s*:\s*true/.test(offerSource)) errors.push(`${slug}: oferta publicada contém CTA desabilitado.`)
+    }
     if (!/\borientation\s*:\s*"(portrait|landscape)"/.test(offerSource) && !/"orientation"\s*:\s*"(portrait|landscape)"/.test(offerSource)) errors.push(`${slug}: orientation ausente (portrait|landscape).`)
     for (const dead of ["titleLine1", "titleLine2", "titleLine3", "subtitlePosition", "displayAspect", "cardImageAspect", "imageWidth", "imageHeight", "heading1", "heading2"]) {
       if (new RegExp(`["']?${dead}["']?\\s*:`).test(offerSource)) errors.push(`${slug}: campo removido ainda presente (${dead}).`)
@@ -319,8 +355,26 @@ export async function validateOffers(workspaceRoot = process.cwd()) {
     if (/(?:^|[^.\w])audience\s*:/.test(offerSource)) errors.push(`${slug}: campo removido ainda presente (audience).`)
     if (/pill\s*:\s*["']/.test(extractBlock(offerSource, "bonusSection") ?? "")) errors.push(`${slug}: campo removido ainda presente (bonusSection.pill).`)
     const bases = await loadBases(root, offerSource)
-    checkCopyLimits(slug, offerSource, bases, warnings)
+    checkCopyLimits(slug, offerSource, bases, errors)
   }
+
+  const publicImages = path.join(root, "public", "images")
+  const imageFiles = await collectFiles(publicImages)
+  for (const filePath of imageFiles) {
+    const relative = path.relative(publicImages, filePath).split(path.sep).join("/")
+    const nestedParts = relative.split("/").slice(1)
+    const asset = path.basename(filePath)
+    if (path.extname(asset).toLowerCase() !== ".webp") errors.push(`public/images/${relative}: somente WebP pode ser publicado.`)
+    if (nestedParts.length !== 1 || !/^(?:plano-(?:basico|completo)|demonstrativo-\d{2}|depoimento-\d{2}|bonus-\d{2}-(?:frente|verso)|garantia|favicon|beneficio)\.webp$/.test(asset)) {
+      errors.push(`public/images/${relative}: nome de imagem fora do padrão.`)
+    }
+    if (path.extname(asset).toLowerCase() === ".webp" && !(await isWebpFile(filePath))) errors.push(`public/images/${relative}: arquivo não contém dados WebP válidos.`)
+  }
+  const faviconPath = path.join(root, "public", "favicon.webp")
+  try {
+    await readFile(faviconPath)
+    if (!(await isWebpFile(faviconPath))) errors.push("public/favicon.webp não contém dados WebP válidos.")
+  } catch { errors.push("public/favicon.webp ausente.") }
 
   const sourceFiles = await collectSourceFiles(path.join(root, "src"))
   for (const sourceFile of sourceFiles) {
@@ -333,7 +387,7 @@ export async function validateOffers(workspaceRoot = process.cwd()) {
     if (!routeLayout.includes(marker)) errors.push(`OfferRouteLayout não contém ${marker}.`)
   }
 
-  return { errors, warnings, offerCount: Object.keys(catalog.offers ?? {}).length, paletteCount: configuredPalettes.size }
+  return { errors, warnings, offerCount: publishedCount, draftCount, paletteCount: configuredPalettes.size, imageCount: imageFiles.length }
 }
 
 export async function main(argv = process.argv.slice(2)) {
@@ -343,7 +397,7 @@ export async function main(argv = process.argv.slice(2)) {
   const result = await validateOffers(workspaceRoot)
   for (const warning of result.warnings) console.warn(`Aviso: ${warning}`)
   for (const error of result.errors) console.error(`Erro: ${error}`)
-  console.log(`${result.offerCount} ofertas e ${result.paletteCount} paletas verificadas.`)
+  console.log(`${result.offerCount} ofertas publicadas, ${result.draftCount} rascunhos, ${result.paletteCount} paletas e ${result.imageCount + 1} arquivos WebP validados.`)
   if (result.errors.length) process.exitCode = 1
 }
 

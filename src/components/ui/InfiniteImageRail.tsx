@@ -25,33 +25,28 @@ export function InfiniteImageRail({ images, orientation, direction = "forward", 
   const dragOffset = useRef(0)
   const autoPlay = useRef(true)
   const initialized = useRef(direction === "forward")
-  const isVisible = useRef(true)
+  const isVisible = useRef(false)
   const resumeTimer = useRef<ReturnType<typeof setTimeout>>(undefined)
   const [ready, setReady] = useState(false)
-  const [imageRatios, setImageRatios] = useState<Record<string, string>>({})
 
   const orderedImages = useMemo(() => direction === "reverse" ? [...images].reverse() : images, [direction, images])
   const repeatedImages = useMemo(() => [...orderedImages, ...orderedImages, ...orderedImages], [orderedImages])
-
-  useEffect(() => {
-    const element = sectionRef.current
-    if (!element) return
-    const observer = new IntersectionObserver(([entry]) => { isVisible.current = entry.isIntersecting }, { threshold: 0.1 })
-    observer.observe(element)
-    return () => observer.disconnect()
-  }, [])
 
   const getSetWidth = useCallback(() => {
     if (!trackRef.current || !trackRef.current.children.length) return 0
     const count = trackRef.current.children.length / 3
     let width = 0
     for (let index = 0; index < count; index += 1) width += (trackRef.current.children[index] as HTMLElement).offsetWidth
-    return width + (count - 1) * 16
+    const gap = Number.parseFloat(getComputedStyle(trackRef.current).columnGap) || 0
+    return width + Math.max(0, count - 1) * gap
   }, [])
 
   const animate = useCallback(function loop() {
     const track = trackRef.current
-    if (!track) return
+    if (!track || !isVisible.current || document.hidden) {
+      rafRef.current = 0
+      return
+    }
     const setWidth = getSetWidth()
 
     if (setWidth > 0 && !initialized.current) {
@@ -73,23 +68,39 @@ export function InfiniteImageRail({ images, orientation, direction = "forward", 
   }, [direction, getSetWidth])
 
   useEffect(() => {
-    rafRef.current = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(rafRef.current)
+    const element = sectionRef.current
+    if (!element) return
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisible.current = entry.isIntersecting
+      if (entry.isIntersecting && rafRef.current === 0 && !document.hidden) {
+        rafRef.current = requestAnimationFrame(animate)
+      } else if (!entry.isIntersecting && rafRef.current !== 0) {
+        cancelAnimationFrame(rafRef.current)
+        rafRef.current = 0
+      }
+    }, { rootMargin: "160px 0px", threshold: 0 })
+    observer.observe(element)
+
+    const onVisibilityChange = () => {
+      if (document.hidden && rafRef.current !== 0) {
+        cancelAnimationFrame(rafRef.current)
+        rafRef.current = 0
+      } else if (!document.hidden && isVisible.current && rafRef.current === 0) {
+        rafRef.current = requestAnimationFrame(animate)
+      }
+    }
+    document.addEventListener("visibilitychange", onVisibilityChange)
+    return () => {
+      observer.disconnect()
+      document.removeEventListener("visibilitychange", onVisibilityChange)
+      if (rafRef.current !== 0) cancelAnimationFrame(rafRef.current)
+    }
   }, [animate])
 
-  const updateImageLayout = useCallback((src: string, first: boolean, image: HTMLImageElement) => {
-    const { naturalWidth, naturalHeight } = image
-    if (!naturalWidth || !naturalHeight) return
-    const ratio = `${naturalWidth} / ${naturalHeight}`
-    setImageRatios((current) => current[src] ? current : { ...current, [src]: ratio })
-    if (first) setReady(true)
-  }, [])
-
   useEffect(() => {
-    sectionRef.current?.querySelectorAll<HTMLImageElement>(".kc-card-img").forEach((image, index) => {
-      if (image.complete) updateImageLayout(image.dataset.kcSrc ?? "", index === 0, image)
-    })
-  }, [updateImageLayout])
+    const firstImage = trackRef.current?.querySelector<HTMLImageElement>(".kc-card-img")
+    if (firstImage?.complete && firstImage.naturalWidth > 0) setReady(true)
+  }, [images, direction])
 
   if (images.length === 0) return null
 
@@ -142,7 +153,7 @@ export function InfiniteImageRail({ images, orientation, direction = "forward", 
             <div
               className={`kc-card${orientation === "portrait" ? " kc-card-portrait" : " kc-card-landscape"}`}
               key={`${image.src}-${index}`}
-              style={{ aspectRatio: orientation === "portrait" ? "3 / 4" : imageRatios[image.src] }}
+              style={{ aspectRatio: orientation === "portrait" ? "3 / 4" : "3 / 2" }}
             >
               <Image
                 src={image.src}
@@ -151,10 +162,11 @@ export function InfiniteImageRail({ images, orientation, direction = "forward", 
                 height={orientation === "portrait" ? 400 : 210}
                 className="kc-card-img"
                 data-kc-src={image.src}
-                sizes="(max-width: 570px) 240px, (max-width: 857px) 42vw, 360px"
+                sizes="(max-width: 570px) 100vw, (max-width: 1312px) 420px, (max-width: 1499px) 32vw, 480px"
                 loading={index === 0 ? "eager" : "lazy"}
-                quality={85}
-                onLoad={(event) => updateImageLayout(image.src, index === 0, event.currentTarget)}
+                quality={75}
+                onLoad={() => { if (index === 0) setReady(true) }}
+                onError={() => { if (index === 0) setReady(true) }}
               />
             </div>
           ))}

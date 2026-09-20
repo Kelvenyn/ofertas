@@ -6,8 +6,8 @@
 .vercel
 node_modules
 
-# Legacy source exports not referenced by the current Alicate offer.
-public/images/alicate/PNG
+# Preserved source media kept outside the deploy.
+.local-assets
 
 # Local-only material and test fixtures.
 .env*

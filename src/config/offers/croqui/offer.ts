@@ -69,12 +69,12 @@ export const OFFER: OfferConfig = {
     pill: "PARA QUEM CRIA MODA",
     headline: "+60 Bases de Croqui\nProntas para Desenhar",
     subline: "Suas Roupas em Minutos",
-    image: "/images/croqui/Plano Completo.webp",
+    image: "/images/croqui/plano-completo.webp",
     imageAlt: "Mockup do pacote de bases de croqui",
     support: "Pare de travar na folha em branco e comece a desenhar suas roupas com bases de croqui prontas.",
-    ctaText: "QUERO ACESSAR AGORA",
+    ctaText: "QUERO AS BASES",
     marqueeText: "60 BASES DE CROQUI ✦ PRONTAS PARA IMPRIMIR ✦ ACESSO IMEDIATO ✦ ",
-    bullets: ["60 bases femininas prontas", "Arquivos em PNG e PDF", "Bases na proporção das 9 cabeças", "Imprima e comece a desenhar imediatamente"]
+    bullets: ["60 bases femininas prontas", "Arquivos em PNG e PDF", "Bases na proporção das 9 cabeças", "Imprima e desenhe"]
   },
   socialProof: {
     ...laboralOffer.socialProof,
@@ -84,18 +84,18 @@ export const OFFER: OfferConfig = {
   counter: {
     prefix: "+ de",
     target: 60,
-    label: "Bases de Croqui prontas para\ndesenhar suas próximas criações"
+    label: "60 bases de croqui para desenhar"
   },
   kitCards: {
     ...laboralOffer.kitCards,
-    heading: "Veja as bases que você vai usar para tirar suas ideias do papel:",
+    heading: "Veja as bases de croqui por dentro",
     images: demoImageOrder.map((index) => {
       const item = laboralOffer.kitCards.images[index]
       return { ...item, src: image(item.src), alt: "Base de croqui pronta para desenhar" }
     })
   },
   benefits: {
-    title: "COM O PACK CROQUI PRONTO, SUAS IDEIAS VIRAM CRIAÇÕES",
+    title: "Transforme suas ideias em croquis",
     ctaText: "QUERO ACESSAR AGORA",
     items: [
       { icon: "💡", title: "Ideia vira croqui", desc: "Tire a roupa da cabeça e veja no papel em minutos." },
@@ -105,17 +105,17 @@ export const OFFER: OfferConfig = {
     ]
   },
   urgency: {
-    title: "QUANTAS IDEIAS INCRÍVEIS VOCÊ NÃO CONSEGUE DESENHAR POR NÃO TER UMA BASE PRONTA?",
+    title: "Suas ideias travam sem uma base pronta?",
     highlight: "",
     body: "Tenha uma base pronta para visualizar e desenhar suas próximas criações antes da sua próxima venda.",
     ctaText: "QUERO ACESSAR AGORA",
-    trust: ["ACESSO IMEDIATO • MATERIAL DIGITAL"],
+    trust: ["ACESSO IMEDIATO • PDF"],
     timerMode: "hoursMinutesSeconds"
   },
   deliverables: {
     ...laboralOffer.deliverables,
     title: "TUDO O QUE VOCÊ VAI RECEBER",
-    image: "/images/croqui/Plano Completo.webp",
+    image: "/images/croqui/plano-completo.webp",
     imageAlt: "Mockup do pacote de bases de croqui",
     bullets: [
       "60 bases femininas prontas para imprimir",
@@ -147,27 +147,27 @@ export const OFFER: OfferConfig = {
       {
         ...laboralOffer.pricing.plans[0],
         title: "Plano Básico",
-        image: "/images/croqui/Plano Básico.webp",
+        image: "/images/croqui/plano-basico.webp",
         imageAlt: "Plano Básico de Bases de Croqui",
         oldPrice: "R$ 27,90",
         price: "R$ 17,90",
         installments: "ou 4x de R$ 4,48 no cartão",
-        items: ["60 bases femininas prontas para imprimir", "Orientação rápida de utilização", "Acesso imediato ao material", "Arquivos em PDF para impressão"],
+        items: ["60 bases femininas prontas", "Arquivos em PNG", "PDFs para impressão", "Orientação rápida de utilização", "Bases na proporção das 9 cabeças", "Acesso imediato ao material"],
         mutedItems: ["Não inclui os bônus do Plano Completo"],
-        ctaText: "QUERO O PLANO BÁSICO",
+        ctaText: "QUERO BÁSICO",
         ctaHref: "https://pay.cakto.com.br/q5hydrz"
       },
       {
         ...laboralOffer.pricing.plans[1],
         title: "Plano Completo",
-        image: "/images/croqui/Plano Completo.webp",
+        image: "/images/croqui/plano-completo.webp",
         imageAlt: "Plano Completo de Bases de Croqui",
         featured: true,
         oldPrice: "R$ 37,90",
         price: "R$ 27,90",
         installments: "ou 6x de R$ 5,00 no cartão",
         items: ["60 bases femininas prontas para imprimir", ...bonuses.map(({ title }) => `🎁 ${title}`), "Arquivos em PDF para impressão", "Acesso imediato ao material"],
-        ctaText: "QUERO O PLANO COMPLETO",
+        ctaText: "QUERO COMPLETO",
         ctaHref: "https://pay.cakto.com.br/qkhtu7h"
       },
     ]
@@ -188,7 +188,7 @@ export const OFFER: OfferConfig = {
       { title: "Desenhe sua roupa", desc: "Imprima e contorne, adicionando cor e detalhes." },
       { title: "Mostre suas criações", desc: "Compartilhe com clientes e receba feedback." },
     ],
-    ctaText: "QUERO COMEÇAR AGORA"
+    ctaText: "QUERO AS BASES"
   },
   faq: {
     title: "Perguntas Frequentes",
@@ -196,14 +196,14 @@ export const OFFER: OfferConfig = {
       { q: "Preciso saber desenhar bem para usar?", a: "Não. As bases já vêm prontas, você só imprime e desenha por cima." },
       { q: "O acesso é imediato?", a: "Sim. Após a confirmação do pagamento, o acesso é liberado automaticamente." },
       { q: "Posso usar as bases para criar roupas masculinas?", a: "Sim, você recebe também a Biblioteca de Croquis Masculinos como bônus." },
-      { q: "As bases são editáveis?", a: "Sim. Você pode personalizá-las conforme suas necessidades." },
+      { q: "As bases são editáveis?", a: "Sim. Você pode adaptar as peças conforme suas necessidades." },
       { q: "O que acontece se eu não gostar do material?", a: "Você tem 30 dias de garantia para solicitar o reembolso." },
     ]
   },
   footer: {
     ...laboralOffer.footer,
     showUpdate: false,
-    copyright: "© Todos os direitos reservados. Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Fazemos todos os esforços para indicar claramente as informações do produto. Não vendemos seu e-mail ou dados a terceiros. Dúvidas? Fale conosco de Segunda a Sexta, das 09h às 18h.",
+    copyright: "© Todos os direitos reservados. Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Fazemos todos os esforços para indicar claramente as informações do produto. Não vendemos seu email ou dados a terceiros. Dúvidas? Fale conosco de Segunda a Sexta, das 09h às 18h.",
     privacyUrl: "/politica-de-privacidade",
     termsUrl: "/termos-de-uso"
   }

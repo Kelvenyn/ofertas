@@ -2,106 +2,36 @@
 
 Plano de padronização das 15 landing pages de oferta deste projeto.
 
-Base: auditoria completa de 19/09/2026 (medições reais em 15 ofertas × 7 viewports, contraste, performance, CSS/config/assets).
-Regra central: **a página é sempre a mesma estrutura; o que muda por oferta é copy (dentro de limites), 5 cores, imagens, links/tracking e a orientação do entregável.**
+Base: auditoria completa de 19/09/2026, com refino visual revisado em 20/09/2026 (medições reais em 15 ofertas × 7 viewports, contraste, performance, CSS/config/assets).
+Regra central: **a página é sempre a mesma estrutura; o que muda por oferta é copy (dentro de limites), 10 paletas candidatas, imagens, links/tracking, slug e a orientação do entregável.**
 
 ---
 
-## 0. Status da execução (atualizado em 19/09/2026)
+## 0. Status da execução (atualizado em 20/09/2026)
 
-### ✅ Fase 1 — Limpeza (concluída e commitada)
+**Plano concluído e publicado na produção.** As oito fases foram implementadas: contrato único, limites de copy, hero e CTA na dobra, paletas contrastadas, orientação das imagens, seções configuráveis, painel administrativo e migração das 15 ofertas.
 
-| Item | Resultado |
+| Frente | Resultado |
 |---|---|
-| CSS morto | **372 linhas / ~8,8 KB removidos** de `src/app/globals.css` (68,1 → 59,3 KB). Saíram: `.idv-*`, `.bio-professora*`, `.footer-mission*`, `.tqvr-pill`, `.offer-badge`, `.benefits-highlight`, `.sp-story-gradient-bar`, `.bon-new-timer-icon` e todo o ramo `.sp-problem-*` |
-| Campos mortos | Removidos do contrato e das 15 ofertas: `timerLabel`, `socialProofCaption`, `marqueeGradient` (hero e garantia), `testimonials[].gradient`, `questions`/`conclusion`, `urgency.pill`, `deliverables.pill`, `deliverables.titleHighlight`, `touchHint`, `backHint`, `badgeText`, `steps[].num`, `missionText`, `privacyLabel`, `termsLabel`. Ajustes em `SocialProof.tsx` (ramo das perguntas) e `VendaImediata.tsx` |
-| Assets órfãos | **35 imagens (~24 MB)** removidas (sobras de castracao, croqui, felinos, jardim, laboral, psicopedagogia e `calha/Demonstrativo.webp`) + pastas vazias `public/seo/` e `public/videos/` |
-| Páginas legais | As 4 duplicatas (`psicopedagogia/*` e `tilapia/*`) foram **apagadas**; os rodapés das duas ofertas agora apontam para `/politica-de-privacidade` e `/termos-de-uso` |
-| `alicate/PNG` | **Mantido** de propósito: são os PNGs de origem (96,7 MB) e já estão fora do git/deploy por `.gitignore`/`.vercelignore` |
-| Portão de qualidade | `typecheck` ✅ · `test` 9/9 ✅ · `lint` ✅ · `build` ✅ (30 rotas geradas) |
-| Regressão visual | Screenshot da primeira dobra idêntico ao estado anterior (zero mudança visual) |
+| Layout | Shell único para as 15 ofertas; CTA do hero na primeira dobra; dois trilhos full-bleed em sentidos opostos; imagens demonstrativas com 100vw no celular e 420–480px no desktop, sempre sem corte. O texto de apoio usa quebra balanceada em todas as ofertas. |
+| Copy e seções | Limites passam a bloquear publicação quando excedidos; todas as ofertas têm 5 FAQs; depoimentos limitados a 7; seções podem ser ligadas e desligadas. |
+| Cores | Dez candidatas por oferta; contraste WCAG AA validado; CTA, bullets e urgência seguem tokens fixos. Marquee tem gradiente sutil dos tons `brandDeep` para `brandInk` e texto branco com contraste validado. |
+| Painel | `/painel` com sessão administrativa, mini dashboard, preview ao vivo, edição de oferta, copy guiada, cores, imagens WebP, checkouts, Cashflow e seções; dados operacionais persistidos no Blob privado da Vercel. |
+| Segurança de publicação | Ofertas têm status `draft`, `active` ou `inactive`. Rascunhos e inativas respondem 404 até a ativação; checkout válido em cada plano é exigido para ativar. |
+| Entrada do domínio | `universoeduk.com` é o domínio principal e sua raiz redireciona para `/painel`; `www.universoeduk.com` recebe um redirecionamento permanente para o domínio principal. Domínios de preview mantêm a rota de oferta padrão. |
+| Mídia | Assets públicos em WebP com nomes canônicos; redução de 274,73 MiB para 67,04 MiB nos WebPs das ofertas (−75,6%). PNGs de origem da Alicate ficam fora do deploy e não são usados pela página. |
+| Limpeza | Removidos ícones PNG, assets redundantes, nomes antigos de imagens, CSS morto, rotas administrativas antigas e arquivos `.gitkeep` vazios. `/admin/*` redireciona para `/painel`. |
+| QA final | 25/25 testes, validação das 15 ofertas, 10 paletas por oferta e 525 WebPs, lint, typecheck e build passaram. Chrome: 105/105 medições em 320, 360, 375, 390, 430, 1366 e 1920px, sem corte, overflow ou hífens visíveis; imagens respondem `image/webp`. Navegação local mediana 524ms / p95 845ms; TTFB mediano 47ms; transferência inicial p95 805 KiB; página completa mediana 2.630 KiB / p95 4.430 KiB. Painel: 13/13 verificações funcionais em 320, 390, 768 e 1366px. QA visual passou para trilhos, depoimentos, CTA, animações, bullets, gradiente e texto de apoio balanceado. Produção após o refino: raiz redireciona a `/painel`, `www` ao domínio principal, painel solicita login, 15/15 ofertas respondem 200, slug inexistente responde 404 e o gradiente/texto branco estão na página; imagem otimizada responde `image/webp`. |
 
-**Arquivos alterados na Fase 1:** commit `1f5ad08` (`refactor: limpa css morto, campos nao renderizados e assets orfaos`). Plano publicado nos commits `f459251` (documento) e `ff064c3` (ponteiro no `AGENTS.md`).
+### Ajustes globais adicionais (20/09/2026)
 
-### ✅ Fase 2 — Contrato novo (concluída e commitada em `920721d`)
+- O painel tem controles independentes de tipografia e imagens P/M/G, responsivos e globais às 15 ofertas. A prévia muda antes de salvar; as configurações ficam em um Blob privado separado dos dados operacionais das ofertas.
+- A hero prioriza o CTA e deixa a imagem flexível encolher quando o conteúdo aumenta. A edição de preço de ancoragem por checkout recalcula o percentual automaticamente e arredonda o resultado; quando o valor atual não é menor, nenhum selo de desconto aparece.
+- QA complementar: 27/27 testes, 15 ofertas em 135 medições responsivas, incluindo fonte e imagens G em 320×568 e 360×640; 16 verificações do painel, incluindo prévia de escalas e recálculo do desconto; apenas respostas `image/webp`. Sem corte de texto, overflow ou CTA fora da primeira dobra nos casos medidos.
 
-| Item | Resultado |
-|---|---|
-| `OfferConfig` novo | `src/types/offer.ts` conforme o Anexo A: hero `headline`/`subline`/`support` (+`bullets` obrigatório), `orientation`, `sections`, `paletteCandidates`, `kitCards.heading`, `bonusSection` sem `pill`; removidos `titleLine1/2/3`, `audience`, `subtitle`, `subtitlePosition`, `imageWidth`/`imageHeight`, `displayAspect`, `cardImageAspect`, `heading1/2`, `bonusSection.pill` |
-| 15 ofertas migradas | Remapeamento mecânico (sem reescrever copy): `titleLine1/2`→`headline` (`\n`), `titleLine3`/`audience`→`subline`, `subtitle`→`support`; bullets cortados para 4 onde passava (box, lavanderia, tilapia, psicopedagogia); `orientation` por oferta (landscape: box, calha, castracao, felinos, laboral, lavanderia, psicopedagogia, tilapia; portrait: demais) |
-| Componentes | `VendaImediata` (headline/subline/support, imagem 1080²), `KitCards`/`KitCardsReversed` + `InfiniteImageRail` (governados por `orientation`), `Bonuses` (sem pill) + `FlipCard` (retrato via `orientation`), `Benefits` (sem dimensões configuráveis) |
-| Validador de copy | `npm run offer:validate` agora checa os limites da §6 (com resolução de spreads) e os campos removidos; violações de copy saem como **avisos** até a Fase 8 (hoje: ~200 avisos esperados); campos removidos e `orientation` ausente são **erro** |
-| Portão de qualidade | `typecheck` ✅ · `test` 9/9 ✅ · `lint` ✅ · `offer:validate` ✅ (0 erros) · `build` ✅ (26 rotas) |
-
-### ✅ Fase 3 — Hero novo (concluída e commitada em `86f4659` + `f903032`)
-
-| Item | Resultado |
-|---|---|
-| Ordem | `VendaImediata.tsx`: `.vi-fold` (Pill → Headline → Subline `<p>` fora do `h1` → Imagem → CTA `#oferta`) + Apoio → 4 Bullets → Marquee |
-| Dobra fixa | `.vi-fold` com altura fixa (`100svh` menos 60px do padding-top que a barra fixa aplica no `<html>`, menos padding do hero, menos 18px de respiro); imagem absoluta contida na área flex — estica com folga, encolhe com falta (teto 60vh); CTA termina ~18px acima da dobra. `font-size/line-height: 0` no fold (quebras JSX viravam itens flex anônimos de ~24px); `.vi-cta-btn` com fonte/linha explícitas (16px/1.5, 15px ≤640px) |
-| Compactação mobile | Hero 16px topo, dobra desconta 60px (barra) + 16px + 18px; pill mb 10, título mb 8, linha1 mín 26px, linha2 mín 21px, linha3/subline mín 16px + mb 16 (overrides `*-offer` mantidos até a Fase 8 por especificidade maior) |
-| CSS morto | Removidos `.vi-audience`, `.vi-sub-before-image`, `.vi-social-proof-caption` |
-| Trilhos do kit | Espaçamento enxuto e por orientação: seção 28/12px, trilho `gap` 12px, cards retrato `clamp(200px,56vw,300px)` 3/4 e paisagem com placeholder 3/2 imediato (proporção natural após carregar; salto reduzido de ~170px para ~9px). Direções opostas já via `direction="reverse"` no `KitCardsReversed` |
-| CTA na dobra | **105/105 medições** (15 ofertas × 7 viewports, motor de layout real via CDP com hosts externos bloqueados; pior folga 30px). Recaptura confirma estabilidade |
-| Portão de qualidade | `typecheck` ✅ · `test` 9/9 ✅ · `lint` ✅ · `offer:validate` ✅ (0 erros) · `build` ✅ (26 rotas) |
-
-> Nota de método: o load via CDP trava neste sandbox em recurso externo (servidor responde o corpo em ~60ms; renderer não completa o load). A medição final usou CDP com `Network.setBlockedURLs` (fontes + tracker) — motor de layout real, `getBoundingClientRect` do `.vi-cta-btn` vs. `innerHeight`, e geometria dos trilhos (`.kc-section`, `.kc-card`). Scripts em `C:\Users\maryk\AppData\Local\Temp\opencode\` (`measure-cdp.mjs`, `shots-only.cjs`, `analyze-fold.cjs`, `png-tools.cjs` — fora do git, podem não sobreviver entre sessões).
-> Observação: títulos estouram a largura em telas pequenas (ex.: psicopedagogia/lavanderia em 390px) — pré-existente, tratado na Fase 8 (copy dentro dos limites + revisão dos clamps).
-
-### 🟡 Fase 4 — Paletas (parcial, NÃO commitada)
-
-| Item | Estado |
-|---|---|
-| `src/lib/color.ts` (untracked) | Pronto: `parseHex`/`rgbToHex`/`rgbToHsl`/`hslToRgb`/`hexToHsl`/`hslToHex`/`shiftHue`/`withLightness`, `relativeLuminance`/`contrastRatio`, `validatePaletteContrast` (6 pares reais: branco sobre brand/brandDeep/ctaDeep/ctaDarkest, brandInk sobre bg/brandSubtle), `mulberry32`, `repairPaletteContrast`, `generatePaletteCandidates` (variações de matiz + aleatórias com seed, CTA herdado da base, só retorna aprovadas). Sem testes próprios; nada o importa ainda |
-| Falta (para o Codex) | Popular `paletteCandidates` (5 por oferta) — o campo já existe no contrato; o painel lê do Blob com o código como padrão (decidir onde vivem as candidatas); UI de escolha + "Gerar novas paletas" (hoje o `PaletteEditor` só lista os 10 presets e salva 1 `paletteKey`); trocar o PIN `"1010"` hardcoded (`PaletteEditor.tsx:31,33,90`, `api/admin/offers/[slug]/route.ts:18`, `AdminOffersClient.tsx:43,44`) por `PALETTE_PIN`; estender o teste de contraste às candidatas (critério §11.3). Atenção: paletas inline de `offer.ts` nunca passaram por contraste (ex.: psicopedagogia reprova "branco sobre brand" 2.77:1) — o teste atual só cobre os 10 presets |
-
-### ✅ Fase 3 — Hero novo (concluída)
-
-| Item | Resultado |
-|---|---|
-| Ordem nova | `VendaImediata.tsx`: Pill → Headline → Subline (`<p>`, fora do `h1`) → Imagem → CTA (`#oferta`) → Apoio → 4 Bullets → Marquee |
-| Imagem | Preenche a dobra: absoluta contida na área flex (esticа com folga, encolhe com falta; teto 60vh); CTA termina ~18px acima da dobra |
-| Compactação mobile (≤480px) | Hero 16px topo, dobra desconta 60px (barra) + 16px + 18px; pill mb 10, título mb 8, linha1 mín 26px, linha2 mín 21px, linha3/subline mín 16px + mb 16 (overrides `*-offer` mantidos até a Fase 8 por especificidade maior) |
-| CSS morto | Removidos `.vi-audience`, `.vi-sub-before-image`, `.vi-social-proof-caption` (campos já fora do contrato) |
-| Trilhos do kit | Espaçamento enxuto e por orientação: seção 28/12px, trilho `gap` 12px, cards retrato `clamp(200px,56vw,300px)` 3/4 e paisagem com placeholder 3/2 imediato (proporção natural após carregar; salto de layout reduzido de ~170px para ~9px) |
-| CTA na dobra | **105/105 medições** (15 ofertas × 7 viewports, motor de layout real via CDP com hosts externos bloqueados; pior folga 30px). Recaptura confirma estabilidade |
-| Portão de qualidade | `typecheck` ✅ · `test` 9/9 ✅ · `lint` ✅ · `offer:validate` ✅ (0 erros) · `build` ✅ (26 rotas) |
-
-> Nota de método: o load via CDP trava neste sandbox em recurso externo (servidor responde o corpo em ~60ms; renderer não completa o load). A medição final usou CDP com `Network.setBlockedURLs` (fontes + tracker) — motor de layout real, `getBoundingClientRect` do `.vi-cta-btn` vs. `innerHeight`, e geometria dos trilhos (`.kc-section`, `.kc-card`). Scripts em `C:\Users\maryk\AppData\Local\Temp\opencode\` (`measure-cdp.mjs`, `shots-only.cjs`, `analyze-fold.cjs`, `png-tools.cjs`).
-> Observação: títulos estouram a largura em telas pequenas (ex.: psicopedagogia/lavanderia em 390px) — pré-existente (CSS do título inalterado nesta fase), tratado na Fase 8 (copy dentro dos limites + revisão dos clamps).
-
-### ⏳ O que falta (Fases 4-resto a 8 — guia para o Codex)
-
-| Fase | O que fazer | Estado atual / pontos de atenção |
-|---|---|---|
-| 4-resto | Popular `paletteCandidates` (5/oferta), UI de escolha + "Gerar novas paletas", `PALETTE_PIN`, contraste das candidatas | Base pronta em `src/lib/color.ts` (não commitado). CTA/bullets/glass **não mudam** com a paleta (§4.2). `PaletteEditor` atual só salva 1 `paletteKey` |
-| 5-resto | Trilhos full-bleed 100vw + fade lateral + cards 78vw + ajuste no painel | Já pronto: `orientation` governa kit+bônus, direções opostas (`direction="reverse"`), espaçamento enxuto, placeholder por orientação. Falta: largura total, máscara de fade, cards maiores. Cards hoje: 240px mobile (`clamp(240px,42vw,360px)`), retrato `clamp(200px,56vw,300px)` |
-| 6 | `sections` ligando/desligando tudo no `OfferPage`, FAQ exatamente 5, depoimentos até 7 | Tipo `SectionId` existe mas `OfferPage.tsx` ignora `sections`. `FAQ.tsx:10` corta com `slice(0, 5)`. `SocialProof` renderiza todos os configurados — impor teto 7 |
-| 7 | Painel `/painel` (login env, lista, preview, abas Cores/Imagens/Oferta/Copy/Seções, upload em massa PNG→WebP, "Gerar prompt"/"Colar copy") | Existe só `/admin/*` + `/<slug>/paleta` (PIN `"1010"` hardcoded em 3 arquivos). Estender `operational-catalog.ts` (hoje só `status`+`paletteKey`) para copy/orientação/checkout/tracking |
-| 8 | Migrar copy para os limites (~200 avisos hoje no `offer:validate`), imagens nos nomes padrão (§8.1), remover `*-offer` do CSS (57 ocorrências) + `className` do catálogo (11 em uso), apagar `status`/draft + `/admin` + APIs | Só remover o admin **depois** do painel funcionar. `catalog.json` perde `status`/`className`. Título mobile estourado sai com a copy nos limites |
-
-### ⚠️ Armadilhas aprendidas nesta sessão (importante para não repetir)
-
-1. **Fim de linha:** o projeto usa **LF**. Ferramentas/agentes que gravam CRLF fazem o arquivo inteiro aparecer como alterado no `git diff`. Antes de commitar, conferir com `git diff --numstat` (números próximos do real) e normalizar para LF se necessário.
-2. **Diff cirúrgico nos `offer.ts`:** editar linha a linha; nunca "formatar" o arquivo — vários são one-liners propositais.
-3. **Medição da primeira dobra:** foi feita com Chrome headless + CDP (Emulation.setDeviceMetricsOverride), CSS injetado em runtime e medição de `getBoundingClientRect` do `.vi-cta-btn` (top/bottom vs. `innerHeight`). Os scripts ficaram em `C:\Users\maryk\AppData\Local\Temp\opencode\` (podem não sobreviver entre sessões — o método está descrito aqui).
-4. **Não confiar em altura fixa:** a auditoria provou que espaçamento/imagem sozinhos não colocam o CTA na dobra; a ordem dos blocos é o que resolve.
-
-### Comandos do projeto
-
-```bash
-npm run dev            # http://localhost:3000
-npm run typecheck
-npm run lint
-npm test               # 9 testes
-npm run offer:validate # valida catálogo/checkout/paletas
-npm run build
-npm run check          # tudo acima em sequência
-```
+Cashflow continua opcional; ofertas sem IDs configurados não carregam o script e geram aviso informativo no validador. Tracking permanece restrito ao script oficial da Cashflow.
 
 ---
-
-
 ## 1. Princípios
 
 1. **CTA comprador sempre visível na primeira dobra** — em qualquer celular, tablet, notebook ou desktop.
@@ -121,7 +51,7 @@ Garantia → Como é o acesso → FAQ → Rodapé (+ aviso de atualização)
 ```
 
 - Toda seção pode ser **ligada/desligada** pelo painel (sem exceção).
-- `KitCardsReversed` (segundo trilho com as mesmas imagens) sai do fluxo padrão e vira opção "segundo trilho" desligada por padrão.
+- `KitCardsReversed` (segundo trilho com as mesmas imagens) fica ligado por padrão e pode ser desligado no painel.
 - Nenhuma seção renderiza conteúdo que não esteja no contrato.
 
 ---
@@ -136,8 +66,8 @@ Garantia → Como é o acesso → FAQ → Rodapé (+ aviso de atualização)
 | 2 | Headline | **o que é + para quem** (2 linhas) |
 | 3 | Subline | **benefício em 1 frase** |
 | 4 | Imagem | prova visual do produto (`plano-completo.webp`) |
-| 5 | **Botão CTA** | ação (link para `#oferta`) — **fim da primeira dobra** |
-| 6 | Texto de apoio | contexto/objeção ("sem precisar improvisar") |
+| 5 | Texto de apoio | contexto/objeção ("sem precisar improvisar") |
+| 6 | **Botão CTA** | ação (link para `#oferta`) — **fim da primeira dobra** |
 | 7 | 4 bullets | **o que vou conseguir fazer** |
 | 8 | Marquee | atributos e entregáveis separados por `•` |
 
@@ -145,8 +75,8 @@ Garantia → Como é o acesso → FAQ → Rodapé (+ aviso de atualização)
 
 A dobra (`.vi-fold`) tem altura fixa (`100svh` menos 60px do padding que a barra fixa
 aplica no `<html>`, menos padding do hero, menos 18px de respiro). A imagem é absoluta
-contida na área flex: **esticа quando sobra espaço e encolhe quando falta** (até o
-mínimo), e o CTA termina sempre ~18px acima da dobra — último elemento da tela.
+contida na área flex: **estica quando sobra espaço e encolhe quando falta** (até o
+mínimo). O CTA fica inteiro dentro da primeira dobra; os bullets vêm logo depois.
 
 Medição final (15 ofertas × 7 viewports, motor de layout real via CDP):
 **CTA inteiro na primeira dobra em 105/105 medições**, pior folga 30px
@@ -161,11 +91,11 @@ Medição final (15 ofertas × 7 viewports, motor de layout real via CDP):
 | Subline | ≤ 70 caracteres, 1 linha | "Identifique, escolha e conduza com mais segurança" (50) ✓ |
 | Apoio | ≤ 160 caracteres, 2-3 linhas | atual (141) ✓ |
 | Bullets | **4 itens**, ≤ 34 caracteres cada | atuais (20 a 27) ✓ |
-| Botão | ≤ 17 caracteres, sempre 1 linha | "QUERO O MAPA" (13) |
+| Botão | ≤ 34 caracteres, sempre 1 linha; no celular ocupa no máximo 80vw | "QUERO O MAPA DE PERFIL" (24) |
 | Marquee | 4 a 6 itens, ≤ 70 caracteres no total | atual (68) ✓ |
 
 Observações:
-- O campo `audience` desaparece como bloco próprio: seu conteúdo vira o **Texto de apoio** (depois do CTA) ou é absorvido pela Subline.
+- O campo `audience` desaparece como bloco próprio: seu conteúdo vira o **Texto de apoio** (antes do CTA) ou é absorvido pela Subline.
 - `titleLine3` deixa de existir como linha do `<h1>` e vira o campo **Subline**.
 - O botão do hero continua apontando para `#oferta`.
 
@@ -179,15 +109,15 @@ Fundo da página, fundos alternados, headlines e sublines, títulos e textos de 
 
 ### 4.2 O que **não** muda (fixo em todas as ofertas)
 
-- **Botão de CTA**: verde atual (`#16A34A` → `#11863D` → `#0E6B31`).
+- **Botão de CTA**: verde atual (`#12883E` → `#11863D` → `#0E6B31`).
 - **Bullets**: texto verde + ícone de check branco.
 - **Efeito de vidro (glass)** da barra de contagem no topo.
 - **Urgência**: vermelho reservado para tempo/escassez.
 
-### 4.3 Cinco paletas candidatas por oferta
+### 4.3 Dez paletas candidatas por oferta
 
-- Cada oferta tem **5 paletas candidatas** salvas; 1 fica ativa.
-- O painel permite: ver as 5 ao vivo, **"Gerar novas paletas"** (variações da cor atual + aleatórias) e salvar a escolhida.
+- Cada oferta tem **10 paletas candidatas** salvas; 1 fica ativa.
+- O painel permite: ver as 10 ao vivo, **"Gerar novas paletas"** (variações da cor atual + aleatórias) e salvar a escolhida.
 - Toda paleta gerada passa por **validação automática de contraste** (WCAG AA nos pares reais: brand sobre brandSubtle, textos sobre fundo, branco sobre CTA) antes de ser oferecida.
 - A escolha é lida do Blob (override) com o código como padrão.
 
@@ -290,7 +220,7 @@ Legenda: ✓ = exemplo atual já dentro do limite · ⚠ = exemplo atual precisa
 |---|---|---|
 | Título | ≤ 48 caracteres | "Como você vai receber seu material" (35) ✓ |
 | Passos | **4 passos** — título ≤ 30 / descrição ≤ 90 | 18/16/19/15 e 43/31/28/29 ✓ |
-| Botão final | ≤ 17 caracteres (opcional) | ✓ |
+| Botão final | ≤ 34 caracteres, uma linha (opcional) | ✓ |
 
 ### FAQ
 
@@ -342,7 +272,7 @@ Copy adaptada por oferta, dentro dos limites de §6.
 
 - **Dois trilhos mantidos** (como hoje), um abaixo do outro.
 - **Largura**: os trilhos ocupam 100% da viewport (full-bleed), com máscara de fade nas laterais — os cards aparecem e somem conforme se movem.
-- **Tamanho**: cards maiores que hoje (hoje: 240px de largura no celular). Proposta: **78vw no celular** (≈304px numa tela de 390px) e **360–420px no desktop**, com a altura seguindo a orientação do entregável — ajustável no painel.
+- **Tamanho**: cards com **100vw no celular** e `clamp(420px, 32vw, 480px)` no desktop, com a altura seguindo a orientação do entregável e `object-fit: contain` — ajustável no painel.
 - **Direções opostas**: o primeiro trilho gira para a esquerda (A→Z) e o segundo para a direita (Z→A), sem repetir a mesma sequência na tela.
 - Cards com `aspect-ratio` da orientação escolhida (§5) e sombra suave.
 
@@ -360,25 +290,27 @@ Copy adaptada por oferta, dentro dos limites de §6.
 ### 9.1 Acesso
 
 - **Login com e-mail + senha** (variáveis `ADMIN_EMAIL` / `ADMIN_PASSWORD` na Vercel).
-- O atalho `/<slug>/paleta` continua existindo, protegido **apenas pelo PIN** — que sai do código e passa a vir de variável de ambiente (`PALETTE_PIN`), sem aparecer na página em nenhum texto.
-- Sem status de rascunho/ativa: as 15 ofertas estão sempre publicadas.
+- O atalho `/<slug>/paleta` continua existindo e exige a mesma sessão administrativa (`ADMIN_EMAIL`/`ADMIN_PASSWORD`) do painel; não há PIN separado.
+- As 15 ofertas atuais começam `active`; novos imports entram como `draft` e só são liberados após checkout, validação e QA visual.
 
 ### 9.2 Telas
 
 1. **Lista de ofertas** — as 15, com miniatura, cor atual e botão "Abrir".
 2. **Oferta (com preview ao lado, celular/desktop, atualizando ao vivo):**
-   - **Cores** — 5 paletas candidatas, "Gerar novas paletas" (variações da atual + aleatórias), validação de contraste automática.
+   - **Cores** — 10 paletas candidatas, "Gerar novas paletas" (variações da atual + aleatórias), validação de contraste automática e preview ao vivo.
    - **Imagens** — orientação (retrato/paisagem) + upload em massa por nome (PNG→WebP).
-   - **Oferta** — links de checkout (Básico/Completo) e ID/script da Cashflow.
-   - **Copy** — campos por elemento com contador e limite (ver §6), botão **"Gerar prompt"** (monta o texto pronto para colar no ChatGPT/Claude com as regras e limites) e **"Colar copy"** (cola o bloco formatado `PILL: ... / HEADLINE: ...` e preenche todos os campos de uma vez).
+   - **Oferta** — slug editável; checkouts para um ou dois planos; Cashflow opcional por meio da tag completa em um único campo (o painel extrai e valida os IDs sem executar o código colado). A slug anterior responde 404, sem redirecionamento.
+   - **Copy** — subabas para editar, gerar prompt e colar copy; navegação rápida por seção; estrutura vazia copiável; ao gerar prompt, o texto completo vai para a área de transferência.
+   - **Publicação** — status com controle de um clique; ofertas `draft` ou `inactive` respondem a um 404 personalizado. Ativação depende de checkout válido em cada plano.
+   - **Resumo** — mini dashboard com total de ofertas, ativas, checkouts válidos e configurações Cashflow.
    - **Seções** — ligar/desligar qualquer seção da página.
-3. **Salvar** — grava no Blob (o código continua sendo o padrão) e publica na hora. Botão "Restaurar do código" desfaz.
+3. **Salvar** — grava a configuração validada no Blob. Apenas ofertas `active` ficam disponíveis ao público; uma alteração de slug remove a rota antiga sem redirecionamento.
 
 ### 9.3 O que sai
 
-- `/admin`, `/admin/ofertas`, `/admin/login` e as APIs de admin.
-- Campo `status` (draft/active/archived), gate de 404 em produção e a lógica de publicação.
-- Painel atual de paleta com PIN fixo e exibido na tela.
+- Interfaces antigas de `/admin`; os caminhos `/admin/*` redirecionam para `/painel` e APIs antigas foram removidas.
+- Chaves operacionais por slug mutável. O Blob usa identidade estável; imports futuros começam `draft` e permanecem indisponíveis ao público até a ativação.
+- PIN fixo de paleta; acesso às rotas administrativas usa sessão autenticada.
 
 ---
 
@@ -388,21 +320,23 @@ Copy adaptada por oferta, dentro dos limites de §6.
 - Campos nunca renderizados: `timerLabel`, `urgency.pill`, `deliverables.pill`, `badgeText`, `missionText`, `privacyLabel`, `termsLabel`, `touchHint`, `backHint`, `steps[].num`, `marqueeGradient`, `testimonials[].gradient`, `socialProofCaption`, `subtitlePosition`, `questions`, `audience`, `titleLine3`.
 - Imagens órfãs de todas as pastas (35 arquivos, ~24 MB) e as pastas vazias `public/seo/` e `public/videos/`.
 - 4 páginas legais duplicadas (`psicopedagogia/*` e `tilapia/*`) — todas passam a apontar para as da raiz.
-- `public/images/alicate/PNG/`: **mantido**. São as exportações PNG de origem (96,7 MB) e já estão fora do git e do deploy por regra em `.gitignore`/`.vercelignore`. Não afetam o site; podem ser apagadas por você a qualquer momento.
-- Dependência `@vercel/blob` permanece **apenas** para paleta/copy/orientação/checkout/tracking.
+- `public/images/alicate/PNG/`: movido para `.local-assets/alicate/PNG/`, fora de `public`, do Git e do deploy. A página serve apenas as variantes WebP normalizadas.
+- `@vercel/blob` persiste identidade e status por ID estável, slug, copy, paletas, orientação, favicon, assets enviados, checkouts e Cashflow.
 
 ---
 
 ## 11. Critérios de aceite
 
 1. **CTA na primeira dobra**: em 15 ofertas × 7 viewports (320×568, 360×640, 375×667, 390×844, 430×932, 1366×768, 1920×1080) o botão do hero fica 100% visível — verificado por medição automatizada.
-2. **Limites de copy**: nenhuma oferta publica com campo acima do limite (verificação no `offer:validate`).
+2. **Limites de copy**: nenhuma oferta publica com campo acima do limite (verificação no `offer:validate`); CTA do hero de uma linha e limitado a 80vw no celular.
 3. **Contraste**: toda paleta ativa passa WCAG AA nos pares reais (teste automatizado ampliado).
 4. **Sem CSS por oferta**: nenhuma classe `*-offer` no CSS.
-5. **Imagens**: toda oferta com os nomes padrão; nenhum arquivo órfão; nenhum PNG/JPG servido.
+5. **Imagens**: todos os arquivos dentro de `public/` são WebP e usam nomes canônicos; imagens órfãs removidas e originais ficam fora de `public/`.
 6. **Nenhum campo morto** no contrato.
-7. **FAQ com exatamente 5 perguntas** e depoimentos com até 7 exibidos.
-8. `npm run check` (test + validate + lint + typecheck + build) verde.
+7. **FAQ com exatamente 5 perguntas** e até 7 depoimentos; todos os cards permanecem montados durante autoplay.
+8. Dois trilhos demonstrativos em direções opostas; imagens WebP, sem corte e ampliadas.
+9. Rotas antigas de slugs alteradas e ofertas inativas respondem com 404 personalizado.
+10. `npm run check` (test + validate + lint + typecheck + build), QA responsivo 15 × 7 viewports e QA de painel verdes.
 
 ---
 
@@ -413,10 +347,10 @@ Copy adaptada por oferta, dentro dos limites de §6.
 | 1 | Limpeza: CSS morto, campos mortos, assets órfãos, páginas legais duplicadas, classes `*-offer` |
 | 2 | Contrato novo (`OfferConfig` enxuto) + limites de copy + validador automático |
 | 3 | Hero novo (ordem, limites, imagem adaptativa) + CTA na dobra validado por medição |
-| 4 | Paletas: 5 candidatas + gerador + validação de contraste + tokens novos (mantendo CTA/bullets/glass) |
+| 4 | Paletas: 10 candidatas + gerador + validação de contraste + tokens novos (mantendo CTA/bullets/glass) |
 | 5 | Orientação do entregável (kit + bônus) e reescrita dos componentes de carrossel/bônus |
 | 6 | Seções ligáveis/desligáveis + FAQ 5 + depoimentos até 7 |
-| 7 | Painel `/painel` (login, preview, abas, upload em massa, gerar prompt/colar copy) + PIN fora do código |
+| 7 | Painel `/painel` (sessão administrativa, preview, abas, upload em massa, gerar prompt/colar copy) |
 | 8 | Migração das 15 ofertas para o novo contrato + copy dentro dos limites + QA final |
 
 ---
@@ -459,23 +393,30 @@ BULLET 1..4: ...
 BOTAO: ...
 MARQUEE: ...
 PROVA_SOCIAL_TITULO: ...
+CONTADOR_PREFIXO: ...
 CONTADOR_LABEL: ...
 KIT_TITULO: ...
 BENEFICIOS_TITULO: ...
 BENEFICIO 1..4 (TITULO | DESCRICAO): ...
+BOTAO_BENEFICIOS: ...
 URGENCIA_TITULO: ...
 URGENCIA_CORPO: ...
+BOTAO_URGENCIA: ...
 ENTREGAVEIS_TITULO: ...
 ENTREGAVEIS_BULLET 1..10: ...
 BONUS_TITULO: ...
 BONUS_SUBTITULO: ...
 BONUS 1..6 (TITULO | DESCRICAO): ...
 PLANOS_TITULO: ...
+PLANOS_NOTA: ...
+PLANO_TITULO 1..N: ...
 PLANO 1..N ITEM 1..8: ...
 GARANTIA_TITULO: ...
 GARANTIA_CORPO: ...
 ACESSO_TITULO: ...
 ACESSO_PASSO 1..4 (TITULO | DESCRICAO): ...
+BOTAO_ACESSO: ... (quando houver)
+FAQ_TITULO: ...
 FAQ 1..5 (PERGUNTA | RESPOSTA): ...
 FOOTER_TITULO: ...
 FOOTER_CORPO: ...
@@ -483,28 +424,19 @@ FOOTER_CORPO: ...
 
 ### 13.3 Colagem em massa ("Colar copy")
 
-- O painel lê esse bloco, mostra **prévia campo por campo** com contador e limite, marca em vermelho o que estourou e só salva quando tudo estiver dentro do padrão (ou quando você confirmar exceções).
+- O painel aplica o bloco diretamente ao rascunho, atualiza o preview e mostra os contadores e limites; não permite publicar enquanto houver campos fora do padrão.
 
 ---
 
-## 14. Execução (time de agentes)
+## 14. Execução paralela
 
-- **Orquestrador**: DeepSeek V4.1 Flash (esta sessão) — mantém o contexto da auditoria, revisa cada entrega e faz a gestão das fases.
-- **Agentes executores** (modelos por natureza da tarefa):
-  - código/refatoração → Kimi K2.7 Code;
-  - copy/limites de texto → GLM 5.3;
-  - medição/QA e testes automatizados → Qwen 3.8 Max;
-  - revisão crítica → DeepSeek V4 Pro.
-- **Frentes paralelizáveis**: migração de copy das 15 ofertas (uma por agente), limpeza de assets por pasta, e o painel (que depende só do contrato).
-- **Portões de qualidade por fase**: `npm run typecheck` + `npm test` + `npm run lint` + `npm run build`, mais a medição automatizada da primeira dobra a cada mudança de hero.
-- Todas as fases terminam com o **doc atualizado** e um resumo do que mudou.
+As tarefas independentes de paleta/painel, conteúdo e imagens foram auditadas em paralelo. A integração final, a QA e a publicação foram centralizadas. `universoeduk.com` é o domínio principal e sua raiz direciona para `/painel`; `www.universoeduk.com` redireciona permanentemente para ele. Os previews continuam usando a rota padrão da oferta.
 
 ---
 
 ## 15. Pendências conhecidas
 
-- Enviar os "elementos da oferta" (formato Obra 100k) de cada oferta que for reescrita — o gerador de prompt usa exatamente esse formato (§13.1).
-- Definir o nome final do painel (`/painel` é a proposta) e a rota do atalho de paleta (`/<slug>/paleta` mantido).
+Não há pendências para a padronização. Cashflow é opcional e pode ser configurado posteriormente por oferta. A criação de futuras ofertas permanece sujeita ao fluxo `draft` → checkout válido → validação → QA visual → publicação.
 
 ---
 
@@ -517,9 +449,9 @@ export interface OfferHero {
   subline: string         // ≤ 70 car.
   image: string           // "plano-completo.webp"
   imageAlt: string
-  support: string         // ≤ 160 car. (texto de apoio, depois do CTA)
+  support: string         // ≤ 160 car. (texto de apoio, antes do CTA)
   bullets: string[]       // exatamente 4, ≤ 34 car. cada
-  ctaText: string         // ≤ 17 car.
+  ctaText: string         // ≤ 34 car.; sem quebra, até 80vw no celular
   marqueeText: string     // ≤ 70 car.
 }
 
@@ -545,7 +477,7 @@ export interface PricingPlan {
 export interface OfferConfig {
   meta: { title: string; description: string }
   palette: OfferPalette
-  paletteCandidates?: OfferPalette[]        // 5 candidatas (Fase 4)
+  paletteCandidates?: OfferPalette[]        // 10 candidatas
   orientation: "portrait" | "landscape"     // governa kit + bônus (Fase 5)
   sections?: Partial<Record<SectionId, boolean>>  // ligar/desligar (Fase 6)
   hero: OfferHero
@@ -565,7 +497,7 @@ export interface OfferConfig {
 }
 
 export type SectionId =
-  | "socialProof" | "counter" | "kit" | "kitReversed" | "benefits" | "urgency"
+  | "countdown" | "hero" | "socialProof" | "counter" | "kit" | "kitReversed" | "benefits" | "urgency"
   | "deliverables" | "bonuses" | "pricing" | "guarantee" | "access" | "faq" | "footer"
 ```
 

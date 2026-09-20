@@ -1,5 +1,13 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 @custom-variant dark (&:is(.dark *));
+
+:root {
+  --lp-section-space: clamp(36px, 5vw, 48px);
+  --lp-section-space-compact: clamp(28px, 4vw, 36px);
+  --lp-element-gap: clamp(12px, 2.5vw, 18px);
+  --lp-font-scale: 1;
+  --lp-image-scale: 1;
+}
 
 html {
   overflow-x: hidden;
@@ -58,7 +66,7 @@ html {
   position: relative;
   overflow: hidden;
   border-radius: 9999px;
-  padding: 1rem 2.5rem;
+  padding: 1rem 2.75rem;
   background:
     linear-gradient(135deg, var(--cta-deep), var(--cta-darkest)) padding-box,
     conic-gradient(
@@ -109,7 +117,17 @@ html {
 }
 
 .shiny-cta-sm {
-  padding: 0.5rem 1.25rem;
+  padding: 0.5rem 1.5rem;
+}
+
+.shiny-cta-arrow {
+  transform-origin: center;
+  animation: shiny-arrow-pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes shiny-arrow-pulse {
+  0%, 100% { scale: 1; }
+  50% { scale: 1.1; }
 }
 
 @supports not (background: conic-gradient(from 0deg, red, blue)) {
@@ -124,14 +142,24 @@ html {
     animation: none;
     --gradient-angle: 90deg;
   }
+  .shiny-cta-arrow { animation: none; }
+  .vi-image img,
+  .tqvr-image img,
+  .offer-plan-img img,
+  .benefits-image img,
+  .vi-image::before,
+  .tqvr-image::before,
+  .offer-plan-img::before,
+  .benefits-image::before { animation: none !important; }
+  .benefit-card-body { opacity: 1 !important; transform: none !important; transition: none !important; }
   .dc-fill::after { animation: none; opacity: 0; }
   .sp-story-card { transition: none !important; }
 }
 
 @media (max-width: 640px) {
-  .shiny-cta { padding: 0.875rem 2rem; font-size: 15px; letter-spacing: normal; }
-  .vi-fold .vi-cta-btn.shiny-cta { font-size: 15px; }
-  .shiny-cta-sm { padding: 0.45rem 1rem; font-size: 11px; }
+  .shiny-cta { padding: 0.875rem 2.125rem; font-size: calc(15px * var(--lp-font-scale, 1)); letter-spacing: normal; }
+  .vi-fold .vi-cta-btn.shiny-cta { font-size: calc(15px * var(--lp-font-scale, 1)); }
+  .shiny-cta-sm { padding: 0.45rem 1.125rem; font-size: calc(11px * var(--lp-font-scale, 1)); }
 }
 
 @theme inline {
@@ -142,7 +170,7 @@ html {
   --color-dark-blue: #081733;
   --color-darker-blue: #061226;
   --color-accent-coral: #16A34A;
-  --color-green-cta: #16A34A;
+  --color-green-cta: #12883E;
   --color-green-dark: #11863D;  
   --color-red-urgency: #dc2626;
   --color-yellow: #ffd166;
@@ -213,7 +241,7 @@ html {
   --brand-dark: #1A2F54;
   --brand-light: #B0B8C7;
   --brand-subtle: #E4E6EB;
-  --cta: #16A34A;
+  --cta: #12883E;
   --cta-light: #16A34A;
   --cta-deep: #11863D;
   --cta-darkest: #0E6B31;
@@ -292,7 +320,7 @@ html {
 #offer-root p { text-wrap: pretty; }
 
 .vi-hero {
-  padding: 22px 16px 0;
+  padding: 20px 16px 0;
   text-align: center;
   background: transparent;
   font-family: 'Manrope', system-ui, sans-serif;
@@ -322,8 +350,9 @@ html {
 
 .vi-fold .vi-cta-btn {
   flex-shrink: 0;
-  font-size: 16px;
+  font-size: calc(16px * var(--lp-font-scale, 1));
   line-height: 1.5;
+  white-space: nowrap;
 }
 
 .vi-pill {
@@ -337,7 +366,7 @@ html {
   border: 1px solid color-mix(in srgb, var(--brand) 18%, transparent);
   color: var(--brand);
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 11px;
+  font-size: calc(11px * var(--lp-font-scale, 1));
   line-height: 1;
   font-weight: 900;
   letter-spacing: .06em;
@@ -365,21 +394,17 @@ html {
 }
 
 .vi-title-line1 {
-  font-size: clamp(30px, 7vw, 44px);
+  font-size: clamp(calc(30px * var(--lp-font-scale, 1)), calc(7vw * var(--lp-font-scale, 1)), calc(44px * var(--lp-font-scale, 1)));
 }
 
 .vi-title-line2 {
-  font-size: clamp(24px, 5.6vw, 32px);
+  font-size: clamp(calc(24px * var(--lp-font-scale, 1)), calc(5.6vw * var(--lp-font-scale, 1)), calc(32px * var(--lp-font-scale, 1)));
   color: var(--brand);
   margin-bottom: 12px;
 }
 
-.laboral-offer .vi-title-line2 {
-  font-size: clamp(26px, 6vw, 34px);
-}
-
 .vi-title-line3 {
-  font-size: clamp(17px, 4vw, 22px);
+  font-size: clamp(calc(17px * var(--lp-font-scale, 1)), calc(4vw * var(--lp-font-scale, 1)), calc(22px * var(--lp-font-scale, 1)));
   font-weight: 700;
   color: var(--brand-ink);
 }
@@ -392,72 +417,14 @@ html {
   text-wrap: balance;
 }
 
-/* The Porcelanato headline is intentionally set as three balanced, equal-weight lines. */
-.porcelanato-offer .vi-title {
-  max-width: 680px;
-}
-
-.porcelanato-offer .vi-title-line1,
-.porcelanato-offer .vi-title-line2,
-.porcelanato-offer .vi-title-line3 {
-  color: var(--brand);
-  font-size: clamp(20.5px, 5.35vw, 35px);
-  font-weight: 900;
-  line-height: 1.12;
-  margin-bottom: 0;
-  text-wrap: balance;
-}
-
-.porcelanato-offer .vi-title-line1 {
-  color: var(--brand-ink);
-}
-
-.porcelanato-offer .vi-image {
-  margin-bottom: 24px;
-}
-
-/* As artes quadradas do Porcelanato são o principal ponto visual da oferta. */
-.porcelanato-offer .vi-image,
-.porcelanato-offer .tqvr-image,
-.porcelanato-offer .offer-plan-img {
-  position: relative;
-  isolation: isolate;
-}
-
-.porcelanato-offer .vi-image::before,
-.porcelanato-offer .tqvr-image::before {
-  content: "";
-  position: absolute;
-  inset: 18%;
-  z-index: -1;
-  border-radius: 50%;
-  background: radial-gradient(circle, color-mix(in srgb, var(--brand-light) 28%, transparent) 0%, transparent 70%);
-  filter: blur(28px);
-}
-
-.porcelanato-offer .vi-image img,
-.porcelanato-offer .tqvr-image img,
-.porcelanato-offer .offer-plan-img img {
-  position: relative;
-  border: 0;
-  border-radius: 0;
-  box-shadow: none;
-  filter: none;
-  animation: laboral-image-emphasis 3.6s ease-in-out infinite;
-}
-
 .vi-image {
-  margin: 0 auto 24px;
+  margin: 0 auto 12px;
   position: relative;
   width: 100%;
   flex: 1 1 auto;
   min-height: 0;
-  max-height: 60vh;
-  overflow: hidden;
-}
-
-.laboral-offer .vi-image {
-  margin-bottom: 24px;
+  max-height: calc(60vh * var(--lp-image-scale, 1));
+  overflow: visible;
 }
 
 .vi-hero .vi-image img {
@@ -471,68 +438,73 @@ html {
   object-fit: contain;
   display: block;
   filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08));
+  animation: square-product-float 6s ease-in-out infinite;
+  z-index: 1;
 }
 
-.laboral-offer .vi-image img,
-.laboral-offer .tqvr-image img,
-.laboral-offer .basic-plan .offer-plan-img img,
-.laboral-offer .premium-plan .offer-plan-img img {
-  filter: drop-shadow(0 16px 28px color-mix(in srgb, var(--brand) 22%, transparent));
-  animation: laboral-image-emphasis 3.6s ease-in-out infinite;
+.vi-image::before,
+.tqvr-image::before,
+.offer-plan-img::before,
+.benefits-image::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 12%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center,
+    color-mix(in srgb, var(--brand) 21%, transparent) 0%,
+    color-mix(in srgb, var(--brand) 12%, transparent) 40%,
+    transparent 74%);
+  filter: blur(20px);
+  pointer-events: none;
+  animation: square-product-glow 7s ease-in-out infinite;
 }
 
-@keyframes laboral-image-emphasis {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-5px) scale(1.018); }
+@keyframes square-product-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -6px, 0); }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .laboral-offer .vi-image img,
-  .laboral-offer .tqvr-image img,
-  .laboral-offer .basic-plan .offer-plan-img img,
-  .laboral-offer .premium-plan .offer-plan-img img,
-  .jardim-offer .vi-image img,
-  .jardim-offer .tqvr-image img,
-  .jardim-offer .offer-plan-img img,
-  .lembrancinhas-offer .vi-image img,
-  .lembrancinhas-offer .tqvr-image img,
-  .lembrancinhas-offer .offer-plan-img img,
-  .porcelanato-offer .vi-image img,
-  .porcelanato-offer .tqvr-image img,
-  .porcelanato-offer .offer-plan-img img { animation: none; }
+@keyframes square-product-glow {
+  0%, 100% { opacity: .58; transform: scale(.94); }
+  50% { opacity: .9; transform: scale(1.04); }
 }
 
 .vi-sub {
   max-width: 460px;
   margin: 16px auto;
   font-family: 'Manrope', system-ui, sans-serif;
-  font-size: 17px;
+  font-size: calc(17px * var(--lp-font-scale, 1));
   line-height: 1.65;
   font-weight: 500;
   color: var(--text-muted);
   text-wrap: balance;
 }
 
-.croqui-offer .vi-title-line1,
-.croqui-offer .vi-title-line2,
-.croqui-offer .vi-title-line3 {
-  font-size: clamp(29px, 6.8vw, 43px);
-  color: var(--brand-ink);
-  margin-bottom: 0;
+.vi-fold > .vi-sub {
+  flex: 0 0 auto;
+  margin: 0 auto 12px;
+  max-width: 500px;
+  font-size: clamp(calc(12px * var(--lp-font-scale, 1)), calc(3.4vw * var(--lp-font-scale, 1)), calc(15px * var(--lp-font-scale, 1)));
+  line-height: 1.35;
 }
 
-.croqui-offer .vi-title-line2 { color: var(--brand); }
+#offer-root .vi-sub {
+  text-wrap: balance;
+}
 
 .vi-bullets {
-  width: min(420px, 100%);
-  margin: 0 auto 16px;
-  gap: 12px;
+  width: min(440px, 100%);
+  margin: 0 auto 14px;
+  gap: 8px;
 }
 
 .vi-bullets .ab-item {
   width: 100%;
-  height: 60px;
-  padding: 10px 20px;
+  min-height: 44px;
+  height: auto;
+  padding: 7px 8px;
+  gap: 8px;
   border-radius: 999px;
   background: color-mix(in srgb, var(--cta) 9%, white);
   justify-content: center;
@@ -540,11 +512,22 @@ html {
 }
 
 .vi-bullets .ab-text {
-  color: #353535;
+  color: #36734a;
   font-weight: 700;
-  font-size: 15px;
+  font-size: calc(14px * var(--lp-font-scale, 1));
   text-align: center;
-  text-wrap: balance;
+  white-space: nowrap;
+  text-wrap: nowrap;
+  letter-spacing: -.01em;
+}
+
+.vi-bullets .ab-item svg {
+  width: 22px;
+  height: 22px;
+}
+
+.vi-bullets .ab-item circle {
+  fill: #4b8a5b;
 }
 
 @media (min-width: 769px) {
@@ -553,7 +536,7 @@ html {
 
 @media (max-width: 480px) {
   .vi-bullets .ab-text {
-    font-size: 14px;
+    font-size: clamp(calc(11px * var(--lp-font-scale, 1)), calc(3.4vw * var(--lp-font-scale, 1)), calc(13px * var(--lp-font-scale, 1)));
   }
 }
 
@@ -564,9 +547,16 @@ html {
   gap: 8px;
   width: auto;
   max-width: 100%;
-  min-width: min(100%, 300px);
+  min-width: 0;
+  box-sizing: border-box;
+  padding-inline: 24px;
   text-align: center;
-  white-space: normal;
+  white-space: nowrap;
+}
+
+.vi-fold .vi-cta-btn > span {
+  width: auto;
+  font-size: inherit;
 }
 
 .benefits-cta-wrap .shiny-cta,
@@ -581,11 +571,15 @@ html {
 }
 
 .vi-marquee {
-  margin-top: 20px;
+  margin-top: var(--lp-section-space-compact);
   overflow: hidden;
   width: 100%;
-  background: linear-gradient(90deg, var(--brand) 0%, var(--brand-dark) 50%, var(--brand-deep) 100%);
-  padding: 10px 0;
+  padding: 9px 0;
+  border-block: 1px solid color-mix(in srgb, var(--brand-light) 48%, transparent);
+}
+
+.vi-marquee .scroll-marquee-text {
+  color: #fff;
 }
 
 
@@ -608,15 +602,15 @@ html {
   }
 
   .vi-title-line1 {
-    font-size: clamp(26px, 7vw, 44px);
+    font-size: clamp(calc(26px * var(--lp-font-scale, 1)), calc(7vw * var(--lp-font-scale, 1)), calc(44px * var(--lp-font-scale, 1)));
   }
 
   .vi-title-line2 {
-    font-size: clamp(21px, 5.6vw, 32px);
+    font-size: clamp(calc(21px * var(--lp-font-scale, 1)), calc(5.6vw * var(--lp-font-scale, 1)), calc(32px * var(--lp-font-scale, 1)));
   }
 
   .vi-title-line3 {
-    font-size: clamp(16px, 4vw, 22px);
+    font-size: clamp(calc(16px * var(--lp-font-scale, 1)), calc(4vw * var(--lp-font-scale, 1)), calc(22px * var(--lp-font-scale, 1)));
   }
 
   .vi-subline {
@@ -624,11 +618,23 @@ html {
   }
 
   .vi-sub {
-    font-size: 15.5px;
+    font-size: calc(15.5px * var(--lp-font-scale, 1));
   }
 
   .vi-bullets .ab-item {
-    padding: 10px 16px;
+    padding: 6px 6px;
+    gap: 7px;
+  }
+
+  .vi-bullets .ab-text {
+    font-size: clamp(calc(11px * var(--lp-font-scale, 1)), calc(3.4vw * var(--lp-font-scale, 1)), calc(13px * var(--lp-font-scale, 1)));
+  }
+
+  .vi-fold .vi-cta-btn {
+    max-width: 80vw;
+    padding: 0.78rem clamp(13px, 3.8vw, 19px);
+    font-size: clamp(calc(12px * var(--lp-font-scale, 1)), calc(4vw * var(--lp-font-scale, 1)), calc(15px * var(--lp-font-scale, 1)));
+    gap: 6px;
   }
 }
 
@@ -651,12 +657,22 @@ html {
   display: inline-block;
   font-family: 'Manrope', system-ui, sans-serif;
   font-weight: 700;
-  font-size: 14px;
+  font-size: calc(14px * var(--lp-font-scale, 1));
   letter-spacing: 0.8px;
   text-transform: uppercase;
   color: #FFFFFF;
   text-shadow: 0 1px 3px rgba(0,0,0,0.2);
   white-space: nowrap;
+}
+
+.scroll-marquee-separator {
+  display: inline-block;
+  margin: 0 clamp(20px, 4vw, 34px);
+  color: currentColor;
+  opacity: .9;
+  font-size: calc(17px * var(--lp-font-scale, 1));
+  line-height: 1;
+  vertical-align: -1px;
 }
 
 .scroll-marquee-fade-left,
@@ -676,7 +692,7 @@ html {
 /* ===== COUNTER ===== */
 .dc-wrap {
   font-family: 'Nunito', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  padding: 44px 16px 40px;
+  padding: var(--lp-section-space) 16px var(--lp-section-space-compact);
   text-align: center;
   background: var(--brand-subtle);
 }
@@ -701,7 +717,7 @@ html {
 
 .dc-prefix {
   font-weight: 900;
-  font-size: clamp(32px, 8.4vw, 58px);
+  font-size: clamp(calc(32px * var(--lp-font-scale, 1)), calc(8.4vw * var(--lp-font-scale, 1)), calc(58px * var(--lp-font-scale, 1)));
   line-height: 1;
   color: var(--brand);
   letter-spacing: -.055em;
@@ -709,7 +725,7 @@ html {
 }
 
 .dc-count {
-  font-size: clamp(50px, 11vw, 82px);
+  font-size: clamp(calc(50px * var(--lp-font-scale, 1)), calc(11vw * var(--lp-font-scale, 1)), calc(82px * var(--lp-font-scale, 1)));
   font-weight: 900;
   line-height: 1;
   color: var(--brand);
@@ -720,7 +736,7 @@ html {
   flex-basis: 100%;
   display: block;
   margin-top: 4px;
-  font-size: clamp(18px, 4.8vw, 27px);
+  font-size: clamp(calc(18px * var(--lp-font-scale, 1)), calc(4.8vw * var(--lp-font-scale, 1)), calc(27px * var(--lp-font-scale, 1)));
   font-weight: 900;
   color: var(--brand-deep);
   letter-spacing: -.03em;
@@ -768,16 +784,18 @@ html {
 @media (max-width: 480px) {
   .dc-wrap { padding: 34px 12px 40px; }
   .dc-numberline { column-gap: .30em; row-gap: .08em; margin-bottom: 13px; }
-  .dc-prefix { font-size: clamp(34px, 9.5vw, 46px); }
-  .dc-count { font-size: clamp(50px, 13vw, 68px); }
-  .dc-label { margin-top: 3px; font-size: clamp(18px, 5vw, 24px); }
+  .dc-prefix { font-size: clamp(calc(34px * var(--lp-font-scale, 1)), calc(9.5vw * var(--lp-font-scale, 1)), calc(46px * var(--lp-font-scale, 1))); }
+  .dc-count { font-size: clamp(calc(50px * var(--lp-font-scale, 1)), calc(13vw * var(--lp-font-scale, 1)), calc(68px * var(--lp-font-scale, 1))); }
+  .dc-label { margin-top: 3px; font-size: clamp(calc(18px * var(--lp-font-scale, 1)), calc(5vw * var(--lp-font-scale, 1)), calc(24px * var(--lp-font-scale, 1))); }
   .dc-bar { width: min(390px, 94%); height: 13px; }
 }
 
 /* ===== KIT CARDS ===== */
 /* ===== KIT CARDS CAROUSEL ===== */
 .kc-section {
-  padding: 28px 0 12px;
+  width: 100vw;
+  margin-inline: calc((100% - 100vw) / 2);
+  padding: var(--lp-section-space-compact) 0 14px;
   background: transparent;
   font-family: 'Manrope', system-ui, sans-serif;
   overflow: hidden;
@@ -798,7 +816,7 @@ html {
 
 .kc-title {
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(26px, 6vw, 38px);
+  font-size: clamp(calc(26px * var(--lp-font-scale, 1)), calc(6vw * var(--lp-font-scale, 1)), calc(38px * var(--lp-font-scale, 1)));
   font-weight: 800;
   letter-spacing: -.04em;
   color: var(--brand);
@@ -810,7 +828,7 @@ html {
 .kc-subtitle {
   margin: 12px auto 0;
   max-width: 520px;
-  font-size: 14.5px;
+  font-size: calc(14.5px * var(--lp-font-scale, 1));
   line-height: 1.6;
   font-weight: 500;
   color: var(--text-muted);
@@ -819,6 +837,8 @@ html {
 .kc-carousel {
   overflow: hidden;
   cursor: grab;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
 }
 
 .kc-carousel:active {
@@ -834,7 +854,7 @@ html {
 
 .kc-card {
   flex-shrink: 0;
-  width: clamp(240px, 42vw, 360px);
+  width: clamp(calc(420px * var(--lp-image-scale, 1)), calc(32vw * var(--lp-image-scale, 1)), calc(480px * var(--lp-image-scale, 1)));
   aspect-ratio: 280 / 400;
   border-radius: 16px;
   overflow: hidden;
@@ -848,7 +868,12 @@ html {
 
 .kc-card-portrait {
   aspect-ratio: 3 / 4;
-  width: clamp(200px, 56vw, 300px);
+  width: clamp(calc(420px * var(--lp-image-scale, 1)), calc(32vw * var(--lp-image-scale, 1)), calc(480px * var(--lp-image-scale, 1)));
+}
+
+@media (max-width: 570px) {
+  .kc-card,
+  .kc-card-portrait { width: min(100vw, calc(100vw * var(--lp-image-scale, 1))); }
 }
 
 .kc-card-img {
@@ -880,28 +905,20 @@ html {
 
 .ab-icon {
   flex-shrink: 0;
-  font-size: 18px;
+  font-size: calc(18px * var(--lp-font-scale, 1));
 }
 
 .ab-text {
   font-family: 'Manrope', system-ui, sans-serif;
-  font-size: clamp(14px, 3.5vw, 16px);
+  font-size: clamp(calc(14px * var(--lp-font-scale, 1)), calc(3.5vw * var(--lp-font-scale, 1)), calc(16px * var(--lp-font-scale, 1)));
   color: #353535;
   line-height: 1.4;
   text-align: left;
 }
 
-/* Paleta dinâmica da oferta laboral: mantém checklist e CTAs sincronizados. */
-.laboral-offer {
-  --cta-light: color-mix(in srgb, var(--cta) 72%, #FFFFFF);
-  --cta-muted: color-mix(in srgb, var(--cta) 14%, transparent);
-  --cta-surface: color-mix(in srgb, var(--cta) 10%, #FFFFFF);
-  --cta-surface-deep: color-mix(in srgb, var(--cta) 6%, #FFFFFF);
-}
-
 /* ===== OFFER PEI ===== */
 .offer-pei-section {
-  padding: 48px 16px 44px;
+  padding: var(--lp-section-space) 16px var(--lp-section-space-compact);
   scroll-margin-top: 72px;
   background: var(--brand-ink);
   font-family: 'Manrope', system-ui, sans-serif;
@@ -922,7 +939,7 @@ html {
   margin: 0;
   color: #FFFFFF;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(17px, 3.5vw, 21px);
+  font-size: clamp(calc(17px * var(--lp-font-scale, 1)), calc(3.5vw * var(--lp-font-scale, 1)), calc(21px * var(--lp-font-scale, 1)));
   font-weight: 800;
   line-height: 1.4;
   text-wrap: balance;
@@ -931,7 +948,7 @@ html {
 .offer-pricing-trust {
   margin: 12px 0 0;
   color: color-mix(in srgb, #FFFFFF 90%, transparent);
-  font-size: 13px;
+  font-size: calc(13px * var(--lp-font-scale, 1));
   font-weight: 800;
 }
 
@@ -943,7 +960,7 @@ html {
 .offer-pei-head-title {
   margin: 0;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(28px, 5vw, 44px);
+  font-size: clamp(calc(28px * var(--lp-font-scale, 1)), calc(5vw * var(--lp-font-scale, 1)), calc(44px * var(--lp-font-scale, 1)));
   line-height: 1.02;
   font-weight: 900;
   letter-spacing: -0.045em;
@@ -968,7 +985,7 @@ html {
   margin: 0 auto;
   max-width: 790px;
   font-family: 'Manrope', system-ui, sans-serif;
-  font-size: clamp(15px, 2.2vw, 18px);
+  font-size: clamp(calc(15px * var(--lp-font-scale, 1)), calc(2.2vw * var(--lp-font-scale, 1)), calc(18px * var(--lp-font-scale, 1)));
   line-height: 1.65;
   color: rgba(255,255,255,.85);
   font-weight: 500;
@@ -981,13 +998,14 @@ html {
 
 .offer-pei-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
   align-items: stretch;
 }
 
 .offer-card {
   position: relative;
+  min-width: 0;
   border-radius: 24px;
   padding: 28px 22px 22px;
   overflow: visible;
@@ -1036,7 +1054,7 @@ html {
   padding: 7px 12px;
   border-radius: 999px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 11px;
+  font-size: calc(11px * var(--lp-font-scale, 1));
   line-height: 1;
   font-weight: 800;
   letter-spacing: .06em;
@@ -1062,7 +1080,7 @@ html {
 .offer-card-top h3 {
   margin: 0 0 12px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(24px, 4vw, 34px);
+  font-size: clamp(calc(24px * var(--lp-font-scale, 1)), calc(4vw * var(--lp-font-scale, 1)), calc(34px * var(--lp-font-scale, 1)));
   line-height: 1.1;
   color: var(--brand-ink);
   font-weight: 800;
@@ -1081,99 +1099,32 @@ html {
   display: flex;
   justify-content: center;
   margin: 14px 0 16px;
-  height: 290px;
+  height: min(calc(290px * var(--lp-image-scale, 1)), calc(100vw - 48px));
   align-items: center;
+  position: relative;
+  isolation: isolate;
 }
 
 .offer-plan-img img {
-  max-width: 290px;
+  max-width: min(calc(290px * var(--lp-image-scale, 1)), 100%);
+  max-height: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  animation: square-product-float 6s ease-in-out infinite;
 }
 
 .basic-plan .offer-plan-img img,
 .premium-plan .offer-plan-img img {
-  max-width: 290px;
+  max-width: min(calc(290px * var(--lp-image-scale, 1)), 100%);
   filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08));
-}
-
-.croqui-offer .vi-image img,
-.croqui-offer .tqvr-image img,
-.croqui-offer .offer-plan-img img,
-.confissao-offer .vi-image img,
-.confissao-offer .tqvr-image img,
-.confissao-offer .offer-plan-img img {
-  border: 1px solid color-mix(in srgb, var(--brand) 18%, #FFFFFF);
-  border-radius: 14px;
-  box-shadow: 0 10px 24px rgba(45, 31, 16, 0.10);
-  filter: none;
-}
-
-.croqui-offer .offer-pei-grid {
-  align-items: start;
 }
 
 .offer-pei-grid-single {
   grid-template-columns: minmax(0, 520px);
   justify-content: center;
-}
-
-.jardim-offer .vi-image img,
-.jardim-offer .tqvr-image img,
-.jardim-offer .offer-plan-img img {
-  border: 1px solid color-mix(in srgb, var(--brand) 18%, #FFFFFF);
-  border-radius: 14px;
-  box-shadow: 0 10px 24px color-mix(in srgb, var(--brand-deep) 12%, transparent);
-  filter: none;
-  animation: laboral-image-emphasis 3.6s ease-in-out infinite;
-}
-
-/* The plan artwork is the primary visual anchor for this offer. */
-.lembrancinhas-offer .vi-image img,
-.lembrancinhas-offer .tqvr-image img,
-.lembrancinhas-offer .offer-plan-img img {
-  border: 1px solid color-mix(in srgb, var(--brand-light) 58%, #FFFFFF);
-  border-radius: 22px;
-  box-shadow:
-    0 14px 30px color-mix(in srgb, var(--brand-deep) 20%, transparent),
-    0 0 34px color-mix(in srgb, var(--accent) 22%, transparent);
-  filter: none;
-  animation: laboral-image-emphasis 3.6s ease-in-out infinite;
-}
-
-.lembrancinhas-offer .vi-title-line1 {
-  font-size: clamp(27px, 6.7vw, 42px);
-  letter-spacing: -0.025em;
-}
-
-.lembrancinhas-offer .vi-title-line2 {
-  max-width: 340px;
-  margin-inline: auto;
-  font-size: clamp(22px, 5.5vw, 32px);
-  line-height: 1.12;
-}
-
-@media (min-width: 560px) {
-  .lembrancinhas-offer .vi-title-line2 {
-    max-width: 560px;
-  }
-}
-
-.jardim-offer .premium-plan {
-  padding-top: 28px;
-  transform: none;
-}
-
-.jardim-offer .offer-card-top h3 {
-  min-height: 2.2em;
-  display: grid;
-  place-items: center;
-}
-
-.croqui-offer .premium-plan {
-  padding-top: 28px;
-  transform: none;
 }
 
 
@@ -1182,7 +1133,7 @@ html {
   text-align: center;
   font-family: 'Manrope', system-ui, sans-serif;
   color: var(--text-muted);
-  font-size: 15px;
+  font-size: calc(15px * var(--lp-font-scale, 1));
   line-height: 1.55;
   font-weight: 500;
 }
@@ -1215,7 +1166,7 @@ html {
   color: var(--strikethrough);
   text-decoration: line-through;
   font-family: 'Manrope', system-ui, sans-serif;
-  font-size: 15px;
+  font-size: calc(15px * var(--lp-font-scale, 1));
   font-weight: 700;
 }
 
@@ -1223,7 +1174,7 @@ html {
   background: var(--urgency);
   color: #FFFFFF;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 12px;
+  font-size: calc(12px * var(--lp-font-scale, 1));
   font-weight: 900;
   padding: 2px 8px;
   border-radius: 999px;
@@ -1236,7 +1187,7 @@ html {
 
 .offer-price {
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(42px, 8vw, 62px);
+  font-size: clamp(calc(42px * var(--lp-font-scale, 1)), calc(8vw * var(--lp-font-scale, 1)), calc(62px * var(--lp-font-scale, 1)));
   line-height: 1;
   font-weight: 800;
   color: var(--brand-ink);
@@ -1252,7 +1203,7 @@ html {
 .offer-installments {
   color: var(--text-muted);
   font-family: 'Manrope', system-ui, sans-serif;
-  font-size: 14px;
+  font-size: calc(14px * var(--lp-font-scale, 1));
   font-weight: 600;
 }
 
@@ -1278,7 +1229,7 @@ html {
 .offer-list .ab-text {
   color: #353535;
   font-family: 'Manrope', system-ui, sans-serif;
-  font-size: 15.5px;
+  font-size: calc(15.5px * var(--lp-font-scale, 1));
   line-height: 1.45;
   font-weight: 600;
 }
@@ -1305,7 +1256,7 @@ html {
 
 .offer-btn.shiny-cta {
   padding: 18px 16px;
-  font-size: 15.5px;
+  font-size: calc(15.5px * var(--lp-font-scale, 1));
 }
 
 @media (max-width: 768px) {
@@ -1314,7 +1265,7 @@ html {
   }
 
   .offer-pei-head-title {
-    font-size: clamp(26px, 6vw, 36px);
+    font-size: clamp(calc(26px * var(--lp-font-scale, 1)), calc(6vw * var(--lp-font-scale, 1)), calc(36px * var(--lp-font-scale, 1)));
   }
 
   .offer-pei-head-accent {
@@ -1322,7 +1273,7 @@ html {
   }
 
   .offer-pei-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 28px;
   }
 
@@ -1336,25 +1287,25 @@ html {
   }
 
   .plan-label {
-    font-size: 10.5px;
+    font-size: calc(10.5px * var(--lp-font-scale, 1));
     padding: 7px 11px;
   }
 
   .offer-card-top h3 {
-    font-size: 28px;
+    font-size: calc(28px * var(--lp-font-scale, 1));
     margin-bottom: 10px;
   }
 
   .offer-price {
-    font-size: 52px;
+    font-size: calc(52px * var(--lp-font-scale, 1));
   }
 
   .offer-list .ab-text {
-    font-size: 15px;
+    font-size: calc(15px * var(--lp-font-scale, 1));
   }
 
   .offer-btn {
-    font-size: 15px;
+    font-size: calc(15px * var(--lp-font-scale, 1));
     padding: 17px 15px;
   }
 
@@ -1362,7 +1313,7 @@ html {
 
 /* ===== SOCIAL PROOF CAROUSEL ===== */
 .sp-section {
-  padding: 48px 0 28px;
+  padding: var(--lp-section-space) 0 var(--lp-section-space-compact);
   margin-top: 0;
   overflow: hidden;
   background: var(--brand-deep);
@@ -1378,7 +1329,7 @@ html {
 .sp-title {
   margin: 0 auto 28px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(26px, 6vw, 36px);
+  font-size: clamp(calc(26px * var(--lp-font-scale, 1)), calc(6vw * var(--lp-font-scale, 1)), calc(36px * var(--lp-font-scale, 1)));
   line-height: 1.1;
   font-weight: 900;
   letter-spacing: -.04em;
@@ -1404,8 +1355,8 @@ html {
   touch-action: pan-y;
   perspective: 1100px;
   width: 100%;
-  max-width: 700px;
-  height: clamp(360px, 53vw, 550px);
+  max-width: min(700px, calc(700px * var(--lp-image-scale, 1)));
+  height: clamp(calc(360px * var(--lp-image-scale, 1)), calc(53vw * var(--lp-image-scale, 1)), calc(550px * var(--lp-image-scale, 1)));
 }
 
 .sp-carousel-inner {
@@ -1497,7 +1448,7 @@ html {
 /* ===== BENEFITS ===== */
 /* ===== BENEFITS (animated card) ===== */
 .benefits-section {
-  padding: 52px 16px 48px;
+  padding: var(--lp-section-space) 16px var(--lp-section-space-compact);
   background: transparent;
   font-family: 'Manrope', system-ui, sans-serif;
 }
@@ -1511,7 +1462,7 @@ html {
 .benefits-title {
   margin: 0 0 22px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(26px, 6vw, 36px);
+  font-size: clamp(calc(26px * var(--lp-font-scale, 1)), calc(6vw * var(--lp-font-scale, 1)), calc(36px * var(--lp-font-scale, 1)));
   line-height: 1.1;
   font-weight: 800;
   letter-spacing: -.04em;
@@ -1520,17 +1471,22 @@ html {
 }
 
 .benefits-image {
-  width: min(520px, 100%);
+  width: min(calc(520px * var(--lp-image-scale, 1)), 100%);
   margin: 0 auto 28px;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 18px;
   box-shadow: 0 14px 32px color-mix(in srgb, var(--brand-deep) 18%, transparent);
+  position: relative;
+  isolation: isolate;
 }
 
 .benefits-image img {
   display: block;
   width: 100%;
   height: auto;
+  position: relative;
+  z-index: 1;
+  animation: square-product-float 6s ease-in-out infinite;
 }
 
 .benefits-grid {
@@ -1595,7 +1551,7 @@ html {
 }
 
 .benefit-card-emoji {
-  font-size: 28px;
+  font-size: calc(28px * var(--lp-font-scale, 1));
   line-height: 1;
   display: block;
 }
@@ -1608,7 +1564,7 @@ html {
 .benefit-card-title {
   margin: 0 0 6px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 20px;
+  font-size: calc(20px * var(--lp-font-scale, 1));
   font-weight: 900;
   color: var(--brand-deep);
   letter-spacing: -.02em;
@@ -1617,7 +1573,7 @@ html {
 
 .benefit-card-desc {
   margin: 0 auto;
-  font-size: 16px;
+  font-size: calc(16px * var(--lp-font-scale, 1));
   line-height: 1.55;
   font-weight: 500;
   color: var(--text-muted);
@@ -1680,7 +1636,7 @@ html {
   .benefit-card-body {
     opacity: 0;
     transform: translateY(6px);
-    transition: opacity 0.5s ease-in-out 0.2s, transform 0.5s ease-in-out 0.2s;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     text-align: center;
   }
 
@@ -1699,18 +1655,18 @@ html {
 
   .benefit-card-title {
     white-space: normal;
-    font-size: 19px;
+    font-size: calc(19px * var(--lp-font-scale, 1));
     margin-bottom: 4px;
   }
 
   .benefit-card-desc {
-    font-size: 15.5px;
+    font-size: calc(15.5px * var(--lp-font-scale, 1));
   }
 }
 
 /* ===== URGÊNCIA ===== */
 .urg-section {
-  padding: 48px 16px 44px;
+  padding: var(--lp-section-space) 16px var(--lp-section-space-compact);
   background: var(--brand-ink);
   font-family: 'Manrope', system-ui, sans-serif;
 }
@@ -1767,7 +1723,7 @@ html {
   border-radius: 10px;
   background: rgba(0,0,0,.25);
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(26px, 8vw, 36px);
+  font-size: clamp(calc(26px * var(--lp-font-scale, 1)), calc(8vw * var(--lp-font-scale, 1)), calc(36px * var(--lp-font-scale, 1)));
   font-weight: 900;
   line-height: 1;
   color: #FFFFFF;
@@ -1777,7 +1733,7 @@ html {
 
 .urg-timer-label {
   font-family: 'Manrope', system-ui, sans-serif;
-  font-size: 10px;
+  font-size: calc(10px * var(--lp-font-scale, 1));
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -1786,7 +1742,7 @@ html {
 
 .urg-timer-colon {
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(24px, 7vw, 32px);
+  font-size: clamp(calc(24px * var(--lp-font-scale, 1)), calc(7vw * var(--lp-font-scale, 1)), calc(32px * var(--lp-font-scale, 1)));
   font-weight: 900;
   color: rgba(255,255,255,.8);
   margin-top: -18px;
@@ -1810,7 +1766,7 @@ html {
 .urg-title {
   margin: 0 0 24px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(22px, 5.5vw, 30px);
+  font-size: clamp(calc(22px * var(--lp-font-scale, 1)), calc(5.5vw * var(--lp-font-scale, 1)), calc(30px * var(--lp-font-scale, 1)));
   line-height: 1.2;
   font-weight: 800;
   letter-spacing: -.035em;
@@ -1824,7 +1780,7 @@ html {
 
 .urg-text {
   margin: 0 auto 20px;
-  font-size: 17px;
+  font-size: calc(17px * var(--lp-font-scale, 1));
   line-height: 1.7;
   font-weight: 500;
   color: var(--text-muted);
@@ -1845,25 +1801,33 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: 16px;
+  gap: 8px;
+  margin: 16px auto 0;
+  width: fit-content;
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1px solid color-mix(in srgb, var(--cta-deep) 24%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--cta-deep) 8%, var(--surface));
   font-family: 'Manrope', system-ui, sans-serif;
-  font-size: 10.5px;
-  font-weight: 700;
-  letter-spacing: .06em;
+  font-size: clamp(calc(8px * var(--lp-font-scale, 1)), calc(2.7vw * var(--lp-font-scale, 1)), calc(10px * var(--lp-font-scale, 1)));
+  font-weight: 800;
+  letter-spacing: .045em;
   text-transform: uppercase;
-  color: var(--text-light);
-  flex-wrap: wrap;
+  color: var(--cta-darkest);
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 
 .urg-trust-sep {
-  font-size: 7px;
-  color: var(--cta);
+  font-size: calc(11px * var(--lp-font-scale, 1));
+  color: var(--brand-light);
+  margin-inline: 2px;
 }
 
 /* ===== TUDO QUE VOCÃŠ VAI RECEBER ===== */
 .tqvr-section {
-  padding: 48px 16px 44px;
+  padding: var(--lp-section-space) 16px var(--lp-section-space-compact);
   background: var(--brand-deep);
   font-family: 'Manrope', system-ui, sans-serif;
 }
@@ -1882,7 +1846,7 @@ html {
 .tqvr-title {
   margin: 0 0 28px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(22px, 5vw, 30px);
+  font-size: clamp(calc(22px * var(--lp-font-scale, 1)), calc(5vw * var(--lp-font-scale, 1)), calc(30px * var(--lp-font-scale, 1)));
   line-height: 1.15;
   font-weight: 900;
   letter-spacing: -.04em;
@@ -1900,37 +1864,51 @@ html {
 }
 
 .tqvr-image {
+  position: relative;
+  isolation: isolate;
+  width: min(calc(340px * var(--lp-image-scale, 1)), calc(80vw * var(--lp-image-scale, 1)));
   margin: 0 auto 28px;
 }
 
 .tqvr-image img {
-  width: min(340px, 80vw);
+  position: relative;
+  z-index: 1;
+  width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
   filter: drop-shadow(0 8px 24px rgba(0,0,0,0.08));
+  animation: square-product-float 6s ease-in-out infinite;
 }
 
 .tqvr-bullets.ab-list {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: 1fr;
   gap: 14px;
+  align-items: stretch;
 }
 
 .tqvr-bullets .ab-item {
+  width: 100%;
   padding: 14px 18px;
+  height: 100%;
+  box-sizing: border-box;
   border-radius: 16px;
   background: var(--cta-surface);
   border: 1px solid color-mix(in srgb, var(--cta-deep) 12%, transparent);
 }
 
 .tqvr-bullets .ab-text {
-  font-size: 15px;
+  font-size: calc(15px * var(--lp-font-scale, 1));
   font-weight: 600;
   color: #353535;
 }
 
 /* ===== BÃ”NUS ===== */
 .bon-section {
-  padding: 48px 16px 44px;
+  padding: var(--lp-section-space) 16px var(--lp-section-space-compact);
   background: transparent;
   font-family: 'Manrope', system-ui, sans-serif;
 }
@@ -1944,7 +1922,7 @@ html {
 .bon-title {
   margin: 0 0 28px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(26px, 6vw, 36px);
+  font-size: clamp(calc(26px * var(--lp-font-scale, 1)), calc(6vw * var(--lp-font-scale, 1)), calc(36px * var(--lp-font-scale, 1)));
   line-height: 1.1;
   font-weight: 800;
   letter-spacing: -.04em;
@@ -1962,7 +1940,7 @@ html {
   background: var(--cta-surface, #E8F8EE);
   color: var(--cta-deep, var(--cta-deep));
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 11.5px;
+  font-size: calc(11.5px * var(--lp-font-scale, 1));
   line-height: 1;
   font-weight: 900;
   letter-spacing: .06em;
@@ -1992,7 +1970,7 @@ html {
 .bon-sub {
   margin: 0 auto 32px;
   max-width: 520px;
-  font-size: 16px;
+  font-size: calc(16px * var(--lp-font-scale, 1));
   line-height: 1.7;
   font-weight: 500;
   color: var(--text-muted);
@@ -2071,7 +2049,7 @@ html {
 .bon-new-image-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 4/3;
+  aspect-ratio: calc(4 / 3 / var(--lp-image-scale, 1));
   perspective: 1200px;
   overflow: hidden;
   cursor: pointer;
@@ -2081,7 +2059,7 @@ html {
 }
 
 .bon-new-image-portrait {
-  aspect-ratio: 3 / 4;
+  aspect-ratio: calc(3 / 4 / var(--lp-image-scale, 1));
 }
 
 .bon-new-perspective {
@@ -2134,7 +2112,7 @@ html {
   padding: 6px 16px;
   border-radius: 999px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 12px;
+  font-size: calc(12px * var(--lp-font-scale, 1));
   font-weight: 800;
   letter-spacing: .05em;
   text-transform: uppercase;
@@ -2162,7 +2140,7 @@ html {
 }
 
 .bon-new-hand-emoji {
-  font-size: 52px;
+  font-size: calc(52px * var(--lp-font-scale, 1));
   filter: drop-shadow(0 4px 12px rgba(0,0,0,.3));
   animation: bon-hand-bounce 2s ease-in-out infinite;
 }
@@ -2174,7 +2152,7 @@ html {
 
 .bon-new-hand-label {
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 13px;
+  font-size: calc(13px * var(--lp-font-scale, 1));
   font-weight: 800;
   color: #FFFFFF;
   text-shadow: 0 1px 4px rgba(0,0,0,.4);
@@ -2201,14 +2179,14 @@ html {
 }
 
 .bon-flip-indicator-icon {
-  font-size: 44px;
+  font-size: calc(44px * var(--lp-font-scale, 1));
   filter: drop-shadow(0 2px 8px rgba(0,0,0,.3));
   animation: bon-hand-bounce 2s ease-in-out infinite;
 }
 
 .bon-flip-indicator-label {
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 13px;
+  font-size: calc(13px * var(--lp-font-scale, 1));
   font-weight: 800;
   color: #FFFFFF;
   text-shadow: 0 1px 4px rgba(0,0,0,.4);
@@ -2238,7 +2216,7 @@ html {
   padding: 7px 12px;
   border-radius: 999px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 13px;
+  font-size: calc(13px * var(--lp-font-scale, 1));
   line-height: 1;
   font-weight: 800;
   letter-spacing: .06em;
@@ -2253,7 +2231,7 @@ html {
 
 .bon-new-desc {
   margin: 0;
-  font-size: 14px;
+  font-size: calc(14px * var(--lp-font-scale, 1));
   line-height: 1.5;
   font-weight: 600;
   color: var(--text-muted);
@@ -2262,14 +2240,14 @@ html {
 }
 
 .bon-new-price {
-  font-size: 22px;
+  font-size: calc(22px * var(--lp-font-scale, 1));
   font-weight: 800;
   color: var(--cta-darkest);
   letter-spacing: 0;
 }
 
 .bon-new-price-label {
-  font-size: 14px;
+  font-size: calc(14px * var(--lp-font-scale, 1));
   font-weight: 600;
   color: var(--text-muted);
   margin-right: 2px;
@@ -2290,7 +2268,7 @@ html {
 }
 
 .bon-new-timer-text {
-  font-size: 11px;
+  font-size: calc(11px * var(--lp-font-scale, 1));
   font-weight: 800;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -2321,7 +2299,7 @@ html {
   background: color-mix(in srgb, var(--cta) 12%, transparent);
   color: var(--cta-darkest);
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 14px;
+  font-size: calc(14px * var(--lp-font-scale, 1));
   font-weight: 900;
   letter-spacing: .04em;
   text-transform: uppercase;
@@ -2343,13 +2321,38 @@ html {
 .gar-inner {
   max-width: 600px;
   margin: 0 auto;
-  padding: 42px 16px;
+  padding: var(--lp-section-space) 16px;
   text-align: center;
 }
 
 .gar-icon {
   margin: 0 auto 24px;
   transition: transform .3s ease;
+}
+
+.gar-icon:has(.guarantee-square-image) {
+  position: relative;
+  isolation: isolate;
+  width: fit-content;
+}
+
+.gar-icon:has(.guarantee-square-image)::before {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  z-index: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--brand) 24%, transparent), transparent 72%);
+  filter: blur(18px);
+  animation: square-product-glow 7s ease-in-out infinite;
+}
+
+.guarantee-square-image {
+  width: min(calc(120px * var(--lp-image-scale, 1)), 34vw);
+  height: auto;
+  position: relative;
+  z-index: 1;
+  animation: square-product-float 6s ease-in-out infinite;
 }
 
 .gar-icon img {
@@ -2372,7 +2375,7 @@ html {
   box-shadow: 0 12px 28px color-mix(in srgb, var(--brand) 24%, transparent), inset 0 0 0 5px color-mix(in srgb, #FFFFFF 72%, transparent);
   color: #FFFFFF;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(29px, 7vw, 42px);
+  font-size: clamp(calc(29px * var(--lp-font-scale, 1)), calc(7vw * var(--lp-font-scale, 1)), calc(42px * var(--lp-font-scale, 1)));
   font-weight: 900;
   letter-spacing: -.04em;
   line-height: .8;
@@ -2387,7 +2390,7 @@ html {
 .gar-title {
   margin: 0 0 28px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(22px, 5vw, 30px);
+  font-size: clamp(calc(22px * var(--lp-font-scale, 1)), calc(5vw * var(--lp-font-scale, 1)), calc(30px * var(--lp-font-scale, 1)));
   line-height: 1.2;
   font-weight: 900;
   letter-spacing: -.04em;
@@ -2397,7 +2400,7 @@ html {
 
 .gar-text {
   margin: 0;
-  font-size: 16px;
+  font-size: calc(16px * var(--lp-font-scale, 1));
   line-height: 1.7;
   font-weight: 500;
   color: var(--text-muted);
@@ -2414,7 +2417,7 @@ html {
 
 /* ===== COMO Ã‰ O ACESSO ===== */
 .cea-section {
-  padding: 48px 16px 44px;
+  padding: var(--lp-section-space) 16px var(--lp-section-space-compact);
   background: var(--brand-deep);
   font-family: 'Manrope', system-ui, sans-serif;
 }
@@ -2428,7 +2431,7 @@ html {
 .cea-title {
   margin: 0 0 28px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(26px, 6vw, 36px);
+  font-size: clamp(calc(26px * var(--lp-font-scale, 1)), calc(6vw * var(--lp-font-scale, 1)), calc(36px * var(--lp-font-scale, 1)));
   line-height: 1.1;
   font-weight: 900;
   letter-spacing: -.04em;
@@ -2481,7 +2484,7 @@ html {
   align-items: center;
   justify-content: center;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 24px;
+  font-size: calc(24px * var(--lp-font-scale, 1));
   font-weight: 900;
   letter-spacing: -.02em;
 }
@@ -2489,7 +2492,7 @@ html {
 .cea-card-title {
   margin: 0 0 10px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 18px;
+  font-size: calc(18px * var(--lp-font-scale, 1));
   font-weight: 800;
   color: var(--brand-deep);
   letter-spacing: -.02em;
@@ -2498,7 +2501,7 @@ html {
 
 .cea-card-desc {
   margin: 0;
-  font-size: 15px;
+  font-size: calc(15px * var(--lp-font-scale, 1));
   line-height: 1.6;
   font-weight: 500;
   color: var(--text-muted);
@@ -2530,7 +2533,7 @@ html {
 .pei-promo-inner h3 {
   margin: 0 0 14px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(24px, 5.5vw, 36px);
+  font-size: clamp(calc(24px * var(--lp-font-scale, 1)), calc(5.5vw * var(--lp-font-scale, 1)), calc(36px * var(--lp-font-scale, 1)));
   line-height: 1.08;
   font-weight: 900;
   letter-spacing: -.04em;
@@ -2542,7 +2545,7 @@ html {
   max-width: 600px;
   margin: 0 auto;
   font-family: 'Manrope', system-ui, sans-serif;
-  font-size: 15.5px;
+  font-size: calc(15.5px * var(--lp-font-scale, 1));
   line-height: 1.7;
   font-weight: 500;
   color: #FFFFFF;
@@ -2553,13 +2556,13 @@ html {
 @media (max-width: 480px) {
   .pei-promo-wrap { padding: 34px 14px; }
   .pei-promo-inner { padding: 24px 18px; }
-  .pei-promo-inner h3 { font-size: clamp(22px, 7vw, 30px); }
-  .pei-promo-inner p { font-size: 14.5px; }
+  .pei-promo-inner h3 { font-size: clamp(calc(22px * var(--lp-font-scale, 1)), calc(7vw * var(--lp-font-scale, 1)), calc(30px * var(--lp-font-scale, 1))); }
+  .pei-promo-inner p { font-size: calc(14.5px * var(--lp-font-scale, 1)); }
 }
 
 /* ===== FAQ ===== */
 .faq-acc-wrap {
-  padding: 48px 16px 48px;
+  padding: var(--lp-section-space) 16px;
   background: transparent;
   font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
 }
@@ -2573,7 +2576,7 @@ html {
   text-align: center;
   margin: 0 0 28px;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: clamp(28px, 6vw, 40px);
+  font-size: clamp(calc(28px * var(--lp-font-scale, 1)), calc(6vw * var(--lp-font-scale, 1)), calc(40px * var(--lp-font-scale, 1)));
   line-height: 1.08;
   font-weight: 900;
   letter-spacing: -.05em;
@@ -2612,7 +2615,7 @@ html {
   border: none;
   cursor: pointer;
   font-family: 'Nunito', system-ui, sans-serif;
-  font-size: 16px;
+  font-size: calc(16px * var(--lp-font-scale, 1));
   line-height: 1.2;
   font-weight: 900;
   letter-spacing: -.02em;
@@ -2636,7 +2639,7 @@ html {
   align-items: center;
   justify-content: center;
   color: #FFFFFF;
-  font-size: 14px;
+  font-size: calc(14px * var(--lp-font-scale, 1));
   font-weight: 900;
   transition: transform .3s ease;
 }
@@ -2666,7 +2669,7 @@ html {
   white-space: pre-line;
   margin: 0;
   font-family: 'Manrope', system-ui, sans-serif;
-  font-size: 14.5px;
+  font-size: calc(14.5px * var(--lp-font-scale, 1));
   line-height: 1.68;
   font-weight: 500;
   color: var(--text-muted);
@@ -2674,9 +2677,9 @@ html {
 
 @media (max-width: 480px) {
   .faq-acc-wrap { padding: 38px 14px 42px; }
-  .faq-acc-title { font-size: clamp(26px, 7.5vw, 34px); margin-bottom: 24px; }
-  .faq-acc-btn { font-size: 15px; padding: 16px 16px; }
-  .faq-acc-panel p { font-size: 14px; }
+  .faq-acc-title { font-size: clamp(calc(26px * var(--lp-font-scale, 1)), calc(7.5vw * var(--lp-font-scale, 1)), calc(34px * var(--lp-font-scale, 1))); margin-bottom: 24px; }
+  .faq-acc-btn { font-size: calc(15px * var(--lp-font-scale, 1)); padding: 16px 16px; }
+  .faq-acc-panel p { font-size: calc(14px * var(--lp-font-scale, 1)); }
 }
 
 /* ===== FOOTER / TOAST ===== */
@@ -2684,7 +2687,7 @@ html {
   padding: 20px 16px 28px;
   text-align: center;
   font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-  font-size: 13px;
+  font-size: calc(13px * var(--lp-font-scale, 1));
   line-height: 1.6;
   color: rgba(255,255,255,.75);
   font-weight: 500;
@@ -2707,7 +2710,7 @@ html {
 .footer-link {
   color: var(--brand-light);
   text-decoration: none;
-  font-size: 12px;
+  font-size: calc(12px * var(--lp-font-scale, 1));
   font-weight: 600;
   transition: opacity 150ms ease;
 }
@@ -2719,7 +2722,5 @@ html {
 
 .footer-sep {
   color: rgba(255,255,255,.4);
-  font-size: 10px;
+  font-size: calc(10px * var(--lp-font-scale, 1));
 }
-
-

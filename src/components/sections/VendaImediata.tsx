@@ -38,12 +38,12 @@ export function VendaImediata() {
             />
           </div>
 
-          <ShinyButton href="#oferta" className="vi-cta-btn max-w-full whitespace-normal">
+          {support && <p className="vi-sub">{support}</p>}
+
+          <ShinyButton href="#oferta" className="vi-cta-btn whitespace-nowrap">
             {ctaText}
           </ShinyButton>
         </div>
-
-        {support && <p className="vi-sub">{support}</p>}
 
         {bullets && bullets.length > 0 && (
           <AnimatedBullets items={bullets} className="vi-bullets ab-center" />

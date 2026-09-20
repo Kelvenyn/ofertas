@@ -28,12 +28,12 @@ npm run lint
 
 - `docs/PADRONIZACAO-LP.md`: plano "Padronização LP" — status da execução, decisões fechadas (hero/CTA na primeira dobra, limites de copy, paletas, orientação, trilhos, painel), critérios de aceite e o contrato novo. **Ler antes de mexer em layout, copy ou componentes de seção.**
 - `src/config/offers/<oferta>/offer.ts`: conteúdo comercial das 15 ofertas: `alicate`, `box`, `calha`, `castracao`, `confissao`, `croqui`, `felinos`, `higienizacao`, `jardim`, `laboral`, `lavanderia`, `lembrancinhas`, `porcelanato`, `psicopedagogia` e `tilapia`.
-- `src/config/offers/catalog.json`: configuração-base versionada (status, paleta, favicon e Cashflow); alterações operacionais publicadas pelo painel são mantidas no Blob privado da Vercel.
+- `src/config/offers/catalog.json`: rótulo, favicon e Cashflow opcional; configuração operacional completa fica no Blob privado da Vercel. Imports futuros começam em `draft` e só são publicados após validação e QA.
 - `src/types/offer.ts`: contrato `OfferConfig` compartilhado por todas as ofertas.
 - `src/components/OfferPage.tsx` e `src/components/OfferRouteLayout.tsx`: composição e layout compartilhados.
-- `src/app/<oferta>/`: adapters mínimos de rota e editor de paleta protegido.
+- `src/app/<oferta>/`: adapters de rota e editor de paleta protegido por sessão; painel central em `src/app/painel/`.
 - `src/app/globals.css`: estilos globais (Tailwind v4, CSS-first).
-- `public/images/<oferta>/`: imagens da oferta.
+- `public/images/<oferta>/`: somente WebP canônico; originais locais ficam fora de `public/`.
 
 ## Regras de Edição
 

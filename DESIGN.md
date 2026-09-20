@@ -6,8 +6,8 @@ colors:
   primary-dark: "#123A6D"
   primary-deeper: "#082F63"
   accent-coral: "#FF8A5B"
-  cta-green: "#00A85A"
-  cta-green-light: "#22C978"
+  cta-green: "#12883E"
+  cta-green-light: "#16A34A"
   urgency-red: "#DC2626"
   yellow: "#FFD166"
   background: "#FFFFFF"
@@ -57,7 +57,7 @@ spacing:
   gap: "14px"
 components:
   cta-primary:
-    backgroundColor: "linear-gradient(180deg, #22C978 0%, #00A85A 100%)"
+    backgroundColor: "linear-gradient(135deg, #11863D 0%, #0E6B31 100%)"
     textColor: "#FFFFFF"
     rounded: "{rounded.pill}"
     padding: "18px 22px"
@@ -88,9 +88,9 @@ components:
 > **Nota sobre cor:** este documento descreve o sistema compartilhado por todas as 15 ofertas do
 > projeto (`ofertas`) — layout, tipografia, sombras, componentes e as regras de "do/don't"
 > valem igualmente para qualquer rota. A paleta abaixo é a referência do template. Cada oferta
-> mantém uma `palette` em `offer.ts`; `paletteKey` no catálogo pode substituí-la por um dos dez
-> presets de `src/config/offers/palettes.ts`. Na prática, CTA/bullets usam os tokens fixos
-> `#16A34A`/`#11863D`/`#0E6B31` (`FIXED_ACTION_COLORS`), urgência permanece vermelha e os demais
+> mantém uma `palette` em `offer.ts` e expõe cinco candidatas validadas por contraste no painel.
+> CTA/bullets usam os tokens fixos `#12883E`/`#11863D`/`#0E6B31` (`FIXED_ACTION_COLORS`); urgência
+> permanece vermelha e os demais
 > fundos, barras, bordas e sombras derivam da paleta efetiva.
 
 ## 1. Overview
@@ -120,7 +120,7 @@ The palette is built around three functional groups: authority (blue), action (g
 - **Darker Navy** (#082F63): Primary text color for headings and body copy. Provides strong contrast against light backgrounds.
 
 ### Secondary
-- **Action Green** (#00A85A): Primary CTA color for purchase buttons, success states, and positive indicators. Gradient from #22C978 to #00A85A creates depth.
+- **Action Green** (#12883E): Primary CTA color for purchase buttons, success states, and positive indicators. Gradient from #16A34A to #12883E creates depth.
 - **Coral Accent** (#FF8A5B): Warm accent for highlights, decorative elements, and visual interest. Used sparingly for emphasis.
 
 ### Tertiary
@@ -139,7 +139,7 @@ The palette is built around three functional groups: authority (blue), action (g
 ### Named Rules
 **The Urgency Rule.** Red (#DC2626) is reserved exclusively for time-sensitive elements: countdown timers, limited-time pricing, and scarcity indicators. Never use red for decorative purposes or non-urgent content.
 
-**The Green Means Go Rule.** Green (#00A85A) is exclusively for CTAs and success states. Every green element should feel clickable and actionable.
+**The Green Means Go Rule.** Green (#12883E) is exclusively for CTAs and success states. Every green element should feel clickable and actionable.
 
 ## 3. Typography
 
@@ -180,7 +180,7 @@ The system uses a layered shadow strategy to create depth and hierarchy. Shadows
 
 ### Buttons
 - **Shape:** Pill-shaped (999px radius), full-width on mobile
-- **Primary CTA:** Green gradient (#22C978 to #00A85A), white text, 18px 22px padding, shadow depth
+- **Primary CTA:** Green gradient (#16A34A to #12883E), white text, 18px 22px padding, shadow depth
 - **Urgency CTA:** Red gradient (#DC2626 to #B91C1C), white text, same padding
 - **Secondary CTA:** White background, dark navy text, blue border
 - **Hover/Focus:** translateY(-2px), enhanced shadow, slight brightness increase
@@ -195,7 +195,7 @@ The system uses a layered shadow strategy to create depth and hierarchy. Shadows
 
 ### Pills/Badges
 - **Style:** Small rounded containers (999px radius) with colored backgrounds
-- **States:** Blue (#EAF5FF bg, #0B7FE8 text), Green (#E9FFF4 bg, #00A85A text), Red (#FEF2F2 bg, #DC2626 text), Gold (#FFF8E1 bg, #F59E0B text)
+- **States:** Blue (#EAF5FF bg, #0B7FE8 text), Green (#E9FFF4 bg, #12883E text), Red (#FEF2F2 bg, #DC2626 text), Gold (#FFF8E1 bg, #F59E0B text)
 - **Typography:** 10.5px, 900 weight, uppercase, 0.06em letter-spacing
 
 ### Progress Bars

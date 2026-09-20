@@ -80,6 +80,7 @@ export function Guarantee() {
               alt={iconAlt}
               width={180}
               height={180}
+              className="guarantee-square-image"
               style={{ width: "clamp(140px, 30vw, 200px)", height: "auto" }}
             />
           ) : <div className="gar-seal" role="img" aria-label={iconAlt}><span>30</span><span>DIAS</span></div>}

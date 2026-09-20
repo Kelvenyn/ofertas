@@ -41,7 +41,7 @@ function getInterpolatedStyle(offset: number): React.CSSProperties {
 
 export function SocialProof() {
   const offer = useOffer()
-  const slides = offer.socialProof.testimonials
+  const slides = offer.socialProof.testimonials.slice(0, 7)
   const COUNT = slides.length
 
   const [currentPos, setCurrentPos] = useState(0)
@@ -124,7 +124,7 @@ export function SocialProof() {
   }, [stopAnimation, setCurrentPos])
 
   useEffect(() => {
-    if (isInteracting || prefersReducedMotion) return
+    if (COUNT === 0 || isInteracting || prefersReducedMotion) return
 
     let lastTime = performance.now()
     let id: number
@@ -157,7 +157,7 @@ export function SocialProof() {
       cancelAnimationFrame(id)
       document.removeEventListener("visibilitychange", handleVisibility)
     }
-  }, [isInteracting, prefersReducedMotion, setCurrentPos])
+  }, [COUNT, isInteracting, prefersReducedMotion, setCurrentPos])
 
   const goTo = useCallback((direction: number) => {
     stopAnimation()
@@ -219,11 +219,13 @@ export function SocialProof() {
     setTimeout(() => setIsInteracting(false), 800)
   }
 
+  if (COUNT === 0) return null
+
   const centerIndex = Math.round(currentPos)
   const visibleCards = [-2, -1, 0, 1, 2].map((o) => {
     const slideIndex = mod(centerIndex + o, COUNT)
     const visualOffset = (centerIndex + o) - currentPos
-    return { slideIndex, visualOffset }
+    return { slideIndex, visualOffset, slotOffset: o }
   })
 
   const activeSlide = mod(Math.round(currentPos), COUNT)
@@ -275,13 +277,13 @@ export function SocialProof() {
             <div aria-live="polite" aria-atomic="true" className="sr-only">
               {slides[activeSlide]?.alt}
             </div>
-            {visibleCards.map(({ slideIndex, visualOffset }) => {
+            {visibleCards.map(({ slideIndex, visualOffset, slotOffset }) => {
               const slide = slides[slideIndex]
               const isCenter = Math.abs(visualOffset) < 0.5
 
               return (
                 <div
-                  key={`${slideIndex}-${Math.round(visualOffset * 10)}`}
+                  key={slotOffset}
                   className="sp-story-card"
                   style={{
                     ...getInterpolatedStyle(visualOffset),

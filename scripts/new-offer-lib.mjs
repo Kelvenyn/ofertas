@@ -25,19 +25,22 @@ export function classifySourceAsset(fileName) {
 
   const base = normalizeForMatch(path.basename(fileName, sourceExtension)).trim()
   let match = base.match(/^imagem\s*\(\s*(\d+)\s*\)$/)
-  if (match) return namedAsset(fileName, "page", Number(match[1]), `page-${pad(match[1])}.webp`, 1200)
+  if (match) return namedAsset(fileName, "page", Number(match[1]), `demonstrativo-${pad(match[1])}.webp`, 1200)
 
   match = base.match(/^depoimento\s*\(\s*(\d+)\s*\)$/)
-  if (match) return namedAsset(fileName, "testimonial", Number(match[1]), `testimonial-${pad(match[1])}.webp`)
+  if (match) return namedAsset(fileName, "testimonial", Number(match[1]), `depoimento-${pad(match[1])}.webp`)
 
   match = base.match(/^bonus[-_\s]*(\d+)[-_\s]*(frente|verso)$/)
   if (match) {
-    const side = match[2] === "frente" ? "front" : "back"
+    const side = match[2]
     return namedAsset(fileName, "bonus", Number(match[1]), `bonus-${pad(match[1])}-${side}.webp`, 1200, side)
   }
 
-  if (/^plano\s+basico$/.test(base)) return namedAsset(fileName, "plan", 1, "plan-basic.webp", 1080, "basic")
-  if (/^plano\s+completo$/.test(base)) return namedAsset(fileName, "plan", 2, "plan-complete.webp", 1080, "complete")
+  if (/^plano\s+basico$/.test(base)) return namedAsset(fileName, "plan", 1, "plano-basico.webp", 1080, "basic")
+  if (/^plano\s+completo$/.test(base)) return namedAsset(fileName, "plan", 2, "plano-completo.webp", 1080, "complete")
+  if (/^favicon$/.test(base)) return namedAsset(fileName, "icon", 1, "favicon.webp", 128)
+  if (/^garantia(?:[-_\s]*30[-_\s]*dias)?$/.test(base)) return namedAsset(fileName, "square", 1, "garantia.webp", 1080)
+  if (/^beneficio$/.test(base)) return namedAsset(fileName, "square", 1, "beneficio.webp", 1080)
   return { sourceName: fileName, kind: "unknown", targetName: null }
 }
 
@@ -50,7 +53,7 @@ function namedAsset(sourceName, kind, index, targetName, maxWidth, variant) {
 }
 
 export function sortAssets(assets) {
-  const order = { page: 0, testimonial: 1, bonus: 2, plan: 3 }
+  const order = { icon: 0, plan: 1, page: 2, testimonial: 3, bonus: 4, square: 5 }
   return [...assets].sort((a, b) =>
     (order[a.kind] ?? 99) - (order[b.kind] ?? 99) ||
     (a.index ?? 0) - (b.index ?? 0) ||
@@ -60,7 +63,7 @@ export function sortAssets(assets) {
 }
 
 export function buildImportReport({ slug, copyFile, assets, ignoredFiles = [] }) {
-  const counts = Object.fromEntries(["page", "testimonial", "bonus", "plan"].map((kind) => [kind, assets.filter((asset) => asset.kind === kind).length]))
+  const counts = Object.fromEntries(["page", "testimonial", "bonus", "plan", "square", "icon"].map((kind) => [kind, assets.filter((asset) => asset.kind === kind).length]))
   return {
     schemaVersion: 1,
     slug,
@@ -202,8 +205,6 @@ function updatedCatalogSource(catalog, slug) {
   next.offers[slug] = {
     label: offerLabel(slug),
     status: "draft",
-    paletteKey: null,
-    className: `${slug}-offer`,
     favicon: null,
     cashflow: null,
   }
@@ -237,7 +238,8 @@ async function atomicWrite(target, content) {
 export async function runMagickConversion(input, output, asset, magickBin = process.env.MAGICK_BIN || "magick") {
   const args = [input, "-auto-orient", "-strip"]
   if (asset.kind === "page" || asset.kind === "bonus") args.push("-resize", "1200x>")
-  if (asset.kind === "plan") args.push("-resize", "1080x1080>")
+  if (asset.kind === "plan" || asset.kind === "square") args.push("-resize", "1080x1080>")
+  if (asset.kind === "icon") args.push("-resize", "128x128>")
   args.push("-define", "webp:lossless=true", output)
   await execFileAsync(magickBin, args, { windowsHide: true })
 }

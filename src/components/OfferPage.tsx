@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic"
+import { OfferSection } from "@/components/OfferSection"
 import { CountdownBar } from "@/components/CountdownBar"
 import { VendaImediata } from "@/components/sections/VendaImediata"
 import { SocialProof } from "@/components/sections/SocialProof"
@@ -22,23 +23,23 @@ export default function OfferPage() {
       <a href="#oferta" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[var(--z-skip-link)] focus:bg-white focus:text-[var(--brand)] focus:px-4 focus:py-2 focus:rounded-lg focus:font-bold focus:shadow-lg">
         Pular para a oferta
       </a>
-      <CountdownBar />
-      <header><VendaImediata /></header>
+      <OfferSection id="countdown"><CountdownBar /></OfferSection>
+      <OfferSection id="hero"><header><VendaImediata /></header></OfferSection>
       <main id="conteudo">
-        <SocialProof />
-        <CounterPainPoints />
-        <KitCards />
-        <KitCardsReversed />
-        <Benefits />
-        <Urgencia />
-        <TudoQueVoceRecebe />
-        <Bonuses />
-        <OfferPricing />
-        <Guarantee />
-        <ComoEAcesso />
-        <FAQ />
+        <OfferSection id="socialProof"><SocialProof /></OfferSection>
+        <OfferSection id="counter"><CounterPainPoints /></OfferSection>
+        <OfferSection id="kit"><KitCards /></OfferSection>
+        <OfferSection id="kitReversed"><KitCardsReversed /></OfferSection>
+        <OfferSection id="benefits"><Benefits /></OfferSection>
+        <OfferSection id="urgency"><Urgencia /></OfferSection>
+        <OfferSection id="deliverables"><TudoQueVoceRecebe /></OfferSection>
+        <OfferSection id="bonuses"><Bonuses /></OfferSection>
+        <OfferSection id="pricing"><OfferPricing /></OfferSection>
+        <OfferSection id="guarantee"><Guarantee /></OfferSection>
+        <OfferSection id="access"><ComoEAcesso /></OfferSection>
+        <OfferSection id="faq"><FAQ /></OfferSection>
       </main>
-      <Footer />
+      <OfferSection id="footer"><Footer /></OfferSection>
     </>
   )
 }

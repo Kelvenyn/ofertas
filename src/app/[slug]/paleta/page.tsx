@@ -2,21 +2,19 @@ import { notFound, redirect } from "next/navigation"
 import OfferPage from "@/components/OfferPage"
 import { OfferRouteLayout } from "@/components/OfferRouteLayout"
 import { PaletteEditor } from "@/components/dev/PaletteEditor"
-import { getOfferConfig } from "@/config/offers"
 import { isAdminAuthenticated } from "@/lib/admin-auth"
-import { getOperationalCatalog } from "@/lib/operational-catalog"
+import { getOperationalOfferRecord } from "@/lib/operational-catalog"
 
 export default async function PalettePreviewPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  if (!(await isAdminAuthenticated())) redirect(`/admin/login?next=/${encodeURIComponent(slug)}/paleta`)
-  const entry = (await getOperationalCatalog()).offers[slug]
-  const offer = getOfferConfig(slug)
-  if (!entry || !offer) notFound()
+  if (!(await isAdminAuthenticated())) redirect(`/painel/login?next=/${encodeURIComponent(slug)}/paleta`)
+  const record = await getOperationalOfferRecord(slug)
+  if (!record) notFound()
 
   return (
-    <OfferRouteLayout slug={slug} offer={offer}>
+    <OfferRouteLayout slug={record.entry.slug} offer={record.offer} previewMode>
       <OfferPage />
-      <PaletteEditor slug={slug} initialPaletteKey={entry.paletteKey} />
+      <PaletteEditor slug={record.entry.slug} initialOffer={record.offer} />
     </OfferRouteLayout>
   )
 }

@@ -7,31 +7,11 @@ import { useOffer } from "@/context/offer-context"
 
 const CARD_COLORS = ["var(--brand)"]
 
-function BenefitCard({ icon, title, desc, index }: { icon: string; title: string; desc: string; index: number }) {
-  const [expanded, setExpanded] = useState(false)
-  const cardRef = useRef<HTMLDivElement>(null)
+function BenefitCard({ icon, title, desc, index, expanded }: { icon: string; title: string; desc: string; index: number; expanded: boolean }) {
   const color = CARD_COLORS[index % CARD_COLORS.length]
-
-  useEffect(() => {
-    const el = cardRef.current
-    if (!el) return
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.intersectionRatio >= 0.25) {
-          const delay = index * 150
-          setTimeout(() => setExpanded(true), delay)
-          obs.disconnect()
-        }
-      },
-      { threshold: [0, 0.25] }
-    )
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [index])
 
   return (
     <div
-      ref={cardRef}
       className={`benefit-card${expanded ? " benefit-card-expanded" : ""}`}
       style={{ "--card-accent": color } as React.CSSProperties}
     >
@@ -52,6 +32,22 @@ function BenefitCard({ icon, title, desc, index }: { icon: string; title: string
 export function Benefits() {
   const offer = useOffer()
   const { title, ctaText, items, image, imageAlt } = offer.benefits
+  const gridRef = useRef<HTMLDivElement>(null)
+  const [expanded, setExpanded] = useState(false)
+
+  useEffect(() => {
+    const grid = gridRef.current
+    if (!grid) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setExpanded(true)
+        observer.disconnect()
+      }
+    }, { threshold: 0.15 })
+    observer.observe(grid)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="benefits-section" aria-labelledby="benefits-title">
       <div className="benefits-inner">
@@ -65,9 +61,9 @@ export function Benefits() {
           </div>
         )}
 
-        <div className="benefits-grid">
+        <div ref={gridRef} className="benefits-grid">
           {items.map((b, i) => (
-            <BenefitCard key={i} icon={b.icon} title={b.title} desc={b.desc} index={i} />
+            <BenefitCard key={i} icon={b.icon} title={b.title} desc={b.desc} index={i} expanded={expanded} />
           ))}
         </div>
 

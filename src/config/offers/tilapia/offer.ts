@@ -19,46 +19,46 @@ export const OFFER: OfferConfig = {
   hero: {
     pill: "48 PROJETOS VISUAIS",
     headline: "48 Projetos Visuais\nde Criadouros para Tilápias",
-    subline: "Escolha o modelo que combina com seu espaço e visualize tudo antes da montagem",
-    image: image("Plano Completo.webp"), imageAlt: "Plano Completo: Projetos de Criadouros para Tilápias",
-    support: "Tenha modelos prontos para comparar diferentes estruturas, organizar as caixas no espaço que você tem e usar como referência antes de começar a montagem.",
-    ctaText: "QUERO OS PROJETOS", marqueeText: "48 PROJETOS ✦ PDF ALTA QUALIDADE ✦ ACESSO IMEDIATO ✦ TAMANHOS JÁ DEFINIDOS ✦ ",
-    bullets: ["Projetos para todos os tipos de espaço", "Tamanhos já definidos", "Clareza para organizar cada estrutura", "Dicas para evitar erros na montagem"]
+    subline: "Escolha um projeto adequado ao seu espaço.",
+    image: image("plano-completo.webp"), imageAlt: "Plano Completo: Projetos de Criadouros para Tilápias",
+    support: "Compare estruturas e organize as caixas no espaço disponível antes da montagem.",
+    ctaText: "QUERO OS PROJETOS", marqueeText: "48 PROJETOS VISUAIS • PDF • ACESSO IMEDIATO",
+    bullets: ["Projetos para vários espaços", "Tamanhos definidos nos projetos", "Organize a estrutura", "Dicas para a montagem"]
   },
   socialProof: {
     title: "Quem já usa os projetos aprova",
-    testimonials: Array.from({ length: 7 }, (_, index) => ({ src: image(`Depoimento (${index + 1}).webp`), alt: `Depoimento de cliente ${index + 1}` }))
+    testimonials: Array.from({ length: 7 }, (_, index) => ({ src: image(`depoimento-${String(index + 1).padStart(2, "0")}.webp`), alt: `Depoimento de cliente ${index + 1}` }))
   },
-  counter: { prefix: "", target: 48, label: "Projetos visuais de criadouros\npara você escolher e montar" },
+  counter: { prefix: "", target: 48, label: "48 projetos de criadouros" },
   kitCards: {
     heading: "Veja como são os projetos que você vai receber:",
-    images: Array.from({ length: 18 }, (_, index) => ({ src: image(`Imagem (${index + 1}).webp`), alt: `Projeto visual de criadouro para tilápias ${index + 1}` }))
+    images: Array.from({ length: 18 }, (_, index) => ({ src: image(`demonstrativo-${String(index + 1).padStart(2, "0")}.webp`), alt: `Projeto visual de criadouro para tilápias ${index + 1}` }))
   },
   benefits: {
-    title: "Por que quem quer criar tilápia está escolhendo os Projetos?", ctaText: "QUERO OS PROJETOS",
+    title: "Compare projetos de criadouros para tilápias", ctaText: "QUERO OS PROJETOS",
     items: [
       { icon: "🧰", title: "Praticidade", desc: "São 48 projetos já prontos: escolha o que combina com seu espaço e monte." },
-      { icon: "📐", title: "Variedade", desc: "Cada tipo de espaço já tem seus projetos: quintal pequeno, terreno, sítio, chácara, corredor e mais." },
-      { icon: "👁️", title: "Clareza", desc: "Visualize exatamente como vai ficar sua estrutura antes de montar, sem depender de tentativa e erro." },
-      { icon: "💰", title: "Economia", desc: "Com os tamanhos certos definidos, você evita gastar com material que não serve para o seu espaço." },
+      { icon: "📐", title: "Variedade", desc: "Opções para quintal, terreno, sítio, chácara, corredor e outros espaços." },
+      { icon: "👁️", title: "Clareza", desc: "Visualize a estrutura antes de iniciar a montagem." },
+      { icon: "💰", title: "Economia", desc: "Compare os tamanhos indicados com as dimensões do seu espaço." },
     ]
   },
-  urgency: { title: "QUANTAS VEZES VOCÊ QUIS COMEÇAR A CRIAR TILÁPIA, MAS NÃO SABIA COMO ORGANIZAR O ESPAÇO QUE TINHA?", highlight: "", body: "Imagine escolher um projeto, visualizar exatamente como o seu criadouro vai ficar e montar tudo sem medo de errar a medida.", ctaText: "QUERO OS PROJETOS", trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"] },
+  urgency: { title: "Planeje o espaço do seu criadouro", highlight: "", body: "Compare projetos e medidas com seu espaço antes de iniciar a montagem.", ctaText: "QUERO OS PROJETOS", trust: ["ACESSO IMEDIATO", "ACESSO VITALÍCIO"] },
   deliverables: {
-    title: "TUDO O QUE VOCÊ VAI RECEBER", image: image("Plano Completo.webp"), imageAlt: "Projetos Visuais de Criadouros de Tilápias",
+    title: "TUDO O QUE VOCÊ VAI RECEBER", image: image("plano-completo.webp"), imageAlt: "Projetos Visuais de Criadouros de Tilápias",
     bullets: ["48 Projetos Visuais de Criadouros de Tilápias", "Projetos para Quintais Pequenos", "Projetos para Terrenos", "Projetos para Sítios e Chácaras", "Projetos para Corredores e Espaços Estreitos", "Projetos para Fundos de Casa", "Projetos para Cantos de Terreno", "Projetos para Áreas Cobertas", "Projetos para Pequenas Áreas Produtivas", "Arquivos em PDF prontos para consulta"]
   },
   bonusSection: { titleLead: "4 BÔNUS", titleHighlight: "EXCLUSIVOS", subtitle: "Além dos 48 Projetos, ao adquirir o Plano Completo você também recebe 4 bônus especiais.", cardLabel: "BÔNUS", timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO", freeLabel: "GRÁTIS" },
-  bonuses: bonuses.map(([title, titleBreak, desc], index) => ({ front: image(`bonus-${index + 1}-frente.webp`), back: image(`bonus-${index + 1}-verso.webp`), title, titleBreak, desc, price: "R$ 27,00" })),
+  bonuses: bonuses.map(([title, titleBreak, desc], index) => ({ front: image(`bonus-${String(index + 1).padStart(2, "0")}-frente.webp`), back: image(`bonus-${String(index + 1).padStart(2, "0")}-verso.webp`), title, titleBreak, desc, price: "R$ 27,00" })),
   pricing: {
-    titleLead: "ESCOLHA O", titleHighlight: "PLANO IDEAL PARA VOCÊ",
+    titleLead: "ESCOLHA SEU", titleHighlight: "PROJETO DE CRIADOURO",
     plans: [
-      { id: "basic", title: "Plano Básico", image: image("Plano Básico.webp"), imageAlt: "Plano Básico de Projetos para Tilápias", featured: false, oldPrice: "de R$ 39,90", price: "R$ 17,90", installments: "ou 2x de R$ 8,95 no cartão", items: ["48 Projetos Visuais de Criadouros de Tilápias", "Material prático e organizado", "Arquivos em PDF prontos para consulta"], mutedItems: ["Não inclui os bônus do Plano Completo"], ctaText: "QUERO O PLANO BÁSICO", ctaHref: "https://pay.hotmart.com/P107251373A?checkoutMode=10&bid=1787257996978" },
-      { id: "premium", title: "Plano Completo", image: image("Plano Completo.webp"), imageAlt: "Plano Completo de Projetos para Tilápias", featured: true, oldPrice: "de R$ 147,00", price: "R$ 27,90", installments: "ou 3x de R$ 9,30 no cartão", items: ["48 Projetos Visuais de Criadouros de Tilápias", "Categorias: Quintais, Terrenos, Sítios/Chácaras, Corredores, Fundos de Casa, Cantos de Terreno, Áreas Cobertas e Pequenas Áreas Produtivas", ...bonuses.map(([title]) => `🎁 ${title}`), "Dicas antes da montagem", "Arquivos em PDF prontos para consulta", "Envio imediato por e-mail", "Acesso vitalício ao material"], ctaText: "QUERO O PLANO COMPLETO", ctaHref: "https://pay.hotmart.com/T107252223S?checkoutMode=10&bid=1787258545238" },
+      { id: "basic", title: "Plano Básico", image: image("plano-basico.webp"), imageAlt: "Plano Básico de Projetos para Tilápias", featured: false, oldPrice: "de R$ 39,90", price: "R$ 17,90", installments: "ou 2x de R$ 8,95 no cartão", items: ["48 projetos visuais de criadouros", "Opções por tipo de espaço", "Medidas indicadas nos projetos", "Material prático e organizado", "Arquivos digitais em PDF", "Acesso após a compra"], mutedItems: ["Não inclui os bônus do Plano Completo"], ctaText: "QUERO O BÁSICO", ctaHref: "https://pay.hotmart.com/P107251373A?checkoutMode=10&bid=1787257996978" },
+      { id: "premium", title: "Plano Completo", image: image("plano-completo.webp"), imageAlt: "Plano Completo de Projetos para Tilápias", featured: true, oldPrice: "de R$ 147,00", price: "R$ 27,90", installments: "ou 3x de R$ 9,30 no cartão", items: ["48 projetos visuais de criadouros", "Categorias para espaços variados", "🎁 25 ideias de criadouros modulares", "🎁 20 projetos com filtragem e reservatório", "🎁 25 modelos com drenagem e limpeza", "🎁 20 diagramas de circulação da água", "Dicas antes da montagem", "Acesso vitalício ao material"], ctaText: "QUERO O COMPLETO", ctaHref: "https://pay.hotmart.com/T107252223S?checkoutMode=10&bid=1787258545238" },
     ]
   },
-  guarantee: { marqueeText: "GARANTIA 30 DIAS • RISCO ZERO • SATISFAÇÃO OU DINHEIRO DE VOLTA • ", icon: image("garantia-30-dias.webp"), iconAlt: "Garantia de 30 dias", title: "COMPRA 100% SEGURA E GARANTIDA!", body: "Você tem **30 dias de garantia** para conhecer os projetos. Caso não fique satisfeito, poderá solicitar o reembolso dentro desse período." },
-  access: { title: "Como você vai receber seus projetos", ctaText: "QUERO OS PROJETOS", steps: [{ title: "Conclua sua compra", desc: "Após a confirmação do pagamento, seu acesso é liberado automaticamente." }, { title: "Receba no e-mail", desc: "As instruções para acessar o material chegam diretamente no e-mail cadastrado na compra." }, { title: "Baixe os PDFs", desc: "Os projetos ficam organizados em arquivos digitais, prontos para baixar." }, { title: "Escolha, visualize e monte", desc: "Encontre o tipo de espaço que você tem, escolha o projeto e comece a montar." }] },
-  faq: { title: "Perguntas Frequentes", items: [{ q: "Como vou receber meus projetos?", a: "Após a confirmação da compra, você receberá no e-mail cadastrado as instruções para acessar e baixar todos os arquivos." }, { q: "Os projetos são físicos ou digitais?", a: "O material é 100% digital. Nenhum produto físico será enviado para sua casa. Você recebe os arquivos em PDF e pode consultar de onde preferir." }, { q: "Preciso de experiência prévia para usar os projetos?", a: "Não. Os projetos já vêm prontos, com medidas definidas e organizados por tipo de espaço. Basta escolher o que combina com o seu." }, { q: "Os projetos servem para qualquer tipo de espaço?", a: "Sim. Os 48 projetos foram organizados para atender quintais pequenos, terrenos, sítios, chácaras, corredores, fundos de casa, cantos de terreno e áreas cobertas." }, { q: "O que vem no Plano Completo?", a: "Você recebe os 48 Projetos Visuais de Criadouros de Tilápias e os 4 bônus: Criadouros Modulares e Expansíveis, Filtragem e Reservatório Organizados, Drenagem e Limpeza Facilitadas e Diagramas de Circulação da Água." }, { q: "Posso consultar os projetos mais de uma vez?", a: "Sim. Você pode acessar os arquivos sempre que precisar, inclusive para planejar futuras expansões do seu criadouro." }, { q: "E se eu comprar e não gostar?", a: "Você conta com 30 dias de garantia. Caso não fique satisfeito, poderá solicitar o reembolso dentro desse período." }] },
+  guarantee: { marqueeText: "GARANTIA 30 DIAS • RISCO ZERO • SATISFAÇÃO OU DINHEIRO DE VOLTA • ", icon: image("garantia.webp"), iconAlt: "Garantia de 30 dias", title: "COMPRA 100% SEGURA E GARANTIDA!", body: "Você tem **30 dias de garantia** para conhecer os projetos. Caso não fique satisfeito, poderá solicitar o reembolso dentro desse período." },
+  access: { title: "Como você vai receber seus projetos", ctaText: "QUERO OS PROJETOS", steps: [{ title: "Conclua sua compra", desc: "Após a confirmação do pagamento, seu acesso é liberado automaticamente." }, { title: "Receba no email", desc: "As instruções para acessar o material chegam diretamente no email cadastrado na compra." }, { title: "Baixe os PDFs", desc: "Os projetos ficam organizados em arquivos digitais, prontos para baixar." }, { title: "Escolha, visualize e monte", desc: "Encontre o tipo de espaço que você tem, escolha o projeto e comece a montar." }] },
+  faq: { title: "Perguntas Frequentes", items: [{ q: "O que vem no Plano Completo?", a: "Você recebe 48 projetos visuais e quatro bônus sobre módulos, filtragem e reservatórios, drenagem e limpeza, e circulação da água." }, { q: "Como recebo e consulto os projetos?", a: "Após a confirmação da compra, você recebe o acesso por email. Os arquivos digitais em PDF podem ser consultados em seus dispositivos." }, { q: "Os projetos têm medidas definidas?", a: "Sim. Os modelos trazem tamanhos definidos; compare as medidas com seu espaço antes de montar." }, { q: "Posso consultar os projetos mais de uma vez?", a: "Sim. O acesso vitalício permite consultar os arquivos novamente quando precisar." }, { q: "Como funciona a garantia?", a: "Você tem 30 dias para solicitar o reembolso, conforme as condições da plataforma de pagamento." }] },
   footer: { updateTitle: "Material em constante atualização", updateBody: "Os projetos recebem melhorias e referências novas periodicamente. Ao adquirir agora, você garante acesso vitalício ao material.", copyright: "Copyright © 2026 | Todos os direitos reservados. Este material é protegido pela Lei nº 9.610/98, sendo proibida a reprodução total ou parcial sem autorização.", privacyUrl: "/politica-de-privacidade", termsUrl: "/termos-de-uso" }
 }

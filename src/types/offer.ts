@@ -111,7 +111,7 @@ export interface FaqItem {
 export interface OfferConfig {
   meta: OfferMeta
   palette: OfferPalette
-  paletteCandidates?: OfferPalette[]        // 5 candidatas (Fase 4)
+  paletteCandidates?: OfferPalette[]        // 10 candidatas geradas e validadas
   orientation: "portrait" | "landscape"     // governa kit + bônus (Fase 5)
   sections?: Partial<Record<SectionId, boolean>>  // ligar/desligar (Fase 6)
   hero: OfferHero
@@ -176,5 +176,5 @@ export interface OfferConfig {
 }
 
 export type SectionId =
-  | "socialProof" | "counter" | "kit" | "kitReversed" | "benefits" | "urgency"
+  | "countdown" | "hero" | "socialProof" | "counter" | "kit" | "kitReversed" | "benefits" | "urgency"
   | "deliverables" | "bonuses" | "pricing" | "guarantee" | "access" | "faq" | "footer"

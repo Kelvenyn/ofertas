@@ -30,13 +30,16 @@ export const OFFER_CONFIGS = {
 
 test("normaliza todos os padrões de nomes da pasta de origem", () => {
   const cases = {
-    "Imagem (1).png": "page-01.webp",
-    "Imagem (15).PNG": "page-15.webp",
-    "Depoimento (6).png": "testimonial-06.webp",
-    "bonus-2-frente.png": "bonus-02-front.webp",
-    "bonus-2-verso.png": "bonus-02-back.webp",
-    "Plano Básico.png": "plan-basic.webp",
-    "Plano Completo.png": "plan-complete.webp",
+    "Imagem (1).png": "demonstrativo-01.webp",
+    "Imagem (15).PNG": "demonstrativo-15.webp",
+    "Depoimento (6).png": "depoimento-06.webp",
+    "bonus-2-frente.png": "bonus-02-frente.webp",
+    "bonus-2-verso.png": "bonus-02-verso.webp",
+    "Plano Básico.png": "plano-basico.webp",
+    "Plano Completo.png": "plano-completo.webp",
+    "favicon.png": "favicon.webp",
+    "Garantia 30 dias.png": "garantia.webp",
+    "Benefício.png": "beneficio.webp",
   }
   for (const [sourceName, targetName] of Object.entries(cases)) {
     assert.equal(classifySourceAsset(sourceName)?.targetName, targetName)
@@ -61,7 +64,7 @@ test("--dry-run inventaria sem criar arquivos ou chamar o conversor", async (t) 
   assert.equal(result.report.counts.page, 1)
   assert.equal(result.report.copy.requiresAgent, true)
   assert.equal(converterCalled, false)
-  await assert.rejects(readFile(path.join(paths.workspaceRoot, "public", "images", "oferta-teste", "page-01.webp")))
+  await assert.rejects(readFile(path.join(paths.workspaceRoot, "public", "images", "oferta-teste", "demonstrativo-01.webp")))
 })
 
 test("recusa sobrescrever uma pasta de assets ou configuração existente", async (t) => {
@@ -92,8 +95,8 @@ test("converte para WebP, limita dimensões e uma segunda execução não altera
 
   const result = await importOffer({ source: paths.source, slug: "oferta-teste", workspaceRoot: paths.workspaceRoot })
   assert.equal(result.dryRun, false)
-  const page = path.join(result.targetAssetsDir, "page-01.webp")
-  const plan = path.join(result.targetAssetsDir, "plan-basic.webp")
+  const page = path.join(result.targetAssetsDir, "demonstrativo-01.webp")
+  const plan = path.join(result.targetAssetsDir, "plano-basico.webp")
   const { stdout } = await execFileAsync("magick", ["identify", "-format", "%m %wx%h\n", page, plan], { windowsHide: true })
   assert.match(stdout, /^WEBP 1200x74\r?\nWEBP 1080x1080/m)
 

@@ -8,6 +8,6 @@ test("catálogo, checkouts, paletas e tracking obedecem aos contratos do projeto
   assert.equal(result.offerCount, 15)
   assert.equal(result.paletteCount, 10)
   assert.deepEqual(result.errors, [])
-  // 8 ofertas sem Cashflow; avisos de copy (limites §6, Fase 2 como aviso) variam até a Fase 8.
+  // Só pendências operacionais de Cashflow são avisos; copy fora do limite bloqueia a validação.
   assert.equal(result.warnings.filter((w) => w.includes("tracking Cashflow")).length, 8)
 })

@@ -8,6 +8,7 @@ export function Urgencia() {
   const offer = useOffer()
   const { title, highlight, body, ctaText, trust, timerMode = "hoursMinutesSeconds" } = offer.urgency
   const titleLines = title.split('\n')
+  const trustLabels = trust.flatMap((item) => item.split("•").map((label) => label.trim())).filter(Boolean)
   const time = useCountdownTimer()
 
   return (
@@ -60,10 +61,10 @@ export function Urgencia() {
             </div>
 
             <div className="urg-trust">
-              {trust.map((t, i) => (
-                <span key={i}>
-                  {i > 0 && <span className="urg-trust-sep">&bull;</span>}
-                  {t}
+              {trustLabels.map((label, i) => (
+                <span key={`${label}-${i}`}>
+                  {i > 0 && <span className="urg-trust-sep" aria-hidden="true">•</span>}
+                  {label}
                 </span>
               ))}
             </div>

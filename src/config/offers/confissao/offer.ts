@@ -68,17 +68,17 @@ export const OFFER: OfferConfig = {
     ...laboralOffer.hero,
     pill: "PARA QUEM VAI SE CONFESSAR",
     headline: "Guia Visual\nda Confissão",
-    subline: "Prepare sua confissão com um passo a passo visual para organizar o exame de consciência, saber o que dizer ao padre e sair do confessionário sem a sensação de ter feito algo errado.",
-    image: confissaoImage("Plano Completo.webp"),
+    subline: "Organize o exame e saiba o que dizer ao padre.",
+    image: confissaoImage("plano-completo.webp"),
     imageAlt: "Guia Visual da Confissão",
-    support: "Prepare sua confissão com um passo a passo visual para organizar o exame de consciência, saber o que dizer ao padre e sair do confessionário sem a sensação de ter feito algo errado.",
-    ctaText: "QUERO ACESSAR AGORA",
-    marqueeText: "GUIA VISUAL ✦ EXAME DE CONSCIÊNCIA ✦ PASSO A PASSO ✦ ACESSO IMEDIATO ✦ ",
+    support: "Use um roteiro visual para preparar o exame de consciência e acompanhar cada etapa da confissão.",
+    ctaText: "QUERO O GUIA",
+    marqueeText: "GUIA VISUAL ✦ EXAME DE CONSCIÊNCIA ✦ PASSO A PASSO ✦",
     bullets: [
-      "Passo a passo visual para cada etapa da confissão",
-      "Exame de consciência organizado por áreas da vida",
-      "Frases prontas para saber o que confessar ao padre",
-      "Orientações para o que fazer depois da confissão",
+      "Passo a passo para cada etapa",
+      "Exame de consciência por áreas",
+      "Frases para organizar o que dizer",
+      "Orientações após a confissão",
     ]
   },
   socialProof: {
@@ -86,26 +86,26 @@ export const OFFER: OfferConfig = {
     title: "VEJA O QUE NOSSOS CLIENTES ESTÃO DIZENDO",
     testimonials: laboralOffer.socialProof.testimonials.slice(0, 5).map((testimonial, index) => ({
       ...testimonial,
-      src: confissaoImage(`Depoimento (${index + 1}).webp`),
+      src: confissaoImage(`depoimento-${String(index + 1).padStart(2, "0")}.webp`),
       alt: "Depoimento de cliente do Guia Visual da Confissão"
     }))
   },
   counter: {
     prefix: "+ de",
     target: 25,
-    label: "Páginas com o passo a passo visual para sua confissão"
+    label: "Páginas para preparar a confissão"
   },
   kitCards: {
     ...laboralOffer.kitCards,
     heading: "VEJA O GUIA VISUAL DA CONFISSÃO POR DENTRO",
     images: Array.from({ length: 14 }, (_, index) => ({
-      src: confissaoImage(`Imagem (${index + 1}).webp`),
+      src: confissaoImage(`demonstrativo-${String(index + 1).padStart(2, "0")}.webp`),
       alt: `Página ${index + 1} do Guia Visual da Confissão`
     }))
   },
   benefits: {
     title: "O GUIA VISUAL DA CONFISSÃO POSSUI:",
-    ctaText: "QUERO ACESSAR AGORA",
+    ctaText: "QUERO O GUIA",
     items: [
       { icon: "⏱️", title: "Mais clareza", desc: "Abra o guia e saiba exatamente o que dizer, sem gaguejar ou esquecer o que precisa confessar." },
       { icon: "🧭", title: "Mais organização", desc: "Siga o exame de consciência organizado por áreas da vida e não esqueça nada importante." },
@@ -114,17 +114,17 @@ export const OFFER: OfferConfig = {
     ]
   },
   urgency: {
-    title: "QUANTAS VEZES VOCÊ NÃO SOUBE COMO SE CONFESSAR DA FORMA CORRETA?",
+    title: "Como se preparar para a confissão?",
     highlight: "",
     body: "Você já sabe que precisa se confessar. Falta um passo a passo pronto para organizar o que dizer e sair em paz.",
-    ctaText: "QUERO ACESSAR AGORA",
-    trust: ["ACESSO IMEDIATO • ACESSO VITALÍCIO"]
+    ctaText: "QUERO O GUIA",
+    trust: ["ACESSO IMEDIATO", "ACESSO VITALÍCIO"]
   },
   deliverables: {
     ...laboralOffer.deliverables,
     title: "TUDO O QUE VOCÊ VAI RECEBER",
     imageAlt: "Guia Visual da Confissão",
-    image: confissaoImage("Plano Completo.webp"),
+    image: confissaoImage("plano-completo.webp"),
     bullets: [
       "Guia visual completo em PDF",
       "Exame de consciência organizado por áreas da vida",
@@ -145,8 +145,8 @@ export const OFFER: OfferConfig = {
   },
   bonuses: laboralOffer.bonuses.map((bonus, index) => ({
     ...bonus,
-    front: confissaoImage(`bonus-${index + 1}-frente.webp`),
-    back: confissaoImage(`bonus-${index + 1}-verso.webp`),
+    front: confissaoImage(`bonus-${String(index + 1).padStart(2, "0")}-frente.webp`),
+    back: confissaoImage(`bonus-${String(index + 1).padStart(2, "0")}-verso.webp`),
     ...bonuses[index]
   })),
   pricing: {
@@ -157,77 +157,78 @@ export const OFFER: OfferConfig = {
       {
         ...laboralOffer.pricing.plans[0],
         title: "Plano Básico",
-        image: confissaoImage("Plano Básico.webp"),
+        image: confissaoImage("plano-basico.webp"),
         imageAlt: "Plano Básico do Guia Visual da Confissão",
         oldPrice: "De R$37,90",
         price: "R$17,90",
         installments: "ou 4x de R$4,48 no cartão",
         items: [
           "Guia Visual da Confissão em PDF",
-          "Arquivo digital em formato visual e prático",
-          "Acesso imediato após a confirmação da compra",
-          "Material para consultar pelo celular, tablet ou computador",
+          "Passo a passo para preparar a confissão",
+          "Exame de consciência por áreas da vida",
+          "Orientações para cada etapa",
+          "Arquivo digital em formato visual",
+          "Acesso após a confirmação da compra"
         ],
         mutedItems: ["Não inclui os bônus do Plano Completo"],
-        ctaText: "QUERO O PLANO BÁSICO",
+        ctaText: "QUERO BÁSICO",
         ctaHref: "https://pay.cakto.com.br/34a7bsf_1018665"
       },
       {
         ...laboralOffer.pricing.plans[1],
         title: "Plano Completo",
-        image: confissaoImage("Plano Completo.webp"),
+        image: confissaoImage("plano-completo.webp"),
         imageAlt: "Plano Completo do Guia Visual da Confissão",
         oldPrice: "De R$199,90",
         price: "R$27,90",
         installments: "ou 6x de R$4,65 no cartão",
         items: [
           "Guia Visual da Confissão em PDF",
-          "🎁 Bônus 01: Exame de Consciência de Bolso",
-          "🎁 Bônus 02: 40 Perguntas para Preparar sua Confissão",
-          "🎁 Bônus 03: Orações para Antes e Depois da Confissão",
-          "🎁 Bônus 04: Guia Visual da Primeira Missa Depois da Confissão",
-          "🎁 Bônus 05: Calendário de Vida Sacramental",
-          "🎁 Bônus 06: Exame Diário de Cinco Minutos",
-          "Acesso imediato e vitalício",
+          "🎁 Exame de Consciência de Bolso",
+          "🎁 40 Perguntas para Preparar a Confissão",
+          "🎁 Orações antes e depois da confissão",
+          "🎁 Guia visual para a primeira Missa",
+          "🎁 Calendário de vida sacramental",
+          "🎁 Exame diário de cinco minutos",
+          "Acesso digital imediato e vitalício"
         ],
-        ctaText: "QUERO O PLANO COMPLETO",
+        ctaText: "QUERO COMPLETO",
         ctaHref: "https://pay.cakto.com.br/38cq2d4_1018666"
       },
     ]
   },
   guarantee: {
     ...laboralOffer.guarantee,
-    icon: confissaoImage("garantia-30-dias.webp"),
+    icon: confissaoImage("garantia.webp"),
     iconAlt: "Garantia de 30 dias",
     marqueeText: "GARANTIA 30 DIAS ✦ RISCO ZERO ✦ SATISFAÇÃO OU DINHEIRO DE VOLTA ✦ ",
     title: "Compra 100% segura e garantida!",
-    body: "Você tem **30 dias de garantia** para conhecer o Guia Visual da Confissão. Se o material não fizer sentido para sua preparação ou não atender suas necessidades, você pode solicitar o reembolso dentro desse período. Sem prazo, sem burocracia — o risco fica todo do nosso lado."
+    body: "Você tem 30 dias para conhecer o Guia Visual da Confissão. Se ele não atender às suas necessidades, pode solicitar o reembolso dentro desse prazo."
   },
   access: {
-    title: "Como você vai receber seu Guia Visual da Confissão",
+    title: "Como receber seu Guia Visual da Confissão",
     steps: [
       { title: "Conclua sua compra", desc: "Após o pagamento, seu acesso é liberado automaticamente." },
-      { title: "Receba no e-mail", desc: "As instruções e o link chegam no e-mail cadastrado na compra." },
+      { title: "Receba no email", desc: "As instruções e o link chegam no email cadastrado na compra." },
       { title: "Acesse os PDFs", desc: "Tudo organizado para consultar no celular, tablet ou computador." },
-      { title: "Prepare-se e confesse-se", desc: "Siga o passo a passo, use as frases prontas e viva sua confissão com clareza." },
+      { title: "Prepare sua confissão", desc: "Siga o passo a passo, use as frases prontas e viva sua confissão com clareza." },
     ],
     ctaText: "ACESSAR AGORA"
   },
   faq: {
     title: "Perguntas Frequentes",
     items: [
-      { q: "O que acontece quando esqueço um pecado?", a: "Se você esquecer um pecado, a confissão ainda é válida. Apenas mencione-o na próxima confissão." },
-      { q: "Preciso repetir pecados que já confessei?", a: "Não é necessário, a não ser que você tenha cometido novamente ou tenha dúvidas sobre a validade." },
-      { q: "Posso levar uma anotação?", a: "Sim, é permitido levar anotações para ajudar na organização da confissão." },
-      { q: "O padre pode me fazer perguntas?", a: "Sim, o padre pode fazer perguntas para entender melhor sua situação e oferecer orientações." },
-      { q: "Como agir quando tenho muita vergonha?", a: "Lembre-se que o padre está lá para te ajudar. Use as frases prontas do guia para iniciar a conversa." },
-      { q: "Qual é a diferença entre confissão e direção espiritual?", a: "A confissão é um sacramento para o perdão dos pecados, enquanto a direção espiritual é um acompanhamento mais longo." },
+      { q: "O que vem no Plano Completo?", a: "Você recebe o Guia Visual e seis bônus: exame de bolso, perguntas para preparar a confissão, orações, guia para a primeira Missa, calendário sacramental e exame diário." },
+      { q: "Como recebo o guia?", a: "Após a confirmação da compra, você recebe por email as instruções para acessar os arquivos digitais." },
+      { q: "O material é físico ou digital?", a: "O guia e os bônus são digitais, em PDF, para consultar no celular, tablet ou computador." },
+      { q: "O guia ajuda a preparar a confissão?", a: "Sim. Ele organiza o exame de consciência e reúne frases para ajudar a acompanhar cada etapa." },
+      { q: "Como funciona a garantia?", a: "Você tem 30 dias para solicitar o reembolso, conforme as condições da oferta." }
     ]
   },
   footer: {
     ...laboralOffer.footer,
     showUpdate: false,
-    copyright: "© Todos os direitos reservados. Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Fazemos todos os esforços para indicar claramente as informações do produto. Não vendemos seu e-mail ou dados a terceiros. Dúvidas? Fale conosco de Segunda a Sexta, das 09h às 18h.",
+    copyright: "© Todos os direitos reservados. Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Fazemos todos os esforços para indicar claramente as informações do produto. Não vendemos seu email ou dados a terceiros. Dúvidas? Fale conosco de Segunda a Sexta, das 09h às 18h.",
     privacyUrl: "/politica-de-privacidade",
     termsUrl: "/termos-de-uso"
     }

@@ -23,69 +23,69 @@ export const OFFER: OfferConfig = {
   orientation: "portrait",
   hero: {
     pill: "MANUAL PRÁTICO DE BANCADA",
-    headline: "Manual Prático de Diagnóstico e Conserto para Amolar\nAlicate, Tesoura e Faca",
+    headline: "Diagnóstico e Conserto de\nAlicates, Tesouras e Facas",
     subline: "Identifique, corrija e amole do jeito certo",
-    image: image("Plano Completo.webp"), imageAlt: "Manual Prático de Diagnóstico e Conserto",
-    support: "Tenha sempre em mãos um material visual para entender o que está errado, onde olhar, o que corrigir, quando amolar e como conferir se o serviço realmente ficou bom.",
-    ctaText: "QUERO TER O MANUAL", marqueeText: "30 DIAGNÓSTICOS • ALICATES • TESOURAS • FACAS • ACESSO IMEDIATO • ",
+    image: image("plano-completo.webp"), imageAlt: "Manual Prático de Diagnóstico e Conserto",
+    support: "Consulte um material visual para entender o que observar, corrigir, amolar e testar antes de devolver a peça.",
+    ctaText: "QUERO O MANUAL", marqueeText: "30 DIAGNÓSTICOS • ALICATES • TESOURAS • FACAS • ACESSO IMEDIATO • ",
     bullets: ["Diagnostique antes de amolar", "Veja exatamente onde observar", "Corrija com mais segurança", "Teste antes de devolver ao cliente"]
   },
   socialProof: {
-    title: "Quem amola alicate, tesoura e faca já está usando o manual",
-    testimonials: Array.from({ length: 6 }, (_, index) => ({ src: image(`Depoimento (${index + 1}).webp`), alt: `Depoimento ${index + 1}` }))
+    title: "Quem amola peças já usa o manual",
+    testimonials: Array.from({ length: 6 }, (_, index) => ({ src: image(`depoimento-${String(index + 1).padStart(2, "0")}.webp`), alt: `Depoimento ${index + 1}` }))
   },
-  counter: { prefix: "", target: 30, label: "Diagnósticos de alicates, tesouras e facas\npara consultar e amolar" },
+  counter: { prefix: "", target: 30, label: "Diagnósticos de alicates, tesouras e facas" },
   kitCards: {
-    heading: "Veja como o manual ajuda você a consultar na bancada:",
-    images: Array.from({ length: 16 }, (_, index) => ({ src: image(`Imagem (${index + 1}).webp`), alt: `Página ${index + 1} do Manual Prático` }))
+    heading: "Consulte o manual na bancada",
+    images: Array.from({ length: 16 }, (_, index) => ({ src: image(`demonstrativo-${String(index + 1).padStart(2, "0")}.webp`), alt: `Página ${index + 1} do Manual Prático` }))
   },
   benefits: {
-    title: "O manual prático vai te trazer mais:", ctaText: "QUERO TER O MANUAL",
-    image: image("Beneficio.webp"), imageAlt: "Profissional usando o Manual Prático na bancada de amolação",
+    title: "O manual prático vai te trazer mais:", ctaText: "QUERO O MANUAL",
+    image: image("beneficio.webp"), imageAlt: "Profissional usando o Manual Prático na bancada de amolação",
     items: [
       { icon: "🔍", title: "Clareza", desc: "Você bate o olho na peça e já tem um caminho mais claro de onde começar a observar." },
       { icon: "🎯", title: "Direcionamento", desc: "Entende melhor se precisa corrigir alguma coisa antes ou se já é hora de amolar." },
-      { icon: "📋", title: "Organização", desc: "Os problemas estão separados por tipo de peça e organizados em uma sequência visual fácil de consultar." },
-      { icon: "✅", title: "Segurança", desc: "Você reduz tentativa e erro e trabalha com mais confiança antes de devolver a peça para o cliente." },
+      { icon: "📋", title: "Organização", desc: "Problemas organizados por peça para consulta rápida." },
+      { icon: "✅", title: "Segurança", desc: "Reduza tentativas antes de devolver a peça ao cliente." },
     ]
   },
   urgency: {
-    title: "Quantas vezes você amolou uma peça e mesmo assim ela continuou ruim?", highlight: "",
-    body: "Tenha um caminho visual para entender melhor o que observar antes de mexer na peça. Aproveite a condição especial disponível por tempo limitado.",
-    ctaText: "QUERO ACESSAR O MANUAL", trust: ["ACESSO IMEDIATO", "MATERIAL DIGITAL"]
+    title: "A peça ainda fica ruim após amolar?", highlight: "",
+    body: "Consulte o que observar antes de mexer na peça e aproveite a condição especial por tempo limitado.",
+    ctaText: "QUERO O MANUAL", trust: ["ACESSO IMEDIATO", "MATERIAL DIGITAL"]
   },
   deliverables: {
-    title: "TUDO O QUE VOCÊ VAI RECEBER", image: image("Plano Completo.webp"), imageAlt: "Manual Prático de Diagnóstico e Conserto",
-    bullets: ["Manual Prático de Diagnóstico e Conserto de Alicate, Tesoura e Faca", "30 problemas organizados entre alicates, tesouras e facas", "Diagnóstico visual para saber onde está a falha", "Passo a passo de correção para cada problema", "Orientação para saber quando corrigir e quando amolar", "Testes finais para conferir se a peça ficou boa", "Material visual e fácil de consultar na bancada"]
+    title: "TUDO O QUE VOCÊ VAI RECEBER", image: image("plano-completo.webp"), imageAlt: "Manual Prático de Diagnóstico e Conserto",
+    bullets: ["Manual para diagnosticar e consertar alicate, tesoura e faca", "30 problemas organizados entre alicates, tesouras e facas", "Diagnóstico visual para saber onde está a falha", "Passo a passo de correção para cada problema", "Orientação para saber quando corrigir e quando amolar", "Testes finais para conferir se a peça ficou boa", "Material visual e fácil de consultar na bancada"]
   },
   bonusSection: {
     titleLead: "6 BÔNUS", titleHighlight: "EXCLUSIVOS",
-    subtitle: "Além do Manual Prático, você também recebe 6 materiais extras para facilitar sua rotina, reduzir dúvida na bancada e ajudar antes, durante e depois da amolação.",
+    subtitle: "Além do manual, o Plano Completo inclui 6 materiais extras para apoiar a amolação.",
     cardLabel: "BÔNUS", timerText: "BÔNUS DISPONÍVEIS SOMENTE\nNO PLANO COMPLETO", freeLabel: "GRÁTIS"
   },
   bonuses: bonusDetails.map(([title, titleBreak, desc, price], index) => {
     const number = String(index + 1).padStart(2, "0")
-    return { front: image(`bonus-${number}-frente.webp`), back: image(`bonus-${number}-verso.webp`), title, titleBreak, desc, price }
+    return { front: image(`bonus-${String(number).padStart(2, "0")}-frente.webp`), back: image(`bonus-${String(number).padStart(2, "0")}-verso.webp`), title, titleBreak, desc, price }
   }),
   pricing: {
     titleLead: "ESCOLHA SEU PLANO E", titleHighlight: "ACESSE O MANUAL",
     note: "Compra segura pela Hotmart.",
     plans: [
-      { id: "basic", title: "Plano Básico", image: image("Plano Básico.webp"), imageAlt: "Plano Básico do Manual Prático", featured: false, oldPrice: "de R$ 39,90", price: "R$ 17,90", installments: "ou 4x de R$ 4,47 no cartão", items: ["Manual Prático de Diagnóstico e Conserto", "30 diagnósticos organizados", "Material visual para consulta na bancada", "Acesso digital"], mutedItems: ["Não inclui os 6 bônus do Plano Completo"], ctaText: "QUERO ESTA OPÇÃO", ctaHref: "https://pay.hotmart.com/W107532528W?checkoutMode=10" },
-      { id: "premium", title: "Plano Completo", image: image("Plano Completo.webp"), imageAlt: "Plano Completo do Manual Prático", featured: true, oldPrice: "de R$ 147,00", price: "R$ 27,90", installments: "ou 4x de R$ 6,97 no cartão", items: ["Manual Prático de Diagnóstico e Conserto", ...bonusDetails.map(([title], index) => `🎁 Bônus ${index + 1}: ${title}`), "Material digital para consultar na bancada"], ctaText: "QUERO O PLANO COMPLETO", ctaHref: "https://pay.hotmart.com/I107532617C?checkoutMode=10" },
+      { id: "basic", title: "Plano Básico", image: image("plano-basico.webp"), imageAlt: "Plano Básico do Manual Prático", featured: false, oldPrice: "de R$ 39,90", price: "R$ 17,90", installments: "ou 4x de R$ 4,47 no cartão", items: ["Manual Prático de Diagnóstico e Conserto", "30 diagnósticos de alicates, tesouras e facas", "Material visual para consulta na bancada", "Orientação para corrigir e amolar", "Testes para conferir o resultado", "Acesso digital"], mutedItems: ["Não inclui os 6 bônus do Plano Completo"], ctaText: "QUERO ESTA OPÇÃO", ctaHref: "https://pay.hotmart.com/W107532528W?checkoutMode=10" },
+      { id: "premium", title: "Plano Completo", image: image("plano-completo.webp"), imageAlt: "Plano Completo do Manual Prático", featured: true, oldPrice: "de R$ 147,00", price: "R$ 27,90", installments: "ou 4x de R$ 6,97 no cartão", items: ["Manual Prático de Diagnóstico e Conserto", ...bonusDetails.map(([title], index) => `🎁 Bônus ${index + 1}: ${title}`), "Material digital para consultar na bancada"], ctaText: "QUERO COMPLETO", ctaHref: "https://pay.hotmart.com/I107532617C?checkoutMode=10" },
     ]
   },
   guarantee: {
-    marqueeText: "GARANTIA 30 DIAS • RISCO ZERO • COMPRA SEGURA • ", icon: image("garantia-30-dias.webp"), iconAlt: "Garantia de 30 dias", title: "Compra segura e garantida!", body: "Você terá 30 dias de garantia para conhecer o material. Se ele não fizer sentido para sua rotina, poderá solicitar o reembolso dentro desse período."
+    marqueeText: "GARANTIA 30 DIAS • RISCO ZERO • COMPRA SEGURA • ", icon: image("garantia.webp"), iconAlt: "Garantia de 30 dias", title: "Compra segura e garantida!", body: "Você terá 30 dias de garantia para conhecer o material. Se ele não fizer sentido para sua rotina, poderá solicitar o reembolso dentro desse período."
   },
   access: { title: "Como você vai receber seu Manual Prático", steps: [
     { title: "Conclua sua compra", desc: "Escolha seu plano e finalize o pagamento." },
-    { title: "Receba no e-mail", desc: "As instruções de acesso chegam no e-mail cadastrado na compra." },
+    { title: "Receba no email", desc: "As instruções de acesso chegam no email cadastrado na compra." },
     { title: "Abra o material", desc: "Acesse os arquivos pelo celular, tablet ou computador." },
     { title: "Consulte na bancada", desc: "Use o manual sempre que precisar diagnosticar, corrigir, amolar ou testar uma peça." },
   ] },
   faq: { title: "Perguntas Frequentes", items: [
-    { q: "Como vou receber o Manual Prático?", a: "Após a confirmação da compra, você recebe as instruções de acesso no e-mail cadastrado." },
+    { q: "Como vou receber o Manual Prático?", a: "Após a confirmação da compra, você recebe as instruções de acesso no email cadastrado." },
     { q: "O material é físico ou digital?", a: "O material é 100% digital. Você pode consultar pelo celular, tablet ou computador e também imprimir para deixar na bancada." },
     { q: "O manual serve para quais peças?", a: "O conteúdo reúne diagnósticos para alicates, tesouras e facas, organizados para facilitar a consulta." },
     { q: "O que vem no Plano Completo?", a: "O Manual Prático mais 6 bônus: Mapa de Defeitos, Checklist de Inspeção, Guia da Bancada, 30 Sintomas, Guia de Testes e Rota Rápida da Bancada." },

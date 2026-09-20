@@ -17,7 +17,7 @@ function renderText(text: string) {
   parts.forEach((part, i) => {
     result.push(<span key={`t${i}`}>{part}</span>)
     result.push(
-      <span key={`s${i}`} style={{ opacity: 0.65, margin: "0 36px" }}>✦</span>
+      <span key={`s${i}`} className="scroll-marquee-separator" aria-hidden="true">✦</span>
     )
   })
   return result
@@ -50,7 +50,7 @@ export function ScrollMarquee({
   )
 
   const direction = reverse ? -1 : 1
-  const isVisibleRef = useRef(true)
+  const isVisibleRef = useRef(false)
 
   const measure = useCallback(() => {
     if (!blockRef.current) return
@@ -76,19 +76,8 @@ export function ScrollMarquee({
   }, [measure])
 
   useEffect(() => {
-    if (!barRef.current) return
-    const parent = barRef.current.closest('.scroll-marquee')
-    if (!parent) return
-    const obs = new IntersectionObserver(
-      ([entry]) => { isVisibleRef.current = entry.isIntersecting },
-      { threshold: 0.1 }
-    )
-    obs.observe(parent)
-    return () => obs.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (reducedMotion || !ready) return
+    const element = barRef.current?.closest(".scroll-marquee")
+    if (reducedMotion || !ready || !element) return
     lastScrollY.current = window.scrollY
     const BASE = 0.5 * direction
 
@@ -103,10 +92,8 @@ export function ScrollMarquee({
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t
 
     const loop = () => {
-      if (document.hidden || !isVisibleRef.current) {
-        rafRef.current = requestAnimationFrame(loop)
-        return
-      }
+      rafRef.current = 0
+      if (document.hidden || !isVisibleRef.current) return
       const effectiveBase = hovered.current ? 0 : BASE
       const target = effectiveBase + scrollVel.current
       displayVel.current = lerp(displayVel.current, target, 0.08)
@@ -122,9 +109,28 @@ export function ScrollMarquee({
       rafRef.current = requestAnimationFrame(loop)
     }
 
-    rafRef.current = requestAnimationFrame(loop)
+    const start = () => {
+      if (isVisibleRef.current && !document.hidden && rafRef.current === 0) {
+        rafRef.current = requestAnimationFrame(loop)
+      }
+    }
+    const stop = () => {
+      if (rafRef.current !== 0) cancelAnimationFrame(rafRef.current)
+      rafRef.current = 0
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      isVisibleRef.current = entry.isIntersecting
+      if (entry.isIntersecting) start()
+      else stop()
+    }, { threshold: 0.1 })
+    const onVisibilityChange = () => document.hidden ? stop() : start()
+
+    observer.observe(element)
+    document.addEventListener("visibilitychange", onVisibilityChange)
     return () => {
-      cancelAnimationFrame(rafRef.current)
+      observer.disconnect()
+      document.removeEventListener("visibilitychange", onVisibilityChange)
+      stop()
       window.removeEventListener("scroll", onScroll)
     }
   }, [ready, reducedMotion, direction])

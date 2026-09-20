@@ -1,0 +1,7 @@
+interface:
+  display_name: "Nova oferta"
+  short_description: "Importa materiais e monta uma oferta em draft"
+  default_prompt: "Use $nova-oferta para importar uma pasta de materiais e criar uma nova oferta a partir do slug informado."
+
+policy:
+  allow_implicit_invocation: true
