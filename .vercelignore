@@ -12,3 +12,6 @@ node_modules
 # Local-only material and test fixtures.
 .env*
 tests
+
+# Local drafts, exports and QA captures of this machine.
+.local
