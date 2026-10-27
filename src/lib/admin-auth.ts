@@ -1,6 +1,7 @@
 import "server-only"
 import { createHmac, timingSafeEqual } from "node:crypto"
 import { cookies } from "next/headers"
+import { hubPagesUrl } from "@/lib/hub-pages"
 
 const COOKIE_NAME = process.env.NODE_ENV === "production" ? "__Host-ofertas-admin" : "ofertas-admin"
 const SESSION_MAX_AGE = 60 * 60 * 8
@@ -31,6 +32,8 @@ export function createAdminSession(): string {
 }
 
 export async function isAdminAuthenticated(): Promise<boolean> {
+  // The hub owns the pages once HUB_PAGES_URL is set: the old panel, its APIs and previews stop writing to Blob.
+  if (hubPagesUrl()) return false
   const value = (await cookies()).get(COOKIE_NAME)?.value
   if (!value) return false
   const parts = value.split(".")

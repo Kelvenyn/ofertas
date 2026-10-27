@@ -19,6 +19,7 @@ import {
   type OfferOverride,
 } from "@/lib/operational-catalog-domain"
 import type { OfferConfig } from "@/types/offer"
+import { getCachedHubSnapshot, hubPagesUrl, snapshotToOverrides } from "@/lib/hub-pages"
 
 const BLOB_PATH = "admin/ofertas-operacionais.json"
 export const OPERATIONAL_CATALOG_CACHE_TAG = "operational-offers"
@@ -43,11 +44,22 @@ async function readOverrides(): Promise<{ overrides: Record<string, OfferOverrid
   }
 }
 
-const getCachedOverrides = unstable_cache(
+const getCachedBlobOverrides = unstable_cache(
   async () => (await readOverrides()).overrides,
   ["operational-offers-v4"],
   { revalidate: 3600, tags: [OPERATIONAL_CATALOG_CACHE_TAG] },
 )
+
+async function getCachedOverrides(): Promise<Record<string, OfferOverride>> {
+  if (!hubPagesUrl()) return getCachedBlobOverrides()
+  try {
+    return snapshotToOverrides(await getCachedHubSnapshot())
+  } catch (error) {
+    // Hub and its Blob copy are both unreachable: every legacy page falls back to its offer.ts.
+    console.error("Páginas do hub indisponíveis; usando offer.ts.", error)
+    return {}
+  }
+}
 
 export async function getOperationalCatalog(): Promise<OfferCatalog> {
   return mergeOperationalCatalog(await getCachedOverrides())

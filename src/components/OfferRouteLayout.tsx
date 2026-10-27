@@ -26,7 +26,12 @@ export async function createOfferMetadata(slug: string, offer: OfferConfig): Pro
   }
 }
 
-export async function OfferRouteLayout({ slug, offer, children, previewMode = false }: { slug: string; offer: OfferConfig; children: React.ReactNode; previewMode?: boolean }) {
+/** `hubPreviewOrigin` renders the given offer as is (hub editor preview) and accepts live updates from that origin. */
+export async function OfferRouteLayout({ slug, offer, children, previewMode = false, hubPreviewOrigin }: { slug: string; offer: OfferConfig; children: React.ReactNode; previewMode?: boolean; hubPreviewOrigin?: string }) {
+  if (hubPreviewOrigin) {
+    const style = { ...paletteCssVariables(offer.palette), ...globalSiteSettingsStyle(await getGlobalSiteSettings()) }
+    return <div id="offer-root" style={style}><OfferProvider offer={offer} previewMode previewOrigin={hubPreviewOrigin}>{children}</OfferProvider></div>
+  }
   const [catalog, operationalOffer, globalSettings] = await Promise.all([
     getOperationalCatalog(),
     getOperationalOffer(slug),

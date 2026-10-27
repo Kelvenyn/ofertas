@@ -1,6 +1,7 @@
 import "server-only"
 import { get, put } from "@vercel/blob"
 import { unstable_cache } from "next/cache"
+import { getCachedHubSnapshot, hubPagesUrl, snapshotSettings } from "@/lib/hub-pages"
 
 export type GlobalSize = "P" | "M" | "G"
 
@@ -51,7 +52,8 @@ const getCachedSettings = unstable_cache(
 )
 
 export async function getGlobalSiteSettings(): Promise<GlobalSiteSettings> {
-  return getCachedSettings()
+  if (!hubPagesUrl()) return getCachedSettings()
+  try { return snapshotSettings(await getCachedHubSnapshot()) } catch { return DEFAULT_GLOBAL_SITE_SETTINGS }
 }
 
 export function globalSiteSettingsStyle(settings: GlobalSiteSettings): Record<string, string> {

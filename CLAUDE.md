@@ -28,7 +28,7 @@ Aplicação Next.js com 15 landing pages em português, componentes compartilhad
 
 ## Fonte de conteúdo e catálogo
 
-`OfferConfig` em `src/types/offer.ts` é o contrato das seções, copy, cores, orientação e links. Cada oferta guarda sua configuração inicial em `offer.ts`. O catálogo versionado (`src/config/offers/catalog.json`) contém label, favicon e Cashflow opcional. O painel persiste as alterações operacionais completas no Blob privado da Vercel.
+`OfferConfig` em `src/types/offer.ts` é o contrato das seções, copy, cores, orientação e links. Cada oferta guarda sua configuração inicial em `offer.ts`. O catálogo versionado (`src/config/offers/catalog.json`) contém label, favicon e Cashflow opcional. O painel persiste as alterações operacionais completas no Blob privado da Vercel. Com `HUB_PAGES_URL` configurado, a fonte passa a ser o hub (`prado-company`), e o painel vira a aba Páginas de lá: veja `docs/PAGINAS-NO-HUB.md`.
 
 As páginas usam `OfferPage` e componentes de seção compartilhados; conteúdo específico não deve ser codificado nos componentes. A composição de `sections` pode habilitar ou desabilitar blocos. O primeiro CTA permanece totalmente visível na primeira dobra. Trilhos demonstrativos são full-bleed, usam imagens sem corte, até 92vw no mobile e 360–420px no desktop.
 

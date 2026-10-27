@@ -11,17 +11,20 @@ export function OfferProvider({
   offer,
   children,
   previewMode = false,
+  previewOrigin,
 }: {
   offer: OfferConfig
   children: React.ReactNode
   previewMode?: boolean
+  /** Origin of the hub editor allowed to send live previews (defaults to this site). */
+  previewOrigin?: string
 }) {
   const [currentOffer, setCurrentOffer] = useState(offer)
 
   useEffect(() => {
     if (!previewMode) return
     const receivePreview = (event: MessageEvent) => {
-      if (event.origin !== window.location.origin || event.data?.type !== "ofertas:preview") return
+      if (event.origin !== (previewOrigin ?? window.location.origin) || event.data?.type !== "ofertas:preview") return
       const checked = validateOfferConfig(event.data.offer)
       if (checked.offer) setCurrentOffer(checked.offer)
       if (typeof event.data.favicon === "string") {
@@ -39,11 +42,11 @@ export function OfferProvider({
         } catch { /* Ignora URLs de favicon inválidas no preview. */ }
       }
     }
-    const announceReady = () => window.parent.postMessage({ type: "ofertas:preview-ready" }, window.location.origin)
+    const announceReady = () => window.parent.postMessage({ type: "ofertas:preview-ready" }, previewOrigin ?? window.location.origin)
     window.addEventListener("message", receivePreview)
     announceReady()
     return () => window.removeEventListener("message", receivePreview)
-  }, [previewMode])
+  }, [previewMode, previewOrigin])
 
   useEffect(() => {
     if (!previewMode) return

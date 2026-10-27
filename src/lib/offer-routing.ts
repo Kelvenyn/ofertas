@@ -17,7 +17,7 @@ export class OfferRoutingError extends Error {
 }
 
 const RESERVED_SLUGS = new Set([
-  "admin", "api", "error", "images", "next", "painel", "paleta", "preview",
+  "admin", "api", "error", "images", "next", "painel", "paleta", "preview", "previa",
   "politica-de-privacidade", "termos-de-uso", "_next",
 ])
 const NON_COPY_KEYS = new Set(["palette", "paletteCandidates", "src", "front", "back", "image", "icon", "ctaHref", "privacyUrl", "termsUrl", "id"])
