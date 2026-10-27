@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic"
 import { OfferSection } from "@/components/OfferSection"
+import { OrderedSections } from "@/components/OrderedSections"
 import { CountdownBar } from "@/components/CountdownBar"
 import { VendaImediata } from "@/components/sections/VendaImediata"
 import { SocialProof } from "@/components/sections/SocialProof"
@@ -26,18 +27,11 @@ export default function OfferPage() {
       <OfferSection id="countdown"><CountdownBar /></OfferSection>
       <OfferSection id="hero"><header><VendaImediata /></header></OfferSection>
       <main id="conteudo">
-        <OfferSection id="socialProof"><SocialProof /></OfferSection>
-        <OfferSection id="counter"><CounterPainPoints /></OfferSection>
-        <OfferSection id="kit"><KitCards /></OfferSection>
-        <OfferSection id="kitReversed"><KitCardsReversed /></OfferSection>
-        <OfferSection id="benefits"><Benefits /></OfferSection>
-        <OfferSection id="urgency"><Urgencia /></OfferSection>
-        <OfferSection id="deliverables"><TudoQueVoceRecebe /></OfferSection>
-        <OfferSection id="bonuses"><Bonuses /></OfferSection>
-        <OfferSection id="pricing"><OfferPricing /></OfferSection>
-        <OfferSection id="guarantee"><Guarantee /></OfferSection>
-        <OfferSection id="access"><ComoEAcesso /></OfferSection>
-        <OfferSection id="faq"><FAQ /></OfferSection>
+        <OrderedSections sections={{
+          socialProof: <SocialProof />, counter: <CounterPainPoints />, kit: <KitCards />, kitReversed: <KitCardsReversed />,
+          benefits: <Benefits />, urgency: <Urgencia />, deliverables: <TudoQueVoceRecebe />, bonuses: <Bonuses />,
+          pricing: <OfferPricing />, guarantee: <Guarantee />, access: <ComoEAcesso />, faq: <FAQ />,
+        }} />
       </main>
       <OfferSection id="footer"><Footer /></OfferSection>
     </>

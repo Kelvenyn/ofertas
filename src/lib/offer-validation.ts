@@ -1,5 +1,5 @@
 import { validatePaletteContrast } from "@/lib/color"
-import type { OfferConfig, OfferPalette, SectionId } from "@/types/offer"
+import { MOVABLE_SECTION_IDS, type OfferConfig, type OfferPalette, type SectionId } from "@/types/offer"
 
 const PALETTE_KEYS: (keyof OfferPalette)[] = [
   "brand", "brandDeep", "brandInk", "brandDark", "brandLight", "brandSubtle",
@@ -158,6 +158,12 @@ export function validateOfferConfig(value: unknown): { offer?: OfferConfig; erro
     if (!isRecord(value.sections)) errors.push("Seções inválidas.")
     else for (const [id, enabled] of Object.entries(value.sections)) {
       if (!SECTION_IDS.includes(id as SectionId) || typeof enabled !== "boolean") errors.push(`Configuração de seção inválida: ${id}.`)
+    }
+  }
+  if (value.sectionOrder !== undefined) {
+    const order = value.sectionOrder
+    if (!isList(order) || order.length > MOVABLE_SECTION_IDS.length || order.some((id, index) => !(MOVABLE_SECTION_IDS as readonly unknown[]).includes(id) || order.indexOf(id) !== index)) {
+      errors.push("Ordem das seções inválida.")
     }
   }
   if (!isRecord(value.hero) || !isRecord(value.socialProof) || !isRecord(value.counter) || !isRecord(value.kitCards) ||

@@ -114,6 +114,7 @@ export interface OfferConfig {
   paletteCandidates?: OfferPalette[]        // 10 candidatas geradas e validadas
   orientation: "portrait" | "landscape"     // governa kit + bônus (Fase 5)
   sections?: Partial<Record<SectionId, boolean>>  // ligar/desligar (Fase 6)
+  sectionOrder?: MovableSectionId[]                 // ordem das seções do meio; as ausentes seguem a ordem padrão
   hero: OfferHero
   socialProof: {
     title: string
@@ -178,3 +179,15 @@ export interface OfferConfig {
 export type SectionId =
   | "countdown" | "hero" | "socialProof" | "counter" | "kit" | "kitReversed" | "benefits" | "urgency"
   | "deliverables" | "bonuses" | "pricing" | "guarantee" | "access" | "faq" | "footer"
+
+/** Sections between the hero and the footer, which the editor can reorder. */
+export const MOVABLE_SECTION_IDS = [
+  "socialProof", "counter", "kit", "kitReversed", "benefits", "urgency", "deliverables", "bonuses", "pricing", "guarantee", "access", "faq",
+] as const satisfies readonly SectionId[]
+export type MovableSectionId = (typeof MOVABLE_SECTION_IDS)[number]
+
+/** The middle sections in the page's order: the ones listed first, then the rest in the default order. */
+export function orderedSections(order: readonly string[] | undefined): MovableSectionId[] {
+  const listed = (order ?? []).filter((id, index, all): id is MovableSectionId => (MOVABLE_SECTION_IDS as readonly string[]).includes(id) && all.indexOf(id) === index)
+  return [...listed, ...MOVABLE_SECTION_IDS.filter(id => !listed.includes(id))]
+}

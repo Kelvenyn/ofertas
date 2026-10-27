@@ -9,6 +9,8 @@ O contrato completo está em `prado-company/docs/PAGINAS.md`. Resumo do lado do 
   (`paginas/hub-snapshot-<VERCEL_ENV>.json`); por fim, o `offer.ts` de cada página legada.
 - `/previa/<id>?t=<token>` é a prévia do editor do hub: token HMAC assinado pelo hub, mensagens aceitas só da origem
   do hub.
+- `sectionOrder` (opcional) define a ordem das seções do meio (`MOVABLE_SECTION_IDS`); contador, hero e rodapé ficam
+  fixos. Sem ele vale a ordem padrão.
 - `/painel` redireciona para a aba Páginas do hub e o painel antigo deixa de gravar no Blob.
 - **Sem `HUB_PAGES_URL`**, tudo funciona como antes (Blob + `offer.ts` + painel). Remover a variável é o caminho de
   volta.
