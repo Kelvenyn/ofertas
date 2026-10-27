@@ -2,9 +2,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { redirect } from "next/navigation"
 import { getOperationalCatalog, getOperationalOffer } from "@/lib/operational-catalog"
+import { isValidCheckoutUrl } from "@/lib/offer-routing"
 import { isAdminAuthenticated } from "@/lib/admin-auth"
 import { getGlobalSiteSettings } from "@/lib/global-site-settings"
 import { PanelLogoutButton } from "./PanelLogoutButton"
+import { NewOfferForm } from "./NewOfferForm"
 import { GlobalVisualSettings } from "./GlobalVisualSettings"
 import styles from "./panel.module.css"
 
@@ -25,14 +27,14 @@ export default async function PanelHomePage() {
   }).length
   const checkoutCount = offers.filter(({ offer }) => Boolean(offer &&
     offer.pricing.plans.length >= 1 && offer.pricing.plans.length <= 2 &&
-    offer.pricing.plans.every((plan) => /^https:\/\/(pay\.hotmart\.com|pay\.cakto\.com\.br)\//.test(plan.ctaHref ?? "")))).length
+    offer.pricing.plans.every((plan) => isValidCheckoutUrl(plan.ctaHref)))).length
   const cashflowCount = offers.filter(({ entry }) => Boolean(entry.cashflow?.workspaceId && entry.cashflow.offerId)).length
 
   return (
     <main className={styles.page}>
       <header className={styles.header}>
         <div><p className={styles.eyebrow}>UNIVERSO EDUK</p><h1>Painel de ofertas</h1><p>Edite conteúdo, imagens, cores e seções das suas landing pages.</p></div>
-        <PanelLogoutButton />
+        <div className={styles.headerControls}><NewOfferForm /><PanelLogoutButton /></div>
       </header>
       <section className={styles.dashboard} aria-label="Resumo das ofertas">
         <article className={styles.metricCard}><span>Ofertas no total</span><strong>{offers.length}</strong><small>No catálogo</small></article>

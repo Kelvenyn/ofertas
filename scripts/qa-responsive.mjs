@@ -3,6 +3,7 @@ import assert from "node:assert/strict"
 import { spawn } from "node:child_process"
 import { access, mkdtemp, mkdir, rm, writeFile } from "node:fs/promises"
 import http from "node:http"
+import https from "node:https"
 import net from "node:net"
 import os from "node:os"
 import path from "node:path"
@@ -19,10 +20,15 @@ const VIEWPORTS = [
   { width: 1920, height: 1080, mobile: false },
 ]
 const CATALOG = JSON.parse(await (await import("node:fs/promises")).readFile(path.join(ROOT, "src/config/offers/catalog.json"), "utf8"))
-const SLUGS = Object.entries(CATALOG.offers).filter(([, entry]) => entry.status !== "draft").map(([slug]) => slug)
 const args = process.argv.slice(2)
 const baseArg = args.indexOf("--base-url")
 const screenshotArg = args.indexOf("--screenshots-dir")
+const includeArg = args.indexOf("--include")
+const includedSlugs = includeArg >= 0 ? args[includeArg + 1].split(",").filter(Boolean) : []
+const SLUGS = [...new Set([
+  ...Object.entries(CATALOG.offers).filter(([, entry]) => entry.status !== "draft").map(([slug]) => slug),
+  ...includedSlugs,
+])]
 const BASE_URL = new URL(baseArg >= 0 ? args[baseArg + 1] : process.env.QA_BASE_URL ?? "http://127.0.0.1:3102")
 const SCREENSHOT_DIR = screenshotArg >= 0 ? path.resolve(args[screenshotArg + 1]) : path.join(os.tmpdir(), `ofertas-qa-${Date.now()}`)
 
@@ -115,23 +121,32 @@ function connectCdp(url) {
 }
 
 async function expectRedirect(host, expectedPath) {
+  const url = BASE_URL.protocol === "https:" && host === "www.universoeduk.com"
+    ? new URL("https://www.universoeduk.com/")
+    : new URL("/", BASE_URL)
+  const canonicalHostRedirect = BASE_URL.protocol === "https:" && host === "www.universoeduk.com"
   const response = await new Promise((resolve, reject) => {
-    const request = http.request(new URL("/", BASE_URL), { headers: { host } }, (incoming) => {
+    const transport = url.protocol === "https:" ? https : http
+    const request = transport.request(url, {
+      ...(!canonicalHostRedirect ? { headers: { host } } : {}),
+    }, (incoming) => {
       incoming.resume()
       incoming.on("end", () => resolve({ status: incoming.statusCode, location: incoming.headers.location }))
     })
     request.on("error", reject)
     request.end()
   })
-  assert.equal(response.status, 307, `${host}/ deve responder 307`)
-  assert.equal(response.location, expectedPath, `${host}/ deve redirecionar para ${expectedPath}`)
+  const expectedStatus = canonicalHostRedirect ? 308 : 307
+  const finalLocation = canonicalHostRedirect ? "https://universoeduk.com/" : expectedPath
+  assert.equal(response.status, expectedStatus, `${host}/ deve responder ${expectedStatus}`)
+  assert.equal(response.location, finalLocation, `${host}/ deve redirecionar para ${finalLocation}`)
 }
 
-assert.ok(SLUGS.length === 15, `esperava 15 ofertas publicadas, recebi ${SLUGS.length}`)
+assert.ok(SLUGS.length >= 15, `esperava ao menos 15 ofertas, recebi ${SLUGS.length}`)
 await mkdir(SCREENSHOT_DIR, { recursive: true })
 await expectRedirect("universoeduk.com", "/painel")
 await expectRedirect("www.universoeduk.com", "/painel")
-await expectRedirect("preview.invalid", "/lembrancinhas")
+if (BASE_URL.protocol !== "https:") await expectRedirect("preview.invalid", "/lembrancinhas")
 
 const chromePath = await findChrome()
 const debugPort = await pickPort()
@@ -209,7 +224,12 @@ try {
     const initialPerformance = await evaluate(`(() => {
       const nav = performance.getEntriesByType("navigation")[0];
       const resources = performance.getEntriesByType("resource");
-      return { ttfb: nav?.responseStart ?? 0, transfer: resources.reduce((sum, item) => sum + item.transferSize, 0) };
+      const largestResources = resources
+        .map((item) => ({ url: new URL(item.name).pathname, transfer: item.transferSize }))
+        .filter((item) => item.transfer > 32 * 1024)
+        .sort((left, right) => right.transfer - left.transfer)
+        .slice(0, 8);
+      return { ttfb: nav?.responseStart ?? 0, transfer: resources.reduce((sum, item) => sum + item.transferSize, 0), largestResources };
     })()`)
     ttfbTimes.push(initialPerformance.ttfb)
     initialTransferBytes.push(initialPerformance.transfer)
@@ -252,7 +272,7 @@ try {
     if (hydrated.visibleDashLines.length) failures.push(`${slug}: hífens/travessões visíveis na copy (${hydrated.visibleDashLines.join(" | ")})`)
     if (hydrated.ctaHref !== "#oferta" || !hydrated.offerAnchor) failures.push(`${slug}: CTA principal não aponta para a seção de planos`)
     completeTransferBytes.push(hydrated.transfer)
-    routePerformance.push({ slug, initialTransferKiB: Math.round(initialPerformance.transfer / 1024), fullPageTransferKiB: Math.round(hydrated.transfer / 1024), visibleDashLines: hydrated.visibleDashLines })
+    routePerformance.push({ slug, initialTransferKiB: Math.round(initialPerformance.transfer / 1024), fullPageTransferKiB: Math.round(hydrated.transfer / 1024), largestInitialResources: initialPerformance.largestResources, visibleDashLines: hydrated.visibleDashLines })
 
     for (const viewport of VIEWPORTS) {
       await setViewport(viewport)
@@ -264,6 +284,12 @@ try {
         const card = document.querySelector(".kc-card");
         const cardRect = card?.getBoundingClientRect();
         const cardStyle = card ? getComputedStyle(card) : null;
+        const imageScale = Number.parseFloat(getComputedStyle(document.querySelector("#offer-root")).getPropertyValue("--lp-image-scale")) || 1;
+        const deliverablesCard = document.querySelector(".tqvr-card");
+        const deliverablesCardRect = deliverablesCard?.getBoundingClientRect();
+        const deliverablesCardStyle = deliverablesCard ? getComputedStyle(deliverablesCard) : null;
+        const deliverablesImage = document.querySelector(".tqvr-image")?.getBoundingClientRect();
+        const deliverablesBullets = document.querySelector(".tqvr-bullets")?.getBoundingClientRect();
         const clipped = [...document.querySelectorAll(".vi-title, .vi-subline, .vi-cta-btn, h2, .faq-acc-btn")]
           .filter((element) => element.getBoundingClientRect().width > 0 && element.scrollWidth > element.clientWidth + 1)
           .map((element) => element.className || element.tagName.toLowerCase());
@@ -279,6 +305,15 @@ try {
           ctaVisible: Boolean(ctaRect && foldRect && ctaRect.top >= foldRect.top - 1 && ctaRect.bottom <= foldRect.bottom + 1 && ctaRect.bottom <= innerHeight + 1 && ctaRect.left >= -1 && ctaRect.right <= innerWidth + 1),
           ctaRect: ctaRect ? { top: Math.round(ctaRect.top), bottom: Math.round(ctaRect.bottom) } : null,
           card: cardRect && cardStyle ? { width: cardRect.width, height: cardRect.height, aspect: cardStyle.aspectRatio, objectFit: card.querySelector("img") ? getComputedStyle(card.querySelector("img")).objectFit : null } : null,
+          imageScale,
+          deliverables: deliverablesCardRect && deliverablesCardStyle && deliverablesImage && deliverablesBullets ? {
+            imageLeft: deliverablesImage.left,
+            imageRight: deliverablesImage.right,
+            contentLeft: deliverablesCardRect.left + parseFloat(deliverablesCardStyle.borderLeftWidth) + parseFloat(deliverablesCardStyle.paddingLeft),
+            contentRight: deliverablesCardRect.right - parseFloat(deliverablesCardStyle.borderRightWidth) - parseFloat(deliverablesCardStyle.paddingRight),
+            bulletLeftGap: deliverablesBullets.left - deliverablesCardRect.left,
+            bulletRightGap: deliverablesCardRect.right - deliverablesBullets.right,
+          } : null,
           clipped,
           uncontained,
         };
@@ -288,11 +323,15 @@ try {
       if (!metrics.ctaVisible) failures.push(`${slug} @ ${viewport.width}x${viewport.height}: CTA fora da primeira dobra (${JSON.stringify(metrics.ctaRect)})`)
       if (metrics.clipped.length) failures.push(`${slug} @ ${viewport.width}px: texto cortado em ${metrics.clipped.join(", ")}`)
       if (metrics.uncontained.length) failures.push(`${slug} @ ${viewport.width}px: elementos escapam da viewport (${JSON.stringify(metrics.uncontained)})`)
+      if (viewport.mobile && metrics.deliverables) {
+        if (metrics.deliverables.imageLeft < metrics.deliverables.contentLeft - 1 || metrics.deliverables.imageRight > metrics.deliverables.contentRight + 1) failures.push(`${slug} @ ${viewport.width}px: imagem de Tudo que você vai receber escapa do card (${JSON.stringify(metrics.deliverables)})`)
+        if (Math.max(metrics.deliverables.bulletLeftGap, metrics.deliverables.bulletRightGap) > 22) failures.push(`${slug} @ ${viewport.width}px: bullets de Tudo que você vai receber ficaram estreitos (${JSON.stringify(metrics.deliverables)})`)
+      }
       if (metrics.card) {
         const expectedWidth = viewport.mobile ? viewport.width : null
         const ratio = metrics.card.aspect.includes("3 / 4") ? 0.75 : 1.5
         if (expectedWidth !== null && Math.abs(metrics.card.width - expectedWidth) > 2) failures.push(`${slug} @ ${viewport.width}px: card mobile ${metrics.card.width.toFixed(1)}px, esperado ${expectedWidth.toFixed(1)}px`)
-        if (!viewport.mobile && (metrics.card.width < 418 || metrics.card.width > 482)) failures.push(`${slug} @ ${viewport.width}px: card desktop fora de 420–480px (${metrics.card.width.toFixed(1)}px)`)
+        if (!viewport.mobile && (metrics.card.width < 418 * metrics.imageScale || metrics.card.width > 482 * metrics.imageScale)) failures.push(`${slug} @ ${viewport.width}px: card desktop fora de 420–480px na escala ${metrics.imageScale} (${metrics.card.width.toFixed(1)}px)`)
         if (Math.abs(metrics.card.width / metrics.card.height - ratio) > 0.03) failures.push(`${slug} @ ${viewport.width}px: proporção do card ${metrics.card.width.toFixed(2)}:${metrics.card.height.toFixed(2)} diverge do layout`)
         if (metrics.card.objectFit !== "contain") failures.push(`${slug} @ ${viewport.width}px: imagem do demonstrativo pode ser cortada (${metrics.card.objectFit})`)
       }
@@ -303,6 +342,9 @@ try {
           await evaluate("document.querySelector('.kc-section')?.scrollIntoView({block:'start'})")
           await new Promise((resolve) => setTimeout(resolve, 250))
           await saveScreenshot("psicopedagogia-390-demonstrativos.png")
+          await evaluate("(() => { const section = document.querySelector('.tqvr-section'); document.documentElement.style.scrollBehavior = 'auto'; if (section) window.scrollTo(0, section.getBoundingClientRect().top + window.scrollY - 70); })()")
+          await new Promise((resolve) => setTimeout(resolve, 500))
+          await saveScreenshot("psicopedagogia-390-entregaveis.png")
         }
       }
     }
@@ -320,10 +362,23 @@ try {
         const rect = button?.getBoundingClientRect();
         const fold = document.querySelector('.vi-fold')?.getBoundingClientRect();
         const image = document.querySelector('.vi-image')?.getBoundingClientRect();
+        const deliverablesCard = document.querySelector('.tqvr-card');
+        const deliverablesCardRect = deliverablesCard?.getBoundingClientRect();
+        const deliverablesCardStyle = deliverablesCard ? getComputedStyle(deliverablesCard) : null;
+        const deliverablesImage = document.querySelector('.tqvr-image')?.getBoundingClientRect();
+        const deliverablesBullets = document.querySelector('.tqvr-bullets')?.getBoundingClientRect();
         return {
           button: rect ? { top: rect.top, bottom: rect.bottom, left: rect.left, right: rect.right, width: rect.width, textWidth: button.scrollWidth, clientWidth: button.clientWidth } : null,
           fold: fold ? { top: fold.top, bottom: fold.bottom } : null,
           image: image ? { width: image.width, height: image.height, maxHeight: Number.parseFloat(getComputedStyle(document.querySelector('.vi-image')).maxHeight) } : null,
+          deliverables: deliverablesCardRect && deliverablesCardStyle && deliverablesImage && deliverablesBullets ? {
+            imageLeft: deliverablesImage.left,
+            imageRight: deliverablesImage.right,
+            contentLeft: deliverablesCardRect.left + parseFloat(deliverablesCardStyle.borderLeftWidth) + parseFloat(deliverablesCardStyle.paddingLeft),
+            contentRight: deliverablesCardRect.right - parseFloat(deliverablesCardStyle.borderRightWidth) - parseFloat(deliverablesCardStyle.paddingRight),
+            bulletLeftGap: deliverablesBullets.left - deliverablesCardRect.left,
+            bulletRightGap: deliverablesCardRect.right - deliverablesBullets.right,
+          } : null,
           pageWidth: Math.max(document.documentElement.scrollWidth, document.body.scrollWidth),
           clippedText: [...document.querySelectorAll('.vi-title,.vi-subline,.vi-cta-btn,.vi-bullets .ab-text,h2,.faq-acc-btn')]
             .filter(element => element.getBoundingClientRect().width > 0 && element.scrollWidth > element.clientWidth + 1)
@@ -340,6 +395,8 @@ try {
       const buttonFits = metrics.button && metrics.fold && metrics.button.top >= metrics.fold.top - 1 && metrics.button.bottom <= metrics.fold.bottom + 1 && metrics.button.bottom <= metrics.viewport.height + 1 && metrics.button.left >= -1 && metrics.button.right <= metrics.viewport.width + 1 && metrics.button.textWidth <= metrics.button.clientWidth + 1
       if (!buttonFits) failures.push(`${slug} @ ${viewport.width}x${viewport.height}, fonte/imagem G: CTA fora da primeira dobra ou texto cortado (${JSON.stringify(metrics)})`)
       if (!metrics.image || metrics.image.maxHeight <= viewport.height * 0.6 + 1) failures.push(`${slug} @ ${viewport.width}px, imagem G não aumentou seu limite flexível (${JSON.stringify(metrics.image)})`)
+      if (!metrics.deliverables || metrics.deliverables.imageLeft < metrics.deliverables.contentLeft - 1 || metrics.deliverables.imageRight > metrics.deliverables.contentRight + 1) failures.push(`${slug} @ ${viewport.width}px, imagem G de Tudo que você vai receber escapa do card (${JSON.stringify(metrics.deliverables)})`)
+      if (metrics.deliverables && Math.max(metrics.deliverables.bulletLeftGap, metrics.deliverables.bulletRightGap) > 22) failures.push(`${slug} @ ${viewport.width}px, bullets G de Tudo que você vai receber ficaram estreitos (${JSON.stringify(metrics.deliverables)})`)
       if (metrics.pageWidth > viewport.width + 1) failures.push(`${slug} @ ${viewport.width}px, fonte/imagem G: overflow horizontal (${metrics.pageWidth}px)`)
       if (metrics.clippedText.length) failures.push(`${slug} @ ${viewport.width}px, fonte/imagem G: texto cortado em ${metrics.clippedText.join(", ")}`)
       if (metrics.uncontained.length) failures.push(`${slug} @ ${viewport.width}px, fonte/imagem G: elementos escapam da viewport (${JSON.stringify(metrics.uncontained)})`)

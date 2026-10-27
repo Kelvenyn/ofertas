@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback, useEffect } from "react"
+import { useState, useCallback } from "react"
 import Image from "next/image"
 import type { BonusSection } from "@/types/offer"
 import { useOffer } from "@/context/offer-context"
@@ -20,11 +20,6 @@ export function FlipCard({ front, back, title, titleBreak, desc, price, index, l
   const { orientation } = useOffer()
   const [flipped, setFlipped] = useState(false)
   const [frontLoaded, setFrontLoaded] = useState(false)
-
-  useEffect(() => {
-    const img = new window.Image()
-    img.src = back
-  }, [back])
 
   const handleClick = useCallback(() => {
     setFlipped((current) => !current)

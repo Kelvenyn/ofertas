@@ -300,6 +300,7 @@ export function SocialProof() {
                     className="sp-story-img"
                     draggable={false}
                     loading={Math.abs(visualOffset) <= 1 ? "eager" : "lazy"}
+                    fetchPriority="low"
                   />
                 </div>
               )

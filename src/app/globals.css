@@ -157,7 +157,7 @@ html {
 }
 
 @media (max-width: 640px) {
-  .shiny-cta { padding: 0.875rem 2.125rem; font-size: calc(15px * var(--lp-font-scale, 1)); letter-spacing: normal; }
+  .shiny-cta { padding: 0.875rem 2.25rem; font-size: calc(15px * var(--lp-font-scale, 1)); letter-spacing: normal; }
   .vi-fold .vi-cta-btn.shiny-cta { font-size: calc(15px * var(--lp-font-scale, 1)); }
   .shiny-cta-sm { padding: 0.45rem 1.125rem; font-size: calc(11px * var(--lp-font-scale, 1)); }
 }
@@ -562,7 +562,7 @@ html {
 .benefits-cta-wrap .shiny-cta,
 .urg-cta-wrap .shiny-cta,
 .offer-btn.shiny-cta {
-  width: min(100%, 320px);
+  width: min(100%, 340px);
 }
 
 .offer-btn.shiny-cta {
@@ -632,7 +632,7 @@ html {
 
   .vi-fold .vi-cta-btn {
     max-width: 80vw;
-    padding: 0.78rem clamp(13px, 3.8vw, 19px);
+    padding: 0.78rem clamp(15px, 4vw, 21px);
     font-size: clamp(calc(12px * var(--lp-font-scale, 1)), calc(4vw * var(--lp-font-scale, 1)), calc(15px * var(--lp-font-scale, 1)));
     gap: 6px;
   }
@@ -1245,7 +1245,7 @@ html {
 
 .offer-btn {
   display: block;
-  width: min(100%, 320px);
+  width: min(100%, 340px);
   text-align: center;
   text-decoration: none;
   margin-top: 24px;
@@ -1255,7 +1255,7 @@ html {
 }
 
 .offer-btn.shiny-cta {
-  padding: 18px 16px;
+  padding: 18px 22px;
   font-size: calc(15.5px * var(--lp-font-scale, 1));
 }
 
@@ -1306,7 +1306,7 @@ html {
 
   .offer-btn {
     font-size: calc(15px * var(--lp-font-scale, 1));
-    padding: 17px 15px;
+    padding: 17px 21px;
   }
 
 }
@@ -1793,7 +1793,7 @@ html {
 }
 
 .urg-cta-btn {
-  width: min(100%, 320px);
+  width: min(100%, 340px);
   margin-inline: auto;
 }
 
@@ -1843,6 +1843,10 @@ html {
   text-align: center;
 }
 
+@media (max-width: 640px) {
+  .tqvr-card { padding-inline: 18px; }
+}
+
 .tqvr-title {
   margin: 0 0 28px;
   font-family: 'Nunito', system-ui, sans-serif;
@@ -1866,7 +1870,9 @@ html {
 .tqvr-image {
   position: relative;
   isolation: isolate;
-  width: min(calc(340px * var(--lp-image-scale, 1)), calc(80vw * var(--lp-image-scale, 1)));
+  width: min(calc(340px * var(--lp-image-scale, 1)), 100%);
+  max-width: 100%;
+  box-sizing: border-box;
   margin: 0 auto 28px;
 }
 
@@ -1874,6 +1880,7 @@ html {
   position: relative;
   z-index: 1;
   width: 100%;
+  max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;

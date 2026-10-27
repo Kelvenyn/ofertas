@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "slug": "piquet",
+  "catalogDefaults": {
+    "status": "draft",
+    "paletteKey": null,
+    "cashflow": null
+  },
+  "copy": {
+    "sourceName": "PV.txt",
+    "requiresAgent": true,
+    "reason": "A copy precisa ser adaptada ao contrato OfferConfig; o importador não inventa conteúdo comercial."
+  },
+  "counts": {
+    "page": 16,
+    "testimonial": 6,
+    "bonus": 12,
+    "plan": 2,
+    "square": 0,
+    "icon": 0
+  },
+  "assets": [
+    {
+      "sourceName": "Plano Básico.png",
+      "kind": "plan",
+      "targetName": "plano-basico.webp"
+    },
+    {
+      "sourceName": "Plano Completo.png",
+      "kind": "plan",
+      "targetName": "plano-completo.webp"
+    },
+    {
+      "sourceName": "demonstrativo-01.png",
+      "kind": "page",
+      "targetName": "demonstrativo-01.webp"
+    },
+    {
+      "sourceName": "demonstrativo-02.png",
+      "kind": "page",
+      "targetName": "demonstrativo-02.webp"
+    },
+    {
+      "sourceName": "demonstrativo-03.png",
+      "kind": "page",
+      "targetName": "demonstrativo-03.webp"
+    },
+    {
+      "sourceName": "demonstrativo-04.png",
+      "kind": "page",
+      "targetName": "demonstrativo-04.webp"
+    },
+    {
+      "sourceName": "demonstrativo-05.png",
+      "kind": "page",
+      "targetName": "demonstrativo-05.webp"
+    },
+    {
+      "sourceName": "demonstrativo-06.png",
+      "kind": "page",
+      "targetName": "demonstrativo-06.webp"
+    },
+    {
+      "sourceName": "demonstrativo-07.png",
+      "kind": "page",
+      "targetName": "demonstrativo-07.webp"
+    },
+    {
+      "sourceName": "demonstrativo-08.png",
+      "kind": "page",
+      "targetName": "demonstrativo-08.webp"
+    },
+    {
+      "sourceName": "demonstrativo-09.png",
+      "kind": "page",
+      "targetName": "demonstrativo-09.webp"
+    },
+    {
+      "sourceName": "demonstrativo-10.png",
+      "kind": "page",
+      "targetName": "demonstrativo-10.webp"
+    },
+    {
+      "sourceName": "demonstrativo-11.png",
+      "kind": "page",
+      "targetName": "demonstrativo-11.webp"
+    },
+    {
+      "sourceName": "demonstrativo-12.png",
+      "kind": "page",
+      "targetName": "demonstrativo-12.webp"
+    },
+    {
+      "sourceName": "demonstrativo-13.png",
+      "kind": "page",
+      "targetName": "demonstrativo-13.webp"
+    },
+    {
+      "sourceName": "demonstrativo-14.png",
+      "kind": "page",
+      "targetName": "demonstrativo-14.webp"
+    },
+    {
+      "sourceName": "demonstrativo-15.png",
+      "kind": "page",
+      "targetName": "demonstrativo-15.webp"
+    },
+    {
+      "sourceName": "demonstrativo-16.png",
+      "kind": "page",
+      "targetName": "demonstrativo-16.webp"
+    },
+    {
+      "sourceName": "Depoimento 01.png",
+      "kind": "testimonial",
+      "targetName": "depoimento-01.webp"
+    },
+    {
+      "sourceName": "Depoimento 02.png",
+      "kind": "testimonial",
+      "targetName": "depoimento-02.webp"
+    },
+    {
+      "sourceName": "Depoimento 03.png",
+      "kind": "testimonial",
+      "targetName": "depoimento-03.webp"
+    },
+    {
+      "sourceName": "Depoimento 04.png",
+      "kind": "testimonial",
+      "targetName": "depoimento-04.webp"
+    },
+    {
+      "sourceName": "Depoimento 05.png",
+      "kind": "testimonial",
+      "targetName": "depoimento-05.webp"
+    },
+    {
+      "sourceName": "Depoimento 06.png",
+      "kind": "testimonial",
+      "targetName": "depoimento-06.webp"
+    },
+    {
+      "sourceName": "bonus 01 - frente.png",
+      "kind": "bonus",
+      "targetName": "bonus-01-frente.webp"
+    },
+    {
+      "sourceName": "bonus 01 - verso.png",
+      "kind": "bonus",
+      "targetName": "bonus-01-verso.webp"
+    },
+    {
+      "sourceName": "bonus 02 - frente.png",
+      "kind": "bonus",
+      "targetName": "bonus-02-frente.webp"
+    },
+    {
+      "sourceName": "bonus 02 - verso.png",
+      "kind": "bonus",
+      "targetName": "bonus-02-verso.webp"
+    },
+    {
+      "sourceName": "bonus 03 - frente.png",
+      "kind": "bonus",
+      "targetName": "bonus-03-frente.webp"
+    },
+    {
+      "sourceName": "bonus 03 - verso.png",
+      "kind": "bonus",
+      "targetName": "bonus-03-verso.webp"
+    },
+    {
+      "sourceName": "bonus 04 - frente.png",
+      "kind": "bonus",
+      "targetName": "bonus-04-frente.webp"
+    },
+    {
+      "sourceName": "bonus 04 - verso.png",
+      "kind": "bonus",
+      "targetName": "bonus-04-verso.webp"
+    },
+    {
+      "sourceName": "bonus 05 - frente.png",
+      "kind": "bonus",
+      "targetName": "bonus-05-frente.webp"
+    },
+    {
+      "sourceName": "bonus 05 - verso.png",
+      "kind": "bonus",
+      "targetName": "bonus-05-verso.webp"
+    },
+    {
+      "sourceName": "bonus 06 - frente.png",
+      "kind": "bonus",
+      "targetName": "bonus-06-frente.webp"
+    },
+    {
+      "sourceName": "bonus 06 - verso.png",
+      "kind": "bonus",
+      "targetName": "bonus-06-verso.webp"
+    }
+  ],
+  "ignoredFiles": [],
+  "nextSteps": [
+    "Cadastrar os checkouts e o tracking Cashflow no painel, quando definidos.",
+    "Rodar validação, testes, typecheck e build antes de ativar."
+  ]
+}

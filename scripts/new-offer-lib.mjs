@@ -24,11 +24,11 @@ export function classifySourceAsset(fileName) {
   if (!IMAGE_EXTENSIONS.has(extension)) return null
 
   const base = normalizeForMatch(path.basename(fileName, sourceExtension)).trim()
-  let match = base.match(/^imagem\s*\(\s*(\d+)\s*\)$/)
+  let match = base.match(/^(?:imagem|demonstrativo)\s*\(\s*(\d+)\s*\)$/)
   if (match) return namedAsset(fileName, "page", Number(match[1]), `demonstrativo-${pad(match[1])}.webp`, 1200)
 
-  match = base.match(/^depoimento\s*\(\s*(\d+)\s*\)$/)
-  if (match) return namedAsset(fileName, "testimonial", Number(match[1]), `depoimento-${pad(match[1])}.webp`)
+  match = base.match(/^depoimento\s*(?:\(\s*(\d+)\s*\)|(\d+))$/)
+  if (match) return namedAsset(fileName, "testimonial", Number(match[1] ?? match[2]), `depoimento-${pad(match[1] ?? match[2])}.webp`)
 
   match = base.match(/^bonus[-_\s]*(\d+)[-_\s]*(frente|verso)$/)
   if (match) {
@@ -134,6 +134,7 @@ export async function planOfferImport({ source, slug, workspaceRoot = process.cw
   }
 
   const copyName = files.find((name) => normalizeForMatch(name) === "pv.txt")
+    ?? files.find((name) => normalizeForMatch(name) === "copy da pv.txt")
   const copyFile = copyName ? path.join(sourceDir, copyName) : null
   const ignoredFiles = files.filter((name) => !IMAGE_EXTENSIONS.has(path.extname(name).toLowerCase()) && name !== copyName && name !== ".gitkeep")
   const report = buildImportReport({ slug, copyFile, assets, ignoredFiles })
@@ -214,7 +215,9 @@ function updatedCatalogSource(catalog, slug) {
 
 function updatedRegistrySource(source, slug) {
   const importLine = `import { OFFER as ${slug.replaceAll("-", "_")} } from "./${slug}/offer"\n`
-  const importAnchor = "\nexport const OFFER_CONFIGS = {"
+  const importAnchor = source.includes("\nconst SOURCE_OFFER_CONFIGS = {")
+    ? "\nconst SOURCE_OFFER_CONFIGS = {"
+    : "\nexport const OFFER_CONFIGS = {"
   if (!source.includes(importAnchor)) throw new Error("Não foi possível localizar o registro OFFER_CONFIGS em index.ts.")
   let updated = source.replace(importAnchor, `${importLine}${importAnchor}`)
   const objectAnchor = "} satisfies Record<string, OfferConfig>"

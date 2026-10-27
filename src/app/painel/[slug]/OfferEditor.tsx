@@ -8,6 +8,7 @@ import { FIXED_ACTION_COLORS } from "@/config/offers/palettes"
 import type { OfferConfig, OfferPalette, SectionId } from "@/types/offer"
 import { getOfferCopyIssues } from "@/lib/offer-validation"
 import { calculateDiscountPercentage } from "@/lib/pricing"
+import { isValidCheckoutUrl } from "@/lib/offer-routing"
 import { PanelLogoutButton } from "../PanelLogoutButton"
 import styles from "./editor.module.css"
 
@@ -194,8 +195,8 @@ function applyCopyBlock(copy: string, source: OfferConfig): { offer: OfferConfig
   return { offer, count }
 }
 
-export function OfferEditor({ slug, label, initialOffer, initialCashflow, initialFavicon, initialStatus = "active" }: {
-  slug: string; label: string; initialOffer: OfferConfig; initialCashflow: CashflowConfig | null; initialFavicon: string | null; initialStatus?: OfferStatus
+export function OfferEditor({ slug, label, initialOffer, defaultPlans, initialCashflow, initialFavicon, initialStatus = "active", templateId, inheritedImageCount = 0 }: {
+  slug: string; label: string; initialOffer: OfferConfig; defaultPlans: OfferConfig["pricing"]["plans"]; initialCashflow: CashflowConfig | null; initialFavicon: string | null; initialStatus?: OfferStatus; templateId?: string; inheritedImageCount?: number
 }) {
   const router = useRouter()
   const [draft, setDraft] = useState(initialOffer)
@@ -222,8 +223,8 @@ export function OfferEditor({ slug, label, initialOffer, initialCashflow, initia
   const [prompt, setPrompt] = useState("")
   const iframeRef = useRef<HTMLIFrameElement>(null)
   const issues = useMemo(() => getOfferCopyIssues(draft), [draft])
-  const checkoutReady = draft.pricing.plans.length >= 1 && draft.pricing.plans.length <= 2 && draft.pricing.plans.every((plan) => /^https:\/\/(pay\.hotmart\.com|pay\.cakto\.com\.br)\//.test(plan.ctaHref ?? ""))
-  const savedCheckoutReady = savedOffer.pricing.plans.length >= 1 && savedOffer.pricing.plans.length <= 2 && savedOffer.pricing.plans.every((plan) => /^https:\/\/(pay\.hotmart\.com|pay\.cakto\.com\.br)\//.test(plan.ctaHref ?? ""))
+  const checkoutReady = draft.pricing.plans.length >= 1 && draft.pricing.plans.length <= 2 && draft.pricing.plans.every((plan) => isValidCheckoutUrl(plan.ctaHref))
+  const savedCheckoutReady = savedOffer.pricing.plans.length >= 1 && savedOffer.pricing.plans.length <= 2 && savedOffer.pricing.plans.every((plan) => isValidCheckoutUrl(plan.ctaHref))
 
   const sendPreview = useCallback(() => {
     iframeRef.current?.contentWindow?.postMessage({ type: "ofertas:preview", offer: draft, favicon }, window.location.origin)
@@ -309,7 +310,7 @@ export function OfferEditor({ slug, label, initialOffer, initialCashflow, initia
     const nextStatus: OfferStatus = status === "active" ? "inactive" : "active"
     if (nextStatus === "active" && !savedCheckoutReady) {
       setIsError(true)
-      setMessage(checkoutReady ? "Salve um ou dois links de checkout válidos antes de ativar." : "Para ativar, configure um ou dois checkouts válidos em cada plano e salve as alterações.")
+      setMessage(checkoutReady ? "Salve os links HTTPS de checkout antes de ativar." : "Para ativar, configure um link HTTPS válido em cada plano e salve as alterações.")
       setTab("oferta"); setOfferSubtab("checkout")
       return
     }
@@ -455,6 +456,9 @@ ${format}`;
       </header>
 
       {message && <p className={`${styles.feedback}${isError ? ` ${styles.feedbackError}` : ""}`} role="status">{message}</p>}
+      {templateId && inheritedImageCount > 0 && <p className={styles.inheritedWarning} role="status">
+        Este rascunho ainda usa {inheritedImageCount} imagens do modelo Psicopedagogia. Substitua essas imagens pela aba Imagens antes de ativar a oferta.
+      </p>}
 
       <div className={styles.workspace}>
         <section className={styles.editorPanel}>
@@ -489,7 +493,7 @@ ${format}`;
             </div>}
 
             {tab === "oferta" && <div className={styles.content}>
-              <h2>Oferta</h2><p className={styles.help}>Configure um ou dois checkouts. O tracking da Cashflow é opcional.</p>
+              <h2>Oferta</h2><p className={styles.help}>Configure um ou dois links HTTPS de checkout, de qualquer plataforma. O tracking da Cashflow é opcional.</p>
               <div className={styles.subtabs} role="tablist" aria-label="Configurações da oferta">
                 <button type="button" role="tab" aria-selected={offerSubtab === "checkout"} onClick={() => setOfferSubtab("checkout")}>Checkouts</button>
                 <button type="button" role="tab" aria-selected={offerSubtab === "cashflow"} onClick={() => setOfferSubtab("cashflow")}>Cashflow</button>
@@ -509,14 +513,23 @@ ${format}`;
                       if (count === 1) return writePath(current, ["pricing", "plans"], plans.slice(0, 1))
                       if (plans.length >= 2) return current
                       const first = plans[0]
-                      const second = { ...structuredClone(first), id: `${first.id}-2`, label: undefined, title: "Plano 2", ctaHref: undefined, price: "", installments: "", featured: false }
+                      const savedSecond = savedOffer.pricing.plans[1]
+                      const template = defaultPlans[1]
+                      const second = template
+                        ? { ...structuredClone(template), ...(savedSecond ? { price: savedSecond.price, installments: savedSecond.installments, ctaHref: savedSecond.ctaHref } : {}) }
+                        : { ...structuredClone(first), id: `${first.id}-2`, label: undefined, title: "Plano 2", ctaHref: undefined, price: "", installments: "", featured: false }
                       return writePath(current, ["pricing", "plans"], [...plans, second])
                     })
                   }}><option value={1}>Único</option><option value={2}>Duplo</option></select></label>
                 </div>
-                <p className={styles.checkoutReadiness} data-ready={savedCheckoutReady}>{!checkoutReady ? "Preencha um link válido em cada plano para ativar" : savedCheckoutReady ? "Checkout salvo e pronto para ativação" : "Salve os links de checkout antes de ativar"}</p>
+                <p className={styles.checkoutReadiness} data-ready={savedCheckoutReady}>{!checkoutReady ? "Preencha um link HTTPS válido em cada plano para ativar" : savedCheckoutReady ? "Checkout salvo e pronto para ativação" : "Salve os links de checkout antes de ativar"}</p>
                 {draft.pricing.plans.map((plan, index) => <fieldset className={styles.group} key={plan.id}><legend>Checkout {index + 1}: {plan.title || `Plano ${index + 1}`}</legend>
-                  <label className={styles.field}>Link de checkout<input type="url" value={plan.ctaHref ?? ""} onChange={(event) => setDraft((current) => writePath(current, ["pricing", "plans", index, "ctaHref"], event.target.value || undefined))} placeholder="https://pay.hotmart.com/..." /></label>
+                  <label className={styles.field}>Link de checkout<input type="url" value={plan.ctaHref ?? ""} onChange={(event) => {
+                    const ctaHref = event.target.value || undefined
+                    setDraft((current) => writePath(current, ["pricing", "plans", index], {
+                      ...current.pricing.plans[index], ctaHref, ctaDisabled: !isValidCheckoutUrl(ctaHref),
+                    }))
+                  }} placeholder="https://" /></label>
                   <label className={styles.field}>Preço de ancoragem<input value={plan.oldPrice} onChange={(event) => setDraft((current) => writePath(current, ["pricing", "plans", index, "oldPrice"], event.target.value))} placeholder="de R$ 39,90" aria-label={`Preço de ancoragem do plano ${index + 1}`} /></label>
                   <p className={styles.discountPreview} aria-live="polite">{calculateDiscountPercentage(plan.oldPrice, plan.price)}% OFF calculado automaticamente, com arredondamento</p>
                   <label className={styles.field}>Preço<input value={plan.price} onChange={(event) => setDraft((current) => writePath(current, ["pricing", "plans", index, "price"], event.target.value))} /></label>

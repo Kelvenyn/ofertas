@@ -10,6 +10,7 @@ import {
   getActiveFallbackSlug,
   getCheckoutSummary,
   getOfferRevalidationPaths,
+  isValidCheckoutUrl,
   migrateLegacyOffer,
   OfferRoutingError,
   validateOfferSlug,
@@ -163,4 +164,23 @@ test("ativação aceita um ou dois checkouts válidos e rejeita links incompleto
     { ctaHref: "https://pay.hotmart.com/B2" },
     { ctaHref: "https://pay.hotmart.com/C3" },
   ] } }).valid, false)
+})
+
+test("checkout aceita qualquer plataforma HTTPS e rejeita links incompletos ou com credenciais", () => {
+  for (const link of [
+    "https://pay.hotmart.com/A1",
+    "https://pay.cakto.com.br/B2",
+    "https://checkout.wiapy.com/produto/123",
+    "https://loja.exemplo.com.br/?produto=42",
+  ]) assert.equal(isValidCheckoutUrl(link), true, link)
+  for (const link of [
+    undefined,
+    "",
+    "pay.hotmart.com/A1",
+    "http://pay.hotmart.com/A1",
+    "https://pay.hotmart.com/",
+    "https://localhost/checkout",
+    "https://user:senha@pay.hotmart.com/A1",
+    "javascript:alert(1)",
+  ]) assert.equal(isValidCheckoutUrl(link), false, String(link))
 })

@@ -1,5 +1,25 @@
 .page { min-height: 100vh; margin-top: -60px; padding: 30px clamp(16px, 4vw, 56px) 56px; background: #f3f5f7; color: #172033; font-family: Manrope, system-ui, sans-serif; }
 .header { width: min(1180px, 100%); margin: 0 auto 24px; padding: 28px clamp(20px, 4vw, 40px); display: flex; align-items: center; justify-content: space-between; gap: 24px; border-radius: 18px; background: #172033; color: white; box-shadow: 0 16px 42px #1720331a; }
+.headerControls { display: flex; align-items: center; gap: 10px; }
+.createOffer { position: relative; }
+.createOfferTrigger { min-height: 42px; padding: 0 16px; border: 0; border-radius: 9px; background: #e7b940; color: #172033; font: 900 13px Manrope, system-ui, sans-serif; cursor: pointer; white-space: nowrap; }
+.createOfferTrigger:hover { background: #f1ca56; }
+.createOfferForm { position: absolute; z-index: 20; top: calc(100% + 10px); right: 0; width: min(360px, calc(100vw - 40px)); padding: 18px; display: grid; gap: 8px; border: 1px solid #d8dde5; border-radius: 14px; background: white; color: #172033; box-shadow: 0 18px 48px #10182830; }
+.createOfferForm h2 { margin: 0; font: 900 20px/1.2 Nunito, system-ui, sans-serif; }
+.createOfferForm p { margin: 0 0 4px; color: #687386; font-size: 12px; line-height: 1.5; }
+.createOfferForm p strong { color: #344054; }
+.createOfferForm label { margin-top: 4px; color: #344054; font-size: 11px; font-weight: 900; }
+.createOfferForm input { min-width: 0; min-height: 40px; padding: 0 11px; border: 1px solid #cbd5e1; border-radius: 8px; background: #fff; color: #172033; font: 600 13px Manrope, system-ui, sans-serif; }
+.createOfferForm input:focus { outline: 3px solid #14804428; border-color: #148044; }
+.slugInput { display: flex; align-items: center; gap: 7px; min-width: 0; }
+.slugInput span { color: #687386; font: 700 13px Manrope, system-ui, sans-serif; }
+.slugInput input { flex: 1; }
+.createOfferForm small { color: #687386; font-size: 10px; line-height: 1.4; }
+.createOfferError { margin: 0 !important; color: #b42318 !important; font-size: 11px !important; font-weight: 800; }
+.createOfferActions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+.createOfferActions button { min-height: 38px; padding: 0 12px; border: 1px solid #d0d5dd; border-radius: 8px; background: #fff; color: #344054; font: 800 11px Manrope, system-ui, sans-serif; cursor: pointer; }
+.createOfferActions button[type="submit"] { border-color: #12883e; background: #12883e; color: white; }
+.createOfferActions button:disabled { opacity: .58; cursor: not-allowed; }
 .header h1 { margin: 0 0 8px; font: 900 clamp(30px, 5vw, 44px)/1.05 Nunito, system-ui, sans-serif; letter-spacing: -.04em; }
 .header p:last-child { margin: 0; color: #d5dae4; line-height: 1.6; }
 .eyebrow { margin: 0 0 12px; color: #e7b940; font-size: 11px; font-weight: 900; letter-spacing: .15em; }
@@ -13,7 +33,7 @@
 .offerText code { color: #687386; font-size: 12px; }
 .swatch { width: 22px; height: 22px; flex: 0 0 22px; border: 2px solid white; border-radius: 50%; box-shadow: 0 0 0 1px #cbd5e1; }
 .open { padding: 8px 10px; border-radius: 8px; background: #eef2f6; color: #243047; font-size: 12px; font-weight: 800; }
-@media (max-width: 620px) { .page { padding: 16px 12px 40px; } .header { align-items: flex-start; padding: 22px 18px; } .offerCard { gap: 10px; } .thumbnail { width: 60px; height: 60px; flex-basis: 60px; } }
+@media (max-width: 620px) { .page { padding: 16px 12px 40px; } .header { align-items: flex-start; padding: 22px 18px; flex-direction: column; } .headerControls { width: 100%; justify-content: space-between; } .createOfferForm { left: 0; right: auto; width: min(360px, calc(100vw - 40px)); } .offerCard { gap: 10px; } .thumbnail { width: 60px; height: 60px; flex-basis: 60px; } }
 @media (prefers-reduced-motion: reduce) { .offerCard { transition: none; } }
 
 .page { padding-top: 14px; }

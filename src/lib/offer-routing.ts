@@ -42,6 +42,18 @@ export function isOfferStatus(value: unknown): value is OfferLifecycleStatus {
   return value === "active" || value === "inactive" || value === "draft"
 }
 
+export function isValidCheckoutUrl(value: unknown): value is string {
+  if (typeof value !== "string" || !value || value !== value.trim()) return false
+  try {
+    const url = new URL(value)
+    const hasCheckoutTarget = url.pathname !== "/" || Boolean(url.search)
+    const isLocalHostname = url.hostname === "localhost" || url.hostname.endsWith(".localhost")
+    return url.protocol === "https:" && Boolean(url.hostname) && !isLocalHostname && hasCheckoutTarget && !url.username && !url.password
+  } catch {
+    return false
+  }
+}
+
 export function findOfferBySlug<T extends { id: string; slug: string }>(
   entries: Record<string, T>,
   slug: string,
@@ -152,21 +164,9 @@ export function applyOfferCatalogPatch<T extends RoutedOfferEntry>(
 export function getCheckoutSummary(offer: unknown): { count: number; valid: boolean } {
   const rawPlans = (offer as { pricing?: { plans?: unknown } } | null)?.pricing?.plans
   const plans = Array.isArray(rawPlans) ? rawPlans : []
-  const validLink = (value: unknown): value is string => {
-    if (typeof value !== "string") return false
-    try {
-      const url = new URL(value)
-      return url.protocol === "https:" &&
-        (url.hostname === "pay.hotmart.com" || url.hostname === "pay.cakto.com.br") &&
-        Boolean(url.pathname && url.pathname !== "/") &&
-        !url.username && !url.password
-    } catch {
-      return false
-    }
-  }
   return {
     count: plans.length,
     valid: (plans.length === 1 || plans.length === 2) &&
-      plans.every((plan) => validLink((plan as { ctaHref?: unknown } | null)?.ctaHref)),
+      plans.every((plan) => isValidCheckoutUrl((plan as { ctaHref?: unknown } | null)?.ctaHref)),
   }
 }

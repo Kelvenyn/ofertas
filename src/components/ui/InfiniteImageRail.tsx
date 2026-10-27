@@ -164,6 +164,7 @@ export function InfiniteImageRail({ images, orientation, direction = "forward", 
                 data-kc-src={image.src}
                 sizes="(max-width: 570px) 100vw, (max-width: 1312px) 420px, (max-width: 1499px) 32vw, 480px"
                 loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority="low"
                 quality={75}
                 onLoad={() => { if (index === 0) setReady(true) }}
                 onError={() => { if (index === 0) setReady(true) }}

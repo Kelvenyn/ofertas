@@ -18,6 +18,8 @@ export interface OfferCatalogEntry {
   status: OfferStatus
   favicon: string | null
   cashflow: CashflowConfig | null
+  /** Static template used to initialize a Blob-backed custom offer. */
+  templateId?: string
   [key: string]: unknown
 }
 

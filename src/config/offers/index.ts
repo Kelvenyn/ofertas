@@ -15,6 +15,9 @@ import { OFFER as psicopedagogia } from "./psicopedagogia/offer"
 import { OFFER as tilapia } from "./tilapia/offer"
 import { OFFER as box } from "./box/offer"
 import { OFFER as calha } from "./calha/offer"
+import { OFFER as balao } from "./balao/offer"
+import { OFFER as piquet } from "./piquet/offer"
+import { OFFER as flores } from "./flores/offer"
 
 const SOURCE_OFFER_CONFIGS = {
   alicate,
@@ -32,6 +35,9 @@ const SOURCE_OFFER_CONFIGS = {
   tilapia,
   box,
   calha,
+  balao,
+  piquet,
+  flores,
 } satisfies Record<string, OfferConfig>
 
 export type OfferSlug = keyof typeof SOURCE_OFFER_CONFIGS

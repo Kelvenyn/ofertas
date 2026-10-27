@@ -9,6 +9,12 @@
         "offerId": "31f8a6d0-f4cf-42b5-a2e6-995f08c59ac4"
       }
     },
+    "balao": {
+      "label": "Arcos de Balões",
+      "status": "draft",
+      "favicon": "/images/balao/favicon.webp",
+      "cashflow": null
+    },
     "box": {
       "label": "Box",
       "favicon": "/images/box/favicon.webp",
@@ -45,6 +51,12 @@
       "favicon": "/images/felinos/favicon.webp",
       "cashflow": null
     },
+    "flores": {
+      "label": "Mapas de Arcos Florais",
+      "status": "draft",
+      "favicon": "/images/flores/favicon.webp",
+      "cashflow": null
+    },
     "higienizacao": {
       "label": "Higienização de Estofados",
       "favicon": "/images/higienizacao/favicon.webp",
@@ -74,6 +86,12 @@
     "lembrancinhas": {
       "label": "Lembrancinhas Cristãs",
       "favicon": "/images/lembrancinhas/favicon.webp",
+      "cashflow": null
+    },
+    "piquet": {
+      "label": "Piquet",
+      "status": "draft",
+      "favicon": "/images/piquet/favicon.webp",
       "cashflow": null
     },
     "porcelanato": {

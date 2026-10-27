@@ -183,7 +183,7 @@ export const OFFER: OfferConfig = {
           "Não inclui os bônus do Plano Completo",
         ],
         ctaText: "QUERO O BÁSICO",
-        ctaHref: "https://pay.hotmart.com/Q107277076H?checkoutMode=10"
+        ctaHref: "https://pay.wiapy.com/8oWekQSUDeYI"
       },
       {
         id: "premium",
@@ -205,7 +205,7 @@ export const OFFER: OfferConfig = {
           "Acesso digital por email"
         ],
         ctaText: "QUERO O COMPLETO",
-        ctaHref: "https://pay.hotmart.com/M107277069H?checkoutMode=10"
+        ctaHref: "https://pay.wiapy.com/awbbflIDShax"
       },
     ]
   },

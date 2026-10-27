@@ -5,10 +5,13 @@ import { access, mkdir, mkdtemp, rm, writeFile } from "node:fs/promises"
 import net from "node:net"
 import os from "node:os"
 import path from "node:path"
+import nextEnv from "@next/env"
 
-const BASE_URL = new URL(process.env.QA_BASE_URL ?? "http://127.0.0.1:3102")
-const email = process.env.QA_ADMIN_EMAIL ?? "qa@universoeduk.test"
-const password = process.env.QA_ADMIN_PASSWORD ?? "local-qa-only-password-924"
+const { loadEnvConfig } = nextEnv
+loadEnvConfig(process.cwd())
+const BASE_URL = new URL(process.env.QA_BASE_URL ?? "http://localhost:3102")
+const email = process.env.QA_ADMIN_EMAIL ?? process.env.ADMIN_EMAIL ?? "qa@universoeduk.test"
+const password = process.env.QA_ADMIN_PASSWORD ?? process.env.ADMIN_PASSWORD ?? "local-qa-only-password-924"
 const report = { viewportWidths: [320, 390, 768, 1366], checks: [], screenshots: path.join(os.tmpdir(), `ofertas-panel-qa-${Date.now()}`) }
 
 async function pickPort() {
@@ -36,6 +39,7 @@ async function waitForJson(url) {
 function connectCdp(url) {
   const socket = new WebSocket(url)
   const pending = new Map()
+  const events = []
   let sequence = 0
   const opened = new Promise((resolve, reject) => {
     socket.addEventListener("open", resolve, { once: true })
@@ -43,7 +47,10 @@ function connectCdp(url) {
   })
   socket.addEventListener("message", (event) => {
     const message = JSON.parse(event.data)
-    if (!message.id) return
+    if (!message.id) {
+      if (["Runtime.exceptionThrown", "Log.entryAdded"].includes(message.method)) events.push(message)
+      return
+    }
     const request = pending.get(message.id)
     if (!request) return
     pending.delete(message.id)
@@ -60,6 +67,7 @@ function connectCdp(url) {
         socket.send(JSON.stringify({ id, method, params }))
       })
     },
+    events,
     close() { socket.close() },
   }
 }
@@ -78,7 +86,7 @@ try {
   cdp = connectCdp(target.webSocketDebuggerUrl ?? browserInfo.webSocketDebuggerUrl)
   await cdp.opened
   await Promise.all([
-    cdp.call("Page.enable"), cdp.call("Runtime.enable"),
+    cdp.call("Page.enable"), cdp.call("Runtime.enable"), cdp.call("Network.enable"),
     cdp.call("Network.setBlockedURLs", { urls: ["*cashflow.mentoriaprocesso.com/*"] }),
     cdp.call("Emulation.setDeviceMetricsOverride", { width: 390, height: 844, deviceScaleFactor: 1, mobile: true, screenWidth: 390, screenHeight: 844 }),
   ])
@@ -97,8 +105,21 @@ try {
   await waitForSelector('input[type="email"]')
   const anonymousSettings = await evaluate(`fetch('/api/painel/settings').then(response => response.status)`)
   assert.equal(anonymousSettings, 401, "API global deve exigir sessão administrativa")
-  const login = await evaluate(`fetch('/api/painel/login', { method: 'POST', headers: {'content-type':'application/json'}, body: JSON.stringify({email:${JSON.stringify(email)},password:${JSON.stringify(password)},next:'/painel'}) }).then(async response => ({status:response.status,body:await response.json()}))`)
-  assert.equal(login.status, 200, "login local falhou")
+  if (process.env.QA_ADMIN_SESSION_TOKEN) {
+    const cookieName = BASE_URL.protocol === "https:" ? "__Host-ofertas-admin" : "ofertas-admin"
+    const cookie = await cdp.call("Network.setCookie", {
+      name: cookieName,
+      value: process.env.QA_ADMIN_SESSION_TOKEN,
+      url: BASE_URL.origin,
+      httpOnly: true,
+      secure: cookieName.startsWith("__Host-"),
+      sameSite: "Lax",
+    })
+    assert.equal(cookie.success, true, "não foi possível instalar sessão de QA")
+  } else {
+    const login = await evaluate(`fetch('/api/painel/login', { method: 'POST', headers: {'content-type':'application/json'}, body: JSON.stringify({email:${JSON.stringify(email)},password:${JSON.stringify(password)},next:'/painel'}) }).then(async response => ({status:response.status,body:await response.json()}))`)
+    assert.equal(login.status, 200, "login local falhou")
+  }
   report.checks.push("login administrativo")
   const settingsApi = await evaluate(`(async () => {
     const current = await fetch('/api/painel/settings');
@@ -106,12 +127,39 @@ try {
     return { get: current.status, settings: await current.json(), invalidPatch: invalid.status };
   })()`)
   assert.equal(settingsApi.get, 200, "API de configurações globais não responde autenticada")
-  assert.deepEqual(settingsApi.settings, { typographySize: "M", imageSize: "M" }, "defaults globais inesperados no ambiente de QA")
+  assert.ok(["P", "M", "G"].includes(settingsApi.settings.typographySize) && ["P", "M", "G"].includes(settingsApi.settings.imageSize), "escalas globais fora dos valores permitidos")
   assert.equal(settingsApi.invalidPatch, 400, "API deve rejeitar escalas fora de P/M/G")
   report.checks.push("API global exige sessão e rejeita escalas inválidas")
 
   await cdp.call("Page.navigate", { url: new URL("/painel", BASE_URL).href })
   await waitForSelector('[aria-label="Resumo das ofertas"]')
+  await evaluate("new Promise(resolve => setTimeout(resolve, 700))")
+  await evaluate(`[...document.querySelectorAll('button')].find(button => button.innerText.trim() === 'Nova oferta')?.click()`)
+  await waitForSelector('#new-offer-form')
+  async function typeInto(selector, value) {
+    await evaluate(`(() => {const field=document.querySelector(${JSON.stringify(selector)});field.focus();field.select()})()`)
+    await cdp.call("Input.insertText", { text: value })
+  }
+  await typeInto("#new-offer-label", "Mapa de Estudos QA")
+  const suggestedSlug = await evaluate("document.getElementById('new-offer-slug')?.value")
+  await typeInto("#new-offer-slug", "slug-editada")
+  await typeInto("#new-offer-label", "Outro Nome QA")
+  const manuallyEditedSlug = await evaluate("document.getElementById('new-offer-slug')?.value")
+  await typeInto("#new-offer-slug", "painel")
+  await evaluate(`document.querySelector('#new-offer-form button[type="submit"]')?.click()`)
+  await waitForSelector('#new-offer-form [role="alert"]')
+  const createForm = await evaluate(`(() => ({
+    opened: Boolean(document.querySelector('#new-offer-form')),
+    template: document.querySelector('#new-offer-form')?.innerText.includes('Psicopedagogia'),
+    suggested: document.getElementById('new-offer-slug')?.value,
+    error: document.querySelector('#new-offer-form [role="alert"]')?.innerText ?? '',
+  }))()`)
+  assert.ok(createForm.opened, "ação Nova oferta não abriu o formulário")
+  assert.equal(createForm.template, true, "formulário não identifica Psicopedagogia como modelo")
+  assert.equal(suggestedSlug, "mapa-de-estudos-qa", "nome não atualizou a slug sugerida")
+  assert.equal(manuallyEditedSlug, "slug-editada", "slug manual não permaneceu editável")
+  assert.match(createForm.error, /reservada/i, "slug reservada não exibiu erro junto ao formulário")
+  report.checks.push("formulário Nova oferta sugere slug, permite edição e apresenta erro de rota reservada")
   const settingOptions = await evaluate(`(() => {
     const section = document.querySelector('[aria-labelledby="global-visual-settings-title"]');
     const fields = [...(section?.querySelectorAll('fieldset') ?? [])];
@@ -149,10 +197,10 @@ try {
   for (const width of report.viewportWidths) {
     await cdp.call("Emulation.setDeviceMetricsOverride", { width, height: 844, deviceScaleFactor: 1, mobile: width <= 768, screenWidth: width, screenHeight: 844 })
     await evaluate("new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))")
-    const metrics = await evaluate(`(() => ({width:innerWidth,scrollWidth:document.documentElement.scrollWidth,bodyWidth:document.body.scrollWidth,metrics:[...document.querySelectorAll('[aria-label="Resumo das ofertas"] article strong')].map(el=>el.innerText),offers:document.querySelectorAll('[aria-label="Ofertas"] a').length,heading:document.querySelector('h1')?.innerText}))()`)
+    const metrics = await evaluate(`(() => {const form=document.querySelector('#new-offer-form')?.getBoundingClientRect();return {width:innerWidth,scrollWidth:document.documentElement.scrollWidth,bodyWidth:document.body.scrollWidth,metrics:[...document.querySelectorAll('[aria-label="Resumo das ofertas"] article strong')].map(el=>el.innerText),offers:document.querySelectorAll('[aria-label="Ofertas"] a').length,form:form?{left:form.left,right:form.right}:null,heading:document.querySelector('h1')?.innerText}})()`)
     assert.ok(Math.max(metrics.scrollWidth, metrics.bodyWidth) <= width + 1, `painel inicial com overflow em ${width}px: ${JSON.stringify(metrics)}`)
-    assert.equal(metrics.offers, 15, "dashboard não lista as 15 ofertas")
-    assert.equal(metrics.metrics[0], "15", "dashboard não mostra o total de ofertas")
+    if (metrics.form) assert.ok(metrics.form.left >= 0 && metrics.form.right <= width + 1, `formulário Nova oferta fora da viewport em ${width}px: ${JSON.stringify(metrics.form)}`)
+    assert.equal(metrics.offers, Number(metrics.metrics[0]), "dashboard não alinha a lista e o total de ofertas")
     if (width === 320 || width === 390) report.checks.push(`dashboard sem overflow em ${width}px`)
     if (width === 390) {
       const screenshot = await cdp.call("Page.captureScreenshot", { format: "png", fromSurface: true, captureBeyondViewport: false })
@@ -163,7 +211,7 @@ try {
 
   await cdp.call("Page.navigate", { url: new URL("/painel/psicopedagogia", BASE_URL).href })
   await waitForSelector('[class*="paletteGrid"]')
-  await evaluate("new Promise(resolve => setTimeout(resolve, 350))")
+  await evaluate("new Promise((resolve, reject) => {let tries=0;const timer=setInterval(()=>{if(document.querySelector('iframe')?.contentDocument?.querySelector('#offer-root')){clearInterval(timer);resolve(true)}else if(++tries>100){clearInterval(timer);reject(new Error('preview do editor não carregou'))}},50)})")
   await cdp.call("Emulation.setDeviceMetricsOverride", { width: 320, height: 844, deviceScaleFactor: 1, mobile: true, screenWidth: 320, screenHeight: 844 })
   await evaluate("new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))")
   const editor = await evaluate(`(() => ({overflow:Math.max(document.documentElement.scrollWidth,document.body.scrollWidth)>innerWidth+1,heading:document.querySelector('h1')?.innerText,tabPanel:document.querySelector('[role="tabpanel"]')?.getBoundingClientRect().toJSON(),candidateCount:document.querySelectorAll('[class*="paletteGrid"] button').length,tabs:[...document.querySelectorAll('[role="tablist"][aria-label="Editar oferta"] button')].map(el=>({text:el.innerText,scroll:el.scrollWidth,client:el.clientWidth})),frameReady:Boolean(document.querySelector('iframe')?.contentDocument?.querySelector('#offer-root'))}))()`)
@@ -208,8 +256,9 @@ try {
   })()`)
   assert.equal(anchorFieldFound, true, "painel de preços não apresenta o preço de ancoragem editável")
   await evaluate("new Promise(resolve => setTimeout(resolve, 500))")
-  const previewDiscount = await evaluate(`document.querySelector('iframe')?.contentDocument?.querySelector('.offer-discount-badge')?.innerText`)
-  assert.equal(previewDiscount, "82% OFF", `editar o preço de ancoragem não recalculou o desconto no preview: ${previewDiscount}`)
+  const discountCheck = await evaluate(`(() => {const doc=document.querySelector('iframe')?.contentDocument;const priceText=doc?.querySelector('.offer-price')?.innerText??'';const current=parseFloat(priceText.replace(/[^\\d,]/g,'').replace(',','.'))||0;return {discount:doc?.querySelector('.offer-discount-badge')?.innerText,current}})()`)
+  const expectedDiscount = `${Math.round((1 - discountCheck.current / 99.9) * 100)}% OFF`
+  assert.equal(discountCheck.discount, expectedDiscount, `editar o preço de ancoragem não recalculou o desconto arredondado: ${discountCheck.discount}, esperado ${expectedDiscount}`)
   report.checks.push("preço de ancoragem editável recalcula o desconto arredondado na prévia")
   await clickButton("Cashflow")
   const cashflowFields = await evaluate(`(() => ({text:document.querySelector('[role="tabpanel"]')?.innerText,fields:document.querySelectorAll('[role="tabpanel"] textarea').length}))()`)

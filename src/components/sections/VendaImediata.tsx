@@ -34,6 +34,7 @@ export function VendaImediata() {
               alt={imageAlt}
               width={1080}
               height={1080}
+              sizes="(max-width: 640px) 92vw, 540px"
               priority
             />
           </div>

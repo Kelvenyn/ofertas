@@ -3,7 +3,15 @@ import { open, readFile, readdir } from "node:fs/promises"
 import path from "node:path"
 import { fileURLToPath } from "node:url"
 
-const CHECKOUT_PATTERN = /^https:\/\/(?:pay\.hotmart\.com|pay\.cakto\.com\.br)\//
+function isValidCheckoutUrl(value) {
+  if (typeof value !== "string" || !value || value !== value.trim()) return false
+  try {
+    const url = new URL(value)
+    return url.protocol === "https:" && Boolean(url.hostname) && !url.username && !url.password
+  } catch {
+    return false
+  }
+}
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 const LEGACY_HOST_PATTERN = new RegExp(["hub", "universoeduk", "com"].join("\\."), "i")
 const LEGACY_SCRIPT_PATTERN = new RegExp(["tracker", "js"].join("\\."), "i")
@@ -345,7 +353,7 @@ export async function validateOffers(workspaceRoot = process.cwd()) {
     if (!isDraft) {
       const checkoutLinks = [...offerSource.matchAll(/ctaHref\s*:\s*["']([^"']+)["']/g)].map((match) => match[1])
       if (!checkoutLinks.length) errors.push(`${slug}: oferta publicada sem checkout explícito.`)
-      for (const checkout of checkoutLinks) if (!CHECKOUT_PATTERN.test(checkout)) errors.push(`${slug}: checkout inválido (${checkout}).`)
+      for (const checkout of checkoutLinks) if (!isValidCheckoutUrl(checkout)) errors.push(`${slug}: checkout inválido (${checkout}).`)
       if (/ctaDisabled\s*:\s*true/.test(offerSource)) errors.push(`${slug}: oferta publicada contém CTA desabilitado.`)
     }
     if (!/\borientation\s*:\s*"(portrait|landscape)"/.test(offerSource) && !/"orientation"\s*:\s*"(portrait|landscape)"/.test(offerSource)) errors.push(`${slug}: orientation ausente (portrait|landscape).`)

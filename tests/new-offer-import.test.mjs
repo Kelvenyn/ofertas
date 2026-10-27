@@ -18,13 +18,17 @@ async function fixture() {
   await mkdir(path.join(workspaceRoot, "src", "config", "offers"), { recursive: true })
   await mkdir(path.join(workspaceRoot, "src", "app"), { recursive: true })
   await writeFile(path.join(workspaceRoot, "src", "config", "offers", "catalog.json"), '{"homepageOffer":"referencia","offers":{"referencia":{"status":"active"}}}\n')
-  await writeFile(path.join(workspaceRoot, "src", "config", "offers", "index.ts"), `import type { OfferConfig } from "@/types/offer"
+  await writeFile(path.join(workspaceRoot, "src", "config", "offers", "index.ts"), (`import type { OfferConfig } from "@/types/offer"
 import { OFFER as referencia } from "./referencia/offer"
 
-export const OFFER_CONFIGS = {
+const SOURCE_OFFER_CONFIGS = {
   referencia,
 } satisfies Record<string, OfferConfig>
-`)
+
+export const OFFER_CONFIGS = Object.fromEntries(
+  Object.entries(SOURCE_OFFER_CONFIGS),
+) as typeof SOURCE_OFFER_CONFIGS
+`).replaceAll("\n", "\r\n"))
   return { root, source, workspaceRoot }
 }
 
