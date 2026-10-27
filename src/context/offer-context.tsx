@@ -48,6 +48,25 @@ export function OfferProvider({
     return () => window.removeEventListener("message", receivePreview)
   }, [previewMode, previewOrigin])
 
+  // Hub editor preview: a click on a text or image tells the hub which field to open, and links do not navigate.
+  useEffect(() => {
+    if (!previewMode || !previewOrigin) return
+    const style = document.createElement("style")
+    style.textContent = "#offer-root :is(h1,h2,h3,h4,p,li,span,strong,em,small,a,button,img,summary):hover{outline:2px dashed rgba(14,165,233,.7);outline-offset:2px;cursor:pointer}"
+    document.head.append(style)
+    const click = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null
+      if (!target?.closest("#offer-root")) return
+      event.preventDefault()
+      event.stopPropagation()
+      const image = target.closest("img")
+      const value = image ? image.getAttribute("src") ?? "" : (target.innerText || target.textContent || "").trim().slice(0, 400)
+      if (value) window.parent.postMessage({ type: "ofertas:preview-click", kind: image ? "image" : "text", value }, previewOrigin)
+    }
+    document.addEventListener("click", click, true)
+    return () => { document.removeEventListener("click", click, true); style.remove() }
+  }, [previewMode, previewOrigin])
+
   useEffect(() => {
     if (!previewMode) return
     const root = document.getElementById("offer-root")
