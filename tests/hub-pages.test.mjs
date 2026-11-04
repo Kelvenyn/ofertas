@@ -72,3 +72,17 @@ test("a ordem das seções do meio vem da página e completa as que faltam na or
   assert.deepEqual(validateOfferConfig({ ...offer, sectionOrder: ["pricing", "faq"] }).errors, [])
   assert.ok(validateOfferConfig({ ...offer, sectionOrder: ["hero"] }).errors.includes("Ordem das seções inválida."))
 })
+
+test("tracker do hub: a chave do feed chega à entrada da página e vira o script do hub", async () => {
+  const { hubTrackerScriptUrl } = await jiti.import("../src/lib/hub-tracker.ts")
+  const key = "5b0c9e4a-8f61-4d2b-9a77-3c1e2f4d5a6b"
+  const legacy = snapshotToOverrides(snapshot([page({ legacyId: "psicopedagogia", slug: "psicopedagogia", tracker: { publicKey: key } })]))
+  assert.deepEqual(mergeOperationalCatalog(legacy).offers.psicopedagogia.hubTracker, { publicKey: key })
+  const fresh = snapshotToOverrides(snapshot([page({ slug: "nova", tracker: { publicKey: key } })]))
+  assert.equal(hubTrackerScriptUrl(mergeOperationalCatalog(fresh).offers.nova.hubTracker), `https://prado-company.com/api/tracker/script/${key}`)
+  const off = snapshotToOverrides(snapshot([page({ slug: "nova", tracker: null })]))
+  assert.equal(mergeOperationalCatalog(off).offers.nova.hubTracker, undefined)
+  const forged = snapshotToOverrides(snapshot([page({ slug: "nova", tracker: { publicKey: "x\"><script>" } })]))
+  assert.equal(hubTrackerScriptUrl(mergeOperationalCatalog(forged).offers.nova.hubTracker), null)
+  assert.equal(hubTrackerScriptUrl(undefined), null)
+})

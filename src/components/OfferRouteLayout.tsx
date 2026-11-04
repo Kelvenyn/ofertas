@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import Script from "next/script"
 import { OfferProvider } from "@/context/offer-context"
 import { cashflowScriptUrl } from "@/config/offers/catalog"
+import { hubTrackerScriptUrl } from "@/lib/hub-tracker"
 import { paletteCssVariables } from "@/config/offers/palettes"
 import { getOperationalCatalog, getOperationalOffer } from "@/lib/operational-catalog"
 import { getGlobalSiteSettings, globalSiteSettingsStyle } from "@/lib/global-site-settings"
@@ -58,6 +59,9 @@ export async function OfferRouteLayout({ slug, offer, children, previewMode = fa
           async
           strategy="afterInteractive"
         />
+      )}
+      {hubTrackerScriptUrl(entry.hubTracker) && !previewMode && (
+        <Script id={`hub-tracker-${slug}`} src={hubTrackerScriptUrl(entry.hubTracker)!} async strategy="afterInteractive" />
       )}
       <div id="offer-root" style={style}>
         <OfferProvider offer={effectiveOffer} previewMode={previewMode}>{children}</OfferProvider>
