@@ -2,13 +2,15 @@
 import { getCatalogEntryById, OFFER_CATALOG, type CashflowConfig } from "../config/offers/catalog"
 import { validateOfferSlug } from "@/lib/offer-routing"
 import { getOfferCopyIssues, validateOfferConfig } from "@/lib/offer-validation"
-import { isWebpReference, type OfferOverride } from "@/lib/operational-catalog-domain"
+import { isHubTracker, isWebpReference, type OfferOverride } from "@/lib/operational-catalog-domain"
 import type { OfferConfig } from "@/types/offer"
 
 /** Pure part of the hub reading (hub-pages.ts): the snapshot contract and its mapping to the catalog overrides. */
 export type HubPage = {
   id: string; legacyId: string | null; templateId: string | null; slug: string; label: string
   status: "active" | "inactive" | "draft"; favicon: string | null; cashflow: CashflowConfig | null; version: number; offer: unknown
+  /** Present when the page has the hub tracker on (hub 04/11/2026); older hubs omit it. */
+  tracker?: { publicKey: string } | null
 }
 export type HubSnapshot = { schemaVersion: 1; generatedAt: string; settings: { typographySize: string; imageSize: string }; pages: HubPage[] }
 
@@ -51,6 +53,7 @@ export function snapshotToOverrides(snapshot: HubSnapshot): Record<string, Offer
       slug: page.slug,
       status: page.status === "active" && !offer ? "inactive" : page.status,
       cashflow: page.cashflow,
+      hubTracker: isHubTracker(page.tracker) ? { publicKey: page.tracker.publicKey } : null,
       favicon: isStatic ? favicon ?? getCatalogEntryById(id)!.favicon : favicon,
       ...(offer ? { offer } : {}),
       ...(isStatic ? {} : { label: page.label, templateId: page.templateId ?? "psicopedagogia" }),

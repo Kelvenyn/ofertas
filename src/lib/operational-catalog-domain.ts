@@ -9,11 +9,18 @@ import type { OfferConfig } from "../types/offer"
 export interface OfferOverride {
   offer?: OfferConfig
   cashflow?: CashflowConfig | null
+  /** Hub tracker key (only from the hub snapshot): the page loads <hub>/api/tracker/script/<key> next to Cashflow. */
+  hubTracker?: HubTrackerConfig | null
   favicon?: string | null
   label?: string
   slug?: string
   status?: "active" | "inactive" | "draft"
   templateId?: string
+}
+
+export type HubTrackerConfig = { publicKey: string }
+export function isHubTracker(value: unknown): value is HubTrackerConfig {
+  return Boolean(value) && typeof (value as HubTrackerConfig).publicKey === "string" && UUID_PATTERN.test((value as HubTrackerConfig).publicKey)
 }
 
 const STATIC_IDS = Object.values(OFFER_CATALOG.offers).map((entry) => entry.id)
@@ -184,6 +191,7 @@ export function mergeOperationalCatalog(overrides: Record<string, OfferOverride>
       status: override?.status ?? base.status,
       ...(override && Object.hasOwn(override, "cashflow") ? { cashflow: override.cashflow } : {}),
       ...(override && Object.hasOwn(override, "favicon") ? { favicon: override.favicon } : {}),
+      ...(override?.hubTracker ? { hubTracker: override.hubTracker } : {}),
     } satisfies OfferCatalogEntry
     return [entry.slug, entry]
   }))
@@ -197,6 +205,7 @@ export function mergeOperationalCatalog(overrides: Record<string, OfferOverride>
       status: override.status,
       favicon: override.favicon ?? null,
       cashflow: override.cashflow ?? null,
+      ...(override.hubTracker ? { hubTracker: override.hubTracker } : {}),
       templateId: override.templateId,
     }
     offers[entry.slug] = entry
