@@ -267,6 +267,8 @@ Copy adaptada por oferta, dentro dos limites de §6.
 | `garantia.webp` | selo da garantia |
 | `favicon.webp` | ícone da aba |
 | `beneficio.webp` (opcional) | imagem da seção de benefícios |
+| `contador.webp` (opcional) | `counter.image`: imagem quadrada abaixo do contador |
+| `urgencia.webp` (opcional) | `urgency.image`: imagem quadrada entre o cronômetro e o título da urgência |
 
 ### 8.2 Trilhos do demonstrativo (kit)
 

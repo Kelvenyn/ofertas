@@ -40,6 +40,8 @@ export interface OfferCounter {
   prefix: string
   target: number
   label: string
+  image?: string          // quadrada 1080×1080, abaixo do rótulo
+  imageAlt?: string
 }
 
 export interface KitImage {
@@ -133,6 +135,8 @@ export interface OfferConfig {
     ctaText: string
     trust: string[]
     timerMode?: "hoursMinutesSeconds" | "minutesSeconds"
+    image?: string        // quadrada 1080×1080, entre o cronômetro e o título
+    imageAlt?: string
   }
   deliverables: {
     title: string

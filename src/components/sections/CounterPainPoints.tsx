@@ -1,11 +1,12 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
 import { useOffer } from "@/context/offer-context"
 
 export function CounterPainPoints() {
   const offer = useOffer()
-  const { prefix, target, label } = offer.counter
+  const { prefix, target, label, image, imageAlt } = offer.counter
   const [count, setCount] = useState(0)
   const [barWidth, setBarWidth] = useState("0%")
   const counterRef = useRef<HTMLDivElement>(null)
@@ -68,6 +69,12 @@ export function CounterPainPoints() {
         <div className="dc-bar" role="progressbar" aria-valuenow={count} aria-valuemin={0} aria-valuemax={target}>
           <div className="dc-fill" style={{ width: barWidth }}></div>
         </div>
+
+        {image && (
+          <div className="dc-image">
+            <Image src={image} alt={imageAlt ?? label.replace(/\n/g, " ")} width={1080} height={1080} sizes="(max-width: 700px) 100vw, 520px" />
+          </div>
+        )}
       </div>
     </div>
   )
