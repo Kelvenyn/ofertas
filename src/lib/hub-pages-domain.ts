@@ -26,7 +26,7 @@ export function renderableOffer(value: unknown): OfferConfig | undefined {
   if (checked.errors.some((error) => !copyIssues.has(error))) return undefined
   const offer = value as OfferConfig
   const images = [
-    offer.hero.image, offer.deliverables.image, offer.benefits.image, offer.guarantee.icon,
+    offer.hero.image, offer.deliverables.image, offer.benefits.image, offer.guarantee.icon, offer.counter.image, offer.urgency.image,
     ...offer.socialProof.testimonials.map((item) => item.src), ...offer.kitCards.images.map((item) => item.src),
     ...offer.bonuses.flatMap((bonus) => [bonus.front, bonus.back]), ...offer.pricing.plans.map((plan) => plan.image),
   ].filter((src): src is string => src !== undefined)

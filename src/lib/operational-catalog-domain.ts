@@ -71,6 +71,8 @@ export function normalizeStoredOffer(candidate: unknown, legacyFallback?: OfferC
     offer.bonuses.flatMap((bonus) => [bonus.front, bonus.back]),
     offer.pricing.plans.map((plan) => plan.image),
     offer.guarantee.icon ? [offer.guarantee.icon] : [],
+    offer.counter.image ? [offer.counter.image] : [],
+    offer.urgency.image ? [offer.urgency.image] : [],
   ].flat(2)
   if (assetPaths.some((src) => !isWebpReference(src))) return undefined
   return offer

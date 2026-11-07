@@ -1,12 +1,13 @@
 "use client"
 
+import Image from "next/image"
 import { ShinyButton } from "@/components/ui/ShinyButton"
 import { useCountdownTimer } from "@/hooks/useCountdownTimer"
 import { useOffer } from "@/context/offer-context"
 
 export function Urgencia() {
   const offer = useOffer()
-  const { title, highlight, body, ctaText, trust, timerMode = "hoursMinutesSeconds" } = offer.urgency
+  const { title, highlight, body, ctaText, trust, timerMode = "hoursMinutesSeconds", image, imageAlt } = offer.urgency
   const titleLines = title.split('\n')
   const trustLabels = trust.flatMap((item) => item.split("•").map((label) => label.trim())).filter(Boolean)
   const time = useCountdownTimer()
@@ -36,6 +37,12 @@ export function Urgencia() {
           </div>
 
           <div className="urg-card-body">
+            {image && (
+              <div className="urg-image">
+                <Image src={image} alt={imageAlt ?? "Imagem do material"} width={1080} height={1080} sizes="(max-width: 700px) 100vw, 520px" />
+              </div>
+            )}
+
             <h2 className="urg-title" id="urgency-title">
               {titleLines.map((line, i) => (
                 <span key={i}>

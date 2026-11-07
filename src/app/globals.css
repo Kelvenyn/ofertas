@@ -1489,6 +1489,25 @@ html {
   animation: square-product-float 6s ease-in-out infinite;
 }
 
+/* Imagem opcional do contador (abaixo da barra) e da urgência (entre o cronômetro e o título). */
+.dc-image,
+.urg-image {
+  width: min(calc(520px * var(--lp-image-scale, 1)), 100%);
+  margin: 28px auto 0;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 14px 32px color-mix(in srgb, var(--brand-deep) 18%, transparent);
+}
+
+.urg-image { margin: 0 auto 26px; }
+
+.dc-image img,
+.urg-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
